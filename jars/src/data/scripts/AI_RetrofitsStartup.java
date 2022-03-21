@@ -90,15 +90,19 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     float Co2C = Global.getSettings().getFloat("AIRetrofits_Co_2C");
     String Co3N = Global.getSettings().getString("AIRetrofits_Co_3N");
     float Co3C = Global.getSettings().getFloat("AIRetrofits_Co_3C");
+
+    String SaD = Global.getSettings().getString("AIRetrofits_Sa_D");
+    String SuD = Global.getSettings().getString("AIRetrofits_Su_D");
+    String CoD = Global.getSettings().getString("AIRetrofits_Co_D");
     private void robot_forge_set(){
-        AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem("salvage Drones","produce salvage drones. they are somewhat effective at there job",SaS);
+        AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem("salvage Drones",SaD,SaS);
         robotAddReq(Sa1C,Sa1N,item);
         robotAddReq(Sa2C,Sa2N,item);
         robotAddReq(Sa3C,Sa3N,item);
         item.addOutputItem("AIretrofit_WorkerDrone",SaB);//50
         AIRetrofits_ForgeList.addItem(item);
 
-        item = new AIRetrofits_ForgeItem("survey drones","produce survey drones. they are very effective at there job",SuS);
+        item = new AIRetrofits_ForgeItem("survey drones",SuD,SuS);
         robotAddReq(Su1C,Su1N,item);
         robotAddReq(Su2C,Su2N,item);
         robotAddReq(Su3C,Su3N,item);
@@ -107,7 +111,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         item.addOutputItem("AIretrofit_SurveyDrone",SuB);//50
         AIRetrofits_ForgeList.addItem(item);
 
-        item = new AIRetrofits_ForgeItem("raiding drones","produce combat drones. they are best used in swarms",CoS);
+        item = new AIRetrofits_ForgeItem("raiding drones",CoD,CoS);
         //item.addRequiredItem("supplies", (float) 0.1);
         robotAddReq(Co1C,Co1N,item);
         robotAddReq(Co2C,Co2N,item);
@@ -128,7 +132,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     x)mirriens = 200
 
     a)AIretrofit_WorkerDrone:75
-        1: 2.5, 4: 0.33~, 3: 0.5     3.33
+        1: 2.5, 4: 0.33~, 3: 0.5     =3.33
         1: 0.7, 4:0.1, 3:0.15
         //0.95
     b)AIretrofit_SurveyDrone:75
@@ -136,7 +140,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         1: 0.8, 4: 0.11, 5: 0.096
         //1.06
     c)AIretrofit_CombatDrone:300
-        1: 10, 4: 1.5, 6: 0.6       12.1
+        1: 10, 4: 1.5, 6: 0.6       =12.1
         1: 0.82, 4: 0.124, 6: 0.05
         //0.945
 
