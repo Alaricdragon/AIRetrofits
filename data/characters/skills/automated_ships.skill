@@ -1,0 +1,25 @@
+{
+	"id":"automated_ships",
+	"governingAptitude":"technology",
+	"compressHullmods":false,
+	"scope":CUSTOM,
+	"scopeStr":"all automated ships",
+	"effectGroups":[
+		{
+			"requiredSkillLevel":0,
+			"effects":[
+				{"type":"DESCRIPTION", "script":"com.fs.starfarer.api.impl.campaign.skills.AutomatedShips$Level0"},
+			]
+		},
+		{
+			"requiredSkillLevel":1,
+			"effectBasedOnLevel":false,
+			"effects":[
+				{"type":"CHARACTER_STATS", "script":"com.fs.starfarer.api.impl.campaign.skills.AutomatedShips$Level2"},
+				{"type":"ALL_SHIPS_IN_FLEET", "script":"com.fs.starfarer.api.impl.campaign.skills.AutomatedShips$Level1"},
+				{"type":"HULLMOD_UNLOCK", "hullmods":{"AIretrofit_airetrofit":1, "AIretrofit_AutomatedCrewReplacementDrones":1}},
+				{"type":"ABILITY_UNLOCK", "abilities":["AIretrofit_robot_drone_forge"]},
+			]
+		},
+	],
+}

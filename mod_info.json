@@ -1,0 +1,17 @@
+{
+	"id":"AI-Retrofits", # internal id
+	"name":"AIretrofit", # displayed to the player
+	"author":"Alaricdragon",
+	"version":"0.5",
+	"description":"adds some hullmods to replce crew on ships",
+	"gameVersion":"0.95a-RC15",
+    	"dependencies": [
+        	{
+        	    "id": "aaacrew_replacer",
+        	    "name": "crew_replacer",
+        	    #"version": "1"
+        	},
+	],
+	"jars":["jars/AIretrofit.jar"],
+	"modPlugin":"data.scripts.AI_RetrofitsStartup",
+}

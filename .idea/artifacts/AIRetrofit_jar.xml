@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AIRetrofit:jar">
+    <output-path>$PROJECT_DIR$/jars</output-path>
+    <root id="archive" name="AIretrofit.jar">
+      <element id="module-output" name="my mod" />
+    </root>
+  </artifact>
+</component>

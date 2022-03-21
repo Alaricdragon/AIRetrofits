@@ -1,0 +1,2 @@
+id,name,cost mult,build time,income,upkeep,downgrade,upgrade,tags,data,image,plugin,desc,order,disruptDanger
+#my_mod_automatedworldcore,Automated World Core,,,,3,,,"population, unraidable, no_saturation_bombardment",,,data.scripts.industries.TempPop,my little test =),100,

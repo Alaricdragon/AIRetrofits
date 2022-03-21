@@ -1,0 +1,69 @@
+{
+	"plugins":{
+		"surveyPlugin":"data.scripts.replacementscripts.SurveyPluginImpl",
+	},
+	"ruleCommandPackages":[
+		"data.scripts.replacementscripts.Salvage",
+		"data.scripts.starfarer.api.impl.campaign.rulemd",
+	],
+
+
+
+	#settings for AIRetrofits hullmod
+	"AIRetrofits_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
+	"AIRetrofits_AIretrofit_CREW_USE_MULT":0,
+	"AIRetrofits_AIretrofit_REPAIR_LOSE":0.5,
+
+	#settings for robot forge power.
+	"AIRetrofits_CorruptedMetal":0.025,
+	"AIRetrofits_PristineMetal":0.075,
+	#"AIRetrofits_SalvageGantry":0.10,
+	"AIRetrofits_RobotForgePerCrewMulti":0.002,
+
+	#settings for robotCost and forgeSpeed
+	#S is build speed
+	#B is robot output number
+	#N is name of an requirement
+	#C is required amount of this item per robot output.
+	#salvage robots
+	"AIRetrofits_Sa_S":1,
+	"AIRetrofits_Sa_B":1,
+	"AIRetrofits_Sa_1N":"metals",
+	"AIRetrofits_Sa_1C":0.7,
+	"AIRetrofits_Sa_2N":"rare_metals",		
+	"AIRetrofits_Sa_2C":0.1,
+	"AIRetrofits_Sa_3N":"heavy_machinery",		
+	"AIRetrofits_Sa_3C":0.15,
+
+	#survey robots
+	"AIRetrofits_Su_S":1,
+	"AIRetrofits_Su_B":1,
+	"AIRetrofits_Su_1N":"metals",		
+	"AIRetrofits_Su_1C":0.8,
+	"AIRetrofits_Su_2N":"rare_metals",		
+	"AIRetrofits_Su_2C":0.11,
+	"AIRetrofits_Su_3N":"volatiles",		
+	"AIRetrofits_Su_3C":0.096,
+
+	#combat robots
+	"AIRetrofits_Co_S":0.5,
+	"AIRetrofits_Co_B":2,
+	"AIRetrofits_Co_1N":"metals",		
+	"AIRetrofits_Co_1C":0.82,
+	"AIRetrofits_Co_2N":"rare_metals",		
+	"AIRetrofits_Co_2C":0.124,
+	"AIRetrofits_Co_3N":"hand_weapons",		
+	"AIRetrofits_Co_3C":0.05,
+
+	#settings for crewPower and Priority
+	"AIRetrofits_Salvage_Power":1,
+	"AIRetrofits_Salvage_priority":9,
+
+	"AIRetrofits_Survey_Power":1.5,
+	"AIRetrofits_Survey_priority":9,
+
+	"AIRetrofits_Combat_Power":0.5,
+	"AIRetrofits_Combat_priority":9,
+
+}
+

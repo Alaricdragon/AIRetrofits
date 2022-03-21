@@ -1,0 +1,52 @@
+id,trigger,conditions,script,text,options,notes
+# salvage changes for hullmod,,,,,,
+sal_showRatingAndCost,BeginSalvage,,"my_mod_SalvageEntity showCost
+FireAll PopulateSalvageOptions2",,,
+sal_optionCheckAccidents,DialogOptionSelected,$option == salSalvage,my_mod_SalvageEntity checkAccidents,,,
+sal_salvageOptionSelected,DialogOptionSelected,$option == salPerform,"my_mod_SalvageEntity performSalvage
+FireBest PostSalvagePerform",,,
+#START OF NEX DATA COPY FOR EXAMPLE,,,,,,
+m_openAsteroid,OpenInteractionDialog,"$isAsteroid
+!m_IsModActive ""stellar_industrialist""","ShowDefaultVisual
+PrintDescription 3
+FireAll PopulateOptions",Your $shipOrFleet approaches the asteroid.,,
+m_leaveAsteroid,PopulateOptions,"$isAsteroid
+!m_IsModActive ""stellar_industrialist""",SetShortcut marketLeave ESCAPE,,100:marketLeave:Leave,
+,,,,,,
+m_miningOption,PopulateOptions,"$m_canMine
+!$isAsteroid",SetEnabled m_miningPreview true,,3:m_miningPreview:Mine planet,
+m_miningOptionAsteroid,PopulateOptions,"$m_canMine
+$isAsteroid",SetEnabled m_miningPreview true,,3:m_miningPreview:Mine asteroid,
+m_miningOptionUnsurveyed,PopulateOptions,"$m_canMine
+!$isAsteroid
+$market.surveyLevel != FULL","SetTooltip m_miningPreview ""You need to survey the planet first!""
+SetEnabled m_miningPreview false",,,
+m_miningOptionCooldown,PopulateOptions,"$m_canMine
+$player.m_miningCooldown","SetTooltip m_miningPreview ""On cooldown, please wait a day before mining again.""
+SetEnabled m_miningPreview false",,,
+,,,,,,
+m_miningPreview,DialogOptionSelected,$option == m_miningPreview,"m_PrintMiningInfo planet
+FireAll m_MiningOption",,,
+m_miningMineOption,m_MiningOption,$player.miningStrength > 0,"SetEnabled m_miningStart true
+SetShortcut m_miningStart RETURN
+SetShortcut m_miningBack ESCAPE",,"m_miningStart:Start mining
+m_miningFleetInfo:List mining ships
+m_miningListTools:What ships and weapons can mine?
+m_miningBack:Back",
+m_miningMineOptionNoMiners,m_MiningOption,$player.miningStrength <= 0,"SetTooltip m_miningStart ""You have no ships capable of mining.""
+SetEnabled m_miningStart false
+SetShortcut m_miningBack ESCAPE",,"m_miningStart:Start mining
+m_miningListTools:What ships and weapons can mine?
+m_miningBack:Back",
+m_miningFleetInfo,DialogOptionSelected,$option == m_miningFleetInfo,"m_PrintMiningInfo fleet
+FireAll m_miningOption",,,
+m_miningListTools,DialogOptionSelected,$option == m_miningListTools,"m_PrintMiningInfo tools
+FireAll m_miningOption",,,
+m_miningStart,DialogOptionSelected,"$m_canMine
+$option == m_miningStart","$player.m_miningCooldown = true 1
+m_GetMiningResults 1
+ShowDefaultVisual",,m_miningLeave:Leave,
+,,,,,,
+m_miningBack,DialogOptionSelected,$option == m_miningBack,FireAll PopulateOptions,,,
+m_miningLeave,DialogOptionSelected,$option == m_miningLeave,DismissDialog,,,
+#END OF NEX DATA COPY FOR EXAMPLE,,,,,,

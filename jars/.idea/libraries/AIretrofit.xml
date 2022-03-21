@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AIretrofit">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AIretrofit.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
