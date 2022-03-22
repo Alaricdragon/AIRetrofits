@@ -23,6 +23,7 @@
 	#settings for robotCost and forgeSpeed
 	#S is build speed
 	#B is robot output number
+	#D is for description
 	#N is name of an requirement
 	#C is required amount of this item per robot output.
 	#salvage robots
@@ -50,7 +51,7 @@
 	#combat robots
 	"AIRetrofits_Co_S":1,
 	"AIRetrofits_Co_B":2,
-	"AIRetrofits_Co_D":"produce combat drones. larger then an average Marine in full combat armor and somewhat patchwork in design, they are no the less capable of being outfitted with many different weapons upon there mounts before combat. they are controlled remotely from the command room of your flagship when preforming combat operations. despite the in theory advantages that the Combat Robots offer, they tend to severely under preform in combat. the drones are slow to react in combat, do to the fact that there command ship must process most of there movements beforehand. they often take seconds to realize they are under attack before returning fire, causing increased losses. the alternative, wish is to give them all an primitive AI, is worse. as it results in the drones walking into kill zones and fortifications unknowingly, as well as a lack of coordination causing manny to fall to the same kill zones before they can be overcome. the only upside, is they are quite small, at 1 tons, and capable of fighting in almost any environment. best used in large numbers.",
+	"AIRetrofits_Co_D":"produce combat drones. larger then an average Marine in full combat armor and somewhat patchwork in design, they are none the less capable of being outfitted with many different weapons upon there mounts before combat. they are controlled remotely from the command room of your flagship when preforming combat operations. despite the in theory advantages that the Combat Robots offer, they tend to severely under preform in combat. the drones are slow to react in combat, do to the fact that there command ship must process most of there movements beforehand. they often take seconds to realize they are under attack before returning fire, causing increased losses. the alternative, wish is to give them all an primitive AI, is worse. as it results in the drones walking into kill zones and fortifications unknowingly, as well as a lack of coordination causing manny to fall to the same kill zones before they can be overcome. the only upside, is they are quite small, at 1 tons, and capable of fighting in almost any environment. best used in large numbers.",
 	"AIRetrofits_Co_1N":"metals",		
 	"AIRetrofits_Co_1C":0.82,
 	"AIRetrofits_Co_2N":"rare_metals",		

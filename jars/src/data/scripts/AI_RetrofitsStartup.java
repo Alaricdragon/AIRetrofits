@@ -18,7 +18,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //crew_replacer_start_outdated();
         super.onGameLoad(newGame);
     }
-
+//300,1550
+//2000,150
     private void crew_replacer_start_outdated(){
         //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
         /*crew_replacer.addCrewType("AIretrofit_WorkerDrone");
