@@ -63,7 +63,7 @@
 	"AIRetrofits_Salvage_Power":1,
 	"AIRetrofits_Salvage_priority":9,
 
-	"AIRetrofits_Survey_Power":3,
+	"AIRetrofits_Survey_Power":1.5,
 	"AIRetrofits_Survey_priority":9,
 
 	"AIRetrofits_Combat_Power":0.5,
