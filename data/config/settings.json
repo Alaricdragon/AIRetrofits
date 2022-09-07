@@ -60,14 +60,51 @@
 	"AIRetrofits_Co_3C":0.05,
 
 	#settings for crewPower and Priority
+	#power multi for AI cores:
+	"AIRetrofits_BaseMulti":0.85,
+	"AIRetrofits_CommandMulti":1,
+	"AIRetrofits_GammaMulti":1.15,
+	"AIRetrofits_BetaMulti":1.30,
+	"AIRetrofits_AlphaMulti":1.45,
+	"AIRetrofits_OmegaMulti":1.60,
+
+	#salvage drones
 	"AIRetrofits_Salvage_Power":1,
-	"AIRetrofits_Salvage_priority":9,
+	"AIRetrofits_Salvage_priority":11,
 
+	#survey drones
 	"AIRetrofits_Survey_Power":1.5,
-	"AIRetrofits_Survey_priority":9,
+	"AIRetrofits_Survey_priority":11,
 
+	#combat drones
 	"AIRetrofits_Combat_Power":0.5,
-	"AIRetrofits_Combat_priority":9,
+	"AIRetrofits_Combat_priority":11,
+	#colony data
+	"AIRetrofits_EnableColonyFeatures":true,
 
+	#temp graphics settings for things im testing
+	"graphics":{
+		"industry":{
+			"AIRetorfit_AIpop_low":"graphics/icons/industry/AIRetrofit_populationLow.png",
+			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.png",
+		},
+		"characters":{
+		#	"AIRetofit_AIOfficer":"graphics/hal9000butblue.jpg",
+			"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png",
+		},
+	},
+	#data for AIofficers names and portrates. you can add a new name/portrate by puting it here.
+	#the code will try to read data from every item put here with the right name, by starting at 0 and counting up, if that makes sence.
+	"AIRetofit_AIOfficerFirstName0":"A-A-AI",
+	"AIRetofit_AIOfficerFirstName1":"defintly daved",
+
+	"AIRetofit_AIOfficerLastName0":"NotCore",
+	"AIRetofit_AIOfficerLastName1":"NotNotCore",
+	"AIRetofit_AIOfficerLastName2":"The Second",
+	#remember: all portrates also need to be added to the characters array. i dont know why
+	#"AIRetofit_AIOfficerPortrait0":"graphics/AIRetrofits_AICaption1.jpg",
+	"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png",
+	#"AIRetofit_AIOfficerPortrait0":"graphics/robot forge.png",
+	#"AIRetofit_AIOfficerPortrait0":"graphics/portrait_ai2",
 }
 

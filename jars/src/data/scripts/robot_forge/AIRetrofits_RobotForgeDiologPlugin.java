@@ -181,7 +181,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
         }*/
 
         //this.text.addParagraph("You currently have " + (int) this.fleet.getCargo().getCommodityQuantity("capturedcrew") + " captive crew and " + this.captiveOfficers.size() + " captive officers.");
-        this.text.addParagraph("TESTING TESTING ONE TWO THREE");
+        this.text.addParagraph("You cafullys consider what you can produce with the knowlage you have...");
         //this.lastSelectedMenu = null;
         //this.lastSelectedItems = null;
         this.populateOptions();

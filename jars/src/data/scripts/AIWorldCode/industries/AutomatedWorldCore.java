@@ -1,4 +1,4 @@
-package data.scripts.industries;
+package data.scripts.AIWorldCode.industries;
 //AutomatedWorldCore
 
 import com.fs.starfarer.api.Global;
