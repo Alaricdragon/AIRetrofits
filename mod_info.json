@@ -2,7 +2,7 @@
 	"id":"AI-Retrofits", # internal id
 	"name":"AIretrofit", # displayed to the player
 	"author":"Alaricdragon",
-	"version":"0.6",
+	"version":"0.7",
 	"description":"adds some hullmods to replce crew on ships",
 	"gameVersion":"0.95a-RC15",
     	"dependencies": [
