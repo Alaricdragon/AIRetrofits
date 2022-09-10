@@ -1,0 +1,29 @@
+changelog for all my changes as i make them so i dont forget again.
+
+v0.7.1:
+save compatible with 0.7.
+improvements:
+    upgraded robot forge description number in the forge selection, so it looks like the rest of the game now.
+    gave the op cost per crew from AIRetrofits its own config.
+balance:
+    *the robot forge felt extremely weak in testing. to the point it was -boring-. this felt better. nanoforge not tested.
+    -changed the default robot forge power from 1 power per 500 crew, to 1 power per 100 crew
+    -changed the way nanoforges were calculated, so its now caped at the robot forge power from your robot forges.
+    -changed C-nanoforge power from 0.025 to 1.
+    -changed P-namoforge power from 0.075 to 5.
+
+fixes:
+    -changed the way peoples names and pictures at AI markets were changed. it should work 100% of the time now (hopefully.)
+
+v0.7:
+-an slight update to robotic workers were they are buffed by having AI cores in your cargo, and weakened slightly when you have none.
+-an way to create an market using salvaging robots instead of crew.
+ -the new markets include new portraits and names for captions and admen
+ -the new markets have some supply demand changes, that should work with all mods
+ -the new markets have an completely different set of growth speed modifiers, to be changed latter
+ -the new markets will have some general weirdness.
+ -fleets spawned by this market type of market, belonging to the faction that ownes it, will spawn with the AI-Retorfits hullmod, as well as salvage and combat robots instead of crew and marinas
+  -do away with humons. bad humons. robots will rule muahaha
+ -an bunch of missing images. for real its really bad, but i wanna starsector
+ -an bunch of disable fetures, to be added in like latter, that add more flavor to this silly silly change. already partly in but disabled for save compatibility latter.
+ -and before i forget, you need an bunch of things before your robot markets will have stability. enjoy.

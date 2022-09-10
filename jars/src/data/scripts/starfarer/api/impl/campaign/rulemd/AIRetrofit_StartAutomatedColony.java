@@ -22,7 +22,7 @@ import java.util.Map;
 public class AIRetrofit_StartAutomatedColony extends BaseCommandPlugin {
     //protected static final String WING = Misc.ucFirst(StringHelper.getString("fighterWingShort"));
     //@Override
-    static public ArrayList<String> markets = new ArrayList<>();
+    //static public ArrayList<String> markets = new ArrayList<>();
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         //dialog.getTextPanel() // TextPanelAPI
         //if (dialog == null) return false;
@@ -133,7 +133,7 @@ public class AIRetrofit_StartAutomatedColony extends BaseCommandPlugin {
             /*ColonyManager.buildIndustries(market);
             ColonyManager.getManager().processNPCConstruction(market);*/
         }
-        markets.add(market.getId());
+        //markets.add(market.getId());
         // planet desc change
         //HERE
         /*

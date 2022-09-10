@@ -72,7 +72,7 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         //dialog.addOptionSelectedText();
         a = 0;
         startups = true;
-        if(getFleetsForgeModules(getFleet()) == 0){
+        if(iCalculateBonus(getFleet()) == 0){
             CampaignFleetAPI fleet = getFleet();
             deactivate();
             fleet.addFloatingText("No Automated Drone Factory's installed on ships in fleet. cannot produce anything", Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
@@ -112,7 +112,7 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
     @Override
     protected void applyEffect(float amount, float level) {
 
-        if(a == -1 || a >= AIRetrofits_ForgeList.items.size() || getFleetsForgeModules(getFleet()) == 0){
+        if(a == -1 || a >= AIRetrofits_ForgeList.items.size() || iCalculateBonus(getFleet()) == 0){
             deactivate();
             return;
         }
@@ -133,7 +133,7 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         float supply;// = fleet.getCargo().getCommodityQuantity(Commodities.SUPPLIES);
         boolean continueing = true;
         //oldHERE however is relevent to my build. gets when im out of res or space to build things. might remove out of space though.
-        if(getFleetsForgeModules(getFleet()) == 0){
+        if(iCalculateBonus(getFleet()) == 0){
             continueing = false;
             fleet.addFloatingText("No Automated Drone Factory's installed on ships in fleet. cannot produce anything", Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
             deactivate();

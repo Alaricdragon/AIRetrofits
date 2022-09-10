@@ -57,19 +57,22 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     @Override
     public void reportPlayerOpenedMarket(MarketAPI market){
-        AIRetrofit_StartAutomatedColony.markets.size();
+        if(market.hasCondition("AIRetrofit_AIPop")){
+            changePeople(market);
+        }
+        /*AIRetrofit_StartAutomatedColony.markets.size();
         for(int a = 0; a < AIRetrofit_StartAutomatedColony.markets.size(); a++){
             if(changePeople(Global.getSector().getEconomy().getMarket(AIRetrofit_StartAutomatedColony.markets.get(a)))){
                 AIRetrofit_StartAutomatedColony.markets.remove(a);
                 a--;
             }
-        }
+        }*/
     }
     private boolean changePeople(MarketAPI market){
         List<PersonAPI> peopletemp = market.getPeopleCopy();
         if(peopletemp.size() > 1){
             for (PersonAPI person : peopletemp) {
-                if(!market.getAdmin().equals(person)) {
+                if(!market.getAdmin().equals(person) && market.getFaction().getId().equals(person.getFaction().getId())) {
                     market.removePerson(person);
                     person.setPortraitSprite(setDataLists.getRandom(2));
                     person.setName(new FullName(setDataLists.getRandom(0), setDataLists.getRandom(1), FullName.Gender.ANY));

@@ -110,7 +110,15 @@ i want to:
 	private static final float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_AIretrofit_SUPPLY_USE_MULT");//1f;
 	private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_AIretrofit_CREW_USE_MULT");//0f;
 	private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_AIretrofit_REPAIR_LOSE");//0.5f;
-	private int[] CrewPerCostPerSize = {1,5,10,20,40};
+	private float[] CrewPerCostPerSize = {
+			Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Other"),
+			Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Frigate"),
+			Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Destroyer"),
+			Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Cruiser"),
+			Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Capital_ship")
+	};
+	//private int[] CrewPerCostPerSize = {1,5,10,20,40};
+	//private float[] CrewPerCostPerSize = {1f,0.2f,0.01f,0.05f,0.025f};
 	private int[] parm = new int[6];
 	@Override
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id/*, MutableCharacterStatsAPI c*/) {
@@ -155,16 +163,24 @@ i want to:
 		//return "cats";
 		switch(index) {
 			case 0:
-				return "" + parm[0];
+				return "" + reqCrew(CrewPerCostPerSize[1]);
 			case 1:
-				return "" + parm[1];
+				return "" + reqCrew(CrewPerCostPerSize[2]);
 			case 2:
-				return "" + parm[2] + "%";//%
+				return "" + reqCrew(CrewPerCostPerSize[3]);
 			case 3:
-				return "" + parm[3] + "%";//%
+				return "" + reqCrew(CrewPerCostPerSize[4]);
 			case 4:
-				return "" + parm[4];
+				return "" + parm[0];
 			case 5:
+				return "" + parm[1];
+			case 6:
+				return "" + parm[2] + "%";//%
+			case 7:
+				return "" + parm[3] + "%";//%
+			case 8:
+				return "" + parm[4];
+			case 9:
 				return "" + parm[5];
 		}
 		return null;
@@ -232,15 +248,18 @@ i want to:
 		/*if(hullSize == HullSize.FIGHTER || hullSize == HullSize.DEFAULT){
 			//crew = CrewPerCostPerSize[0];//1 cost per
 		}else */if(hullSize == HullSize.FRIGATE){
-			crew = crew / CrewPerCostPerSize[1];
+			//crew = crew / CrewPerCostPerSize[1];
+			return (int) (crew * CrewPerCostPerSize[1]);
 		}else if(hullSize == HullSize.DESTROYER){
-			crew = crew / CrewPerCostPerSize[2];
+			//crew = crew / CrewPerCostPerSize[2];
+			return (int) (crew * CrewPerCostPerSize[2]);
 		}else if(hullSize == HullSize.CRUISER){
-			crew = crew / CrewPerCostPerSize[3];
+			//crew = crew / CrewPerCostPerSize[3];
+			return (int) (crew * CrewPerCostPerSize[3]);
 		}else if(hullSize == HullSize.CAPITAL_SHIP){
-			crew = crew / CrewPerCostPerSize[4];
+			return (int) (crew * CrewPerCostPerSize[4]);
 		}
-		return (int)crew;
+		return (int) (crew * CrewPerCostPerSize[0]);
 	}
 	@Override
 	public void addPostDescriptionSection(TooltipMakerAPI tooltip, HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
@@ -262,24 +281,30 @@ i want to:
 		float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
 		HullSize hullsize = ship.getVariant().getHullSize();
 		int cost = GetExstraOpCost(MinCrew,hullsize);
-		int Base_cost=0;
+		int Base_cost= reqCrew(CrewPerCostPerSize[0]);
 		switch(hullsize){
 			case FRIGATE:
-				Base_cost = 5;
+				Base_cost = reqCrew(CrewPerCostPerSize[1]);
 				break;
 			case DESTROYER:
-				Base_cost = 10;
+				Base_cost = reqCrew(CrewPerCostPerSize[2]);
 				break;
 			case CRUISER:
-				Base_cost = 15;
+				Base_cost = reqCrew(CrewPerCostPerSize[3]);
 				break;
 			case CAPITAL_SHIP:
-				Base_cost = 25;
+				Base_cost = reqCrew(CrewPerCostPerSize[4]);
 				break;
 		}
 		if(!(cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit"))){
 			return "op cost: " + (cost + Base_cost);
 		}
 		return super.getUnapplicableReason(ship);
+	}
+	private int reqCrew(float in){
+		if(in == 0){
+			return 0;
+		}
+		return (int)(1 / in);
 	}
 }

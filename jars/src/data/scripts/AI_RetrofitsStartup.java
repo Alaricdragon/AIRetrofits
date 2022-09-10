@@ -277,4 +277,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //supply.addRequirement("population");
         //AIRetrofit_SuplyDemandSet.addItem(pop_supply);
     }
+    private void descriptions(){
+        //Global.getSector().getEconomy().getCommoditySpec("")
+    }
 }

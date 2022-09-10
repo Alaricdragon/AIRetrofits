@@ -38,6 +38,25 @@ public class setDataLists {
         }
         return "";
     }
+    public static boolean matches(int type,String input){
+        switch (type){
+            case 0:
+                return matches(CaptionFirstNames,input);
+            case 1:
+                return matches(CaptionLastNames,input);
+            case 2:
+                return matches(CaptionPortraits,input);
+        }
+        return false;
+    }
+    private static boolean matches(ArrayList<String> list,String input){
+        for(String a : list){
+            if(a.equals(input)){
+                return true;
+            }
+        }
+        return false;
+    }
     private static String getRandom(ArrayList<String> list){
         return list.get((int)(Math.random() * list.size()));
     }

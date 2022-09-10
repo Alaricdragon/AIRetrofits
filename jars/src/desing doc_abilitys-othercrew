@@ -1,0 +1,25 @@
+ability:
+    robot forge:
+        creates robot drones useing resorse.
+        creates robots at an speed of 1 per day per power.
+        power = robotForgeHullmodPower + (math.min(robotForgeHullmodPower + nanoForgePower));
+            -robotForgeHullmodPower = crewConsumedByRobotForgeHullMod * 0.01
+            -nanoForgePower = (CNanoForge * 1) + (PNanoForge * 5).
+
+
+    robots:
+        salage robots:
+            job: salvage and market creation.
+            power: 1,1
+            size: 1
+            cost:
+        survey robots:
+            job: survey
+            power: 1.5
+            size: 1.1
+            cost:
+        combat robots:
+            job: raiding
+            power: 0.5
+            size: 0.5
+            cost:

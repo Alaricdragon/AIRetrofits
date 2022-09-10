@@ -1,0 +1,16 @@
+to do list:
+Combatability:
+    -add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and dont have said hullmods and abilitys.
+Robot Forge:
+    -make it so you get the skill after finding the robot forge hullmod.
+
+Robots:
+    -add an exstra part to there description that shows:
+        -size
+        -crewpower.
+        -(this is done for wepons. it can be done here.)
+AIRetrofits:
+    -fix description not respecting configs?
+
+robot forge hullmod:
+    -make it respect the fact its an logistic hullmod (also HOW DO I DO THIS)
