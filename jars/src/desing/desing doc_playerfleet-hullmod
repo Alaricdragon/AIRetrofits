@@ -1,0 +1,20 @@
+hullmods:
+    AI-Retrofits:
+        sets required crew to 0.
+        reduces max crew by required crew.
+        reduces in combat repair speed by 50%.
+        increase mantnace cost by 100%.
+        cost scales per crew required. depending on hull size.
+        logistic hullmod.
+
+    robot forge:
+        reduces max crew by max crew - min crew.
+        per 100 crew removed, adds one 'robot forge power' to fleet.
+        logistic hullmod.
+
+captions and administrators:
+    allow the player to 'build' people from sub-command nodes?
+    people built in this way will be like normal captions, but with AI-Market names + portraits
+    costs an story ponit, + an equal amount of credits to the cost of an normal person of the same type
+    will be able to chose chose the captions starting personality, but there is an 50% chance that it will 'miss' and youll get an caption with an personality one more/less agressive.
+    will be able to chose an starting skill?

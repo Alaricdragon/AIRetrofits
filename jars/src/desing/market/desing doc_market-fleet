@@ -3,15 +3,14 @@ replace an colony ran by people with an colony ran by robots.
 why? cause i wanted to make an gameplay style that is completely different from normal.
 
 to do list right now:
-HEREHREHRHEHREHRHEHREH
--(done, basic)get growth working.
--(done)disable ludci-AI-war for now.
--(done)disable AI pruge for now.
--(done for market setup. required for robot forge.)add the cute little display thing to everything (the one whats his face added to crew replacer).
--(works. but only on first cololy visit. player will notice nothing though.)make it so new colony's get there coms people be AI named and protrates.
--(done)make it so only captions and officers in fleet get there name and protrate changed.
--set up configs.
--post the very early alpha to discord and PLAY STARSECTOR
+-move this file into 7 files in an folder.:
+    -1 for market growth.
+    -1 for industries
+    -1 for fleets.
+    -1 for stability changes.
+    -1 for to do list
+    -1 founding market
+    -1 market conditions
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 DELAYED!
