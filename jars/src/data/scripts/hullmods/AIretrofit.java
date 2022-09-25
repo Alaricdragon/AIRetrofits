@@ -8,12 +8,13 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
+import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
 import java.awt.*;
 
-public class AIretrofit extends BaseHullMod {
+public class AIretrofit extends BaseLogisticsHullMod {
 //getCrew ()
 /*
 i want to:
@@ -219,7 +220,7 @@ i want to:
 		parm[4] = (int) MinCrew;
 		parm[5] = (int) (MinCrew * CREW_USE_MULT);
 		//a.3)
-		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit"));
+		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && super.isApplicableToShip(ship);
 	}
 	private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
 		//example of adding a hullmod

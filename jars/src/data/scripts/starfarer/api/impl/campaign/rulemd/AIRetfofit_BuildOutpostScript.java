@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AIRetfofit_BuildOutpostScript extends BaseCommandPlugin {
-    float reqAICore = 1;
+    float reqAICore = 10;
     float reqWorker = 1000;
     float reqSupply = 200;
     float reqMachinery = 200;

@@ -1,0 +1,98 @@
+    market conditions and interactions:
+        -some market conditions do not make sense on an AI-pop world. they will need to be sorted out.
+        -AIPOP(started):
+            -(done)replaces an market with robots.
+            -(working on)ludic path sleeper cell:
+                ludic path will not stand to sleep on an world like this for now. they hate all tech after all.
+                they will try to become active faster.
+                AIPOP will try to remove the sleeper cell (maybe at an odds of 1 in 20 per momth?
+            -(working on)ludic path active cell:
+                the ludic path will start to wage active warfare vs this market.
+                larger stability penalty.
+                is the market decivs, the ludic would not stop. will create an 'AI-LUDIC WAR' market condition, removeing AI-POP
+                if the hostile activeity continues, might try to add more ludic path cells? (to an limit based on market size?)
+                AIPOP will try to passafy the ludic path cell (maybe at an odds of 1 in 20 per momth)
+                if an military base is present here, the ludic path cell should be destroyed mush faster.
+
+            -(done?)deciv subPOP:
+                if an deciv supPOP exsists on an world with AIPOP and no market, remove decivsubPOP, and add 'broken AI workers'
+                why? because the only condition that could happen is if an AIPOP market devics, and thats not what should go on.
+
+        -(done)AI-LUDIC WAR:
+            this is when an deciv AI is locked in war with ludic path fighters. what should happen:
+            every momth? there should be an chanse that this market condition is removed, and ether 'LUDIC PATH WATCHERS' or ('unbroken AI workers' or 'broken AI workers') should be added.
+            if the market is colonized before this, this mod will add an negitive stability until one wins over the other.
+                AI-POP:
+                    if an AI market is established here, there should be an active or passive ludic cell added to this world.
+                    if stability remains high on the world, or an military base be created the AI-LUDIc WAR should have an higher chanse of the 'unbroken AI workers' being added. or of an AI victory.
+                active ludic path cell:
+                    if an active ludic path cell is here, there should be an increased chance of ludic victory, and an reduced chance of 'unbroken robots' if they fail.
+
+        -(needs config)LUDIC PATH WATCHERS:
+            'an mighty foe from hell has risen here, and we have brought them low. We will keep an detachment here in case such eval ever rises again'
+            this is when the ludic path have destoryed an mighty AI-POP here completely. they will stand gard here for a time? to try and defend this world against the evils of the AI.
+                AI-POP:
+                    if an AI market is estabilished here, ludic path watchers should provide an increaseing - stability up to - 8.
+                    should add an demand of combat robots to this world. if supply is met for long enoth, and stability stays both 5 for long enoth, the watchers should be destroyed.
+                Market founded:
+                    if an market is founded here, nothing should happen. maybe make the watchers buff ludic path cells in this area?
+
+        -(needs buffs to AI market.)unbroken AI workers:
+            this decived AI pop has proven victorious in fighting off an ludic path cell. they will continue to be prepared for an war at all times.
+            this pop will:
+                provide an defensive bonus to AI worlds
+                provide an small amount of population growth to AI worlds.
+                AI-POP:
+                    provide an ground force strength bonus (maybe of 250? 500?, 1.1X?)
+                    provide -1 stability (the AI might try to fight you a little.)
+                    provide an small population growth (the AI will lend its factorys to you)
+                    will provide an +1 to +2 stability well fighting an ludic path cell
+                all markets:
+                    will have an chance of destroying an passive ludic path cell.
+                    will have an chance of passafiing an active ludic path cell.
+                non AI-POP markets:
+                    will provide -2 to -3 stability well fighting an lucic path cell.
+                    will provide an -1? stability.
+                    will be removed if the market reaches size 5+, or has an milatary base.
+                    maybe be removed if an market has an high stability for an long time and keeps an military base operational?
+
+
+        -(needs config)broken AI workers:
+            'parts of the landscape is littered with broken robots and shattered installations. something mighty was brought low here. sometimes, in the rubble, movement can be spotted. the robots tireless trying to complete there work. something impossible with there broken body's.'
+            this is when an AIPOP has been almost compleatly destroyed. there is -something- left, but its not doing anything on its own.
+            AI-POP:
+                will provide an market growth bonus.
+                at pop size 5? will be removed?
+                maybe? gives an building of some type for free when removed? or adds an new market condition.
+
+            other markets:
+                at pop size 6? will be removed.
+                will provide -1 stability until then.
+
+        -(redacted?)AI Sentinels(?):
+            this deciv AI was successful in destroying the ludic path that was at war with it. it became extremely specialized in fighting, and has fortresses and hidden gun emplacements all around the world.
+            an more extreme form of unbroken AI workers?
+            ???
+
+        -(needs to know when to lower size)Purging AI world
+            this AI world is having all its robots and infrastructure purged by its ruling faction.
+            it will reduce in growth of (x = stability)   x * 1.5%/ x * 1%/ x * 0.5% ? per momth.
+            will reduce by one when growth = 0.
+            will be removed once growth < 10, and size = 3.
+            it will reduce stability by size - 2.
+            will increase demand from population and instructor by:
+                marines: 1 x size
+                crew: 1 x size - 1
+                supply: 1 x size + 1
+                heavy machinery: 1 x size - 2
+                food: size
+                heavy wepons: 0.5 X size
+            will reduce all other supply to 0?
+            will reduce all other demand to 0?
+            -LUDIC PATH WATCHERS:
+                will increse the x value of the purge speed by 2.
+                will provide 2 stability.
+            -unbroken AI workers:
+                will reduce the x value of the purge speed by 2.
+                will reduce stability by 2.
+            the player MUST be able to stop the purge if its underway and the player owns the world.

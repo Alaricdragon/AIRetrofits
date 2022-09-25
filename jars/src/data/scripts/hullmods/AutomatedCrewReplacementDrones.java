@@ -7,6 +7,7 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
@@ -26,7 +27,7 @@ import static data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary.iCalculat
  */
 
 
-public class AutomatedCrewReplacementDrones extends BaseHullMod {
+public class AutomatedCrewReplacementDrones extends BaseLogisticsHullMod {
     int DronePerCrew = 10;
     int MinReplacedCrew = 1;
     float ReplacedCrew;
@@ -57,7 +58,7 @@ public class AutomatedCrewReplacementDrones extends BaseHullMod {
         float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
         float MaxCrew = ship.getVariant().getHullSpec().getMaxCrew();
         ReplacedCrew = (MaxCrew - MinCrew);
-        return ship != null/* && cost <= unusedOP*/&& ReplacedCrew >= MinReplacedCrew;
+        return ship != null/* && cost <= unusedOP*/&& ReplacedCrew >= MinReplacedCrew && super.isApplicableToShip(ship);
     }
     @Override
     public String getUnapplicableReason(ShipAPI ship) {

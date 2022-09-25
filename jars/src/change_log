@@ -1,4 +1,23 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.2:
+save compatible with v0.7+
+fixes:
+    made the AI-Retrofit hullmod respect logistic slots.
+    made the robot forge hullmod respect logistic slots.
+improvements:
+    improved the robot forge ability tooltip to be more useful.
+    replaced the required gamma-core (for founding AI markets) with 10 sub-command nodes.
+new:
+    can now make sub command nodes in the robot factory
+    can now turn sub command nodes into LV1 officers with an chosen personality, at an cost.
+        -officers made in this way work exactly like normal officers. just an portrait and name change.
+    can now turn sub command nodes into basic administrators, at an cost.
+        -administrators made this way work exactly like normal administrators. just an portrait and name change.
+
+thoughts:
+    regarding the gamma-core change, for some reason i thought gamma cores were really common. they are not.
+    also i will likely change the 'create officer/admen thing' in the feature..
+    this will be the last 'save compatible' update. the next update will change market things and not be save compatible.
 
 v0.7.1:
 save compatible with 0.7.

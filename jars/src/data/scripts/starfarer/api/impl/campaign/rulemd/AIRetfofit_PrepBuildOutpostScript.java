@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AIRetfofit_PrepBuildOutpostScript extends BaseCommandPlugin {
-    float reqAICore = 1;
+    float reqAICore = 10;
     float reqWorker = 1000;
     float reqSupply = 200;
     float reqMachinery = 200;
@@ -39,7 +39,7 @@ public class AIRetfofit_PrepBuildOutpostScript extends BaseCommandPlugin {
         got[3] = tempJob.getAvailableCrewPower(fleet);
 
         dialog.getTextPanel().addPara("you have available");
-        texttemp("gamma_core",got[0],reqAICore,dialog.getTextPanel());
+        texttemp("AIretrofit_SubCommandNode",got[0],reqAICore,dialog.getTextPanel());
         texttemp("AIretrofit_WorkerDrone",got[1],reqWorker,dialog.getTextPanel());
         texttemp("supplies",got[2],reqSupply,dialog.getTextPanel());
         texttemp("heavy_machinery",got[3],reqMachinery,dialog.getTextPanel());

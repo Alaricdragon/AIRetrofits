@@ -13,3 +13,12 @@ solution:
         -make it with robot forge, over time.
             -require you to know both hullmods 'AI retrofits', and 'robot forge' before unlocking.
         -use that instead of an gamma core
+
+
+other issues:
+    nex compatibility:
+        this mod founds markets from other markets.
+        -solution: make it so founding an market from an AI-market will found an AI market. ('AIRetrofit_AIPop' market condition)
+         this might be hard though. will require an compatibility test over an long time =(
+    terraform and station construction compatibility:
+        this mod makes stations with crew. i might have to mack an compatibility patch for us, to have my AI market stations.

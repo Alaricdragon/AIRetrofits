@@ -10,6 +10,7 @@ import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.robot_forge.AIRetrofits_ForgeItem;
 import data.scripts.robot_forge.AIRetrofits_ForgeList;
 import data.scripts.robot_forge.AIRetrofits_RobotForge;
+import data.scripts.robot_forge.AIRetrofits_RobotForge_People;
 import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandChange;
 import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
 
@@ -77,6 +78,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempCrew.crewPower = Su_Po;
         tempCrew.crewPriority = Su_Pr;
         tempJob.addCrew(tempCrew);
+        tempJob.addNewCrew("crewname",1,10);
 
         tempJob = crewReplacer_Main.getJob("salvage_crew");//survey_main
         tempCrew = new AIRetrofit_Robots();
@@ -92,8 +94,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempCrew.crewPriority = Co_Pr;
         tempJob.addCrew(tempCrew);
 
-        tempJob = crewReplacer_Main.getJob(AICoreJob);//addItem AIretrofit_WorkerDrone 1000; addItem supplies 200; addItem heavy_machinery 200; addItem gamma-core 1;
-        tempJob.addNewCrew("gamma_core",1,1);
+        tempJob = crewReplacer_Main.getJob(AICoreJob);//addItem AIretrofit_WorkerDrone 1000; addItem supplies 200; addItem heavy_machinery 200; addItem AIretrofit_SubCommandNode 10;
+        tempJob.addNewCrew("AIretrofit_SubCommandNode",1,1);
         tempJob = crewReplacer_Main.getJob(AIWorkerJob);
         tempJob.addNewCrew("AIretrofit_WorkerDrone",1,1);//AIretrofit_CombatDrone
         tempJob = crewReplacer_Main.getJob(SupplyJob);
@@ -138,9 +140,19 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     String Co3N = Global.getSettings().getString("AIRetrofits_Co_3N");
     float Co3C = Global.getSettings().getFloat("AIRetrofits_Co_3C");
 
+    float ScS = Global.getSettings().getFloat("AIRetrofits_Sc_S");
+    float ScB = Global.getSettings().getFloat("AIRetrofits_Sc_B");
+    String Sc1N = Global.getSettings().getString("AIRetrofits_Sc_1N");
+    float Sc1C = Global.getSettings().getFloat("AIRetrofits_Sc_1C");
+    String Sc2N = Global.getSettings().getString("AIRetrofits_Sc_2N");
+    float Sc2C = Global.getSettings().getFloat("AIRetrofits_Sc_2C");
+    String Sc3N = Global.getSettings().getString("AIRetrofits_Sc_3N");
+    float Sc3C = Global.getSettings().getFloat("AIRetrofits_Sc_3C");
+
     String SaD = Global.getSettings().getString("AIRetrofits_Sa_D");
     String SuD = Global.getSettings().getString("AIRetrofits_Su_D");
     String CoD = Global.getSettings().getString("AIRetrofits_Co_D");
+    String ScD = Global.getSettings().getString("AIRetrofits_Sc_D");
     private void robot_forge_set(){
         AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem("salvage Drones",SaD,SaS);
         robotAddReq(Sa1C,Sa1N,item);
@@ -153,8 +165,6 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         robotAddReq(Su1C,Su1N,item);
         robotAddReq(Su2C,Su2N,item);
         robotAddReq(Su3C,Su3N,item);
-        //item.addRequiredItem(Su1N, Su1C);
-        //item.addRequiredItem(Su2N, Su2C);
         item.addOutputItem("AIretrofit_SurveyDrone",SuB);//50
         AIRetrofits_ForgeList.addItem(item);
 
@@ -165,6 +175,17 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         robotAddReq(Co3C,Co3N,item);
         item.addOutputItem("AIretrofit_CombatDrone",CoB);//200
         AIRetrofits_ForgeList.addItem(item);
+
+        item = new AIRetrofits_ForgeItem("sub command node",ScD,ScS);
+        robotAddReq(Sc1C,Sc1N,item);
+        robotAddReq(Sc2C,Sc2N,item);
+        robotAddReq(Sc3C,Sc3N,item);
+        item.addOutputItem("AIretrofit_SubCommandNode",ScB);
+        AIRetrofits_ForgeList.addItem(item);
+
+        AIRetrofits_RobotForge_People dilog = new AIRetrofits_RobotForge_People("improve an sub command node","words words words. you shold never see this",0);
+        AIRetrofits_ForgeList.addItem(dilog);
+
         AIRetrofits_RobotForge.setInitData();
     }
     /*

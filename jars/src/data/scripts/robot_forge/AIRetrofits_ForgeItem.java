@@ -2,6 +2,7 @@ package data.scripts.robot_forge;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.TextPanelAPI;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
@@ -131,5 +132,8 @@ public class AIRetrofits_ForgeItem {
         LabelAPI label = iwt.addPara(numberStr + " " + displayName, 0, Misc.getHighlightColor(), numberStr);
         tt.addImageWithText(0);
         text.addTooltip();
+    }
+    public boolean activateDialog(InteractionDialogAPI dialog){
+        return false;
     }
 }

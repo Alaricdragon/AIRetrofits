@@ -1,20 +1,23 @@
-package data.scripts.robot_forge;
+package data.scripts.robot_forge.dilogs;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
-import com.fs.starfarer.api.campaign.InteractionDialogPlugin;
 import com.fs.starfarer.api.campaign.OptionPanelAPI;
 import com.fs.starfarer.api.campaign.TextPanelAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.robot_forge.AIRetrofits_ForgeList;
+import data.scripts.robot_forge.AIRetrofits_RobotForge;
+import data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlugin {
+public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogBase {
     protected InteractionDialogAPI dialog;
     protected TextPanelAPI text;
     protected OptionPanelAPI options;
@@ -31,10 +34,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
     protected int optionSellected;
     //List<PersonAPI> captiveOfficers;
     CampaignFleetAPI fleet;
-
-    private static AIRetrofits_ForgeItem Interaction;
-    public static boolean ActIn = false;
-    public AIRetrofits_RobotForgeDiologPlugin(CampaignFleetAPI theFleet) {
+    public AIRetrofit_Dialog_ForgeItemAndSelection(CampaignFleetAPI theFleet) {
         this.fleet = theFleet;
         initDataThing();
     }
@@ -102,23 +102,23 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
             default:
                 //this.mainMenu();
                 //if(getLast().equals("salvageRobots")){
-                    //ItemPage(0);
+                //ItemPage(0);
                 //}
                 //removeLast();
                 boolean continueing = true;
                 /**/for(int a = 0; a < Items.length; a++){
-                    if(getLast().equals(Items[a])){//optionData == item){
-                        //run relevent code here
-                        //itemSellected = a;
-                        //addLast(Items[a]);
-                        ItemPage(a);
-                        continueing = false;
-                        //text.addParagraph("YOU DIDIDDD IT!!!! " + (a));
-                        //fleet.getAbility("AIretrofit_robot_drone_forge");
-                        //robot_forge.setForgeValue(a);
-                        break;
-                    }
+                if(getLast().equals(Items[a])){//optionData == item){
+                    //run relevent code here
+                    //itemSellected = a;
+                    //addLast(Items[a]);
+                    ItemPage(a);
+                    continueing = false;
+                    //text.addParagraph("YOU DIDIDDD IT!!!! " + (a));
+                    //fleet.getAbility("AIretrofit_robot_drone_forge");
+                    //robot_forge.setForgeValue(a);
+                    break;
                 }
+            }
                 if(continueing){
                     //this.mainMenu();
                 }
@@ -126,7 +126,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
                 break;/**/
         }
 
-            //this.populateConfirmCancel();
+        //this.populateConfirmCancel();
         //}
 
     }
@@ -135,35 +135,36 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
         this.options.addOption("Confirm", "CONFIRM");//Menu.CONFIRM);
         this.addBackOption();
     }
-/*
-    protected void populateMainMenuOptions() {
-        this.options.clearOptions();
-        if (this.fleet.getCargo().getCommodityQuantity("capturedcrew") > 0.0F) {
-            this.options.addOption("Captive crew", AIRetrofits_RobotForgeDiologPlugin.Menu.CREW);
-        }
+    /*
+        protected void populateMainMenuOptions() {
+            this.options.clearOptions();
+            if (this.fleet.getCargo().getCommodityQuantity("capturedcrew") > 0.0F) {
+                this.options.addOption("Captive crew", AIRetrofits_RobotForgeDiologPlugin.Menu.CREW);
+            }
 
-        if (this.captiveOfficers.size() > 0) {
-            this.options.addOption("Captive officers", AIRetrofits_RobotForgeDiologPlugin.Menu.OFFICERS);
-            this.options.addOption("Ransom all officers", AIRetrofits_RobotForgeDiologPlugin.Menu.RANSOM_ALL);
-        }
+            if (this.captiveOfficers.size() > 0) {
+                this.options.addOption("Captive officers", AIRetrofits_RobotForgeDiologPlugin.Menu.OFFICERS);
+                this.options.addOption("Ransom all officers", AIRetrofits_RobotForgeDiologPlugin.Menu.RANSOM_ALL);
+            }
 
-        this.addBackOption();
-    }
-*/
+            this.addBackOption();
+        }
+    */
+    @Override
     public void advance(float arg0) {
     }
-
+    @Override
     public void backFromEngagement(EngagementResultAPI arg0) {
     }
-
+    @Override
     public Object getContext() {
         return null;
     }
-
+    @Override
     public Map<String, MemoryAPI> getMemoryMap() {
         return null;
     }
-
+    @Override
     public void init(InteractionDialogAPI dialog) {
         this.dialog = dialog;
         this.options = dialog.getOptionPanel();
@@ -189,11 +190,11 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
         this.populateOptions();
         dialog.setPromptText(Misc.ucFirst("Options"));
     }
-
+    @Override
     public void optionMousedOver(String arg0, Object arg1) {
 
     }
-
+    @Override
     public void optionSelected(String optionText, Object optionData) {
         if (optionText != null) {
             this.text.addParagraph(optionText, Global.getSettings().getColor("buttonText"));
@@ -269,10 +270,10 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
         }*/
         for(int a = 0; a < Items.length; a++) {
             //for(String thing : Global.getSector().getPlayerFaction().getKnownHullMods()){
-                if(AIRetrofits_ForgeList.items.get(a).active){//thing.equals(RequiredHullmods[a])){//DONEHERE
-                    this.options.addOption(AIRetrofits_ForgeList.items.get(a).name, Items[a]);//DONEHERE
-                    //break;
-                }
+            if(AIRetrofits_ForgeList.items.get(a).active){//thing.equals(RequiredHullmods[a])){//DONEHERE
+                this.options.addOption(AIRetrofits_ForgeList.items.get(a).name, Items[a]);//DONEHERE
+                //break;
+            }
             //}
         }
         this.addBackOption();
@@ -286,7 +287,12 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
         //AIRetrofits_ForgeList.items.get(item).getDescription(this.text);
         AIRetrofits_ForgeList.items.get(item).getDescription(this.text, AIRetrofits_RobotForgeSecondary.iCalculateBonus(Global.getSector().getPlayerFleet()));//DONEHERE
         //this.text.addParagraph(AIRetrofits_ForgeList.items.get(item).description, Global.getSettings().getColor("buttonText"));//DONEHERE
-        this.populateConfirmCancel();
+        if(!AIRetrofits_ForgeList.items.get(item).activateDialog(dialog)) {
+            this.populateConfirmCancel();
+        }else{
+            resetLast();
+            AIRetrofits_RobotForge.setForgeValue(-1);
+        }
     }
     protected String getLast(){
         return lastSelectedMenu[depth];
@@ -341,24 +347,4 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
     };
     //HERE
     protected static String[] Items;
-    /*
-        String[] DiologOptions = {
-            "salvageRobots",
-            "surveyRobots",
-            "raiderRobots",
-            "InvadingRobots"
-    };
-    String[] ItemDescriptions = {
-            "build robots for salvageing",
-            "build robots that cant survey right",
-            "build robots to take what is yours from the enamy",
-            "build robots to destroy everything around you"
-    };
-    String[] RequiredHullmods = {
-            "AIretrofit_salvage_drone_resapie",
-            "AIretrofit_survey_drone_resapie",
-            "AIretrofit_raiding_drone_resapie",
-            "AIretrofit_invasion_drone_resapie"
-            //"NEVER"
-    };*/
 }

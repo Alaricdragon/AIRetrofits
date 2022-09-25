@@ -64,6 +64,21 @@
 	"AIRetrofits_Co_3N":"hand_weapons",		
 	"AIRetrofits_Co_3C":0.05,
 
+	#sub command node
+	"AIRetrofits_Sc_S":0.25,
+	"AIRetrofits_Sc_B":1,
+	"AIRetrofits_Sc_D":"produce sub command nodes. not very useful on there own, but having one can boost the capability of your robots. they can also be turned into mush more useful command nodes.",
+	"AIRetrofits_Sc_1N":"metals",
+	"AIRetrofits_Sc_1C":0.15,
+	"AIRetrofits_Sc_2N":"rare_metals",
+	"AIRetrofits_Sc_2C":0.8,
+	"AIRetrofits_Sc_3N":"volatiles",
+	"AIRetrofits_Sc_3C":0.1,
+	#creating officers and admenistrators with robot forge
+	"AIRetrofits_Officer_credits":1000,
+	"AIRetrofits_Admin_credits":1000,
+	"AIRetrofits_Officer_SCN":1,
+	"AIRetrofits_Admin_SCN": 1,
 	#settings for crewPower and Priority
 	#power multi for AI cores:
 	"AIRetrofits_BaseMulti":0.85,

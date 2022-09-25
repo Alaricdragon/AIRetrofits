@@ -1,0 +1,137 @@
+issues:
+    -right now all exstra industries only serve to slow down your game, and this kinda sucks.
+        -option 1: reduce cost
+            reducing the cost means creating the industries first will be less painfull.
+        -option 2: make all industries do something cool
+            still has the same issue, the market MAKES you make them even if they are usefull.
+        -option 3: reduce penalties for not having industries.
+            right now, not having anything provides an massive penalty to stability. unacceptable.
+            instead reduce the penalty to -1 per item, but only after market at market sizes 4,5,6.
+            example:
+                at size 3+, -stab from missing maintains parts.
+                at size 4+, -stab from missing command relays.
+                at size 5+, -stab from missing sub command nodes.
+            also proved an boost in stability for having said upgrades:
+                +stab from meeting maintains parts.
+                +stab from meeting command relays.
+                +stab from meeting sub command nodes.
+
+    -right now, there is no 'fun' to be had from an AI market. this might help:
+        option 1: add new industries that do new things to an AI market.
+            right now, an AI market provides nothing -new- lets change that.
+            ideas:
+                -add an industry (or building) to produce high tech robots
+                    -high tech robots could have 2X power for the same size, but not be producible by the players fleets robot forges.
+                    -having this industry could make all ships coming from this market hold high tech robots instead of normal ones.
+                -add an industry (or building) to upgrade ships with an free AI retrofit
+                    -have this building create an ship storage (like the repair dock) that uninstalls 'AI-Retrofits' (if applicable)
+                     and installs 'built-in AI-Retrofits' at an rate of 8/4/2/1 ships per moth.
+                    -have this industry make all same faction AI market ships from this system have the 'built-in AI-Retrofits' instead of the normal 'AI-Retrofits'
+
+Industry:
+        population and infrastructure:
+            -(working on)replace image
+            -(working on)replace name
+            -(working on)replace description
+            -(done?)replace demand/supply
+        a lot of new industry might need to be added, for not making AI markets to simple
+        most likely, i will make them require the 'robotic population' market condition im using to control all of this.
+
+        -(started)robotic drone factory:
+            -requires everything robotic drones require
+            -if stocked, builds drones at your supply point, and provides population growth bonus
+                -maybe let it upgrade into itself, but let its upgrade have the options to target a world to send robots to?
+            -maybe let it upgrade into something that produces advanced workers?
+            -maybe let it upgrade into something that produces lots of one type of worker?
+            -requires (robot frames?)metals and robotic replacement parts?
+            produces:                     3000
+                AIretrofit_WorkerDrone: 2:1200
+                AIretrofit_SurveyDrone: 2:800
+                AIretrofit_CombatDrone: 2:1000
+            costs:
+                build cost: 15
+                time:       60
+                upkeep:     3
+            extra:
+                if stocked, builds drones at supply ponit and provides population growth.
+        -advancedrobotic drone factory:
+            -requires everything robotic drones require
+            -if stocked, builds drones at your supply point, and provides population growth bonus
+            produces:                        4500 - 9000
+                AIretrofit_WorkerDrone: size:1800 - 3600
+                AIretrofit_SurveyDrone: size:1200 - 2400
+                AIretrofit_CombatDrone: size:1500 - 3000
+            costs:
+                build cost: 50
+                time:       90
+                upkeep:     8
+            extra:
+               if stocked, builds drones at supply point and provides population growth.
+        -robot carrier service:
+            -costs population growth to use.
+            -let it upgrade into a building that sends population somewere?
+            produces:
+
+            costs:
+                build cost:
+                time:
+                upkeep:
+            extra:
+                lets you apply an heavy population drop to this world, and an population increase to another world
+                can only be built on world with automated pops
+        -(started)AINode production facility:
+            produces:                                   2200 - 6100
+                AIretrofit_SubCommandNode:  size - 2:   850 - 3400
+                AIretrofit_CommandRely:     size:       1350 - 2700
+            costs:
+                build cost: 70
+                time:       100 days
+                upkeep:     10
+            extra:
+                no bonus or minus planed
+        -(started)robotic maintenance facility:
+            -provides stability while stocked
+            -builds maintains pacts
+            -builds robotic replacement parts
+            -(?)builds robot frames
+            -requires mettle's and transplants and heavy machinery
+            produces:                                           2100 - 5700
+                AIretrofit_maintainsPacts:          size:       2100 - 4200
+                AIretrofit_roboticReplacementParts: size - 3:   0 - 1500
+            costs:
+                build cost: 30
+                time:       70
+                upkeep:     4
+            extra:
+                1 stability on worlds with AI pops
+        -(stared)synthetic production center:
+            -builds human interface node
+            requires organics and harvested origins, and robot frames?
+            produces:                                800 - 3200
+                AIretrofit_SubCommandNode: size - 2: 800 - 3200
+            costs:
+                build cost: 70
+                time:       120
+                upkeep:     10
+            extra:
+                reduces stability on worlds without automated pops
+        -(maybe not)population relocation node:
+            produces:
+
+            costs:
+                build cost: 60
+                time:       60
+                upkeep:     10
+            extra:
+                targets an world.
+                well targeting said world, make the world:
+                    reduce stability (by population size + 3)
+                    require an very large amount of combat drones.
+                    require an small amount of survey drones.
+                    require an small amount of worker drones.
+                    provide an population decline.
+                    if robot demand not meet, smaller population decline.
+                    when population reaches 3 (or maybe 1..) add the AIpop market condition
+                well targeting said world, make the industry:
+                    cost mush more credits
+                if this world, or the target world, are taking by another faction remove this effect.

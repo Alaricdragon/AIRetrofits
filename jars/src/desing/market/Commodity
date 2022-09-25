@@ -1,0 +1,109 @@
+Idea:
+    advanced robot types.
+        -only built in specal market buildings.
+        -2X or more the power of normal robots.
+        -worker:
+            same size. 2X power.
+            I don't know if i like this.
+            worker robots are kinda big, although not bulky. they are also very very useful.
+            the 2X power with no downsides would make them the strongest of the workers....
+            new plan:
+            0.75X size. 1.25X power?
+            recoded size and increased power.
+            concept: they are more streamlined workers. able to do more with less bulky components.
+        -survey:
+            1/3 the size. same power?
+            -survey drones already have an large amount of power, offset by an large carry cost.
+            -cut the size considerably, for the same or slightly less power is an very good buff.
+        -combat:
+            1 2/4 the size? 2.5X power?
+            2.5X power makes them 25% stronger then marines.
+            1.5X the size makes them 0.75 cargo per one.
+            this makes them more cost effective, without multiplying there damage per cargo something crazy.
+            it results in them being slightly stronger then an marine. something that they should be, being specially built for combat.
+
+
+    Commodity's:
+        price:          base price you pay in market
+        export value:   base income you get per unit of output
+        econUnit:       the number of items perduced per output
+        eU * base value:econUnit * price. for contact missions
+            -this value is litterly that. no idea why they need it so badly
+
+        -(done)salvage robots:
+            price:          75
+            export value:   600
+            econUnit:       300
+            production cost:
+        -(done)survey robots:AIretrofit_SurveyDrone:
+            price:          75
+            export value:   400
+            econUnit:       250
+            production cost:
+        -(done)combat robots:
+            price:          150
+            export value:   500
+            econUnit:       200
+            production cost:?
+        -(?) advanced robot types:
+            maybe as some type of reason to get an colony besides the flavor?
+            -would be stronger then normal workers, but would not be able to make them yourself (to complicated)
+        - (done)Command Rely:AIretrofit_CommandRely
+            price:          (100)mid
+            export value:   (450)mid
+            econUnit:       (500)mid
+            production cost:?
+        - (done?)maintains packs:AIretrofit_maintainsPacts
+            made in large quantity, individually useless, together highly valuable
+            price:          (20)very low
+            export value:   (700)mid
+            econUnit:       (2000)very high
+            production cost:low
+        - (done)Sub Command Node:AIretrofit_SubCommandNode
+            price:          (350)high
+            export value:   (850)high
+            econUnit:       (200)low
+            production cost:?
+        - (done)robotic replacement parts:AIretrofit_roboticReplacementParts
+            price:          (50)low
+            export value:   (500)mid
+            econUnit:       (500)mid
+            production cost:low
+        - (done?)human interface node:AIretrofit_humanInterfaceNode
+            price:          (500)very high
+            export value:   (800)high
+            econUnit:       (100)very low
+            production cost:very high
+
+        all industries:
+        need to replace the following:
+            (done)crew      -> WorkerDrone
+            (done)marines   -> CombatDrone
+            drugs           ->  SurveyDrone
+            Domestic Goods  ->  Command Rely
+            Food            -> (?) maintains pacts
+            Luxury Goods    ->  human interface unit
+            Harvested Organs-> (?) robotic replacement parts
+            Organics        ->  sub command node (only need to replace for population)
+
+     -replace the following commodities with others:
+            demand:
+                for everything:
+                    (done)crew      -> AIretrofit_WorkerDrone
+                    (done)marines   -> AIretrofit_CombatDrone
+                    (done)drugs           ->  SurveyDrone
+                    (done)Domestic Goods  ->  Command Rely
+                    (done)Food            ->  maintains pacts
+                    (done)Luxury Goods    ->  human interface node (might want human interface nodes sometimes?)
+                    (done)Harvested Organs->  robotic replacement parts
+                for population:
+                    (done)Organics        ->  sub command node (only need to replace for population)
+            supply:
+                for everything:
+                    (done)crew          -> AIretrofit_WorkerDrone
+                    (done)marines         -> AIretrofit_CombatDrone
+                for population:
+                    (done)drugs     -> AIretrofit_SurveyDrone
+                    (done)Harvested Organs-> robot replacement parts
+
+

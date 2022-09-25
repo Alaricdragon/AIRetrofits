@@ -15,8 +15,7 @@ import com.fs.starfarer.api.util.Misc;
 
 import java.util.List;
 
-import static data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary.getFleetsForgeModules;
-import static data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary.iCalculateBonus;
+import static data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary.*;
 
 public class AIRetrofits_RobotForge extends BaseToggleAbility {
     public static final Color CONTRAIL_COLOR = new Color(255, 97, 27, 80);
@@ -78,7 +77,7 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
             fleet.addFloatingText("No Automated Drone Factory's installed on ships in fleet. cannot produce anything", Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
         }else if (this.entity.isPlayerFleet()) {
             CampaignFleetAPI fleet = this.getFleet();
-            Global.getSector().getCampaignUI().showInteractionDialog(new AIRetrofits_RobotForgeDiologPlugin(fleet), fleet);
+            Global.getSector().getCampaignUI().showInteractionDialog(new AIRetrofits_RobotForgeDiologPlugin2(), fleet);
         }
     }
 
@@ -264,47 +263,36 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         float iCoom = iCalculateBonus(getFleet());
         //if (iCoom > 1) {Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal()*iCoom);}
         String canOrIs = isActive() ? "are building" : "can build";
-        String Based = iCoom > 1 ? "Nanoforges in your inventory and ships with Automated Drone Factory's installed are improving the process of building robotic workers by": "You do not possess a nanoforge or a ship with an Automated Drone Factory that can hasten the process.";
-        String Based2 = iCoom > 1 ? Misc.getRoundedValue((iCoom-1)*100) + "%." : "";
-        String building = "";
-        String consuming = "";
-        String temp;
-        /*for(int b = 0; b < produce[a].length; b++){//DONEHERE
-            temp = Misc.getRoundedValueMaxOneAfterDecimal(produceNumbers[a][b]*iCoom);
-            building += temp + " units of " + produce[a][b];
-            if(b < produce[a].length - 2){
-                building += ", ";
-            }else if(b < produce[a].length - 1){
-                building += ", and ";
-            }
-        }
-        for(int b = 0; b < requirements[a].length; b++){//DONEHERE
-            temp = Misc.getRoundedValueMaxOneAfterDecimal(requirementsNumbers[a][b]*iCoom);
-            consuming += temp + " units of " + requirements[a][b];
-            if(b < requirements[a].length - 2){
-                consuming += ", ";
-            }else if(b < requirements[a].length - 1){
-                consuming += ", and ";
-            }
-        }*/
+        //String Based = iCoom > 1 ? "Nanoforges in your inventory and ships with Automated Drone Factory's installed are improving the process of building robotic workers by": "You do not possess a nanoforge or a ship with an Automated Drone Factory that can hasten the process.";
+        //String Based2 = iCoom > 1 ? Misc.getRoundedValue((iCoom-1)*100) + "%." : "";
+        //String building = "";
+        //String consuming = "";
+        //String temp;
         tooltip.addPara("Your fleet's autoforges " + canOrIs + " producing " + AIRetrofits_ForgeList.items.get(a).getoutputAsString(iCoom) + " on a daily basis.",pad,Misc.getTextColor());
-        //tooltip.addPara("Your fleet's autoforges " + canOrIs + " %s units of Metal with %s units of Heavy Machinery to create %s Supplies on a daily basis.",
-        //        pad, Misc.getTextColor(), Misc.getRoundedValueMaxOneAfterDecimal(MetalCost*iCoom), Misc.getRoundedValueMaxOneAfterDecimal(HeavyMachineryCost*iCoom), Supply);
-
-
-
-        /*if (MoreCoom() > 0) {
-            for (int i = 0; i < MoreCoom(); i++) {
-                tooltip.addPara("Additionally using %s " + Global.getSettings().getCommoditySpec(Global.getSettings().getString("ExtraCommodities" + i)).getName() + ".",
-                        pad*0.2f, Misc.getTextColor(), Misc.getRoundedValueMaxOneAfterDecimal((Global.getSettings().getFloat("ExtraCommoditiesCost" + i))*iCoom));
-            }
-        };*/
-        tooltip.addPara("%s %s", pad, highlight, Based, Based2);
-        //tooltip.addPara("Increases the range at which the fleet can be detected by %s.",
-        //        pad, Misc.getNegativeHighlightColor(), (int) data.scripts.AIRetrofits_RobotForgeSecondary.SENSOR_PROFILE_INCREASE_PERCENT + "%");
-
-
+        tooltip.addPara("%s", pad, highlight, getPara(0));
+        tooltip.addPara("%s", pad, highlight, getPara(1));
+        tooltip.addPara("%s", pad, highlight, getPara(2));
+        //tooltip.addPara("%s %s", pad, highlight, Based, Based2);
         return tooltip;
+    }
+    private String getPara(int a){
+        double b;
+        double c;
+        switch(a){
+            case 0:
+                double iCoom = iCalculateBonus(getFleet());
+                return iCoom > 0 ? "your fleet can produce items from robot forges with an forge speed of: " + iCoom: "you do not posses have ship with an robot forge.";
+            case 1:
+                b = getFleetsForgeModules(getFleet());
+                return "your robot factorys are contributing " + b + " forge speed";
+            case 2:
+                b = getFleetsForgeModules(getFleet());
+                c = getFleetsNanoforgePower(getFleet());
+                return "your nanoforges are contributing " + Math.min(b,c) + " forge speed";
+            case 3:
+                return "";
+        }
+        return "";
     }
     protected TooltipMakerAPI inactaveDiolog(TooltipMakerAPI tooltip, boolean expanded,Color highlight,String status){
         LabelAPI title = tooltip.addTitle(spec.getName() + status);
@@ -313,49 +301,22 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         float pad = 10f;
         tooltip.addPara("Smelt items into drones and other contraptions.", pad);
         //String Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal());
-        float iCoom = iCalculateBonus(getFleet());
+        //float iCoom = iCalculateBonus(getFleet());
         //if (iCoom > 1) {Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal()*iCoom);}
         //String canOrIs = isActive() ? "are smelting" : "can smelt";
-        String Based = iCoom > 0 ? "Nanoforges in your inventory and ships with Automated Drone Factory's installed are improving the process of forging supplies by": "You do not possess a nanoforge or a ship with an Automated Drone Factory that can hasten the process.";
-        String Based2 = iCoom > 0 ? Misc.getRoundedValue((iCoom-1)*100) + "%." : "";
-        String building = "";
-        String consuming = "";
-        String temp;
-        /*for(int b = 0; b < produce[a].length; b++){
-            temp = Misc.getRoundedValueMaxOneAfterDecimal(produceNumbers[a][b]*iCoom);
-            building += temp + " units of " + produce[a][b];
-            if(b < produce[a].length - 2){
-                building += ", ";
-            }else if(b < produce[a].length - 1){
-                building += ", and ";
-            }
-        }
-        for(int b = 0; b < requirements[a].length; b++){
-            temp = Misc.getRoundedValueMaxOneAfterDecimal(requirementsNumbers[a][b]*iCoom);
-            consuming += temp + " units of " + requirements[a][b];
-            if(b < requirements[a].length - 2){
-                consuming += ", ";
-            }else if(b < requirements[a].length - 1){
-                consuming += ", and ";
-            }
-        }*/
-        int thing = AIRetrofits_ForgeList.items.size();
+        //String Based = iCoom > 0 ? "Nanoforges in your inventory and ships with Automated Drone Factory's installed are improving the process of forging supplies by": "You do not possess a nanoforge or a ship with an Automated Drone Factory that can hasten the process.";
+        //String Based2 = iCoom > 0 ? Misc.getRoundedValue((iCoom-1)*100) + "%." : "";
+        //String building = "";
+        //String consuming = "";
+        //String temp;
+        //int thing = AIRetrofits_ForgeList.items.size();
         //tooltip.addPara("total size of array: " + produce.length,pad,Misc.getTextColor());
         //tooltip.addPara("total size of array: " + thing,pad,Misc.getTextColor());
-        tooltip.addPara("your fleet's autoforges are currently offline, but can be activated at any time.",pad,Misc.getTextColor());
-        //tooltip.addPara("Your fleet's autoforges " + canOrIs + " " + consuming + " to create " + building + " on a daily basis.",pad,Misc.getTextColor());
-        //tooltip.addPara("Your fleet's autoforges " + canOrIs + " %s units of Metal with %s units of Heavy Machinery to create %s Supplies on a daily basis.",
-        //        pad, Misc.getTextColor(), Misc.getRoundedValueMaxOneAfterDecimal(MetalCost*iCoom), Misc.getRoundedValueMaxOneAfterDecimal(HeavyMachineryCost*iCoom), Supply);
-
-
-
-        /*if (MoreCoom() > 0) {
-            for (int i = 0; i < MoreCoom(); i++) {
-                tooltip.addPara("Additionally using %s " + Global.getSettings().getCommoditySpec(Global.getSettings().getString("ExtraCommodities" + i)).getName() + ".",
-                        pad*0.2f, Misc.getTextColor(), Misc.getRoundedValueMaxOneAfterDecimal((Global.getSettings().getFloat("ExtraCommoditiesCost" + i))*iCoom));
-            }
-        };*/
-        tooltip.addPara("%s %s", pad, highlight, Based, Based2);
+        tooltip.addPara("your fleet's robot factory's are currently offline, but can be activated at any time.",pad,Misc.getTextColor());
+        tooltip.addPara("%s", pad, highlight, getPara(0));
+        tooltip.addPara("%s", pad, highlight, getPara(1));
+        tooltip.addPara("%s", pad, highlight, getPara(2));
+        //tooltip.addPara("%s %s", pad, highlight, Based, Based2);
         return tooltip;
     }
     public static void setForgeValue(int ItemNumberToForge){

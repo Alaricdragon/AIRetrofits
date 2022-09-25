@@ -1,0 +1,128 @@
+issues:
+    -right now market growth is to slow. it was an fun idea to have growth be tied to hazard pay, but hazard pay makes no sense. (cost based on conditions, not robot production.)
+        -solution: see new theory
+    -growth is -boring- right now there is only like 4 growth mods for the market. needs improvements.
+        -solution: add new growth mods based on market conditions and surrounding market conditions. no idea what though.
+
+new theory:
+    -remove cost from hazard pay. make it an boost to market growth (like 2X multiplayer or something) when free port is also on, have bad events and negative stability?
+        -i like the idea of the market growth bost, at least combined with free port.
+        -would need to provide an massive bost in growth to work though
+    -add an new function to free port: make it so it enables / disables other faction trade. have it reduce stability.
+        -right now, free port dose nothing for you. and the point is to hide the markets. this might help? by nerfing it. mmm maybe not
+        -disabling outer faction trade might not be possible. but if i set accessibility to 0%, it might only provide in faction trading.
+        -having freeport online would need to provide some type of risk when used with hazzard pay. also i would need to tell the player constantly how this works.
+    -thoughts:
+        -when freeport==on and hazzardpay==on, would need to provide an moderate growth boost, market trade, at the cost of stability, and bad events if stability gets to low?
+        -when freeport==on and hazzardpay==off, would need to have very low growth, if any.
+        -when freeport==off and hazzardpay==off, would need to have low growth, but not none.
+        -when freeport==off and hazzardpay==on, would need to have an very high growth speed. maybe 3X? or 2X + 20? something like that.
+
+
+new theory 2:
+    -set cost of hazard pay equal to number of robot production building power X 1000.
+        -improves the pop growth boost of T1 and T2 robot factorys.
+        -provides worlds without robot factorys there own weak robot factory. (only effects them)
+        -costs more for every robot factory tier.
+    -add an set of buildings for pop growth, upgraded from the robot drone factory:
+        T0: basic. provides the world with some pop growth.
+        T1: upgraded from T0.
+            -provides this world with a good amount of pop growth,
+            -provides all robot markets in a system pop growth boost.
+                -pop growth boust == marketsize * (base boost / markets sizes to bost). also provide demising returns.
+            require an industry slot.
+        T2: upgraded from T1.
+            -provide this world wih a lot of pop growth.
+            -provide all robot markets in sector with an small pop growth boost.
+                -pop growth boust == base boost / markets to bost. also provide demising returns.
+                -demising returns includes the T1 boost. they are the same boost, yuo cant stack them
+                    -pop growth boost = same as the T1 growth boost
+                require an industry sloot (or two?)
+-replace the population growth speed:
+    normal colonly growth rate
+        without hazzrd pay:
+           base: 9,52
+           hazzard: -20,4
+           total range: -12,56
+        with hazzard pay:
+            base: 14,57
+            hazzard: 0,4
+            total range: 14 , 61
+        hazzard pay cost:
+            (growth penalty from hazzard + 5) x 1000 cr/ month
+            (20,-4) +5 = (25,1) X 1000 cr / month
+            (25,000,1,000) cr / month
+        (0,15)Accessibility (+1 growth point for every 10% accessibility, or -1 for every 10% below 0% accessibility)
+        Instability (-1 growth point for every stability point below 10)
+        (4,-20)Hazard rating (-2 growth points for every 25% hazard rating above 100%, and vice versa for below 100%)
+        (5,25)Free Port status (+5 growth points, increases to +25 growth points over 1 cycle/365 days)
+        (2)Spaceport (+2 growth points)
+        (1,6)Megaport (+1 growth point per colony size)
+        (1,6)Decivilized Subpopulation (+1 growth point per colony size)
+        (+5)Hazard pay (counters the hazard penalty and +5 growth points)
+        (?)Larger, non-hostile markets in system (increases rate)
+        (?)Shortage of commodities for industries (decreases rate based on shortage)
+    basic growth:
+        total:(size 1 - 5)
+            without growth essentives:
+                (4,14)
+            with growth essentives:
+                (18,52)
+        (?)stability based growth:
+            -should have an lowish bonus at max stability.
+            -should have no bonus at 5 stability
+            -should start to apply an harsh negative at low stability
+        robot forge based growth:
+            -(3)+3 before upgrade
+            -(6,9)size +3 after upgrade
+            -not upgraded should give an static growth mod
+            -upgraded should scale with colony size
+        population and infastructor based growth:
+            -(size X 1) base growth rate
+            -(X)should give population growth based on supplied import of worker drones
+            -(-1 growth per missing thing)should give negative population growth based on not supplied import of maintenance parts, and replacement parts.
+            -might replace the stability mod
+        growth incentives based growth:
+            (X)(9,15 at 100% supply)(size X supply% X 3)
+            (X)(25,40)((size x 5) + 10 x supply%)
+            (X)(23,42)((size x 6) + 5 x supply%)
+            (X)(18,36)((size x 6) x supply%)
+            ()(14,38)((size x 8) - 10 x supply%)
+            this is you pumping credits into something to try and make it grow faster.
+            should provide an high growth bonus.
+            (maybe) add on some extra worker drone demand to population. this is you importing more drones? then base the growth of that
+                -might not make mush sense. your workers are cant just be shipped in from no were. also this is not whats happening.
+                -this is not an fun option. it also makes little sence. this is more you paying to have drones grow, but you already do that with imports
+            (maybe) add an demand to population for metles, rare metles and heavy machinery based on population size.
+                -have population output more worker drones (based on meet demand). have the worker drone output also increase the population growth.
+                -effectively this is putting to getter more robots without the proper setups. something used when times are hard, or deadly. such is life.
+
+
+    passive growth:
+        (done)remove all population speed bonuses from everything
+        (done)add an population growth bonus for growth incentives
+        (done) add an industry that builds population
+
+    active growth:
+        (?)add an ability to ship population around.
+            -(??) might be redundant. industrial evolution dose this.
+            -it should add a growth bonus to an world, and an growth negative to another
+            -it should act like an static number of robots are being moved (so at speed 100: -10% growth at size 3, -1% at size 4, -0.1% at size 5)
+            -it should add an negative planet modifier on the world that its taking population from
+            -it should add an negative and positive modifier on the world its going to.
+            -(?)it should be able to down level a population all the way to zero
+    max growth:
+        this population is not limited to a maximum amount of people on it. it requires no people to want to live here.
+        should it be able to grow to an larger word? and if so, how big?
+        population limit:
+            if it dose it should be based off world size.
+            it makes sense that an world could only carry an max amount of workers, before expansion is not possible
+            also hazardous worlds should have an smaller cap. as hazardous places are harder to live, requiring more infastuctor per worker.
+        stealth limit:
+            it gets MUSH harder to hide an world like this if there are to many pops.
+            only so many signals into the void, and moving mettle masses, until everyone that comes to trade will say 'wat the hell'
+        control limit:
+            an reliance on custom made command cores comes with its disadvantages. one of them is that more population means
+            harder to control population, as command cores and command relays become overwhelmed by the incoming data.
+            could be increased with AI cores, but that might be an bad idea.
+

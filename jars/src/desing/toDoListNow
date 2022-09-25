@@ -2,17 +2,25 @@ to do list:
 Combatability:
     -add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and dont have said hullmods and abilitys.
 Robot Forge:
-    -improve descriptions and other text.
+    -improve descriptions.
     -make it so you get the skill after finding the robot forge hullmod.
+    -(started)add an option to build people from sub command nodes.
 
 Robots:
     -add an exstra part to there description that shows:
         -size
         -crewpower.
-        -(this is done for wepons. it can be done here.)
+        -(this is done for weapons. it can be done here.)
+    -change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
-    -make it respect the fact its an logistic hullmod (also HOW DO I DO THIS)
-    -fix description not respecting configs?
+    -fix description not respecting configs? or reality...
 
-robot forge hullmod:
-    -make it respect the fact its an logistic hullmod (also HOW DO I DO THIS)
+AI Market plugin:
+    fix the randomly not working nature of the plugin.
+    fix the fact you can click on the plugin when you should not beable to (should be greyed out)
+        -when in an sector without hyperSpace transit?
+            -might keep this. no reson not to?
+        -when an enemy fleet is near by, and is blocking you.
+    fix the fact you cant click on the plugin at random times, and need to spam click it to get it to work
+        -why?
+    fix the fact the plugin dose NOT require the resources it says it dose to work

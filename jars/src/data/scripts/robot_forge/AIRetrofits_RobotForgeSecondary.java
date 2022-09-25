@@ -35,7 +35,7 @@ public class AIRetrofits_RobotForgeSecondary {
         }
 
 
-    static float getFleetsForgeModules(CampaignFleetAPI fleet){
+    public static float getFleetsForgeModules(CampaignFleetAPI fleet){
         float iSalvageCoomer = 0f;
         List<FleetMemberAPI> playerFleetList = fleet.getFleetData().getMembersListCopy();
         for (FleetMemberAPI member : playerFleetList) {
@@ -51,7 +51,7 @@ public class AIRetrofits_RobotForgeSecondary {
         }
         return iSalvageCoomer * ForgePowerMulti;
     }
-    static float getFleetsNanoforgePower(CampaignFleetAPI fleet){
+    public static float getFleetsNanoforgePower(CampaignFleetAPI fleet){
         float iCorrupted = fleet.getCargo().getQuantity(CargoAPI.CargoItemType.SPECIAL, new SpecialItemData(Items.CORRUPTED_NANOFORGE, null)) * CorruptedMetalMultiplier;
         float iPristine = fleet.getCargo().getQuantity(CargoAPI.CargoItemType.SPECIAL, new SpecialItemData(Items.PRISTINE_NANOFORGE, null)) * PristineMetalMultiplier;
         return iCorrupted + iPristine;
