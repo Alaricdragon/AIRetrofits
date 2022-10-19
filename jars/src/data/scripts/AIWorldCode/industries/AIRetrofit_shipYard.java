@@ -23,6 +23,8 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
         supply(S1,size);
         Pair<String, Integer> deficit = getMaxDeficit(C1,C2,C3);
         applyDeficitToProduction(1, deficit,S1);
+
+        this.market.addSubmarket("AIRetrofit_ShipyardSubmarket");
         if (!isFunctional()) {
             supply.clear();
         }
@@ -34,6 +36,7 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
     @Override
     public void unapply() {
         super.unapply();
+        this.market.removeSubmarket("AIRetrofit_ShipyardSubmarket");
     }
     @Override
     public boolean isAvailableToBuild(){

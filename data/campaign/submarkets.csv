@@ -1,0 +1,4 @@
+id,name,faction,desc,script,icon,order
+AIRetrofit_ShipyardSubmarket,AI Shipyard,player,deposit ships here to insteal the thing,data.scripts.AIWorldCode.submarkets.AIRetrofit_Shipyard,graphics/submarkets/AIRetrofit_ShipyardSubmarket.png,2000
+,,,,,,
+,,,,,,

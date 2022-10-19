@@ -1,4 +1,9 @@
 to do list:
+questions:
+    how to add an fleet shipyard market thing like storage to an market
+
+    how to make an industry send resources to your supply point
+    how to add text prosaically to an item
 market:
     (done!)build the framework for all the new buildings.
     (done!) finish making the code to do the market growth calculation.

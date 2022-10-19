@@ -14,6 +14,7 @@ import java.util.List;
 
 //HERE. this might not be required or wanted in the slightest? i need to swap the people out with new people.
 public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
+    public static float time = 0;
     static String Condition = "AIRetrofit_AIPop";
     public AIRetrofit_MakretListener(boolean permaRegister) {
         super(permaRegister);
@@ -21,6 +22,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     //static String look1 = Global.getSettings().getString("characters","AIRetofit_AIOfficer");
     @Override
     public void reportEconomyMonthEnd(){
+        time++;
         /*Global.getSector().getEconomy().getMarketsCopy();
         for(MarketAPI market: Global.getSector().getEconomy().getMarketsCopy() ){
             if(market.hasCondition("AIRetrofit_AIPop") && market.getDaysInExistence() < 34) {
