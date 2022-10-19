@@ -1,8 +1,6 @@
 package data.scripts.AIWorldCode.industries;
 //package com.fs.starfarer.api.impl.campaign.econ.impl;
 
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
 
 import com.fs.starfarer.api.Global;
@@ -11,14 +9,10 @@ import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.ConstructionQueue.ConstructionQueueItem;
 import com.fs.starfarer.api.impl.campaign.fleets.FleetFactoryV3;
 import com.fs.starfarer.api.impl.campaign.ids.*;
-import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.loading.IndustrySpecAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
-import data.scripts.AIWorldCode.market_conditions.AIRetrofitsAIPop;
-
-import java.util.ArrayList;
-import java.util.List;
+import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
 //exstending PopulationAndInfrastructure dose not work for my porpusses.
 /*option: market condition that dose what i want?

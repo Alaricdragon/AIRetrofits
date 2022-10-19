@@ -3,6 +3,7 @@ package data.scripts.AIWorldCode.market_listiners;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.BaseCampaignEventListener;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
+import com.fs.starfarer.api.campaign.CharacterDataAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
@@ -60,6 +61,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         if(market.hasCondition("AIRetrofit_AIPop")){
             changePeople(market);
         }
+        addAIRetrofits();
+
         /*AIRetrofit_StartAutomatedColony.markets.size();
         for(int a = 0; a < AIRetrofit_StartAutomatedColony.markets.size(); a++){
             if(changePeople(Global.getSector().getEconomy().getMarket(AIRetrofit_StartAutomatedColony.markets.get(a)))){
@@ -83,5 +86,33 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
         return false;
     }
-
+    static String hullmod = "AIretrofit_AutomatedCrewReplacementDrones";
+    static String hullmod2 = "AIretrofit_airetrofit";
+    static String ability = "AIretrofit_robot_drone_forge";
+    static String skill = "automated_ships";
+    static boolean alwaysSkilled = Global.getSettings().getBoolean("AIRetrofit_alwaysGiveSkillsAndHullmods");
+    private void addAIRetrofits(){
+        CharacterDataAPI character = Global.getSector().getCharacterData();
+        if(character.getPerson().getStats().hasSkill(skill) || alwaysSkilled){
+            character.addAbility(ability);
+            character.addHullMod(hullmod);
+            character.addHullMod(hullmod2);
+            return;
+        }
+        addReqAbility();
+    }
+    private void addReqAbility(){
+        CharacterDataAPI character = Global.getSector().getCharacterData();
+        for(String a: character.getAbilities()){
+            if(a.equals(ability)){
+                return;
+            }
+        }
+        for(String a: character.getHullMods()) {
+            if (a.equals(hullmod)) {
+                character.addAbility(ability);
+                return;
+            }
+        }
+    }
 }

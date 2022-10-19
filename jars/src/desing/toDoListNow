@@ -1,9 +1,19 @@
 to do list:
+market:
+    (done!)build the framework for all the new buildings.
+    (done!) finish making the code to do the market growth calculation.
+    (started)design and add industries to produce both advanced and basic robotic workers.
+    (done!) create the market growth code for advanced robotic factory's.
+    (started)balance pop growth factory's.
+        -need to add an negative when an factory has an supply defect / exes.
+        -need to put more work into th number of salvage drones an factory produces.
+    (not possable?)rebuild the hazard button as designed in market growth
+
 Combatability:
-    -add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and dont have said hullmods and abilitys.
+    -(done. not tested)add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and dont have said hullmods and abilitys.
 Robot Forge:
-    -improve descriptions.
-    -make it so you get the skill after finding the robot forge hullmod.
+    -(done.)improve descriptions.
+    -(done. not tested)make it so you get the skill after finding the robot forge hullmod.
     -(started)add an option to build people from sub command nodes.
 
 Robots:
@@ -16,6 +26,7 @@ AIRetrofits:
     -fix description not respecting configs? or reality...
 
 AI Market plugin:
+    Note: possible solution is to only use one plugin and make it open an dialog with the world, then go from there. dialog is mush easyer...
     fix the randomly not working nature of the plugin.
     fix the fact you can click on the plugin when you should not beable to (should be greyed out)
         -when in an sector without hyperSpace transit?

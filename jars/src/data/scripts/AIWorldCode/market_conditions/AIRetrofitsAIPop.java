@@ -72,12 +72,19 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded){
         super.createTooltip(tooltip,expanded);
     }
+    private void addHazzardPayCost(){
+        if(market.isImmigrationIncentivesOn()){
+            //market what do i even do here!?!?!
+        }else{
+
+        }
+    }
     private void supplyDemandChange(MarketAPI market){
-        crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,false);
+        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,false);
     }
     public void removeSupplyDemandChange(MarketAPI market){
-        crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,true);
-        crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPopGrowth").applyMarket(market,true);
+        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,true);
+        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPopGrowth").applyMarket(market,true);
 
     }
     private void ChangeMarketConditions(MarketAPI market){

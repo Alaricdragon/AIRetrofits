@@ -1,8 +1,8 @@
 package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
-import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
 public class AIRetrofit_AINodeProductionFacility extends BaseIndustry {
     static String C1 = "metals";

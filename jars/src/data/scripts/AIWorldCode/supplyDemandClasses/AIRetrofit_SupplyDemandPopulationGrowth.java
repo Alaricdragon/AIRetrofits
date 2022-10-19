@@ -6,11 +6,12 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIWorldCode.SupportCode.AIRetorift_GetMarketBoost;
 import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandChange;
 
+import java.util.List;
+
 /*
-HERE.
-i think this is trying to add an cost to the growth incentives.
  */
 public class AIRetrofit_SupplyDemandPopulationGrowth extends crewReplacer_SupplyDemandChange implements MarketImmigrationModifier {
     public AIRetrofit_SupplyDemandPopulationGrowth(String nametemp, boolean supplytemp) {
@@ -93,14 +94,37 @@ public class AIRetrofit_SupplyDemandPopulationGrowth extends crewReplacer_Supply
         }*/
         //incoming.getWeight().modifyFlat(getModId(),getDefaltGrowth(market), Misc.ucFirst(condition.getName().toLowerCase()));
 
-        if(market.isImmigrationIncentivesOn()){
+        /*if(market.isImmigrationIncentivesOn()){
             //market.getIndustry("population").getDemand();
             //Pair<String, Integer> deficit = market.getIndustry("population").getMaxDeficit("??","??");
             //int missing = deficit.two;
             incoming.getWeight().modifyFlat(ID,getIncentivesGrowth(market), "building robots with hazard pay");
-        }
+        }*/
 
+        //market.removeImmigrationModifier();//HERE. this might be usefull. might need to swap data from the market growth for diffrent population comps
+        addRobotFactory(incoming,market);
+        addHazardPay(incoming,market);
         market.setIncoming(incoming);
+    }
+    private String T1FactoryName = "LocalRobotFactory's";
+    private String T1FactoryDescription = "Robots are being produced in this system, for this system!";
+    private String T2FactoryName = "FactionWideRobotFactory's";
+    private String T2FactoryDescription = "Robots are being produced in this faction, for this faction!";
+    private void addRobotFactory(PopulationComposition incoming,MarketAPI market){
+        List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
+        double[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
+        incoming.getWeight().modifyFlat(T1FactoryName, (float) mods[1],T1FactoryDescription);
+        incoming.getWeight().modifyFlat(T2FactoryName, (float) mods[0],T2FactoryDescription);
+    }
+    static String hazzardPayName = "Hazard pay robot factory's";
+    static String hazzardPayDescription = "Building robots with hazard pay";
+    static float hazzardGrowthPerSize = 5;
+
+    private void addHazardPay(PopulationComposition incoming,MarketAPI market){
+        if(market.isImmigrationIncentivesOn()){
+            float growth = market.getSize() * hazzardGrowthPerSize;
+            incoming.getWeight().modifyFlat(hazzardPayName,growth,hazzardPayDescription);
+        }
     }
     private float getIncentivesGrowth(MarketAPI market){
         return (market.getSize() * 8) - 10;

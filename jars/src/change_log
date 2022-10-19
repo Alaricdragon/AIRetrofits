@@ -1,4 +1,22 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.3:
+not save compatible with any other version.
+compatibility:
+    made it so you get the AIRetrofit ability, and hullmods after getting the AI-Ships skill. this makes this mod compatible with other mods that change the AIShips skill.
+fixes:
+    made it so you get the robot forge ability after visiting an market when you have the robot forge hullmod.
+balance:
+    AI-Pop market growth:
+        changed the robot factory set of buildings to now produce population on market/system/faction, depending on upgrade level.
+    industry cost, build time, and upkeep cost:
+        a lot of old industry's were overpriced. i thought they would produce credits but you need demand for a good to sell it.
+        reduced cost of all industries by a lot.
+        moderately reduced upkeep on some buildings, raised it on others.
+new:
+    added an option to add the AIRetrofit hullmod, robot forge hullmod, and robot forge ability at the start.
+
+
+
 v0.7.2:
 save compatible with v0.7+
 fixes:
@@ -18,6 +36,7 @@ thoughts:
     regarding the gamma-core change, for some reason i thought gamma cores were really common. they are not.
     also i will likely change the 'create officer/admen thing' in the feature..
     this will be the last 'save compatible' update. the next update will change market things and not be save compatible.
+    this update was impulsive, and not the best. things will be polished latter.
 
 v0.7.1:
 save compatible with 0.7.

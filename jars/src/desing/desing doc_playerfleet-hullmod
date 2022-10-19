@@ -13,6 +13,7 @@ hullmods:
         -logistic hullmod.
 
     built-in AI-Retrofits.
+        (4 types, depending on AI core installed. see industry for details)
         -sets required crew to 0.
         -reduces max crew by required crew.
         -reduces in combat repair speed by 50%.
@@ -21,6 +22,11 @@ hullmods:
         -cannot be uninstalled.
         -cannot be installed, except by an special dock that you can build in an AI market.
         -cost 0 op.
+
+    pathwork AIRetrofits.
+        -same as AIRetrofits in every way.
+        -reduces combat readiness to 50, or -15%. whatever is lower.
+        -can be installed/uninstalled outside of a dock.
 captions and administrators:
     allow the player to 'build' people from sub-command nodes?
     people built in this way will be like normal captions, but with AI-Market names + portraits

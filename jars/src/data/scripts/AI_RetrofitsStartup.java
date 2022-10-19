@@ -222,14 +222,16 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //new AIRetrofit_FleetListener(false);//like this?
         Global.getSector().addTransientListener(new AIRetrofit_FleetListener(false));
         Global.getSector().registerPlugin(new AIRetrofit_FleetPlugin());
-
+        //HERE! this is disabled until marketRetrofits is online and working =(
+        /*
         AIRetrofit_econUpdateListiner a = new AIRetrofit_econUpdateListiner();
         Global.getSector().getEconomy().addUpdateListener(a);
-
+        */
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
     }
     private void AISupplyDemandSet(){
-        AIRetrofit_SuplyDemandSet set = new AIRetrofit_SuplyDemandSet("AIRetrofits_AIPop");
+        //disabled until market retrofits is online.
+        /*AIRetrofit_SuplyDemandSet set = new AIRetrofit_SuplyDemandSet("AIRetrofits_AIPop");
         crewReplacer_SupplyDemandChange supply = new crewReplacer_SupplyDemandChange("basicSupply",true);
         supply.add("crew","AIretrofit_WorkerDrone");
         supply.add("marines","AIretrofit_CombatDrone");
@@ -297,6 +299,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //AIRetrofit_SupplyDemand_Population pop_demand_growth = new AIRetrofit_SupplyDemand_Population("PopulationGrowthDemand",false);
         //supply.addRequirement("population");
         //AIRetrofit_SuplyDemandSet.addItem(pop_supply);
+
+         */
     }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")

@@ -6,7 +6,8 @@
 		"data.scripts.replacementscripts.Salvage",
 		"data.scripts.starfarer.api.impl.campaign.rulemd",
 	],
-
+	#option to startwith/always have new hullmods and abilitys from the start.
+	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
 
 	#settings for AIRetrofits hullmod
