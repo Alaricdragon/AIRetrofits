@@ -3,7 +3,7 @@
 	"name":"AIretrofit", # displayed to the player
 	"author":"Alaricdragon",
 	"version":"0.7.3",
-	"description":"adds many things that allow you to replace the human in your fleet/faction",
+	"description":"Adds some hullmods, abilitys, and colony facilities to replace the humons in your fleet/faction",
 	"gameVersion":"0.95a-RC15",
     	"dependencies": [
         	{
