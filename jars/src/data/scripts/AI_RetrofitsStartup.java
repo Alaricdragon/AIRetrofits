@@ -230,6 +230,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
     }
     private void AISupplyDemandSet(){
+
         //disabled until market retrofits is online.
         /*AIRetrofit_SuplyDemandSet set = new AIRetrofit_SuplyDemandSet("AIRetrofits_AIPop");
         crewReplacer_SupplyDemandChange supply = new crewReplacer_SupplyDemandChange("basicSupply",true);

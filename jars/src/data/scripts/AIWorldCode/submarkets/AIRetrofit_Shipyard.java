@@ -6,16 +6,13 @@ import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 
 public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     /*
-    going to put the action data in AIRetrofit_MarketListenr.
-    because that can report at the end of every momth, so i can have ships be added quicker?
-    maybe i should report the amount of time that has passed instead, and upgrade the ships one at a time?
-    like have an 'ponits' data ponit, that is reset if the market is found empty, so i can have more control over the speed that ships upgrade?
-    mmmmm...
+    put the upgrade code in AIRetrofit_MarketListener.
      */
-    private float time = 0;
+    public float time = 0;
+    public float power = 0;
     @Override
     public void advance(float amount){
-        takeAction();
+        //cargo.getFleetData().getMembersListCopy();
     }
     @Override
     public boolean isParticipatesInEconomy() {
@@ -44,11 +41,6 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     public boolean showInCargoScreen() {
         return false;
     }
-    //this might be from an industrial evolution thing
-    /*@Override
-    public boolean isEnabled(CoreUIAPI ui) {
-        return true;
-    }*/
     @Override
     public boolean	isIllegalOnSubmarket(java.lang.String commodityId, SubmarketPlugin.TransferAction action){
         return false;
@@ -56,7 +48,5 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     @Override
     public 	boolean isMilitaryMarket(){
         return true;
-    }
-    private void takeAction(){
     }
 }

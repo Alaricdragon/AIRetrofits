@@ -1,4 +1,4 @@
-package data.scripts.AIWorldCode.supplyDemandClasses;
+package data.scripts.AIWorldCode.supplyDemandClasses.old;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;

@@ -11,7 +11,7 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
     static String C1 = "metals";
     static String C2 = "rare_metals";
     static String C3 = "heavy_machinery";
-    static String S1 = "AIretrofit_WorkerDrone";
+    static String subbmarket = "AIRetrofit_ShipyardSubmarket";
     @Override
     public void apply() {
         super.apply(true);
@@ -20,13 +20,11 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
         demand(C1,size);
         demand(C2,size - 1);
         demand(C3,size - 2);
-        supply(S1,size);
-        Pair<String, Integer> deficit = getMaxDeficit(C1,C2,C3);
-        applyDeficitToProduction(1, deficit,S1);
-
-        this.market.addSubmarket("AIRetrofit_ShipyardSubmarket");
-        if (!isFunctional()) {
-            supply.clear();
+        //supply(S1,size);
+        //Pair<String, Integer> deficit = getMaxDeficit(C1,C2,C3);
+        //applyDeficitToProduction(1, deficit,S1);
+        if(!this.market.hasSubmarket(subbmarket) && isFunctional()) {
+            this.market.addSubmarket(subbmarket);
         }
     }
     @Override
@@ -36,7 +34,10 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
     @Override
     public void unapply() {
         super.unapply();
-        this.market.removeSubmarket("AIRetrofit_ShipyardSubmarket");
+        if(!market.hasIndustry(this.id)){
+            market.removeSubmarket(subbmarket);
+        }
+        //this.market.removeSubmarket("AIRetrofit_ShipyardSubmarket");
     }
     @Override
     public boolean isAvailableToBuild(){

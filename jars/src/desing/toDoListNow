@@ -1,4 +1,7 @@
 to do list:
+Shipyard:
+    bugs: i have no clue why, but if i put a ship in, leave, then come back, the ship is gone. wtf?
+
 questions:
     how to add an fleet shipyard market thing like storage to an market
 
@@ -29,6 +32,7 @@ Robots:
     -change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
     -fix description not respecting configs? or reality...
+    -add on the fighter hull type to the crew costs of this hullmod.
 
 AI Market plugin:
     Note: possible solution is to only use one plugin and make it open an dialog with the world, then go from there. dialog is mush easyer...
