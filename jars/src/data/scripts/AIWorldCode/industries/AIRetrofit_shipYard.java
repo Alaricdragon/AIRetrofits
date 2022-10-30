@@ -34,9 +34,10 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
     @Override
     public void unapply() {
         super.unapply();
-        if(!market.hasIndustry(this.id)){
+        //this dose not work =(
+        /*if(!market.hasIndustry(this.id)){
             market.removeSubmarket(subbmarket);
-        }
+        }*/
         //this.market.removeSubmarket("AIRetrofit_ShipyardSubmarket");
     }
     @Override
