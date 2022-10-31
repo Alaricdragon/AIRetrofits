@@ -98,11 +98,11 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }*/
         final String[] stopHullMods = {"automated"};
         final String[] addHullMods = {
-                "AIretrofit_airetrofit",
-                "AIretrofit_airetrofit",
-                "AIretrofit_airetrofit",
-                "AIretrofit_airetrofit",
-                "AIretrofit_airetrofit"};
+                "AIRetrofit_ShipyardGamma",
+                "AIRetrofit_ShipyardBeta",
+                "AIRetrofit_ShipyardAlpha",
+                "AIRetrofit_ShipyardOmega",
+                "AIRetrofit_ShipyardBase"};
         final float startingPonits = 8;
         final float bounus = 2;
         final float[] costs = {4,0.25f,1,2,4,8};

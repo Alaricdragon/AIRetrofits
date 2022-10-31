@@ -36,7 +36,8 @@ Industry:
         supply:
             nothing
         demand:
-            AIretrofit_SubCommandNode:  (?)
+            AIretrofit_SubCommandNode:  (1)
+            AIretrofit_WorkerDrone: (3)
         cost:
             build cost: 20 (100k)?
             time:       40 days?

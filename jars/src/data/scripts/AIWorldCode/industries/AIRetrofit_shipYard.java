@@ -7,19 +7,19 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
-public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrationModifier {
-    static String C1 = "metals";
-    static String C2 = "rare_metals";
-    static String C3 = "heavy_machinery";
+public class AIRetrofit_shipYard extends BaseIndustry {
+    static String C1 = "AIretrofit_SubCommandNode";
+    static String C2 = "AIretrofit_WorkerDrone";
+    //static String C3 = "heavy_machinery";
     static String subbmarket = "AIRetrofit_ShipyardSubmarket";
     @Override
     public void apply() {
         super.apply(true);
         int size = market.getSize();
         //demand;
-        demand(C1,size);
-        demand(C2,size - 1);
-        demand(C3,size - 2);
+        demand(C1,1);
+        demand(C2,3);
+        //demand(C3,size - 2);
         //supply(S1,size);
         //Pair<String, Integer> deficit = getMaxDeficit(C1,C2,C3);
         //applyDeficitToProduction(1, deficit,S1);
@@ -43,14 +43,5 @@ public class AIRetrofit_shipYard extends BaseIndustry implements MarketImmigrati
     @Override
     public boolean isAvailableToBuild(){
         return AIretrofit_canBuild.isAI(market);
-    }
-
-    static String m1 = "AIRetrofits_AdvancedDroneFactory_0";
-    public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
-        if (!isFunctional()) {
-            return;
-        }
-        float bonus = market.getSize() + 3;
-        incoming.getWeight().modifyFlat(m1, bonus, getNameForModifier());
     }
 }
