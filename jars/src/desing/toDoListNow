@@ -7,9 +7,13 @@ Shipyard:
         need to get the extra hullmods prepared.
             -(done) set up refrences in data, and in the shipyards 'add hullmods to ship' thing
             - set up the hull mod classes with all there data
-            - (this feels silly. let them remove the hullmods?) set up a display hullmod (to make it harder to remove the added hullmods)
             - run tests to make sure everything is working
 
+        AIRetrofit-Aplha:
+            -add scaling extra opp to the hullmod
+            -and make sure it all works
+AIRetrofit:
+    -well im on the topic of hullmods, replace the 'oppadd' class with something less blotted
 questions:
     how to add an fleet shipyard market thing like storage to an market
 

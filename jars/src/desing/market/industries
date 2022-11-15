@@ -75,6 +75,8 @@ Industry:
                 -cant install robot forge on this ship
                 - +100% - 150% supply use, depending on % of bonus opp gained
                 - +100% repair times.
+            Omega-Core:
+                -???
             default:
                 - no opp cost
                 -permanent

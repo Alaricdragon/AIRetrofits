@@ -28,9 +28,22 @@ mymod_AIretrofit_oppadd,AIretrofit_AIretrofit_opadd600,,,Common,,,100,TRUE,TRUE,
 mymod_AIretrofit_oppadd,AIretrofit_AIretrofit_opadd700,,,Common,,,100,TRUE,TRUE,TRUE,700,700,700,700,data.scripts.hullmods.ATretroopcost.mymod_AIretrofit_opadd700,dont look plz,,
 mymod_AIretrofit_oppadd,AIretrofit_AIretrofit_opadd800,,,Common,,,100,TRUE,TRUE,TRUE,800,800,800,800,data.scripts.hullmods.ATretroopcost.mymod_AIretrofit_opadd800,dont look plz,,
 mymod_AIretrofit_oppadd,AIretrofit_AIretrofit_opadd900,,,Common,,,100,TRUE,TRUE,TRUE,900,900,900,900,data.scripts.hullmods.ATretroopcost.mymod_AIretrofit_opadd900,dont look plz,,
-perma instaled AI Retrofit,AIRetrofit_ShipyardDisplay,,,Common,,Automated Retrofits,100,TRUE,TRUE,TRUE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardDisplay,custom description here,,graphics/hullmods/AIRetrofit_ShipyardDisplay.jpg
-AI Retrofit Perma Instaled,AIRetrofit_ShipyardBase,,,Common,,Automated Retrofits,100,TRUE,TRUE,TRUE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardBase,NA,,
-AI Retrofit Perma Instaled - gamma,AIRetrofit_ShipyardGamma,,,Common,,Automated Retrofits,100,TRUE,TRUE,TRUE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardGamma,NA,,
-AI Retrofit Perma Instaled - beta,AIRetrofit_ShipyardBeta,,,Common,,Automated Retrofits,100,TRUE,TRUE,TRUE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardBeta,NA,,
-AI Retrofit Perma Instaled - Alpha,AIRetrofit_ShipyardAlpha,,,Common,,Automated Retrofits,100,TRUE,TRUE,TRUE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardAlpha,NA,,
-AI Retrofit Perma Instaled - Omega,AIRetrofit_ShipyardOmega,,,Common,,Automated Retrofits,100,TRUE,TRUE,TRUE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardOmega,NA,,
+AI Retrofit Perma Instaled,AIRetrofit_ShipyardBase,99,,Common,,Automated Retrofits,100,TRUE,TRUE,FALSE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardBase,"this ship has been exstensivly and permintly retrofited, with the objective of seamlessly instaling an AI retrofits",,graphics/hullmods/AIRetrofit_ShipyardDisplay.jpg
+AI Retrofit Perma Instaled - gamma,AIRetrofit_ShipyardGamma,99,,Common,,Automated Retrofits,100,TRUE,TRUE,FALSE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardGamma,free AIRetrofit. cannot be removed,,graphics/hullmods/AIRetrofit_ShipyardDisplay.jpg
+AI Retrofit Perma Instaled - beta,AIRetrofit_ShipyardBeta,99,,Common,,Automated Retrofits,100,TRUE,TRUE,FALSE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardBeta,free AIRetrofit. cannot be removed,,graphics/hullmods/AIRetrofit_ShipyardDisplay.jpg
+AI Retrofit Perma Instaled - Alpha,AIRetrofit_ShipyardAlpha,99,,Common,,Automated Retrofits,100,TRUE,TRUE,FALSE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardAlpha,free AIRetrofit. cannot be removed,,graphics/hullmods/AIRetrofit_ShipyardDisplay.jpg
+AI Retrofit Perma Instaled - Omega,AIRetrofit_ShipyardOmega,99,,Common,,Automated Retrofits,100,TRUE,TRUE,FALSE,0,0,0,0,data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardOmega,free AIRetrofit. cannot be removed,,graphics/hullmods/AIRetrofit_ShipyardDisplay.jpg
+,,,,,,,,,,,,,,,,,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd1,,,Common,,,100,TRUE,TRUE,TRUE,1,1,1,1,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd2,,,Common,,,100,TRUE,TRUE,TRUE,2,2,2,2,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd4,,,Common,,,100,TRUE,TRUE,TRUE,4,4,4,4,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd8,,,Common,,,100,TRUE,TRUE,TRUE,8,8,8,8,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd16,,,Common,,,100,TRUE,TRUE,TRUE,16,16,16,16,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd32,,,Common,,,100,TRUE,TRUE,TRUE,32,32,32,32,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd64,,,Common,,,100,TRUE,TRUE,TRUE,64,64,64,64,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd128,,,Common,,,100,TRUE,TRUE,TRUE,128,128,128,128,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd256,,,Common,,,100,TRUE,TRUE,TRUE,256,256,256,256,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd512,,,Common,,,100,TRUE,TRUE,TRUE,512,512,512,512,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd1024,,,Common,,,100,TRUE,TRUE,TRUE,1024,1024,1024,1024,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd2048,,,Common,,,100,TRUE,TRUE,TRUE,2048,2048,2048,2048,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,
+AIRetrofit_OppRemove,AIretrofit_AIretrofitAplha_opadd4096,,,Common,,,100,TRUE,TRUE,TRUE,4096,4096,4096,4096,data.scripts.hullmods.ATretroopcost.AIRetrofit_oppRemoveAll,dont look plz,,

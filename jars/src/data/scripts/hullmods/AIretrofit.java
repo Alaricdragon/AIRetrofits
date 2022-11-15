@@ -220,7 +220,7 @@ i want to:
 		parm[4] = (int) MinCrew;
 		parm[5] = (int) (MinCrew * CREW_USE_MULT);
 		//a.3)
-		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && super.isApplicableToShip(ship);
+		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship);
 	}
 	private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
 		//example of adding a hullmod
@@ -277,6 +277,10 @@ i want to:
 	}
 	@Override
 	public String getUnapplicableReason(ShipAPI ship) {
+		String hullmods = incompatibleHullMods(ship);
+		if(hullmods != null){
+			return "not compatible with: " + hullmods;
+		}
 		int unusedOP = ship.getVariant().getUnusedOP(Global.getSector().getCharacterData().getPerson().getFleetCommanderStats());//only works for player fleets
 		//int unusedOP = ship.getVariant().getUnusedOP(ship.getFleetMember().getFleetCommanderForStats().getFleetCommanderStats());//might work for all fleets
 		float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
@@ -307,5 +311,27 @@ i want to:
 			return 0;
 		}
 		return (int)(1 / in);
+	}
+	private String incompatibleHullMods(ShipAPI ship){
+		final String[] compatible = {
+				"AIRetrofit_ShipyardBase",
+				"AIRetrofit_ShipyardGamma",
+				"AIRetrofit_ShipyardBeta",
+				"AIRetrofit_ShipyardAlpha",
+				"AIRetrofit_ShipyardOmega"
+		};
+		final String[] names = {
+				Global.getSettings().getHullModSpec(compatible[0]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[1]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[2]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[3]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[4]).getDisplayName(),
+		};
+		for(int a = 0; a < compatible.length; a++){
+			if(ship.getVariant().hasHullMod(compatible[a])){
+				return names[a];
+			}
+		}
+		return null;
 	}
 }

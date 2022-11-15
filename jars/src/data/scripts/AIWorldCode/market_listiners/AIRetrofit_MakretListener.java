@@ -6,7 +6,9 @@ import com.fs.starfarer.api.campaign.CharacterDataAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
+import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.loading.VariantSource;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 
 import java.util.List;
@@ -136,17 +138,20 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }catch (Exception e){
             addHullMod = addHullMods[4];
         }
-        for(FleetMemberAPI ship : ships){
+        for(FleetMemberAPI ship2 : ships){
+            ShipVariantAPI ship = ship2.getVariant().clone();
+            ship.setSource(VariantSource.REFIT);
+            //ship2.getVariant().get
             boolean exit = false;
             for(String a : stopHullMods) {
-                if(ship.getVariant().hasHullMod(a)) {
+                if(ship.hasHullMod(a)) {
                     exit = true;
                     break;
                 }
             }
-            if(!exit && !ship.getVariant().hasHullMod(addHullMod)){
+            if(!exit && !ship.hasHullMod(addHullMod)){
                 float cost = 0;
-                switch (ship.getVariant().getHullSize()){
+                switch (ship.getHullSize()){
                     case DEFAULT:
                         cost = costs[0];
                         break;
@@ -169,14 +174,15 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 if(cost <= points){
                     points -= cost;
                     for(String a : addHullMods){
-                        ship.getVariant().removeMod(a);
+                        ship.removeMod(a);
                     }
-                    ship.getVariant().addMod(addHullMod);
+                    ship.addMod(addHullMod);
                 }
                 if(points <= 0){
                     return;
                 }
             }
+            ship2.setVariant(ship,true,true);
         }
     }
     private void unapplySubMarkets(MarketAPI market){

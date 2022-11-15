@@ -1,10 +1,10 @@
 {
 	"plugins":{
-		"surveyPlugin":"data.scripts.replacementscripts.SurveyPluginImpl",
+		"surveyPlugin":"data.scripts.replacementscripts.SurveyPluginImpl"
 	},
 	"ruleCommandPackages":[
 		"data.scripts.replacementscripts.Salvage",
-		"data.scripts.starfarer.api.impl.campaign.rulemd",
+		"data.scripts.starfarer.api.impl.campaign.rulemd"
 	],
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
@@ -20,6 +20,28 @@
 	"AIRetrofits_AIretrofit_C-OP-Destroyer":0.1,
 	"AIRetrofits_AIretrofit_C-OP-Cruiser":0.05,
 	"AIRetrofits_AIretrofit_C-OP-Capital_ship":0.025,
+	#settings for AIRetrofit Shipyard Power
+	#Basic
+	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_REPAIR_LOSE":0.5,
+	#Gamma
+	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":0.1,
+	#Beta
+	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.75,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
+	#Alpha
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.5,
+	#exstra data for Aplha here
+	#Redacted
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":0,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
 	#settings for robot forge power.
 	"AIRetrofits_CorruptedMetal":1,
 	"AIRetrofits_PristineMetal":5,
@@ -107,12 +129,12 @@
 	"graphics":{
 		"industry":{
 			"AIRetorfit_AIpop_low":"graphics/icons/industry/AIRetrofit_populationLow.png",
-			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.png",
+			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.png"
 		},
 		"characters":{
 		#	"AIRetofit_AIOfficer":"graphics/hal9000butblue.jpg",
-			"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png",
-		},
+			"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png"
+		}
 	},
 	#data for AIofficers names and portrates. you can add a new name/portrate by puting it here.
 	#the code will try to read data from every item put here with the right name, by starting at 0 and counting up, if that makes sence.
