@@ -15,6 +15,14 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
     private static final float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
     private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
     private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
+
+    private static float[] CrewPerCostPerSize = {
+            Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Other"),
+            Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Frigate"),
+            Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Destroyer"),
+            Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Cruiser"),
+            Global.getSettings().getFloat("AIRetrofits_AIretrofit_C-OP-Capital_ship")
+    };
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
@@ -24,9 +32,15 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
         stats.getMaxCrewMod().modifyFlat(id,MinCrew * -1);
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
+
+
+        int exstra_cost = GetExstraOpCost(MinCrew,hullSize);
+        addExstraOpCost(exstra_cost,stats);
+
     }
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
+        //need to return extra opp cost somehow... all attempts have thus far failed... something needs to be dones..
         switch(index) {
             case 0:
                 return "";
@@ -70,4 +84,40 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
     public boolean isApplicableToShip(ShipAPI ship/*, MutableCharacterStatsAPI wat*/){
         return true;//ship != null && true;
     }
+    private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
+        //example of adding a hullmod
+        //stats.getVariant().addMod("mymod_temp0");
+        //d.0)
+        int b;
+        String temp;
+        //d.1)
+        for(int a = 4096; a >= 1 && exstra_cost > 0; a = a / 2){
+            //d.2)
+            //d.3)
+            //d.3.1)
+            if(a <= exstra_cost) {//if extra cost is >= to this number it will need to be added anyways.
+                exstra_cost -= a;
+                temp = "AIretrofit_AIretrofitAplha_opRemove" + a;
+                stats.getVariant().addMod(temp);
+            }
+        }
+    }
+    private int GetExstraOpCost(float crew, ShipAPI.HullSize hullSize){
+		/*if(hullSize == HullSize.FIGHTER || hullSize == HullSize.DEFAULT){
+			//crew = CrewPerCostPerSize[0];//1 cost per
+		}else */if(hullSize == ShipAPI.HullSize.FRIGATE){
+            //crew = crew / CrewPerCostPerSize[1];
+            return (int) (crew * CrewPerCostPerSize[1]);
+        }else if(hullSize == ShipAPI.HullSize.DESTROYER){
+            //crew = crew / CrewPerCostPerSize[2];
+            return (int) (crew * CrewPerCostPerSize[2]);
+        }else if(hullSize == ShipAPI.HullSize.CRUISER){
+            //crew = crew / CrewPerCostPerSize[3];
+            return (int) (crew * CrewPerCostPerSize[3]);
+        }else if(hullSize == ShipAPI.HullSize.CAPITAL_SHIP){
+            return (int) (crew * CrewPerCostPerSize[4]);
+        }
+        return (int) (crew * CrewPerCostPerSize[0]);
+    }
+
 }

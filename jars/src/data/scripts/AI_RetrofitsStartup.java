@@ -23,7 +23,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         crew_replacer_start_new();
         robot_forge_set();
         setDataLists.init();
-        AISupplyDemandSet();
+        AISupplyDemandSet();//HERE temporally disabled.
     }
     @Override
     public void onGameLoad(boolean newGame) {

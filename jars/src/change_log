@@ -5,6 +5,10 @@ compatibility:
     made it so you get the AIRetrofit ability, and hullmods after getting the AI-Ships skill. this makes this mod compatible with other mods that change the AIShips skill.
 fixes:
     made it so you get the robot forge ability after visiting an market when you have the robot forge hullmod.
+    AIRetrofit:
+        reduced how bloated the modular opp cost of AI Retrofit hullmod was (from 27 hullmods + 27 scripts to 10 hullmods and 1 script)
+        hopefully made the description of the hullmod respect what ship you are looking at, and stop giving wildly inaccurate guesses on the opp costs of this hullmod.
+
 balance:
     AI-Pop market growth:
         changed the robot factory set of buildings to now produce population on market/system/faction, depending on upgrade level.

@@ -1,4 +1,12 @@
 to do list:
+all Industrys:
+ add this to industry to my new industry are not clogging up the things.
+        @Override
+        public boolean showWhenUnavailable() {
+            return false;
+        }
+
+
 Shipyard:
     issues:
         if i remove the building, the sub-market will vanish. this will destroy all ships in said submarket.
@@ -12,8 +20,6 @@ Shipyard:
         AIRetrofit-Aplha:
             -add scaling extra opp to the hullmod
             -and make sure it all works
-AIRetrofit:
-    -well im on the topic of hullmods, replace the 'oppadd' class with something less blotted
 questions:
     how to add an fleet shipyard market thing like storage to an market
 
@@ -43,10 +49,12 @@ Robots:
         -(this is done for weapons. it can be done here.)
     -change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
-    -fix description not respecting configs? or reality...
     -add on the fighter hull type to the crew costs of this hullmod.
+    -finish the repairs to the hullmod, fixing the last weirdness of its description
 
 AI Market plugin:
+    Important: Note: the guy who made nex contacted me and we talked about the CSV file a little. he said the the lake of conditions in one of
+                     my rules might be causing issues. reference the discord conversation for details
     Note: possible solution is to only use one plugin and make it open an dialog with the world, then go from there. dialog is mush easier...
     fix the randomly not working nature of the plugin.
     fix the fact you can click on the plugin when you should not be able to (should be greyed out)
