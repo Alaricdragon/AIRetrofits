@@ -1,12 +1,17 @@
 package data.scripts.hullmods.Shipyard;
 
+import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Misc;
 import data.scripts.hullmods.AIretrofit;
+
+import java.awt.*;
 
 public class AIRetrofit_ShipyardGamma extends BaseHullMod {
     final static String cantRemoveReason = "cannot be added or removed outside of a robotic shipyard";
@@ -15,6 +20,7 @@ public class AIRetrofit_ShipyardGamma extends BaseHullMod {
     private static final float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
     private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
     private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
+    private String[] parm = {"","","",""};
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
@@ -27,33 +33,15 @@ public class AIRetrofit_ShipyardGamma extends BaseHullMod {
     }
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        switch(index) {
-            case 0:
-                return "";
-            case 1:
-                return "";
-            case 2:
-                return "";
-            case 3:
-                return "";
-            case 4:
-                return "";
-            case 5:
-                return "";
-            case 6:
-                return "";
-            case 7:
-                return "";
-            case 8:
-                return "";
-            case 9:
-                return "";
+        if(index < parm.length) {
+            return parm[index];
         }
         return null;
     }
     //prevents the hullmod from being removed by the player
     @Override
     public boolean canBeAddedOrRemovedNow(ShipAPI ship, MarketAPI marketOrNull, CampaignUIAPI.CoreUITradeMode mode){
+        setDisplayValues(ship);
         if(ship != null && (ship.getFleetMember().getFleetData().getCommander().isPlayer())){
             return false;
         }
@@ -70,4 +58,28 @@ public class AIRetrofit_ShipyardGamma extends BaseHullMod {
     public boolean isApplicableToShip(ShipAPI ship/*, MutableCharacterStatsAPI wat*/){
         return true;//ship != null && true;
     }
+    private void setDisplayValues(ShipAPI ship){
+        if(ship == null){
+            return;
+        }
+        float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
+        parm[0] = ((SUPPLY_USE_MULT) * 100) + "%";
+        parm[1] = "" + (REPAIR_LOSE * 100) + "%";
+        parm[2] = "" + (int)MinCrew;
+        parm[3] = "" + (int)(MinCrew * CREW_USE_MULT);
+    }
+    @Override
+    public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
+        //this is how im trying to highlight thigns. dose not work right. no idea why
+        //setDisplayValues(ship);
+
+
+        if (Global.getSettings().getCurrentState() == GameState.TITLE) return;
+        Color h = Misc.getHighlightColor();
+        tooltip.addPara("",
+                0, h,
+                ""
+        );
+    }
+
 }

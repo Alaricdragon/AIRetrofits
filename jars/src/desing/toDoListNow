@@ -14,15 +14,20 @@ Shipyard:
     not yet done:
         need to get the extra hullmods prepared.
             -(done) set up refrences in data, and in the shipyards 'add hullmods to ship' thing
-            - set up the hull mod classes with all there data
-            - run tests to make sure everything is working
+            -(done) set up the hull mod classes with all there data
+            -(done for basic. should be working for gamma and delta. not tested for alpha.) run tests to make sure everything is working
 
         AIRetrofit-Aplha:
-            -add scaling extra opp to the hullmod
+            -(done)add scaling extra opp to the hullmod
             -and make sure it all works
-questions:
-    how to add an fleet shipyard market thing like storage to an market
+            -BUG: a max of 10 %s may be present in the CSV description of a hullmod, or it will refuse to show the description.
+                  sollution? i need to reduce the number of thoughs i have. the only issue is that its kinda frustrating to do, you know?
+                  possible solution: remove the thing showing the max op reduction.
+                  (this one)possable solution: merge the two %s/%s/%s/%s into two %s with all the data formed there
 
+        to everything:
+            -add all data to the config files for this system
+questions:
     how to make an industry send resources to your supply point
     how to add text prosaically to an item
 market:
@@ -51,6 +56,7 @@ Robots:
 AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -finish the repairs to the hullmod, fixing the last weirdness of its description
+    -add this hullmod to all fighters the ship fires. this would be kinda coolness.
 
 AI Market plugin:
     Important: Note: the guy who made nex contacted me and we talked about the CSV file a little. he said the the lake of conditions in one of
