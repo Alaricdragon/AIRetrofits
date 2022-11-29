@@ -10,7 +10,7 @@ import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
 import java.util.Random;
 
-public class AIRetrofit_surveyRobotManufactory extends BaseIndustry{
+public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_IndustryBase{
     static String C1 = "metals";
     static String C2 = "rare_metals";
     static String C3 = "volatiles";
@@ -38,11 +38,6 @@ public class AIRetrofit_surveyRobotManufactory extends BaseIndustry{
     public void unapply() {
         super.unapply();
     }
-    @Override
-    public boolean isAvailableToBuild(){
-        return AIretrofit_canBuild.isAI(market);
-    }
-    // @Override
     public CargoAPI generateCargoForGatheringPoint(Random random){
         return null;
         /*if (!isFunctional()) {
@@ -50,10 +45,5 @@ public class AIRetrofit_surveyRobotManufactory extends BaseIndustry{
         }
         CargoAPI result = new
         return result;*/
-    }
-    @Override
-    public String getUnavailableReason() {
-        if (!super.isAvailableToBuild()) return super.getUnavailableReason();
-        return "requires AI market.";
     }
 }

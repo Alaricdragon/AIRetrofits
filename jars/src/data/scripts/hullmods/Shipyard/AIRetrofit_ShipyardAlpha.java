@@ -12,7 +12,8 @@ import com.fs.starfarer.api.util.Misc;
 
 import java.awt.*;
 
-public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
+public class AIRetrofit_ShipyardAlpha  extends AIRetrofit_ShipyardBase {
+    final static String automationLevel = "Alpha-Core";
     final static String cantRemoveReason = "cannot be added or removed outside of a robotic shipyard";
     final static String industry = "AIRetrofit_shipYard";
     final static String name = "AIRetrofit_ShipyardAlpha";
@@ -20,7 +21,7 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
     private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
     private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
 
-    private String[] parm = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
+    private String[] parm = {"0","1","2","3","4","5","6","7","8","9","10"};
 
     private static final float[] maxOp = {
             Global.getSettings().getFloat("AIRetrofits_" + name + "_MaxOpOther"),
@@ -61,21 +62,7 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
     @Override
     public boolean canBeAddedOrRemovedNow(ShipAPI ship, MarketAPI marketOrNull, CampaignUIAPI.CoreUITradeMode mode){
         setDisplayValues(ship);
-        if(ship != null && (ship.getFleetMember().getFleetData().getCommander().isPlayer())){
-            return false;
-        }
-        /*if(marketOrNull != null){// && (marketOrNull.hasIndustry(industry) && marketOrNull.getIndustry(industry).isFunctional())){
-            return true;
-        }*/
-        return true;
-    }
-    @Override
-    public String getUnapplicableReason(ShipAPI ship) {
-        return cantRemoveReason;
-    }
-    @Override
-    public boolean isApplicableToShip(ShipAPI ship/*, MutableCharacterStatsAPI wat*/){
-        return true;//ship != null && true;
+        return super.canBeAddedOrRemovedNow(ship,marketOrNull,mode);
     }
     private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
         //example of adding a hullmod
@@ -118,27 +105,39 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
         if(ship == null){
             return;
         }
-        float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
-        float MaxCrew = ship.getVariant().getHullSpec().getMaxCrew();
+        float MinCrew = ship.getMutableStats().getVariant().getHullSpec().getMinCrew();
+        float MaxCrew = ship.getMutableStats().getVariant().getHullSpec().getMaxCrew();
 
         ShipAPI.HullSize hullsize = ship.getVariant().getHullSize();
         int cost = GetExstraOpCost(MaxCrew - MinCrew,hullsize);
+        parm[0] = automationLevel;
+        parm[1] = "" + SUPPLY_USE_MULT * 100 + "%";
+        parm[2] = "" + (REPAIR_LOSE * 100) + "%";
+        parm[3] = "" + CREW_USE_MULT;
 
-        parm[0] = "" + SUPPLY_USE_MULT * 100 + "%";
-        parm[1] = "" + (REPAIR_LOSE * 100) + "%";
-        parm[2] = "" + CREW_USE_MULT;
+        parm[4] = "" + reqCrew(CrewPerCostPerSize[1]);
+        parm[5] = "" + reqCrew(CrewPerCostPerSize[2]);
+        parm[6] = "" + reqCrew(CrewPerCostPerSize[3]);
+        parm[7] = "" + reqCrew(CrewPerCostPerSize[4]);
 
-        parm[3] = "" + reqCrew(CrewPerCostPerSize[1]);
-        parm[4] = "" + reqCrew(CrewPerCostPerSize[2]);
-        parm[5] = "" + reqCrew(CrewPerCostPerSize[3]);
-        parm[6] = "" + reqCrew(CrewPerCostPerSize[4]);
-
-        parm[7] = "" + reqCrew(maxOp[1]);
-        parm[8] = "" + reqCrew(maxOp[2]);
-        parm[9] = "" + reqCrew(maxOp[3]);
-        parm[10] = "" + reqCrew(maxOp[4]);
-
-        parm[11] = "" + (int)cost;
+        switch(hullsize){
+            case FRIGATE:
+                parm[8] = ""+maxOp[1];
+                break;
+            case DESTROYER:
+                parm[8] = ""+maxOp[2];
+                break;
+            case CRUISER:
+                parm[8] = ""+maxOp[3];
+                break;
+            case CAPITAL_SHIP:
+                parm[8] = ""+maxOp[4];
+                break;
+            default:
+                parm[8] = ""+maxOp[0];
+                break;
+        }
+        parm[9] = "" + (int)cost;
     }
     private int reqCrew(float in){
         if(in == 0){
@@ -146,18 +145,4 @@ public class AIRetrofit_ShipyardAlpha  extends BaseHullMod {
         }
         return (int)(1 / in);
     }
-    @Override
-    public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
-        //this is how im trying to highlight thigns. dose not work right. no idea why
-        //setDisplayValues(ship);
-
-
-        if (Global.getSettings().getCurrentState() == GameState.TITLE) return;
-        Color h = Misc.getHighlightColor();
-        tooltip.addPara("",
-                0, h,
-                ""
-        );
-    }
-
 }

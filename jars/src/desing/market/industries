@@ -276,12 +276,13 @@ manufactures
 
         3 options:
             1 per world.
-                -heavy restriced robots. less clutter in build menu (1 item)
+                -heavy restricted robots. less clutter in build menu (1 item)
             1 of each type per world.
-                -only haveing one type of robot at an time on an world. restricted building. slightly less cluter in build menut (3 items)
+                -only having one type of robot at an time on an world. restricted building. slightly less clutter in build menu (3 items)
             allow all to be constructed on each world.
                 -no restrictions. all robot types on every world, if you want to. lots of clutter in build menu (6 items.)
-        We will be allowing all to be constructed on each world, for now.
+            1 per world, but have it be verbal (like stations are) so i can chose from one menu with no issues?
+            is this even possible?
         basics:
             cost:
                 build cost: 10

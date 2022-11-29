@@ -1,32 +1,13 @@
 to do list:
-all Industrys:
- add this to industry to my new industry are not clogging up the things.
-        @Override
-        public boolean showWhenUnavailable() {
-            return false;
-        }
-
-
+Industrys:
+    add descriptions to CSV file.
+    finish balance.
+    finish adding supply demand and effects to all buildings.
 Shipyard:
     issues:
         if i remove the building, the sub-market will vanish. this will destroy all ships in said submarket.
          -solution: add a way to move the ships from the shipyard submarket to the storage submarket.
-    not yet done:
-        need to get the extra hullmods prepared.
-            -(done) set up refrences in data, and in the shipyards 'add hullmods to ship' thing
-            -(done) set up the hull mod classes with all there data
-            -(done for basic. should be working for gamma and delta. not tested for alpha.) run tests to make sure everything is working
-
-        AIRetrofit-Aplha:
-            -(done)add scaling extra opp to the hullmod
-            -and make sure it all works
-            -BUG: a max of 10 %s may be present in the CSV description of a hullmod, or it will refuse to show the description.
-                  sollution? i need to reduce the number of thoughs i have. the only issue is that its kinda frustrating to do, you know?
-                  possible solution: remove the thing showing the max op reduction.
-                  (this one)possable solution: merge the two %s/%s/%s/%s into two %s with all the data formed there
-
-        to everything:
-            -add all data to the config files for this system
+        add a config to determin the amount of available power of the building (ability to add hullmods to ships.)
 questions:
     how to make an industry send resources to your supply point
     how to add text prosaically to an item

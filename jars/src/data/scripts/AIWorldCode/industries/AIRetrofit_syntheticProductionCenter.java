@@ -4,7 +4,7 @@ import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
-public class AIRetrofit_syntheticProductionCenter   extends BaseIndustry {
+public class AIRetrofit_syntheticProductionCenter   extends AIRetrofit_IndustryBase {
     static String C1 = "organs";
     static String C2 = "organics";
     static String C3 = "rare_metals";
@@ -33,9 +33,5 @@ public class AIRetrofit_syntheticProductionCenter   extends BaseIndustry {
     @Override
     public void unapply() {
         super.unapply();
-    }
-    @Override
-    public boolean isAvailableToBuild(){
-        return AIretrofit_canBuild.isAI(market);
     }
 }

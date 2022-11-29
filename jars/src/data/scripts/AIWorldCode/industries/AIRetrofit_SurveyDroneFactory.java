@@ -1,4 +1,4 @@
 package data.scripts.AIWorldCode.industries;
 
-public class AIRetrofit_SurveyDroneFactory {
+public class AIRetrofit_SurveyDroneFactory extends AIRetrofit_IndustryBase{
 }

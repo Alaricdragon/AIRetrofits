@@ -7,7 +7,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
-public class AIRetrofit_roboticPopFactoryV2 extends BaseIndustry {
+public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
     final static String C1 = "metals";
     final static String C2 = "rare_metals";
     final static String C3 = "heavy_machinery";
@@ -60,10 +60,5 @@ public class AIRetrofit_roboticPopFactoryV2 extends BaseIndustry {
     @Override
     public void unapply() {
         super.unapply();
-    }
-
-    @Override
-    public boolean isAvailableToBuild() {
-        return AIretrofit_canBuild.isAI(market);
     }
 }

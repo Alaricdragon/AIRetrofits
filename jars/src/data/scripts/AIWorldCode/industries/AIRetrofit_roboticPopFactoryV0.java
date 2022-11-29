@@ -7,7 +7,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
-public class AIRetrofit_roboticPopFactoryV0 extends BaseIndustry implements MarketImmigrationModifier {
+public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase implements MarketImmigrationModifier {
     final static String C1 = "metals";
     final static String C2 = "rare_metals";
     final static String C3 = "heavy_machinery";
@@ -57,10 +57,6 @@ public class AIRetrofit_roboticPopFactoryV0 extends BaseIndustry implements Mark
     @Override
     public void unapply() {
         super.unapply();
-    }
-    @Override
-    public boolean isAvailableToBuild(){
-        return AIretrofit_canBuild.isAI(market);
     }
 
     static String m1 = "AIRetrofits_AdvancedDroneFactory_0";

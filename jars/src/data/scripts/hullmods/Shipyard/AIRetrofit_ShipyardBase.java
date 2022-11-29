@@ -15,13 +15,14 @@ import data.scripts.hullmods.AIretrofit;
 import java.awt.*;
 
 public class AIRetrofit_ShipyardBase extends BaseHullMod {
+    final static String automationLevel = "automatedShipyard";
     final static String cantRemoveReason = "cannot be added or removed outside of a robotic shipyard";
     final static String industry = "AIRetrofit_shipYard";
     final static String name = "AIRetrofit_ShipyardBase";
     private static final float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
     private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
     private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
-    private String[] parm = {"","","",""};
+    private String[] parm = {"","","","",""};
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
@@ -46,10 +47,10 @@ public class AIRetrofit_ShipyardBase extends BaseHullMod {
         if(ship != null && (ship.getFleetMember().getFleetData().getCommander().isPlayer())){
             return false;
         }
-        /*if(marketOrNull != null){// && (marketOrNull.hasIndustry(industry) && marketOrNull.getIndustry(industry).isFunctional())){
+        if(marketOrNull != null){// && (marketOrNull.hasIndustry(industry) && marketOrNull.getIndustry(industry).isFunctional())){
             return true;
-        }*/
-        return true;
+        }
+        return false;
     }
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
@@ -64,10 +65,11 @@ public class AIRetrofit_ShipyardBase extends BaseHullMod {
             return;
         }
         float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
-        parm[0] = ((SUPPLY_USE_MULT) * 100) + "%";
-        parm[1] = "" + (REPAIR_LOSE * 100) + "%";
-        parm[2] = "" + (int)MinCrew;
-        parm[3] = "" + (int)(MinCrew * CREW_USE_MULT);
+        parm[0] = automationLevel;
+        parm[1] = ((SUPPLY_USE_MULT) * 100) + "%";
+        parm[2] = "" + (REPAIR_LOSE * 100) + "%";
+        parm[3] = "" + (int)MinCrew;
+        parm[4] = "" + (int)(MinCrew * CREW_USE_MULT);
     }
     @Override
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {

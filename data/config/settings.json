@@ -137,6 +137,12 @@
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,
 
+	#Market Things
+	#Industry things
+	#Shipyard settings
+	"AIRetrofitShipyard_ADescription": "use a alpha core to install a version of the hullmod that increase available op on ship",#description when you inset a alpha core
+	"AIRetrofitShipyard_BDescription": "use a beta core to install a version of the hullmod that has a reduced supply cost",#description when you inset a beta core
+	"AIRetrofitShipyard_GDescription": "use a gamma core to install a version of the hullmod that has a reduced repair cost",#description when you inset a gamma core
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{
