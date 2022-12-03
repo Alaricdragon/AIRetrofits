@@ -4,10 +4,15 @@ Industrys:
     finish balance.
     finish adding supply demand and effects to all buildings.
 Shipyard:
+    to do:
+        (DONE)add the ability for ships from a market with a shipyard to get the shipyard's hullmod on them.
     issues:
+        color of 'points available' needs to change to improved color when i have the industry improved.
         if i remove the building, the sub-market will vanish. this will destroy all ships in said submarket.
          -solution: add a way to move the ships from the shipyard submarket to the storage submarket.
-        add a config to determin the amount of available power of the building (ability to add hullmods to ships.)
+         -ACTIVE TEMP solution:
+            1) prevent shipyard code from running when the industry is not present
+            2) prevent the upmarket from being removed when there are ships inside of it
 questions:
     how to make an industry send resources to your supply point
     how to add text prosaically to an item
@@ -38,6 +43,7 @@ AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -finish the repairs to the hullmod, fixing the last weirdness of its description
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.
+    -make this hullmod incompatible with all AIRetrofit_Shipyard hullmods.
 
 AI Market plugin:
     Important: Note: the guy who made nex contacted me and we talked about the CSV file a little. he said the the lake of conditions in one of

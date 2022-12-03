@@ -3,6 +3,7 @@ package data.scripts.AIWorldCode.market_listiners;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.BaseCampaignEventListener;
 import com.fs.starfarer.api.campaign.CharacterDataAPI;
+import com.fs.starfarer.api.campaign.FleetDataAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
@@ -85,6 +86,16 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     final static String shipYardIndustry = "AIRetrofit_shipYard";
     final static String shipYardSubmarket = "AIRetrofit_ShipyardSubmarket";
+    static float shipyard_IValue = Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    static float shipyardDValue = Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    static float[] shipyard_costPerShip = {
+            Global.getSettings().getFloat("AIRetrofitShipyard_perCrewDEFAULT"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_perCrewFIGHTER"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_perCrewFRIGATE"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_perCrewDESTROYER"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_perCrewCRUISER"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_perCrewCAPITAL_SHIP"),
+    };
     private void runAIRetrofit_Shipyard(){
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
             runSingleAIRetrofit_Shipyard(market);
@@ -92,7 +103,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     private void runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
-        if(!market.hasSubmarket(shipYardSubmarket)){
+        if(!market.hasSubmarket(shipYardSubmarket) && market.getIndustry(shipYardIndustry).isFunctional()){
             return;
         }/*else{
             int[] a = {};
@@ -105,9 +116,9 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 "AIRetrofit_ShipyardAlpha",
                 "AIRetrofit_ShipyardOmega",
                 "AIRetrofit_ShipyardBase"};
-        final float startingPonits = 8;
-        final float bounus = 2;
-        final float[] costs = {4,0.25f,1,2,4,8};
+        final float startingPonits = shipyardDValue;
+        final float bounus = 1 + shipyard_IValue;
+        final float[] costs = shipyard_costPerShip;
         List<FleetMemberAPI> ships = market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips().getMembersListCopy();
         //market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips().get
         //market.getSubmarket(shipYardSubmarket).getCargo().
@@ -186,7 +197,18 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
     }
     private void unapplySubMarkets(MarketAPI market){
-        if(market.hasSubmarket(shipYardSubmarket) && !market.hasIndustry(shipYardIndustry)){
+        final String storge = "storage";
+        if(market.hasSubmarket(shipYardSubmarket) && !market.hasIndustry(shipYardIndustry) && market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips().getMembersListCopy().size() == 0){
+            /*if (!market.hasSubmarket(storge)){
+                market.addSubmarket(storge);
+            }
+            FleetDataAPI ships = market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips();
+            ships.getMembersListCopy()
+            for(FleetMemberAPI ship2 : ships.getMembersListCopy()){
+                ShipVariantAPI ship = ship2.getVariant().clone();
+                ship.setSource(VariantSource.REFIT);
+                market.getSubmarket(storge).getCargo().addMothballedShip(ship,ship.getHullVariantId(),ship.getDisplayName());
+            }*/
             market.removeSubmarket(shipYardSubmarket);
         }
     }

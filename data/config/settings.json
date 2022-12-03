@@ -139,10 +139,22 @@
 
 	#Market Things
 	#Industry things
-	#Shipyard settings
+	#Shipyard settings,
+	"AIRetrofitShipyard_Description": "is able to modify %s points of ships per month. ships cost %s/%s/%s/%s points depending on ship size.",
 	"AIRetrofitShipyard_ADescription": "use a alpha core to install a version of the hullmod that increase available op on ship",#description when you inset a alpha core
 	"AIRetrofitShipyard_BDescription": "use a beta core to install a version of the hullmod that has a reduced supply cost",#description when you inset a beta core
 	"AIRetrofitShipyard_GDescription": "use a gamma core to install a version of the hullmod that has a reduced repair cost",#description when you inset a gamma core
+	"AIRetrofitShipyard_IDescription": "Increases the rate that ships are upgraded by %s.",
+	"AIRetrofitShipyard_IedDescription": "Improved ship upgrading speed of %s",
+	"AIRetrofitShipyard_defaultPoints": 8,#number of construction ponits per momth
+	"AIRetrofitShipyard_IValue": 1,#increate in number of production ponits if improved (defalut * (1 + IValue))
+	"AIRetrofitShipyard_perCrewDEFAULT": 4,#Note, that as of this time, its not 'per crew' its 'per ship'. hope to change latter
+	"AIRetrofitShipyard_perCrewFIGHTER": 0.25,
+	"AIRetrofitShipyard_perCrewFRIGATE": 1,
+	"AIRetrofitShipyard_perCrewDESTROYER": 2,
+	"AIRetrofitShipyard_perCrewCRUISER": 4,
+	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
+
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{

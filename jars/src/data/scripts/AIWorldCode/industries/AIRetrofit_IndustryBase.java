@@ -1,6 +1,8 @@
 package data.scripts.AIWorldCode.industries;
 
+import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
 public class AIRetrofit_IndustryBase extends BaseIndustry {
