@@ -24,10 +24,12 @@ market:
     (started)balance pop growth factory's.
         -need to add an negative when an factory has an supply defect / exes.
         -need to put more work into th number of salvage drones an factory produces.
+        -need to put a lot of configs in said market.
+        ISSUE: i seem to be runing the T2 factory growth for bouth the T1 and T2 factory. this needs looking into
     (not possable?)rebuild the hazard button as designed in market growth
 
 Combatability:
-    -(done. not tested)add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and dont have said hullmods and abilitys.
+    -(done. not tested)add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and don't have said hullmods and ability.
 Robot Forge:
     -(done.)improve descriptions.
     -(done. not tested)make it so you get the skill after finding the robot forge hullmod.

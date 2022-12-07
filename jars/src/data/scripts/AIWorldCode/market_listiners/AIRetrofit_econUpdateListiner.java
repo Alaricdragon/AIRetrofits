@@ -3,6 +3,7 @@ package data.scripts.AIWorldCode.market_listiners;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
 
 public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateListener {
@@ -12,7 +13,8 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
         if(can) {
             for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
                 market = Global.getSector().getEconomy().getMarket(market.getId());
-                crewReplacer_SupplyDemandLists.getRuleSet(RuleSet).applyMarket(market, false);
+                //crewReplacer_SupplyDemandLists.getRuleSet(RuleSet).applyMarket(market, false);
+                AIRetrofit_MarketGrowthMods.applyData(market,"");
             }
         }
     }

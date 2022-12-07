@@ -1,5 +1,5 @@
 issues:
-    -right now all exstra industries only serve to slow down your game, and this kinda sucks.
+    -(done)right now all exstra industries only serve to slow down your game, and this kinda sucks.
         -option 1: reduce cost
             reducing the cost means creating the industries first will be less painfull.
         -option 2: make all industries do something cool
@@ -9,10 +9,12 @@ issues:
             instead reduce the penalty to -1 per item, but only after market at market sizes 4,5,6.
             example:
                 at size 3+, -stab from missing maintains parts.
+                at size 4+, -stab from human interface nodes
                 at size 4+, -stab from missing command relays.
                 at size 5+, -stab from missing sub command nodes.
             also proved an boost in stability for having said upgrades:
                 +stab from meeting maintains parts.
+                +stab from meeting human interface nodes.
                 +stab from meeting command relays.
                 +stab from meeting sub command nodes.
 

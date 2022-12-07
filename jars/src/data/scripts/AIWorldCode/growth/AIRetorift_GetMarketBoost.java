@@ -1,4 +1,4 @@
-package data.scripts.AIWorldCode.SupportCode;
+package data.scripts.AIWorldCode.growth;
 
 import com.fs.graphics.G;
 import com.fs.starfarer.api.Global;
@@ -10,15 +10,15 @@ import com.fs.starfarer.api.util.Pair;
 import java.util.List;
 
 public class AIRetorift_GetMarketBoost {
-    private static final String IT2 = "AIretrofit_roboticPopFactoryV2";
-    private static final float T2ImprovedBonus = 1.3f;
-    private static final float T2PowerPerSize = 10;
-    private static final float T2HazzardBonus = 1.3f;
-
-    private static final String IT1 = "AIretrofit_roboticPopFactoryV1";
+    private static final String IT1 = "AIRetrofit_roboticPopFactoryV1";
     private static final float T1ImprovedBonus = 1.3f;
     private static final float T1PowerPerSize = 5;
     private static final float T1HazzardBonus = 1.3f;
+
+    private static final String IT2 = "AIRetrofit_roboticPopFactoryV2";
+    private static final float T2ImprovedBonus = 1.3f;
+    private static final float T2PowerPerSize = 10;
+    private static final float T2HazzardBonus = 1.3f;
 
     private static final String requredCondition = "AIRetrofit_AIPop";//AIRetrofits market condition ID
 

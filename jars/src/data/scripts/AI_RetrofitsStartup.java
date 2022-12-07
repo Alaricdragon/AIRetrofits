@@ -224,11 +224,10 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //new AIRetrofit_FleetListener(false);//like this?
         Global.getSector().addTransientListener(new AIRetrofit_FleetListener(false));
         Global.getSector().registerPlugin(new AIRetrofit_FleetPlugin());
-        //HERE! this is disabled until marketRetrofits is online and working =(
-        /*
+        //HERE! this is here until marketRetrofits is online and working =)
         AIRetrofit_econUpdateListiner a = new AIRetrofit_econUpdateListiner();
         Global.getSector().getEconomy().addUpdateListener(a);
-        */
+
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
     }
     private void AISupplyDemandSet(){
@@ -239,104 +238,25 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         a.addChange(d);
         d = new MarketRetrofit_CCSwapDemand("AIRetrofits_DFood",0,"food","AIretrofit_maintainsPacts");
         a.addChange(d);
-        //d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Ddomestic_goods",0,"domestic_goods","AIretrofit_CommandRely");
-        //a.addChange(d);
+        d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Ddomestic_goods",0,"domestic_goods","AIretrofit_CommandRely");
+        a.addChange(d);
         d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Dluxury_goods",0,"luxury_goods","AIretrofit_humanInterfaceNode");
         a.addChange(d);
         d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Ddrugs",0,"drugs","AIretrofit_SurveyDrone");
         a.addChange(d);
-        MarketRetrofit_CCSwapSupply e = new MarketRetrofit_CCSwapSupply("AIRetrofits_DCrew",0,"crew","AIretrofit_WorkerDrone");
+        MarketRetrofit_CCSwapSupply e = new MarketRetrofit_CCSwapSupply("AIRetrofits_SCrew",0,"crew","AIretrofit_WorkerDrone");
         a.addChange(e);
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofits_Dmarines",0,"marines","AIretrofit_CombatDrone");
+        e = new MarketRetrofit_CCSwapSupply("AIRetrofits_Smarines",0,"marines","AIretrofit_CombatDrone");
         a.addChange(e);
         //a.addChange();
 
 
-        /*AIRetrofit_CCSetSecondary b = new AIRetrofit_CCSetSecondary("AIRetrofits_Secondary1");
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofit_Sdrugs",0,"drugs","AIretrofit_SurveyDrone");
+
+        AIRetrofit_CCSetSecondary b = new AIRetrofit_CCSetSecondary("AIRetrofit_Second");
+        e = new MarketRetrofit_CCSwapSupply("AIRetrofits_Spaceport_SCrew",0,"crew","AIretrofit_WorkerDrone");
+        e.modifyMult("a",0);
         b.addChange(e);
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofit_SCrew",0,"crew","AIretrofit_WorkerDrone");
-        b.addChange(e);
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofit_SOrganics",0,"Organics","AIretrofit_SubCommandNode");
-        b.addChange(e);
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofit_SHarvested Organs",0,"Harvested Organs","AIretrofit_roboticReplacementParts");
-        b.addChange(e);
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofit_S",0,"","");
-        b.addChange(e);*/
-        //disabled until market retrofits is online.
-        /*AIRetrofit_SuplyDemandSet set = new AIRetrofit_SuplyDemandSet("AIRetrofits_AIPop");
-        crewReplacer_SupplyDemandChange supply = new crewReplacer_SupplyDemandChange("basicSupply",true);
-        supply.add("crew","AIretrofit_WorkerDrone");
-        supply.add("marines","AIretrofit_CombatDrone");
-        supply.addException("population");
-        set.addItem(supply);
-
-        supply = new crewReplacer_SupplyDemandChange("basicCrewDemand",false);
-        supply.add("crew","AIretrofit_WorkerDrone");
-        supply.add("marines","AIretrofit_CombatDrone");
-        set.addItem(supply);
-*/
-        /*
-        supply = new crewReplacer_SupplyDemandChange("basicFoodDemand",false);
-        supply.add("Food","AIretrofit_maintainsPacts");
-        set.addItem(supply);
-
-        supply = new crewReplacer_SupplyDemandChange("basicDomesticGoodsDemand",false);
-        supply.add("Domestic Goods","AIretrofit_CommandRely");
-        set.addItem(supply);
-*//*
-        supply = new crewReplacer_SupplyDemandChange("basicLuxuryGoodsDemand",false);
-        supply.add("Luxury Goods","AIretrofit_humanInterfaceNode");
-        set.addItem(supply);
-
-        supply = new crewReplacer_SupplyDemandChange("basicDrugsDemand",false);
-        supply.add("drugs","AIretrofit_SurveyDrone");
-        set.addItem(supply);
-*/
-        /*
-        supply = new crewReplacer_SupplyDemandChange("PopulationSupply",true);
-        supply.add("drugs","AIretrofit_SurveyDrone");
-        supply.add("crew","AIretrofit_WorkerDrone");
-        supply.addRequirement("population");
-        set.addItem(supply);
-        */
-        /*
-        supply = new crewReplacer_SupplyDemandChange("PopulationDemand",false);
-        supply.add("Organics","AIretrofit_SubCommandNode");
-        supply.add("Harvested Organs","AIretrofit_roboticReplacementParts");
-        supply.addRequirement("population");
-        //supply.add("marines","AIretrofit_CombatDrone");
-        set.addItem(supply);
-
-        AIRetrofit_SupplyDemandStarport starportMod = new AIRetrofit_SupplyDemandStarport("StarportOther",false);
-        starportMod.addRequirement("spaceport");
-        starportMod.addRequirement("megaport");
-        set.addItem(starportMod);
-        crewReplacer_SupplyDemandLists.addOrMergeRuleSet(set);
-
-        set = new AIRetrofit_SuplyDemandSet("AIRetrofits_AIPopGrowth");
-        AIRetrofit_SupplyDemandPopulationGrowth pop_growth = new AIRetrofit_SupplyDemandPopulationGrowth("PopulationGrowth",false);
-        pop_growth.addRequirement("population");
-        set.addItem(pop_growth);
-
-        //this one might not be needed. might want to mvoe all population growth into "PopulationGrowth"
-        AIRetrofit_SupplyDemand_Population pop_supply = new AIRetrofit_SupplyDemand_Population("PopulationOther",false);
-        pop_supply.addRequirement("population");
-        set.addItem(pop_supply);
-
-        crewReplacer_SupplyDemandLists.addOrMergeRuleSet(set);
-
-
-
-        set = new AIRetrofit_SuplyDemandSet("AIRetrofit_combatCondition");
-        AIRetrofit_SupplyDemand_Combat combatDemand = new AIRetrofit_SupplyDemand_Combat("combatRequest",false);
-        set.addItem(combatDemand);
-        crewReplacer_SupplyDemandLists.addOrMergeRuleSet(set);
-        //AIRetrofit_SupplyDemand_Population pop_demand_growth = new AIRetrofit_SupplyDemand_Population("PopulationGrowthDemand",false);
-        //supply.addRequirement("population");
-        //AIRetrofit_SuplyDemandSet.addItem(pop_supply);
-
-         */
+        b.applyToIndustry("spaceport");
     }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")

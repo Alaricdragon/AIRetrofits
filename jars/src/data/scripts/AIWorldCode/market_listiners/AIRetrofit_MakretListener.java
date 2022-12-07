@@ -14,7 +14,6 @@ import data.scripts.AIWorldCode.Fleet.setDataLists;
 
 import java.util.List;
 
-//HERE. this might not be required or wanted in the slightest? i need to swap the people out with new people.
 public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     static String Condition = "AIRetrofit_AIPop";
     public AIRetrofit_MakretListener(boolean permaRegister) {
@@ -103,7 +102,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     private void runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
-        if(!market.hasSubmarket(shipYardSubmarket) && market.getIndustry(shipYardIndustry).isFunctional()){
+        if(!market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
             return;
         }/*else{
             int[] a = {};

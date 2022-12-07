@@ -16,6 +16,16 @@ balance:
         a lot of old industry's were overpriced. i thought they would produce credits but you need demand for a good to sell it.
         reduced cost of all industries by a lot.
         moderately reduced upkeep on some buildings, raised it on others.
+    population and instructor on AI-Pop markets have changed stability:
+        + 2 stability base.
+        + 1 for meeting 'Maintenance Parts' demand
+        + 1 for meeting 'Human Interface Node' demand
+        + 1 for meeting 'Command Relay' demand
+        + 1 for meeting 'Sub-Command Node' demand
+        - 1 for not meeting 'Maintenance Parts' demand at all sizes
+        - 1 for not meeting 'Human Interface Node' demand at size 4+
+        - 1 for not meeting 'Command Relay' demand at size 4+
+        - 1 for not meeting 'Sub-Command Node' demand at size 5+
 new:
     added an option to add the AIRetrofit hullmod, robot forge hullmod, and robot forge ability at the start of your game
     industry:
