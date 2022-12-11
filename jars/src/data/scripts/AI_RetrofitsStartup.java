@@ -55,10 +55,24 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     float Co_Po = Global.getSettings().getFloat("AIRetrofits_Combat_Power");
     float Co_Pr = Global.getSettings().getFloat("AIRetrofits_Combat_priority");
 
+    float Hm_Po = Global.getSettings().getFloat("AIRetrofits_MissionHijack_Power");
+    float Hm_Pr = Global.getSettings().getFloat("AIRetrofits_MissionHijack_priority");
+
+    float RHR_Po = Global.getSettings().getFloat("AIRetrofits_repairHyperRelay_Power");
+    float RHR_Pr = Global.getSettings().getFloat("AIRetrofits_repairHyperRelay_priority");
+
+    float nexM_Po = Global.getSettings().getFloat("AIRetrofits_GroundBattle_Power");
+    float nexM_Pr = Global.getSettings().getFloat("AIRetrofits_GroundBattle_priority");
+
     String AICoreJob = "AIRetrofit_OutpostAICore";
     String AIWorkerJob = "AIRetrofit_OutpostWorker";
     String SupplyJob = "AIRetrofit_OutpostSupply";
     String MachineryJob = "AIRetrofit_OutpostMachinery";
+    String hijack_marinesJob = "Mission_hijack_marines";
+    String repairHyperRelayCrewJob = "repairHyperRelayCrew";
+
+
+    String nexMarinesJob = "nex_groundBattle_marines";
     private void crew_replacer_start_new(){
         crewReplacer_Job tempJob = crewReplacer_Main.getJob("survey_crew");
         /*AIRetrofit_Robots tempcrew = new AIRetrofit_Robots();
@@ -75,6 +89,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempJob = crewReplacer_Main.getJob("raiding_marines");
         tempJob.addNewCrew("AIretrofit_CombatDrone",Co_Po,Co_Pr);
         */
+
+        //base game survey job
         AIRetrofit_Robots tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_SurveyDrone";
         tempCrew.crewPower = Su_Po;
@@ -82,6 +98,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempJob.addCrew(tempCrew);
         tempJob.addNewCrew("crewname",1,10);
 
+        //base game salvage job
         tempJob = crewReplacer_Main.getJob("salvage_crew");//survey_main
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_WorkerDrone";
@@ -89,6 +106,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempCrew.crewPriority = Sa_Pr;
         tempJob.addCrew(tempCrew);
 
+        //base game raiding job
         tempJob = crewReplacer_Main.getJob("raiding_marines");
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_CombatDrone";
@@ -96,14 +114,40 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempCrew.crewPriority = Co_Pr;
         tempJob.addCrew(tempCrew);
 
+        //AIRetrofit added jobs
         tempJob = crewReplacer_Main.getJob(AICoreJob);//addItem AIretrofit_WorkerDrone 1000; addItem supplies 200; addItem heavy_machinery 200; addItem AIretrofit_SubCommandNode 10;
-        tempJob.addNewCrew("AIretrofit_SubCommandNode",1,1);
+        tempJob.addNewCrew("AIretrofit_SubCommandNode",1,10);
         tempJob = crewReplacer_Main.getJob(AIWorkerJob);
-        tempJob.addNewCrew("AIretrofit_WorkerDrone",1,1);//AIretrofit_CombatDrone
+        tempJob.addNewCrew("AIretrofit_WorkerDrone",1,10);//AIretrofit_CombatDrone
         tempJob = crewReplacer_Main.getJob(SupplyJob);
-        tempJob.addNewCrew("supplies",1,1);
+        tempJob.addNewCrew("supplies",1,10);
         tempJob = crewReplacer_Main.getJob(MachineryJob);
-        tempJob.addNewCrew("heavy_machinery",1,1);
+        tempJob.addNewCrew("heavy_machinery",1,10);
+
+        //Mission_hijack_marines
+        tempJob = crewReplacer_Main.getJob(hijack_marinesJob);
+        tempCrew = new AIRetrofit_Robots();
+        tempCrew.name = "AIretrofit_CombatDrone";
+        tempCrew.crewPower = nexM_Po;
+        tempCrew.crewPriority = nexM_Pr;
+        tempJob.addCrew(tempCrew);
+
+        //repairHyperRelayCrew
+        tempJob = crewReplacer_Main.getJob(repairHyperRelayCrewJob);
+        tempCrew = new AIRetrofit_Robots();
+        tempCrew.name = "AIretrofit_WorkerDrone";
+        tempCrew.crewPower = RHR_Po;
+        tempCrew.crewPriority = RHR_Pr;
+        tempJob.addCrew(tempCrew);
+
+        //nex job basic:
+        tempJob = crewReplacer_Main.getJob(nexMarinesJob);
+        tempCrew = new AIRetrofit_Robots();
+        tempCrew.name = "AIretrofit_CombatDrone";
+        tempCrew.crewPower = Hm_Po;
+        tempCrew.crewPriority = Hm_Pr;
+        tempJob.addCrew(tempCrew);
+
 /*
         tempJob = crewReplacer_Main.getJob("survey_crew");
         tempJob.addNewCrew("AIretrofit_WorkerDrone",25,10);

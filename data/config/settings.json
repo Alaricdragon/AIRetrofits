@@ -123,17 +123,30 @@
 	"AIRetrofits_AlphaMulti":1.45,
 	"AIRetrofits_OmegaMulti":1.60,
 
-	#salvage drones
+	#salvage drones (salage)
 	"AIRetrofits_Salvage_Power":1,
 	"AIRetrofits_Salvage_priority":11,
+
+	#salvage drones (repair hyper relay)
+	"AIRetrofits_repairHyperRelay_Power":1,
+	"AIRetrofits_repairHyperRelay_priority":11,
 
 	#survey drones
 	"AIRetrofits_Survey_Power":1.5,
 	"AIRetrofits_Survey_priority":11,
 
-	#combat drones
+	#combat drones (raiding)
 	"AIRetrofits_Combat_Power":0.5,
 	"AIRetrofits_Combat_priority":11,
+
+	#combat drones (steal a starship)
+	"AIRetrofits_MissionHijack_Power":0.5,
+	"AIRetrofits_MissionHijack_priority":11,
+
+	#combat drones (nex_ground battle)
+	"AIRetrofits_GroundBattle_Power":0.5,
+	"AIRetrofits_GroundBattle_priority":11,
+
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,
 

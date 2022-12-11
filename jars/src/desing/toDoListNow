@@ -1,4 +1,15 @@
 to do list:
+NEW PLAN:
+    reroot all effort into makeing this bare bones workable so i can play Starsector with it.
+    requirements:
+        1) fix rules CSV file
+        2) make manufactures output resources.
+        3) reset all industry stats to required amounts.
+        4) (DONE) add support for new crew replacer jobs and nex invasion job.
+    wamts:
+        1) add all not yet added options (market growth) to settings.
+        2) fix up non rules.csv bugs in founding markets.
+        3) fix the rest of the to do list.
 Industrys:
     add descriptions to CSV file.
     finish balance.
