@@ -111,7 +111,7 @@ public class AIRetrofit_SupplyDemandPopulationGrowth extends crewReplacer_Supply
     private String T2FactoryDescription = "Robots are being produced in this faction, for this faction!";
     private void addRobotFactory(PopulationComposition incoming,MarketAPI market){
         List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
-        double[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
+        float[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
         incoming.getWeight().modifyFlat(T1FactoryName, (float) mods[1],T1FactoryDescription);
         incoming.getWeight().modifyFlat(T2FactoryName, (float) mods[0],T2FactoryDescription);
     }

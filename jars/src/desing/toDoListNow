@@ -2,7 +2,7 @@ to do list:
 Industrys:
     add descriptions to CSV file.
     finish balance.
-    finish adding supply demand and effects to all buildings.
+    add AICore related code to all buildings that need it.
 Shipyard:
     to do:
         (DONE)add the ability for ships from a market with a shipyard to get the shipyard's hullmod on them.

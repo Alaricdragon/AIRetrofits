@@ -261,7 +261,7 @@ manufactures
         AI-Cores:
             gamma:
             beta:
-            alpha:
+            alpha: normal + increased drone output
         extra:
         industry: false
         6 types:

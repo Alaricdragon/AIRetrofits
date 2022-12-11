@@ -84,9 +84,10 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
     private static String T2FactoryDescription = "Robots are being produced in this faction, for this faction!";
     private static void addRobotFactory(PopulationComposition incoming,MarketAPI market){
         List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
-        double[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
-        incoming.getWeight().modifyFlat(T1FactoryName, (float) mods[1],T1FactoryDescription);
-        incoming.getWeight().modifyFlat(T2FactoryName, (float) mods[0],T2FactoryDescription);
+        float[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
+        //AIRetorift_GetMarketBoost.loging("final mods: " + mods[0] + ", " + mods[1]);
+        incoming.getWeight().modifyFlat(T1FactoryName, mods[1],T1FactoryDescription);
+        incoming.getWeight().modifyFlat(T2FactoryName, mods[0],T2FactoryDescription);
     }
     static String hazzardPayName = "Hazard pay robot factory's";
     static String hazzardPayDescription = "Building robots with hazard pay";

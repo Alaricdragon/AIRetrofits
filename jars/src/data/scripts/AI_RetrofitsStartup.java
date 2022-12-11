@@ -261,4 +261,9 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")
     }
+
+    public static void loging(String output){
+        //final Logger LOG = Global.getLogger(this.getClass());
+        //LOG.info(output);
+    }
 }
