@@ -47,4 +47,9 @@ public class AIRetrofit_advancedSalvageRobotManufactory extends AIRetrofit_Indus
         CargoAPI result = new
         return result;*/
     }
+
+    @Override
+    public boolean isAvailableToBuild(){
+        return false;
+    }
 }

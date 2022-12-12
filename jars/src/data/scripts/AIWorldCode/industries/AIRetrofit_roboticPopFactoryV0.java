@@ -65,7 +65,7 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
             return;
         }
         float bonus = 0;
-        bonus += market.getSize() * 2;
+        bonus += market.getSize() * 3;
         if (this.isImproved()){
             bonus *= 2;
         }

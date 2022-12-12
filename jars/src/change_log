@@ -12,6 +12,9 @@ fixes:
 balance:
     AI-Pop market growth:
         changed the robot factory set of buildings to now produce population on market/system/faction, depending on upgrade level.
+            lv0: provides 3 * size growth to the world its built on
+            lv1: provides 5 * size growth, divided between to all friendly AI-Pop markets in system (based on each worlds market size)
+            lv2: provides 10 * size growth, divided between all same faction AI-Pop markets in the sector (based on each worlds market size)
     industry cost, build time, and upkeep cost:
         a lot of old industry's were overpriced. i thought they would produce credits but you need demand for a good to sell it.
         reduced cost of all industries by a lot.
@@ -29,10 +32,10 @@ balance:
 new:
     added an option to add the AIRetrofit hullmod, robot forge hullmod, and robot forge ability at the start of your game
     industry:
-        added a new industry called Robotic Shipyard, that is can be built at an AI market and is able to slowly add an improved version of AIRetrofits to ships.
+        added a new industry called Robotic Shipyard, that is can be built at an AI-Pop market and is able to slowly add a improved version of AIRetrofits to ships.
 improvements:
     (thank you to the editor: Capesh) added manny manny spelling and grammar fixes to a lot of things. made things a little easier to understand as well. thank you <3
-
+prep work: prepared for a few more miner industry's to be added latter
 
 v0.7.2:
 save compatible with v0.7+

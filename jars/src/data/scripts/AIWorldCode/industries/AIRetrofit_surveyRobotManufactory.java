@@ -46,4 +46,8 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_IndustryBase{
         CargoAPI result = new
         return result;*/
     }
+    @Override
+    public boolean isAvailableToBuild(){
+        return false;
+    }
 }

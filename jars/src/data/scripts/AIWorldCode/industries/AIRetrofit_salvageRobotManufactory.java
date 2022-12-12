@@ -53,4 +53,9 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_IndustryBase
         CargoAPI result = new
         return result;*/
     }
+
+    @Override
+    public boolean isAvailableToBuild(){
+        return false;
+    }
 }

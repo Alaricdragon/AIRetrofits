@@ -3,30 +3,37 @@ NEW PLAN:
     reroot all effort into makeing this bare bones workable so i can play Starsector with it.
     requirements:
         1) fix rules CSV file
-        2) make manufactures output resources.
-        3) reset all industry stats to required amounts.
-        4) (DONE) add support for new crew replacer jobs and nex invasion job.
-    wamts:
+        2) (DONE) reset all industry stats to required amounts.
+        3) (DONE) add support for new crew replacer jobs and nex invasion job.
+    wants:
         1) add all not yet added options (market growth) to settings.
         2) fix up non rules.csv bugs in founding markets.
         3) fix the rest of the to do list.
+        4) make manufactures output resources.
 Industrys:
-    add descriptions to CSV file.
-    finish balance.
-    add AICore related code to all buildings that need it.
-Shipyard:
-    to do:
-        (DONE)add the ability for ships from a market with a shipyard to get the shipyard's hullmod on them.
-    issues:
-        color of 'points available' needs to change to improved color when i have the industry improved.
-        if i remove the building, the sub-market will vanish. this will destroy all ships in said submarket.
-         -solution: add a way to move the ships from the shipyard submarket to the storage submarket.
-         -ACTIVE TEMP solution:
-            1) prevent shipyard code from running when the industry is not present
-            2) prevent the upmarket from being removed when there are ships inside of it
-questions:
-    how to make an industry send resources to your supply point
-    how to add text prosaically to an item
+        (done)add descriptions to CSV file.
+        finish balance.
+        add AICore related code to all buildings that need it.
+    Shipyard:
+        to do:
+            (DONE)add the ability for ships from a market with a shipyard to get the shipyard's hullmod on them.
+        issues:
+            color of 'points available' needs to change to improved color when i have the industry improved.
+            if i remove the building, the sub-market will vanish. this will destroy all ships in said submarket.
+             -solution: add a way to move the ships from the shipyard submarket to the storage submarket.
+             -ACTIVE TEMP solution:
+                1) prevent shipyard code from running when the industry is not present
+                2) prevent the upmarket from being removed when there are ships inside of it
+
+    all pop growth buildings:
+        add descriptions to the buildings to tell how mush growth it is generating.
+        add a extra description to tell the player how mush extra growth hazard pay is generating
+        add descriptions to 'improve world' to tell how mush more growth you will generate.
+        add descriptions to 'install AI core' to tell you how mush more growth a alpha core will give
+    questions:
+        how to make an industry send resources to your supply point
+        how to add text prosaically to an item
+
 market:
     (done!)build the framework for all the new buildings.
     (done!) finish making the code to do the market growth calculation.

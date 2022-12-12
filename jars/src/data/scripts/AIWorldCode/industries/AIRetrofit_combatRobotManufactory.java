@@ -47,4 +47,9 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_IndustryBase{
         CargoAPI result = new
         return result;*/
     }
+
+    @Override
+    public boolean isAvailableToBuild(){
+        return false;
+    }
 }

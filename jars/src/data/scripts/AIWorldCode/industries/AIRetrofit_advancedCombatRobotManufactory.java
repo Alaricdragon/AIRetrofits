@@ -52,4 +52,9 @@ public class AIRetrofit_advancedCombatRobotManufactory extends AIRetrofit_Indust
         CargoAPI result = new
         return result;*/
     }
+
+    @Override
+    public boolean isAvailableToBuild(){
+        return false;
+    }
 }
