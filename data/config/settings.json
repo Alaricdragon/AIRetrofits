@@ -54,6 +54,40 @@
 	#"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
 	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":0,
 	#"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
+
+	#settings for market growth,
+	#descriptions
+	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing system wide market growth",
+	"AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing sector wide market growth",
+	"AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
+
+	#growth mods,
+	"AIRetrofits_MarketGrowth_hazzardGrowthPerSize": 5,
+
+	"AIRetrofits_MarketGrowth_T1PowerPerSize": 5,#base value
+	"AIRetrofits_MarketGrowth_T1ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T1HazzardBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T1AlphaCoreBonus":0.3,#increase multiplyer,
+
+	"AIRetrofits_MarketGrowth_T2PowerPerSize": 10,#base value
+	"AIRetrofits_MarketGrowth_T2ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T2HazzardBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T2AlphaCoreBonus":0.3,#increase multiplyer,
+
+
+	"AIRetrofits_MarketGrowth_maxSize": 6,#the size to stop giveing growth at. dose not effect the max size of the market.,
+
+	"AIRetrofits_MarketGrowth_logisticTheshhold": 20,
+
+	#for growth past the value of AIRetrofits_logisticTheshhold at a single stat,
+	#,(float)Math.max(A * (Math.log(C * power + D) / Math.log(B)) + E,0);
+	"AIRetrofits_MarketGrowth_logisticA": 1.5,
+	"AIRetrofits_MarketGrowth_logisticB": 1.1,
+	"AIRetrofits_MarketGrowth_logisticC": 1.2,
+	"AIRetrofits_MarketGrowth_logisticD": 1,
+	"AIRetrofits_MarketGrowth_logisticE": 0,
+
+
 	#settings for robot forge power.
 	"AIRetrofits_CorruptedMetal":1,
 	"AIRetrofits_PristineMetal":5,
@@ -167,6 +201,18 @@
 	"AIRetrofitShipyard_perCrewDESTROYER": 2,
 	"AIRetrofitShipyard_perCrewCRUISER": 4,
 	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
+
+	#robotic pop factory T1
+	"AIRetrofit_PopFactoryT1_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT1_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT1_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
+	"AIRetrofit_PopFactoryT1_extraDescription": "this factory is producing %s market growth devided between friendly AIPop worlds in system",
+
+	#robotic pop factory T2
+	"AIRetrofit_PopFactoryT2_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT2_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT2_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
+	"AIRetrofit_PopFactoryT2_extraDescription": "this factory is producing %s market growth devided between faction AIPop worlds in the sector",
 
 	#temp graphics settings for things im testing
 	"graphics":{

@@ -1,11 +1,18 @@
 package data.scripts.AIWorldCode.industries;
 
+import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost;
+
+import java.awt.*;
 
 public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
     final static String C1 = "metals";
@@ -61,4 +68,60 @@ public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
     public void unapply() {
         super.unapply();
     }
+
+
+
+
+
+    final static String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT2_alphaDescription");
+    final static float alphaValue = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
+
+    final static float improveValue = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");
+    final static String improveDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_improveDescription");
+    final static String improvedDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_improvedDescription");
+
+    final static String extraDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_extraDescription");
+    @Override
+    protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+        //tooltip.addPara(alphaDescription,0f);
+        Color highlight = Misc.getHighlightColor();
+        String aStr = "" + (int)(100*(alphaValue)) + "%";
+        tooltip.addPara(alphaDescription, 0f, highlight, aStr);
+    }
+    @Override
+    public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {
+        float opad = 10f;
+        Color highlight = Misc.getHighlightColor();
+
+        String aStr = "" + (int)(100*(improveValue)) + "%";
+
+        if (mode == ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
+            info.addPara(improveDescription, 0f, highlight, aStr);
+        } else {
+            info.addPara(improvedDescription, 0f, highlight, aStr);
+        }
+
+        info.addSpacer(opad);
+        //super.addImproveDesc(info, mode);
+        float initPad = 0f;
+        if (mode != ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
+            info.addPara("Each improvement made at a colony doubles the number of " +
+                            "" + Misc.STORY + " points required to make an additional improvement.", initPad,
+                    Misc.getStoryOptionColor(), Misc.STORY + " points");
+        }
+    }
+
+    @Override
+    protected void	addPostDescriptionSection(TooltipMakerAPI tooltip, Industry.IndustryTooltipMode mode){
+        //mode.
+        float opad = 10f;
+        Color highlight = Misc.getHighlightColor();
+        tooltip.addSpacer(opad);
+
+        String[] exstra = {
+                "" + AIRetorift_GetMarketBoost.getMarketPowerGlobal(market),
+        };
+        tooltip.addPara(extraDescription, 0f, highlight, exstra);
+    }
+
 }

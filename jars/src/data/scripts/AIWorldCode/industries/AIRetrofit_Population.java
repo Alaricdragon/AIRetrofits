@@ -43,6 +43,7 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
     static String C4 = "AIretrofit_SurveyDrone";//replaces DRUGS
     static String C5 = "AIretrofit_roboticReplacementParts";//replaces ORGANS
     static String C6 = "AIretrofit_SubCommandNode";//replaces ORGANICS
+    static String C7 = "AIretrofit_WorkerDrone";
 
     static String id0 = "population_AIRetrofit_0";
     static String id1 = "population_AIRetrofit_1";
@@ -139,6 +140,8 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
         demand(C4, size - 2);
         demand(C5, size - 3);
         demand(C6, size - 2);
+
+        demand(C7,size);
 
         demand(Commodities.SUPPLIES, Math.min(size, 3));
 

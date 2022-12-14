@@ -1,13 +1,13 @@
 changelog for all my changes as i make them so i dont forget again.
 v0.7.3:
 not save compatible with any other version.
-compatibility:
-    made it so you get the AIRetrofit ability, and hullmods after getting the AI-Ships skill. this makes this mod compatible with other mods that change the AIShips skill.
 fixes:
     made it so you get the robot forge ability after visiting an market when you have the robot forge hullmod.
-    AIRetrofit:
+    AIRetrofit hullmod:
         reduced how bloated the modular opp cost of AI Retrofit hullmod was (from 27 hullmods + 27 scripts to 10 hullmods and 1 script)
-        hopefully made the description of the hullmod respect what ship you are looking at, and stop giving wildly inaccurate guesses on the opp costs of this hullmod.
+        (hopefully) made the description of the hullmod respect what ship you are looking at, and stop giving wildly inaccurate guesses on the opp costs of this hullmod.
+    found a AI market:
+        (hopefully) fixed the buggy nature of the script that sometimes caused issues (thanks Histidine, for helping with that issue)
 
 balance:
     AI-Pop market growth:
@@ -35,7 +35,18 @@ new:
         added a new industry called Robotic Shipyard, that is can be built at an AI-Pop market and is able to slowly add a improved version of AIRetrofits to ships.
 improvements:
     (thank you to the editor: Capesh) added manny manny spelling and grammar fixes to a lot of things. made things a little easier to understand as well. thank you <3
-prep work: prepared for a few more miner industry's to be added latter
+prep work:
+    prepared for a few more miner industry's to be added latter
+modding:
+    crew replacer:
+        added support for the following jobs:
+        1) crew replacer's          'Mission_hijack_marines'     (steal a starship missions) with 'combat robots'
+        2) crew replacer's          'repairHyperRelayCrew'       (repair hyper relay)        with 'salvage robots'
+        3)Nexerelin 0.10.5x beta    'nex_groundBattle_marines'   (invasions)                 with 'combat robots'
+    compatibility:
+        made it so you get the AIRetrofit ability, and hullmods after getting the AI-Ships skill. this makes this mod compatible with other mods that change the AIShips skill.
+
+
 
 v0.7.2:
 save compatible with v0.7+

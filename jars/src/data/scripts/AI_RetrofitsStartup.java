@@ -69,7 +69,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     String SupplyJob = "AIRetrofit_OutpostSupply";
     String MachineryJob = "AIRetrofit_OutpostMachinery";
     String hijack_marinesJob = "Mission_hijack_marines";
-    String repairHyperRelayCrewJob = "repairHyperRelayCrew";
+    String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
 
 
     String nexMarinesJob = "nex_groundBattle_marines";

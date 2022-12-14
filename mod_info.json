@@ -9,9 +9,9 @@
         	{
         	    "id": "aaacrew_replacer",
         	    "name": "crew_replacer",
-        	    #"version": "1"
         	},
-	],
+			{"id": "aaamarketRetrofits", "name": "Market Retrofits"}
+		],
 	"jars":["jars/AIretrofit.jar"],
 	"modPlugin":"data.scripts.AI_RetrofitsStartup",
 }

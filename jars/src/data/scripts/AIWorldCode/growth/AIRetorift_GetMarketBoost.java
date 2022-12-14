@@ -1,6 +1,5 @@
 package data.scripts.AIWorldCode.growth;
 
-import com.fs.graphics.G;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
@@ -11,20 +10,35 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 public class AIRetorift_GetMarketBoost {
-    private static boolean logingActive = true;
+    private static boolean logingActive = false;
     private static final String IT1 = "AIRetrofit_roboticPopFactoryV1";
-    private static final float T1ImprovedBonus = 1.3f;
-    private static final float T1PowerPerSize = 5;
-    private static final float T1HazzardBonus = 1.3f;
+    private static final float T1ImprovedBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");//1.3f;
+    private static final float T1PowerPerSize = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1PowerPerSize");//5;
+    private static final float T1HazzardBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1HazzardBonus");//1.3f;
+    private static final float T1AplhaBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
 
     private static final String IT2 = "AIRetrofit_roboticPopFactoryV2";
-    private static final float T2ImprovedBonus = 1.3f;
-    private static final float T2PowerPerSize = 10;
-    private static final float T2HazzardBonus = 1.3f;
+    private static final float T2ImprovedBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2ImprovedBonus");//1.3f;
+    private static final float T2PowerPerSize = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2PowerPerSize");//10;
+    private static final float T2HazzardBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2HazzardBonus");//1.3f;
+    private static final float T2AplhaBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
 
+
+    private static final float logisticTheshhold = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticTheshhold");//20;
     private static final String requredCondition = "AIRetrofit_AIPop";//AIRetrofits market condition ID
+    private static final String AlphaCore = "alpha_core";
 
-    private static final int maxSize = 6;//size of an market before it stops growing.
+    private static final int maxSize = Global.getSettings().getInt("AIRetrofits_MarketGrowth_maxSize");//size of an market before it stops growing.
+    //(float)Math.max(1.5 * (Math.log(0.2 * power + 1) / Math.log(1.1)) + 0,0);
+    //f(x) = 1.5 * log(1.1,0.2 * x + 1) + 0
+    private static final float logFunctionA = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticA");//1.5f;
+    private static final float logFunctionB = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticB");//1.1f;
+    private static final float logFunctionC = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticC");//0.2f;
+    private static final float logFunctionD = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticD");//1;
+    private static final float logFunctionE = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticE");//0;
+    //(float)Math.max(A * (Math.log(C * power + D) / Math.log(B)) + E,0);
+    //(float)Math.max(logFunctionA * (Math.log(logFunctionC * power + logFunctionD) / Math.log(logFunctionB)) + logFunctionE,0);
+
     //HERE. not compleat yet.
     public static float[] forceCalculate(List<MarketAPI>  markets, MarketAPI market) {
         //markets[0].getStarSystem().getPlanets();
@@ -112,7 +126,6 @@ public class AIRetorift_GetMarketBoost {
         return power;
     }
     //HERE not done.
-    static float logisticTheshhold = 10;
     private static float[] getGrowth(MarketAPI market,float GPSGlobal,float GPSLocal){
         /*
             HERE:
@@ -160,7 +173,8 @@ public class AIRetorift_GetMarketBoost {
         return out;
     }
     private static float logFunction(float power){
-        return (float)Math.max(1.5 * (Math.log(0.2 * power + 1) / Math.log(1.1)) + 0,0);
+        //return (float)Math.max(1.5 * (Math.log(0.2 * power + 1) / Math.log(1.1)) + 0,0);
+        return (float)Math.max(logFunctionA * (Math.log(logFunctionC * power + logFunctionD) / Math.log(logFunctionB)) + logFunctionE,0);
     }
     //HERE working, but not done. gets the global growth bonus your faction has from an single market
     public static float getMarketPowerGlobal(MarketAPI market){
@@ -168,10 +182,13 @@ public class AIRetorift_GetMarketBoost {
             float basePower = market.getSize();
             float bonus = 1;
             if(market.getIndustry(IT2).isImproved()){
-                bonus = T2ImprovedBonus;
+                bonus += T2ImprovedBonus;
             }
             if(market.isImmigrationIncentivesOn()){
-                bonus *= T2HazzardBonus;
+                bonus += T2HazzardBonus;
+            }
+            if(market.getIndustry(IT2).getAICoreId() != null && market.getIndustry(IT2).getAICoreId().equals(AlphaCore)){
+                bonus+=T2AplhaBonus;
             }
             List<MutableCommodityQuantity> temp = market.getIndustry(IT2).getAllDemand();
             String[] demand = new String[temp.size()];
@@ -195,10 +212,13 @@ public class AIRetorift_GetMarketBoost {
             float basePower = market.getSize();
             float bonus = 1;
             if(market.getIndustry(IT1).isImproved()){
-                bonus *= T1ImprovedBonus;
+                bonus += T1ImprovedBonus;
             }
             if(market.isImmigrationIncentivesOn()){
-                bonus *= T1HazzardBonus;
+                bonus += T1HazzardBonus;
+            }
+            if(market.getIndustry(IT1).getAICoreId() != null && market.getIndustry(IT1).getAICoreId().equals(AlphaCore)){
+                bonus+=T1AplhaBonus;
             }
             List<MutableCommodityQuantity> temp = market.getIndustry(IT1).getAllDemand();
             String[] demand = new String[temp.size()];

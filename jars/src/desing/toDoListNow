@@ -2,7 +2,7 @@ to do list:
 NEW PLAN:
     reroot all effort into makeing this bare bones workable so i can play Starsector with it.
     requirements:
-        1) fix rules CSV file
+        1) (DONE) fix rules CSV file
         2) (DONE) reset all industry stats to required amounts.
         3) (DONE) add support for new crew replacer jobs and nex invasion job.
     wants:

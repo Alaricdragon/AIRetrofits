@@ -79,9 +79,9 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
         market.setIncoming(incoming);
     }
     private static String T1FactoryName = "LocalRobotFactory's";
-    private static String T1FactoryDescription = "Robots are being produced in this system, for this system!";
+    private static String T1FactoryDescription = Global.getSettings().getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
     private static String T2FactoryName = "FactionWideRobotFactory's";
-    private static String T2FactoryDescription = "Robots are being produced in this faction, for this faction!";
+    private static String T2FactoryDescription = Global.getSettings().getString("AIRetrofits_MarketGrowth_T2GrowthDescription");//"Robots are being produced in this faction, providing sector wide market growth";
     private static void addRobotFactory(PopulationComposition incoming,MarketAPI market){
         List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
         float[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
@@ -90,8 +90,8 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
         incoming.getWeight().modifyFlat(T2FactoryName, mods[0],T2FactoryDescription);
     }
     static String hazzardPayName = "Hazard pay robot factory's";
-    static String hazzardPayDescription = "Building robots with hazard pay";
-    static float hazzardGrowthPerSize = 5;
+    static String hazzardPayDescription = Global.getSettings().getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
+    static float hazzardGrowthPerSize = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_hazzardGrowthPerSize");//5;
 
     private static void addHazardPay(PopulationComposition incoming,MarketAPI market){
         if(market.isImmigrationIncentivesOn()){
