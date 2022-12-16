@@ -1,6 +1,8 @@
 package data.scripts;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.impl.campaign.plog.PLStatMarines;
+import com.thoughtworks.xstream.XStream;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_econUpdateListiner;
 import data.scripts.AIWorldCode.supplyDemandClasses.*;
@@ -13,12 +15,14 @@ import data.scripts.robot_forge.AIRetrofits_RobotForge;
 import data.scripts.robot_forge.AIRetrofits_RobotForge_People;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
-import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandChange;
-import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
 
 public class AI_RetrofitsStartup extends BaseModPlugin {
     @Override
     public void onApplicationLoad() {
+        /*
+        XStream x = new XStream();
+        x.alias("PLStatMarines", PLStatMarines.class);*/
+        //Global.getSector().getEconomy().getCommoditySpec().
         //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
         crew_replacer_start_new();
         robot_forge_set();
@@ -32,7 +36,11 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         super.onGameLoad(newGame);
         AIMarketModSet();
     }
-//300,1550
+    /*@Override
+    public void configureXStream(XStream x){
+        x.alias("AIRetrofit_RobotDescriptions",AIRetrofit_RobotDescriptions.class);
+    }*/
+    //300,1550
 //2000,150
     private void crew_replacer_start_outdated(){
         //crew_replacer.addCrewType("AIretrofit_WorkerDrone");

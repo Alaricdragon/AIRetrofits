@@ -6,17 +6,12 @@ NEW PLAN:
         2) (DONE) reset all industry stats to required amounts.
         3) (DONE) add support for new crew replacer jobs and nex invasion job.
     wants:
-        1) add all not yet added options (market growth) to settings.
-        2) fix up non rules.csv bugs in founding markets.
+        1) (DONE)add all not yet added options (market growth) to settings.
+        2) (DONE)fix up non rules.csv bugs in founding markets.
         3) fix the rest of the to do list.
         4) make manufactures output resources.
 Industrys:
-        (done)add descriptions to CSV file.
-        finish balance.
-        add AICore related code to all buildings that need it.
     Shipyard:
-        to do:
-            (DONE)add the ability for ships from a market with a shipyard to get the shipyard's hullmod on them.
         issues:
             color of 'points available' needs to change to improved color when i have the industry improved.
             if i remove the building, the sub-market will vanish. this will destroy all ships in said submarket.
@@ -24,34 +19,16 @@ Industrys:
              -ACTIVE TEMP solution:
                 1) prevent shipyard code from running when the industry is not present
                 2) prevent the upmarket from being removed when there are ships inside of it
-
-    all pop growth buildings:
-        add descriptions to the buildings to tell how mush growth it is generating.
-        add a extra description to tell the player how mush extra growth hazard pay is generating
-        add descriptions to 'improve world' to tell how mush more growth you will generate.
-        add descriptions to 'install AI core' to tell you how mush more growth a alpha core will give
     questions:
         how to make an industry send resources to your supply point
         how to add text prosaically to an item
 
 market:
-    (done!)build the framework for all the new buildings.
-    (done!) finish making the code to do the market growth calculation.
     (started)design and add industries to produce both advanced and basic robotic workers.
-    (done!) create the market growth code for advanced robotic factory's.
-    (started)balance pop growth factory's.
-        -need to add an negative when an factory has an supply defect / exes.
-        -need to put more work into th number of salvage drones an factory produces.
-        -need to put a lot of configs in said market.
-        ISSUE: i seem to be runing the T2 factory growth for bouth the T1 and T2 factory. this needs looking into
     (not possable?)rebuild the hazard button as designed in market growth
 
 Combatability:
     -(done. not tested)add code to make it so you get the robotforge hullmod/skill, and AIRetrofits hullmod when you have AIRetrofits and don't have said hullmods and ability.
-Robot Forge:
-    -(done.)improve descriptions.
-    -(done. not tested)make it so you get the skill after finding the robot forge hullmod.
-    -(started)add an option to build people from sub command nodes.
 
 Robots:
     -add an extra part to there description that shows:
