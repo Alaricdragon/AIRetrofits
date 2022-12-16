@@ -1,22 +1,13 @@
 package data.scripts.AIWorldCode.market_conditions;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
-import com.fs.starfarer.api.characters.FullName;
-import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.econ.BaseMarketConditionPlugin;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
-import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.AIWorldCode.supplyDemandClasses.AIRetrofit_SuplyDemandSet;
-import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
-import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandSet;
-
-import java.util.List;
 
 /*
 applys things like market condition changes, and supply demand changes.
@@ -72,12 +63,19 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded){
         super.createTooltip(tooltip,expanded);
     }
+    private void addHazzardPayCost(){
+        if(market.isImmigrationIncentivesOn()){
+            //market what do i even do here!?!?!
+        }else{
+
+        }
+    }
     private void supplyDemandChange(MarketAPI market){
-        crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,false);
+        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,false);
     }
     public void removeSupplyDemandChange(MarketAPI market){
-        crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,true);
-        crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPopGrowth").applyMarket(market,true);
+        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,true);
+        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPopGrowth").applyMarket(market,true);
 
     }
     private void ChangeMarketConditions(MarketAPI market){

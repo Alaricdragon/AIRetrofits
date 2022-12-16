@@ -2,6 +2,8 @@ package data.scripts.hullmods;
 
 import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.CampaignUIAPI;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
@@ -149,13 +151,13 @@ i want to:
 		MinCrew = stats.getVariant().getHullSpec().getMinCrew();
 		HullSize hullsize = stats.getVariant().getHullSpec().getHullSize();
 		int cost = GetExstraOpCost(MinCrew,hullsize);
-		int Base_cost= 0;
+		int Base_cost= 0;/*
 		parm[0] = cost;
 		parm[1] = (cost + Base_cost);
 		parm[2] = 100;
 		parm[3] = (int) (REPAIR_LOSE * 100);
 		parm[4] = (int) MinCrew;
-		parm[5] = (int) (MinCrew * CREW_USE_MULT);
+		parm[5] = (int) (MinCrew * CREW_USE_MULT);*/
 
 	}
 	@Override
@@ -198,31 +200,30 @@ i want to:
 		//return ship != null;
 		//int exstra_cost = GetExstraOpCost(MinCrew,ship.getHullSize());
 		//a.2)
-		int Base_cost= 0;
-		switch(hullsize){
-			case FRIGATE:
-				Base_cost = 5;
-				break;
-			case DESTROYER:
-				Base_cost = 10;
-				break;
-			case CRUISER:
-				Base_cost = 15;
-				break;
-			case CAPITAL_SHIP:
-				Base_cost = 25;
-				break;
-		}
-		parm[0] = cost;
-		parm[1] = (cost + Base_cost);
-		parm[2] = 100;
-		parm[3] = (int) (REPAIR_LOSE * 100);
-		parm[4] = (int) MinCrew;
-		parm[5] = (int) (MinCrew * CREW_USE_MULT);
+		int Base_cost = this.spec.getCostFor(hullsize);
+		//setDisplayValues(ship);
 		//a.3)
-		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && super.isApplicableToShip(ship);
+		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship);
 	}
 	private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
+		//example of adding a hullmod
+		//stats.getVariant().addMod("mymod_temp0");
+		//d.0)
+		int b;
+		String temp;
+		//d.1)
+		for(int a = 4096; a >= 1 && exstra_cost > 0; a = a / 2){
+			//d.2)
+			//d.3)
+			//d.3.1)
+			if(a <= exstra_cost) {//if extra cost is >= to this number it will need to be added anyways.
+				exstra_cost -= a;
+				temp = "AIretrofit_AIretrofit_opadd" + a;
+				stats.getVariant().addMod(temp);
+			}
+		}
+	}
+	private void addExstraOpCostOld(int exstra_cost,MutableShipStatsAPI stats){
 		//example of adding a hullmod
 		//stats.getVariant().addMod("mymod_temp0");
 		//d.0)
@@ -245,6 +246,7 @@ i want to:
 			}
 		}/**/
 	}
+
 	private int GetExstraOpCost(float crew,HullSize hullSize){
 		/*if(hullSize == HullSize.FIGHTER || hullSize == HullSize.DEFAULT){
 			//crew = CrewPerCostPerSize[0];//1 cost per
@@ -265,7 +267,7 @@ i want to:
 	@Override
 	public void addPostDescriptionSection(TooltipMakerAPI tooltip, HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
 		//this is how im trying to highlight thigns. dose not work right. no idea why
-
+		//setDisplayValues(ship);
 
 
 		if (Global.getSettings().getCurrentState() == GameState.TITLE) return;
@@ -277,35 +279,68 @@ i want to:
 	}
 	@Override
 	public String getUnapplicableReason(ShipAPI ship) {
+		String hullmods = incompatibleHullMods(ship);
+		if(hullmods != null){
+			return "not compatible with: " + hullmods;
+		}
 		int unusedOP = ship.getVariant().getUnusedOP(Global.getSector().getCharacterData().getPerson().getFleetCommanderStats());//only works for player fleets
 		//int unusedOP = ship.getVariant().getUnusedOP(ship.getFleetMember().getFleetCommanderForStats().getFleetCommanderStats());//might work for all fleets
 		float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
 		HullSize hullsize = ship.getVariant().getHullSize();
 		int cost = GetExstraOpCost(MinCrew,hullsize);
-		int Base_cost= reqCrew(CrewPerCostPerSize[0]);
-		switch(hullsize){
-			case FRIGATE:
-				Base_cost = reqCrew(CrewPerCostPerSize[1]);
-				break;
-			case DESTROYER:
-				Base_cost = reqCrew(CrewPerCostPerSize[2]);
-				break;
-			case CRUISER:
-				Base_cost = reqCrew(CrewPerCostPerSize[3]);
-				break;
-			case CAPITAL_SHIP:
-				Base_cost = reqCrew(CrewPerCostPerSize[4]);
-				break;
-		}
+		int Base_cost = this.spec.getCostFor(hullsize);
 		if(!(cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit"))){
 			return "op cost: " + (cost + Base_cost);
 		}
 		return super.getUnapplicableReason(ship);
+	}
+	@Override
+	public boolean canBeAddedOrRemovedNow(ShipAPI ship, MarketAPI marketOrNull, CampaignUIAPI.CoreUITradeMode mode){
+		setDisplayValues(ship);
+		return super.canBeAddedOrRemovedNow(ship,marketOrNull,mode);
 	}
 	private int reqCrew(float in){
 		if(in == 0){
 			return 0;
 		}
 		return (int)(1 / in);
+	}
+	private String incompatibleHullMods(ShipAPI ship){
+		final String[] compatible = {
+				"AIRetrofit_ShipyardBase",
+				"AIRetrofit_ShipyardGamma",
+				"AIRetrofit_ShipyardBeta",
+				"AIRetrofit_ShipyardAlpha",
+				"AIRetrofit_ShipyardOmega"
+		};
+		final String[] names = {
+				Global.getSettings().getHullModSpec(compatible[0]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[1]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[2]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[3]).getDisplayName(),
+				Global.getSettings().getHullModSpec(compatible[4]).getDisplayName(),
+		};
+		for(int a = 0; a < compatible.length; a++){
+			if(ship.getVariant().hasHullMod(compatible[a])){
+				return names[a];
+			}
+		}
+		return null;
+	}
+
+	private void setDisplayValues(ShipAPI ship){
+		if(ship == null){
+			return;
+		}
+		float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
+		HullSize hullsize = ship.getVariant().getHullSize();
+		int cost = GetExstraOpCost(MinCrew,hullsize);
+		int Base_cost = this.spec.getCostFor(hullsize);
+		parm[0] = cost;
+		parm[1] = (cost + Base_cost);
+		parm[2] = 100;
+		parm[3] = (int) (REPAIR_LOSE * 100);
+		parm[4] = (int) MinCrew;
+		parm[5] = (int) (MinCrew * CREW_USE_MULT);
 	}
 }

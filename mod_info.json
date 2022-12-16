@@ -2,16 +2,16 @@
 	"id":"AI-Retrofits", # internal id
 	"name":"AIretrofit", # displayed to the player
 	"author":"Alaricdragon",
-	"version":"0.7",
-	"description":"adds some hullmods to replce crew on ships",
+	"version":"0.7.3",
+	"description":"Adds some hullmods, abilitys, and colony facilities to replace the humons in your fleet/faction",
 	"gameVersion":"0.95a-RC15",
     	"dependencies": [
         	{
         	    "id": "aaacrew_replacer",
         	    "name": "crew_replacer",
-        	    #"version": "1"
         	},
-	],
+			{"id": "aaamarketRetrofits", "name": "Market Retrofits"}
+		],
 	"jars":["jars/AIretrofit.jar"],
 	"modPlugin":"data.scripts.AI_RetrofitsStartup",
 }

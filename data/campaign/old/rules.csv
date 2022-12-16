@@ -5,11 +5,20 @@ id,trigger,conditions,script,text,options,notes
 #me_miningStart,DialogOptionSelected,$market.isPlanetConditionMarketOnly,my_mod_StartAutomatedColony SetEnabled me_miningLeave true,NOOO DONT LEAVE ME,me_miningLeave: GO AWAY ATTACK CARS,
 #me_miningLeave,DialogOptionSelected,$option == me_miningLeave,DismissDialog,bye,,
 ,,,SetEnabled AIRetrofit_OutpostStart true,,,
-AIRetrofit_CanOutpostBuild,PopulateOptions,$market.isPlanetConditionMarketOnly $market.isSurveyed ,SetEnabled AIRetrofit_OutpostStart true,,2:AIRetrofit_OutpostStart:build an outpost ran by automated robitic worker,
+AIRetrofit_CanOutpostBuild,PopulateOptions,"$market.isPlanetConditionMarketOnly
+$market.isSurveyed
+!$market.hasUnexploredRuins
+AIRetrofit_BuildOutpostOptionScript",SetEnabled AIRetrofit_OutpostStart true,,2:AIRetrofit_OutpostStart:build an outpost ran by automated robitic worker,
 AIRetrofit_OutpostBuild,DialogOptionSelected,$option == AIRetrofit_OutpostBuild,AIRetfofit_BuildOutpostScript,,0:AIRetrofit_OutpostBuilt:leave,
 AIRetrofit_OutpostLeave,DialogOptionSelected,$option == AIRetrofit_OutpostLeave,FireAll PopulateOptions,,,
 AIRetrofit_OutpostStart,DialogOptionSelected,,"AIRetfofit_PrepBuildOutpostScript
 FireAll AIRetrofit_OutpostBuildOptions",,,
-AIRetrofit_OutpostCanBuild,AIRetrofit_OutpostBuildOptions,AIRetrofit_CanBuildOutpostScript,,,"0:AIRetrofit_OutpostBuild:construct outpost
+AIRetrofit_OutpostCanBuild,AIRetrofit_OutpostBuildOptions,"AIRetrofit_CanBuildOutpostScript
+!HostileFleetNearbyAndAware",,you can build it,"0:AIRetrofit_OutpostBuild:construct outpost
 1:AIRetrofit_OutpostLeave:back",
 AIRetrofit_OutpostBuilt,DialogOptionSelected,$option == AIRetrofit_OutpostBuilt,DismissDialog,,,
+AIRetrofit_OutpostCantbuild,AIRetrofit_OutpostBuildOptions,"!AIRetrofit_CanBuildOutpostScript
+!HostileFleetNearbyAndAware",,you are out of resorses,0:AIRetrofit_OutpostLeave:back,
+AIRetrofit_OutpostCantbuildFleet,AIRetrofit_OutpostBuildOptions,"HostileFleetNearbyAndAware
+!AIRetrofit_CanBuildOutpostScript",,An hostile fleet is near.,0:AIRetrofit_OutpostLeave:back,
+,,,,,,

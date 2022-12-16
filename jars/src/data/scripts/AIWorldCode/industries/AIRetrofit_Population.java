@@ -1,8 +1,6 @@
 package data.scripts.AIWorldCode.industries;
 //package com.fs.starfarer.api.impl.campaign.econ.impl;
 
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.PopulationAndInfrastructure;
 
 import com.fs.starfarer.api.Global;
@@ -11,14 +9,10 @@ import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
 import com.fs.starfarer.api.impl.campaign.econ.impl.ConstructionQueue.ConstructionQueueItem;
 import com.fs.starfarer.api.impl.campaign.fleets.FleetFactoryV3;
 import com.fs.starfarer.api.impl.campaign.ids.*;
-import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.loading.IndustrySpecAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
-import data.scripts.AIWorldCode.market_conditions.AIRetrofitsAIPop;
-
-import java.util.ArrayList;
-import java.util.List;
+import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
 //exstending PopulationAndInfrastructure dose not work for my porpusses.
 /*option: market condition that dose what i want?
@@ -49,6 +43,7 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
     static String C4 = "AIretrofit_SurveyDrone";//replaces DRUGS
     static String C5 = "AIretrofit_roboticReplacementParts";//replaces ORGANS
     static String C6 = "AIretrofit_SubCommandNode";//replaces ORGANICS
+    static String C7 = "AIretrofit_WorkerDrone";
 
     static String id0 = "population_AIRetrofit_0";
     static String id1 = "population_AIRetrofit_1";
@@ -146,43 +141,58 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
         demand(C5, size - 3);
         demand(C6, size - 2);
 
+        demand(C7,size);
+
         demand(Commodities.SUPPLIES, Math.min(size, 3));
 
         supply(Commodities.CREW, size - 3);
         supply(C4, size - 4);
         supply(C5, size - 5);
 
-        Pair<String, Integer> deficit = getMaxDeficit(C2);
+        Pair<String, Integer> deficit = getMaxDeficit(C2);//com rellay
         if (deficit.two <= 0) {
             market.getStability().modifyFlat(getModId(0), 1, Global.getSector().getEconomy().getCommoditySpec(C2).getName() + " demand met");
         } else {
-            market.getStability().unmodifyFlat(getModId(0));
+            if(size >= 4) {
+                market.getStability().modifyFlat(getModId(0), -1, Global.getSector().getEconomy().getCommoditySpec(C2).getName() + " demand not met");
+            }else{
+                market.getStability().unmodifyFlat(getModId(0));
+            }
         }
 
-        deficit = getMaxDeficit(C3);
-        if (deficit.two <= 0 && size > luxuryThreshold) {
-            market.getStability().modifyFlat(getModId(1), 1, Global.getSector().getEconomy().getCommoditySpec(C3).getName() + " demand met");
+        deficit = getMaxDeficit(C3);//humon interface node
+        if (deficit.two <= 0) {
+            if(size > luxuryThreshold) {
+                market.getStability().modifyFlat(getModId(1), 1, Global.getSector().getEconomy().getCommoditySpec(C3).getName() + " demand met");
+            }else{
+                market.getStability().unmodifyFlat(getModId(1));
+            }
         } else {
-            market.getStability().unmodifyFlat(getModId(1));
+            market.getStability().modifyFlat(getModId(1), -1, Global.getSector().getEconomy().getCommoditySpec(C3).getName() + " demand not met");
+
+            //market.getStability().unmodifyFlat(getModId(1));
         }
 
-        deficit = getMaxDeficit(C1);
+        deficit = getMaxDeficit(C1);//matnace parts
         /*if (!market.hasCondition(Conditions.HABITABLE)) {
             deficit = getMaxDeficit(Commodities.FOOD, Commodities.ORGANICS);
         }*/
-        if (deficit.two > 0) {
-            market.getStability().modifyFlat(getModId(2), -deficit.two, Global.getSector().getEconomy().getCommoditySpec(C1).getName() + " demand met");
-            //market.getIncoming().getWeight().modifyFlat(id0,deficit.two * -1,Global.getSector().getEconomy().getCommoditySpec(C1).getName() + " demand met");
+        if (deficit.two <= 0) {
+            market.getStability().modifyFlat(getModId(2), 1, Global.getSector().getEconomy().getCommoditySpec(C1).getName() + " demand met");
         } else {
-            market.getStability().unmodifyFlat(getModId(2));
-            //market.getIncoming().getWeight().unmodify(id0);
+            market.getStability().modifyFlat(getModId(2), -1, Global.getSector().getEconomy().getCommoditySpec(C1).getName() + " demand not met");
+            //market.getStability().unmodifyFlat(getModId(2));
         }
 
-        deficit = getMaxDeficit(C6);
+        deficit = getMaxDeficit(C6);//sub command node
         if (deficit.two <= 0) {
             market.getStability().modifyFlat(getModId(3), 1, Global.getSector().getEconomy().getCommoditySpec(C6).getName() + " demand met");
         } else {
-            market.getStability().unmodifyFlat(getModId(3));
+            if(size >= 5) {
+                market.getStability().modifyFlat(getModId(3), -1, Global.getSector().getEconomy().getCommoditySpec(C6).getName() + " demand not met");
+            }else{
+                market.getStability().unmodifyFlat(getModId(3));
+            }
         }
 
         //C5,C1 for growth defects

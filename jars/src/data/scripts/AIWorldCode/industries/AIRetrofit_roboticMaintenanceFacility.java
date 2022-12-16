@@ -2,8 +2,9 @@ package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
-public class AIRetrofit_roboticMaintenanceFacility   extends BaseIndustry {
+public class AIRetrofit_roboticMaintenanceFacility   extends AIRetrofit_IndustryBase {
     static String C1 = "metals";
     static String C2 = "rare_metals";
     static String C3 = "heavy_machinery";
@@ -44,14 +45,4 @@ public class AIRetrofit_roboticMaintenanceFacility   extends BaseIndustry {
     public void unapply() {
         super.unapply();
     }
-    @Override
-    public boolean isAvailableToBuild(){
-        return AIretrofit_canBuild.isAI(market);
-    }
-    /*@Override
-    public String getUnavailableReason() {
-        if (!super.isAvailableToBuild()) return super.getUnavailableReason();
-
-        return "Requires resource deposits";
-    }*/
 }

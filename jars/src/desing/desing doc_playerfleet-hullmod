@@ -2,7 +2,7 @@ hullmods:
     AI-Retrofits:
         -sets required crew to 0.
         -reduces max crew by required crew.
-        -reduces in combat repair speed by 50%.
+        -increases in combat repair time by 50%.
         -increase mantnace cost by 100%.
         -cost scales per crew required. depending on hull size.
         -logistic hullmod.
@@ -13,14 +13,59 @@ hullmods:
         -logistic hullmod.
 
     built-in AI-Retrofits.
-        -sets required crew to 0.
-        -reduces max crew by required crew.
-        -reduces in combat repair speed by 50%.
-        -is invisable.
-        -add an hullmod (AI-Retrofits-display) to the ship, that looks like AI-Retrofits.
-        -cannot be uninstalled.
-        -cannot be installed, except by an special dock that you can build in an AI market.
-        -cost 0 op.
+        (4 types, depending on AI core installed. see industry for details)
+        default:
+            -sets required crew to 0.
+            -reduces max crew by required crew.
+            -+50% repair times.
+            -+100% supply use
+            -cannot be uninstalled.
+            -cannot be installed, except by an special dock that you can build in an AI market.
+            -cost 0 op.
+        Gamma-Core:
+            - same as default, but
+            - +10% repair times.
+        Beta-Core:
+            - same as default, but
+            - +75% supply use.
+        Alpha-Core:
+            - same as default, but
+            -remove max and min crew.
+            -give the ship opp equal to: (max crew removed - min crew removed)
+            -(cap extra opp at 5/10/20/40 per ship size)
+            -cant install robot forge on this ship
+            - +100% - 150% supply use, depending on % of bonus opp gained
+            - +100% repair times.
+        Omega-Core:
+            //HERE. work in progress
+            -???
+            -add / mimic automated ship hullmod? that could be cool...
+            //THIS IS TO MUSH...
+            //MIMIC Alpha-Core for now.
+            -FOR NOW:
+            - same as default, but
+            -removes max and min crew.
+            -give the ship opp equal to: (max crew removed - min crew removed)
+            -(cap extra opp at 5/10/20/40 per ship size)
+            -300% supply use.
+            - -50% repair times.
+            - adds a free robot forge to the ship.
+            - increases max burn by 1.
+            - increases speed by 25/20/15/10 su depending on ship size
+            - adds a new ability to the ship depending on hullsize?
+                -fighter:       emp arcs.
+                -frigit:        P-jump
+                -destroyer:     phase jump
+                -cruiser:       plasma burn
+                -battleship:    one time P-jump
+                (P-jump == the jump anywhere ability)
+
+
+
+    pathwork AIRetrofits.
+        -same as AIRetrofits in every way.
+        -reduces combat readiness to 50, or -15%. whatever is lower.
+        -can be installed/uninstalled outside of a dock.
 captions and administrators:
     allow the player to 'build' people from sub-command nodes?
     people built in this way will be like normal captions, but with AI-Market names + portraits

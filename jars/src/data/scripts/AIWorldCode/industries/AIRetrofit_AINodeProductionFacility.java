@@ -1,10 +1,10 @@
 package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
-import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
-public class AIRetrofit_AINodeProductionFacility extends BaseIndustry {
+public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase {
     static String C1 = "metals";
     static String C2 = "rare_metals";
     static String C3 = "volatiles";
@@ -36,9 +36,5 @@ public class AIRetrofit_AINodeProductionFacility extends BaseIndustry {
     @Override
     public void unapply() {
         super.unapply();
-    }
-    @Override
-    public boolean isAvailableToBuild(){
-        return AIretrofit_canBuild.isAI(market);
     }
 }

@@ -1,12 +1,13 @@
 {
 	"plugins":{
-		"surveyPlugin":"data.scripts.replacementscripts.SurveyPluginImpl",
+		"surveyPlugin":"data.scripts.replacementscripts.SurveyPluginImpl"
 	},
 	"ruleCommandPackages":[
 		"data.scripts.replacementscripts.Salvage",
-		"data.scripts.starfarer.api.impl.campaign.rulemd",
+		"data.scripts.starfarer.api.impl.campaign.rulemd"
 	],
-
+	#option to startwith/always have new hullmods and abilitys from the start.
+	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
 
 	#settings for AIRetrofits hullmod
@@ -19,6 +20,74 @@
 	"AIRetrofits_AIretrofit_C-OP-Destroyer":0.1,
 	"AIRetrofits_AIretrofit_C-OP-Cruiser":0.05,
 	"AIRetrofits_AIretrofit_C-OP-Capital_ship":0.025,
+	#settings for AIRetrofit Shipyard Power
+	#Basic
+	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_REPAIR_LOSE":0.5,
+	#Gamma
+	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":0.1,
+	#Beta
+	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.75,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
+	#Alpha
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.5,
+	#opp gain for Aplha per exstra crew
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Other":1,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Frigate":0.2,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Destroyer":0.1,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Cruiser":0.05,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Capital_ship":0.025,
+	#max opp gain for Aplha
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpOther": 5,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpFrigate": 10,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpDestroyer": 20,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCruiser": 30,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCapitalShip": 40,
+
+	#Redacted
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":0,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
+
+	#settings for market growth,
+	#descriptions
+	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing system wide market growth",
+	"AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing sector wide market growth",
+	"AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
+
+	#growth mods,
+	"AIRetrofits_MarketGrowth_hazzardGrowthPerSize": 5,
+
+	"AIRetrofits_MarketGrowth_T1PowerPerSize": 5,#base value
+	"AIRetrofits_MarketGrowth_T1ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T1HazzardBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T1AlphaCoreBonus":0.3,#increase multiplyer,
+
+	"AIRetrofits_MarketGrowth_T2PowerPerSize": 10,#base value
+	"AIRetrofits_MarketGrowth_T2ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T2HazzardBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T2AlphaCoreBonus":0.3,#increase multiplyer,
+
+
+	"AIRetrofits_MarketGrowth_maxSize": 6,#the size to stop giveing growth at. dose not effect the max size of the market.,
+
+	"AIRetrofits_MarketGrowth_logisticTheshhold": 20,
+
+	#for growth past the value of AIRetrofits_logisticTheshhold at a single stat,
+	#,(float)Math.max(A * (Math.log(C * power + D) / Math.log(B)) + E,0);
+	"AIRetrofits_MarketGrowth_logisticA": 1.5,
+	"AIRetrofits_MarketGrowth_logisticB": 1.1,
+	"AIRetrofits_MarketGrowth_logisticC": 1.2,
+	"AIRetrofits_MarketGrowth_logisticD": 1,
+	"AIRetrofits_MarketGrowth_logisticE": 0,
+
+
 	#settings for robot forge power.
 	"AIRetrofits_CorruptedMetal":1,
 	"AIRetrofits_PristineMetal":5,
@@ -34,7 +103,7 @@
 	#salvage robots
 	"AIRetrofits_Sa_S":1,
 	"AIRetrofits_Sa_B":1,
-	"AIRetrofits_Sa_D":"produce salvage drones. they are about an ton in size, and somewhat ramshackle. They are built with many arms that are designed to hold any tools that they might need for whatever mission they move on, as well as anchor themselves to whatever they might have to when salvaging. controlled from the command ship, they tend to operate very well, but accidents can still accor do to there lack of creativity when in the filed. this is barely enough to offset the disadvantages of using salvaging drones in tasks, making them about as effective as normal crew.",
+	"AIRetrofits_Sa_D":"Produce salvage drones. They are about a ton in size, and somewhat ramshackle. Constructed with many independent arms, they are designed to hold any tools that they might need for whatever mission they might encounter, as well as anchor themselves to whatever surface they might require in order to salvage. Controlled from the command ship, they tend to operate very well, but accidents can still occur due to their lack of creativity when in the field. This is barely enough to offset the disadvantages of using salvaging drones in tasks, making them about as effective as normal crew.",
 	"AIRetrofits_Sa_1N":"metals",
 	"AIRetrofits_Sa_1C":0.7,
 	"AIRetrofits_Sa_2N":"rare_metals",		
@@ -45,7 +114,7 @@
 	#survey robots
 	"AIRetrofits_Su_S":1,
 	"AIRetrofits_Su_B":1,
-	"AIRetrofits_Su_D":"produce survey drones. do to all the features that need to be put into the drone to make it function at this level, it is very large. about 1.5 tons per drone. survey drones are built with the ability to collect samples of anything they find. also outfitted with sensors to detect geological activity, as well as complex sensors that are capable of analyzing the land around them for anything from sines of life, to mineral deposits, and anything between. coupled with a somewhat complex custom AI, makes them very good at there job. well this is not always enough to overcome the downsides of they not using human crew results in, they are overall mush more effective then crew at there job.",
+	"AIRetrofits_Su_D":"Produce survey drones. Due to all the features that need to be put into the drone to make it function at this level, it is very large, about 1.5 tons per drone. Survey drones are built with the ability to collect samples of anything they find. They're also outfitted with sensors to detect geological activity, as well as complex sensors that are capable of analyzing the land around them for anything from signs of life, to mineral deposits, and anything between. Coupled with a somewhat complex custom AI, this makes them very good at their job. While this is not always enough to overcome the downsides of not using human crew, they are overall mush more effective than standard crews at their job.",
 	"AIRetrofits_Su_1N":"metals",		
 	"AIRetrofits_Su_1C":0.8,
 	"AIRetrofits_Su_2N":"rare_metals",		
@@ -56,7 +125,7 @@
 	#combat robots
 	"AIRetrofits_Co_S":1,
 	"AIRetrofits_Co_B":2,
-	"AIRetrofits_Co_D":"produce combat drones. larger then an average Marine in full combat armor and somewhat patchwork in design, they are none the less capable of being outfitted with many different weapons upon there mounts before combat. they are controlled remotely from the command room of your flagship when preforming combat operations. despite the in theory advantages that the Combat Robots offer, they tend to severely under preform in combat. the drones are slow to react in combat, do to the fact that there command ship must process most of there movements beforehand. they often take seconds to realize they are under attack before returning fire, causing increased losses. the alternative, wish is to give them all an primitive AI, is worse. as it results in the drones walking into kill zones and fortifications unknowingly, as well as a lack of coordination causing manny to fall to the same kill zones before they can be overcome. the only upside, is they are quite small, at 1 tons, and capable of fighting in almost any environment. best used in large numbers.",
+	"AIRetrofits_Co_D":"Produce combat drones. Larger than an average Marine in full combat armor and somewhat rugged in design, they are nonetheless capable of being outfitted with many varying weapon platforms prior to entering combat. They are controlled remotely from the command room of your flagship when performing combat operations. Despite the in-theory advantages that the Combat Robots offer, they tend to severely underperform in combat. The drones are slow to react in battle, due to the fact that the command ship must first process most of their movements. They often take seconds to realize they are under attack before returning fire as a result, causing increased losses. The alternative - which is to give them all a primitive AI - is worse, as it results in the drones walking into kill-zones and fortifications knowingly, as well as a lack of coordination causing many to fall to the same hostile before the error can be corrected. The only upside is that they are quite small, weighing 'only' a single ton, and capable of fighting in almost any environment. They're best used in large numbers.",
 	"AIRetrofits_Co_1N":"metals",		
 	"AIRetrofits_Co_1C":0.82,
 	"AIRetrofits_Co_2N":"rare_metals",		
@@ -88,35 +157,78 @@
 	"AIRetrofits_AlphaMulti":1.45,
 	"AIRetrofits_OmegaMulti":1.60,
 
-	#salvage drones
+	#salvage drones (salage)
 	"AIRetrofits_Salvage_Power":1,
 	"AIRetrofits_Salvage_priority":11,
+
+	#salvage drones (repair hyper relay)
+	"AIRetrofits_repairHyperRelay_Power":1,
+	"AIRetrofits_repairHyperRelay_priority":11,
 
 	#survey drones
 	"AIRetrofits_Survey_Power":1.5,
 	"AIRetrofits_Survey_priority":11,
 
-	#combat drones
+	#combat drones (raiding)
 	"AIRetrofits_Combat_Power":0.5,
 	"AIRetrofits_Combat_priority":11,
+
+	#combat drones (steal a starship)
+	"AIRetrofits_MissionHijack_Power":0.5,
+	"AIRetrofits_MissionHijack_priority":11,
+
+	#combat drones (nex_ground battle)
+	"AIRetrofits_GroundBattle_Power":0.5,
+	"AIRetrofits_GroundBattle_priority":11,
+
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,
+
+	#Market Things
+	#Industry things
+	#Shipyard settings,
+	"AIRetrofitShipyard_Description": "is able to modify %s points of ships per month. ships cost %s/%s/%s/%s points depending on ship size.",
+	"AIRetrofitShipyard_ADescription": "use a alpha core to install a version of the hullmod that increase available op on ship",#description when you inset a alpha core
+	"AIRetrofitShipyard_BDescription": "use a beta core to install a version of the hullmod that has a reduced supply cost",#description when you inset a beta core
+	"AIRetrofitShipyard_GDescription": "use a gamma core to install a version of the hullmod that has a reduced repair cost",#description when you inset a gamma core
+	"AIRetrofitShipyard_IDescription": "Increases the rate that ships are upgraded by %s.",
+	"AIRetrofitShipyard_IedDescription": "Improved ship upgrading speed of %s",
+	"AIRetrofitShipyard_defaultPoints": 8,#number of construction ponits per momth
+	"AIRetrofitShipyard_IValue": 1,#increate in number of production ponits if improved (defalut * (1 + IValue))
+	"AIRetrofitShipyard_perCrewDEFAULT": 4,#Note, that as of this time, its not 'per crew' its 'per ship'. hope to change latter
+	"AIRetrofitShipyard_perCrewFIGHTER": 0.25,
+	"AIRetrofitShipyard_perCrewFRIGATE": 1,
+	"AIRetrofitShipyard_perCrewDESTROYER": 2,
+	"AIRetrofitShipyard_perCrewCRUISER": 4,
+	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
+
+	#robotic pop factory T1
+	"AIRetrofit_PopFactoryT1_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT1_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT1_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
+	"AIRetrofit_PopFactoryT1_extraDescription": "this factory is producing %s market growth devided between friendly AIPop worlds in system",
+
+	#robotic pop factory T2
+	"AIRetrofit_PopFactoryT2_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT2_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT2_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
+	"AIRetrofit_PopFactoryT2_extraDescription": "this factory is producing %s market growth devided between faction AIPop worlds in the sector",
 
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{
 			"AIRetorfit_AIpop_low":"graphics/icons/industry/AIRetrofit_populationLow.png",
-			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.png",
+			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.png"
 		},
 		"characters":{
 		#	"AIRetofit_AIOfficer":"graphics/hal9000butblue.jpg",
-			"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png",
-		},
+			"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png"
+		}
 	},
 	#data for AIofficers names and portrates. you can add a new name/portrate by puting it here.
 	#the code will try to read data from every item put here with the right name, by starting at 0 and counting up, if that makes sence.
 	"AIRetofit_AIOfficerFirstName0":"A-A-AI",
-	"AIRetofit_AIOfficerFirstName1":"defintly daved",
+	"AIRetofit_AIOfficerFirstName1":"Definitely David. Promise.",
 
 	"AIRetofit_AIOfficerLastName0":"NotCore",
 	"AIRetofit_AIOfficerLastName1":"NotNotCore",

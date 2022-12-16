@@ -11,7 +11,7 @@ $market.isSurveyed
 AIRetrofit_BuildOutpostOptionScript",SetEnabled AIRetrofit_OutpostStart true,,2:AIRetrofit_OutpostStart:build an outpost ran by automated robitic worker,
 AIRetrofit_OutpostBuild,DialogOptionSelected,$option == AIRetrofit_OutpostBuild,AIRetfofit_BuildOutpostScript,,0:AIRetrofit_OutpostBuilt:leave,
 AIRetrofit_OutpostLeave,DialogOptionSelected,$option == AIRetrofit_OutpostLeave,FireAll PopulateOptions,,,
-AIRetrofit_OutpostStart,DialogOptionSelected,,"AIRetfofit_PrepBuildOutpostScript
+AIRetrofit_OutpostStart,DialogOptionSelected,$option == AIRetrofit_OutpostStart,"AIRetfofit_PrepBuildOutpostScript
 FireAll AIRetrofit_OutpostBuildOptions",,,
 AIRetrofit_OutpostCanBuild,AIRetrofit_OutpostBuildOptions,"AIRetrofit_CanBuildOutpostScript
 !HostileFleetNearbyAndAware",,you can build it,"0:AIRetrofit_OutpostBuild:construct outpost
