@@ -1,6 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.4:
+
 v0.7.3:
-not save compatible with any other version.
+not save compatible with any older version.
+new:
+    enabled a new industry that lets you change the population type of a normal market between a normal market, and a AI-Pop market, at a cost.
 fixes:
     made it so you get the robot forge ability after visiting an market when you have the robot forge hullmod.
     AIRetrofit hullmod:
