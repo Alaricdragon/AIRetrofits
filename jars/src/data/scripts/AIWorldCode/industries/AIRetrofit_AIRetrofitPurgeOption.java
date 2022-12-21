@@ -1,5 +1,6 @@
 package data.scripts.AIWorldCode.industries;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -12,6 +13,7 @@ public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase{
     static float buildSet = 9999;
     private float prugeTime = 0;
     private float purgeProgress = 0;
+    static private boolean active = Global.getSettings().getBoolean("AIRetrofits_PurgeOptionTest");
     @Override
     public void apply(){
         super.apply(true);
@@ -63,7 +65,7 @@ public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase{
     @Override
     public boolean isAvailableToBuild(){
         setBuildCostOverride((float) (baseCost * Math.pow(market.getSize(),baseCostExpental)));
-        return AIretrofit_canBuild.hasAbility();
+        return active && AIretrofit_canBuild.hasAbility();
     }
     /*
     @Override
