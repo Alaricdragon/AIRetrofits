@@ -3,6 +3,7 @@ v0.7.4:
 save compatible with 0.7.3+
 new:
     stated work on a new industry that lets you change the population type of a normal market between a normal market, and a AI-Pop market, at a cost.
+        -this industry is only kinda working. it has a option to enable in the config
 fixes:
     fixed an edge case crash that was happening for some reason after you got your first AI-Pop market
 v0.7.3:
