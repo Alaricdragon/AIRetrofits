@@ -6,6 +6,7 @@ new:
         -this industry is only kinda working. it has a option to enable in the config
 fixes:
     fixed an edge case crash that was happening for some reason after you got your first AI-Pop market
+    fixed the build time for some buildings.
 v0.7.3:
 not save compatible with any older version.
 fixes:
