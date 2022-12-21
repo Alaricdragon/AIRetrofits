@@ -13,7 +13,6 @@ import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.rpg.OfficerData;
 import com.fs.starfarer.rpg.Person;
-import com.fs.starfarer.ui.S;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;

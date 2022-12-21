@@ -102,7 +102,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     private void runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
-        if(!market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
+        if(!market.hasIndustry(shipYardIndustry) || !market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
             return;
         }/*else{
             int[] a = {};

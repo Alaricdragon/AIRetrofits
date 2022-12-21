@@ -1,0 +1,97 @@
+concept: the ability to turn on/off the AI pop market condition and effects, at a cost.
+
+
+current system:
+    1 building.
+    takes time to build, once built it impudently starts to upgrade?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+old) i take issue to this document. it.. lakes a certain ability.
+new plan: wait for the event system. has real consequences, and player choice, instead of just having everything donated to random chance.
+
+how? a population would need to slowly be removed from a world, only to be replaced by another population.
+the way i see it, there is 5 ways to do this, with varying results based on if the market is a AI-Pop market or not.
+but first, how would this be done?
+
+1) build the intel building.
+    -the first building would represent you preparing the market to be purged. that would mean it represents:
+        -the gathering of resources, be it units, materials, and information
+        -the planing stages of how to preform the purge.
+    -the cost would be high?low? with a high?low? upkeep.
+    -it would require
+        -in both cases, i will make demand illegal on the market, so it has to be smuggled in
+        -normal to AI pop:
+            combat robots++
+            salvage robots+++
+            command relays
+            supply+++
+            maintenance parts+
+            robotic replacement parts
+        -AI pop to normal:
+            marines+
+            crew++
+            supply+++
+            food+++
+            heavy weapons+
+    -it would begin growing (mush like population dose). this represents how prepared for the purge your industry is. with zero percent being not ready, and 100% being ready.
+
+2) decide purge type (with building upgrade)
+    the way i see it, there is 3 type of ways once could chose to purge a population, with 2 variants each, resulting with with different up and downsides
+    passive represents trying to hide your actions. active is not trying to hide your actions.
+    a) displacement
+        -passive:   try to force the population to flee by doing things like increasing rent, making work harder to find, and travel easier
+        -active:    forcing the population off world and into the wilds, or onto any ship you can put them in
+        -stats:
+            time: very long.
+            cost: low - mid -> mid -> mid high
+            discovery: none -> low -> low
+            failure condition:
+            failure: population reorganizes and tries to act without your owners leadership. new event starts.
+            crit fail:
+    c) processing
+        -passive:   try to slowly force the population to become resources for you, with kidnapping, and taking undesirables for yourself.
+        -active:    try to slowly force the population to become resources for you, by trying to round up the population into processors
+        -stats:
+            time: mid - long -> long     -> mid
+            cost: low to mid -> -mid     -> -high
+            discovery: low   -> mid-high -> high
+            failure condition:
+            failure: population destroys processors. rebels?
+    d) extermination
+        -passive:   try to kill the population with passive methods, such as arranging accidents, and sabotaging parts of the required instructor
+        -active:    try to wage a active war on the world. to destroy.
+        -stats:
+            time: short     -> mid       -> short
+            cost: high      -> very high -> mid
+            discovery: high -> very high -> mid
+            failure condition: fail to meet demand for to long, or industry gets disrupted
+            failure: population rebels. might request outside help
+
+
+    type a) passive:
+        passive means you are trying to hide what you are doing from your population. more hidden is more good.
+        passive stats:
+            time+++;
+            cost-
+            discovery--;
+            failure results: less likely for population to do extreme acts?
+    type b) active:
+        active mean you are not trying to hide anything. just get it done.
+        active stats:
+            time----;
+            cost++;
+            discovery+++;
