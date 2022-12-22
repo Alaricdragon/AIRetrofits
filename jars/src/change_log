@@ -1,6 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
 v0.7.4.1:
-fixed a crash with the fleet inflater.
+fixes:
+    fixed a crash involving my fleet inflater and 'Automated Ship Instalation Center'
+    fixed 'Automated Ship Instalation Center' not being able to install things on capital ships, and being unable to remove S-Mods
 v0.7.4:
 save compatible with 0.7.3+
 new:
