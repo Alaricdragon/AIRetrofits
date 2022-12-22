@@ -2,7 +2,7 @@ changelog for all my changes as i make them so i dont forget again.
 v0.7.4.2:
 save compatible with 0.7.3+
 fixes:
-    removed a broken reference that was causing a crash i swore i test my updates before posing them
+    removed a broken reference that was causing a crash at the end of every month i swore i test my updates before posing them
 v0.7.4.1:
 save compatible with 0.7.3+
 fixes:
