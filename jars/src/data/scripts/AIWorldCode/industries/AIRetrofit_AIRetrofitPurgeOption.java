@@ -5,8 +5,6 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
-import data.scripts.CrewReplacer_Log;
-import data.scripts.crew_replacer_startup;
 
 public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase{
     static private int minSize = 3;
@@ -44,7 +42,7 @@ public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase{
         }
         float purgeProgress = buildSet - getBuildProgress();
         while(market.getSize() > minSize && purgeProgress <= getUpgradeTime(market.getSize())){
-            CrewReplacer_Log.loging("reducing size at: " + purgeProgress + " req " + getUpgradeTime(market.getSize()),this);
+            //CrewReplacer_Log.loging("reducing size at: " + purgeProgress + " req " + getUpgradeTime(market.getSize()),this);
             market.setSize(market.getSize()-1);
         }
         /*if(getBuildProgress() >= 0){

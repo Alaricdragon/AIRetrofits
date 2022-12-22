@@ -11,8 +11,6 @@ import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.loading.VariantSource;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.CrewReplacer_Log;
-
 import java.util.List;
 
 public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
