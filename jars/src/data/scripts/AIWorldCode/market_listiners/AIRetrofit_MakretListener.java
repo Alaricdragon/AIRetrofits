@@ -11,6 +11,7 @@ import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.loading.VariantSource;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.CrewReplacer_Log;
 
 import java.util.List;
 
@@ -100,6 +101,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             runSingleAIRetrofit_Shipyard(market);
         }
     }
+    //boolean logging = true;
     private void runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
         if(!market.hasIndustry(shipYardIndustry) || !market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
@@ -108,13 +110,15 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             int[] a = {};
             a[1] = a[2];//crash the game. as an console log lol.
         }*/
+        //CrewReplacer_Log.loging("running  runSingleAIRetrofit_Shipyard for market: " + market.getName(),this,logging);
         final String[] stopHullMods = {"automated"};
         final String[] addHullMods = {
                 "AIRetrofit_ShipyardGamma",
                 "AIRetrofit_ShipyardBeta",
                 "AIRetrofit_ShipyardAlpha",
                 "AIRetrofit_ShipyardOmega",
-                "AIRetrofit_ShipyardBase"};
+                "AIRetrofit_ShipyardBase",
+                "AIretrofit_airetrofit"};
         final float startingPonits = shipyardDValue;
         final float bounus = 1 + shipyard_IValue;
         final float[] costs = shipyard_costPerShip;
@@ -128,33 +132,43 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             points *= bounus;
         }
         try {
+            //CrewReplacer_Log.loging("   trying to get AI core...",this,logging);
             switch (market.getIndustry(shipYardIndustry).getAICoreId()) {
                 case "gamma_core":
+                    //CrewReplacer_Log.loging("       got AICore named 'gamma_core'",this,logging);
                     addHullMod = addHullMods[0];
                     break;
                 case "beta_core":
+                    //CrewReplacer_Log.loging("       got AICore named 'beta core'",this,logging);
                     addHullMod = addHullMods[1];
                     break;
                 case "alpha_core":
+                    //CrewReplacer_Log.loging("       got AICore named 'alpha core'",this,logging);
                     addHullMod = addHullMods[2];
                     break;
                 case "omega_core"://are omega cores even obtainable?
+                    //CrewReplacer_Log.loging("       got AICore named 'omega core'",this,logging);
                     addHullMod = addHullMods[3];
                     break;
                 default:
+                    //CrewReplacer_Log.loging("       didn't get AI core'",this,logging);
                     addHullMod = addHullMods[4];
                     break;
             }
         }catch (Exception e){
+            //CrewReplacer_Log.loging("       ERROR! no AI core gave a error",this,logging);
             addHullMod = addHullMods[4];
         }
+        //CrewReplacer_Log.loging("   looking at ships... ",this,logging);
         for(FleetMemberAPI ship2 : ships){
+            //CrewReplacer_Log.loging("       looking at ship " + ship2.getShipName(),this,logging);
             ShipVariantAPI ship = ship2.getVariant().clone();
             ship.setSource(VariantSource.REFIT);
             //ship2.getVariant().get
             boolean exit = false;
             for(String a : stopHullMods) {
                 if(ship.hasHullMod(a)) {
+                    //CrewReplacer_Log.loging("           abort: bad hull mod.",this,logging);
                     exit = true;
                     break;
                 }
@@ -181,18 +195,22 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                         cost = costs[5];
                         break;
                 }
+                //CrewReplacer_Log.loging("           ship costs '" + cost + "' ponits remaining '" + points + "'",this,logging);
                 if(cost <= points){
+                    //CrewReplacer_Log.loging("          adding hullmod '" + addHullMod + "'",this,logging);
                     points -= cost;
                     for(String a : addHullMods){
                         ship.removeMod(a);
+                        ship.removePermaMod(a);
                     }
                     ship.addMod(addHullMod);
                 }
-                if(points <= 0){
-                    return;
-                }
             }
             ship2.setVariant(ship,true,true);
+            if(points <= 0){
+                //CrewReplacer_Log.loging("           out of points. ending loop",this,logging);
+                return;
+            }
         }
     }
     private void unapplySubMarkets(MarketAPI market){

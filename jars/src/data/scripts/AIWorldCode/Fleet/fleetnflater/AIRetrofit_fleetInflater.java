@@ -27,7 +27,11 @@ public class AIRetrofit_fleetInflater extends DefaultFleetInflater {
             String addHullMod;
             MarketAPI market = Global.getSector().getEconomy().getMarket(fleet.getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
             if (market.hasIndustry(shipYardIndustry) && market.getIndustry(shipYardIndustry).isFunctional()){
-                switch (market.getIndustry(shipYardIndustry).getAICoreId()) {
+                String temp = market.getIndustry(shipYardIndustry).getAICoreId();
+                if(market.getIndustry(shipYardIndustry).getAICoreId() == null) {
+                    temp = "";
+                }
+                switch (temp) {
                     case "gamma_core":
                         addHullMod = hullmods[0];
                         break;
