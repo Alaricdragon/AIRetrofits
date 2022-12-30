@@ -136,8 +136,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempJob = crewReplacer_Main.getJob(hijack_marinesJob);
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = nexM_Po;
-        tempCrew.crewPriority = nexM_Pr;
+        tempCrew.crewPower = Hm_Po;
+        tempCrew.crewPriority = Hm_Pr;
         tempJob.addCrew(tempCrew);
 
         //repairHyperRelayCrew
@@ -152,8 +152,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempJob = crewReplacer_Main.getJob(nexMarinesJob);
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = Hm_Po;
-        tempCrew.crewPriority = Hm_Pr;
+        tempCrew.crewPower = nexM_Po;//Hm_Po
+        tempCrew.crewPriority = nexM_Pr;//Hm_Pr
         tempJob.addCrew(tempCrew);
 
 /*

@@ -29,7 +29,7 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
                 break;
         }
     }
-    AIRetrofit_Robots[] robots = {
+    private static final AIRetrofit_Robots[] robots = {
             (AIRetrofit_Robots) crewReplacer_Main.getJob("salvage_crew").getCrew("AIretrofit_WorkerDrone"),
             (AIRetrofit_Robots) crewReplacer_Main.getJob("survey_crew").getCrew("AIretrofit_SurveyDrone"),
             (AIRetrofit_Robots) crewReplacer_Main.getJob("raiding_marines").getCrew("AIretrofit_CombatDrone"),
@@ -43,7 +43,7 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
     private void surveyRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         displayCrewPower(robots[1],info,width,expanded,stack);
     }
-    private static String robotDescription = "this robot effectiveness is being multiplied by %s for having %s in cargo, for a total power of %s per robot";
+    private static final String robotDescription = Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
     private void displayCrewPower(AIRetrofit_Robots robot, TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {

@@ -12,6 +12,9 @@
 	#somewhat not working yet, but i need to test this
 	"AIRetrofits_PurgeOptionTest": false,
 
+	#this should be disabled for now. it may cause issues with invasions launched from AI-Pop worlds in nexerlin
+	"AIRetrofits_SwapAICrew": false,
+
 	#settings for AIRetrofits hullmod
 	"AIRetrofits_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
 	"AIRetrofits_AIretrofit_CREW_USE_MULT":0,#this is an real multi though. 0 = no crew use, 1 = no change -1 = negitive crew use?
@@ -183,6 +186,10 @@
 	"AIRetrofits_GroundBattle_Power":0.5,
 	"AIRetrofits_GroundBattle_priority":11,
 
+	#ExstraDescriptionOfItems
+	#all robot types power description
+	"AIRetrofits_RobotPowerDescription":"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot",
+	"AIRetrofits_RobotPowerNoCoreMessage": "no AI-Core or SubCommandNode",
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,
 

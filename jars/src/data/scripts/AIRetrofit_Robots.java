@@ -20,6 +20,7 @@ import com.fs.starfarer.api.campaign.CampaignFleetAPI;
         public float getCrewPowerInFleet(CampaignFleetAPI fleet) {
             return getCrewInFleet(fleet) * getCrewPower(fleet);//super.getCrewPowerInFleet(fleet);
         }
+        final private static String noCoreText = Global.getSettings().getString("AIRetrofits_RobotPowerNoCoreMessage");
         public String getMaxCore(CampaignFleetAPI fleet){
             if(fleet.getCargo().getCommodityQuantity(AICores[4]) > 0){
                 return Global.getSector().getEconomy().getCommoditySpec(AICores[4]).getName();
@@ -32,7 +33,7 @@ import com.fs.starfarer.api.campaign.CampaignFleetAPI;
             }else if(fleet.getCargo().getCommodityQuantity(AICores[0]) > 0){
                 return Global.getSector().getEconomy().getCommoditySpec(AICores[0]).getName();
             }
-            return "no AI-Core or SubCommandNode's";
+            return noCoreText;//"no AI-Core or SubCommandNode";
         }
         public float getCorePower(CampaignFleetAPI fleet){
             float multi = baseBonus;
