@@ -47,9 +47,9 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
     private void displayCrewPower(AIRetrofit_Robots robot, TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {
-                "" + robot.getCorePower(Global.getSector().getPlayerFleet()),
-                robot.getMaxCore(Global.getSector().getPlayerFleet()),
-                "" + robot.getCrewPower(Global.getSector().getPlayerFleet()),
+                "" + robot.getCorePower(Global.getSector().getPlayerFleet().getCargo()),
+                robot.getMaxCore(Global.getSector().getPlayerFleet().getCargo()),
+                "" + robot.getCrewPowerInCargo(Global.getSector().getPlayerFleet().getCargo()),
         };
         info.addPara(robotDescription, 5, highlight, exstra);
         if(expanded){

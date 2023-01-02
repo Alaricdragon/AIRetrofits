@@ -1,8 +1,9 @@
 to do list:
+
 ask questions on forum (done. wait for reply):
     how to make an industry send resources to your supply point
-    how to add text prosaically to an item (like marines)
-    how to change a items images (like crew and marries) as it changes in quantity
+    (done)how to add text prosaically to an item (like marines)
+    (done)how to change a items images (like crew and marries) as it changes in quantity
 
 images:
     options:
@@ -40,6 +41,9 @@ Industrys:
     robotic replacement thing:
         work and design something as a temporarily thing.
     Manufactures of all type
+        -started this. put my base into 'AIRetrofit_PersonalRobotManufactoryBase'.
+        -started work on 'AIRetrofit_salvageRobotManufactory'
+        -NOTE: i have them toggled off in the 'AIRetrofit_PersonalRobotManufactoryBase'
 
 market:
     (started)design and add industries to produce both advanced and basic robotic workers.

@@ -64,7 +64,7 @@ public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase{
     @Override
     public boolean isAvailableToBuild(){
         setBuildCostOverride((float) (baseCost * Math.pow(market.getSize(),baseCostExpental)));
-        return active && AIretrofit_canBuild.hasAbility();
+        return active && AIretrofit_canBuild.hasRobotForge();
     }
     /*
     @Override

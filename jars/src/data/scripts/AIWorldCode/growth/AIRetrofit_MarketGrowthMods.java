@@ -74,14 +74,17 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
         }*/
 
         //market.removeImmigrationModifier();//HERE. this might be usefull. might need to swap data from the market growth for diffrent population comps
-        addRobotFactory(incoming,market);
-        addHazardPay(incoming,market);
+        applyGrowth(incoming,market);
         market.setIncoming(incoming);
     }
     private static String T1FactoryName = "LocalRobotFactory's";
     private static String T1FactoryDescription = Global.getSettings().getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
     private static String T2FactoryName = "FactionWideRobotFactory's";
     private static String T2FactoryDescription = Global.getSettings().getString("AIRetrofits_MarketGrowth_T2GrowthDescription");//"Robots are being produced in this faction, providing sector wide market growth";
+    public static void applyGrowth(PopulationComposition incoming,MarketAPI market){
+        addRobotFactory(incoming,market);
+        addHazardPay(incoming,market);
+    }
     private static void addRobotFactory(PopulationComposition incoming,MarketAPI market){
         List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
         float[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
