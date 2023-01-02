@@ -1,4 +1,21 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.5:
+save compatible with 0.7.3+
+    new:
+        added a way to see what power a given robot has, so no more guessing on why they are so weak/strong today.
+        added a setting to toggle weather or not your ships that launch from AI-Pop worlds have there 'marines' and 'crew replaced' with 'combat robots' and 'salvage robots'
+    balance:
+        'robotic worker assembely' build time:      60 -> 30
+        'robot worker factory' build time:          90 -> 60
+        'robot worker production center' build time:120 -> 90
+        reason: building the pop growth buildings took far to long. especially the first one.
+    fixes:
+        removed a testing crewReplacer crew
+        fixed combat robots power and priority for nex invasions and hijack marines being swapped
+        updated robots custom crew power to the crewReplacer system.
+    background work:
+        started work on the last missing market buildings.
+
 v0.7.4.2:
 save compatible with 0.7.3+
 fixes:

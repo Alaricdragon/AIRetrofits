@@ -254,6 +254,66 @@ Industry:
 
 
 manufactures
+    new plan:
+    basic robot drone manufactures:
+        upgraded: salvage, survey, combat drone manufactures
+        downgrade:null
+        supply:1 salvage, survey, and combat robot.
+        demand:1 rare_metal, metal, volatiles, and heavy armaments
+        cost: low. upkeep low.
+        AI-Cores:
+            gamma: more output
+            beta: slight improvement to pop growth, ground defence, and - lucic path attraction
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic salvage, survey and combat robots in low number, at the end of the month.
+        industry: false
+
+    salvage drone manufactures:
+        upgraded: advanced salvage drone manufacture
+        downgrade: basic robot drone manufactures
+        supply: 3 salvage robots.
+        demand: 3 metals. 1 rare metals. 1 heavy machinery
+        cost: low. lower mid upkeep
+        AI-Cores:
+            gamma: more output
+            beta: improvement to pop growth. removed demand for population from factory's when pop is at max level.
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic salvage robots in lowish number, at the end of the month.
+        industry: false
+    survey drone manufactures:
+        upgraded: advanced survey drone manufactures
+        downgrade: basic robot drone manufactures
+        supply: 3 salvage robots.
+        demand: 3 metals. 1 rare metals. 1 volatiles
+        cost: low. lower mid upkeep.
+        AI-Cores:
+            gamma: more output
+            beta: -lucic path attraction
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic survey robots in lowish number, at the end of the month.
+        industry: false
+    combat drone manufactures
+        upgraded: advanced combat drone manufactures
+        downgrade: basic robot drone manufactures
+        supply: 3 combat robots.
+        demand: 3 metals. 1 rare metals. 1 heavy armaments.
+        cost: low. lower mid
+        AI-Cores:
+            gamma: more output
+            beta: improved ground defence.
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic combat robots in lowish number, at the end of the month.
+        industry: false
+
+
+
+
+
+
     robot drone manufactures:
         supply:
         demand:

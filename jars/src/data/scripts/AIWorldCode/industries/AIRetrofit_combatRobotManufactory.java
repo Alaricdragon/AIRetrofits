@@ -10,7 +10,7 @@ import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 
 import java.util.Random;
 
-public class AIRetrofit_combatRobotManufactory extends AIRetrofit_IndustryBase{
+public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotManufactoryBase{
     static String C1 = "metals";
     static String C2 = "rare_metals";
     static String C3 = "hand_weapons";

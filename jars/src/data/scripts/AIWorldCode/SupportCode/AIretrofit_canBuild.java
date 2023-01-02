@@ -8,8 +8,11 @@ public class AIretrofit_canBuild {
     public static boolean isAI(MarketAPI market){
         return market.hasCondition("AIRetrofit_AIPop") && can;
     }
-    public static boolean hasAbility(){
+    public static boolean hasRobotForge(){
         return Global.getSector().getPlayerFleet().hasAbility("AIretrofit_robot_drone_forge") && can;
-    }
+    }/*
+    public static boolean hasRoboticShips(){
+        return Global.getSector().getPlayerFaction().getKnownHullMods().get("") && can;
+    }*/
 
 }

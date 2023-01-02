@@ -1,8 +1,6 @@
 package data.scripts;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.impl.campaign.plog.PLStatMarines;
-import com.thoughtworks.xstream.XStream;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_econUpdateListiner;
 import data.scripts.AIWorldCode.supplyDemandClasses.*;
@@ -27,7 +25,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         crew_replacer_start_new();
         robot_forge_set();
         setDataLists.init();
-        AISupplyDemandSet();//HERE temporally disabled.
+        AISupplyDemandSet();
     }
     @Override
     public void onGameLoad(boolean newGame) {
@@ -35,8 +33,10 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //crew_replacer_start_outdated();
         super.onGameLoad(newGame);
         AIMarketModSet();
+        descriptions();
     }
-    /*@Override
+    /*
+    @Override
     public void configureXStream(XStream x){
         x.alias("AIRetrofit_RobotDescriptions",AIRetrofit_RobotDescriptions.class);
     }*/
@@ -72,12 +72,12 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     float nexM_Po = Global.getSettings().getFloat("AIRetrofits_GroundBattle_Power");
     float nexM_Pr = Global.getSettings().getFloat("AIRetrofits_GroundBattle_priority");
 
-    String AICoreJob = "AIRetrofit_OutpostAICore";
-    String AIWorkerJob = "AIRetrofit_OutpostWorker";
-    String SupplyJob = "AIRetrofit_OutpostSupply";
-    String MachineryJob = "AIRetrofit_OutpostMachinery";
-    String hijack_marinesJob = "Mission_hijack_marines";
-    String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
+    public static String AICoreJob = "AIRetrofit_OutpostAICore";
+    public static String AIWorkerJob = "AIRetrofit_OutpostWorker";
+    public static String SupplyJob = "AIRetrofit_OutpostSupply";
+    public static String MachineryJob = "AIRetrofit_OutpostMachinery";
+    public static String hijack_marinesJob = "Mission_hijack_marines";
+    public static String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
 
 
     String nexMarinesJob = "nex_groundBattle_marines";
@@ -104,7 +104,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempCrew.crewPower = Su_Po;
         tempCrew.crewPriority = Su_Pr;
         tempJob.addCrew(tempCrew);
-        tempJob.addNewCrew("crewname",1,10);
+        //tempJob.addNewCrew("crewname",1,10);
 
         //base game salvage job
         tempJob = crewReplacer_Main.getJob("salvage_crew");//survey_main
@@ -136,8 +136,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempJob = crewReplacer_Main.getJob(hijack_marinesJob);
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = nexM_Po;
-        tempCrew.crewPriority = nexM_Pr;
+        tempCrew.crewPower = Hm_Po;
+        tempCrew.crewPriority = Hm_Pr;
         tempJob.addCrew(tempCrew);
 
         //repairHyperRelayCrew
@@ -152,8 +152,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         tempJob = crewReplacer_Main.getJob(nexMarinesJob);
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = Hm_Po;
-        tempCrew.crewPriority = Hm_Pr;
+        tempCrew.crewPower = nexM_Po;//Hm_Po
+        tempCrew.crewPriority = nexM_Pr;//Hm_Pr
         tempJob.addCrew(tempCrew);
 
 /*
@@ -312,6 +312,13 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")
+        //Global.getSector().addTransientListener(new AIRetrofit_RobotDescriptions());
+        //Global.getSector().getListenerManager().addListener(new AIRetrofit_RobotDescriptions(),true);
+        //Global.getSector().getListenerManager().addListener(new AIRetrofit_RobotDescriptions().getClass(),true);
+        //if(!Global.getSector().getListenerManager().hasListener(AIRetrofit_RobotDescriptions.getCommodityTooltipModifier())){
+        Global.getSector().getListenerManager().addListener(AIRetrofit_RobotDescriptions.getCommodityTooltipModifier(),true);
+        //}
+
     }
 
     public static void loging(String output){

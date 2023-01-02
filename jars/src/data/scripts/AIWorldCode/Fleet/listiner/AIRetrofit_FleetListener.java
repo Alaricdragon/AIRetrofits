@@ -12,6 +12,7 @@ import java.util.List;
 
 public class AIRetrofit_FleetListener extends BaseCampaignEventListener {
     static String Condition = "AIRetrofit_AIPop";
+    static private boolean ChangeCrew = Global.getSettings().getBoolean("AIRetrofits_SwapAICrew");
     public AIRetrofit_FleetListener(boolean permaRegister) {
         super(permaRegister);
     }
@@ -39,6 +40,9 @@ public class AIRetrofit_FleetListener extends BaseCampaignEventListener {
     //AIretrofit_CombatDrone
     //AIretrofit_SurveyDrone
     private void swapFleetCrew(CampaignFleetAPI fleet){
+        if(!ChangeCrew){
+            return;
+        }
         for(int a = 0; a < itemIn.length; a++) {
             float in = fleet.getCargo().getCommodityQuantity(itemIn[a]);
             fleet.getCargo().removeCommodity(itemIn[a],in);
