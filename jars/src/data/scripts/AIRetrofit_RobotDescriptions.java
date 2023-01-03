@@ -49,7 +49,7 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
         String[] exstra = {
                 "" + robot.getCorePower(Global.getSector().getPlayerFleet().getCargo()),
                 robot.getMaxCore(Global.getSector().getPlayerFleet().getCargo()),
-                "" + robot.getCrewPowerInCargo(Global.getSector().getPlayerFleet().getCargo()),
+                "" + robot.getCrewPower(Global.getSector().getPlayerFleet().getCargo()),
         };
         info.addPara(robotDescription, 5, highlight, exstra);
         if(expanded){

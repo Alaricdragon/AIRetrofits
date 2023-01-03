@@ -1,4 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.5.1:
+save compatible with 0.7.3+
+    fixes:
+        fixed robots always giving a single robot of crew power.
 v0.7.5:
 save compatible with 0.7.3+
     new:

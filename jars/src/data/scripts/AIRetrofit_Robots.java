@@ -18,39 +18,40 @@ public class AIRetrofit_Robots extends crewReplacer_Crew{
                 "alpha_core",
                 "omega_core",
         };
-        @Override
-        public float getCrewPowerInCargo(CargoAPI cargo){
-            float multi = getCorePower(cargo);
-            return crewPower * multi;
+
+    @Override
+    public float getCrewPower(CargoAPI cargo) {
+        float multi = getCorePower(cargo);
+        return crewPower * multi;
+    }
+    final private static String noCoreText = Global.getSettings().getString("AIRetrofits_RobotPowerNoCoreMessage");
+    public String getMaxCore(CargoAPI cargo){
+        if(cargo.getCommodityQuantity(AICores[4]) > 0){
+            return Global.getSector().getEconomy().getCommoditySpec(AICores[4]).getName();
+        }else if(cargo.getCommodityQuantity(AICores[3]) > 0){
+            return Global.getSector().getEconomy().getCommoditySpec(AICores[3]).getName();
+        }else if(cargo.getCommodityQuantity(AICores[2]) > 0){
+            return Global.getSector().getEconomy().getCommoditySpec(AICores[2]).getName();
+        }else if(cargo.getCommodityQuantity(AICores[1]) > 0){
+            return Global.getSector().getEconomy().getCommoditySpec(AICores[1]).getName();
+        }else if(cargo.getCommodityQuantity(AICores[0]) > 0){
+            return Global.getSector().getEconomy().getCommoditySpec(AICores[0]).getName();
         }
-        final private static String noCoreText = Global.getSettings().getString("AIRetrofits_RobotPowerNoCoreMessage");
-        public String getMaxCore(CargoAPI cargo){
-            if(cargo.getCommodityQuantity(AICores[4]) > 0){
-                return Global.getSector().getEconomy().getCommoditySpec(AICores[4]).getName();
-            }else if(cargo.getCommodityQuantity(AICores[3]) > 0){
-                return Global.getSector().getEconomy().getCommoditySpec(AICores[3]).getName();
-            }else if(cargo.getCommodityQuantity(AICores[2]) > 0){
-                return Global.getSector().getEconomy().getCommoditySpec(AICores[2]).getName();
-            }else if(cargo.getCommodityQuantity(AICores[1]) > 0){
-                return Global.getSector().getEconomy().getCommoditySpec(AICores[1]).getName();
-            }else if(cargo.getCommodityQuantity(AICores[0]) > 0){
-                return Global.getSector().getEconomy().getCommoditySpec(AICores[0]).getName();
-            }
-            return noCoreText;//"no AI-Core or SubCommandNode";
+        return noCoreText;//"no AI-Core or SubCommandNode";
+    }
+    public float getCorePower(CargoAPI cargo){
+        float multi = baseBonus;
+        if(cargo.getCommodityQuantity(AICores[4]) > 0){
+            multi = omegaBonus;
+        }else if(cargo.getCommodityQuantity(AICores[3]) > 0){
+            multi = alphaBonus;
+        }else if(cargo.getCommodityQuantity(AICores[2]) > 0){
+            multi = betaBonus;
+        }else if(cargo.getCommodityQuantity(AICores[1]) > 0){
+            multi = gammaBonus;
+        }else if(cargo.getCommodityQuantity(AICores[0]) > 0){
+            multi = commandBonus;
         }
-        public float getCorePower(CargoAPI cargo){
-            float multi = baseBonus;
-            if(cargo.getCommodityQuantity(AICores[4]) > 0){
-                multi = omegaBonus;
-            }else if(cargo.getCommodityQuantity(AICores[3]) > 0){
-                multi = alphaBonus;
-            }else if(cargo.getCommodityQuantity(AICores[2]) > 0){
-                multi = betaBonus;
-            }else if(cargo.getCommodityQuantity(AICores[1]) > 0){
-                multi = gammaBonus;
-            }else if(cargo.getCommodityQuantity(AICores[0]) > 0){
-                multi = commandBonus;
-            }
-            return multi;
-        }
+        return multi;
+    }
     }

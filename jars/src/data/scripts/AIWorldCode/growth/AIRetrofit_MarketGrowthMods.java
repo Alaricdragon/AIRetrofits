@@ -46,6 +46,14 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
                 T1FactoryName,
                 T2FactoryName
         };
+        /*
+        String cancalGrowth = "AIRetrofit_noGrowth";
+        String replecate = "AIRetrofit_replicate";
+        incoming.getWeight().unmodify("AIRetrofit_noGrowth");
+        float multi = incoming.getWeight().getMult();
+        incoming.getWeight().modifyMult(cancalGrowth,0,"remove unwanted growth");
+        incoming.getWeight().modifyMultAlways(replecate,multi,"re adding modify multi");*/
+
         int a = 0;
         while(incoming.getWeight().getFlatMods().keySet().size() != 0 && a < incoming.getWeight().getFlatMods().keySet().size()){
             boolean out = true;
@@ -54,10 +62,15 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
                 if (m.equals(s)) {
                     a++;
                     out = false;
+                    //incoming.getWeight().getFlatStatMod(s).getDesc()
                     break;
                 }
             }
             if(out) {
+                //String name = incoming.getWeight().getFlatMods().keySet().toArray()[a].toString();
+                //String dec = incoming.getWeight().getFlatStatMod(name).desc;
+                //incoming.getWeight().modifyFlat(name,0,dec);
+                //a++;
                 incoming.getWeight().unmodify(incoming.getWeight().getFlatMods().keySet().toArray()[a].toString());
             }
         }

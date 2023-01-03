@@ -1,5 +1,9 @@
 to do list:
-
+NOTE:
+    tried to do a thing with growth were i only used modify always them multiplyed everything by zero. didnt work.
+    am very sad.
+    theory: growth is being applied, but not displayed -before- i swap it with my own.
+    the reason why this works is because my growth change takes place before the display triggers, so it -looks- like it works.
 ask questions on forum (done. wait for reply):
     how to make an industry send resources to your supply point
     (done)how to add text prosaically to an item (like marines)
