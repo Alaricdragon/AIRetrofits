@@ -56,6 +56,12 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     }
     protected float getOutputMulti(){
         float multi = 1;
+        if(isImproved()){
+            multi += improvedMulti;
+        }
+        if(getAICoreId() == null){
+            return multi;
+        }
         switch (getAICoreId()){
             case "beta_core":
                 multi += gammaMulti;
@@ -65,9 +71,6 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
                 break;
             case "alpha":
                 multi *= alphaMulti;
-        }
-        if(isImproved()){
-            multi += improvedMulti;
         }
         return multi;
     }

@@ -9,6 +9,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
+import data.scripts.CrewReplacer_Log;
 
 /*
 applys things like market condition changes, and supply demand changes.
@@ -24,7 +25,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         ID = id;
         if(can) {
             market.getStability().modifyFlat(id, STABILITY_BONUS, "robots don't rebel... right?");
-            //market.addTransientImmigrationModifier(this);
+            market.addTransientImmigrationModifier(this);
             supplyDemandChange(market);
             ChangeMarketConditions(market);
             //changePeople();
@@ -37,13 +38,14 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         super.unapply(id);
         removeSupplyDemandChange(market);
         market.getStability().unmodify(id);
-        //market.removeTransientImmigrationModifier(this);
+        market.removeTransientImmigrationModifier(this);
         //rempveSupplyDemandChange(market);
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
-        AIRetrofit_MarketGrowthMods.applyData(market,"");
         //AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
+        //AIRetrofit_MarketGrowthMods.applyData(market,"");
+        //CrewReplacer_Log.loging("HERE!!! AI-Retrofit tried to run growth again...",this.getClass());
         //modifyGrowth(incoming);
     }
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
