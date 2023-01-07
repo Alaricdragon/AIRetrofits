@@ -44,7 +44,8 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
                 "AIRetrofits_BasicDroneFactory_0",
                 "AIRetrofits_AdvancedDroneFactory_0",
                 T1FactoryName,
-                T2FactoryName
+                T2FactoryName,
+                "AIRetrofits_RobotFactoryGrowthMod"
         };
         /*
         String cancalGrowth = "AIRetrofit_noGrowth";

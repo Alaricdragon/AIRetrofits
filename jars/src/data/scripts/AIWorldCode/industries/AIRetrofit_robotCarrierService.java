@@ -1,8 +1,7 @@
 package data.scripts.AIWorldCode.industries;
 
-import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.util.Pair;
-import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 public class AIRetrofit_robotCarrierService  extends AIRetrofit_IndustryBase {
     static String C1 = "metals";

@@ -5,8 +5,9 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
-public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase{
+public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase {
     static private int minSize = 3;
     static private String condition = "AIRetrofit_AIPop";
     static float buildSet = 9999;

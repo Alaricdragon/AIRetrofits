@@ -27,12 +27,38 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
             case "AIretrofit_SurveyDrone":
                 surveyRobot(info,width,expanded,stack);
                 break;
+            case "AIretrofit_Advanced_WorkerDrone":
+                salvageAdvancedRobot(info,width,expanded,stack);
+                break;
+            case "AIretrofit_Advanced_CombatDrone":
+                combatAdvancedRobot(info,width,expanded,stack);
+                break;
+            case "AIretrofit_Advanced_SurveyDrone":
+                surveyAdvancedRobot(info,width,expanded,stack);
+                break;
+            case "AIretrofit_Omega_WorkerDrone":
+                salvageOmegaRobot(info,width,expanded,stack);
+                break;
+            case "AIretrofit_Omega_CombatDrone":
+                combatOmegaRobot(info,width,expanded,stack);
+                break;
+            case "AIretrofit_Omega_SurveyDrone":
+                surveyOmegaRobot(info,width,expanded,stack);
+                break;
         }
     }
     private static final AIRetrofit_Robots[] robots = {
             (AIRetrofit_Robots) crewReplacer_Main.getJob("salvage_crew").getCrew("AIretrofit_WorkerDrone"),
             (AIRetrofit_Robots) crewReplacer_Main.getJob("survey_crew").getCrew("AIretrofit_SurveyDrone"),
             (AIRetrofit_Robots) crewReplacer_Main.getJob("raiding_marines").getCrew("AIretrofit_CombatDrone"),
+
+            (AIRetrofit_Robots) crewReplacer_Main.getJob("salvage_crew").getCrew("AIretrofit_Advanced_WorkerDrone"),
+            (AIRetrofit_Robots) crewReplacer_Main.getJob("survey_crew").getCrew("AIretrofit_Advanced_SurveyDrone"),
+            (AIRetrofit_Robots) crewReplacer_Main.getJob("raiding_marines").getCrew("AIretrofit_Advanced_CombatDrone"),
+
+            (AIRetrofit_Robots) crewReplacer_Main.getJob("salvage_crew").getCrew("AIretrofit_Omega_WorkerDrone"),
+            (AIRetrofit_Robots) crewReplacer_Main.getJob("survey_crew").getCrew("AIretrofit_Omega_SurveyDrone"),
+            (AIRetrofit_Robots) crewReplacer_Main.getJob("raiding_marines").getCrew("AIretrofit_Omega_CombatDrone"),
     };
     private void salvageRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         displayCrewPower(robots[0],info,width,expanded,stack);
@@ -42,6 +68,26 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
     }
     private void surveyRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         displayCrewPower(robots[1],info,width,expanded,stack);
+    }
+
+    private void salvageAdvancedRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewPower(robots[3],info,width,expanded,stack);
+    }
+    private void surveyAdvancedRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewPower(robots[4],info,width,expanded,stack);
+    }
+    private void combatAdvancedRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewPower(robots[5],info,width,expanded,stack);
+    }
+
+    private void salvageOmegaRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewPower(robots[6],info,width,expanded,stack);
+    }
+    private void surveyOmegaRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewPower(robots[7],info,width,expanded,stack);
+    }
+    private void combatOmegaRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewPower(robots[8],info,width,expanded,stack);
     }
     private static final String robotDescription = Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
     private void displayCrewPower(AIRetrofit_Robots robot, TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
