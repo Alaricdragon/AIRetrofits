@@ -1,11 +1,13 @@
 to do list:
+on next non save combatble update:
+move the industry into relevant folders for ease of accuses
 NOTE:
     tried to do a thing with growth were i only used modify always them multiplyed everything by zero. didnt work.
     am very sad.
     theory: growth is being applied, but not displayed -before- i swap it with my own.
     the reason why this works is because my growth change takes place before the display triggers, so it -looks- like it works.
 ask questions on forum (done. wait for reply):
-    how to make an industry send resources to your supply point
+    (done)how to make an industry send resources to your supply point
     (done)how to add text prosaically to an item (like marines)
     (done)how to change a items images (like crew and marries) as it changes in quantity
 
@@ -45,9 +47,9 @@ Industrys:
     robotic replacement thing:
         work and design something as a temporarily thing.
     Manufactures of all type
-        -started this. put my base into 'AIRetrofit_PersonalRobotManufactoryBase'.
-        -started work on 'AIRetrofit_salvageRobotManufactory'
-        -NOTE: i have them toggled off in the 'AIRetrofit_PersonalRobotManufactoryBase'
+        -done?
+    salvage robot manufactury:
+        make its gamma core modifier do something on worlds with non AI population, because its wired to have it as it is now.
 
 market:
     (started)design and add industries to produce both advanced and basic robotic workers.

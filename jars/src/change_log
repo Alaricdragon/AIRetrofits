@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.6:
+save compatible with 0.7.3+
+    new:
+        added 3 new buildings, to produce robots at your supply point each moth.
+        they can be built on non AI population worlds, so long as you have the robot building skill thing.
+        added 6 cool things, 3 that might be completely impossible to ever find. good luck
 v0.7.5.1:
 save compatible with 0.7.3+
     fixes:

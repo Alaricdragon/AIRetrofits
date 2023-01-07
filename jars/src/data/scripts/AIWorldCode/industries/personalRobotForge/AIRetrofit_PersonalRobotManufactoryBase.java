@@ -1,43 +1,95 @@
-package data.scripts.AIWorldCode.industries;
+package data.scripts.AIWorldCode.industries.personalRobotForge;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_IndustryBase{
+public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_IndustryBase {
+    private static String alphaCore = "alpha_core";
+    private static String omegaCore = "omega_core";
+    @Override
+    public void apply(){
+        super.apply(true);
+        String[] itemsTemp = this.getItems();
+        int[] amountTemp = this.getNumbers();
+        //demand;
+        demand(itemsTemp[0],amountTemp[0]);
+        demand(itemsTemp[1],amountTemp[1]);
+        demand(itemsTemp[2],amountTemp[2]);
+
+        if(getAICoreId() != null && getAICoreId().equals(alphaCore)){
+            supply.clear();
+            supply(itemsTemp[4],amountTemp[4]);
+        }else if(getAICoreId() != null && getAICoreId().equals(omegaCore)){
+            supply.clear();
+            supply(itemsTemp[5],amountTemp[5]);
+        }else {
+            supply.clear();
+            supply(itemsTemp[3], amountTemp[3]);
+        }
+        Pair<String, Integer> deficit = getMaxDeficit(itemsTemp[0],itemsTemp[1],itemsTemp[2]);
+        applyDeficitToProduction(1, deficit,itemsTemp[3]);
+        applyDeficitToProduction(1, deficit,itemsTemp[4]);
+        applyDeficitToProduction(1, deficit,itemsTemp[5]);
+        if (!isFunctional()) {
+            supply.clear();
+        }
+    }
+    @Override
+    public void unapply(){
+        super.unapply();
+        removeBetaMods();
+    }
+    protected String[] getItems(){
+        /*
+        String C1 = "req item 1";//0
+        String C2 = "req item 2";//1
+        String C3 = "req item 3";//2
+        String S1 = "base out";//3
+        String S2 = "alpha out";//4
+        String S3 = "omega out";//5*/
+        return null;
+    }
+    protected int[] getNumbers(){
+        return null;
+    }
     private String item = "";
     private float amount = 0;
 
-    static private final boolean isActive = false;
+    static private final boolean isActive = true;
 
     static private final float gammaMulti = 1.3f;
     static private final float improvedMulti = 1.3f;
     static private final float betaMulti = 0.5f;
-    static private final float alphaMulti = 0.75f;
+    //alpha multi is not necessary.
+    //static private final float alphaMulti = 0.75f;
 
     static private final String gammaDescription = "improve robot output by %s";
     static private final String betaDescription = "reduce robot output by %s";
-    static private final String alphaDescription = "improve the quality of produced robots, but reduced output by %s";
-
+    static private final String alphaDescription = "improve the quality of produced robots, but %s output factory output";
+    static private final String alphaDescriptionHighlighted = "reduces";
     static final String improvedDescription = "improve robot output by %s";
     @Override
     public CargoAPI generateCargoForGatheringPoint(Random random) {
-        /*
-        * id
-        * alpha_core
-            beta_core
-            gamma_core*/
-        if(getAICoreId() != null && getAICoreId().equals("alpha_core")) {
+        if(!isFunctional()){
+            return null;
+        }
+        if(getAICoreId() != null && getAICoreId().equals(alphaCore)) {
             translateOutput(getAlphaOutput());
+        }else if(getAICoreId() != null && getAICoreId().equals(omegaCore)){
+            translateOutput(getOmegaOutput());
         }else{
             translateOutput(getOutput());
         }
@@ -54,6 +106,9 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     protected Object[] getAlphaOutput(){
         return getOutput();
     }
+    protected Object[] getOmegaOutput(){
+        return getAlphaOutput();
+    }
     protected float getOutputMulti(){
         float multi = 1;
         if(isImproved()){
@@ -69,8 +124,8 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
             case "gamma_core":
                 multi *= betaMulti;
                 break;
-            case "alpha":
-                multi *= alphaMulti;
+            //case "alpha":
+            //    multi *= alphaMulti;
         }
         return multi;
     }
@@ -105,7 +160,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        String[] exstra = {"" + ((1 - alphaMulti) * 100) + "%"};
+        String[] exstra = {alphaDescriptionHighlighted};
         tooltip.addPara(alphaDescription,pad,highlight,exstra);
     }
     @Override
@@ -117,7 +172,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     }
     @Override
     public void applyGammaCoreModifiers(){
-
+        removeBetaMods();
     }
     @Override
     public void applyBetaCoreModifiers(){
@@ -125,6 +180,14 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     }
     @Override
     public void applyAlphaCoreModifiers(){
+        removeBetaMods();
+    }
+
+    protected int getRandomBetween(float min,float max){
+        return (int)(min + Math.random()*(max - min));
+    }
+
+    protected void removeBetaMods(){
 
     }
 }

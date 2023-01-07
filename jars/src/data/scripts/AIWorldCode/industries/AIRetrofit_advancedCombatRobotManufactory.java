@@ -1,17 +1,12 @@
 package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.campaign.CargoAPI;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
-import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
-import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.util.Pair;
-import com.fs.starfarer.campaign.fleet.CargoData;
-import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 import java.util.Random;
 
-public class AIRetrofit_advancedCombatRobotManufactory extends AIRetrofit_IndustryBase{
+public class AIRetrofit_advancedCombatRobotManufactory extends AIRetrofit_IndustryBase {
     static String C1 = "metals";
     static String C2 = "rare_metals";
     static String C3 = "hand_weapons";

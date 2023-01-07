@@ -186,6 +186,56 @@
 	"AIRetrofits_GroundBattle_Power":0.5,
 	"AIRetrofits_GroundBattle_priority":11,
 
+	#for advanced robots
+	#Advanced salvage drones (salage)
+	"AIRetrofits_Advanced_Salvage_Power":1.25,
+	"AIRetrofits_Advanced_Salvage_priority":11,
+
+	#Advanced salvage drones (repair hyper relay)
+	"AIRetrofits_Advanced_repairHyperRelay_Power":1.25,
+	"AIRetrofits_Advanced_repairHyperRelay_priority":11,
+
+	#Advanced survey drones
+	"AIRetrofits_Advanced_Survey_Power":1.5,
+	"AIRetrofits_Advanced_Survey_priority":11,
+
+	#Advanced combat drones (raiding)
+	"AIRetrofits_Advanced_Combat_Power":1.25,
+	"AIRetrofits_Advanced_Combat_priority":11,
+
+	#Advanced combat drones (steal a starship)
+	"AIRetrofits_Advanced_MissionHijack_Power":1.25,
+	"AIRetrofits_Advanced_MissionHijack_priority":11,
+
+	#Advanced combat drones (nex_ground battle)
+	"AIRetrofits_Advanced_GroundBattle_Power":1.25,
+	"AIRetrofits_Advanced_GroundBattle_priority":11,
+
+	#for Omega robots
+	#Omega salvage drones (salage)
+	"AIRetrofits_Omega_Salvage_Power":3,
+	"AIRetrofits_Omega_Salvage_priority":11,
+
+	#Omega salvage drones (repair hyper relay)
+	"AIRetrofits_Omega_repairHyperRelay_Power":3,
+	"AIRetrofits_Omega_repairHyperRelay_priority":11,
+
+	#Omega survey drones
+	"AIRetrofits_Omega_Survey_Power":4.5,
+	"AIRetrofits_Omega_Survey_priority":11,
+
+	#Omega combat drones (raiding)
+	"AIRetrofits_Omega_Combat_Power":5,
+	"AIRetrofits_Omega_Combat_priority":11,
+
+	#Omega combat drones (steal a starship)
+	"AIRetrofits_Omega_MissionHijack_Power":5,
+	"AIRetrofits_Omega_MissionHijack_priority":11,
+
+	#Omega combat drones (nex_ground battle)
+	"AIRetrofits_Omega_GroundBattle_Power":5,
+	"AIRetrofits_Omega_GroundBattle_priority":11,
+
 	#ExstraDescriptionOfItems
 	#all robot types power description
 	"AIRetrofits_RobotPowerDescription":"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot",

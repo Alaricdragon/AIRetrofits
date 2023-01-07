@@ -2,10 +2,9 @@ package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
-import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.util.Pair;
-import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase implements MarketImmigrationModifier {
     final static String C1 = "metals";

@@ -11,6 +11,7 @@ import data.scripts.robot_forge.AIRetrofits_ForgeItem;
 import data.scripts.robot_forge.AIRetrofits_ForgeList;
 import data.scripts.robot_forge.AIRetrofits_RobotForge;
 import data.scripts.robot_forge.AIRetrofits_RobotForge_People;
+import data.scripts.startupData.AIRetrofits_Startup_CrewReplacer;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
 
@@ -26,6 +27,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         robot_forge_set();
         setDataLists.init();
         AISupplyDemandSet();
+
+        AIRetrofits_Startup_CrewReplacer.addEverything();
     }
     @Override
     public void onGameLoad(boolean newGame) {
@@ -54,7 +57,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //crew_replacer.setCrewLost("AIretrofit_SurveyDrone","survey",(float)1,(float)1);
         //crew_replacer.setCrewPower("AIretrofit_WorkerDrone","salvage",(float)1);
     }
-    float Sa_Po = Global.getSettings().getFloat("AIRetrofits_Salvage_Power");
+    /*float Sa_Po = Global.getSettings().getFloat("AIRetrofits_Salvage_Power");
     float Sa_Pr = Global.getSettings().getFloat("AIRetrofits_Salvage_priority");
 
     float Su_Po = Global.getSettings().getFloat("AIRetrofits_Survey_Power");
@@ -80,81 +83,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     public static String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
 
 
-    String nexMarinesJob = "nex_groundBattle_marines";
+    String nexMarinesJob = "nex_groundBattle_marines";*/
     private void crew_replacer_start_new(){
-        crewReplacer_Job tempJob = crewReplacer_Main.getJob("survey_crew");
-        /*AIRetrofit_Robots tempcrew = new AIRetrofit_Robots();
-        tempcrew.name = "AIretrofit_SurveyDrone";
-        tempcrew.crewPower = 2.5f;
-        tempJob.addCrew(tempcrew);*/
-        /*
-        tempJob.addNewCrew("AIretrofit_SurveyDrone",Su_Po,Su_Pr);
-        //tempJob.addNewCrew("AIretrofit_WorkerDrone",1,10,0,0,true);
-
-        tempJob = crewReplacer_Main.getJob("salvage_crew");//survey_main
-        tempJob.addNewCrew("AIretrofit_WorkerDrone",Sa_Po,Sa_Pr);//,1,1,true);
-
-        tempJob = crewReplacer_Main.getJob("raiding_marines");
-        tempJob.addNewCrew("AIretrofit_CombatDrone",Co_Po,Co_Pr);
-        */
-
-        //base game survey job
-        AIRetrofit_Robots tempCrew = new AIRetrofit_Robots();
-        tempCrew.name = "AIretrofit_SurveyDrone";
-        tempCrew.crewPower = Su_Po;
-        tempCrew.crewPriority = Su_Pr;
-        tempJob.addCrew(tempCrew);
-        //tempJob.addNewCrew("crewname",1,10);
-
-        //base game salvage job
-        tempJob = crewReplacer_Main.getJob("salvage_crew");//survey_main
-        tempCrew = new AIRetrofit_Robots();
-        tempCrew.name = "AIretrofit_WorkerDrone";
-        tempCrew.crewPower = Sa_Po;
-        tempCrew.crewPriority = Sa_Pr;
-        tempJob.addCrew(tempCrew);
-
-        //base game raiding job
-        tempJob = crewReplacer_Main.getJob("raiding_marines");
-        tempCrew = new AIRetrofit_Robots();
-        tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = Co_Po;
-        tempCrew.crewPriority = Co_Pr;
-        tempJob.addCrew(tempCrew);
-
-        //AIRetrofit added jobs
-        tempJob = crewReplacer_Main.getJob(AICoreJob);//addItem AIretrofit_WorkerDrone 1000; addItem supplies 200; addItem heavy_machinery 200; addItem AIretrofit_SubCommandNode 10;
-        tempJob.addNewCrew("AIretrofit_SubCommandNode",1,10);
-        tempJob = crewReplacer_Main.getJob(AIWorkerJob);
-        tempJob.addNewCrew("AIretrofit_WorkerDrone",1,10);//AIretrofit_CombatDrone
-        tempJob = crewReplacer_Main.getJob(SupplyJob);
-        tempJob.addNewCrew("supplies",1,10);
-        tempJob = crewReplacer_Main.getJob(MachineryJob);
-        tempJob.addNewCrew("heavy_machinery",1,10);
-
-        //Mission_hijack_marines
-        tempJob = crewReplacer_Main.getJob(hijack_marinesJob);
-        tempCrew = new AIRetrofit_Robots();
-        tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = Hm_Po;
-        tempCrew.crewPriority = Hm_Pr;
-        tempJob.addCrew(tempCrew);
-
-        //repairHyperRelayCrew
-        tempJob = crewReplacer_Main.getJob(repairHyperRelayCrewJob);
-        tempCrew = new AIRetrofit_Robots();
-        tempCrew.name = "AIretrofit_WorkerDrone";
-        tempCrew.crewPower = RHR_Po;
-        tempCrew.crewPriority = RHR_Pr;
-        tempJob.addCrew(tempCrew);
-
-        //nex job basic:
-        tempJob = crewReplacer_Main.getJob(nexMarinesJob);
-        tempCrew = new AIRetrofit_Robots();
-        tempCrew.name = "AIretrofit_CombatDrone";
-        tempCrew.crewPower = nexM_Po;//Hm_Po
-        tempCrew.crewPriority = nexM_Pr;//Hm_Pr
-        tempJob.addCrew(tempCrew);
 
 /*
         tempJob = crewReplacer_Main.getJob("survey_crew");
