@@ -1,22 +1,53 @@
 issues:
-    -right now market growth is to slow. it was an fun idea to have growth be tied to hazard pay, but hazard pay makes no sense. (cost based on conditions, not robot production.)
-        -solution: see new theory
-    -growth is -boring- right now there is only like 4 growth mods for the market. needs improvements.
-        -solution: add new growth mods based on market conditions and surrounding market conditions. no idea what though.
+    growth is not being set right.
+    need to analyze growth to determine what is going on
 
-new theory:
-    -remove cost from hazard pay. make it an boost to market growth (like 2X multiplayer or something) when free port is also on, have bad events and negative stability?
-        -i like the idea of the market growth bost, at least combined with free port.
-        -would need to provide an massive bost in growth to work though
-    -add an new function to free port: make it so it enables / disables other faction trade. have it reduce stability.
-        -right now, free port dose nothing for you. and the point is to hide the markets. this might help? by nerfing it. mmm maybe not
-        -disabling outer faction trade might not be possible. but if i set accessibility to 0%, it might only provide in faction trading.
-        -having freeport online would need to provide some type of risk when used with hazzard pay. also i would need to tell the player constantly how this works.
-    -thoughts:
-        -when freeport==on and hazzardpay==on, would need to provide an moderate growth boost, market trade, at the cost of stability, and bad events if stability gets to low?
-        -when freeport==on and hazzardpay==off, would need to have very low growth, if any.
-        -when freeport==off and hazzardpay==off, would need to have low growth, but not none.
-        -when freeport==off and hazzardpay==on, would need to have an very high growth speed. maybe 3X? or 2X + 20? something like that.
+    new infermation:
+        1) market.getAllImmigrationModifiers()
+            -what is this? does it do something better?
+    questions:
+        1) does the current implementation of growth apply growth, or does it just look like it does?
+            -no, it does not apply growth.
+        2) does modify multi and modify flat final do anything or not?
+            -modify multi always effects modify flat final.
+        3) were can i find the growth mods of a marker, and is it possible to remove them?
+            -CoreImmigrationPluginImpl
+            -makes sense everything is fighting me. its -hard coded-
+        3.a) can i get, then modify negative, the CoreImmigrationPluginImpl mods onto the main market mods?
+            -maybe.
+            -testing now...
+            -yes. however, that might not be required...?
+        3.b) can i remove all not my growth mods?
+            -i don't think so. i can cut -some- of them, but not all.
+        4) are growth mods not being applied because im not applying growth?
+            -
+
+    known:
+        1)current implementation of market growth does look like it removes growth mods.
+
+    tried solutions:
+        all growth: AIRetrofit_econUpdateListiner displayed what i wanted, but didnt imply it.
+
+        remove growth: AI-Pop:
+            -removes all growth exscluding:
+                -space-port
+                -free-port
+            -known removed growth: (gotting with console logs)
+                -inc_access: accsesability growth
+                -inc_hazard: hazzard growth negative
+                -inc_insys: larget market in system
+                -inc_incentives: hazzard pay
+            -UPDATE: added a system to remove all unwanted growth.
+                -so far, is 100% effective.
+                -free port refuses to be ran through this system, under any conditions.
+                -possibility: a mod is changing freeport. this would cause issues.
+            -how it works:
+                1): runs remove growth.
+                    -removes all not whitelisted growth, or tries to
+                2): runs remove growth from industry, and conditions
+                    -add a negitive modifier equal to its normal modifier.
+                3): hids changes, so i can only see the base changes.
+                    -runs in econ update listiner. i did this before, and it never changed anything. hope for the best here...
 
 
 new theory 2:

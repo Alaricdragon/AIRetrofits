@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
+import data.scripts.CrewReplacer_Log;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
     public static void undoExtraData(MarketAPI market,String ID){
     }
     private static void modifyGrowth(MarketAPI market, String ID){
+        //CrewReplacer_Log.loging("ERROR: outdated modifing data errror",new AIRetrofit_MarketGrowthMods(),true);
         PopulationComposition incoming = market.getIncoming();
         String[] activeGrowth = {//HERE <-- this needs to be swapped with data from config
                 "population_AIRetrofit_0",
@@ -45,6 +47,7 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
                 "AIRetrofits_AdvancedDroneFactory_0",
                 T1FactoryName,
                 T2FactoryName,
+                hazzardPayName,
                 "AIRetrofits_RobotFactoryGrowthMod"
         };
         /*
@@ -88,8 +91,8 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
         }*/
 
         //market.removeImmigrationModifier();//HERE. this might be usefull. might need to swap data from the market growth for diffrent population comps
-        applyGrowth(incoming,market);
-        market.setIncoming(incoming);
+        //applyGrowth(incoming,market);
+        //market.setIncoming(incoming);
     }
     private static String T1FactoryName = "LocalRobotFactory's";
     private static String T1FactoryDescription = Global.getSettings().getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
