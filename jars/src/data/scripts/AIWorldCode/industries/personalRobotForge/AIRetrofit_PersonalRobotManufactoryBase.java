@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Random;
 
 public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_IndustryBase {
-    private static String alphaCore = "alpha_core";
-    private static String omegaCore = "omega_core";
+    private static final String alphaCore = "alpha_core";
+    private static final String omegaCore = "omega_core";
     @Override
     public void apply(){
         super.apply(true);
@@ -70,17 +70,17 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
 
     static private final boolean isActive = true;
 
-    static private final float gammaMulti = 1.3f;
-    static private final float improvedMulti = 1.3f;
-    static private final float betaMulti = 0.5f;
+    static private final float gammaMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_gammaMulti");//1.3f;
+    static private final float improvedMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_improvedMulti");//1.3f;
+    static private final float betaMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_betaMulti");//0.5f;
     //alpha multi is not necessary.
     //static private final float alphaMulti = 0.75f;
 
-    static private final String gammaDescription = "improve robot output by %s";
-    static private final String betaDescription = "reduce robot output by %s";
-    static private final String alphaDescription = "improve the quality of produced robots, but %s output factory output";
-    static private final String alphaDescriptionHighlighted = "reduces";
-    static final String improvedDescription = "improve robot output by %s";
+    static private final String gammaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_gammaDescription");//"improve robot output by %s";
+    static private final String betaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_betaDescription");//"reduce robot output by %s";
+    static private final String alphaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_alphaDescription");//"improve the quality of produced robots, but %s output factory output";
+    static private final String alphaDescriptionHighlighted = Global.getSettings().getString("AIRetrofit_robotManufactury_alphaDescriptionHighlighted");//"reduces";
+    static final String improvedDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_improvedDescription");//"improve robot output by %s";
     @Override
     public CargoAPI generateCargoForGatheringPoint(Random random) {
         if(!isFunctional()){
@@ -112,22 +112,30 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     protected float getOutputMulti(){
         float multi = 1;
         if(isImproved()){
-            multi += improvedMulti;
+            multi = getMultiOrAdd(multi,improvedMulti);
         }
         if(getAICoreId() == null){
             return multi;
         }
         switch (getAICoreId()){
             case "beta_core":
-                multi += gammaMulti;
+                multi = getMultiOrAdd(multi,gammaMulti);
                 break;
             case "gamma_core":
-                multi *= betaMulti;
+                multi = getMultiOrAdd(multi,betaMulti);
                 break;
             //case "alpha":
             //    multi *= alphaMulti;
         }
         return multi;
+    }
+    private float getMultiOrAdd(float a, float amount){
+        if(amount >= 1){
+            return a + (amount - 1);
+        }
+        return a *= amount;
+        //higher then 1 = a + (amount - 1)
+        //lower then 1 = a * amount.
     }
     private void translateOutput(Object[] output){
         item = (String) output[0];

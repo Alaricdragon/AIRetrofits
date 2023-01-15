@@ -9,7 +9,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
-import data.scripts.CrewReplacer_Log;
+import data.scripts.AIWorldCode.growth.AIRetrofits_RemoveUnwantedGrowth;
 
 /*
 applys things like market condition changes, and supply demand changes.
@@ -43,6 +43,12 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
+        AIRetrofits_RemoveUnwantedGrowth.removeGrowthOther(market,incoming);
+        AIRetrofits_RemoveUnwantedGrowth.removeKnownImmigration(market,incoming);
+        AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
+        //AIRetrofit_RemoveBaseImrgration.apply(market,incoming);
+        //incoming.getWeight().modifyMult(getModId() + "_0",0,"test remove");
+        //incoming.getWeight().modifyFlatAlways(getModId() + "_1", 10, "test growth");
         //AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
         //AIRetrofit_MarketGrowthMods.applyData(market,"");
         //CrewReplacer_Log.loging("HERE!!! AI-Retrofit tried to run growth again...",this.getClass());

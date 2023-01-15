@@ -61,32 +61,41 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
             (AIRetrofit_Robots) crewReplacer_Main.getJob("raiding_marines").getCrew("AIretrofit_Omega_CombatDrone"),
     };
     private void salvageRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[0].name,info,width,expanded,stack);
         displayCrewPower(robots[0],info,width,expanded,stack);
     }
     private void combatRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[2].name,info,width,expanded,stack);
         displayCrewPower(robots[2],info,width,expanded,stack);
     }
     private void surveyRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[1].name,info,width,expanded,stack);
         displayCrewPower(robots[1],info,width,expanded,stack);
     }
 
     private void salvageAdvancedRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[3].name,info,width,expanded,stack);
         displayCrewPower(robots[3],info,width,expanded,stack);
     }
     private void surveyAdvancedRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[4].name,info,width,expanded,stack);
         displayCrewPower(robots[4],info,width,expanded,stack);
     }
     private void combatAdvancedRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[5].name,info,width,expanded,stack);
         displayCrewPower(robots[5],info,width,expanded,stack);
     }
 
     private void salvageOmegaRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[6].name,info,width,expanded,stack);
         displayCrewPower(robots[6],info,width,expanded,stack);
     }
     private void surveyOmegaRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[7].name,info,width,expanded,stack);
         displayCrewPower(robots[7],info,width,expanded,stack);
     }
     private void combatOmegaRobot(TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        displayCrewSize(robots[8].name,info,width,expanded,stack);
         displayCrewPower(robots[8],info,width,expanded,stack);
     }
     private static final String robotDescription = Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
@@ -102,8 +111,11 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
             /*this will hold the crew power of every job for this crew.*/
         }
     }
-    private void loging(String output){
-        final Logger LOG = Global.getLogger(this.getClass());
-        LOG.info(output);
-    }
+    private static final String robotSizeDescriptions = Global.getSettings().getString("AIRetrofits_RobotCargoDescription");
+    private void displayCrewSize(String name,TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
+        Color highlight = Misc.getHighlightColor();
+        String[] exstra = {
+                "" + Global.getSector().getEconomy().getCommoditySpec(name).getCargoSpace()
+        };
+        info.addPara(robotSizeDescriptions, 5, highlight, exstra); }
 }

@@ -1,5 +1,6 @@
 package data.scripts.AIWorldCode.industries;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
@@ -19,7 +20,7 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
     private final static String S1 = "AIretrofit_WorkerDrone";
     private final static String S2 = "AIretrofit_Advanced_WorkerDrone";
     private final static String S3 = "AIretrofit_Omega_WorkerDrone";
-
+/*
     private final static int OS1Min = 40;
     private final static int OS1Max = 60;
 
@@ -32,6 +33,21 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
     private final static float BetaGrowthMod = 12;
 
     private final static String BetaText = "use produced salvage robots to boost population growth by %s";
+*/
+    private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS1Min");//125;
+    private final static int OS1Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS1Max");
+
+    private final static int OS2Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS2Min");
+    private final static int OS2Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS2Max");
+
+    private final static int OS3Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS3Min");
+    private final static int OS3Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS3Max");
+
+    private final static float BetaGrowthMod = Global.getSettings().getFloat("AIRetrofit_robotManufactury_salvage_Mod");//1.1f;
+
+    //private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_salvage_exstaText");//"from combat robot factory";
+    private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_salvage_betaText");//"use produced combat robots to boost ground defences by %s";
+
     @Override
     protected String[] getItems(){
         return new String[] {C1,C2,C3,S1,S2,S3};

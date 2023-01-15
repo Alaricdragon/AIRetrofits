@@ -9,8 +9,9 @@ import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
 public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateListener {
     private static boolean can = Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     static String RuleSet = "AIRetrofits_AIPopGrowth";
+    static private boolean Override = true;//when true, act as normal.
     private void applyMarketData() {
-        if(can) {
+        if(can && Override) {
             for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
                 market = Global.getSector().getEconomy().getMarket(market.getId());
                 //crewReplacer_SupplyDemandLists.getRuleSet(RuleSet).applyMarket(market, false);

@@ -1,10 +1,23 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.7:
+save compatible with 0.7.3+
+    fixes:
+        -FINALLY fixed market growth. it is tested and 95% working. i hope
+            -free port might still give extra growth though. ill fix that finial thing latter
+        -fixed a issue with robot forges, that caused them to produce to mush / little depending on improvements and AI cores.
+    to do list before updating:
+        -add a config so i can turn on and off my logs at will.
+    new:
+        made robots display how mush cargo space they take up, because i forgot to add that before
+        made the personal survey robot manufactroy beta core modifier do something
+        added all the config files for the personal robot manufactroy's
 v0.7.6:
 save compatible with 0.7.3+
     new:
         added 3 new buildings, to produce robots at your supply point each moth.
         they can be built on non AI population worlds, so long as you have the robot building skill thing.
-        added 6 cool things, 3 that might be completely impossible to ever find. good luck
+
+        added 2 more tires of robots (called advanced or [REDACTED]).  buildable if you have a personal robot forge of any type, with ether a alpha-Core or a [REDACTED] inside
 v0.7.5.1:
 save compatible with 0.7.3+
     fixes:
