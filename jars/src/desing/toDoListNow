@@ -1,14 +1,9 @@
 to do list:
-on next non save combatble update:
-move the industry into relevant folders for ease of accuses
+on next non save compatible update:
+    move the industry into relevant folders for ease of accuses
 NOTE:
-    just tried a thing with growth. i have no clue if it works or not.
-    view growth -AI-Pop for detailes
-ask questions on forum (done. wait for reply):
-    (done)how to make an industry send resources to your supply point
-    (done)how to add text prosaically to an item (like marines)
-    (done)how to change a items images (like crew and marries) as it changes in quantity
-
+    just tried a thing with growth. it works.
+    view growth -AI-Pop for details
 images:
     options:
         1) get someone to do it for me.
@@ -35,6 +30,8 @@ images:
     combat bots can get a rework latter.
     created images file for ideas.
 Industrys:
+    all:
+        AICore modifiers do not display that they have a AI core installed right. this will be fixed.
     Shipyard:
         issues:
             color of 'points available' needs to change to improved color when i have the industry improved.
@@ -50,14 +47,10 @@ Industrys:
         make its gamma core modifier do something on worlds with non AI population, because its wired to have it as it is now.
 
 market:
-    (started)design and add industries to produce both advanced and basic robotic workers.
+    (done)design and add industries to produce both advanced and basic robotic workers.
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
 
 Robots:
-    -add an extra part to there description that shows:
-        -size
-        -crew-power.
-        -(this is done for weapons. it can be done here.)
     -change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
@@ -65,7 +58,7 @@ AIRetrofits:
     -make this hullmod incompatible with all AIRetrofit_Shipyard hullmods.
 
 AI Market plugin:
-    new plan: in market retrofits, build a system for founding markets. with or without certen data.
+    new plan: in market retrofits, build a system for founding markets. with or without certain data.
               make it so the AI Market plugin must be ran through that instead.
               make the market retrofits plugin replace the old old one.
     Note: possible solution is to only use one plugin and make it open an dialog with the world, then go from there. dialog is mush easier...

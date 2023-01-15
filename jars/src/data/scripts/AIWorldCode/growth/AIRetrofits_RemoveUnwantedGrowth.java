@@ -8,7 +8,8 @@ import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.combat.MutableStat;
 import com.fs.starfarer.api.impl.campaign.econ.FreeMarket;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
-import data.scripts.CrewReplacer_Log;
+import data.scripts.AIRetrofit_Log;
+//import data.scripts.CrewReplacer_Log;
 
 public class AIRetrofits_RemoveUnwantedGrowth {
     private static final String T1FactoryName = "LocalRobotFactory's";
@@ -31,6 +32,7 @@ public class AIRetrofits_RemoveUnwantedGrowth {
             "AIRetrofits_AdvancedDroneFactory_0",
             T1FactoryName,
             T2FactoryName,
+            hazzardPayName,
             "AIRetrofits_RobotFactoryGrowthMod"
     };
     public static void removeKnownImmigration(MarketAPI market, PopulationComposition incoming){
@@ -45,12 +47,12 @@ public class AIRetrofits_RemoveUnwantedGrowth {
         }
         for(MarketConditionAPI a : market.getConditions()){
             if (market.hasCondition(a.getSpec().getId())){
-                CrewReplacer_Log.loging("got conditions of id:" + a.getSpec().getId(),new AIRetrofit_RemoveBaseImrgration(),true);
+                AIRetrofit_Log.loging("got conditions of id:" + a.getSpec().getId(),new AIRetrofit_RemoveBaseImrgration());
                 try{
                     MarketImmigrationModifier b = (MarketImmigrationModifier) market.getCondition(a.getSpec().getId());
                     b.modifyIncoming(market, negitiveIn);
                 }catch (Exception e){
-                    CrewReplacer_Log.loging("ERROR: failed to ad to remove mod named: " + a.getSpec().getId(),new AIRetrofit_RemoveBaseImrgration(),true);
+                    AIRetrofit_Log.loging("ERROR: failed to ad to remove mod named: " + a.getSpec().getId(),new AIRetrofit_RemoveBaseImrgration());
                 }
             }
         }
@@ -66,11 +68,11 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                 }
             }
             if(!noOut) {
-                CrewReplacer_Log.loging("adding negative growth for industry/conditional growth named: " + mods[a].toString(),new AIRetrofits_RemoveUnwantedGrowth(),true);
+                AIRetrofit_Log.loging("adding negative growth for industry/conditional growth named: " + mods[a].toString(),new AIRetrofits_RemoveUnwantedGrowth());
                 MutableStat.StatMod temp2 = negitiveIn.getWeight().getFlatMods().get(mods[a].toString());
-                CrewReplacer_Log.loging("adding negative mod: " + temp2, new AIRetrofit_RemoveBaseImrgration(), true);
+                AIRetrofit_Log.loging("adding negative mod: " + temp2, new AIRetrofit_RemoveBaseImrgration());
                 String a0 = "AIRetrofit_Remove_" + temp2.getSource();
-                CrewReplacer_Log.loging("negative growth named:" + a0,new AIRetrofits_RemoveUnwantedGrowth(),true);
+                AIRetrofit_Log.loging("negative growth named:" + a0,new AIRetrofits_RemoveUnwantedGrowth());
                 float b = -temp2.getValue();
                 incoming.getWeight().modifyFlat(a0, b, info);
             }
@@ -79,7 +81,7 @@ public class AIRetrofits_RemoveUnwantedGrowth {
     }
     public static void removeGrowthOther(MarketAPI market, PopulationComposition incoming){
         //PopulationComposition incoming = market.getIncoming();
-        String[] activeGrowth = {//HERE <-- this needs to be swapped with data from config
+        /*String[] activeGrowth = {//HERE <-- this needs to be swapped with data from config
                 "population_AIRetrofit_0",
                 "population_AIRetrofit_1",
                 "population_AIRetrofit_2",
@@ -90,8 +92,8 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                 T2FactoryName,
                 hazzardPayName,
                 "AIRetrofits_RobotFactoryGrowthMod"
-        };
-        CrewReplacer_Log.loging("removeing growth from market named: " + market.getName(),new AIRetrofits_RemoveUnwantedGrowth(),true);
+        };*/
+        AIRetrofit_Log.loging("removeing growth from market named: " + market.getName(),new AIRetrofits_RemoveUnwantedGrowth());
         int a = 0;
         while(incoming.getWeight().getFlatMods().keySet().size() != 0 && a < incoming.getWeight().getFlatMods().keySet().size()){
             boolean out = true;
@@ -105,7 +107,7 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                 }
             }
             if(out) {
-                CrewReplacer_Log.loging("Removed growth named: " + incoming.getWeight().getFlatMods().keySet().toArray()[a].toString(),new AIRetrofits_RemoveUnwantedGrowth(),true);
+                AIRetrofit_Log.loging("Removed growth named: " + incoming.getWeight().getFlatMods().keySet().toArray()[a].toString(),new AIRetrofits_RemoveUnwantedGrowth());
                 incoming.getWeight().unmodify(incoming.getWeight().getFlatMods().keySet().toArray()[a].toString());
             }
         }

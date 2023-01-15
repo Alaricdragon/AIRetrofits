@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AIRetrofit_RemoveBaseImrgration {
+    /*removed because this is now oppsoleet. see removeUnwantedGrowth for new version of this*/
+    /*
     private static String[] negativeNames = {
             "AIRetrofit_Negative_a",
             "AIRetrofit_Negative_b",
@@ -123,7 +125,7 @@ public class AIRetrofit_RemoveBaseImrgration {
             bulkFaction = market.getFactionId();
         }
         //inc.add(bulkFaction, 10f * numIndustries);
-        */
+        *//*
         applyIncentives(inc, uiUpdateOnly, f,market);
 
         //HERE internal calculation. not needed here.
@@ -141,7 +143,7 @@ public class AIRetrofit_RemoveBaseImrgration {
         }
 
         inc.normalizeToPositive();*/
-
+/*
         return inc;
     }
 
@@ -166,7 +168,7 @@ public class AIRetrofit_RemoveBaseImrgration {
         /*if (market.getSize() >= Misc.MAX_COLONY_SIZE) {
             market.setImmigrationIncentivesOn(false);
             return;
-        }*/
+        }*//*
 
 
         float points = -getImmigrationHazardPenalty(market) + CoreImmigrationPluginImpl.INCENTIVE_POINTS_EXTRA;
@@ -178,8 +180,8 @@ public class AIRetrofit_RemoveBaseImrgration {
             /*if (!uiUpdateOnly) {
                 market.setIncentiveCredits(market.getIncentiveCredits() + cost);
             }*/
-        }
+        //}
 
-    }
+    //}
 
 }

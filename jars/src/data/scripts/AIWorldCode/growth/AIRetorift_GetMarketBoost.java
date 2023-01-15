@@ -5,12 +5,12 @@ import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MutableCommodityQuantity;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofit_Log;
 import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class AIRetorift_GetMarketBoost {
-    private static boolean logingActive = false;
     private static final String IT1 = "AIRetrofit_roboticPopFactoryV1";
     private static final float T1ImprovedBonus = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");//1.3f;
     private static final float T1PowerPerSize = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1PowerPerSize");//5;
@@ -236,35 +236,6 @@ public class AIRetorift_GetMarketBoost {
         return 0;
     }
     public static void loging(String output){
-        if(!logingActive){
-            return;
-        }
-        AIRetorift_GetMarketBoost a = new AIRetorift_GetMarketBoost();
-        final Logger LOG = Global.getLogger(a.getClass());//Global.getLogger(this.getClass());
-        LOG.info(output);
-        /*
-49514 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - adding 30.0from global
-49514 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Global Power Available:30.0
-49514 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Global Size Used: 3.0
-49514 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - adding local world: Ayre from world slot 8
-49514 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - adding local world: Shining Tor from world slot 9
-49515 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Local Power Available: 0.0
-49515 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Local Size Used: 3.0
-49515 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - GPSG: 10.0 GPSL: 0.0
-49515 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - outGlobal: 10.0 outLocal: 0.0
-49515 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - final mods: 20.0, 0.0
-
-101186 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Global Power Available:0.0
-101186 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Global Size Used: 3.0
-101186 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - adding local world: Ayre from world slot 8
-101186 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - detected industry: robot worker factory
-101186 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - adding 15.0from local
-101186 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - adding local world: Shining Tor from world slot 9
-101187 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Local Power Available: 15.0
-101187 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - Local Size Used: 3.0
-101187 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - GPSG: 0.0 GPSL: 5.0
-101187 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - outGlobal: 0.0 outLocal: 5.0
-101187 [Thread-3] INFO  data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost  - final mods: 0.0, 16.0
-*/
+        AIRetrofit_Log.loging(output,new AIRetorift_GetMarketBoost());
     }
 }
