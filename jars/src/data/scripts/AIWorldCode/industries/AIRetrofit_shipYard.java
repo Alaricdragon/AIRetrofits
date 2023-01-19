@@ -1,6 +1,7 @@
 package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -60,16 +61,52 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
     }
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
-        tooltip.addPara(alphaDescription,0f);
+        float pad = 5;
+        String pre = "Alpha-level AI core currently assigned. ";
+        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            pre = "Alpha-level AI core. ";
+        }
+        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
+            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
+            text.addPara(pre + alphaDescription,pad);
+            tooltip.addImageWithText(pad);
+            return;
+        }
+        tooltip.addPara(pre + alphaDescription,pad);
     }
     @Override
     protected void	addBetaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
-        tooltip.addPara(betaDescription,0f);
+        float pad = 5;
+        String pre = "Beta-level AI core currently assigned. ";
+        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            pre = "Beta-level AI core. ";
+        }
+        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
+            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
+            text.addPara(pre + betaDescription,pad);
+            tooltip.addImageWithText(pad);
+            return;
+        }
+        tooltip.addPara(pre + betaDescription,pad);
 
     }
     @Override
     protected void	addGammaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
-        tooltip.addPara(gammaDescription,0f);
+        float pad = 5;
+        String pre = "Gamma-level AI core currently assigned. ";
+        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            pre = "Gamma-level AI core. ";
+        }
+        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
+            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
+            text.addPara(pre + gammaDescription,pad);
+            tooltip.addImageWithText(pad);
+            return;
+        }
+        tooltip.addPara(gammaDescription,pad);
 
     }
 
