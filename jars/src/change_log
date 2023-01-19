@@ -1,12 +1,22 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.8:
+save compatible with 0.7.3+
+    fixes:
+        added a config to turn on/off the logs relating to market growth at will.
+        fixed missing AI core display on the following industry
+            -all personal robot manufactorys
+            -Automated Ship Instalation Center
+            -robotic worker assembely and its upgrades.
+            -NOTE: there is likely a few i missed on this pass. ill fix them latter.
+    changes:
+        rebalanced the experimental building, so its no longer borderline worthless. this will be its final form for a long time.
+
 v0.7.7:
 save compatible with 0.7.3+
     fixes:
         -FINALLY fixed market growth. it is tested and 95% working. i hope
             -free port might still give extra growth though. ill fix that finial thing latter
-        -fixed a issue with robot forges, that caused them to produce to mush / little depending on improvements and AI cores.
-    to do list before updating:
-        -add a config so i can turn on and off my logs at will.
+        -fixed a issue with robot manufactures, that caused them to produce to mush / little depending on improvements and AI cores.
     new:
         made robots display how mush cargo space they take up, because i forgot to add that before
         made the personal survey robot manufactroy beta core modifier do something

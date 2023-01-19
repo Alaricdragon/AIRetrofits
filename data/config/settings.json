@@ -6,11 +6,11 @@
 		"data.scripts.replacementscripts.Salvage",
 		"data.scripts.starfarer.api.impl.campaign.rulemd"
 	],
+	#logs active (for debuging)
+	"AIRetrofit_logs": false,
+
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
-
-	#somewhat not working yet, but i need to test this
-	"AIRetrofits_PurgeOptionTest": false,
 
 	#this should be disabled for now. it may cause issues with invasions launched from AI-Pop worlds in nexerlin
 	"AIRetrofits_SwapAICrew": false,
@@ -246,6 +246,18 @@
 
 	#Market Things
 	#Industry things
+	#Population Replacement Center. feel free to try it out, its not dont yet, but it is OK for now.
+	"AIRetrofits_SwapRobotAndNormalPopulationBuilding": true,
+	"AIRetrofits_PopulationReplacementCenter_baseCost": 1000,#not used yet
+	"AIRetrofits_PopulationReplacementCenter_baseCostExpental": 2,#not used yet,
+
+	"AIRetrofits_PopulationReplacementCenter_baseTime": 1,#calculation for build time is time = baseTime * baseTimeExpencal^(marketSize + exstraSize)
+	"AIRetrofits_PopulationReplacementCenter_bastTimeExpencal": 2,#--
+	"AIRetrofits_PopulationReplacementCenter_exstraSize": 1,#--
+	"AIRetrofits_PopulationReplacementCenter_timesForFree": 90,#this is the amount of time after founding a market that the build time of this building remains zero for.
+
+	"AIRetrofits_PopulationReplacementCenter_exstraDescription": "takes a single day to build if built within %s days of founding the market",
+
 	#Shipyard settings,
 	"AIRetrofitShipyard_Description": "is able to modify %s points of ships per month. ships cost %s/%s/%s/%s points depending on ship size.",
 	"AIRetrofitShipyard_ADescription": "use a alpha core to install a version of the hullmod that increase available op on ship",#description when you inset a alpha core

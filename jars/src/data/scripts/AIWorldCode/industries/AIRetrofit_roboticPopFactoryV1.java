@@ -1,6 +1,7 @@
 package data.scripts.AIWorldCode.industries;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -76,10 +77,23 @@ public class AIRetrofit_roboticPopFactoryV1 extends AIRetrofit_IndustryBase {
     final static String extraDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_extraDescription");
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
-        //tooltip.addPara(alphaDescription,0f);
+        float pad = 5;
+        String pre = "Alpha-level AI core currently assigned. ";
+        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            pre = "Alpha-level AI core. ";
+        }
+        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
+            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
+            Color highlight = Misc.getHighlightColor();
+            String aStr = "" + (int)(100*(alphaValue)) + "%";
+            text.addPara(pre + alphaDescription, 0f, highlight, aStr);
+            tooltip.addImageWithText(pad);
+            return;
+        }
         Color highlight = Misc.getHighlightColor();
         String aStr = "" + (int)(100*(alphaValue)) + "%";
-        tooltip.addPara(alphaDescription, 0f, highlight, aStr);
+        tooltip.addPara(pre + alphaDescription, 0f, highlight, aStr);
     }
     @Override
     public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {

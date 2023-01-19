@@ -88,10 +88,10 @@ private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotM
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {"" + BetaDefenceMulti};
-        tooltip.addPara(BetaText,pad,highlight,exstra);
+        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
     }
 }

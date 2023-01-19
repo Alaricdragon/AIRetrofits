@@ -81,11 +81,11 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre,TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {"" + BetaGrowthMod};
-        tooltip.addPara(BetaText,pad,highlight,exstra);
+        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
     }
     static String m1 = "AIRetrofits_RobotFactoryGrowthMod";
     @Override
