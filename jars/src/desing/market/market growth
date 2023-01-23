@@ -1,55 +1,58 @@
-issues:
-    growth is not being set right.
-    need to analyze growth to determine what is going on
+to do list:
+    find a way to change hazard pay cost (as the cost right now scales to a worlds hazard rating.)
+    fixes all 'potential issues'
 
-    new infermation:
-        1) market.getAllImmigrationModifiers()
-            -what is this? does it do something better?
-    questions:
-        1) does the current implementation of growth apply growth, or does it just look like it does?
-            -no, it does not apply growth.
-        2) does modify multi and modify flat final do anything or not?
-            -modify multi always effects modify flat final.
-        3) were can i find the growth mods of a marker, and is it possible to remove them?
-            -CoreImmigrationPluginImpl
-            -makes sense everything is fighting me. its -hard coded-
-        3.a) can i get, then modify negative, the CoreImmigrationPluginImpl mods onto the main market mods?
-            -maybe.
-            -testing now...
-            -yes. however, that might not be required...?
-        3.b) can i remove all not my growth mods?
-            -i don't think so. i can cut -some- of them, but not all.
-        4) are growth mods not being applied because im not applying growth?
-            -
+current status of market growth:
+    it works, mostly. only freeport remains resistant to my efforts. might even work on mods as well.
+    implementation:
+        2 parts:
+            in robotic population condition:
+                -removes all removal growth.
+                -proceeds to add a negative modifier, equal to all growth that in theory is active on a market.
+            in the report market updated listener:
+                -hides all growth that is not approved.
+    potential issues:
+        in robotic population condition:
+            -might try to remove growth twice, if the growth was industry / market condition based, and was added before
+             this market condition ran.
+        in market update listener:
+            -this removes all pop growth modifiers from being shown. it makes it hard to see when something is wrong.
+current growth modifiers:
+    factorys:
+        3 tiers of factory's. they provide growth to the world/system/sector they are built on respectively.
+        t0:
+            provides 3*marketsize * (1 + alpha + improved) to the world its build on
+            alpha = .3
+            improved = .3
+        t1:
+            provides 5*marketsize * (1+alpha+hazard+improved) devided between all markers in system (based on market size)
+            alpha = .3
+            hazzard = .3
+            improved = .3
+        t2:
+            provides 10*marketsize * (1+alpha+hazard+improved) devided between all markers in the sector (based on market size)
+            alpha = .3
+            hazzard = .3
+            improved = .3
+    hazzard pay:
+        5 * marketsize
 
-    known:
-        1)current implementation of market growth does look like it removes growth mods.
+    beta core in 'personal salvage robot manufacture'
+        12
+idea:
+    change the way the factorys work so:
+        instead of creating robots in the factors, they create 'robot frames'.
+            -change exsported / imported comodity
+        instead of only being tied to market size, make the share a world receive also be based around 'accessibility' (so its size * accessibility).
+            shares = markersize -> shares = marketsize * accessibility
+            max size shares: 1 -> 100. (same as size 1 with 100% accessibility)
+        (?)make it so world with a high habitability gain an increased amount of growth from there shares.
+            -100% hazard = 1X growth. 200% hazzard = 0.5X 400% = 0.25X 800% = 0.125X.
+            -0% hazzard = 2X. -100% hazzard to 4X
+            -if i do this, i will need to buff robot factorys.
+            -justify it by saying its because the robots need to be more specialized? or that the robots are breaking down?
 
-    tried solutions:
-        all growth: AIRetrofit_econUpdateListiner displayed what i wanted, but didnt imply it.
-
-        remove growth: AI-Pop:
-            -removes all growth exscluding:
-                -space-port
-                -free-port
-            -known removed growth: (gotting with console logs)
-                -inc_access: accsesability growth
-                -inc_hazard: hazzard growth negative
-                -inc_insys: larget market in system
-                -inc_incentives: hazzard pay
-            -UPDATE: added a system to remove all unwanted growth.
-                -so far, is 100% effective.
-                -free port refuses to be ran through this system, under any conditions.
-                -possibility: a mod is changing freeport. this would cause issues.
-            -how it works:
-                1): runs remove growth.
-                    -removes all not whitelisted growth, or tries to
-                2): runs remove growth from industry, and conditions
-                    -add a negitive modifier equal to its normal modifier.
-                3): hids changes, so i can only see the base changes.
-                    -runs in econ update listiner. i did this before, and it never changed anything. hope for the best here...
-
-
+        why? because right now all growth is liner. the same. no differences ever. its -borring-. this is more interesting.
 new theory 2:
     -set cost of hazard pay equal to number of robot production building power X 1000.
         -improves the pop growth boost of T1 and T2 robot factorys.

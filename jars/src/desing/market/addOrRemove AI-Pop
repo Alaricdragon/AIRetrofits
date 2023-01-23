@@ -3,8 +3,40 @@ concept: the ability to turn on/off the AI pop market condition and effects, at 
 
 current system:
     1 building.
-    takes time to build, once built it impudently starts to upgrade?
+    takes time to build, once built it impudently removes itself, adding / removing robot population m=condition.?
 
+new system:
+    requirements: the ability to mess with population composition.
+    note: the type types of market i keep talking about are robotic-populations and normal populations.
+    2 vareants: one for normal worlds, the other for robotic worlds.
+
+    this building would represent a 'headquarters' for the type of population you in fact don't have on this world.
+    the building would make it so:
+        -you could get population form sources that the other population type.
+        -as you gain population from this, the population composition changes, and so do the imports and exports change
+         to match as a percentage of a complete change (like what is caused with robotic population condition)
+        -would be possable to cause unrest if to mush of a hostile population type are settled on this would
+            -example: ludic population, and robotic population.
+            -when this happens, stability will go down. then pop composition of both types will go down, with a corresponding
+             negative to population growth.
+
+     3 tires:
+        T1: have a small number of the other population type on this world
+            -this would limit growth, after about 30% of population composition was of the other type.
+        T2: allow any number of the other population type on this world.
+            -this would not limit growth, but if the current type of population becomes a minoirity, swaps the two population
+             adds/remove the robotic population market condition.
+             -if a population type swap accord, this industry would switch to the other type, and act the same supporting the once dominant population type on this would.
+             -if the population becomes completely covered in the other type (95%+) upgrading this industry becomes free, and instant.
+        T3: actively attempts to remove all of the main population type from the world.
+            -can only gain growth from other population type.
+            -stability loss well ongoing.
+            -more exstram stability loss the large % of the main population type if present compared to the other type.
+            -once the population reaches 95% of the other type, adds/removes robotic population condition, and this industry becomes
+             'INACTIVE'
+
+    something to keep in mind is what the 3 tires effects would have on the world?
+    because people will notice whats going on, eventually.
 
 
 

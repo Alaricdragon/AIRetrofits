@@ -1,9 +1,14 @@
 to do list:
 on next non save compatible update:
     move the industry into relevant folders for ease of accuses
+    remove all market conditions but robotic population. (they are not working yet). cause crashes.
+        -they do need to be added at some ponit though.
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
+
+growth:
+    find out what setting is 'max market size' so i add it to the 'max size before i stop getting population'. setting.
 images:
     options:
         1) get someone to do it for me.
@@ -30,16 +35,12 @@ images:
     combat bots can get a rework latter.
     created images file for ideas.
 Industrys:
-    all:
-        AICore modifiers do not display that they have a AI core installed right. this will be fixed.
     Shipyard:
         issues:
             color of 'points available' needs to change to improved color when i have the industry improved.
             when the industry is not functional, there needs to be text showing it will not work.
             when the industry is not on a player owned world, it should cost credits to retrofit ships.
             change ship power over to something a crew based system, instead of a shipsized based system.
-    robotic population factory T0:
-        make it so the alpha core boosts market growth.
     robotic replacement thing:
         work and design something as a temporarily thing.
     Manufactures of all type

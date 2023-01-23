@@ -67,7 +67,12 @@
 	"AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
 
 	#growth mods,
+	#note 'personal salvage robot manufactory' growth mod is with its industry in #industry
 	"AIRetrofits_MarketGrowth_hazzardGrowthPerSize": 5,
+
+	"AIRetrofits_MarketGrowth_T0PowerPerSize": 3,#base value
+	"AIRetrofits_MarketGrowth_T0ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T0AlphaCoreBonus":0.3,#increase multiplyer,
 
 	"AIRetrofits_MarketGrowth_T1PowerPerSize": 5,#base value
 	"AIRetrofits_MarketGrowth_T1ImprovedBonus": 0.3,#increase multiplyer,
@@ -274,6 +279,11 @@
 	"AIRetrofitShipyard_perCrewCRUISER": 4,
 	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
 
+	#robotic pop factory T0,
+	#note, that for growth mods from said industrys, see the #growth section.
+	"AIRetrofit_PopFactoryT0_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT0_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
+	"AIRetrofit_PopFactoryT0_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
 	#robotic pop factory T1
 	"AIRetrofit_PopFactoryT1_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
 	"AIRetrofit_PopFactoryT1_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
