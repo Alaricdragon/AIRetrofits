@@ -1,13 +1,19 @@
 changelog for all my changes as i make them so i dont forget again.
 v0.7.9:
-save compatible with 0.7.3+
-    images: (thanks the Quacken)
-        added a new image for the Automated Ship Instalation Center
+NOT compatible with any older version
+    images: 
+	(thanks the Quacken)
+        	added a new image for the Automated Ship Instalation Center
+	(thanks to me)
+		darkend the salvage robot image, becuase i didnt like the way it looked a
+		new image for:
+		    advanced combat robot.
     new:
         added a pop growth modifier to the 'robotic worker assembely' when it has a alpha core.
     fixes:
         fixed 'robotic worker assembely' not showing what its improvement modifier does.
         added relevant configs for this industry.
+    background: moved some random file around. removed the activation conditions of some not yet functional market conditions.
 v0.7.8:
 save compatible with 0.7.3+
     fixes:

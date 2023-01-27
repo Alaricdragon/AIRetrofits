@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.econ.BaseMarketConditionPlugin;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.AIWorldCode.growth.AIRetrofits_RemoveUnwantedGrowth;
@@ -26,9 +27,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         if(can) {
             market.getStability().modifyFlat(id, STABILITY_BONUS, "robots don't rebel... right?");
             market.addTransientImmigrationModifier(this);
-            supplyDemandChange(market);
             ChangeMarketConditions(market);
-            //changePeople();
         }else{
             unapply(id);
         }
@@ -36,27 +35,17 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
 
     public void unapply(String id) {
         super.unapply(id);
-        removeSupplyDemandChange(market);
         market.getStability().unmodify(id);
         market.removeTransientImmigrationModifier(this);
-        //rempveSupplyDemandChange(market);
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
         AIRetrofits_RemoveUnwantedGrowth.removeGrowthOther(market,incoming);
         AIRetrofits_RemoveUnwantedGrowth.removeKnownImmigration(market,incoming);
         AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
-        //AIRetrofit_RemoveBaseImrgration.apply(market,incoming);
-        //incoming.getWeight().modifyMult(getModId() + "_0",0,"test remove");
-        //incoming.getWeight().modifyFlatAlways(getModId() + "_1", 10, "test growth");
-        //AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
-        //AIRetrofit_MarketGrowthMods.applyData(market,"");
-        //CrewReplacer_Log.loging("HERE!!! AI-Retrofit tried to run growth again...",this.getClass());
-        //modifyGrowth(incoming);
     }
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
-
         tooltip.addPara("%s stability",
                 10f, Misc.getHighlightColor(),
                 "+" + (int) STABILITY_BONUS);
@@ -74,35 +63,29 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded){
         super.createTooltip(tooltip,expanded);
     }
-    private void addHazzardPayCost(){
-        if(market.isImmigrationIncentivesOn()){
-            //market what do i even do here!?!?!
-        }else{
-
-        }
-    }
-    private void supplyDemandChange(MarketAPI market){
-        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,false);
-    }
-    public void removeSupplyDemandChange(MarketAPI market){
-        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPop").applyMarket(market,true);
-        //crewReplacer_SupplyDemandLists.getRuleSet("AIRetrofits_AIPopGrowth").applyMarket(market,true);
-
-    }
     private void ChangeMarketConditions(MarketAPI market){
         if(false && abort()){
+            AIRetrofit_Log.loging("AI-Pop, removing condition by purge",this);
             market.removeCondition("AIRetrofit_AIPop");
             market.addCondition("AIRetrofit_Purging_AI_World");
             return;
         }
         if (market.hasCondition("decivilized")){
+            AIRetrofit_Log.loging("AI-Pop, removing condition by deciv",this);
+            AIRetrofit_Log.push();
             market.removeCondition("decivilized");
             market.removeCondition("AIRetrofit_AIPop");
-            if(market.hasCondition("pather_cells")){
+            if(false && market.hasCondition("pather_cells")){
+                AIRetrofit_Log.loging("AI-Pop, adding lucic AI -War",this);
                 market.addCondition("AIRetrofits_AILudicWar");
+                AIRetrofit_Log.loging("finished",this);
+                AIRetrofit_Log.pop();
                 return;
             }
+            AIRetrofit_Log.loging("AI-Pop, adding broken AI Workers",this);
             market.addCondition("AIRetrofit_Broken_AI_Workers");
+            AIRetrofit_Log.loging("finished",this);
+            AIRetrofit_Log.pop();
             return;
         }
         if(false && market.hasCondition("pather_cells")){
@@ -111,8 +94,8 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
             return;
         }
         if(market.isPlanetConditionMarketOnly()){
+            AIRetrofit_Log.loging("AI-Pop, removing condition by mic",this);
             market.removeCondition("AIRetrofit_AIPop");
-            //market.addCondition("AIRetrofits_AILudicWar");
             return;
         }
 

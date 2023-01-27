@@ -1,4 +1,4 @@
-package data.scripts.AIWorldCode.industries;
+package data.scripts.AIWorldCode.industries.robotPopulationFactorys;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;

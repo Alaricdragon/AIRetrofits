@@ -1,0 +1,59 @@
+ability:
+    robot forge:
+        creates robot drones useing resorse.
+        creates robots at an speed of 1 per day per power.
+        power = robotForgeHullmodPower + (math.min(robotForgeHullmodPower + nanoForgePower));
+            -robotForgeHullmodPower = crewConsumedByRobotForgeHullMod * 0.01
+            -nanoForgePower = (CNanoForge * 1) + (PNanoForge * 5).
+        things it can create:
+            items:
+                salage robots:
+                    job: salvage and market creation.
+                    power: 1,1
+                    size: 1
+                    cost:
+                survey robots:
+                    job: survey
+                    power: 1.5
+                    size: 1.1
+                    cost:
+                combat robots:
+                    job: raiding
+                    power: 0.5
+                    size: 0.5
+                    cost:
+                sub-commandCores.
+                    job: resapie, and something to reduce the cost of not haveing one.
+                    size:1
+                    cost:rare mettle's and valties at least. maybe a little mettle? make them build slower then other things.
+                MarketCommandCenter.?
+                    job: used in market creations
+                    size: 40?
+                    cost: sup-commandCores + mettle, + rare mettle
+                    time: i ehter want it to be instant, or take longer then normal.
+                        -instant. why not just sue sub-command cores?
+                        -long time: make it an effort to build this thing. its massive. are the boosts to AI markets worth it?
+            people:
+                current status:
+                    1 story ponit cost + some credits.
+                    officer: pick a personality. random skill. LV 1.
+                    admen: pick nothing. lv1.
+                    all officers / admen created like this will have an AI picture and name
+                    officers and admins cost just as mush as normal.
+                want to have it as the following:
+                    Caption: create an caption. caption will have an AI picture and name.
+                        -personality:
+                            pick an personality:  timid, coshes, steady, aggressive, reckless. or fearless.
+                                -if timid - reckless, have an chance of moving one to the left or the right when created.
+                                -fearless is guarantied if picked, and requires an story point to create
+                        -skills: 3 options:
+                            option 2: geg an random skill. start at lv1.
+                            option 3: get no skills. start at lv 0. (<-this one if possible)
+                        -cost:
+                            cost some sub command nodes, an story point and some other type of resource? just credits for now?
+                        -maintains
+                            i have thought of a lot of things. requiring supply, or credits.
+                            think i might need to do credits. supply are jank no matter what i do.
+                            cost the same as an normal caption?
+                    Admen:
+                        -have the ability to add your skills to the admen for extra story points (like in vanilla).

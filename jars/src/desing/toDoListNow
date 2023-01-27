@@ -1,39 +1,14 @@
-to do list:
-on next non save compatible update:
-    move the industry into relevant folders for ease of accuses
-    remove all market conditions but robotic population. (they are not working yet). cause crashes.
-        -they do need to be added at some ponit though.
+to do list before next update:
+    test and try to find the possible issues with the 'change market condition code' in 'AI-Pop' condition
+        -note: using saturation bombardment is out until the creator of nexerlin tells me if that's a issue with my or his mods.
+    test the possibility of using combat robots for nexerline invasions
+    growth:
+        find out what setting is 'max market size' so i add it to the 'max size before i stop getting population'. setting.
+
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
 
-growth:
-    find out what setting is 'max market size' so i add it to the 'max size before i stop getting population'. setting.
-images:
-    options:
-        1) get someone to do it for me.
-            known options are:
-            Sophie. : friend. might be willing to help
-            https://www.artstation.com/antonjuntunen : the one who drew things for industrial evolution.
-            AI generated images: this might be hard, but they do draw hell of a good images,
-
-        2) do it myself.
-            i like doing things myself, for myself. its just -better- in my opining.
-            but my art... i could do it by hand, but in the style required? not a chance.
-            maybe i could, but i would have to start at the beginning.
-            i would need to start not with the computer, but with a pencil and paper.
-            mmmmmmmmmmmMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMjbghvhnm
-            do i want this done myself? in part yet. the idea of making art for this project gets me quite happy. i want to do it.
-            but im no good? what the hell has that ever stopped me? not now, not ever! i will rain supreme!
-            there is a lot of it to do however
-
-    start to work on images. and what they are.
-    i want to open with the salvage, survey, and combat robots, then item, then industrys.
-    this is -required- to be finished.
-    also me want images.
-    please me. rework the way salvage and survey bots look.
-    combat bots can get a rework latter.
-    created images file for ideas.
 Industrys:
     Shipyard:
         issues:
@@ -50,7 +25,7 @@ market:
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
 
 Robots:
-    -change how AI cores work to power them, so an AI core can only control so many robot workers.
+    -?change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.

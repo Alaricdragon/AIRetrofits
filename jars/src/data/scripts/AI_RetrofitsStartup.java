@@ -7,11 +7,9 @@ import data.scripts.AIWorldCode.supplyDemandClasses.*;
 import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.robot_forge.AIRetrofits_ForgeItem;
-import data.scripts.robot_forge.AIRetrofits_ForgeList;
-import data.scripts.robot_forge.AIRetrofits_RobotForge;
-import data.scripts.robot_forge.AIRetrofits_RobotForge_People;
 import data.scripts.startupData.AIRetrofits_Startup_CrewReplacer;
+import data.scripts.startupData.AIRetrofits_Startup_MarketRetrofits;
+import data.scripts.startupData.AIRetrofits_Startup_RobotForge;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
 
@@ -23,12 +21,11 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         x.alias("PLStatMarines", PLStatMarines.class);*/
         //Global.getSector().getEconomy().getCommoditySpec().
         //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
-        crew_replacer_start_new();
-        robot_forge_set();
+        AIRetrofits_Startup_RobotForge.apply();
         setDataLists.init();
-        AISupplyDemandSet();
+        AIRetrofits_Startup_MarketRetrofits.apply();
 
-        AIRetrofits_Startup_CrewReplacer.addEverything();
+        AIRetrofits_Startup_CrewReplacer.apply();
     }
     @Override
     public void onGameLoad(boolean newGame) {
@@ -37,170 +34,6 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         super.onGameLoad(newGame);
         AIMarketModSet();
         descriptions();
-    }
-    /*
-    @Override
-    public void configureXStream(XStream x){
-        x.alias("AIRetrofit_RobotDescriptions",AIRetrofit_RobotDescriptions.class);
-    }*/
-    //300,1550
-//2000,150
-    private void crew_replacer_start_outdated(){
-        //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
-        /*crew_replacer.addCrewType("AIretrofit_WorkerDrone");
-        crew_replacer.setCrewJob("AIretrofit_WorkerDrone","salvage",true);
-        crew_replacer.setCrewLost("AIretrofit_WorkerDrone","salvage",(float)1,(float)1);
-
-        crew_replacer.addCrewType("AIretrofit_SurveyDrone");
-        crew_replacer.setCrewJob("AIretrofit_SurveyDrone","survey",true);
-        crew_replacer.setCrewPower("crew_replacer","survey",3);*/
-        //crew_replacer.setCrewLost("AIretrofit_SurveyDrone","survey",(float)1,(float)1);
-        //crew_replacer.setCrewPower("AIretrofit_WorkerDrone","salvage",(float)1);
-    }
-    /*float Sa_Po = Global.getSettings().getFloat("AIRetrofits_Salvage_Power");
-    float Sa_Pr = Global.getSettings().getFloat("AIRetrofits_Salvage_priority");
-
-    float Su_Po = Global.getSettings().getFloat("AIRetrofits_Survey_Power");
-    float Su_Pr = Global.getSettings().getFloat("AIRetrofits_Survey_priority");
-
-    float Co_Po = Global.getSettings().getFloat("AIRetrofits_Combat_Power");
-    float Co_Pr = Global.getSettings().getFloat("AIRetrofits_Combat_priority");
-
-    float Hm_Po = Global.getSettings().getFloat("AIRetrofits_MissionHijack_Power");
-    float Hm_Pr = Global.getSettings().getFloat("AIRetrofits_MissionHijack_priority");
-
-    float RHR_Po = Global.getSettings().getFloat("AIRetrofits_repairHyperRelay_Power");
-    float RHR_Pr = Global.getSettings().getFloat("AIRetrofits_repairHyperRelay_priority");
-
-    float nexM_Po = Global.getSettings().getFloat("AIRetrofits_GroundBattle_Power");
-    float nexM_Pr = Global.getSettings().getFloat("AIRetrofits_GroundBattle_priority");
-
-    public static String AICoreJob = "AIRetrofit_OutpostAICore";
-    public static String AIWorkerJob = "AIRetrofit_OutpostWorker";
-    public static String SupplyJob = "AIRetrofit_OutpostSupply";
-    public static String MachineryJob = "AIRetrofit_OutpostMachinery";
-    public static String hijack_marinesJob = "Mission_hijack_marines";
-    public static String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
-
-
-    String nexMarinesJob = "nex_groundBattle_marines";*/
-    private void crew_replacer_start_new(){
-
-/*
-        tempJob = crewReplacer_Main.getJob("survey_crew");
-        tempJob.addNewCrew("AIretrofit_WorkerDrone",25,10);
-
-        tempJob = crewReplacer_Main.getJob("survey_supply");
-        tempJob.addNewCrew("AIretrofit_WorkerDrone",25,10);
-
-        tempJob = crewReplacer_Main.getJob("survey_heavyMachinery");
-        tempJob.addNewCrew("AIretrofit_WorkerDrone",25,10);*/
-
-    }
-    float SaS = Global.getSettings().getFloat("AIRetrofits_Sa_S");
-    float SaB = Global.getSettings().getFloat("AIRetrofits_Sa_B");
-    String Sa1N = Global.getSettings().getString("AIRetrofits_Sa_1N");
-    float Sa1C = Global.getSettings().getFloat("AIRetrofits_Sa_1C");
-    String Sa2N = Global.getSettings().getString("AIRetrofits_Sa_2N");
-    float Sa2C = Global.getSettings().getFloat("AIRetrofits_Sa_2C");
-    String Sa3N = Global.getSettings().getString("AIRetrofits_Sa_3N");
-    float Sa3C = Global.getSettings().getFloat("AIRetrofits_Sa_3C");
-
-    float SuS = Global.getSettings().getFloat("AIRetrofits_Su_S");
-    float SuB = Global.getSettings().getFloat("AIRetrofits_Su_B");
-    String Su1N = Global.getSettings().getString("AIRetrofits_Su_1N");
-    float Su1C = Global.getSettings().getFloat("AIRetrofits_Su_1C");
-    String Su2N = Global.getSettings().getString("AIRetrofits_Su_2N");
-    float Su2C = Global.getSettings().getFloat("AIRetrofits_Su_2C");
-    String Su3N = Global.getSettings().getString("AIRetrofits_Su_3N");
-    float Su3C = Global.getSettings().getFloat("AIRetrofits_Su_3C");
-
-    float CoS = Global.getSettings().getFloat("AIRetrofits_Co_S");
-    float CoB = Global.getSettings().getFloat("AIRetrofits_Co_B");
-    String Co1N = Global.getSettings().getString("AIRetrofits_Co_1N");
-    float Co1C = Global.getSettings().getFloat("AIRetrofits_Co_1C");
-    String Co2N = Global.getSettings().getString("AIRetrofits_Co_2N");
-    float Co2C = Global.getSettings().getFloat("AIRetrofits_Co_2C");
-    String Co3N = Global.getSettings().getString("AIRetrofits_Co_3N");
-    float Co3C = Global.getSettings().getFloat("AIRetrofits_Co_3C");
-
-    float ScS = Global.getSettings().getFloat("AIRetrofits_Sc_S");
-    float ScB = Global.getSettings().getFloat("AIRetrofits_Sc_B");
-    String Sc1N = Global.getSettings().getString("AIRetrofits_Sc_1N");
-    float Sc1C = Global.getSettings().getFloat("AIRetrofits_Sc_1C");
-    String Sc2N = Global.getSettings().getString("AIRetrofits_Sc_2N");
-    float Sc2C = Global.getSettings().getFloat("AIRetrofits_Sc_2C");
-    String Sc3N = Global.getSettings().getString("AIRetrofits_Sc_3N");
-    float Sc3C = Global.getSettings().getFloat("AIRetrofits_Sc_3C");
-
-    String SaD = Global.getSettings().getString("AIRetrofits_Sa_D");
-    String SuD = Global.getSettings().getString("AIRetrofits_Su_D");
-    String CoD = Global.getSettings().getString("AIRetrofits_Co_D");
-    String ScD = Global.getSettings().getString("AIRetrofits_Sc_D");
-    private void robot_forge_set(){
-        AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem("salvage Drones",SaD,SaS);
-        robotAddReq(Sa1C,Sa1N,item);
-        robotAddReq(Sa2C,Sa2N,item);
-        robotAddReq(Sa3C,Sa3N,item);
-        item.addOutputItem("AIretrofit_WorkerDrone",SaB);//50
-        AIRetrofits_ForgeList.addItem(item);
-
-        item = new AIRetrofits_ForgeItem("survey drones",SuD,SuS);
-        robotAddReq(Su1C,Su1N,item);
-        robotAddReq(Su2C,Su2N,item);
-        robotAddReq(Su3C,Su3N,item);
-        item.addOutputItem("AIretrofit_SurveyDrone",SuB);//50
-        AIRetrofits_ForgeList.addItem(item);
-
-        item = new AIRetrofits_ForgeItem("raiding drones",CoD,CoS);
-        //item.addRequiredItem("supplies", (float) 0.1);
-        robotAddReq(Co1C,Co1N,item);
-        robotAddReq(Co2C,Co2N,item);
-        robotAddReq(Co3C,Co3N,item);
-        item.addOutputItem("AIretrofit_CombatDrone",CoB);//200
-        AIRetrofits_ForgeList.addItem(item);
-
-        item = new AIRetrofits_ForgeItem("sub command node",ScD,ScS);
-        robotAddReq(Sc1C,Sc1N,item);
-        robotAddReq(Sc2C,Sc2N,item);
-        robotAddReq(Sc3C,Sc3N,item);
-        item.addOutputItem("AIretrofit_SubCommandNode",ScB);
-        AIRetrofits_ForgeList.addItem(item);
-
-        AIRetrofits_RobotForge_People dilog = new AIRetrofits_RobotForge_People("improve an sub command node","words words words. you shold never see this",0);
-        AIRetrofits_ForgeList.addItem(dilog);
-
-        AIRetrofits_RobotForge.setInitData();
-    }
-    /*
-    1) metals = 30
-    2) supplies = 100
-    3) heavy_machinery = 150
-    4) rare_metals = 200
-    5) volatiles = 250
-    6) hand_weapons = 500
-
-    x)crew = 50
-    x)mirriens = 200
-
-    a)AIretrofit_WorkerDrone:75
-        1: 2.5, 4: 0.33~, 3: 0.5     =3.33
-        1: 0.7, 4:0.1, 3:0.15
-        //0.95
-    b)AIretrofit_SurveyDrone:75
-        1: 2.5, 4: 0.33~,5:0.3    =3.13
-        1: 0.8, 4: 0.11, 5: 0.096
-        //1.06
-    c)AIretrofit_CombatDrone:300
-        1: 10, 4: 1.5, 6: 0.6       =12.1
-        1: 0.82, 4: 0.124, 6: 0.05
-        //0.945
-
-     */
-    private void robotAddReq(float cost, String name, AIRetrofits_ForgeItem thing){
-        if(cost != 0 && name.length() != 0){
-            thing.addRequiredItem(name,cost);
-        }
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?
@@ -212,34 +45,6 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
 
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
     }
-    private void AISupplyDemandSet(){
-        AIRetrofit_CCSetMain a = new AIRetrofit_CCSetMain("AIRetrofits_Main");
-        MarketRetrofit_CCSwapDemand d = new MarketRetrofit_CCSwapDemand("AIRetrofits_DCrew",0,"crew","AIretrofit_WorkerDrone");
-        a.addChange(d);
-        d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Dmarines",0,"marines","AIretrofit_CombatDrone");
-        a.addChange(d);
-        d = new MarketRetrofit_CCSwapDemand("AIRetrofits_DFood",0,"food","AIretrofit_maintainsPacts");
-        a.addChange(d);
-        d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Ddomestic_goods",0,"domestic_goods","AIretrofit_CommandRely");
-        a.addChange(d);
-        d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Dluxury_goods",0,"luxury_goods","AIretrofit_humanInterfaceNode");
-        a.addChange(d);
-        d = new MarketRetrofit_CCSwapDemand("AIRetrofits_Ddrugs",0,"drugs","AIretrofit_SurveyDrone");
-        a.addChange(d);
-        MarketRetrofit_CCSwapSupply e = new MarketRetrofit_CCSwapSupply("AIRetrofits_SCrew",0,"crew","AIretrofit_WorkerDrone");
-        a.addChange(e);
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofits_Smarines",0,"marines","AIretrofit_CombatDrone");
-        a.addChange(e);
-        //a.addChange();
-
-
-
-        AIRetrofit_CCSetSecondary b = new AIRetrofit_CCSetSecondary("AIRetrofit_Second");
-        e = new MarketRetrofit_CCSwapSupply("AIRetrofits_Spaceport_SCrew",0,"crew","AIretrofit_WorkerDrone");
-        e.modifyMult("a",0);
-        b.addChange(e);
-        b.applyToIndustry("spaceport");
-    }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")
         //Global.getSector().addTransientListener(new AIRetrofit_RobotDescriptions());
@@ -249,10 +54,5 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().getListenerManager().addListener(AIRetrofit_RobotDescriptions.getCommodityTooltipModifier(),true);
         //}
 
-    }
-
-    public static void loging(String output){
-        //final Logger LOG = Global.getLogger(this.getClass());
-        //LOG.info(output);
     }
 }
