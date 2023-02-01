@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 public class AIRetrofit_CanBuildOutpostScript extends BaseCommandPlugin {
-    float reqAICore = 1;
-    float reqWorker = 1000;
-    float reqSupply = 200;
-    float reqMachinery = 100;
+    float reqAICore = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqAICore");//10
+    float reqWorker = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqWorker");//1000;
+    float reqSupply = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqSupply");//200;
+    float reqMachinery = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqMachinery");//200;
     String AICoreJob = "AIRetrofit_OutpostAICore";
     String AIWorkerJob = "AIRetrofit_OutpostWorker";
     String SupplyJob = "AIRetrofit_OutpostSupply";

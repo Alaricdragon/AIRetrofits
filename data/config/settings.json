@@ -25,78 +25,10 @@
 	"AIRetrofits_AIretrofit_C-OP-Destroyer":0.1,
 	"AIRetrofits_AIretrofit_C-OP-Cruiser":0.05,
 	"AIRetrofits_AIretrofit_C-OP-Capital_ship":0.025,
-	#settings for AIRetrofit Shipyard Power
-	#Basic
-	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":0,
-	"AIRetrofits_AIRetrofit_ShipyardBase_REPAIR_LOSE":0.5,
-	#Gamma
-	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":0,
-	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":0.1,
-	#Beta
-	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.75,
-	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":0,
-	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
-	#Alpha
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":0,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.5,
-	#opp gain for Aplha per exstra crew
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Other":1,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Frigate":0.2,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Destroyer":0.1,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Cruiser":0.05,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Capital_ship":0.025,
-	#max opp gain for Aplha
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpOther": 5,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpFrigate": 10,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpDestroyer": 20,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCruiser": 30,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCapitalShip": 40,
-
-	#Redacted
-	#"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
-	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":0,
-	#"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
-
-	#settings for market growth,
-	#descriptions
-	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing system wide market growth",
-	"AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing sector wide market growth",
-	"AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
-
-	#growth mods,
-	#note 'personal salvage robot manufactory' growth mod is with its industry in #industry
-	"AIRetrofits_MarketGrowth_hazzardGrowthPerSize": 5,
-
-	"AIRetrofits_MarketGrowth_T0PowerPerSize": 3,#base value
-	"AIRetrofits_MarketGrowth_T0ImprovedBonus": 0.3,#increase multiplyer,
-	"AIRetrofits_MarketGrowth_T0AlphaCoreBonus":0.3,#increase multiplyer,
-
-	"AIRetrofits_MarketGrowth_T1PowerPerSize": 5,#base value
-	"AIRetrofits_MarketGrowth_T1ImprovedBonus": 0.3,#increase multiplyer,
-	"AIRetrofits_MarketGrowth_T1HazzardBonus": 0.3,#increase multiplyer,
-	"AIRetrofits_MarketGrowth_T1AlphaCoreBonus":0.3,#increase multiplyer,
-
-	"AIRetrofits_MarketGrowth_T2PowerPerSize": 10,#base value
-	"AIRetrofits_MarketGrowth_T2ImprovedBonus": 0.3,#increase multiplyer,
-	"AIRetrofits_MarketGrowth_T2HazzardBonus": 0.3,#increase multiplyer,
-	"AIRetrofits_MarketGrowth_T2AlphaCoreBonus":0.3,#increase multiplyer,
-
-
-	"AIRetrofits_MarketGrowth_maxSize": 6,#the size to stop giveing growth at. dose not effect the max size of the market.,
-
-	"AIRetrofits_MarketGrowth_logisticTheshhold": 20,
-
-	#for growth past the value of AIRetrofits_logisticTheshhold at a single stat,
-	#,(float)Math.max(A * (Math.log(C * power + D) / Math.log(B)) + E,0);
-	"AIRetrofits_MarketGrowth_logisticA": 1.5,
-	"AIRetrofits_MarketGrowth_logisticB": 1.1,
-	"AIRetrofits_MarketGrowth_logisticC": 1.2,
-	"AIRetrofits_MarketGrowth_logisticD": 1,
-	"AIRetrofits_MarketGrowth_logisticE": 0,
-
+	#(AIRetrofit hullmod) reasons you cant instal
+	"AIRetrofits_AIRetrofit_NA_combatable": "not compatible with: ",
+	"AIRetrofits_AIRetrofit_NA_MinCrew": "cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
+	"AIRetrofits_AIRetrofit_NA_OppCost": "op cost: ",
 
 	#settings for robot forge power.
 	"AIRetrofits_CorruptedMetal":1,
@@ -246,10 +178,54 @@
 	"AIRetrofits_RobotPowerDescription":"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot",
 	"AIRetrofits_RobotPowerNoCoreMessage": "no AI-Core or SubCommandNode",
 	"AIRetrofits_RobotCargoDescription": "every robot of this type is taking up %s cargo space",
+
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,
 
-	#Market Things
+	#cost for founding a market
+	"AIRetrofit_MarketCost_reqAICore": 10,
+	"AIRetrofit_MarketCost_reqWorker": 1000,
+	"AIRetrofit_MarketCost_reqSupply": 200,
+	"AIRetrofit_MarketCost_reqMachinery": 200,
+
+	#settings for market growth,
+	#descriptions
+	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing system wide market growth",
+	"AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing sector wide market growth",
+	"AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
+
+	#growth mods,
+	#note 'personal salvage robot manufactory' growth mod is with its industry in #industry
+	"AIRetrofits_MarketGrowth_hazzardGrowthPerSize": 5,
+
+	"AIRetrofits_MarketGrowth_T0PowerPerSize": 3,#base value
+	"AIRetrofits_MarketGrowth_T0ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T0AlphaCoreBonus":0.3,#increase multiplyer,
+
+	"AIRetrofits_MarketGrowth_T1PowerPerSize": 5,#base value
+	"AIRetrofits_MarketGrowth_T1ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T1HazzardBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T1AlphaCoreBonus":0.3,#increase multiplyer,
+
+	"AIRetrofits_MarketGrowth_T2PowerPerSize": 10,#base value
+	"AIRetrofits_MarketGrowth_T2ImprovedBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T2HazzardBonus": 0.3,#increase multiplyer,
+	"AIRetrofits_MarketGrowth_T2AlphaCoreBonus":0.3,#increase multiplyer,
+
+
+	"AIRetrofits_MarketGrowth_maxSize": 6,#the size to stop giveing growth at. dose not effect the max size of the market.,
+
+	"AIRetrofits_MarketGrowth_logisticTheshhold": 20,
+
+	#for growth past the value of AIRetrofits_logisticTheshhold at a single stat,
+	#,(float)Math.max(A * (Math.log(C * power + D) / Math.log(B)) + E,0);
+	"AIRetrofits_MarketGrowth_logisticA": 1.5,
+	"AIRetrofits_MarketGrowth_logisticB": 1.1,
+	"AIRetrofits_MarketGrowth_logisticC": 1.2,
+	"AIRetrofits_MarketGrowth_logisticD": 1,
+	"AIRetrofits_MarketGrowth_logisticE": 0,
+
+
 	#Industry things
 	#Population Replacement Center. feel free to try it out, its not dont yet, but it is OK for now.
 	"AIRetrofits_SwapRobotAndNormalPopulationBuilding": true,
@@ -270,6 +246,7 @@
 	"AIRetrofitShipyard_GDescription": "use a gamma core to install a version of the hullmod that has a reduced repair cost",#description when you inset a gamma core
 	"AIRetrofitShipyard_IDescription": "Increases the rate that ships are upgraded by %s.",
 	"AIRetrofitShipyard_IedDescription": "Improved ship upgrading speed of %s",
+	"AIRetrofitShipyard_IllegalText": "cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.",
 	"AIRetrofitShipyard_defaultPoints": 8,#number of construction ponits per momth
 	"AIRetrofitShipyard_IValue": 1,#increate in number of production ponits if improved (defalut * (1 + IValue))
 	"AIRetrofitShipyard_perCrewDEFAULT": 4,#Note, that as of this time, its not 'per crew' its 'per ship'. hope to change latter
@@ -278,6 +255,42 @@
 	"AIRetrofitShipyard_perCrewDESTROYER": 2,
 	"AIRetrofitShipyard_perCrewCRUISER": 4,
 	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
+
+	#settings for AIRetrofit Shipyard hullmod Power
+	#Basic
+	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_REPAIR_LOSE":0.5,
+	#Gamma
+	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":0.1,
+	#Beta
+	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.75,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
+	#Alpha
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.5,
+	#opp gain for Aplha per exstra crew
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Other":1,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Frigate":0.2,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Destroyer":0.1,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Cruiser":0.05,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Capital_ship":0.025,
+	#max opp gain for Aplha
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpOther": 5,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpFrigate": 10,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpDestroyer": 20,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCruiser": 30,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCapitalShip": 40,
+
+	#Redacted
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":0,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
+
 
 	#robotic pop factory T0,
 	#note, that for growth mods from said industrys, see the #growth section.

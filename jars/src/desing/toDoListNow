@@ -9,20 +9,25 @@ NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
 
+Note:
+    regarding replaceing crew and marrines with salvage robots and combat robots:
+        i have no idea if this works or not. i don't think it does.
+        tried an invasion fleet. none of my marines were combat robots like they should have been.
+        although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
+
 Industrys:
     Shipyard:
         issues:
-            color of 'points available' needs to change to improved color when i have the industry improved.
+            (never mind. that's now how it normally works.)color of 'points available' needs to change to improved color when i have the industry improved.
             when the industry is not functional, there needs to be text showing it will not work.
             when the industry is not on a player owned world, it should cost credits to retrofit ships.
             change ship power over to something a crew based system, instead of a shipsized based system.
+            -Important: make it so it does not try to add the hullmod onto ships with no min crew requirements. in fact, bar them from entering the ship yard at all.
         concepts: allow players to build this industry on normal markets
             might be a good idea. make it change the fleets as well? i don't know.
             will reduce the need / want to build robotic markets, but maybe that's a good thing?
     robotic replacement thing:
-        work and design something as a temporarily thing.
-    Manufactures of all type
-        -done?
+        done, for now. needs to be reworked at a latter date
 market:
     (done)design and add industries to produce both advanced and basic robotic workers.
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
@@ -33,6 +38,7 @@ AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.
     -make this hullmod incompatible with all AIRetrofit_Shipyard hullmods.
+    -move all strings into the config. right now the 'cant install' strings are not accsesable.
 
 AI Market plugin:
     new plan: in market retrofits, build a system for founding markets. with or without certain data.
