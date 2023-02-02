@@ -1,4 +1,4 @@
-package data.scripts.AIWorldCode.industries;
+package data.scripts.AIWorldCode.industries.basicCommodites;
 
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;

@@ -1,4 +1,4 @@
-package data.scripts.AIWorldCode.industries;
+package data.scripts.AIWorldCode.industries.robotPopulationFactorys;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
@@ -11,15 +11,15 @@ import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 import java.awt.*;
 
-public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
+public class AIRetrofit_roboticPopFactoryV1 extends AIRetrofit_IndustryBase {
     final static String C1 = "metals";
     final static String C2 = "rare_metals";
     final static String C3 = "heavy_machinery";
     final static String S1 = "AIretrofit_WorkerDrone";
-    final static int C1Mod = 4;
-    final static int C2Mod = 3;
-    final static int C3Mod = 2;
-    final static int S1Mod = 4;
+    final static int C1Mod = 2;
+    final static int C2Mod = 1;
+    final static int C3Mod = 0;
+    final static int S1Mod = 2;
 
     @Override
     public void apply() {
@@ -67,20 +67,16 @@ public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
     }
 
 
-
-
-
-    final static String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT2_alphaDescription");
+    final static String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT1_alphaDescription");
     final static float alphaValue = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
 
     final static float improveValue = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");
-    final static String improveDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_improveDescription");
-    final static String improvedDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_improvedDescription");
+    final static String improveDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_improveDescription");
+    final static String improvedDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_improvedDescription");
 
-    final static String extraDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_extraDescription");
+    final static String extraDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_extraDescription");
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
-        //tooltip.addPara(alphaDescription,0f);
         float pad = 5;
         String pre = "Alpha-level AI core currently assigned. ";
         if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
@@ -134,5 +130,6 @@ public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
         };
         tooltip.addPara(extraDescription, 0f, highlight, exstra);
     }
+
 
 }

@@ -1,4 +1,4 @@
-package data.scripts.AIWorldCode.industries;
+package data.scripts.AIWorldCode.industries.personalRobotForge;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;

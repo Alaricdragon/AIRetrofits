@@ -27,7 +27,7 @@ import static data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary.iCalculat
  */
 
 
-public class AutomatedCrewReplacementDrones extends BaseLogisticsHullMod {
+public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHullMod {
     int DronePerCrew = 10;
     int MinReplacedCrew = 1;
     float ReplacedCrew;

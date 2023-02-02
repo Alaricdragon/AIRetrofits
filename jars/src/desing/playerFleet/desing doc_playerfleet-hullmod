@@ -43,7 +43,10 @@ hullmods:
             //THIS IS TO MUSH...
             //MIMIC Alpha-Core for now.
             -FOR NOW:
-            - same as default, but
+            - same as alpha.
+
+            possible in the feature:
+            -same as normal, but:
             -removes max and min crew.
             -give the ship opp equal to: (max crew removed - min crew removed)
             -(cap extra opp at 5/10/20/40 per ship size)
@@ -61,14 +64,16 @@ hullmods:
                 (P-jump == the jump anywhere ability)
 
 
+    not yet added:
+        patchwork AIRetrofits.
+            -same as AIRetrofits in every way.
+            -reduces combat readiness to 50, or -15%. whatever is lower.
+            -can be installed/uninstalled outside of a dock.
+            -cannot be permanently installed.
 
-    pathwork AIRetrofits.
-        -same as AIRetrofits in every way.
-        -reduces combat readiness to 50, or -15%. whatever is lower.
-        -can be installed/uninstalled outside of a dock.
-captions and administrators:
-    allow the player to 'build' people from sub-command nodes?
-    people built in this way will be like normal captions, but with AI-Market names + portraits
-    costs an story ponit?, + an equal amount of credits to the cost of an normal person of the same type
-    will be able to chose chose the captions starting personality, but there is an 50% chance that it will 'miss' and youll get an caption with an personality one more/less agressive.
-    will be able to chose an starting skill?
+        robotic drone storage:
+            -removed max crew equal to (max crew - skeleton crew required)
+            -for every crew removed, add 1 robot storage to the fleet.
+            -for every robot storage, reduce the cargo space robots in your fleet are using by 1.
+                -how? ether add a invisible commodity, change the cost of robots, or add some type of tag to the cargo.
+

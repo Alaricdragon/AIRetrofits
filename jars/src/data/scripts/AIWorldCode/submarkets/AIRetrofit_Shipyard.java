@@ -14,6 +14,14 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
      */
     private float time = 0;
     private float power = 0;
+    private static final String[] hullmods = {
+            "AIretrofit_airetrofit",
+            "AIRetrofit_ShipyardGamma",
+            "AIRetrofit_ShipyardBeta",
+            "AIRetrofit_ShipyardAlpha",
+            "AIRetrofit_ShipyardOmega",
+            "AIRetrofit_ShipyardBase"};
+    private static final String illegalTest = Global.getSettings().getString("AIRetrofitShipyard_IllegalText");
     @Override
     public void advance(float amount){
         //runSingleAIRetrofit_Shipyard(market);
@@ -49,6 +57,23 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     @Override
     public boolean	isIllegalOnSubmarket(java.lang.String commodityId, SubmarketPlugin.TransferAction action){
         return false;
+    }
+    @Override
+    public boolean isIllegalOnSubmarket(FleetMemberAPI member, SubmarketPlugin.TransferAction action){
+        for(String a : hullmods) {
+            if (member.getVariant().hasHullMod(a)) {
+                return false;
+            }
+        }
+        if(member.getStats().getMinCrewMod().computeEffective(member.getVariant().getHullSpec().getMinCrew()) <= 0){
+            return true;
+            //ship.getMutableStats().getVariant().getHullSpec().getMinCrew
+        }
+        return false;
+    }
+    @Override
+    public String getIllegalTransferText(FleetMemberAPI member,SubmarketPlugin.TransferAction action){
+        return illegalTest;//"cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.";
     }
     @Override
     public 	boolean isMilitaryMarket(){

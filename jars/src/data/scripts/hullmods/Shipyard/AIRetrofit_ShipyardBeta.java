@@ -1,17 +1,10 @@
 package data.scripts.hullmods.Shipyard;
 
-import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.util.Misc;
-import data.scripts.hullmods.AIretrofit;
-
-import java.awt.*;
 
 public class AIRetrofit_ShipyardBeta  extends AIRetrofit_ShipyardBase {
     final static String automationLevel = "Beta-Core";

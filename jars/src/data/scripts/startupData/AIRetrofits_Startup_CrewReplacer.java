@@ -13,7 +13,7 @@ public class AIRetrofits_Startup_CrewReplacer {
     public static final String hijack_marinesJob = "Mission_hijack_marines";
     public static final String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
     public static final String nexMarinesJob = "nex_groundBattle_marines";
-    static public void addEverything(){
+    static public void apply(){
         addMisc();
 
         addSalvageRobots();
