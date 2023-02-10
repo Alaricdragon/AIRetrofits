@@ -37,17 +37,14 @@ state 1: AI market state.
 
 * */
 public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIndustry implements MarketImmigrationModifier {
-    static String C1 = "AIretrofit_maintainsPacts";//replaces food
-    static String C2 = "AIretrofit_CommandRely";//replaces DOMESTIC_GOODS
-    static String C3 = "AIretrofit_humanInterfaceNode";//replaces LUXURY_GOODS
-    static String C4 = "AIretrofit_SurveyDrone";//replaces DRUGS
-    static String C5 = "AIretrofit_roboticReplacementParts";//replaces ORGANS
-    static String C6 = "AIretrofit_SubCommandNode";//replaces ORGANICS
-    static String C7 = "AIretrofit_WorkerDrone";
+    private final static String C1 = "AIretrofit_maintainsPacts";//replaces food
+    private final static String C2 = "AIretrofit_CommandRely";//replaces DOMESTIC_GOODS
+    private final static String C3 = "AIretrofit_humanInterfaceNode";//replaces LUXURY_GOODS
+    private final static String C4 = "AIretrofit_SurveyDrone";//replaces DRUGS
+    private final static String C5 = "AIretrofit_roboticReplacementParts";//replaces ORGANS
+    private final static String C6 = "AIretrofit_SubCommandNode";//replaces ORGANICS
+    private final static String C7 = "AIretrofit_WorkerDrone";
 
-    static String id0 = "population_AIRetrofit_0";
-    static String id1 = "population_AIRetrofit_1";
-    static String id2 = "population_AIRetrofit_2";
     @Override
     public void apply() {
         //market.getPlanetEntity().getSpec().getCoronaSize()

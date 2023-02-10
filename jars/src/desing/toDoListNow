@@ -1,10 +1,19 @@
 to do list before next update:
     test and try to find the possible issues with the 'change market condition code' in 'AI-Pop' condition
-        -note: using saturation bombardment is out until the creator of nexerlin tells me if that's a issue with my or his mods.
+        -note: when useing sateration bombardment, i need to wait a few days after market transfer to check if that works or not.
     test the possibility of using combat robots for nexerline invasions
-    growth:
-        find out what setting is 'max market size' so i add it to the 'max size before i stop getting population'. setting.
 
+    (?)create a hullmod for the fighters.
+    (HERE: doing this right now. see constants text file.)create a class that holds all static data so its easyer to change.
+    update the robot numbers created to be the same amount, -20%, based on robot power produced.
+    make it so 'upgrading' a S-Mod with the automated ship installation center, give bonus XP based on story ponits gotten, like if i were to sell / scuttle the ship.
+
+    fix the last few issues with growth:
+        not removing freeport.
+        possobility, that my blanket negitive will try to remove mods that i have already removed.
+
+    (done)make it so i get the robot forge ability the moment i have a ship that has said ability.
+    (done)make it so the 'give me hullmods' check on game load, and when i get a skill.
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
@@ -28,6 +37,8 @@ Industrys:
             will reduce the need / want to build robotic markets, but maybe that's a good thing?
     robotic replacement thing:
         done, for now. needs to be reworked at a latter date
+    population factory's:
+        add a bit of text to show how mush growth each factory is producing.
 market:
     (done)design and add industries to produce both advanced and basic robotic workers.
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth

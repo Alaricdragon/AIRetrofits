@@ -4,11 +4,11 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
+import data.scripts.startupData.AIRetrofits_Constants;
 import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
 
 public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateListener {
-    private static boolean can = Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
-    static String RuleSet = "AIRetrofits_AIPopGrowth";
+    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     static private boolean Override = true;//when true, act as normal.
     private void applyMarketData() {
         if(can && Override) {

@@ -1,4 +1,29 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.10:
+save combatable with 0.7.9+
+    images:
+        (thanks to me)
+            some robot improvements
+            new images for:
+                advanced survey robot.
+                survey robot
+                (temp for now)Human Interface Node
+                (temp for now)Maintince Parts
+
+
+    robot descriptions:
+        changed the advanced survey drones description to something else.
+    fixes:
+        fixed advanced Survey Robots size being twice what it should have been
+        made it so robotic population markets will grow to whatever size is the maximum as set in the game settings.
+        removed the option 'AIRetrofits_MarketGrowth_maxSize', as its no longer required.
+        fixed how big some things were on the market screen. still more to fix.
+
+        made it so you get the robot forge ability the moment you have a ship with the hullmod, instead of only after you visit another market.
+        made it so if the option 'AIRetrofit_alwaysGiveSkillsAndHullmods' == true, you get the skills and hullmods on game start, and not when you first visit a market.
+    refactoring:
+        refactored a bunch of things. plz tell me if anything does not work suddenly.
+
 v0.7.9:
 NOT compatible with any older version
     images: 

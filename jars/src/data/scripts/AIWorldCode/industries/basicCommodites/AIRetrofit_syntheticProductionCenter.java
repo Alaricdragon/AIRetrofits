@@ -4,9 +4,9 @@ import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 public class AIRetrofit_syntheticProductionCenter   extends AIRetrofit_IndustryBase {
-    static String C1 = "organs";
-    static String C2 = "organics";
-    static String C3 = "rare_metals";
+    private final static String C1 = "organs";
+    private final static String C2 = "organics";
+    private final static String C3 = "rare_metals";
 
     static String S1 = "AIretrofit_humanInterfaceNode";
     @Override

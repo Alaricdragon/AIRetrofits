@@ -7,17 +7,12 @@ import com.fs.starfarer.api.impl.campaign.fleets.DefaultFleetInflater;
 import com.fs.starfarer.api.impl.campaign.fleets.DefaultFleetInflaterParams;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 public class AIRetrofit_fleetInflater extends DefaultFleetInflater {
-    static String Condition = "AIRetrofit_AIPop";
-    static String Hullmod = "AIretrofit_airetrofit";
-    static String shipYardIndustry = "AIRetrofit_shipYard";
-    static String[] hullmods = {
-            "AIRetrofit_ShipyardGamma",
-            "AIRetrofit_ShipyardBeta",
-            "AIRetrofit_ShipyardAlpha",
-            "AIRetrofit_ShipyardOmega",
-            "AIRetrofit_ShipyardBase"};
+    static String Hullmod = AIRetrofits_Constants.ASIC_BaseHullmod;
+    static String shipYardIndustry = AIRetrofits_Constants.ASIC_shipYardIndustry;//"AIRetrofit_shipYard";
+    static String[] hullmods = AIRetrofits_Constants.ASIC_hullmods;
     public AIRetrofit_fleetInflater(DefaultFleetInflaterParams p) {
         super(p);
     }

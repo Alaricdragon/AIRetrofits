@@ -8,20 +8,21 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
 public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase {
     //static private int minSize = 3;
-    static private String condition = "AIRetrofit_AIPop";
+    static final private String condition = AIRetrofits_Constants.Market_Condition;//"AIRetrofit_AIPop";
     static float buildSet = 9999;
     private float prugeTime = 0;
-    private float purgeProgress = 0;
+    private final float purgeProgress = 0;
     private boolean test = true;
-    static private boolean active = Global.getSettings().getBoolean("AIRetrofits_SwapRobotAndNormalPopulationBuilding");
+    static private final boolean active = Global.getSettings().getBoolean("AIRetrofits_SwapRobotAndNormalPopulationBuilding");
 
-    static private float baseCost = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_baseCost");//1000;
-    static private float baseCostExpental = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_baseCostExpental");//2;
+    static private final float baseCost = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_baseCost");//1000;
+    static private final float baseCostExpental = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_baseCostExpental");//2;
 
     static private final float baseTime = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_baseTime");//1;
     static private final float bastTimeExpencal = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_bastTimeExpencal");//2f;

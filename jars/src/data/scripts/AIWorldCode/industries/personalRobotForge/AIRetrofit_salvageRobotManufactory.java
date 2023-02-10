@@ -10,6 +10,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
@@ -20,20 +21,6 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
     private final static String S1 = "AIretrofit_WorkerDrone";
     private final static String S2 = "AIretrofit_Advanced_WorkerDrone";
     private final static String S3 = "AIretrofit_Omega_WorkerDrone";
-/*
-    private final static int OS1Min = 40;
-    private final static int OS1Max = 60;
-
-    private final static int OS2Min = 20;
-    private final static int OS2Max = 30;
-
-    private final static int OS3Min = 10;
-    private final static int OS3Max = 15;
-
-    private final static float BetaGrowthMod = 12;
-
-    private final static String BetaText = "use produced salvage robots to boost population growth by %s";
-*/
     private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS1Min");//125;
     private final static int OS1Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_salvage_OS1Max");
 
@@ -48,6 +35,7 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
     //private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_salvage_exstaText");//"from combat robot factory";
     private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_salvage_betaText");//"use produced combat robots to boost ground defences by %s";
 
+    static String m1 = AIRetrofits_Constants.Market_GrowthMod_AIRetrofits_BasicDroneFactory_0;//"AIRetrofits_RobotFactoryGrowthMod";
     @Override
     protected String[] getItems(){
         return new String[] {C1,C2,C3,S1,S2,S3};
@@ -87,7 +75,6 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
         String[] exstra = {"" + BetaGrowthMod};
         tooltip.addPara(pre + BetaText,pad,highlight,exstra);
     }
-    static String m1 = "AIRetrofits_RobotFactoryGrowthMod";
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
         if (!isFunctional() || getAICoreId() == null || !getAICoreId().equals("beta_core")) {

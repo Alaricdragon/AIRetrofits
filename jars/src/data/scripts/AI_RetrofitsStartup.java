@@ -14,6 +14,8 @@ import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
 
 public class AI_RetrofitsStartup extends BaseModPlugin {
+    public void onNewGame(){
+    }
     @Override
     public void onApplicationLoad() {
         /*
@@ -34,6 +36,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         super.onGameLoad(newGame);
         AIMarketModSet();
         descriptions();
+        AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?

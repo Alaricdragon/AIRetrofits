@@ -16,6 +16,7 @@ import com.fs.starfarer.rpg.Person;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.Map;
 import java.util.Random;
@@ -25,15 +26,15 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     InteractionDialogAPI dialog;
     OptionPanelAPI options;
     int temp = 0;
-    private static int officerCreditCost = Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
-    private static int administratorCreditCost = Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
-    private static int officerSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Officer_SCN");
-    private static int administratorSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Admin_SCN");
+    private static final int officerCreditCost = AIRetrofits_Constants.RobotForge_officerCreditCost;//Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
+    private static final int administratorCreditCost = AIRetrofits_Constants.RobotForge_administratorCreditCost;//Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
+    private static final int officerSubCommandNodeCost = AIRetrofits_Constants.RobotForge_officerSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Officer_SCN");
+    private static final int administratorSubCommandNodeCost = AIRetrofits_Constants.RobotForge_administratorSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Admin_SCN");
 
-    private static int officerCreditsPerMomth = 900;
-    private static int administratorCreditsPerMomth = 2000;
+    private static final int officerCreditsPerMomth = AIRetrofits_Constants.RobotForge_officerCreditsPerMomth;//900;
+    private static final int administratorCreditsPerMomth = AIRetrofits_Constants.RobotForge_administratorCreditsPerMomth;//2000;
 
-    private static String SubCommandNode = "AIretrofit_SubCommandNode";
+    private static final String SubCommandNode = AIRetrofits_Constants.RobotForge_SubCommandNode;//"AIretrofit_SubCommandNode";
     private void mainPage(){
         this.dialog.getTextPanel().addPara("information about improving an sub comand node, into an command node goes here");
         this.options.clearOptions();

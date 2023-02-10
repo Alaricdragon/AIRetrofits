@@ -11,6 +11,7 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.AIWorldCode.growth.AIRetrofits_RemoveUnwantedGrowth;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 /*
 applys things like market condition changes, and supply demand changes.
@@ -18,7 +19,7 @@ applys things like market condition changes, and supply demand changes.
 public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements MarketImmigrationModifier {
     public static float STABILITY_BONUS = 2;
     String ID;
-    private static boolean can = Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
+    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     //private boolean setUpStart = false;
     //private boolean setUpDone = false;
     public void apply(String id) {

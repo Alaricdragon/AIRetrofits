@@ -1,0 +1,104 @@
+need to create constants for everything. this will make files and data easier to track.
+adding new rules for adding new constants, to avoid being frustrated with how many of them i have.
+currently in:
+AIWorldCode - > industries -> base
+going down through AIWorldCode. hope to get everything done soon
+they must:
+    1.a) be used, or potentially be useful, in more then one location.
+    OR
+    1.b) have simpler other data in other classes, that i might want to be able to compare in a time efficient manner.
+    OR
+    1.c) have a complicated setup, were changing the variables or arrays could completely change the the way the code works,
+         and i might have need to change it someday.
+
+they must not:
+    1) have there data stored elsewhere
+not yet meeting requirements:
+    AIRetrofit_AIretrofit
+    AIRetrofit_AutomatedCrewReplacementDrones
+    AIRetrofit_IndustryBase
+    AIRetrofit_AINodeProductionFacility
+    AIRetrofit_roboticMaintenanceFacility
+    AIRetrofit_syntheticProductionCenter
+    AIRetrofit_combatRobotManufactory
+    AIRetrofit_PersonalRobotManufactoryBase
+    AIRetrofit_salvageRobotManufactory
+    AIRetrofit_surveyRobotManufactory
+
+going to do latter for:
+    AIRetrofits_AILudicWar
+    AIRetrofits_BrokenAIWorkers
+    AIRetrofits_LudicPathWatchers
+    AIRetrofits_PurgingAIWorld
+    AIRetrofits_UnbrokenAIWorkers
+
+    AIRetrofit_AIRelations
+    AIRetrofit_TransferMarket
+    reasons: i dont even know if they work or not....
+
+going to abstain for:
+    AIRetrofits_Startup_CrewReplacer,
+    AIRetrofits_Startup_MarketRetrofits
+    AIRetrofits_Startup_RobotForge
+
+    reason? they already get stored in there resepective areas, having them also be a globule constant will not help me here.
+
+    AIRetrofit_Dialog_ForgeItemAndSelection
+    AIRetrofits_RobotForge
+    AIRetrofits_RobotForgeDiologPlugin
+
+    reasons? messy, and i hope to never look at it again.
+
+    AIRetrofit_robotCarrierService
+
+    reasons? not used. might never be used.
+partly did for (because they only needed some of the data)
+    AIRetrofit_roboticPopFactoryV1
+    AIRetrofit_roboticPopFactoryV2
+    AIRetrofit_AIRetrofitPurgeOption
+    AIRetrofit_shipYard
+    AIRetrofit_Population
+    AIRetrofit_roboticPopFactoryV0
+    AIRetrofitsAIPop
+    AIRetrofit_econUpdateListiner
+
+done for:
+    AIRetrofit_Robots
+    AIRetrofit_RobotsDescriptions
+
+    AIRetrofit_BuildOutpostScript
+    AIRetrofit_PrepBuildOutpostScript
+    AIRetrofit_BuildOutpostOptionScript
+    AIRetrofit_StartAutomatedColony
+
+    AIRetrofits_Dialog_PeopleMaker
+    AIRetrofits_DialogBase
+    AIRetrofits_ForgeItem
+    AIRetrofits_ForgeList
+    AIRetrofits_RobotForge_People
+    AIRetrofits_RobotForgeDiologPlugin2
+    AIRetrofits_RobotForgeSecondary
+
+    AIRetrofit_oppAddAll
+    AIRetrofit_oppRemoveAll
+
+    AIRetrofit_ShipyardBase
+    AIRetrofit_ShipyardGamma
+    AIRetrofit_ShipyardBeta
+    AIRetrofit_ShipyardAlpha
+    AIRetrofit_ShipyardOmega
+
+    AIRetrofit_FleetPlugin
+    AIRetrofit_fleetInflater
+    setDataLists
+
+    AIRetrofit_MarketGrowthMods
+    AIRetrofits_RemoveUnwantedGrowth
+
+    AIRetorift_GetMarketBoost
+    AIRetrofit_MakretListener
+    AIRetrofit_Shipyard
+
+    AIRetrofit_CCSetMain
+    AIRetrofit_CCSetSecondary
+    AIretrofit_canBuild
