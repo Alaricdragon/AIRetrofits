@@ -6,31 +6,25 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
 public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
-    static String C1 = "AIretrofit_SubCommandNode";
-    static String C2 = "AIretrofit_WorkerDrone";
+    private final static String C1 = "AIretrofit_SubCommandNode";
+    private final static String C2 = "AIretrofit_WorkerDrone";
     //static String C3 = "heavy_machinery";
-    static String subbmarket = "AIRetrofit_ShipyardSubmarket";
+    private final static String subbmarket = AIRetrofits_Constants.ASIC_subbmarket;//"AIRetrofit_ShipyardSubmarket";
 
-    static String alphaDescription = Global.getSettings().getString("AIRetrofitShipyard_ADescription");
-    static String betaDescription = Global.getSettings().getString("AIRetrofitShipyard_BDescription");
-    static String gammaDescription = Global.getSettings().getString("AIRetrofitShipyard_GDescription");
-    static float improveValue = Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
-    static float defaultValue = Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
-    static String improveDescription = Global.getSettings().getString("AIRetrofitShipyard_IDescription");
-    static String improvedDescription = Global.getSettings().getString("AIRetrofitShipyard_IedDescription");
-    static String extraDescription = Global.getSettings().getString("AIRetrofitShipyard_Description");
-    static int[] costPerShip = {
-            (int)Global.getSettings().getFloat("AIRetrofitShipyard_perCrewDEFAULT"),
-            (int)Global.getSettings().getFloat("AIRetrofitShipyard_perCrewFIGHTER"),
-            (int)Global.getSettings().getFloat("AIRetrofitShipyard_perCrewFRIGATE"),
-            (int)Global.getSettings().getFloat("AIRetrofitShipyard_perCrewDESTROYER"),
-            (int)Global.getSettings().getFloat("AIRetrofitShipyard_perCrewCRUISER"),
-            (int)Global.getSettings().getFloat("AIRetrofitShipyard_perCrewCAPITAL_SHIP"),
-    };
+    private final static String alphaDescription = Global.getSettings().getString("AIRetrofitShipyard_ADescription");
+    private final static String betaDescription = Global.getSettings().getString("AIRetrofitShipyard_BDescription");
+    private final static String gammaDescription = Global.getSettings().getString("AIRetrofitShipyard_GDescription");
+    private final static float improveValue = AIRetrofits_Constants.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    private final static float defaultValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    private final static String improveDescription = Global.getSettings().getString("AIRetrofitShipyard_IDescription");
+    private final static String improvedDescription = Global.getSettings().getString("AIRetrofitShipyard_IedDescription");
+    private final static String extraDescription = Global.getSettings().getString("AIRetrofitShipyard_Description");
+    private final static float[] costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
     @Override
     public void apply() {
         super.apply(true);
@@ -166,10 +160,10 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
                 "" + (int)(defaultValue * (1 + improveValue)),
                 //"" + costPerShip[0],
                 //"" + costPerShip[1],
-                "" + costPerShip[2],
-                "" + costPerShip[3],
-                "" + costPerShip[4],
-                "" + costPerShip[5]};
+                "" + (int)costPerShip[2],
+                "" + (int)costPerShip[3],
+                "" + (int)costPerShip[4],
+                "" + (int)costPerShip[5]};
         tooltip.addPara(extraDescription, 0f, highlight, exstra);
     }
 }

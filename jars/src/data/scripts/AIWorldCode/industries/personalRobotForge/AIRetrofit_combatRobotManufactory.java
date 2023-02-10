@@ -21,7 +21,7 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
     private final static String S2 = "AIretrofit_Advanced_CombatDrone";
     private final static String S3 = "AIretrofit_Omega_CombatDrone";
 
-    private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_combat_OS1Min");//125;
+    private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_combat_OS1Min");
     private final static int OS1Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_combat_OS1Max");
 
     private final static int OS2Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_combat_OS2Min");

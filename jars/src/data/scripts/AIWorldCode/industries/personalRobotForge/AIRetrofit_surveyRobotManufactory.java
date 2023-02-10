@@ -19,21 +19,8 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
     private final static String S1 = "AIretrofit_SurveyDrone";
     private final static String S2 = "AIretrofit_Advanced_SurveyDrone";
     private final static String S3 = "AIretrofit_Omega_SurveyDrone";
-/*
-    private final static int OS1Min = 40;
-    private final static int OS1Max = 60;
 
-    private final static int OS2Min = 20;
-    private final static int OS2Max = 30;
-
-    private final static int OS3Min = 10;
-    private final static int OS3Max = 15;
-
-    private final static float BetaDefenceMulti = 1;
-
-    private final static String groundDefenceText = "from survey robot manufactory";
-    private final static String BetaText = "use produced survey robots to provide severance around this market, and thus stability by %s";*/
-private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_survey_OS1Min");//125;
+    private final static int OS1Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_survey_OS1Min");//125;
     private final static int OS1Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_survey_OS1Max");
 
     private final static int OS2Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_survey_OS2Min");

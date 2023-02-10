@@ -7,16 +7,15 @@ import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.OfficerDataAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.List;
 
 public class AIRetrofit_FleetListener extends BaseCampaignEventListener {
-    static String Condition = "AIRetrofit_AIPop";
-    static private boolean ChangeCrew = Global.getSettings().getBoolean("AIRetrofits_SwapAICrew");
+    static private boolean ChangeCrew = AIRetrofits_Constants.fleetChange_ChangeCrew;
     public AIRetrofit_FleetListener(boolean permaRegister) {
         super(permaRegister);
     }
-    //static String look1 = Global.getSettings().getString("characters","AIRetofit_AIOfficer");
     @Override
     public void reportFleetSpawned(CampaignFleetAPI fleet){
         if(setDataLists.fleetMod(fleet)){
@@ -29,16 +28,8 @@ public class AIRetrofit_FleetListener extends BaseCampaignEventListener {
             }
         }
     }
-    //HERE swap this info out with something in an config please.
-    String[] itemIn = {"crew","marines"};
-    String[] itemOut = {"AIretrofit_WorkerDrone","AIretrofit_CombatDrone"};
-    //id
-    //crew
-    //marines
-    //id
-    //AIretrofit_WorkerDrone
-    //AIretrofit_CombatDrone
-    //AIretrofit_SurveyDrone
+    String[] itemIn = AIRetrofits_Constants.fleetChange_itemIn;
+    String[] itemOut = AIRetrofits_Constants.fleetChange_itemOut;
     private void swapFleetCrew(CampaignFleetAPI fleet){
         if(!ChangeCrew){
             return;

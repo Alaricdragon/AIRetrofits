@@ -10,18 +10,19 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
 public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase implements MarketImmigrationModifier {
-    final static String C1 = "metals";
-    final static String C2 = "rare_metals";
-    final static String C3 = "heavy_machinery";
-    final static String S1 = "AIretrofit_WorkerDrone";
-    final static int C1Mod = 0;
-    final static int C2Mod = -1;
-    final static int C3Mod = -2;
-    final static int S1Mod = 0;
+    private final static String C1 = "metals";
+    private final static String C2 = "rare_metals";
+    private final static String C3 = "heavy_machinery";
+    private final static String S1 = "AIretrofit_WorkerDrone";
+    private final static int C1Mod = 0;
+    private final static int C2Mod = -1;
+    private final static int C3Mod = -2;
+    private final static int S1Mod = 0;
 
     final static private float baseGrowth = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T0PowerPerSize");
     final static private float improveValue = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T0ImprovedBonus");//1.3f;
@@ -30,6 +31,8 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
     final static private String improveDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT0_improveDescription");//"";
     final static private String improvedDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT0_improvedDescription");
     final static private String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT0_alphaDescription");;
+
+    static String m1 = AIRetrofits_Constants.Market_GrowthMod_AIRetrofits_RobotFactoryGrowthMod;
     @Override
     public void apply() {
         super.apply(true);
@@ -73,7 +76,6 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
         super.unapply();
     }
 
-    static String m1 = "AIRetrofits_AdvancedDroneFactory_0";
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
         if (!isFunctional()) {
             return;

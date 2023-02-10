@@ -10,6 +10,8 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofit_Log;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
@@ -34,12 +36,15 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
     static float RobotForgePerCrewMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
+        if(stats.getFleetMember() != null && stats.getFleetMember().getFleetData().getFleet().isPlayerFleet()){
+            //AIRetrofit_Log.loging("adding robot forge ability from player owned robot forge ship...",this);
+            Global.getSector().getCharacterData().addAbility(AIRetrofits_Constants.ability_RobotForge);
+        }
         //set this value to (maxcrew - mincrew) / 10; example: (500 = 50. 10 = 1)
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
         float MaxCrew = stats.getVariant().getHullSpec().getMaxCrew();
         ReplacedCrew = (MaxCrew - MinCrew);
         stats.getMaxCrewMod().modifyFlat(id,ReplacedCrew * -1);
-
     }
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {

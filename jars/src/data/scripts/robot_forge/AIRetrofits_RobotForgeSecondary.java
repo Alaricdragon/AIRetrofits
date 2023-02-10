@@ -7,14 +7,14 @@ import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.SpecialItemData;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Items;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.List;
 
 public class AIRetrofits_RobotForgeSecondary {
-    static float CorruptedMetalMultiplier = Global.getSettings().getFloat("AIRetrofits_CorruptedMetal");
-    static float PristineMetalMultiplier = Global.getSettings().getFloat("AIRetrofits_PristineMetal");
-    //static float SalvageModifier = Global.getSettings().getFloat("AIRetrofits_SalvageGantry");
-    static float ForgePowerMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
+    static float CorruptedMetalMultiplier = AIRetrofits_Constants.RobotForge_CorruptedMetalMultiplier;//Global.getSettings().getFloat("AIRetrofits_CorruptedMetal");
+    static float PristineMetalMultiplier = AIRetrofits_Constants.RobotForge_PristineMetalMultiplier;//Global.getSettings().getFloat("AIRetrofits_PristineMetal");
+    static float ForgePowerMulti = AIRetrofits_Constants.RobotForge_ForgePowerMulti;//Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
 
     public static float iCalculateBonus(CampaignFleetAPI fleet) {
             //oldHERE. mush to do

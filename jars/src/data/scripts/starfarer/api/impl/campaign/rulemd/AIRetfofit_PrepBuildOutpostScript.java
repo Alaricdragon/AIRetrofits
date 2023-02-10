@@ -12,19 +12,20 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.crewReplacer_Job;
 import data.scripts.crewReplacer_Main;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.List;
 import java.util.Map;
 
 public class AIRetfofit_PrepBuildOutpostScript extends BaseCommandPlugin {
-    float reqAICore = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqAICore");//10
-    float reqWorker = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqWorker");//1000;
-    float reqSupply = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqSupply");//200;
-    float reqMachinery = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqMachinery");//200;
-    String AICoreJob = "AIRetrofit_OutpostAICore";
-    String AIWorkerJob = "AIRetrofit_OutpostWorker";
-    String SupplyJob = "AIRetrofit_OutpostSupply";
-    String MachineryJob = "AIRetrofit_OutpostMachinery";
+    float reqAICore = AIRetrofits_Constants.FoundAMarket_reqAICore;
+    float reqWorker = AIRetrofits_Constants.FoundAMarket_reqWorker;
+    float reqSupply = AIRetrofits_Constants.FoundAMarket_reqSupply;
+    float reqMachinery = AIRetrofits_Constants.FoundAMarket_reqMachinery;
+    String AICoreJob = AIRetrofits_Constants.FoundAMarket_AICoreJob;
+    String AIWorkerJob = AIRetrofits_Constants.FoundAMarket_AIWorkerJob;
+    String SupplyJob = AIRetrofits_Constants.FoundAMarket_SupplyJob;
+    String MachineryJob = AIRetrofits_Constants.FoundAMarket_MachineryJob;
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         CampaignFleetAPI fleet = Global.getSector().getPlayerFleet();
         float[] got = new float[4];

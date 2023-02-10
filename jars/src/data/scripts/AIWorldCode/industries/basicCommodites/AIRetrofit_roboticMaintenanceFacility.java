@@ -4,12 +4,12 @@ import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 
 public class AIRetrofit_roboticMaintenanceFacility   extends AIRetrofit_IndustryBase {
-    static String C1 = "metals";
-    static String C2 = "rare_metals";
-    static String C3 = "heavy_machinery";
+    private final static String C1 = "metals";
+    private final static String C2 = "rare_metals";
+    private final static String C3 = "heavy_machinery";
 
-    static String S1 = "AIretrofit_maintainsPacts";
-    static String S2 = "AIretrofit_roboticReplacementParts";
+    private final static String S1 = "AIretrofit_maintainsPacts";
+    private final static String S2 = "AIretrofit_roboticReplacementParts";
     @Override
     public void apply() {
         super.apply(true);
