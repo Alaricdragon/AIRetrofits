@@ -1,4 +1,9 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.10.1:
+save combatable with 0.7.9+
+    fixes:
+        fixed a save breaking bug when useing the robot forge hullmod. all your saves should work now =)
+        hopefully
 v0.7.10:
 save combatable with 0.7.9+
     images:
@@ -23,7 +28,6 @@ save combatable with 0.7.9+
         made it so if the option 'AIRetrofit_alwaysGiveSkillsAndHullmods' == true, you get the skills and hullmods on game start, and not when you first visit a market.
     refactoring:
         refactored a bunch of things. plz tell me if anything does not work suddenly.
-
 v0.7.9:
 NOT compatible with any older version
     images: 
