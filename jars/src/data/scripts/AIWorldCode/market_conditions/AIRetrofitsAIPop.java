@@ -13,6 +13,8 @@ import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.AIWorldCode.growth.AIRetrofits_RemoveUnwantedGrowth;
 import data.scripts.startupData.AIRetrofits_Constants;
 
+import java.util.ArrayList;
+
 /*
 applys things like market condition changes, and supply demand changes.
  */
@@ -41,8 +43,8 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
-        AIRetrofits_RemoveUnwantedGrowth.removeGrowthOther(market,incoming);
-        AIRetrofits_RemoveUnwantedGrowth.removeKnownImmigration(market,incoming);
+        ArrayList<String> removed = AIRetrofits_RemoveUnwantedGrowth.removeGrowthOther(market,incoming);
+        AIRetrofits_RemoveUnwantedGrowth.removeKnownImmigration(market,incoming,removed);
         AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
     }
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
@@ -71,7 +73,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
             market.addCondition("AIRetrofit_Purging_AI_World");
             return;
         }
-        if (market.hasCondition("decivilized")){
+        if (false && market.hasCondition("decivilized")){
             AIRetrofit_Log.loging("AI-Pop, removing condition by deciv",this);
             AIRetrofit_Log.push();
             market.removeCondition("decivilized");
@@ -95,7 +97,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
             return;
         }
         if(market.isPlanetConditionMarketOnly()){
-            AIRetrofit_Log.loging("AI-Pop, removing condition by mic",this);
+            AIRetrofit_Log.loging("AI-Pop, removing condition by misc",this);
             market.removeCondition("AIRetrofit_AIPop");
             return;
         }

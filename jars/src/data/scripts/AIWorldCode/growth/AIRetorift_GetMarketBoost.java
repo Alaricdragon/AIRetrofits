@@ -237,6 +237,6 @@ public class AIRetorift_GetMarketBoost {
         return 0;
     }
     public static void loging(String output){
-        AIRetrofit_Log.loging(output,new AIRetorift_GetMarketBoost());
+        AIRetrofit_Log.loging(output,new AIRetorift_GetMarketBoost(),AIRetrofits_Constants.Market_EnableLogs);
     }
 }

@@ -131,6 +131,7 @@ public class AIRetrofits_Constants {
 
 //marketData
     //conditions and levers
+    public static final boolean Market_EnableLogs = Global.getSettings().getBoolean("AIRetrofit_GrowthLogs");
     public static final boolean Market_EnableMarketFetures = Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     public static final String Market_Condition = "AIRetrofit_AIPop";
 

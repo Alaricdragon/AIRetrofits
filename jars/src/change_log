@@ -1,4 +1,19 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.11:
+save combatable with 0.7.9+
+    fixes:
+        fixed the possibility of a broken market condition loading.
+        fixed the growth remover not working on market conditions (like 'free port')
+        fixed a issue were growth could be removed from a market twice, causing hidden negative growth.
+        removed the extra size and power reminders from the main description of the T1 and T2 robots.
+    balance:
+        buffed the output numbers of the personal robot factorys when they have AI Cores from
+            T1 = T0output / ((T1Power / T0Power) * 2) to T0output / ((T1Power / T0Power) * 1.2)
+            T2 = T1output / ((T2Power / T1Power) * 2) to T0output / ((T2Power / T0Power) * 1.2)
+    config:
+        added the option to turn on/off logs related to market growth.
+    logs:
+        added some logs to the place were a markets growth mods are hidden, so you can see whats sup
 v0.7.10.1:
 save combatable with 0.7.9+
     fixes:

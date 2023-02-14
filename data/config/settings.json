@@ -8,7 +8,7 @@
 	],
 	#logs active (for debuging)
 	"AIRetrofit_logs": true,
-
+	"AIRetrofit_GrowthLogs": false,
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
@@ -319,30 +319,30 @@
 	#combat robots
 	"AIRetrofit_robotManufactury_combat_OS1Min": 75,#base
 	"AIRetrofit_robotManufactury_combat_OS1Max": 125,
-	"AIRetrofit_robotManufactury_combat_OS2Min": 15,#2.5X power 2 * 2.5 = 5.
-	"AIRetrofit_robotManufactury_combat_OS2Max": 25,
-	"AIRetrofit_robotManufactury_combat_OS3Min": 2,#10X power 10 * 3 = 30.
-	"AIRetrofit_robotManufactury_combat_OS3Max": 4,
+	"AIRetrofit_robotManufactury_combat_OS2Min": 25,#2.5X power 2.5 * 1.2 = 2.5 + 0.4 + 0.1 = 3.
+	"AIRetrofit_robotManufactury_combat_OS2Max": 42,
+	"AIRetrofit_robotManufactury_combat_OS3Min": 6,#10X power 10 * 1.2 = 10 + 2 = 12.
+	"AIRetrofit_robotManufactury_combat_OS3Max": 11,
 	"AIRetrofit_robotManufactury_combat_Mod": 1.1,
 	"AIRetrofit_robotManufactury_combat_betaText": "use produced combat robots to boost ground defences by %s",
 	"AIRetrofit_robotManufactury_combat_exstaText": "from combat robot factory",
 	#salvage robots
 	"AIRetrofit_robotManufactury_salvage_OS1Min": 40,#base
 	"AIRetrofit_robotManufactury_salvage_OS1Max": 60,
-	"AIRetrofit_robotManufactury_salvage_OS2Min": 16,#1.25X power 2 * 1.25 = = 2.5 = 16
-	"AIRetrofit_robotManufactury_salvage_OS2Max": 32,
-	"AIRetrofit_robotManufactury_salvage_OS3Min": 4,#,3X power
-	"AIRetrofit_robotManufactury_salvage_OS3Max": 8,
+	"AIRetrofit_robotManufactury_salvage_OS2Min": 26,#1.25X power 1.25 * 1.2 = 1.25 + 0.01 + 0.04 + 0.2 = 1.5
+	"AIRetrofit_robotManufactury_salvage_OS2Max": 40,
+	"AIRetrofit_robotManufactury_salvage_OS3Min": 11,#,3X power 3 * 1.2 = 3 + 0.6 = 3.6
+	"AIRetrofit_robotManufactury_salvage_OS3Max": 16,
 	"AIRetrofit_robotManufactury_salvage_Mod": 12,
 	"AIRetrofit_robotManufactury_salvage_betaText": "use produced salvage robots to boost population growth by %s",
 	#"AIRetrofit_robotManufactury_salvage_exstaText": 0,
 	#survey robots
 	"AIRetrofit_robotManufactury_survey_OS1Min": 40,#base
 	"AIRetrofit_robotManufactury_survey_OS1Max": 60,
-	"AIRetrofit_robotManufactury_survey_OS2Min": 20,#1X power.
-	"AIRetrofit_robotManufactury_survey_OS2Max": 30,
-	"AIRetrofit_robotManufactury_survey_OS3Min": 4,#3X power / 3 * 3 = 9.
-	"AIRetrofit_robotManufactury_survey_OS3Max": 8,
+	"AIRetrofit_robotManufactury_survey_OS2Min": 34,#1X power. 1 * 1.2 = 1.2
+	"AIRetrofit_robotManufactury_survey_OS2Max": 50,
+	"AIRetrofit_robotManufactury_survey_OS3Min": 11,#3X power. 3 * 1.2 = 3 + 0.6 = 3.6
+	"AIRetrofit_robotManufactury_survey_OS3Max": 16,
 	"AIRetrofit_robotManufactury_survey_Mod": 1,
 	"AIRetrofit_robotManufactury_survey_betaText": "use produced survey robots to provide severance around this market, and thus stability by %s",
 	"AIRetrofit_robotManufactury_survey_exstaText": "from survey robot manufactory",
