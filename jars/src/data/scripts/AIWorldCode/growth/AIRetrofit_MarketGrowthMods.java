@@ -4,12 +4,14 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.CrewReplacer_Log;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.List;
 
 public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
+    private static final AIRetrofit_MarketGrowthMods logsClass = new AIRetrofit_MarketGrowthMods();
     static String condition = AIRetrofits_Constants.Market_Condition;//"AIRetrofit_AIPop";
     public static void applyData(MarketAPI market, String ID){
         undoExtraData(market,ID);
@@ -21,7 +23,7 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
     public static void undoExtraData(MarketAPI market,String ID){
     }
     private static void modifyGrowth(MarketAPI market){
-        //CrewReplacer_Log.loging("ERROR: outdated modifing data errror",new AIRetrofit_MarketGrowthMods(),true);
+        AIRetrofit_Log.loging("hiding notified market modifiers for market " + market.getName(),logsClass,AIRetrofits_Constants.Market_EnableLogs);
         PopulationComposition incoming = market.getIncoming();
         String[] activeGrowth = AIRetrofits_Constants.Market_WhiteListedGrowthMods;
         int a = 0;
@@ -37,6 +39,7 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
                 }
             }
             if(out) {
+                AIRetrofit_Log.loging("hiding modifier named " + incoming.getWeight().getFlatMods().keySet().toArray()[a].toString(),logsClass,AIRetrofits_Constants.Market_EnableLogs);
                 incoming.getWeight().unmodify(incoming.getWeight().getFlatMods().keySet().toArray()[a].toString());
             }
         }
@@ -50,6 +53,7 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
         addHazardPay(incoming,market);
     }
     private static void addRobotFactory(PopulationComposition incoming,MarketAPI market){
+        AIRetrofit_Log.loging("adding T1 and T2 robot factory bonuses",logsClass,AIRetrofits_Constants.Market_EnableLogs);
         List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
         float[] mods = AIRetorift_GetMarketBoost.forceCalculate(markets,market);
         //AIRetorift_GetMarketBoost.loging("final mods: " + mods[0] + ", " + mods[1]);
@@ -64,6 +68,7 @@ public class AIRetrofit_MarketGrowthMods implements MarketImmigrationModifier {
         if(market.isImmigrationIncentivesOn()){
             float growth = market.getSize() * hazzardGrowthPerSize;
             incoming.getWeight().modifyFlat(hazzardPayName,growth,hazzardPayDescription);
+            AIRetrofit_Log.loging("adding hazardPay boost to market...",logsClass,AIRetrofits_Constants.Market_EnableLogs);
         }
     }
     private static float getIncentivesGrowth(MarketAPI market){

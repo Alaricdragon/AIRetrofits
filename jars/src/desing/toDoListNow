@@ -4,16 +4,8 @@ to do list before next update:
     test the possibility of using combat robots for nexerline invasions
 
     (?)create a hullmod for the fighters.
-    (HERE: doing this right now. see constants text file.)create a class that holds all static data so its easyer to change.
-    update the robot numbers created to be the same amount, -20%, based on robot power produced.
     make it so 'upgrading' a S-Mod with the automated ship installation center, give bonus XP based on story ponits gotten, like if i were to sell / scuttle the ship.
 
-    fix the last few issues with growth:
-        not removing freeport.
-        possobility, that my blanket negitive will try to remove mods that i have already removed.
-
-    (done)make it so i get the robot forge ability the moment i have a ship that has said ability.
-    (done)make it so the 'give me hullmods' check on game load, and when i get a skill.
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
