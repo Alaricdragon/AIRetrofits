@@ -1,4 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.12
+save combatable with 0.7.9+
+    fixes:
+        fixed T1 robot factory not showing its growth, and instead showing the T2 factory's growth (so it always said it had zero growth.).
 v0.7.11:
 save combatable with 0.7.9+
     fixes:

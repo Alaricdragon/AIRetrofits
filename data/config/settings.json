@@ -12,8 +12,8 @@
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
-	#i hope this works, but i have no darn clue if it does
-	"AIRetrofits_SwapAICrew": false,
+	#i hope this works, but i have no darn clue if it does. might do nothing...
+	"AIRetrofits_SwapAICrew": true,
 
 	#settings for AIRetrofits hullmod
 	"AIRetrofits_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.

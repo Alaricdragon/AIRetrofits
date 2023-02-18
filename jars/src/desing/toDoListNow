@@ -1,8 +1,6 @@
 to do list before next update:
     test and try to find the possible issues with the 'change market condition code' in 'AI-Pop' condition
         -note: when useing sateration bombardment, i need to wait a few days after market transfer to check if that works or not.
-    test the possibility of using combat robots for nexerline invasions
-
     (?)create a hullmod for the fighters.
     make it so 'upgrading' a S-Mod with the automated ship installation center, give bonus XP based on story ponits gotten, like if i were to sell / scuttle the ship.
 
@@ -12,27 +10,24 @@ NOTE:
 
 Note:
     regarding replaceing crew and marrines with salvage robots and combat robots:
+        invasions work even with alpha shipyard modifier.
         i have no idea if this works or not. i don't think it does.
         tried an invasion fleet. none of my marines were combat robots like they should have been.
         although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
 
+questions:
+    how do i make my own in game notification popups (like the one that happens with tech mining at the end of the mouth for example)?
+
 Industrys:
     Shipyard:
         issues:
-            (never mind. that's now how it normally works.)color of 'points available' needs to change to improved color when i have the industry improved.
             when the industry is not functional, there needs to be text showing it will not work.
             when the industry is not on a player owned world, it should cost credits to retrofit ships.
             change ship power over to something a crew based system, instead of a shipsized based system.
-            -Important: make it so it does not try to add the hullmod onto ships with no min crew requirements. in fact, bar them from entering the ship yard at all.
         concepts: allow players to build this industry on normal markets
             might be a good idea. make it change the fleets as well? i don't know.
             will reduce the need / want to build robotic markets, but maybe that's a good thing?
-    robotic replacement thing:
-        done, for now. needs to be reworked at a latter date
-    population factory's:
-        add a bit of text to show how mush growth each factory is producing.
 market:
-    (done)design and add industries to produce both advanced and basic robotic workers.
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
 
 Robots:
@@ -40,8 +35,6 @@ Robots:
 AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.
-    -make this hullmod incompatible with all AIRetrofit_Shipyard hullmods.
-    -move all strings into the config. right now the 'cant install' strings are not accsesable.
 
 AI Market plugin:
     new plan: in market retrofits, build a system for founding markets. with or without certain data.
@@ -52,4 +45,3 @@ AI Market plugin:
         -when in an sector without hyperSpace transit?
             -might keep this. no reason not to?
         -when an enemy fleet is near by, and is blocking you.
-    fix the fact the plugin dose NOT require the resources it says it dose to work

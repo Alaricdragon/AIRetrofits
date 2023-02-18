@@ -127,7 +127,7 @@ public class AIRetrofit_roboticPopFactoryV1 extends AIRetrofit_IndustryBase {
         tooltip.addSpacer(opad);
 
         String[] exstra = {
-                "" + AIRetorift_GetMarketBoost.getMarketPowerGlobal(market),
+                "" + AIRetorift_GetMarketBoost.getMarketPowerLocal(market),
         };
         tooltip.addPara(extraDescription, 0f, highlight, exstra);
     }
