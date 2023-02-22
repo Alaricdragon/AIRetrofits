@@ -9,7 +9,7 @@ NOTE:
     view growth -AI-Pop for details
 
 Note:
-    regarding replaceing crew and marrines with salvage robots and combat robots:
+    regarding replacing crew and marines with salvage robots and combat robots:
         invasions work even with alpha shipyard modifier.
         i have no idea if this works or not. i don't think it does.
         tried an invasion fleet. none of my marines were combat robots like they should have been.
@@ -27,6 +27,13 @@ Industrys:
         concepts: allow players to build this industry on normal markets
             might be a good idea. make it change the fleets as well? i don't know.
             will reduce the need / want to build robotic markets, but maybe that's a good thing?
+        notification:
+            confused. put this into its own folder in notifications.
+            needs to beable to be clicked on. how? unknown
+
+            issues:
+                is not added to the list of notifications. just appears for a few moments.
+                cant be clicked on.
 market:
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
 

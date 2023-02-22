@@ -9,10 +9,13 @@ import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.impl.campaign.intel.misc.ProductionReportIntel;
 import com.fs.starfarer.api.loading.VariantSource;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.ArrayList;
@@ -56,14 +59,14 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     static float[] shipyard_costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
     private void runAIRetrofit_Shipyard(){
-        UpgradeLocations memory = new UpgradeLocations();
+        UpgradeList memory = new UpgradeList();
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
-            memory.addLocation(market.getId(),runSingleAIRetrofit_Shipyard(market,memory));
+            memory.addLocation(market.getId(),runSingleAIRetrofit_Shipyard(market));
         }
         displayAIRetrofit_ShipYardNotification(memory);
     }
     //boolean logging = true;
-    private UpgradedShips runSingleAIRetrofit_Shipyard(MarketAPI market,UpgradeLocations RememberdShips){
+    private UpgradedShips runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
         if(!market.hasIndustry(shipYardIndustry) || !market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
             return null;
@@ -83,7 +86,6 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         final float startingPonits = shipyardDValue;
         final float bounus = 1 + shipyard_IValue;
         final float[] costs = shipyard_costPerShip;
-        UpgradedShips upgraded = new UpgradedShips();
         List<FleetMemberAPI> ships = market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips().getMembersListCopy();
         //market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips().get
         //market.getSubmarket(shipYardSubmarket).getCargo().
@@ -93,34 +95,42 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         if(market.getIndustry(shipYardIndustry).isImproved()){
             points *= bounus;
         }
+        int type;
         try {
             //CrewReplacer_Log.loging("   trying to get AI core...",this,logging);
             switch (market.getIndustry(shipYardIndustry).getAICoreId()) {
                 case "gamma_core":
                     //CrewReplacer_Log.loging("       got AICore named 'gamma_core'",this,logging);
                     addHullMod = addHullMods[0];
+                    type = 0;
                     break;
                 case "beta_core":
                     //CrewReplacer_Log.loging("       got AICore named 'beta core'",this,logging);
                     addHullMod = addHullMods[1];
+                    type = 1;
                     break;
                 case "alpha_core":
                     //CrewReplacer_Log.loging("       got AICore named 'alpha core'",this,logging);
                     addHullMod = addHullMods[2];
+                    type = 2;
                     break;
                 case "omega_core"://are omega cores even obtainable?
                     //CrewReplacer_Log.loging("       got AICore named 'omega core'",this,logging);
                     addHullMod = addHullMods[3];
+                    type = 3;
                     break;
                 default:
                     //CrewReplacer_Log.loging("       didn't get AI core'",this,logging);
                     addHullMod = addHullMods[4];
+                    type = 4;
                     break;
             }
         }catch (Exception e){
             //CrewReplacer_Log.loging("       ERROR! no AI core gave a error",this,logging);
             addHullMod = addHullMods[4];
+            type = 4;
         }
+        UpgradedShips upgraded = new UpgradedShips(type);
         //CrewReplacer_Log.loging("   looking at ships... ",this,logging);
         for(FleetMemberAPI ship2 : ships){
             //CrewReplacer_Log.loging("       looking at ship " + ship2.getShipName(),this,logging);
@@ -205,32 +215,72 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
     }
 
-    private void displayAIRetrofit_ShipYardNotification(UpgradeLocations memory){
-        if(memory.upgrades.size() == 0){
+    private void displayAIRetrofit_ShipYardNotification(UpgradeList memory){
+        if(memory.Types.size() == 0 || true){
+            upgrades = null;
             return;
         }
+        upgrades = memory;
+        memory.runNotification();
         //Global.getSector().getCharacterData().getPerson().getStats().addBonusXP();
     }
+
+    public static UpgradeList upgrades;
+    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info){
+        upgrades.display(info);
+    }
 }
-class UpgradeLocations{
+
+class UpgradeList{
+    ArrayList<UpgradeTypes> Types = new ArrayList<>();
+    public void addLocation(String market,UpgradedShips ships){
+        if(ships == null || ships.ships.size() == 0){return;}
+        while(Types.size() <= ships.type){
+            Types.add(new UpgradeTypes(Types.size()));
+        }
+        Types.get(ships.type).addLocation(market,ships);
+    }
+    public void runNotification(){
+        AIRetrofit_ShipyardNotification intel = new AIRetrofit_ShipyardNotification();
+
+        Global.getSector().getCampaignUI().addMessage(intel);
+    }
+    public void display(TooltipMakerAPI info){
+        for(UpgradeTypes a : Types){
+            info.addPara("la la la la la",10);
+            AIRetrofit_Log.loging("displaying upgraded ships of type " + a,this);
+            a.display(info);
+        }
+    }
+}
+class UpgradeTypes{
+    int type;
     ArrayList<UpgradedShips> upgrades = new ArrayList<UpgradedShips>();
     ArrayList<String> markets = new ArrayList<String>();
+
+    UpgradeTypes(int type){
+        this.type = type;
+    }
     public void addLocation(String market,UpgradedShips ships){
         if(ships == null || ships.ships.size() == 0){return;}
         upgrades.add(ships);
         markets.add(market);
     }
-    public void display(){
-        int a = 0;
-        for(UpgradedShips upgrade : upgrades){
-            AIRetrofit_Log.loging("displaying upgraded ships for market " + Global.getSector().getEconomy().getMarket(markets.get(a)).getName(),this);
-            upgrade.display();
-            a++;
+    public void display(TooltipMakerAPI info){
+        for(int a = 0; a < upgrades.size(); a++){
+            info.addPara("whatever",10);
+            boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
+            AIRetrofit_Log.loging("displaying upgraded ships of market " + Global.getSector().getEconomy().getMarket(markets.get(a)).getName(),this);
+            upgrades.get(a).display(info,b);
         }
     }
 }
 class UpgradedShips{
     ArrayList<UpgradedShipsSize>ships = new ArrayList<UpgradedShipsSize>();
+    int type;
+    UpgradedShips(int type){
+        this.type = type;
+    }
     public void addShip(String name, int size){
         addShip(name,size,false);
     }
@@ -240,10 +290,11 @@ class UpgradedShips{
         }
         ships.get(size).addShip(name,bonus);
     }
-    public void display(){
+    public void display(TooltipMakerAPI info,boolean playerOwned){
         for(UpgradedShipsSize size : ships){
+            info.addPara("do da da",10);
             AIRetrofit_Log.loging(" size of: " + size.ShipCost,this);
-            size.display();
+            size.display(info,playerOwned);
         }
     }
 }
@@ -258,9 +309,10 @@ class UpgradedShipsSize{
         ShipName.add(name);
         bonus.add(addBonus);
     }
-    public void display(){
+    public void display(TooltipMakerAPI info,boolean playerOwned){
         int a = 0;
         for(String b: ShipName){
+            info.addPara("whenever",10);
             AIRetrofit_Log.loging("     upgraded ship: name: " + b + " removed S-Mod: " + bonus.get(a),this,true);
             a++;
         }
