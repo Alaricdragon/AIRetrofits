@@ -28,12 +28,12 @@ Industrys:
             might be a good idea. make it change the fleets as well? i don't know.
             will reduce the need / want to build robotic markets, but maybe that's a good thing?
         notification:
-            confused. put this into its own folder in notifications.
-            needs to beable to be clicked on. how? unknown
-
-            issues:
-                is not added to the list of notifications. just appears for a few moments.
-                cant be clicked on.
+            so very closs to finished. need to:
+            polish text
+            add bonus XP gain.
+            add credit loss.
+            add text for bonus XP gain (like 'gained xx XP from removed S-Mods')
+            move all text to the config file, for ease of change.
 market:
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
 

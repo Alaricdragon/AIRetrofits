@@ -2,24 +2,30 @@ package data.scripts.AIWorldCode.market_listiners;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.BaseCampaignEventListener;
-import com.fs.starfarer.api.campaign.CharacterDataAPI;
+import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.FleetDataAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.intel.misc.ProductionReportIntel;
+import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.campaign.fleet.CargoData;
+import com.fs.starfarer.campaign.fleet.FleetData;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.AIRetrofits_Constants;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
 
 public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public AIRetrofit_MakretListener(boolean permaRegister) {
@@ -179,9 +185,9 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     //CrewReplacer_Log.loging("          adding hullmod '" + addHullMod + "'",this,logging);
                     points -= cost;
                     if(ship.getPermaMods().contains(AIRetrofits_Constants.Hullmod_AIRetrofit)){
-                        upgraded.addShip(ship.getDisplayName(),size,true);
+                        upgraded.addShip(ship2,size,true);
                     }else{
-                        upgraded.addShip(ship.getDisplayName(),size);
+                        upgraded.addShip(ship2,size);
                     }
                     for(String a : addHullMods){
                         ship.removeMod(a);
@@ -216,17 +222,19 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
 
     private void displayAIRetrofit_ShipYardNotification(UpgradeList memory){
-        if(memory.Types.size() == 0 || true){
+        if(memory.Types.size() == 0){
             upgrades = null;
             return;
         }
         upgrades = memory;
-        memory.runNotification();
+        //memory.runNotification();
+        Global.getSector().getIntelManager().addIntel(new AIRetrofit_ShipyardNotification());
         //Global.getSector().getCharacterData().getPerson().getStats().addBonusXP();
     }
 
     public static UpgradeList upgrades;
     public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info){
+        //
         upgrades.display(info);
     }
 }
@@ -247,8 +255,7 @@ class UpgradeList{
     }
     public void display(TooltipMakerAPI info){
         for(UpgradeTypes a : Types){
-            info.addPara("la la la la la",10);
-            AIRetrofit_Log.loging("displaying upgraded ships of type " + a,this);
+            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
             a.display(info);
         }
     }
@@ -267,54 +274,71 @@ class UpgradeTypes{
         markets.add(market);
     }
     public void display(TooltipMakerAPI info){
+        float pad = 5;
+        Color highlight = Misc.getHighlightColor();
         for(int a = 0; a < upgrades.size(); a++){
-            info.addPara("whatever",10);
             boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
-            AIRetrofit_Log.loging("displaying upgraded ships of market " + Global.getSector().getEconomy().getMarket(markets.get(a)).getName(),this);
-            upgrades.get(a).display(info,b);
+            String[] exstra = {Global.getSector().getEconomy().getMarket(markets.get(a)).getName()};
+            String text = "At market %s";
+            info.addPara(text,pad,highlight,exstra);
+            upgrades.get(a).display(info,type,b);
         }
     }
 }
 class UpgradedShips{
-    ArrayList<UpgradedShipsSize>ships = new ArrayList<UpgradedShipsSize>();
     int type;
+    ArrayList<UpgradedShip> ships = new ArrayList<>();
     UpgradedShips(int type){
         this.type = type;
     }
-    public void addShip(String name, int size){
-        addShip(name,size,false);
+    public void addShip(FleetMemberAPI ship, int size){
+        addShip(ship,size,false);
     }
-    public void addShip(String name, int size,boolean bonus){
-        while(ships.size() <= size){
-            ships.add(new UpgradedShipsSize(ships.size()));
-        }
-        ships.get(size).addShip(name,bonus);
+    public void addShip(FleetMemberAPI ship, int size,boolean bonus){
+        ships.add(new UpgradedShip(ship,size,bonus));
     }
-    public void display(TooltipMakerAPI info,boolean playerOwned){
-        for(UpgradedShipsSize size : ships){
-            info.addPara("do da da",10);
-            AIRetrofit_Log.loging(" size of: " + size.ShipCost,this);
-            size.display(info,playerOwned);
+    public void display(TooltipMakerAPI info,int type,boolean playerOwned){
+        float pad = 5;
+        Color highlight = Misc.getHighlightColor();
+
+        //CargoAPI cargo = new CargoData(false);
+        //FleetDataAPI fleet = new FleetData("production","production2");
+        ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
+        String[] exstra = {"" + Global.getSettings().getHullModSpec(ASIC_hullmods[type]).getDisplayName()};
+        String text = "upgraded with %s";
+        info.addPara(text,pad,highlight,exstra);
+        float cost = 0;
+        for(UpgradedShip ship : ships){
+            ship.addShipToFleet(fleet);
+            cost += ship.getCost();
         }
+        if(!playerOwned){
+             exstra = new String[]{"" + cost};
+             text = "for a total cost of: %s credits";
+
+            info.addPara(text,pad,highlight,exstra);
+            //info.addPara("for a total cost of: " + cost + " credits",10);
+        }
+        info.showShips(fleet, 20, true, 5);
     }
 }
-class UpgradedShipsSize{
-    ArrayList<String> ShipName = new ArrayList<String>();
-    ArrayList<Boolean> bonus = new ArrayList<Boolean>();
-    float ShipCost;
-    UpgradedShipsSize(float size){
-        ShipCost = size;
+class UpgradedShip{
+    FleetMemberAPI ship;
+    boolean bonus;
+    int size;
+    UpgradedShip(FleetMemberAPI ship,int size,boolean bonus){
+        this.ship = ship;
+        this.bonus = bonus;
+        this.size = size;
     }
-    public void addShip(String name,boolean addBonus){
-        ShipName.add(name);
-        bonus.add(addBonus);
+    public void addShipToFleet(ArrayList<FleetMemberAPI> fleet){
+        fleet.add(ship);
+        //cargo.addMothballedShip();//(ship);
+    }
+    public float getCost(){
+        float[] costTemp = {20,40,80,120,200};
+        return costTemp[size];
     }
     public void display(TooltipMakerAPI info,boolean playerOwned){
-        int a = 0;
-        for(String b: ShipName){
-            info.addPara("whenever",10);
-            AIRetrofit_Log.loging("     upgraded ship: name: " + b + " removed S-Mod: " + bonus.get(a),this,true);
-            a++;
-        }
     }
 }
