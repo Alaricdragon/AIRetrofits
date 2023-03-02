@@ -120,6 +120,22 @@ public class AIRetrofits_Constants {
             Global.getSettings().getFloat("AIRetrofitShipyard_perCrewCRUISER"),
             Global.getSettings().getFloat("AIRetrofitShipyard_perCrewCAPITAL_SHIP"),
     };
+    public final static float[] ASIC_creditsPerShip = {
+            Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewDEFAULT"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewFIGHTER"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewFRIGATE"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewDESTROYER"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewCRUISER"),
+            Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP"),
+    };
+    public final static String ASIC_NotificationCredits = Global.getSettings().getString("AIRetrofitShipyard_Notification_credits");
+    public final static String ASIC_NotificationBonusXP = Global.getSettings().getString("AIRetrofitShipyard_Notification_bonusXP");
+    public final static String ASIC_NotificationMarket = Global.getSettings().getString("AIRetrofitShipyard_Notification_market");
+    public final static String ASIC_NotificationType = Global.getSettings().getString("AIRetrofitShipyard_Notification_type");
+    public final static float ASIC_bonusXPForRemoveSMod = 0;
+
+    public final static String ASIC_Description_SPM = Global.getSettings().getString("AIRetrofitShipyard_Description_shipPerMomth");
+    public final static String ASIC_Description_CPS = Global.getSettings().getString("AIRetrofitShipyard_Description_creditsPerShip");
     //fleet changing crew and admins:
     public static final boolean fleetChange_ChangeCrew = Global.getSettings().getBoolean("AIRetrofits_SwapAICrew");
     //HERE swap this info out with something in an config please.

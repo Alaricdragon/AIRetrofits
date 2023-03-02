@@ -12,8 +12,8 @@
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
-	#i hope this works, but i have no darn clue if it does
-	"AIRetrofits_SwapAICrew": false,
+	#i hope this works, but i have no darn clue if it does. might do nothing...
+	"AIRetrofits_SwapAICrew": true,
 
 	#settings for AIRetrofits hullmod
 	"AIRetrofits_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
@@ -237,7 +237,7 @@
 	"AIRetrofits_PopulationReplacementCenter_exstraDescription": "takes a single day to build if built within %s days of founding the market",
 
 	#Shipyard settings,
-	"AIRetrofitShipyard_Description": "is able to modify %s points of ships per month. ships cost %s/%s/%s/%s points depending on ship size.",
+	#"AIRetrofitShipyard_Description": "is able to modify %s points of ships per month. ships cost %s/%s/%s/%s points depending on ship size.",
 	"AIRetrofitShipyard_ADescription": "use a alpha core to install a version of the hullmod that increase available op on ship",#description when you inset a alpha core
 	"AIRetrofitShipyard_BDescription": "use a beta core to install a version of the hullmod that has a reduced supply cost",#description when you inset a beta core
 	"AIRetrofitShipyard_GDescription": "use a gamma core to install a version of the hullmod that has a reduced repair cost",#description when you inset a gamma core
@@ -252,7 +252,21 @@
 	"AIRetrofitShipyard_perCrewDESTROYER": 2,
 	"AIRetrofitShipyard_perCrewCRUISER": 4,
 	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
+	"AIRetrofitShipyard_Notification_bonusXP": "got %s bonusXP from removed SMods",
+	"AIRetrofitShipyard_Notification_credits": "for a total cost of: %s credits",
+	"AIRetrofitShipyard_Notification_market": "at market %s",
+	"AIRetrofitShipyard_Notification_type": "upgraded with %s",
+	"AIRetrofitShipyard_Credits_perCrewDEFAULT": 20000,#Note, that as of this time, its not 'per crew' its 'per ship'. hope to change latter
+	"AIRetrofitShipyard_Credits_perCrewFIGHTER": 2000,
+	"AIRetrofitShipyard_Credits_perCrewFRIGATE": 5000,
+	"AIRetrofitShipyard_Credits_perCrewDESTROYER": 10000,
+	"AIRetrofitShipyard_Credits_perCrewCRUISER": 20000,
+	"AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP": 40000,
 
+	"AIRetrofitShipyard_Description_shipPerMomth": "Can upgrade up to %s/%s/%s/%s ships per momth, depending on shipSize",
+	"AIRetrofitShipyard_Description_creditsPerShip": "Cost %s/%s/%s/%s credits per ship, depending on shipSize",
+
+	"AIRetrofitSubMarket_CantUpgradeDescription": "Cant upgrade ships well the shipyard is non functional",
 	#settings for AIRetrofit Shipyard hullmod Power
 	#Basic
 	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,

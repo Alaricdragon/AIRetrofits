@@ -1,6 +1,14 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.12
+save compatible with 0.7.9+
+    fixes:
+        fixed T1 robot factory not showing its growth, and instead showing the T2 factory's growth (so it always said it had zero growth.).
+    new:
+        adding a notification that shows the upgrades that have been done by the automated ship installation center.
+        made it so ships upgraded at a automated ship installation center that is not player owned costs credits per ship
+        added a new description to the automated ship installation center submarket.
 v0.7.11:
-save combatable with 0.7.9+
+save compatible with 0.7.9+
     fixes:
         fixed the possibility of a broken market condition loading.
         fixed the growth remover not working on market conditions (like 'free port')
