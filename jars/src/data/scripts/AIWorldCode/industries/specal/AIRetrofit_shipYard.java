@@ -3,6 +3,7 @@ package data.scripts.AIWorldCode.industries.specal;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
@@ -23,7 +24,7 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
     private final static float defaultValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     private final static String improveDescription = Global.getSettings().getString("AIRetrofitShipyard_IDescription");
     private final static String improvedDescription = Global.getSettings().getString("AIRetrofitShipyard_IedDescription");
-    private final static String extraDescription = Global.getSettings().getString("AIRetrofitShipyard_Description");
+    //private final static String extraDescription = Global.getSettings().getString("AIRetrofitShipyard_Description");
     private final static float[] costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
     @Override
     public void apply() {
@@ -156,6 +157,7 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
                 -creuser
                 -battleship
          */
+        /*
         String[] exstra = {
                 "" + (int)(defaultValue * (1 + improveValue)),
                 //"" + costPerShip[0],
@@ -164,6 +166,42 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
                 "" + (int)costPerShip[3],
                 "" + (int)costPerShip[4],
                 "" + (int)costPerShip[5]};
-        tooltip.addPara(extraDescription, 0f, highlight, exstra);
+        tooltip.addPara(extraDescription, 0f, highlight, exstra);*/
+
+        AIRetrofit_ShipyardDescription(tooltip,market,true);
+    }
+
+    static float shipyard_IValue = AIRetrofits_Constants.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    static String industry = "AIRetrofit_shipYard";
+    public static void AIRetrofit_ShipyardDescription(TooltipMakerAPI tooltip, MarketAPI market) {
+        AIRetrofit_ShipyardDescription(tooltip,market,false);
+    }
+    public static void AIRetrofit_ShipyardDescription(TooltipMakerAPI tooltip, MarketAPI market,boolean forceAvoidCostModifier){
+
+        Color highlight = Misc.getHighlightColor();
+        float pad = 5;
+        float startingPonits = shipyardDValue;
+        final float bounus = 1 + shipyard_IValue;
+        if(market.hasIndustry(industry) && market.getIndustry(industry).isImproved()){
+            startingPonits *= bounus;
+        }
+        String[] ex = {
+                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[2]),
+                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[3]),
+                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[4]),
+                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[5]),
+        };
+        tooltip.addPara(AIRetrofits_Constants.ASIC_Description_SPM,pad,highlight,ex);
+        if(!market.isPlayerOwned() && !forceAvoidCostModifier){
+
+            ex = new String[]{
+                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[2],
+                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[3],
+                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[4],
+                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[5],
+            };
+            tooltip.addPara(AIRetrofits_Constants.ASIC_Description_CPS,pad,highlight,ex);
+        }
     }
 }

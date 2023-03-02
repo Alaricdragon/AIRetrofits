@@ -15,14 +15,14 @@ Note:
         tried an invasion fleet. none of my marines were combat robots like they should have been.
         although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
 
-questions:
-    how do i make my own in game notification popups (like the one that happens with tech mining at the end of the mouth for example)?
-
+diolog:
+    missing in the options:
+        the robot forge people maker has no links to the options, i need to add some.
 Industrys:
     Shipyard:
         issues:
-            when the industry is not functional, there needs to be text showing it will not work.
             when the industry is not on a player owned world, it should cost credits to retrofit ships.
+                need to add text explaining this in the sub-market text
             change ship power over to something a crew based system, instead of a shipsized based system.
         concepts: allow players to build this industry on normal markets
             might be a good idea. make it change the fleets as well? i don't know.
@@ -31,7 +31,6 @@ Industrys:
             so very closs to finished. need to:
             polish text
             add bonus XP gain.
-            add credit loss.
             add text for bonus XP gain (like 'gained xx XP from removed S-Mods')
             move all text to the config file, for ease of change.
 market:

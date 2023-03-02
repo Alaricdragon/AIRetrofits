@@ -254,9 +254,28 @@ class UpgradeList{
         Global.getSector().getCampaignUI().addMessage(intel);
     }
     public void display(TooltipMakerAPI info){
+        float pad = 5;
+        float cost = 0;
+        float bonusXP = 0;
+        Color highlight = Misc.getHighlightColor();
         for(UpgradeTypes a : Types){
             //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
-            a.display(info);
+            float[] temp = a.display(info);
+            cost += temp[0];
+            bonusXP += temp[1];
+        }
+
+        if(cost != 0){
+            String[] exstra = new String[]{"" + cost};
+            String text = AIRetrofits_Constants.ASIC_NotificationCredits;
+            info.addPara(text,pad,highlight,exstra);
+            Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
+        }
+        if(bonusXP != 0 && false){
+            String[] exstra = new String[]{"" + bonusXP};
+            String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;//"got %s bonusXP from removed S-Mods";
+            info.addPara(text,pad,highlight,exstra);
+            //Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
         }
     }
 }
@@ -273,16 +292,21 @@ class UpgradeTypes{
         upgrades.add(ships);
         markets.add(market);
     }
-    public void display(TooltipMakerAPI info){
+    public float[] display(TooltipMakerAPI info){
         float pad = 5;
+        float cost = 0;
+        float bonusXP = 0;
         Color highlight = Misc.getHighlightColor();
         for(int a = 0; a < upgrades.size(); a++){
             boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
             String[] exstra = {Global.getSector().getEconomy().getMarket(markets.get(a)).getName()};
-            String text = "At market %s";
+            String text = AIRetrofits_Constants.ASIC_NotificationMarket;
             info.addPara(text,pad,highlight,exstra);
-            upgrades.get(a).display(info,type,b);
+            float[] temp = upgrades.get(a).display(info,type,b);
+            cost += temp[0];
+            bonusXP += temp[1];
         }
+        return new float[]{cost,bonusXP};
     }
 }
 class UpgradedShips{
@@ -297,7 +321,7 @@ class UpgradedShips{
     public void addShip(FleetMemberAPI ship, int size,boolean bonus){
         ships.add(new UpgradedShip(ship,size,bonus));
     }
-    public void display(TooltipMakerAPI info,int type,boolean playerOwned){
+    public float[] display(TooltipMakerAPI info,int type,boolean playerOwned){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
 
@@ -305,21 +329,20 @@ class UpgradedShips{
         //FleetDataAPI fleet = new FleetData("production","production2");
         ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
         String[] exstra = {"" + Global.getSettings().getHullModSpec(ASIC_hullmods[type]).getDisplayName()};
-        String text = "upgraded with %s";
+        String text = AIRetrofits_Constants.ASIC_NotificationType;
         info.addPara(text,pad,highlight,exstra);
         float cost = 0;
+        float bonusXP = 0;
         for(UpgradedShip ship : ships){
             ship.addShipToFleet(fleet);
-            cost += ship.getCost();
-        }
-        if(!playerOwned){
-             exstra = new String[]{"" + cost};
-             text = "for a total cost of: %s credits";
+            if(!playerOwned) {
+                cost += ship.getCost();
+            }
+            bonusXP += ship.getBonusXP();
 
-            info.addPara(text,pad,highlight,exstra);
-            //info.addPara("for a total cost of: " + cost + " credits",10);
         }
         info.showShips(fleet, 20, true, 5);
+        return new float[]{cost,bonusXP};
     }
 }
 class UpgradedShip{
@@ -336,8 +359,14 @@ class UpgradedShip{
         //cargo.addMothballedShip();//(ship);
     }
     public float getCost(){
-        float[] costTemp = {20,40,80,120,200};
+        float[] costTemp = AIRetrofits_Constants.ASIC_creditsPerShip;
         return costTemp[size];
+    }
+    public float getBonusXP(){
+        if(!bonus){
+            return 0f;
+        }
+        return AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
     }
     public void display(TooltipMakerAPI info,boolean playerOwned){
     }
