@@ -1,17 +1,20 @@
 package data.scripts.AIWorldCode.market_listiners;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.BaseCampaignEventListener;
-import com.fs.starfarer.api.campaign.CargoAPI;
-import com.fs.starfarer.api.campaign.FleetDataAPI;
+import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.HullMods;
+import com.fs.starfarer.api.impl.campaign.plog.PlaythroughLog;
+import com.fs.starfarer.api.impl.campaign.plog.SModRecord;
 import com.fs.starfarer.api.loading.VariantSource;
+import com.fs.starfarer.api.ui.LabelAPI;
+import com.fs.starfarer.api.ui.TextFieldAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Highlights;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.campaign.fleet.CargoData;
 import com.fs.starfarer.campaign.fleet.FleetData;
@@ -239,6 +242,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
 }
 
+
+
 class UpgradeList{
     ArrayList<UpgradeTypes> Types = new ArrayList<>();
     public void addLocation(String market,UpgradedShips ships){
@@ -254,6 +259,9 @@ class UpgradeList{
         Global.getSector().getCampaignUI().addMessage(intel);
     }
     public void display(TooltipMakerAPI info){
+        if(Types.size() == 0){
+            return;
+        }
         float pad = 5;
         float cost = 0;
         float bonusXP = 0;
@@ -271,11 +279,14 @@ class UpgradeList{
             info.addPara(text,pad,highlight,exstra);
             Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
         }
-        if(bonusXP != 0 && false){
+        //AIRetrofit_Log.loging( bonusXP + " bonusXP from AIRetrofitShipyard",this,true);
+        if(bonusXP != 0){
+            highlight = Misc.getStoryOptionColor();
             String[] exstra = new String[]{"" + bonusXP};
-            String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;//"got %s bonusXP from removed S-Mods";
+            String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;
             info.addPara(text,pad,highlight,exstra);
-            //Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
+            TextPanelAPI a = new TempText();//info.addTextField(0,0);
+            Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
         }
     }
 }
@@ -322,6 +333,9 @@ class UpgradedShips{
         ships.add(new UpgradedShip(ship,size,bonus));
     }
     public float[] display(TooltipMakerAPI info,int type,boolean playerOwned){
+        if(ships.size() == 0){
+            return new float[]{0f,0f};
+        }
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
 
@@ -363,11 +377,208 @@ class UpgradedShip{
         return costTemp[size];
     }
     public float getBonusXP(){
-        if(!bonus){
-            return 0f;
+        //AIRetrofit_Log.loging("has bonus: " + bonus,this,true);
+        if(bonus && false){
+            //AIRetrofit_Log.loging("bonus is: " + getBonusXPForScuttling(ship)[1],this,true);
+            //AIRetrofit_Log.loging("total bonus that i dont want is: " + Misc.getBonusXPForScuttling(ship)[1],this,true);
+            return Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
         }
-        return AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
+        return 0f;//AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
     }
     public void display(TooltipMakerAPI info,boolean playerOwned){
     }
+    //this is a copy of the code for finding out how mush bonusXP a ship gets on being scuttled
+    public static float [] getBonusXPForScuttling(FleetMemberAPI member) {
+        float points = 0f;
+        float xp = 0f;
+        for (SModRecord record : PlaythroughLog.getInstance().getSModsInstalled()) {
+            if(record.getSMods().contains(AIRetrofits_Constants.Hullmod_AIRetrofit)) {
+                //if (member.getId() != null && member.getId().equals(record.getMemberId())) {
+                if (member == record.getMember() && record.getMember() != null) {
+                    points += record.getSPSpent();
+                    xp += record.getBonusXPFractionGained() * record.getSPSpent();
+                }
+            }
+        }
+        if (points > 0) {
+            return new float[] {points, 1f - xp/points};
+        }
+        return new float[] {0f, 0f};
+    }
 }
+class TempText implements TextPanelAPI{
+    @Override
+    public void setFontInsignia() {
+
+    }
+
+    @Override
+    public void setFontOrbitron() {
+
+    }
+
+    @Override
+    public void setFontVictor() {
+
+    }
+
+    @Override
+    public void setFontSmallInsignia() {
+
+    }
+
+    @Override
+    public LabelAPI addPara(String text) {
+        return null;
+    }
+
+    @Override
+    public LabelAPI addPara(String text, Color color) {
+        return null;
+    }
+
+    @Override
+    public LabelAPI addParagraph(String text) {
+        return null;
+    }
+
+    @Override
+    public LabelAPI addParagraph(String text, Color color) {
+        return null;
+    }
+
+    @Override
+    public void replaceLastParagraph(String text) {
+
+    }
+
+    @Override
+    public void replaceLastParagraph(String text, Color color) {
+
+    }
+
+    @Override
+    public void appendToLastParagraph(String text) {
+
+    }
+
+    @Override
+    public void appendToLastParagraph(int charsToCut, String text) {
+
+    }
+
+    @Override
+    public void highlightFirstInLastPara(String text, Color color) {
+
+    }
+
+    @Override
+    public void highlightLastInLastPara(String text, Color color) {
+
+    }
+
+    @Override
+    public void highlightInLastPara(Color color, String... strings) {
+
+    }
+
+    @Override
+    public void highlightInLastPara(String... strings) {
+
+    }
+
+    @Override
+    public void setHighlightColorsInLastPara(Color... colors) {
+
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public InteractionDialogAPI getDialog() {
+        return null;
+    }
+
+    @Override
+    public boolean isOrbitronMode() {
+        return false;
+    }
+
+    @Override
+    public void setOrbitronMode(boolean orbitronMode) {
+
+    }
+
+    @Override
+    public ResourceCostPanelAPI addCostPanel(String title, float height, Color color, Color dark) {
+        return null;
+    }
+
+    @Override
+    public void setHighlightsInLastPara(Highlights h) {
+
+    }
+
+    @Override
+    public LabelAPI addPara(String format, Color color, Color hl, String... highlights) {
+        return null;
+    }
+
+    @Override
+    public LabelAPI addPara(String format, Color hl, String... highlights) {
+        return null;
+    }
+
+    @Override
+    public void advance(float amount) {
+
+    }
+
+    @Override
+    public TooltipMakerAPI beginTooltip() {
+        return null;
+    }
+
+    @Override
+    public void addTooltip() {
+
+    }
+
+    @Override
+    public void updateSize() {
+
+    }
+
+    @Override
+    public boolean addCostPanel(String title, Color color, Color dark, Object... params) {
+        return false;
+    }
+
+    @Override
+    public boolean addCostPanel(String title, Object... params) {
+        return false;
+    }
+
+    @Override
+    public void addSkillPanel(PersonAPI person, boolean admin) {
+
+    }
+
+    @Override
+    public void setFontOrbitronUnnecessarilyLarge() {
+
+    }
+
+    @Override
+    public void addImage(String category, String key) {
+
+    }
+
+    @Override
+    public void addImage(String spriteName) {
+
+    }
+};

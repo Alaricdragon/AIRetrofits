@@ -13,6 +13,7 @@ import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofit_Log;
 
 import java.awt.*;
 
@@ -210,8 +211,12 @@ i want to:
 		//setDisplayValues(ship);
 		//a.3)
 		boolean hasMinCrew = true;
-		if(ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")){
-			hasMinCrew = false;
+		try {
+			if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")) {
+				hasMinCrew = false;
+			}
+		}catch (Exception E){
+			AIRetrofit_Log.loging("Error: failed to get min crew in AIRetrofit hullmod. what were you even doing?",this);
 		}
 		return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship) && hasMinCrew;
 	}

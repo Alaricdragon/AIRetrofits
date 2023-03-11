@@ -252,7 +252,7 @@
 	"AIRetrofitShipyard_perCrewDESTROYER": 2,
 	"AIRetrofitShipyard_perCrewCRUISER": 4,
 	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
-	"AIRetrofitShipyard_Notification_bonusXP": "got %s bonusXP from removed SMods",
+	"AIRetrofitShipyard_Notification_bonusXP": "got %s bonusXP from removed AI-Retrofit SMods",
 	"AIRetrofitShipyard_Notification_credits": "for a total cost of: %s credits",
 	"AIRetrofitShipyard_Notification_market": "at market %s",
 	"AIRetrofitShipyard_Notification_type": "upgraded with %s",

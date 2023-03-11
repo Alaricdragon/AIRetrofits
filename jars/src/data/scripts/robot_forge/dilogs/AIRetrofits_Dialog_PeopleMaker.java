@@ -11,6 +11,7 @@ import com.fs.starfarer.api.combat.EngagementResultAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.loading.S;
 import com.fs.starfarer.rpg.OfficerData;
 import com.fs.starfarer.rpg.Person;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
@@ -18,6 +19,7 @@ import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;
 import data.scripts.startupData.AIRetrofits_Constants;
 
+import java.awt.*;
 import java.util.Map;
 import java.util.Random;
 
@@ -35,8 +37,23 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     private static final int administratorCreditsPerMomth = AIRetrofits_Constants.RobotForge_administratorCreditsPerMomth;//2000;
 
     private static final String SubCommandNode = AIRetrofits_Constants.RobotForge_SubCommandNode;//"AIretrofit_SubCommandNode";
+
+    private static final String mainPage_0 = "information about improving an sub command node, into a command node goes here";
+    private static final String officerPage_0 = "information about how you can chose an officers personality go here";
+    private static final String officerConfirmPage_0 = "information about the cost of creating an officer here. as well as the type of officer you are creating.";
+    private static final String officerConfirmPage_1 = "the officer you create will cost %s per month. and more as they level up.";
+    private static final String officerConfirmPage_2 = "you require %s sub command node and %s credits to create an officer";
+    private static final String admenConfirmPage_0 = "information about the admen, and its cost go here";
+    private static final String admenConfirmPage_1 = "the officer you create will cost %s per month. at an reduced cost if they are not doing anything";
+    private static final String admenConfirmPage_2 = "you require %s sub command node and %s credits to create an administrator";;
+    private static final String exitOfficer_0 = "information about the officer you have created here";
+    private static final String exitOfficer_1 = "removed the credits and subcommand node";
+    private static final String exitAdmen_0 = "information about the admen you have created here";
+    private static final String exitAdmen_1 = "removed the credits and subcommand node";
+    private static final String init_0 = "You cafullys consider what you can produce with the knowlage you have...";
+    private static final Color highlight = Misc.getHighlightColor();
     private void mainPage(){
-        this.dialog.getTextPanel().addPara("information about improving an sub comand node, into an command node goes here");
+        this.dialog.getTextPanel().addPara(mainPage_0);
         this.options.clearOptions();
         this.options.addOption("create admen","admen","requires a sub command node");
         this.options.addOption("create officer","officer","requires a sub command node");
@@ -48,20 +65,20 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options.addOption("back","menu");
     }*/
     private void officerPage(){
-        this.dialog.getTextPanel().addPara("information about how you can chose an officers personality go here");
+        this.dialog.getTextPanel().addPara(officerPage_0);
         this.options.clearOptions();
-        this.options.addOption("timid","officerConfirmPage_0");
-        this.options.addOption("cautious","officerConfirmPage_1");
-        this.options.addOption("steady","officerConfirmPage_2");
-        this.options.addOption("aggressive","officerConfirmPage_3");
-        this.options.addOption("reckless","officerConfirmPage_4");
+        this.options.addOption("Timid","officerConfirmPage_0");
+        this.options.addOption("Cautious","officerConfirmPage_1");
+        this.options.addOption("Steady","officerConfirmPage_2");
+        this.options.addOption("Aggressive","officerConfirmPage_3");
+        this.options.addOption("Reckless","officerConfirmPage_4");
         //fearless dose not work. no idea why.
         //this.options.addOption("fearless","officerConfirmPage_5");
 
         this.options.addOption("back","menu");
     }
     private void officerConfirmPage(int power){
-        this.dialog.getTextPanel().addPara("information about the costs of creating an officer here. as well as the type of officer you are creating.");
+        this.dialog.getTextPanel().addPara(officerConfirmPage_0);
         this.options.clearOptions();
         switch (power){
             case 0:
@@ -78,8 +95,10 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
                 break;
         }
         temp = power;
-        this.dialog.getTextPanel().addPara("the officer you create will cost " + officerCreditsPerMomth + "per month. and more as they level up.");
-        this.dialog.getTextPanel().addPara("you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
+        String[] exstras = {"" + officerCreditsPerMomth};
+        this.dialog.getTextPanel().addPara(officerConfirmPage_1,highlight,exstras);//"the officer you create will cost " + officerCreditsPerMomth + "per month. and more as they level up.");
+        exstras = new String[]{"" + officerSubCommandNodeCost, "" + officerCreditCost};
+        this.dialog.getTextPanel().addPara(officerConfirmPage_2,highlight,exstras);//"you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
         if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost){
             this.options.addOption("continue","createOfficer");
         }
@@ -87,10 +106,10 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options.addOption("back","officer");
     }
     private void admenConfirmPage(){
-        this.dialog.getTextPanel().addPara("information about the admen, and its cost go here");
+        this.dialog.getTextPanel().addPara(admenConfirmPage_0);//"information about the admen, and its cost go here");
         this.options.clearOptions();
-        this.dialog.getTextPanel().addPara("the officer you create will cost " + administratorCreditsPerMomth + "per month. at an reduced cost if they are not doing anything.");
-        this.dialog.getTextPanel().addPara("you require " + administratorSubCommandNodeCost + " sub command node and " + administratorCreditCost + " credits to create an administrator");
+        this.dialog.getTextPanel().addPara(admenConfirmPage_1,highlight,new String[]{"" + administratorCreditsPerMomth});//"the officer you create will cost " + administratorCreditsPerMomth + "per month. at an reduced cost if they are not doing anything.");
+        this.dialog.getTextPanel().addPara(admenConfirmPage_2,highlight, "" + administratorSubCommandNodeCost,"" + administratorCreditCost);//"you require " + administratorSubCommandNodeCost + " sub command node and " + administratorCreditCost + " credits to create an administrator");
         if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(SubCommandNode) >= administratorSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= administratorCreditCost){
             this.options.addOption("continue","createAdmen");
         }
@@ -122,14 +141,14 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         //exit();
     }
     private void exitOfficer(){
-        this.dialog.getTextPanel().addPara("information about the officer you have created here");
-        this.dialog.getTextPanel().addPara("removed the credits and subcommand node");
+        this.dialog.getTextPanel().addPara(exitOfficer_0);//"information about the officer you have created here");
+        this.dialog.getTextPanel().addPara(exitOfficer_1);//"removed the credits and subcommand node");
         this.options.clearOptions();
         this.options.addOption("exit","exit");
     }
     private void exitAdmen(){
-        this.dialog.getTextPanel().addPara("information about the admen you have created here");
-        this.dialog.getTextPanel().addPara("removed the credits and subcommand node");
+        this.dialog.getTextPanel().addPara(exitAdmen_0);//"information about the admen you have created here");
+        this.dialog.getTextPanel().addPara(exitAdmen_1);//"removed the credits and subcommand node");
         this.options.clearOptions();
         this.options.addOption("exit","exit");
     }
@@ -150,7 +169,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options = dialog.getOptionPanel();
         this.text = dialog.getTextPanel();
         dialog.getVisualPanel().setVisualFade(0.25F, 0.25F);
-        this.text.addParagraph("You cafullys consider what you can produce with the knowlage you have...");
+        this.text.addParagraph(init_0);//"You cafullys consider what you can produce with the knowlage you have...");
         //this.populateOptions();
         mainPage();
         dialog.setPromptText(Misc.ucFirst("Options"));

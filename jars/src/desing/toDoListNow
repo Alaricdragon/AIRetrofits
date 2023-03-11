@@ -18,11 +18,12 @@ Note:
 diolog:
     missing in the options:
         the robot forge people maker has no links to the options, i need to add some.
+    needs some upgrades to the text:
+        the robot forge people maker has some... questionable text. to put it simply, its all placeholder. it was quite something to find at random. need to improve it.
 Industrys:
     Shipyard:
         issues:
             when the industry is not on a player owned world, it should cost credits to retrofit ships.
-                need to add text explaining this in the sub-market text
             change ship power over to something a crew based system, instead of a shipsized based system.
         concepts: allow players to build this industry on normal markets
             might be a good idea. make it change the fleets as well? i don't know.
@@ -31,6 +32,7 @@ Industrys:
             so very closs to finished. need to:
             polish text
             add bonus XP gain.
+                -issues with this: i have so far failed completely to do this. its so frustrating. i cant get the bonus XP i should get from one S-mod...
             add text for bonus XP gain (like 'gained xx XP from removed S-Mods')
             move all text to the config file, for ease of change.
 market:

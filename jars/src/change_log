@@ -1,4 +1,14 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.13:
+save compatible with 0.7.9+
+    fixes:
+        automated ship installation center notification:
+            made it so the notification will not run its code when there are no ships that were upgraded.
+        AI-Retrofit hullmod:
+            (hopefully) fixed a crash relating to 'progressive S-mods' and 'Gacha SMods' mods. please tell me if it didn't work.
+
+    background:
+        starting edits on the text in the robot forge command node text. i forgot about them, so they are still not finihed.
 v0.7.12
 save compatible with 0.7.9+
     fixes:
