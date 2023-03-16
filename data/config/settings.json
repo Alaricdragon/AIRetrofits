@@ -179,6 +179,20 @@
 	"AIRetrofits_RobotPowerNoCoreMessage": "no AI-Core or SubCommandNode",
 	"AIRetrofits_RobotCargoDescription": "every robot of this type is taking up %s cargo space",
 
+	#descriptions for the robot forge people maker":
+	"AIRetrofit_RobotForge_PeopleMaker_mainPage_0": "Using a sub command node, as well as a carefully selected data from a stockpile of data collected both from the com network and from your travels you hae the ability to 'train' a sub command node to mimic the actions of a liven person, allowing it to preform command roles usually reserved for a mush more powerful AI core, or a human. the only real cost to this process, is making the sub command node useless for anything but its trained task, as well as an somewhat costly stream of data, wish prevents the command node from simplifying its data as into mush more simple, but useless, instructions.",#"information about improving an sub command node, into a command node goes here",
+	"AIRetrofit_RobotForge_PeopleMaker_officerPage_0": "using the vast array of data available to you, you can carefully pick and choice the data to let your sub command node mimic a personality, with all the up and downsides that come with said personality.. in addition to this, do to the situational nature of piloting a ship, the command node would need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level officer",#"information about how you can chose an officers personality go here",
+	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0" : "you consider the possibility of creating a %s officer from the data you have.",#"information about the cost of creating an officer here. as well as the type of officer you are creating." ,
+	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1": "the officer you create will cost %s per month. and more as they level up." ,
+	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2": "you require %s sub command node and %s credits to create an officer" ,
+	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0": "you consider the possibility of creating an administrator from the data you can collect. an extremely complicated task, something that many humans cant even do. this will require quite a bit more training data then what is provided by governing a market to maintain its effectiveness" ,
+	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1": "the administrator you create will cost %s per month. at an reduced cost if they are not doing anything" ,
+	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2":"you require %s sub command node and %s credits to create an administrator" ,
+	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0": "removed %s credits and %s subcommand node",
+	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1": "got a new command node",
+	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0": "removed %s credits and %s subcommand node",
+	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "got a new command node",
+	"AIRetrofit_RobotForge_PeopleMaker_init_0":"You cafullys consider what you can produce with the knowlage you have..." ,
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,
 

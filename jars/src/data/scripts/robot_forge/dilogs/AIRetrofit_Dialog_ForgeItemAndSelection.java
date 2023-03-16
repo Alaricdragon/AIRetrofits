@@ -206,7 +206,7 @@ public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogB
                 this.mainMenu();
             }
             if(optionData.equals("CONFIRM")){
-                text.addParagraph("item sending == " + itemSellected);
+                //text.addParagraph("item sending == " + itemSellected);
                 AIRetrofits_RobotForge.setForgeValue(itemSellected);
                 itemSellected = 0;
                 resetLast();
@@ -244,7 +244,7 @@ public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogB
                     if(optionData.equals(Items[a])){//optionData == item){
                         //run relevent code here
                         itemSellected = a;
-                        text.addParagraph("item sellected == " + itemSellected);
+                        //text.addParagraph("item sellected == " + itemSellected);
                         addLast(Items[a]);
                         //ItemPage(a);
                         //text.addParagraph("YOU DIDIDDD IT!!!! " + (a));

@@ -1,4 +1,11 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.14:
+save compatible with 0.7.9+
+    improvements:
+        significantly improved the robot forge 'improve a sub command node' display in every possible way.
+    removed:
+        removed the sound that the robot forge makes. i cant stand it for another second (will replace it with a better sound at some point.)
+        the debug text from the robot forge ability. should look cleaner now.
 v0.7.13:
 save compatible with 0.7.9+
     fixes:
