@@ -15,11 +15,11 @@ Note:
         tried an invasion fleet. none of my marines were combat robots like they should have been.
         although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
 
-diolog:
-    missing in the options:
-        the robot forge people maker has no links to the options, i need to add some.
-    needs some upgrades to the text:
-        the robot forge people maker has some... questionable text. to put it simply, its all placeholder. it was quite something to find at random. need to improve it.
+robot forge plugin:
+    find a new sound for the robot forge
+bugs:
+    issue with: decimalize sub population given market growth when it should not be
+    issue: right now i can change the name and portrait of important NPC's. make it so i cant.
 Industrys:
     Shipyard:
         issues:

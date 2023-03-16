@@ -38,19 +38,19 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
 
     private static final String SubCommandNode = AIRetrofits_Constants.RobotForge_SubCommandNode;//"AIretrofit_SubCommandNode";
 
-    private static final String mainPage_0 = "information about improving an sub command node, into a command node goes here";
-    private static final String officerPage_0 = "information about how you can chose an officers personality go here";
-    private static final String officerConfirmPage_0 = "information about the cost of creating an officer here. as well as the type of officer you are creating.";
-    private static final String officerConfirmPage_1 = "the officer you create will cost %s per month. and more as they level up.";
-    private static final String officerConfirmPage_2 = "you require %s sub command node and %s credits to create an officer";
-    private static final String admenConfirmPage_0 = "information about the admen, and its cost go here";
-    private static final String admenConfirmPage_1 = "the officer you create will cost %s per month. at an reduced cost if they are not doing anything";
-    private static final String admenConfirmPage_2 = "you require %s sub command node and %s credits to create an administrator";;
-    private static final String exitOfficer_0 = "information about the officer you have created here";
-    private static final String exitOfficer_1 = "removed the credits and subcommand node";
-    private static final String exitAdmen_0 = "information about the admen you have created here";
-    private static final String exitAdmen_1 = "removed the credits and subcommand node";
-    private static final String init_0 = "You cafullys consider what you can produce with the knowlage you have...";
+    private static final String mainPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_mainPage_0");//"information about improving an sub command node, into a command node goes here";
+    private static final String officerPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerPage_0");
+    private static final String officerConfirmPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0");
+    private static final String officerConfirmPage_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1");
+    private static final String officerConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2");
+    private static final String admenConfirmPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0");
+    private static final String admenConfirmPage_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1");
+    private static final String admenConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2");
+    private static final String exitOfficer_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0");
+    private static final String exitOfficer_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1");
+    private static final String exitAdmen_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0");
+    private static final String exitAdmen_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1");
+    private static final String init_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_init_0");
     private static final Color highlight = Misc.getHighlightColor();
     private void mainPage(){
         this.dialog.getTextPanel().addPara(mainPage_0);
@@ -78,7 +78,8 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options.addOption("back","menu");
     }
     private void officerConfirmPage(int power){
-        this.dialog.getTextPanel().addPara(officerConfirmPage_0);
+        String[] exstras = {"" + personalities[power]};
+        this.dialog.getTextPanel().addPara(officerConfirmPage_0,highlight,exstras);//infermation about the officer your creating go here.
         this.options.clearOptions();
         switch (power){
             case 0:
@@ -95,7 +96,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
                 break;
         }
         temp = power;
-        String[] exstras = {"" + officerCreditsPerMomth};
+        exstras = new String[]{"" + officerCreditsPerMomth};
         this.dialog.getTextPanel().addPara(officerConfirmPage_1,highlight,exstras);//"the officer you create will cost " + officerCreditsPerMomth + "per month. and more as they level up.");
         exstras = new String[]{"" + officerSubCommandNodeCost, "" + officerCreditCost};
         this.dialog.getTextPanel().addPara(officerConfirmPage_2,highlight,exstras);//"you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
@@ -122,9 +123,11 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         PersonAPI person = OfficerManagerEvent.createAdmin(Global.getSector().getPlayerFaction(),0,new Random());
         setPerson(person);
         Global.getSector().getCharacterData().addAdmin(person);
+        CommandNode = person;
         //exit();
     }
     private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
+    private static PersonAPI CommandNode = null;
     private void createOfficer(int power){
         Global.getSector().getPlayerFleet().getCargo().removeCommodity(SubCommandNode,officerSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(officerCreditCost);
@@ -138,17 +141,22 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
             }
         }
         Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
+        CommandNode = person;
         //exit();
     }
     private void exitOfficer(){
-        this.dialog.getTextPanel().addPara(exitOfficer_0);//"information about the officer you have created here");
-        this.dialog.getTextPanel().addPara(exitOfficer_1);//"removed the credits and subcommand node");
+        this.dialog.getVisualPanel().showPersonInfo(CommandNode);
+        this.dialog.getTextPanel().addSkillPanel(CommandNode,false);
+        this.dialog.getTextPanel().addPara(exitOfficer_0,highlight,"" + officerCreditCost,""+officerSubCommandNodeCost);//"removed the credits and subcommand node");
+        this.dialog.getTextPanel().addPara(exitOfficer_1);//"information about the officer you have created here");
         this.options.clearOptions();
         this.options.addOption("exit","exit");
     }
     private void exitAdmen(){
-        this.dialog.getTextPanel().addPara(exitAdmen_0);//"information about the admen you have created here");
-        this.dialog.getTextPanel().addPara(exitAdmen_1);//"removed the credits and subcommand node");
+        this.dialog.getVisualPanel().showPersonInfo(CommandNode);
+        this.dialog.getTextPanel().addSkillPanel(CommandNode,true);
+        this.dialog.getTextPanel().addPara(exitAdmen_0,highlight,""+administratorCreditCost,""+administratorSubCommandNodeCost);//"removed the credits and subcommand node");
+        this.dialog.getTextPanel().addPara(exitAdmen_1);//"information about the admen you have created here");
         this.options.clearOptions();
         this.options.addOption("exit","exit");
     }
