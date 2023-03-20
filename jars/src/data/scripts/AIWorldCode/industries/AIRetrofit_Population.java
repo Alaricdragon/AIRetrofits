@@ -328,10 +328,10 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
         if (size <= SIZE_FOR_SMALL_IMAGE) {
             return Global.getSettings().getSpriteName("industry", "AIRetorfit_AIpop_low");
         }
-        if (size >= SIZE_FOR_LARGE_IMAGE) {
-            return Global.getSettings().getSpriteName("industry", "AIRetorfit_AIpop_high");
+        if(size >= SIZE_FOR_LARGE_IMAGE + 3){
+            return Global.getSettings().getSpriteName("industry", "AIRetorfit_AIpop_veryHigh");
         }
-        return super.getCurrentImage();
+        return Global.getSettings().getSpriteName("industry", "AIRetorfit_AIpop_high");
     }
 }
 
