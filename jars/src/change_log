@@ -1,4 +1,21 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.15:
+save compatible with 0.7.9+
+    images:
+        added temp images for the following:
+            robotic Population & Infrastructure
+            robotic worker assembely
+            robot worker factory
+            robot worker production center
+            AI Node Production Facility
+            Robotic Maintenance Center
+            Synthetic Production Center
+            Personal Salavage Robot Manufactory
+            Personal Survey Robot Manufactory
+            Personal Combat Robot Manufactory
+            Population Replacement Center
+        i generated the images here with a AI image generator. i tried this before, but for some reason, this time some of the
+        resalts were very good. some just are not want a wanted. ill likely keep an unknown number of the images for this mod.
 v0.7.14:
 save compatible with 0.7.9+
     improvements:

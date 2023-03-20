@@ -377,8 +377,9 @@
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{
-			"AIRetorfit_AIpop_low":"graphics/icons/industry/AIRetrofit_populationLow.png",
-			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.png"
+			"AIRetorfit_AIpop_low":"graphics/icons/industry/AIRetrofit_populationLow.jpg",
+			"AIRetorfit_AIpop_high":"graphics/icons/industry/AIRetrofit_populationHigh.jpg",
+			"AIRetorfit_AIpop_veryHigh":"graphics/icons/industry/AIRetrofit_populationVeryHigh.jpg"
 		},
 		"characters":{
 		#	"AIRetofit_AIOfficer":"graphics/hal9000butblue.jpg",

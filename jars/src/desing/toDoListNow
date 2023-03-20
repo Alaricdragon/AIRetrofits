@@ -35,6 +35,19 @@ Industrys:
                 -issues with this: i have so far failed completely to do this. its so frustrating. i cant get the bonus XP i should get from one S-mod...
             add text for bonus XP gain (like 'gained xx XP from removed S-Mods')
             move all text to the config file, for ease of change.
+
+        desing the concept for: having all the basic resource industry do something cool.
+        why? because i never build them. even with up to + 8 stability, its just not worth it.
+        so here what i have now:
+        robotic matnace fasility:
+            add a sub market were you can get robotic replacerment parts and robotic matnace pacs for cheep.
+            make it so robotic replacement parts to be used to reduce casualties on robots (like, lose 30 - 40% of robot losses as robotic replacement parts, provided they are available.)
+            make it so robotic matnace pacs can be used to reduce the supply drain on your ships when your using AI-Retrofits, and make it so they use the matnace pacs instead.
+        sub command node prodution place:
+            make a sub market were you can bye sub command nodes, and in very limited number, command nodes.
+                -command nodes will be consumable items that give you a officer or a admen on use. (or spy with nexerlin?)
+        synfetec factory:
+            -i.. dont have any ideas. like, what can they even do? maybe crew ships at a cost? maybe?
 market:
     (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
 
