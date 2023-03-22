@@ -29,7 +29,7 @@ public class AIRetrofits_LudicPathWatchers  extends BaseMarketConditionPlugin {
             crewReplacer_SupplyDemandLists.getRuleSet(SDCName).applyMarket(market, false);
             Pair<String, Integer> deficit = market.getIndustry("population").getMaxDeficit(combat1, combat2);
             if (deficit.two == 0) {
-                advanceCombat();
+                //advanceCombat();
             }
             stability(id, deficit.two);
         }else{

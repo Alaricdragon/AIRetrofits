@@ -14,7 +14,7 @@ public class AIRetrofits_AILudicWar extends BaseMarketConditionPlugin {
     static private String AI = "AIRetrofits_UnbrokenAIWorkers";
     public void apply(String id) {
         super.apply(id);
-        advanceCombat();
+        //advanceCombat();
     }
 
     public void unapply(String id) {

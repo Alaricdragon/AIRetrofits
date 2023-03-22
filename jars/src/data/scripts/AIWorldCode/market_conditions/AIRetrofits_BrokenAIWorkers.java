@@ -25,14 +25,14 @@ public class AIRetrofits_BrokenAIWorkers extends BaseMarketConditionPlugin imple
         if(market.hasCondition("AIRetrofit_AIPop")){
             //give boons to the AI with some penaltys.
             if(market.getSize() >= 6){
-                unapply(id);
+                //unapply(id);
             }
         }else{
             market.getStability().modifyFlat(id,stability);
             //the world will slowly remove this condition, and apply some negative stability.
         }
         super.apply(id);
-        advanceCombat();
+        //advanceCombat();
     }
 
     public void unapply(String id) {

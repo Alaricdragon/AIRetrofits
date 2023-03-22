@@ -15,7 +15,7 @@ public class AIRetrofits_PurgingAIWorld  extends BaseMarketConditionPlugin {
         market.getStability().modifyFlat(id, -1 * (market.getSize() - 2), "the robots are trying to rebel against the ongoing purge.?");
         if(false){//market) {//if the market growth value <= 0.
             if (market.getSize() <= 3) {
-                unapply(id);
+                //unapply(id);
                 //market.removeCondition("AIRetrofit_Purging_AI_World");
             }else{
                 market.setSize(market.getSize() - 1);
@@ -25,7 +25,7 @@ public class AIRetrofits_PurgingAIWorld  extends BaseMarketConditionPlugin {
         }
         super.apply(id);
         if(abort()){
-            unapply(id);
+            //unapply(id);
         }
     }
 

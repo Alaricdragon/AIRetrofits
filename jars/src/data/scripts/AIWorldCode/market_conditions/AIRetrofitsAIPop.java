@@ -30,9 +30,9 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         if(can) {
             market.getStability().modifyFlat(id, STABILITY_BONUS, "robots don't rebel... right?");
             market.addTransientImmigrationModifier(this);
-            ChangeMarketConditions(market);
+            //ChangeMarketConditions(market);
         }else{
-            unapply(id);
+            //unapply(id);
         }
     }
 
