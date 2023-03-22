@@ -1,4 +1,11 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.15.1:
+save compatible with 0.7.9+
+    fixes:
+        possibly fixed a random very frustrating crash that could maybe happen. i hope.
+    disabled:
+        removed all code related to changeing market conditions based on other market conditions. this will stop AI-Population market condition form being removed without useing the population replacement center for a while. should cause no issues
+
 v0.7.15:
 save compatible with 0.7.9+
     images:
