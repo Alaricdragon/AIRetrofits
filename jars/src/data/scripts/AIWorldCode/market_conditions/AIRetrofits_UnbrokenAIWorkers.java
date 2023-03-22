@@ -57,7 +57,7 @@ public class AIRetrofits_UnbrokenAIWorkers  extends BaseMarketConditionPlugin {
             HP -= time * ((Math.random() * (maxChange - minChange + 1)) + minChange);
             time = 0;
             if(HP <= 0){
-                market.removeCondition("AIRetrofits_UnbrokenAIWorkers");
+                //market.removeCondition("AIRetrofits_UnbrokenAIWorkers");
             }
         }
     }

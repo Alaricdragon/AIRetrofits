@@ -34,10 +34,10 @@ public class AIRetrofits_AILudicWar extends BaseMarketConditionPlugin {
             time = 0;
             if(BattleState >= ludicVictory){
                 market.addCondition(ludic);
-                market.removeCondition("AIRetrofits_AILudicWar");
+                //market.removeCondition("AIRetrofits_AILudicWar");
             }else if(BattleState <= AIVictory){
                 market.addCondition(AI);
-                market.removeCondition("AIRetrofits_AILudicWar");
+                //market.removeCondition("AIRetrofits_AILudicWar");
             }
         }
     }

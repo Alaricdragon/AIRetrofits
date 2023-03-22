@@ -34,6 +34,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         }else{
             //unapply(id);
         }
+        AIRetrofit_Log.loging("is it this? is this causeing this? why why whyw whyqhghADGHVCWDHVCWJHVCSDVC SMHDCS",this,true);
     }
 
     public void unapply(String id) {
@@ -67,6 +68,9 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         super.createTooltip(tooltip,expanded);
     }
     private void ChangeMarketConditions(MarketAPI market){
+        if(true){
+            return;
+        }
         if(false && abort()){
             AIRetrofit_Log.loging("AI-Pop, removing condition by purge",this);
             market.removeCondition("AIRetrofit_AIPop");

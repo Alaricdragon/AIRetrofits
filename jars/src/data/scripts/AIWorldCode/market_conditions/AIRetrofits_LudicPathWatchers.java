@@ -69,7 +69,7 @@ public class AIRetrofits_LudicPathWatchers  extends BaseMarketConditionPlugin {
             HP += time * ((Math.random() * (maxChange - minChange + 1)) + minChange);
             time = 0;
             if(HP <= 0){
-                market.removeCondition("AIRetrofits_LudicPathWatchers");
+                //market.removeCondition("AIRetrofits_LudicPathWatchers");
                 //remove this mod.
 
             }
