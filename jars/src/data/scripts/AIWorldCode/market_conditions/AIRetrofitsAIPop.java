@@ -27,7 +27,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     public void apply(String id) {
         super.apply(id);
         ID = id;
-        AIRetrofit_Log.loging("is it this? is this causeing this? why why whyw whyqhghADGHVCWDHVCWJHVCSDVC SMHDCS",this,true);
+        //AIRetrofit_Log.loging("is it this? is this causeing this? why why whyw whyqhghADGHVCWDHVCWJHVCSDVC SMHDCS",this,true);
         if(can) {
             market.getStability().modifyFlat(id, STABILITY_BONUS, "robots don't rebel... right?");
             market.addTransientImmigrationModifier(this);
@@ -73,15 +73,15 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         }
         if(false && abort()){
             AIRetrofit_Log.loging("AI-Pop, removing condition by purge",this);
-            market.removeCondition("AIRetrofit_AIPop");
+            //market.removeCondition("AIRetrofit_AIPop");
             market.addCondition("AIRetrofit_Purging_AI_World");
             return;
         }
         if (false && market.hasCondition("decivilized")){
             AIRetrofit_Log.loging("AI-Pop, removing condition by deciv",this);
             AIRetrofit_Log.push();
-            market.removeCondition("decivilized");
-            market.removeCondition("AIRetrofit_AIPop");
+            //market.removeCondition("decivilized");
+            //market.removeCondition("AIRetrofit_AIPop");
             if(false && market.hasCondition("pather_cells")){
                 AIRetrofit_Log.loging("AI-Pop, adding lucic AI -War",this);
                 market.addCondition("AIRetrofits_AILudicWar");
@@ -102,7 +102,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         }
         if(market.isPlanetConditionMarketOnly()){
             AIRetrofit_Log.loging("AI-Pop, removing condition by misc",this);
-            market.removeCondition("AIRetrofit_AIPop");
+            //market.removeCondition("AIRetrofit_AIPop");
             return;
         }
 
