@@ -27,6 +27,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     public void apply(String id) {
         super.apply(id);
         ID = id;
+        AIRetrofit_Log.loging("is it this? is this causeing this? why why whyw whyqhghADGHVCWDHVCWJHVCSDVC SMHDCS",this,true);
         if(can) {
             market.getStability().modifyFlat(id, STABILITY_BONUS, "robots don't rebel... right?");
             market.addTransientImmigrationModifier(this);
@@ -34,7 +35,6 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
         }else{
             //unapply(id);
         }
-        AIRetrofit_Log.loging("is it this? is this causeing this? why why whyw whyqhghADGHVCWDHVCWJHVCSDVC SMHDCS",this,true);
     }
 
     public void unapply(String id) {
