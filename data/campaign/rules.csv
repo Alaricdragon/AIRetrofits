@@ -14,11 +14,11 @@ AIRetrofit_OutpostLeave,DialogOptionSelected,$option == AIRetrofit_OutpostLeave,
 AIRetrofit_OutpostStart,DialogOptionSelected,$option == AIRetrofit_OutpostStart,"AIRetfofit_PrepBuildOutpostScript
 FireAll AIRetrofit_OutpostBuildOptions",,,
 AIRetrofit_OutpostCanBuild,AIRetrofit_OutpostBuildOptions,"AIRetrofit_CanBuildOutpostScript
-!HostileFleetNearbyAndAware",,you can build it,"0:AIRetrofit_OutpostBuild:construct outpost
+!HostileFleetNearbyAndAware",,you have the required resorses to found a market here,"0:AIRetrofit_OutpostBuild:construct outpost
 1:AIRetrofit_OutpostLeave:back",
 AIRetrofit_OutpostBuilt,DialogOptionSelected,$option == AIRetrofit_OutpostBuilt,DismissDialog,,,
 AIRetrofit_OutpostCantbuild,AIRetrofit_OutpostBuildOptions,"!AIRetrofit_CanBuildOutpostScript
-!HostileFleetNearbyAndAware",,you are out of resorses,0:AIRetrofit_OutpostLeave:back,
+!HostileFleetNearbyAndAware",,you require more resorses to found a market here,0:AIRetrofit_OutpostLeave:back,
 AIRetrofit_OutpostCantbuildFleet,AIRetrofit_OutpostBuildOptions,"HostileFleetNearbyAndAware
-!AIRetrofit_CanBuildOutpostScript",,An hostile fleet is near.,0:AIRetrofit_OutpostLeave:back,
+!AIRetrofit_CanBuildOutpostScript",,you cannot preform this opperation while a hostile fleet is traking your movememnts,0:AIRetrofit_OutpostLeave:back,
 ,,,,,,

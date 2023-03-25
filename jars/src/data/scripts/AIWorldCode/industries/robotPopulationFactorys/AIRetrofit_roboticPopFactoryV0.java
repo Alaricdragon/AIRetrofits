@@ -9,6 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.startupData.AIRetrofits_Constants;
 
@@ -32,6 +33,7 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
     final static private String improvedDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT0_improvedDescription");
     final static private String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT0_alphaDescription");;
 
+    final static private String GrowthText = Global.getSettings().getString("AIRetrofit_PopFactoryT0_extraDescription");
     static String m1 = AIRetrofits_Constants.Market_GrowthMod_AIRetrofits_RobotFactoryGrowthMod;
     @Override
     public void apply() {
@@ -80,6 +82,11 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
         if (!isFunctional()) {
             return;
         }
+        float growth = getGrowth();
+        incoming.getWeight().modifyFlat(m1, growth, getNameForModifier());
+    }
+    public float getGrowth(){
+
         float base = market.getSize() * baseGrowth;
         float bonus = 1;
         if (this.isImproved()){
@@ -88,7 +95,7 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
         if(getAICoreId() != null && getAICoreId().equals("alpha_core")){
             bonus += alphaValue;
         }
-        incoming.getWeight().modifyFlat(m1, base*bonus, getNameForModifier());
+        return base*bonus;
     }
 
     @Override
@@ -114,6 +121,18 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
         }
     }
 
+    @Override
+    protected void	addPostDescriptionSection(TooltipMakerAPI tooltip, Industry.IndustryTooltipMode mode){
+        //mode.
+        float opad = 10f;
+        Color highlight = Misc.getHighlightColor();
+        tooltip.addSpacer(opad);
+
+        String[] exstra = {
+                "" + this.getGrowth(),
+        };
+        tooltip.addPara(GrowthText, 0f, highlight, exstra);
+    }
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;

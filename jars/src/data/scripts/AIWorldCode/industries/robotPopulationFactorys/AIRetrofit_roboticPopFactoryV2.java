@@ -12,7 +12,7 @@ import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
-public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
+public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_roboticPopFactoryV0 {
     private final static String C1 = "metals";
     private final static String C2 = "rare_metals";
     private final static String C3 = "heavy_machinery";
@@ -127,7 +127,9 @@ public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_IndustryBase {
     @Override
     protected void	addPostDescriptionSection(TooltipMakerAPI tooltip, Industry.IndustryTooltipMode mode){
         //mode.
+        super.addPostDescriptionSection(tooltip,mode);
         float opad = 10f;
+        tooltip.addSpacer(opad);
         Color highlight = Misc.getHighlightColor();
         tooltip.addSpacer(opad);
 

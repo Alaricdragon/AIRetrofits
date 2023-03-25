@@ -201,7 +201,11 @@
 	"AIRetrofit_MarketCost_reqWorker": 1000,
 	"AIRetrofit_MarketCost_reqSupply": 200,
 	"AIRetrofit_MarketCost_reqMachinery": 200,
-
+	#descriptions when founding a market
+	"AIRetrofit_MarketFoundedText0": "You give the order to send down robotic workers to being to form a market. it will take time before its established, but the rewords once its complete may be worth it.",
+	"AIRetrofit_MarketFoundedText1": "removed the following resorses from cargo",
+	"AIRetrofit_MarketStartupText0": "you consider the possibility of forming a market, ran by robotic workers. it would require very different infrastructure then other a normal market, and would suffer slowly increasing stability penalty as it grows until such infrastructure is present in the sector. in addition to this, do to the nature of the robotic population, the market would not be able to rely on normal immigration to grow, instead relying on factorys to produce more robotic workers. this would likely be a difficult task ahead of you, but the rewards.. would possibly be worth it. the robotic nature of the machines would provide a boost to stability, provided the markets are supplied properly. in addition to this, well populations would require robot factorys to grow, said factorys could be upgraded to provide growth to other worlds eventually. resulting in faster market growth to all robotic markets under your control...",
+	"AIRetrofit_MarketStartupText1": "you have available:",
 	#settings for market growth,
 	#descriptions
 	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing system wide market growth",
@@ -322,6 +326,7 @@
 	"AIRetrofit_PopFactoryT0_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
 	"AIRetrofit_PopFactoryT0_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
 	"AIRetrofit_PopFactoryT0_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
+	"AIRetrofit_PopFactoryT0_extraDescription": "adds %s market growth to a world with robotic population",
 	#robotic pop factory T1
 	"AIRetrofit_PopFactoryT1_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
 	"AIRetrofit_PopFactoryT1_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
