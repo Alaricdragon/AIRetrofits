@@ -26,6 +26,9 @@ public class AIRetfofit_PrepBuildOutpostScript extends BaseCommandPlugin {
     String AIWorkerJob = AIRetrofits_Constants.FoundAMarket_AIWorkerJob;
     String SupplyJob = AIRetrofits_Constants.FoundAMarket_SupplyJob;
     String MachineryJob = AIRetrofits_Constants.FoundAMarket_MachineryJob;
+
+    private static String execute0 = Global.getSettings().getString("AIRetrofit_MarketStartupText0");
+    private static String execute1 = Global.getSettings().getString("AIRetrofit_MarketStartupText1");
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         CampaignFleetAPI fleet = Global.getSector().getPlayerFleet();
         float[] got = new float[4];
@@ -39,7 +42,9 @@ public class AIRetfofit_PrepBuildOutpostScript extends BaseCommandPlugin {
         tempJob = crewReplacer_Main.getJob(MachineryJob);
         got[3] = tempJob.getAvailableCrewPower(fleet);
 
-        dialog.getTextPanel().addPara("you have available");
+        dialog.getTextPanel().addPara(execute0);
+        dialog.getTextPanel().addPara("");
+        dialog.getTextPanel().addPara(execute1);
         texttemp("AIretrofit_SubCommandNode",got[0],reqAICore,dialog.getTextPanel());
         texttemp("AIretrofit_WorkerDrone",got[1],reqWorker,dialog.getTextPanel());
         texttemp("supplies",got[2],reqSupply,dialog.getTextPanel());

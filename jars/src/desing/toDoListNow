@@ -18,8 +18,9 @@ Note:
 robot forge plugin:
     find a new sound for the robot forge
 bugs:
-    issue with: decimalize sub population given market growth when it should not be
+    issue with: issue with market growth having a tiny modifier that's being added to all my AI worlds. no idea why. //(likely false)decimalize sub population given market growth when it should not be
     issue: right now i can change the name and portrait of important NPC's. make it so i cant.
+
 Industrys:
     Shipyard:
         issues:

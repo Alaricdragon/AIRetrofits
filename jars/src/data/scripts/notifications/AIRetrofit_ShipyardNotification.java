@@ -20,7 +20,7 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     public java.util.Set<java.lang.String> getIntelTags(SectorMapAPI map){
         Set<String> a = super.getIntelTags(map);
         a.add(Tags.INTEL_PRODUCTION);
-        a.add(Tags.INTEL_CONTACTS);
+        //a.add(Tags.INTEL_CONTACTS);
         return a;
     }
     @Override
@@ -58,7 +58,7 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     public boolean shouldRemoveIntel() {
         if (isImportant()) return false;
         if (getDaysSincePlayerVisible() < 30) return false;
-        return super.shouldRemoveIntel();
+        return true;//super.shouldRemoveIntel();
     }
     @Override
     public String getIcon(){

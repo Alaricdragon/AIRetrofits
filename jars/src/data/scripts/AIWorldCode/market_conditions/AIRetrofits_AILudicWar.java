@@ -14,7 +14,7 @@ public class AIRetrofits_AILudicWar extends BaseMarketConditionPlugin {
     static private String AI = "AIRetrofits_UnbrokenAIWorkers";
     public void apply(String id) {
         super.apply(id);
-        advanceCombat();
+        //advanceCombat();
     }
 
     public void unapply(String id) {
@@ -34,10 +34,10 @@ public class AIRetrofits_AILudicWar extends BaseMarketConditionPlugin {
             time = 0;
             if(BattleState >= ludicVictory){
                 market.addCondition(ludic);
-                market.removeCondition("AIRetrofits_AILudicWar");
+                //market.removeCondition("AIRetrofits_AILudicWar");
             }else if(BattleState <= AIVictory){
                 market.addCondition(AI);
-                market.removeCondition("AIRetrofits_AILudicWar");
+                //market.removeCondition("AIRetrofits_AILudicWar");
             }
         }
     }

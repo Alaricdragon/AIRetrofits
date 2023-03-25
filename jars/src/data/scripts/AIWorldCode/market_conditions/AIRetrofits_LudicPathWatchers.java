@@ -29,7 +29,7 @@ public class AIRetrofits_LudicPathWatchers  extends BaseMarketConditionPlugin {
             crewReplacer_SupplyDemandLists.getRuleSet(SDCName).applyMarket(market, false);
             Pair<String, Integer> deficit = market.getIndustry("population").getMaxDeficit(combat1, combat2);
             if (deficit.two == 0) {
-                advanceCombat();
+                //advanceCombat();
             }
             stability(id, deficit.two);
         }else{
@@ -69,7 +69,7 @@ public class AIRetrofits_LudicPathWatchers  extends BaseMarketConditionPlugin {
             HP += time * ((Math.random() * (maxChange - minChange + 1)) + minChange);
             time = 0;
             if(HP <= 0){
-                market.removeCondition("AIRetrofits_LudicPathWatchers");
+                //market.removeCondition("AIRetrofits_LudicPathWatchers");
                 //remove this mod.
 
             }

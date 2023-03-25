@@ -1,4 +1,17 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.16:
+save compatible with 0.7.9+
+    improvements:
+        added actual text to the 'found a robotic market' text. hopefully it makes sense.
+        added the provided market growth to the robotic worker factory's description
+    fixes:
+        possibly fixed a random very frustrating crash that could maybe happen. i hope.
+        made it so the automated ship installation center notification stopped showing up under contacts.
+        made it so the automated ship installation center notification vanished after a while (as opposed to being there forever)
+    disabled:
+        removed all code related to changing market conditions based on other market conditions. should cause no issues. will renewable this when i can.
+    balance:
+        made it so upgrading the robot worker factory kept the basic factorys growth bonus. why? i felt that the world with the big factory on it should grow faster, not slower
 v0.7.15:
 save compatible with 0.7.9+
     images:

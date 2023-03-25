@@ -33,11 +33,11 @@ public class AIRetrofits_UnbrokenAIWorkers  extends BaseMarketConditionPlugin {
             crewReplacer_SupplyDemandLists.getRuleSet(SDCName).applyMarket(market, false);
             Pair<String, Integer> deficit = market.getIndustry("population").getMaxDeficit(combat1, combat2);
             if (deficit.two == 0) {
-                advanceCombat();
+                //advanceCombat();
             }
             stability(id, deficit.two);
         }
-        advanceCombat();
+        //advanceCombat();
     }
 
     public void unapply(String id) {
@@ -57,7 +57,7 @@ public class AIRetrofits_UnbrokenAIWorkers  extends BaseMarketConditionPlugin {
             HP -= time * ((Math.random() * (maxChange - minChange + 1)) + minChange);
             time = 0;
             if(HP <= 0){
-                market.removeCondition("AIRetrofits_UnbrokenAIWorkers");
+                //market.removeCondition("AIRetrofits_UnbrokenAIWorkers");
             }
         }
     }

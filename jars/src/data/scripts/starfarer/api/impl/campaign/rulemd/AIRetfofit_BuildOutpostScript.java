@@ -26,29 +26,28 @@ public class AIRetfofit_BuildOutpostScript extends BaseCommandPlugin {
     String AIWorkerJob = AIRetrofits_Constants.FoundAMarket_AIWorkerJob;
     String SupplyJob = AIRetrofits_Constants.FoundAMarket_SupplyJob;
     String MachineryJob = AIRetrofits_Constants.FoundAMarket_MachineryJob;
+
+    private static String execute0 = Global.getSettings().getString("AIRetrofit_MarketFoundedText0");
+    private static String execute1 = Global.getSettings().getString("AIRetrofit_MarketFoundedText1");
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         MarketAPI market = dialog.getInteractionTarget().getMarket();
         PlanetAPI planet = dialog.getInteractionTarget().getMarket().getPlanetEntity();
         FactionAPI faction = Global.getSector().getFaction(Factions.PLAYER);
         CampaignFleetAPI fleet = Global.getSector().getPlayerFleet();
-        dialog.getTextPanel().addPara("loss and build conoly text");
+        dialog.getTextPanel().addPara(execute0);
         dialog.getTextPanel().addPara("");
-
+        dialog.getTextPanel().addPara(execute1);
         crewReplacer_Job tempJob = crewReplacer_Main.getJob(AICoreJob);
         tempJob.automaticlyGetDisplayAndApplyCrewLost(fleet,(int)reqAICore,reqAICore,dialog.getTextPanel());
-        dialog.getTextPanel().addPara("");
 
         tempJob = crewReplacer_Main.getJob(AIWorkerJob);
         tempJob.automaticlyGetDisplayAndApplyCrewLost(fleet,(int)reqWorker,reqWorker,dialog.getTextPanel());
-        dialog.getTextPanel().addPara("");
 
         tempJob = crewReplacer_Main.getJob(SupplyJob);
         tempJob.automaticlyGetDisplayAndApplyCrewLost(fleet,(int)reqSupply,reqSupply,dialog.getTextPanel());
-        dialog.getTextPanel().addPara("");
 
         tempJob = crewReplacer_Main.getJob(MachineryJob);
         tempJob.automaticlyGetDisplayAndApplyCrewLost(fleet,(int)reqMachinery,reqMachinery,dialog.getTextPanel());
-        dialog.getTextPanel().addPara("all good times.text");
         AIRetrofit_StartAutomatedColony.createColonyStatic(market,planet,faction,false,true);
         return true;
     }
