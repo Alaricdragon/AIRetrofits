@@ -7,19 +7,16 @@ import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.impl.campaign.plog.PlaythroughLog;
 import com.fs.starfarer.api.impl.campaign.plog.SModRecord;
 import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.LabelAPI;
-import com.fs.starfarer.api.ui.TextFieldAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Highlights;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.campaign.fleet.CargoData;
-import com.fs.starfarer.campaign.fleet.FleetData;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
+import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.AIRetrofits_Constants;
@@ -41,26 +38,12 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     @Override
     public void reportPlayerOpenedMarket(MarketAPI market){
-        if(market.hasCondition("AIRetrofit_AIPop")){
-            changePeople(market);
-        }
+        changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
         unapplySubMarkets(market);
     }
-    private boolean changePeople(MarketAPI market){
-        List<PersonAPI> peopletemp = market.getPeopleCopy();
-        if(peopletemp.size() > 1){
-            for (PersonAPI person : peopletemp) {
-                if(!market.getAdmin().equals(person) && market.getFaction().getId().equals(person.getFaction().getId())) {
-                    market.removePerson(person);
-                    person.setPortraitSprite(setDataLists.getRandom(2));
-                    person.setName(new FullName(setDataLists.getRandom(0), setDataLists.getRandom(1), FullName.Gender.ANY));
-                    market.addPerson(person);
-                }
-            }
-            return true;
-        }
-        return false;
+    private void changePeople(MarketAPI market){
+        AIRetrofits_ChangePeople.changePeopleMarket(market);
     }
     final static String shipYardIndustry = AIRetrofits_Constants.ASIC_shipYardIndustry;//"AIRetrofit_shipYard";
     final static String shipYardSubmarket = AIRetrofits_Constants.ASIC_subbmarket;//"AIRetrofit_ShipyardSubmarket";
@@ -72,6 +55,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
             memory.addLocation(market.getId(),runSingleAIRetrofit_Shipyard(market));
         }
+        memory.applyCosts();
         displayAIRetrofit_ShipYardNotification(memory);
     }
     //boolean logging = true;
@@ -258,6 +242,29 @@ class UpgradeList{
 
         Global.getSector().getCampaignUI().addMessage(intel);
     }
+    public void applyCosts(){
+        if(Types.size() == 0){
+            return;
+        }
+        float cost = 0;
+        float bonusXP = 0;
+        for(UpgradeTypes a : Types){
+            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
+            float[] temp = a.getCost();
+            cost += temp[0];
+            bonusXP += temp[1];
+        }
+
+        if(cost != 0){
+            Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
+        }
+        if(bonusXP != 0){
+            long XpPerStory = Global.getSector().getPlayerStats().getBonusXPForSpendingStoryPointBeforeSpendingIt();
+            bonusXP*=XpPerStory;
+            TextPanelAPI a = new TempText();//info.addTextField(0,0);
+            Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
+        }
+    }
     public void display(TooltipMakerAPI info){
         if(Types.size() == 0){
             return;
@@ -277,16 +284,18 @@ class UpgradeList{
             String[] exstra = new String[]{"" + cost};
             String text = AIRetrofits_Constants.ASIC_NotificationCredits;
             info.addPara(text,pad,highlight,exstra);
-            Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
+            //Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
         }
-        //AIRetrofit_Log.loging( bonusXP + " bonusXP from AIRetrofitShipyard",this,true);
         if(bonusXP != 0){
+            long XpPerStory = Global.getSector().getPlayerStats().getBonusXPForSpendingStoryPointBeforeSpendingIt();
+            bonusXP*=XpPerStory;
             highlight = Misc.getStoryOptionColor();
-            String[] exstra = new String[]{"" + bonusXP};
+            AIRetrofit_Log.loging( bonusXP + " bonusXP from AIRetrofitShipyard",this,true);
+            String[] exstra = new String[]{"" + (int)bonusXP};
             String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;
             info.addPara(text,pad,highlight,exstra);
-            TextPanelAPI a = new TempText();//info.addTextField(0,0);
-            Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
+            //TextPanelAPI a = new TempText();//info.addTextField(0,0);
+            //Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
         }
     }
 }
@@ -314,6 +323,18 @@ class UpgradeTypes{
             String text = AIRetrofits_Constants.ASIC_NotificationMarket;
             info.addPara(text,pad,highlight,exstra);
             float[] temp = upgrades.get(a).display(info,type,b);
+            cost += temp[0];
+            bonusXP += temp[1];
+        }
+        return new float[]{cost,bonusXP};
+    }
+    public float[] getCost(){
+
+        float cost = 0;
+        float bonusXP = 0;
+        for(int a = 0; a < upgrades.size(); a++){
+            boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
+            float[] temp = upgrades.get(a).getCost(b);
             cost += temp[0];
             bonusXP += temp[1];
         }
@@ -358,11 +379,35 @@ class UpgradedShips{
         info.showShips(fleet, 20, true, 5);
         return new float[]{cost,bonusXP};
     }
+    public float[] getCost(boolean playerOwned){
+
+        if(ships.size() == 0){
+            return new float[]{0f,0f};
+        }
+        float pad = 5;
+        Color highlight = Misc.getHighlightColor();
+
+        //CargoAPI cargo = new CargoData(false);
+        //FleetDataAPI fleet = new FleetData("production","production2");
+        ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
+        float cost = 0;
+        float bonusXP = 0;
+        for(UpgradedShip ship : ships){
+            ship.addShipToFleet(fleet);
+            if(!playerOwned) {
+                cost += ship.getCost();
+            }
+            bonusXP += ship.getBonusXP();
+
+        }
+        return new float[]{cost,bonusXP};
+    }
 }
 class UpgradedShip{
     FleetMemberAPI ship;
     boolean bonus;
     int size;
+    static float storyGain = Global.getSettings().getFloat("AIRetrofitShipyard_storyPointsPerSMod");
     UpgradedShip(FleetMemberAPI ship,int size,boolean bonus){
         this.ship = ship;
         this.bonus = bonus;
@@ -378,10 +423,10 @@ class UpgradedShip{
     }
     public float getBonusXP(){
         //AIRetrofit_Log.loging("has bonus: " + bonus,this,true);
-        if(bonus && false){
+        if(bonus){
             //AIRetrofit_Log.loging("bonus is: " + getBonusXPForScuttling(ship)[1],this,true);
             //AIRetrofit_Log.loging("total bonus that i dont want is: " + Misc.getBonusXPForScuttling(ship)[1],this,true);
-            return Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
+            return storyGain;//Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
         }
         return 0f;//AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
     }
