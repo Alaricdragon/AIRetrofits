@@ -14,7 +14,7 @@
 
 	#i hope this works, but i have no darn clue if it does. might do nothing...
 	"AIRetrofits_SwapAICrew": true,
-
+	"AIRetrofits_allowChangingOfImportantNPC": false,
 	#settings for AIRetrofits hullmod
 	"AIRetrofits_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
 	"AIRetrofits_AIretrofit_CREW_USE_MULT":0,#this is an real multi though. 0 = no crew use, 1 = no change -1 = negitive crew use?
@@ -280,6 +280,7 @@
 	"AIRetrofitShipyard_Credits_perCrewDESTROYER": 10000,
 	"AIRetrofitShipyard_Credits_perCrewCRUISER": 20000,
 	"AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP": 40000,
+	"AIRetrofitShipyard_storyPointsPerSMod": 0.5,#the defalt story ponits yuor dont gain back as bonus XP from building in the AIRetrofits hullmod
 
 	"AIRetrofitShipyard_Description_shipPerMomth": "Can upgrade up to %s/%s/%s/%s ships per momth, depending on shipSize",
 	"AIRetrofitShipyard_Description_creditsPerShip": "Cost %s/%s/%s/%s credits per ship, depending on shipSize",

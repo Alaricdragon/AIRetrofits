@@ -19,7 +19,9 @@ robot forge plugin:
     find a new sound for the robot forge
 bugs:
     issue with: issue with market growth having a tiny modifier that's being added to all my AI worlds. no idea why. //(likely false)decimalize sub population given market growth when it should not be
-    issue: right now i can change the name and portrait of important NPC's. make it so i cant.
+    issue: (NOT DONE. need to ask how to detect this) right now i can change the name and portrait of important NPC's. make it so i cant.
+    issue: (partly done. its almost working, but not quite. need to get the XP values right)automated shipyard still does not give back story points. make it so it does.
+    issue: advanced and omega robots have the same price as basic robots. change this plz.
 
 Industrys:
     Shipyard:

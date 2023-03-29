@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.17:
+save compatible with 0.7.9+
+    fixes:
+        people no longer get reset every time you visited a robotic population market.
+    new:
+        Automated Ship Installation Center now refunds removed S-Mods as story XP (hopefully)
 v0.7.16:
 save compatible with 0.7.9+
     improvements:
