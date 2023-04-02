@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
+import com.fs.starfarer.api.impl.campaign.intel.contacts.ContactIntel;
 import com.fs.starfarer.rpg.Person;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.startupData.AIRetrofits_Constants;
@@ -39,7 +40,10 @@ public class AIRetrofits_ChangePeople {
         ){
             return false;
         }
-        if(false){//personAPI.getTags().contains()){
+        /*if(Global.getSector().getImportantPeople().containsPerson(personAPI)){//maybe this will help for avoiding getting story people? hopefully?
+            return false;
+        }*/
+        if(ContactIntel.playerHasContact(personAPI)){//does not change contacts
             return false;
         }
         return true;

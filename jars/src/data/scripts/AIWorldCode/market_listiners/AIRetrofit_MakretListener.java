@@ -18,6 +18,7 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.hullmods.AIRetrofit_AIretrofit;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.AIRetrofits_Constants;
 
@@ -422,33 +423,13 @@ class UpgradedShip{
         return costTemp[size];
     }
     public float getBonusXP(){
-        //AIRetrofit_Log.loging("has bonus: " + bonus,this,true);
         if(bonus){
-            //AIRetrofit_Log.loging("bonus is: " + getBonusXPForScuttling(ship)[1],this,true);
-            //AIRetrofit_Log.loging("total bonus that i dont want is: " + Misc.getBonusXPForScuttling(ship)[1],this,true);
-            return storyGain;//Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
+            float xp = 1 - Misc.getBuildInBonusXP(Misc.getMod(AIRetrofits_Constants.Hullmod_AIRetrofit),ship.getHullSpec().getHullSize());
+            return xp * storyGain;//Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
         }
         return 0f;//AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
     }
     public void display(TooltipMakerAPI info,boolean playerOwned){
-    }
-    //this is a copy of the code for finding out how mush bonusXP a ship gets on being scuttled
-    public static float [] getBonusXPForScuttling(FleetMemberAPI member) {
-        float points = 0f;
-        float xp = 0f;
-        for (SModRecord record : PlaythroughLog.getInstance().getSModsInstalled()) {
-            if(record.getSMods().contains(AIRetrofits_Constants.Hullmod_AIRetrofit)) {
-                //if (member.getId() != null && member.getId().equals(record.getMemberId())) {
-                if (member == record.getMember() && record.getMember() != null) {
-                    points += record.getSPSpent();
-                    xp += record.getBonusXPFractionGained() * record.getSPSpent();
-                }
-            }
-        }
-        if (points > 0) {
-            return new float[] {points, 1f - xp/points};
-        }
-        return new float[] {0f, 0f};
     }
 }
 class TempText implements TextPanelAPI{

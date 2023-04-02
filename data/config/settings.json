@@ -194,7 +194,7 @@
 	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "got a new command node",
 	"AIRetrofit_RobotForge_PeopleMaker_init_0":"You cafullys consider what you can produce with the knowlage you have..." ,
 	#colony data
-	"AIRetrofits_EnableColonyFeatures":true,
+	"AIRetrofits_EnableColonyFeatures":true,#some advice, dont disable this after you build a market with robotic workers. that will cause issues. before you do should be fine, although this is lagacy code, and should only be changed before starting a new game to be safe
 
 	#cost for founding a market
 	"AIRetrofit_MarketCost_reqAICore": 10,
@@ -280,7 +280,7 @@
 	"AIRetrofitShipyard_Credits_perCrewDESTROYER": 10000,
 	"AIRetrofitShipyard_Credits_perCrewCRUISER": 20000,
 	"AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP": 40000,
-	"AIRetrofitShipyard_storyPointsPerSMod": 0.5,#the defalt story ponits yuor dont gain back as bonus XP from building in the AIRetrofits hullmod
+	"AIRetrofitShipyard_storyPointsPerSMod": 1,#a multiplyer on the amount of bonus XP you gain from removing a S-Mod with the shipyard.
 
 	"AIRetrofitShipyard_Description_shipPerMomth": "Can upgrade up to %s/%s/%s/%s ships per momth, depending on shipSize",
 	"AIRetrofitShipyard_Description_creditsPerShip": "Cost %s/%s/%s/%s credits per ship, depending on shipSize",
