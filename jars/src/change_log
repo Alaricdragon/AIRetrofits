@@ -1,4 +1,67 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.18: (release notes), from 0.5:
+    new:
+        added a new way to found a market, (unlucked once you have AI ships skill or have found the relevant hullmods and skills), costing salvage robots and sub command nodes instead of crew. worlds built in this way have some interesting properties:
+            -they have different required commodity to maintain stability
+            -they have a different growth system, relying on constructing robots instead of immigration
+            -they have all there crew and marines supply and demand swapped with salvage and combat robots.
+            -they have a small stability bonus
+            -they can host a handful of special buildings (mostly useless for now)
+            -fleets and people from / on this world now have special captions names and portraits.
+            -fleets from this world now all have AI-Retrofit, and no crew.
+        added a host of new colony buildings:
+            (only allowed on robotic population market)
+                robotic worker assembely
+                robot worker factory
+                robot worker production center
+                AI Node Production Facility
+                Robotic Maintenance Center
+                Synthetic Production Center
+                Automated Ship Instalation Center
+            (allowed anywhere):
+                Personal Salavage Robot Manufactory
+                Personal Survey Robot Manufactory
+                Personal Combat Robot Manufactory
+                Population Replacement Center (for the people with a little evil in your hearts)
+        robot forge:
+            can now craft sub command nodes.
+            sub command nodes can be 'upgraded' into officers or admins.
+        items:
+            added:
+                2 new tiers of salvage, combat, and survey robots
+                Command Relay
+                Maintenance Parts
+                Sub-Command Node
+                Robotic Replacement Parts
+                Human Interface Node
+        robots:
+            robots ability to do jobs has been changed, they now rely on AI cores to command them, and restive detergents when no AI core in is cargo, and buffs when there is one.
+    removed:
+        the sound robot forge played when it was on. didn't like.
+    changed:
+        robot forge:
+            -changed the default robot forge power from 1 power per 500 crew, to 1 power per 100 crew
+            -changed the way nanoforges were calculated, so its now caped at the robot forge power from your robot forges.
+            -changed C-nanoforge power from 0.025 to 1.
+            -changed P-nanoforge power from 0.075 to 5.
+    fixes:
+        fixed many of my displays and texts that were broken in some way
+        made it so if you find the 'robot forge' hullmod, you will get the 'robot forge' skill after visiting a market.
+        a bunch of other things i forgot about
+    combatability:
+        made this mod compatible with mods that change the AI ships skill. (you will gain the relevant hullmods and skills when you visit a market)
+        combat robots are now valid for invasions with nexerlin (yay)
+
+    thank you:
+        Capesh: the editor for making my mod at least readable.
+        the Quacken: for the automated ship instalation center image. its cool =)
+        all the people i asked seemingly random questions at for tolerating that and helping me. i could not have done this without you all
+        all the people who piped up with suggestions and bug reports on the discord. it helped a lot
+v0.7.18:
+    fixes:
+        markets with robotic population no longer change contacts (hopefully).
+        fixed the amount of bonus XP removing a S-Mod in the automated ship installation center gives
+        fixed the prices on the T1 and T2 robots. hopefully.
 v0.7.17:
 save compatible with 0.7.9+
     fixes:

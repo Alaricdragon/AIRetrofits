@@ -2,7 +2,7 @@
 	"id":"AI-Retrofits", # internal id
 	"name":"AI-Retrofit", # displayed to the player
 	"author":"Alaricdragon",
-	"version":"0.7.17",
+	"version":"0.7.18",
 	"description":"Adds some hullmods, abilitys, and colony facilities to replace the humons in your fleet/faction",
 	"gameVersion":"0.95a-RC15",
     	"dependencies": [

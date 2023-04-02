@@ -1,9 +1,3 @@
-to do list before next update:
-    test and try to find the possible issues with the 'change market condition code' in 'AI-Pop' condition
-        -note: when useing sateration bombardment, i need to wait a few days after market transfer to check if that works or not.
-    (?)create a hullmod for the fighters.
-    make it so 'upgrading' a S-Mod with the automated ship installation center, give bonus XP based on story ponits gotten, like if i were to sell / scuttle the ship.
-
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
@@ -19,25 +13,17 @@ robot forge plugin:
     find a new sound for the robot forge
 bugs:
     issue with: issue with market growth having a tiny modifier that's being added to all my AI worlds. no idea why. //(likely false)decimalize sub population given market growth when it should not be
-    issue: (NOT DONE. need to ask how to detect this) right now i can change the name and portrait of important NPC's. make it so i cant.
-    issue: (partly done. its almost working, but not quite. need to get the XP values right)automated shipyard still does not give back story points. make it so it does.
+    issue: (partly done. no longer changes contacts) right now i can change the name and portrait of important NPC's. make it so i cant.
     issue: advanced and omega robots have the same price as basic robots. change this plz.
-
+    issue: the cost of a single survey / salvage / combat robot is the same regardless of level. i fixed this by changeing there demand class, but i want them to have the same demand classes so they can be interchangeable. look this up plz.
 Industrys:
     Shipyard:
         issues:
-            when the industry is not on a player owned world, it should cost credits to retrofit ships.
             change ship power over to something a crew based system, instead of a shipsized based system.
         concepts: allow players to build this industry on normal markets
             might be a good idea. make it change the fleets as well? i don't know.
             will reduce the need / want to build robotic markets, but maybe that's a good thing?
         notification:
-            so very closs to finished. need to:
-            polish text
-            add bonus XP gain.
-                -issues with this: i have so far failed completely to do this. its so frustrating. i cant get the bonus XP i should get from one S-mod...
-            add text for bonus XP gain (like 'gained xx XP from removed S-Mods')
-            move all text to the config file, for ease of change.
 
         desing the concept for: having all the basic resource industry do something cool.
         why? because i never build them. even with up to + 8 stability, its just not worth it.
@@ -51,9 +37,6 @@ Industrys:
                 -command nodes will be consumable items that give you a officer or a admen on use. (or spy with nexerlin?)
         synfetec factory:
             -i.. dont have any ideas. like, what can they even do? maybe crew ships at a cost? maybe?
-market:
-    (moved this idea over to market retrofits?)rebuild the hazard button as designed in market growth
-
 Robots:
     -?change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
