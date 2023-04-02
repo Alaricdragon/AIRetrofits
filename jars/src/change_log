@@ -1,0 +1,357 @@
+changelog for all my changes as i make them so i dont forget again.
+v0.7.18: (release notes), from 0.5:
+    new:
+        added a new way to found a market, (unlucked once you have AI ships skill or have found the relevant hullmods and skills), costing salvage robots and sub command nodes instead of crew. worlds built in this way have some interesting properties:
+            -they have different required commodity to maintain stability
+            -they have a different growth system, relying on constructing robots instead of immigration
+            -they have all there crew and marines supply and demand swapped with salvage and combat robots.
+            -they have a small stability bonus
+            -they can host a handful of special buildings (mostly useless for now)
+            -fleets and people from / on this world now have special captions names and portraits.
+            -fleets from this world now all have AI-Retrofit, and no crew.
+        added a host of new colony buildings:
+            (only allowed on robotic population market)
+                robotic worker assembely
+                robot worker factory
+                robot worker production center
+                AI Node Production Facility
+                Robotic Maintenance Center
+                Synthetic Production Center
+                Automated Ship Instalation Center
+            (allowed anywhere):
+                Personal Salavage Robot Manufactory
+                Personal Survey Robot Manufactory
+                Personal Combat Robot Manufactory
+                Population Replacement Center (for the people with a little evil in your hearts)
+        robot forge:
+            can now craft sub command nodes.
+            sub command nodes can be 'upgraded' into officers or admins.
+        items:
+            added:
+                2 new tiers of salvage, combat, and survey robots
+                Command Relay
+                Maintenance Parts
+                Sub-Command Node
+                Robotic Replacement Parts
+                Human Interface Node
+        robots:
+            robots ability to do jobs has been changed, they now rely on AI cores to command them, and restive detergents when no AI core in is cargo, and buffs when there is one.
+    removed:
+        the sound robot forge played when it was on. didn't like.
+    changed:
+        robot forge:
+            -changed the default robot forge power from 1 power per 500 crew, to 1 power per 100 crew
+            -changed the way nanoforges were calculated, so its now caped at the robot forge power from your robot forges.
+            -changed C-nanoforge power from 0.025 to 1.
+            -changed P-nanoforge power from 0.075 to 5.
+    fixes:
+        fixed many of my displays and texts that were broken in some way
+        made it so if you find the 'robot forge' hullmod, you will get the 'robot forge' skill after visiting a market.
+        a bunch of other things i forgot about
+    combatability:
+        made this mod compatible with mods that change the AI ships skill. (you will gain the relevant hullmods and skills when you visit a market)
+        combat robots are now valid for invasions with nexerlin (yay)
+
+    thank you:
+        Capesh: the editor for making my mod at least readable.
+        the Quacken: for the automated ship instalation center image. its cool =)
+        all the people i asked seemingly random questions at for tolerating that and helping me. i could not have done this without you all
+        all the people who piped up with suggestions and bug reports on the discord. it helped a lot
+v0.7.18:
+    fixes:
+        markets with robotic population no longer change contacts (hopefully).
+        fixed the amount of bonus XP removing a S-Mod in the automated ship installation center gives
+        fixed the prices on the T1 and T2 robots. hopefully.
+v0.7.17:
+save compatible with 0.7.9+
+    fixes:
+        people no longer get reset every time you visited a robotic population market.
+    new:
+        Automated Ship Installation Center now refunds removed S-Mods as story XP (hopefully)
+v0.7.16:
+save compatible with 0.7.9+
+    improvements:
+        added actual text to the 'found a robotic market' text. hopefully it makes sense.
+        added the provided market growth to the robotic worker factory's description
+    fixes:
+        possibly fixed a random very frustrating crash that could maybe happen. i hope.
+        made it so the automated ship installation center notification stopped showing up under contacts.
+        made it so the automated ship installation center notification vanished after a while (as opposed to being there forever)
+    disabled:
+        removed all code related to changing market conditions based on other market conditions. should cause no issues. will renewable this when i can.
+    balance:
+        made it so upgrading the robot worker factory kept the basic factorys growth bonus. why? i felt that the world with the big factory on it should grow faster, not slower
+v0.7.15:
+save compatible with 0.7.9+
+    images:
+        added temp images for the following:
+            robotic Population & Infrastructure
+            robotic worker assembely
+            robot worker factory
+            robot worker production center
+            AI Node Production Facility
+            Robotic Maintenance Center
+            Synthetic Production Center
+            Personal Salavage Robot Manufactory
+            Personal Survey Robot Manufactory
+            Personal Combat Robot Manufactory
+            Population Replacement Center
+        i generated the images here with a AI image generator. i tried this before, but for some reason, this time some of the
+        resalts were very good. some just are not want a wanted. ill likely keep an unknown number of the images for this mod.
+v0.7.14:
+save compatible with 0.7.9+
+    improvements:
+        significantly improved the robot forge 'improve a sub command node' display in every possible way.
+    removed:
+        removed the sound that the robot forge makes. i cant stand it for another second (will replace it with a better sound at some point.)
+        the debug text from the robot forge ability. should look cleaner now.
+v0.7.13:
+save compatible with 0.7.9+
+    fixes:
+        automated ship installation center notification:
+            made it so the notification will not run its code when there are no ships that were upgraded.
+        AI-Retrofit hullmod:
+            (hopefully) fixed a crash relating to 'progressive S-mods' and 'Gacha SMods' mods. please tell me if it didn't work.
+
+    background:
+        starting edits on the text in the robot forge command node text. i forgot about them, so they are still not finihed.
+v0.7.12
+save compatible with 0.7.9+
+    fixes:
+        fixed T1 robot factory not showing its growth, and instead showing the T2 factory's growth (so it always said it had zero growth.).
+    new:
+        adding a notification that shows the upgrades that have been done by the automated ship installation center.
+        made it so ships upgraded at a automated ship installation center that is not player owned costs credits per ship
+        added a new description to the automated ship installation center submarket.
+v0.7.11:
+save compatible with 0.7.9+
+    fixes:
+        fixed the possibility of a broken market condition loading.
+        fixed the growth remover not working on market conditions (like 'free port')
+        fixed a issue were growth could be removed from a market twice, causing hidden negative growth.
+        removed the extra size and power reminders from the main description of the T1 and T2 robots.
+    balance:
+        buffed the output numbers of the personal robot factorys when they have AI Cores from
+            T1 = T0output / ((T1Power / T0Power) * 2) to T0output / ((T1Power / T0Power) * 1.2)
+            T2 = T1output / ((T2Power / T1Power) * 2) to T0output / ((T2Power / T0Power) * 1.2)
+    config:
+        added the option to turn on/off logs related to market growth.
+    logs:
+        added some logs to the place were a markets growth mods are hidden, so you can see whats sup
+v0.7.10.1:
+save combatable with 0.7.9+
+    fixes:
+        fixed a save breaking bug when useing the robot forge hullmod. all your saves should work now =)
+        hopefully
+v0.7.10:
+save combatable with 0.7.9+
+    images:
+        (thanks to me)
+            some robot improvements
+            new images for:
+                advanced survey robot.
+                survey robot
+                (temp for now)Human Interface Node
+                (temp for now)Maintince Parts
+
+
+    robot descriptions:
+        changed the advanced survey drones description to something else.
+    fixes:
+        fixed advanced Survey Robots size being twice what it should have been
+        made it so robotic population markets will grow to whatever size is the maximum as set in the game settings.
+        removed the option 'AIRetrofits_MarketGrowth_maxSize', as its no longer required.
+        fixed how big some things were on the market screen. still more to fix.
+
+        made it so you get the robot forge ability the moment you have a ship with the hullmod, instead of only after you visit another market.
+        made it so if the option 'AIRetrofit_alwaysGiveSkillsAndHullmods' == true, you get the skills and hullmods on game start, and not when you first visit a market.
+    refactoring:
+        refactored a bunch of things. plz tell me if anything does not work suddenly.
+v0.7.9:
+NOT compatible with any older version
+    images: 
+	(thanks the Quacken)
+        	added a new image for the Automated Ship Instalation Center
+	(thanks to me, robot mashing to the best of my ability)
+		darkend the salvage robot image, becuase i didnt like the way it looked a
+		new image for:
+		    advanced combat robot.
+		    advanced survey robot
+		    advanced salvage robot
+		    and 1 other
+    new:
+        added a pop growth modifier to the 'robotic worker assembely' when it has a alpha core.
+        added config for robotic population market costs.
+        added config for 'cant instal text' for AIRetrofit
+    fixes:
+        fixed 'robotic worker assembely' not showing what its improvement modifier does.
+        added relevant configs for this industry.
+        fixed issues with wired unsaid requirements when founding a robotic population market.
+        (hopefully) better organized the config.
+        fixed AIRetrofit being able to be put ships with no crew requirments.
+        fixed Automated Ship Installation Center being able to accept and modified ships that required no crew.
+    background: moved some random file around. removed the activation conditions of some not yet functional market conditions.
+v0.7.8:
+save compatible with 0.7.3+
+    fixes:
+        added a config to turn on/off the logs relating to market growth at will.
+        fixed missing AI core display on the following industry
+            -all personal robot manufactorys
+            -Automated Ship Instalation Center
+            -robotic worker assembely and its upgrades.
+            -NOTE: there is likely a few i missed on this pass. ill fix them latter.
+    changes:
+        rebalanced the experimental building, so its no longer borderline worthless. this will be its final form for a long time.
+
+v0.7.7:
+save compatible with 0.7.3+
+    fixes:
+        -FINALLY fixed market growth. it is tested and 95% working. i hope
+            -free port might still give extra growth though. ill fix that finial thing latter
+        -fixed a issue with robot manufactures, that caused them to produce to mush / little depending on improvements and AI cores.
+    new:
+        made robots display how mush cargo space they take up, because i forgot to add that before
+        made the personal survey robot manufactroy beta core modifier do something
+        added all the config files for the personal robot manufactroy's
+v0.7.6:
+save compatible with 0.7.3+
+    new:
+        added 3 new buildings, to produce robots at your supply point each moth.
+        they can be built on non AI population worlds, so long as you have the robot building skill thing.
+
+        added 2 more tires of robots (called advanced or [REDACTED]).  buildable if you have a personal robot forge of any type, with ether a alpha-Core or a [REDACTED] inside
+v0.7.5.1:
+save compatible with 0.7.3+
+    fixes:
+        fixed robots always giving a single robot of crew power.
+v0.7.5:
+save compatible with 0.7.3+
+    new:
+        added a way to see what power a given robot has, so no more guessing on why they are so weak/strong today.
+        added a setting to toggle weather or not your ships that launch from AI-Pop worlds have there 'marines' and 'crew replaced' with 'combat robots' and 'salvage robots'
+    balance:
+        'robotic worker assembely' build time:      60 -> 30
+        'robot worker factory' build time:          90 -> 60
+        'robot worker production center' build time:120 -> 90
+        reason: building the pop growth buildings took far to long. especially the first one.
+    fixes:
+        removed a testing crewReplacer crew
+        fixed combat robots power and priority for nex invasions and hijack marines being swapped
+        updated robots custom crew power to the crewReplacer system.
+    background work:
+        started work on the last missing market buildings.
+
+v0.7.4.2:
+save compatible with 0.7.3+
+fixes:
+    removed a broken reference that was causing a crash at the end of every month i swore i test my updates before posing them
+v0.7.4.1:
+save compatible with 0.7.3+
+fixes:
+    fixed a crash involving my fleet inflater and 'Automated Ship Instalation Center'
+    fixed 'Automated Ship Instalation Center' not being able to install things on capital ships, and being unable to remove S-Mods
+v0.7.4:
+save compatible with 0.7.3+
+new:
+    stated work on a new industry that lets you change the population type of a normal market between a normal market, and a AI-Pop market, at a cost.
+        -this industry is only kinda working. it has a option to enable in the config
+fixes:
+    fixed an edge case crash that was happening for some reason after you got your first AI-Pop market
+    fixed the build time for some buildings.
+v0.7.3:
+not save compatible with any older version.
+fixes:
+    made it so you get the robot forge ability after visiting an market when you have the robot forge hullmod.
+    AIRetrofit hullmod:
+        reduced how bloated the modular opp cost of AI Retrofit hullmod was (from 27 hullmods + 27 scripts to 10 hullmods and 1 script)
+        (hopefully) made the description of the hullmod respect what ship you are looking at, and stop giving wildly inaccurate guesses on the opp costs of this hullmod.
+    found a AI market:
+        (hopefully) fixed the buggy nature of the script that sometimes caused issues (thanks Histidine, for helping with that issue)
+
+balance:
+    AI-Pop market growth:
+        changed the robot factory set of buildings to now produce population on market/system/faction, depending on upgrade level.
+            lv0: provides 3 * size growth to the world its built on
+            lv1: provides 5 * size growth, divided between to all friendly AI-Pop markets in system (based on each worlds market size)
+            lv2: provides 10 * size growth, divided between all same faction AI-Pop markets in the sector (based on each worlds market size)
+    industry cost, build time, and upkeep cost:
+        a lot of old industry's were overpriced. i thought they would produce credits but you need demand for a good to sell it.
+        reduced cost of all industries by a lot.
+        moderately reduced upkeep on some buildings, raised it on others.
+    population and instructor on AI-Pop markets have changed stability:
+        + 2 stability base.
+        + 1 for meeting 'Maintenance Parts' demand
+        + 1 for meeting 'Human Interface Node' demand
+        + 1 for meeting 'Command Relay' demand
+        + 1 for meeting 'Sub-Command Node' demand
+        - 1 for not meeting 'Maintenance Parts' demand at all sizes
+        - 1 for not meeting 'Human Interface Node' demand at size 4+
+        - 1 for not meeting 'Command Relay' demand at size 4+
+        - 1 for not meeting 'Sub-Command Node' demand at size 5+
+new:
+    added an option to add the AIRetrofit hullmod, robot forge hullmod, and robot forge ability at the start of your game
+    industry:
+        added a new industry called Robotic Shipyard, that is can be built at an AI-Pop market and is able to slowly add a improved version of AIRetrofits to ships.
+improvements:
+    (thank you to the editor: Capesh) added manny manny spelling and grammar fixes to a lot of things from the last update. made things a lot easier to understand as well. thank you <3
+prep work:
+    prepared for a few more miner industry's to be added latter
+modding:
+    crew replacer:
+        added support for the following jobs:
+        1) crew replacer's          'Mission_hijack_marines'     (steal a starship missions) with 'combat robots'
+        2) crew replacer's          'repairHyperRelayCrew'       (repair hyper relay)        with 'salvage robots'
+        3)Nexerelin 0.10.5x beta    'nex_groundBattle_marines'   (invasions)                 with 'combat robots'
+    compatibility:
+        made it so you get the AIRetrofit ability, and hullmods after getting the AI-Ships skill. this makes this mod compatible with other mods that change the AIShips skill.
+
+
+
+v0.7.2:
+save compatible with v0.7+
+fixes:
+    made the AI-Retrofit hullmod respect logistic slots.
+    made the robot forge hullmod respect logistic slots.
+improvements:
+    improved the robot forge ability tooltip to be more useful.
+    replaced the required gamma-core (for founding AI markets) with 10 sub-command nodes.
+new:
+    can now make sub command nodes in the robot factory
+    can now turn sub command nodes into LV1 officers with an chosen personality, at an cost.
+        -officers made in this way work exactly like normal officers. just an portrait and name change.
+    can now turn sub command nodes into basic administrators, at an cost.
+        -administrators made this way work exactly like normal administrators. just an portrait and name change.
+
+thoughts:
+    regarding the gamma-core change, for some reason i thought gamma cores were really common. they are not.
+    also i will likely change the 'create officer/admen thing' in the feature..
+    this will be the last 'save compatible' update. the next update will change market things and not be save compatible.
+    this update was impulsive, and not the best. things will be polished latter.
+
+v0.7.1:
+save compatible with 0.7.
+improvements:
+    upgraded robot forge description number in the forge selection, so it looks like the rest of the game now.
+    gave the op cost per crew from AIRetrofits its own config.
+balance:
+    *the robot forge felt extremely weak in testing. to the point it was -boring-. this felt better. nanoforge not tested.
+    -changed the default robot forge power from 1 power per 500 crew, to 1 power per 100 crew
+    -changed the way nanoforges were calculated, so its now caped at the robot forge power from your robot forges.
+    -changed C-nanoforge power from 0.025 to 1.
+    -changed P-namoforge power from 0.075 to 5.
+
+fixes:
+    -changed the way peoples names and pictures at AI markets were changed. it should work 100% of the time now (hopefully.)
+
+v0.7:
+-an slight update to robotic workers were they are buffed by having AI cores in your cargo, and weakened slightly when you have none.
+-an way to create an market using salvaging robots instead of crew.
+ -the new markets include new portraits and names for captions and admen
+ -the new markets have some supply demand changes, that should work with all mods
+ -the new markets have an completely different set of growth speed modifiers, to be changed latter
+ -the new markets will have some general weirdness.
+ -fleets spawned by this market type of market, belonging to the faction that ownes it, will spawn with the AI-Retorfits hullmod, as well as salvage and combat robots instead of crew and marinas
+  -do away with humons. bad humons. robots will rule muahaha
+ -an bunch of missing images. for real its really bad, but i wanna starsector
+ -an bunch of disable fetures, to be added in like latter, that add more flavor to this silly silly change. already partly in but disabled for save compatibility latter.
+ -and before i forget, you need an bunch of things before your robot markets will have stability. enjoy.

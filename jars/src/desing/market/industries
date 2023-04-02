@@ -1,0 +1,360 @@
+issues:
+    -(done)right now all exstra industries only serve to slow down your game, and this kinda sucks.
+        -option 1: reduce cost
+            reducing the cost means creating the industries first will be less painfull.
+        -option 2: make all industries do something cool
+            still has the same issue, the market MAKES you make them even if they are usefull.
+        -option 3: reduce penalties for not having industries.
+            right now, not having anything provides an massive penalty to stability. unacceptable.
+            instead reduce the penalty to -1 per item, but only after market at market sizes 4,5,6.
+            example:
+                at size 3+, -stab from missing maintains parts.
+                at size 4+, -stab from human interface nodes
+                at size 4+, -stab from missing command relays.
+                at size 5+, -stab from missing sub command nodes.
+            also proved an boost in stability for having said upgrades:
+                +stab from meeting maintains parts.
+                +stab from meeting human interface nodes.
+                +stab from meeting command relays.
+                +stab from meeting sub command nodes.
+
+    -right now, there is no 'fun' to be had from an AI market. this might help:
+        option 1: add new industries that do new things to an AI market.
+            right now, an AI market provides nothing -new- lets change that.
+            ideas:
+                -add an industry (or building) to produce high tech robots
+                    -high tech robots could have 2X power for the same size, but not be producible by the players fleets robot forges.
+                    -having this industry could make all ships coming from this market hold high tech robots instead of normal ones.
+                -add an industry (or building) to upgrade ships with an free AI retrofit
+                    -have this building create an ship storage (like the repair dock) that uninstalls 'AI-Retrofits' (if applicable)
+                     and installs 'built-in AI-Retrofits' at an rate of 8/4/2/1 ships per moth.
+                    -have this industry make all same faction AI market ships from this system have the 'built-in AI-Retrofits' instead of the normal 'AI-Retrofits'
+cost data:
+    build cost (number X 5000)
+    time (days)
+    upkeep (low = 1-5,mid = 6-9,high = 10+)
+Industry:
+    AI-Ship instalation fasility:
+        supply:
+            nothing
+        demand:
+            AIretrofit_SubCommandNode:  (1)
+            AIretrofit_WorkerDrone: (3)
+        cost:
+            build cost: 20 (100k)?
+            time:       40 days?
+            upkeep:     6?
+            industry: false
+        extra:
+            give all ships from same faction AI markets in system an advanced version of AI-Retrofits.
+            takes sub command nodes to function
+            adds an shipyard to the world that adds an advanced version of AI-Retrofits to ships at an rate of 8/4/2/1 ships per moth, depending on ship size.
+            can be improved to 16/8/4/2 ships per moth depending on ship size
+        thoughts:
+            not an industry. dost not produce income. potentially massively powerfully for player fleets.
+            2 large ships an moth + alpha core requirement for the best upgraded ships provides counter balance.
+            should have an high cost for an non industry.
+        AI cores:
+            an idea is to allow AI cores to change the effect of the hullmod on ships built in this shipyard / spawned by the faction.
+            Gamma-Core:
+                - no opp cost
+                -remove min crew.
+                - permanent
+                - +100% supply use.
+                - +50% repair times.
+            Beta-Core:
+                - no opp cost
+                - permanent
+                -remove min crew.
+                - +75% supply use.
+                - +100% repair times
+            Alpha-Core:
+                - no opp cost
+                - permanent
+                -remove max and min crew.
+                -give the ship opp per removed crew
+                -(cap extra opp at 5/10/20/40 per ship size)
+                -cant install robot forge on this ship
+                - +100% - 150% supply use, depending on % of bonus opp gained
+                - +100% repair times.
+            Omega-Core:
+                -???
+            default:
+                - no opp cost
+                -permanent
+                -remove min crew.
+                +100% supply use
+                +100% repair times
+
+    population and infrastructure:
+        -(working on)replace image
+        -(working on)replace name
+        -(working on)replace description
+        -(done?)replace demand/supply
+        cost:
+            same as normal population
+        extra:
+            right now, increases stability to ridiculous levels. need to fix that
+        AI-Cores:
+
+        thoughts:
+            a lot of new industry might need to be added, for not making AI markets to simple
+            most likely, i will make them require the 'robotic population' market condition im using to control all of this.
+
+    -robotic drone factory T0:
+        -requires everything robotic drones require
+        -requires (robot frames?)metals and robotic replacement parts?
+        supply:
+            AIretrofit_WorkerDrone: size(?)
+        demand:
+            metals:         size
+            rare_metals:    size - 1
+            heavy_machinery:size - 2
+        costs:
+            build cost: 15 (75k)
+            time:       60
+            upkeep:     3
+            industry: false
+        AI-Cores:
+            gamma: normal
+            beta: normal
+            alpha: normal + growth boost
+        extra:
+            if stocked, builds drones at supply ponit and provides population growth.
+
+    -robot drone factory T1:
+        supply:
+            AIretrofit_WorkerDrone: (?)
+        demand:
+            metals:                 (?)
+            rare_metals:            (?)
+            heavy_machinery:        (?)
+        costs:
+            build cost: 30 (150k)
+            time:       90
+            upkeep:     8
+            industry: true
+        AI-Cores:
+            gamma: normal
+            beta: normal
+            alpha: normal + growth boost
+        extra:
+            provides population to friendly AI markets in system
+
+    -robot drone factory T2:
+        supply:
+            AIretrofit_WorkerDrone: (?)
+        demand:
+            metals:                 (?)
+            rare_metals:            (?)
+            heavy_machinery:        (?)
+        costs:
+            build cost: 30 (150k)
+            time:       120
+            upkeep:     14
+            industry: true
+        AI-Cores:
+            gamma:
+            beta:
+            alpha: normal + groth boost
+        extra:
+            provides population to friendly AI markets in system
+
+    -(req re-balance)AINode production facility:
+        supply:
+        demand:
+        cost:
+        extra:
+        produces:                                   2200 - 6100
+            AIretrofit_SubCommandNode:  size - 2:   850 - 3400
+            AIretrofit_CommandRely:     size:       1350 - 2700
+        costs:
+            build cost: 25 (125,000)
+            time:       100 days
+            upkeep:     10
+            industry: true
+        AI-Cores:
+            gamma:
+            beta:
+            alpha:
+        extra:
+            no bonus or minus planed
+
+    -(req re-balance)robotic maintenance facility:
+        supply:
+        demand:
+        cost:
+        extra:
+            -provides stability while stocked
+            -builds maintains pacts
+            -builds robotic replacement parts
+            -(?)builds robot frames
+            -requires mettle's and transplants and heavy machinery
+        produces:                                           2100 - 5700
+            AIretrofit_maintainsPacts:          size:       2100 - 4200
+            AIretrofit_roboticReplacementParts: size - 3:   0 - 1500
+        costs:
+            build cost: 15 (75,000)
+            time:       70
+            upkeep:     2
+            industry: true
+        AI-Cores:
+            gamma:
+            beta:
+            alpha:
+        extra:
+            1 stability on worlds with AI pops
+
+    -(req re-balance)synthetic production center:
+        supply:
+        demand:
+        cost:
+        extra:
+        -builds human interface node
+        requires organics and harvested origins, and robot frames?
+        produces:                                800 - 3200
+            AIretrofit_SubCommandNode: size - 2: 800 - 3200
+        costs:
+            build cost: 35 (150,000)
+            time:       120
+            upkeep:     13
+            industry: true
+        AI-Cores:
+            gamma:
+            beta:
+            alpha:
+        extra:
+            reduces stability on worlds without automated pops
+
+    -(maybe not)population relocation node:
+        supply:
+        demand:
+        cost:
+        extra:
+        produces:
+
+        costs:
+            build cost: 60
+            time:       60
+            upkeep:     10
+            industry: true
+        extra:
+            targets an world.
+            well targeting said world, make the world:
+                reduce stability (by population size + 3)
+                require an very large amount of combat drones.
+                require an small amount of survey drones.
+                require an small amount of worker drones.
+                provide an population decline.
+                if robot demand not meet, smaller population decline.
+                when population reaches 3 (or maybe 1..) add the AIpop market condition
+            well targeting said world, make the industry:
+                cost mush more credits
+            if this world, or the target world, are taking by another faction remove this effect.
+
+
+manufactures
+    new plan:
+    basic robot drone manufactures:
+        upgraded: salvage, survey, combat drone manufactures
+        downgrade:null
+        supply:1 salvage, survey, and combat robot.
+        demand:1 rare_metal, metal, volatiles, and heavy armaments
+        cost: low. upkeep low.
+        AI-Cores:
+            gamma: more output
+            beta: slight improvement to pop growth, ground defence, and - lucic path attraction
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic salvage, survey and combat robots in low number, at the end of the month.
+        industry: false
+
+    salvage drone manufactures:
+        upgraded: advanced salvage drone manufacture
+        downgrade: basic robot drone manufactures
+        supply: 3 salvage robots.
+        demand: 3 metals. 1 rare metals. 1 heavy machinery
+        cost: low. lower mid upkeep
+        AI-Cores:
+            gamma: more output
+            beta: improvement to pop growth. removed demand for population from factory's when pop is at max level.
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic salvage robots in lowish number, at the end of the month.
+        industry: false
+    survey drone manufactures:
+        upgraded: advanced survey drone manufactures
+        downgrade: basic robot drone manufactures
+        supply: 3 salvage robots.
+        demand: 3 metals. 1 rare metals. 1 volatiles
+        cost: low. lower mid upkeep.
+        AI-Cores:
+            gamma: more output
+            beta: -lucic path attraction
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic survey robots in lowish number, at the end of the month.
+        industry: false
+    combat drone manufactures
+        upgraded: advanced combat drone manufactures
+        downgrade: basic robot drone manufactures
+        supply: 3 combat robots.
+        demand: 3 metals. 1 rare metals. 1 heavy armaments.
+        cost: low. lower mid
+        AI-Cores:
+            gamma: more output
+            beta: improved ground defence.
+            alpha: increase the robot tier by one
+        improve: more output
+        extra: outputs to local storage basic combat robots in lowish number, at the end of the month.
+        industry: false
+
+
+
+
+
+
+    robot drone manufactures:
+        supply:
+        demand:
+        cost:
+        AI-Cores:
+            gamma:
+            beta:
+            alpha: normal + increased drone output
+        extra:
+        industry: false
+        6 types:
+            salvage drone
+            survey drone
+            combat drone
+                -adds an defence power multiplier (building combat robots on site)
+            advanced salvage drone
+            advanced survey drone
+            advanced combat drone
+                -adds an defence power multiplier (building combat robots on site)
+        allow each world to have one of each?
+        the advanced versions replace all same type robots in cargo with itself (basic salvage to advanced salvage, for example)
+
+        3 options:
+            1 per world.
+                -heavy restricted robots. less clutter in build menu (1 item)
+            1 of each type per world.
+                -only having one type of robot at an time on an world. restricted building. slightly less clutter in build menu (3 items)
+            allow all to be constructed on each world.
+                -no restrictions. all robot types on every world, if you want to. lots of clutter in build menu (6 items.)
+            1 per world, but have it be verbal (like stations are) so i can chose from one menu with no issues?
+            is this even possible?
+        basics:
+            cost:
+                build cost: 10
+                time:       30
+                upkeep:     3
+                industry:   false
+
+        advanced:
+            cost:
+                build cost: 20?
+                time:       50
+                upkeep:     6
+                industry:   false

@@ -1,0 +1,567 @@
+basic idea:
+replace an colony ran by people with an colony ran by robots.
+why? cause i wanted to make an gameplay style that is completely different from normal.
+
+to do list right now:
+-move this file into 7 files in an folder.:
+    -1 for market growth.
+    -1 for industries
+    -1 for fleets.
+    -1 for stability changes.
+    -1 for to do list
+    -1 founding market
+    -1 market conditions
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+DELAYED!
+(95% done!)get growth working
+    -finilize growth modafications. things like the - from missing income, or other things.
+    -(done) found out why growth code is working. everything i have + this is enother to get it functional! so look in crew replacer for this code and COPY IT OVER!!!
+        -(done)public class crewReplacer_SupplyDemandListiner implements EconomyAPI.EconomyUpdateListener {}
+        -(done)(in on game load.)
+        -(done)crewReplacer_SupplyDemandListiner a = new crewReplacer_SupplyDemandListiner();
+        -(done)Global.getSector().getEconomy().addUpdateListener(a);
+        -(bug) code that increases population demand for resorses well hazard pay is onlline, never turns off once on?
+(FAILED?)try to remove the override population industry.
+    -HERE I dont think this is 100% possible... better to make an supplydemandchange as an backup, but keep it dormant.
+    -why? because if someone else overrides it.... it would look very silly when my population talks about people.
+    -how? with supply demand classes, it might be possible to do everything i do here, there. however testing is required.
+get replacement commodities and industries working:
+    -make images for commodities and industries.
+set colony people portraits and names
+    -find out how to do this. its probably an listener.
+    -need to do com people? and people at the bar.
+    -use AIRetrofit_canBuild to find out if i should (for each person)
+
+    -ok here is what i think:
+    -have an option to replace people with AI's (replace there names and portrats).
+        -im on the fence about this. this could replace important people with AI's, and that would be wired? but also kinda cool. im hesitant to do so.
+    -when i create an new market, always replace the people with AI's.
+    -people at the bar that are from the founding faction will be AI's.
+make the remaining market conditions, and code there interactions.
+    i will need to add an way to reduce the 'HP' of an market condition for some of said market conditions, as they can represent an ongoing conflict.
+    -AILudicWar
+    -BrokenAIWorkers
+    -LudicPathWatchers
+    -PurgingAIWorld
+        -needs a way for the player to stop / start an AI purge all on there own.
+    -UnbrokenAIWorkers
+    -AIPOP
+        -need to add market condition changes.
+
+find a way to edit the AI Inspection event to make it more detect my world as hostile, and try an saturation bombardment
+
+Design:
+    Fleets:
+        fleets need to be changed into AI fleets, provided they have an robot world as there 'home'
+        they need to:
+        -(DONE)add on the hullmod AI-Retrofit
+        -(DONE)change there image and names of all AI captions
+        -(partly DONE?)replace crew with salvage robots and survey robots in inventory
+        -(DONE?)replace marines with combat robots in inventory
+        -add new dialog if the ships faction is yours
+
+    Market modifiers:
+        markets need to remove all reference to crew and there requirements, and replace them with new ones.
+        they need to:
+        -replace the following commodities with others:
+            demand:
+                for everything:
+                    (done)crew      -> AIretrofit_WorkerDrone
+                    (done)marines   -> AIretrofit_CombatDrone
+                    (done)drugs           ->  SurveyDrone
+                    (done)Domestic Goods  ->  Command Rely
+                    (done)Food            ->  maintains pacts
+                    (done)Luxury Goods    ->  human interface node (might want human interface nodes sometimes?)
+                    (done)Harvested Organs->  robotic replacement parts
+                for population:
+                    (done)Organics        ->  sub command node (only need to replace for population)
+            supply:
+                for everything:
+                    (done)crew          -> AIretrofit_WorkerDrone
+                    (done)marines         -> AIretrofit_CombatDrone
+                for population:
+                    (done)drugs     -> AIretrofit_SurveyDrone
+                    (done)Harvested Organs-> robot replacement parts
+
+        -industry:
+            population and infrastructure:
+                -(working on)replace image
+                -(working on)replace name
+                -(working on)replace description
+                -(done?)replace demand/supply
+
+        -replace the population growth speed:
+            normal colonly growth rate
+                without hazzrd pay:
+                   base: 9,52
+                   hazzard: -20,4
+                   total range: -12,56
+                with hazzard pay:
+                    base: 14,57
+                    hazzard: 0,4
+                    total range: 14 , 61
+                hazzard pay cost:
+                    (growth penalty from hazzard + 5) x 1000 cr/ month
+                    (20,-4) +5 = (25,1) X 1000 cr / month
+                    (25,000,1,000) cr / month
+                (0,15)Accessibility (+1 growth point for every 10% accessibility, or -1 for every 10% below 0% accessibility)
+                Instability (-1 growth point for every stability point below 10)
+                (4,-20)Hazard rating (-2 growth points for every 25% hazard rating above 100%, and vice versa for below 100%)
+                (5,25)Free Port status (+5 growth points, increases to +25 growth points over 1 cycle/365 days)
+                (2)Spaceport (+2 growth points)
+                (1,6)Megaport (+1 growth point per colony size)
+                (1,6)Decivilized Subpopulation (+1 growth point per colony size)
+                (+5)Hazard pay (counters the hazard penalty and +5 growth points)
+                (?)Larger, non-hostile markets in system (increases rate)
+                (?)Shortage of commodities for industries (decreases rate based on shortage)
+            basic growth:
+                total:(size 1 - 5)
+                    without growth essentives:
+                        (4,14)
+                    with growth essentives:
+                        (18,52)
+                (?)stability based growth:
+                    -should have an lowish bonus at max stability.
+                    -should have no bonus at 5 stability
+                    -should start to apply an harsh negative at low stability
+                robot forge based growth:
+                    -(3)+3 before upgrade
+                    -(6,9)size +3 after upgrade
+                    -not upgraded should give an static growth mod
+                    -upgraded should scale with colony size
+                population and infastructor based growth:
+                    -(size X 1) base growth rate
+                    -(X)should give population growth based on supplied import of worker drones
+                    -(-1 growth per missing thing)should give negative population growth based on not supplied import of maintenance parts, and replacement parts.
+                    -might replace the stability mod
+                growth incentives based growth:
+                    (X)(9,15 at 100% supply)(size X supply% X 3)
+                    (X)(25,40)((size x 5) + 10 x supply%)
+                    (X)(23,42)((size x 6) + 5 x supply%)
+                    (X)(18,36)((size x 6) x supply%)
+                    ()(14,38)((size x 8) - 10 x supply%)
+                    this is you pumping credits into something to try and make it grow faster.
+                    should provide an high growth bonus.
+                    (maybe) add on some extra worker drone demand to population. this is you importing more drones? then base the growth of that
+                        -might not make mush sense. your workers are cant just be shipped in from no were. also this is not whats happening.
+                        -this is not an fun option. it also makes little sence. this is more you paying to have drones grow, but you already do that with imports
+                    (maybe) add an demand to population for metles, rare metles and heavy machinery based on population size.
+                        -have population output more worker drones (based on meet demand). have the worker drone output also increase the population growth.
+                        -effectively this is putting to getter more robots without the proper setups. something used when times are hard, or deadly. such is life.
+
+
+            passive growth:
+                (done)remove all population speed bonuses from everything
+                (done)add an population growth bonus for growth incentives
+                (done) add an industry that builds population
+
+            active growth:
+                (?)add an ability to ship population around.
+                    -(??) might be redundant. industrial evolution dose this.
+                    -it should add a growth bonus to an world, and an growth negative to another
+                    -it should act like an static number of robots are being moved (so at speed 100: -10% growth at size 3, -1% at size 4, -0.1% at size 5)
+                    -it should add an negative planet modifier on the world that its taking population from
+                    -it should add an negative and positive modifier on the world its going to.
+                    -(?)it should be able to down level a population all the way to zero
+            max growth:
+                this population is not limited to a maximum amount of people on it. it requires no people to want to live here.
+                should it be able to grow to an larger word? and if so, how big?
+                population limit:
+                    if it dose it should be based off world size.
+                    it makes sense that an world could only carry an max amount of workers, before expansion is not possible
+                    also hazardous worlds should have an smaller cap. as hazardous places are harder to live, requiring more infastuctor per worker.
+                stealth limit:
+                    it gets MUSH harder to hide an world like this if there are to many pops.
+                    only so many signals into the void, and moving mettle masses, until everyone that comes to trade will say 'wat the hell'
+                control limit:
+                    an reliance on custom made command cores comes with its disadvantages. one of them is that more population means
+                    harder to control population, as command cores and command relays become overwhelmed by the incoming data.
+                    could be increased with AI cores, but that might be an bad idea.
+
+        -stability:
+            base game market stability acts like there are people on the world, whence why, when times are hard, the government might collapse (decivalize)
+            therefore, a population of robots should not be as easy to destabilize as easily, but it should still be possible (complete market collapse, or an failure to keep AI control nodes online)
+            thus an robotic markets stability should be modified by the following:
+                -an positive modifier, just from being an AI population
+            and should be not be modified by:
+                -certain planetary modifiers (like having an world full of drugs)
+            regarding an complete deciv:
+                -should still be possible to do from raiding (robots preparing an defence can be costly, and disorganize the carefully
+                organized population. this happens to chaotically it should be able to cause significant damage.)
+                -in fact should still happen by loss of supply as well. AI cores cant function, market dies without controls for the drones.
+
+        -market conditions:
+            -devitalized subpop should act differently (more - stability,no pop growth. the dominion people likely hate AI's and will try to fight them)
+            -any drug modifier: should not matter here.
+            -holy grown type modifiers: should have risk. it will attract people, if they find out. and they will try to remove the AI's
+            -habitable worlds: should provide no changes? (dont know about this one)
+            -bi-weapon provide no negatives? (or maybe a defencive bonus. )
+
+        -people:
+            administrators, bar people, extra.
+            -give people new images and names
+            -probably don't give them new dialog. to complicated for me
+        -descriptions:
+            -should be modified somehow. don't know how
+
+    Industry:
+        a lot of new industry might need to be added, for not making AI markets to simple
+        most likely, i will make them require the 'robotic population' market condition im using to control all of this.
+
+        -(started)robotic drone factory:
+            -requires everything robotic drones require
+            -if stocked, builds drones at your supply point, and provides population growth bonus
+                -maybe let it upgrade into itself, but let its upgrade have the options to target a world to send robots to?
+            -maybe let it upgrade into something that produces advanced workers?
+            -maybe let it upgrade into something that produces lots of one type of worker?
+            -requires (robot frames?)metals and robotic replacement parts?
+            produces:                     3000
+                AIretrofit_WorkerDrone: 2:1200
+                AIretrofit_SurveyDrone: 2:800
+                AIretrofit_CombatDrone: 2:1000
+            costs:
+                build cost: 15
+                time:       60
+                upkeep:     3
+            extra:
+                if stocked, builds drones at supply ponit and provides population growth.
+        -advancedrobotic drone factory:
+            -requires everything robotic drones require
+            -if stocked, builds drones at your supply point, and provides population growth bonus
+            produces:                        4500 - 9000
+                AIretrofit_WorkerDrone: size:1800 - 3600
+                AIretrofit_SurveyDrone: size:1200 - 2400
+                AIretrofit_CombatDrone: size:1500 - 3000
+            costs:
+                build cost: 50
+                time:       90
+                upkeep:     8
+            extra:
+               if stocked, builds drones at supply point and provides population growth.
+        -robot carrier service:
+            -costs population growth to use.
+            -let it upgrade into a building that sends population somewere?
+            produces:
+
+            costs:
+                build cost:
+                time:
+                upkeep:
+            extra:
+                lets you apply an heavy population drop to this world, and an population increase to another world
+                can only be built on world with automated pops
+        -(started)AINode production facility:
+            produces:                                   2200 - 6100
+                AIretrofit_SubCommandNode:  size - 2:   850 - 3400
+                AIretrofit_CommandRely:     size:       1350 - 2700
+            costs:
+                build cost: 70
+                time:       100 days
+                upkeep:     10
+            extra:
+                no bonus or minus planed
+        -(started)robotic maintenance facility:
+            -provides stability while stocked
+            -builds maintains pacts
+            -builds robotic replacement parts
+            -(?)builds robot frames
+            -requires mettle's and transplants and heavy machinery
+            produces:                                           2100 - 5700
+                AIretrofit_maintainsPacts:          size:       2100 - 4200
+                AIretrofit_roboticReplacementParts: size - 3:   0 - 1500
+            costs:
+                build cost: 30
+                time:       70
+                upkeep:     4
+            extra:
+                1 stability on worlds with AI pops
+        -(stared)synthetic production center:
+            -builds human interface node
+            requires organics and harvested origins, and robot frames?
+            produces:                                800 - 3200
+                AIretrofit_SubCommandNode: size - 2: 800 - 3200
+            costs:
+                build cost: 70
+                time:       120
+                upkeep:     10
+            extra:
+                reduces stability on worlds without automated pops
+        -(maybe not)population relocation node:
+            produces:
+
+            costs:
+                build cost: 60
+                time:       60
+                upkeep:     10
+            extra:
+                targets an world.
+                well targeting said world, make the world:
+                    reduce stability (by population size + 3)
+                    require an very large amount of combat drones.
+                    require an small amount of survey drones.
+                    require an small amount of worker drones.
+                    provide an population decline.
+                    if robot demand not meet, smaller population decline.
+                    when population reaches 3 (or maybe 1..) add the AIpop market condition
+                well targeting said world, make the industry:
+                    cost mush more credits
+                if this world, or the target world, are taking by another faction remove this effect.
+
+    Commodity's:
+        price:          base price you pay in market
+        export value:   base income you get per unit of output
+        econUnit:       the number of items perduced per output
+        eU * base value:econUnit * price. for contact missions
+            -this value is litterly that. no idea why they need it so badly
+
+        -(done)salvage robots:
+            price:          75
+            export value:   600
+            econUnit:       300
+            production cost:
+        -(done)survey robots:AIretrofit_SurveyDrone:
+            price:          75
+            export value:   400
+            econUnit:       250
+            production cost:
+        -(done)combat robots:
+            price:          150
+            export value:   500
+            econUnit:       200
+            production cost:?
+        -(?) advanced robot types:
+            maybe as some type of reason to get an colony besides the flavor?
+            -would be stronger then normal workers, but would not be able to make them yourself (to complicated)
+        - (done)Command Rely:AIretrofit_CommandRely
+            price:          (100)mid
+            export value:   (450)mid
+            econUnit:       (500)mid
+            production cost:?
+        - (done?)maintains packs:AIretrofit_maintainsPacts
+            made in large quantity, individually useless, together highly valuable
+            price:          (20)very low
+            export value:   (700)mid
+            econUnit:       (2000)very high
+            production cost:low
+        - (done)Sub Command Node:AIretrofit_SubCommandNode
+            price:          (350)high
+            export value:   (850)high
+            econUnit:       (200)low
+            production cost:?
+        - (done)robotic replacement parts:AIretrofit_roboticReplacementParts
+            price:          (50)low
+            export value:   (500)mid
+            econUnit:       (500)mid
+            production cost:low
+        - (done?)human interface node:AIretrofit_humanInterfaceNode
+            price:          (500)very high
+            export value:   (800)high
+            econUnit:       (100)very low
+            production cost:very high
+
+        need to replace the following:
+            (done)crew      -> WorkerDrone
+            (done)marines   -> CombatDrone
+            drugs           ->  SurveyDrone
+            Domestic Goods  ->  Command Rely
+            Food            -> (?) maintains pacts
+            Luxury Goods    ->  human interface unit
+            Harvested Organs-> (?) robotic replacement parts
+            Organics        ->  sub command node (only need to replace for population)
+
+
+    Events:
+        having an robotic world should be a risk. i have no doubt in my mind, that if any faction in the base game were to see they
+        they would act. how would depend on the faction.
+        how factions would react:
+            -Hegemony:          destroy it then hunt you down. if they know it was you at least.
+            -Luddic Church:     destroy it and hunt you down. in the name of god?
+            -Persean League:    unknown. badly probably
+            -Sindrian Diktat:   unknown. badly probably
+            -Tri-Tachyon:       take over the market, and use the drones there to there own end. likely not anything
+                                they don't know already, but they might learn something (and manage it better then you.
+                                because they have an better understanding then you from experience)
+            -Independents:      coin flip. if you are in good standing, they might let it slide. they just want to survive.
+            -Luddic Path:       you think there sleeper cells are bad now...
+                                might also not be believed by other factions. since they cry 'evil' at any tec
+                                might be believed by the luddic church
+                                    -if so, the church might send out an investigation team to conform
+            -Pirates:           would this make a difference to them?
+
+            anti robot:         send saturation bombardments to worlds they know about, and think there are robots on.
+                                likely attack you more
+            ya robots:          ask for the technology? support you? go 'there can only be one' and attack? blackmail? unknown.
+        chance of discovery:
+            chance:
+                -should be very low for low pop worlds. and the farther you are from an factions systems.
+                -should be very hard with getting away with founding an robotic world in someone else system
+            AI inspection teams:
+                -i say if a team lands and starts tarring up your 'office buildings' only to fid a bounce of computers everywhere (and no people)
+                they would have an very high chance to look at your other rooms... and find out the THERE ARE NO HUMANS HERE.
+                best to keep them away, if you don't want to be saturation bombardment
+                -on the other hand, they likely would have an harder time finding out. there are less people here, so its
+                less likely that they would be informed something is wrong. granted, the fact they are never informed of mush
+                at all is a bit of a red flag... they would likely still check.
+
+    Invasions and market trading
+        another faction taking an robotic market: (by force or by trade)
+            there is no possible way for you to hide the fact that your market is AI controlled if they take it.
+            if an faction takes this market, and is offended by the existence of bots:
+                -they might attempt a purge.
+                -if an faction takes this market by force, there is a slim chance they might believe that you know about the robots
+                -this faction will become more supisus of you having robotic worlds
+            if an faction is not offended by the existence of bots, they might be willing to keep the market intact. they might also:
+                -start to found there own robotic colony's. as black sites or other. with all the factors that come into play if they do.
+                -give the faction they got the market from an reputation boost
+                -give the faction they got it from an reputation negative
+                -if they find out because you gifted/sold them the world, they might be grateful in being shared this secret
+            if an faction makes landfall(invasion) they will likely notice that something is wrong with there attackers.
+                -suspicion that they have robotic population and worlds
+
+        (?)AI uprising
+            i don't even know if this is a thing in the base game
+            should it happen more? mush more? i don't know.
+
+            there is an new system being added to events. we will see what this can interface when that is out.
+
+    Purge/forced displacement:
+        purge:
+            -when an faction that dose not like AI takes an robotic world, they should be able to preform an purge.
+            -an purge would involve destroying all undesired population, and replace it with there own.
+            -stability penalty. larger for larger markets. groaws larger over time, then smaller as the purge starts then ends
+            -pop growth back down to 3 before the purge ends.
+            -tacks mush longer for larger markets
+            -apply an high resource penalty.
+            -no production drawing this time
+            -if done on people, a massive reputation penalty (like saturation bombardment)
+            -if done on people, a chance of an deciv subpop forming in a while.
+            -sometimes population will escape to other worlds.
+            -possibility of losing the purge if military demands are not meet
+
+        displacement:
+            -when a faction wants to move population out of the world, and onto there worlds. replacing its pop with different pop
+            -stability penalty, as population gets shipped out and then back in.
+            -supply should be reduced slightly for the duration
+            -if done on a humans or an (?)unwilling robotic population it should require military equipment for a while.
+            -gives another world population growth. (unless you just moving them off world to anywhere else.)
+            -(?)(maybe they will know very easily) if enough population are moved, other factions will find out.
+
+    black sites: (is that what they are called)
+        -it should be possible to place down an type of black site. an market that other factions cannot find or trade with.
+        -this black site should be very hard for other factions to raid attack invade or whatever. unless they find it
+        -it should not be able to receive imports or export outside of its faction.
+        -if found, the faction that found it, and its allays should be able to interact with it.
+        -(?) should have the option to fly an false flag and to murder anyone that enters. but members of there 'true' faction
+
+    population types:
+        -need to understand immigration first. that might be key here
+        -total AI population:
+            this is what i have described in this document so far
+        -mostly AI population:
+            and also this
+        -human / AI split:
+
+        -mostly human:
+
+        -human:
+            normal market
+
+    market conditions and interactions:
+        -some market conditions do not make sense on an AI-pop world. they will need to be sorted out.
+        -AIPOP(started):
+            -(done)replaces an market with robots.
+            -(working on)ludic path sleeper cell:
+                ludic path will not stand to sleep on an world like this for now. they hate all tech after all.
+                they will try to become active faster.
+                AIPOP will try to remove the sleeper cell (maybe at an odds of 1 in 20 per momth?
+            -(working on)ludic path active cell:
+                the ludic path will start to wage active warfare vs this market.
+                larger stability penalty.
+                is the market decivs, the ludic would not stop. will create an 'AI-LUDIC WAR' market condition, removeing AI-POP
+                if the hostile activeity continues, might try to add more ludic path cells? (to an limit based on market size?)
+                AIPOP will try to passafy the ludic path cell (maybe at an odds of 1 in 20 per momth)
+                if an military base is present here, the ludic path cell should be destroyed mush faster.
+
+            -(done?)deciv subPOP:
+                if an deciv supPOP exsists on an world with AIPOP and no market, remove decivsubPOP, and add 'broken AI workers'
+                why? because the only condition that could happen is if an AIPOP market devics, and thats not what should go on.
+
+        -(done)AI-LUDIC WAR:
+            this is when an deciv AI is locked in war with ludic path fighters. what should happen:
+            every momth? there should be an chanse that this market condition is removed, and ether 'LUDIC PATH WATCHERS' or ('unbroken AI workers' or 'broken AI workers') should be added.
+            if the market is colonized before this, this mod will add an negitive stability until one wins over the other.
+                AI-POP:
+                    if an AI market is established here, there should be an active or passive ludic cell added to this world.
+                    if stability remains high on the world, or an military base be created the AI-LUDIc WAR should have an higher chanse of the 'unbroken AI workers' being added. or of an AI victory.
+                active ludic path cell:
+                    if an active ludic path cell is here, there should be an increased chance of ludic victory, and an reduced chance of 'unbroken robots' if they fail.
+
+        -(needs config)LUDIC PATH WATCHERS:
+            'an mighty foe from hell has risen here, and we have brought them low. We will keep an detachment here in case such eval ever rises again'
+            this is when the ludic path have destoryed an mighty AI-POP here completely. they will stand gard here for a time? to try and defend this world against the evils of the AI.
+                AI-POP:
+                    if an AI market is estabilished here, ludic path watchers should provide an increaseing - stability up to - 8.
+                    should add an demand of combat robots to this world. if supply is met for long enoth, and stability stays both 5 for long enoth, the watchers should be destroyed.
+                Market founded:
+                    if an market is founded here, nothing should happen. maybe make the watchers buff ludic path cells in this area?
+
+        -(needs buffs to AI market.)unbroken AI workers:
+            this decived AI pop has proven victorious in fighting off an ludic path cell. they will continue to be prepared for an war at all times.
+            this pop will:
+                provide an defensive bonus to AI worlds
+                provide an small amount of population growth to AI worlds.
+                AI-POP:
+                    provide an ground force strength bonus (maybe of 250? 500?, 1.1X?)
+                    provide -1 stability (the AI might try to fight you a little.)
+                    provide an small population growth (the AI will lend its factorys to you)
+                    will provide an +1 to +2 stability well fighting an ludic path cell
+                all markets:
+                    will have an chance of destroying an passive ludic path cell.
+                    will have an chance of passafiing an active ludic path cell.
+                non AI-POP markets:
+                    will provide -2 to -3 stability well fighting an lucic path cell.
+                    will provide an -1? stability.
+                    will be removed if the market reaches size 5+, or has an milatary base.
+                    maybe be removed if an market has an high stability for an long time and keeps an military base operational?
+
+
+        -(needs config)broken AI workers:
+            'parts of the landscape is littered with broken robots and shattered installations. something mighty was brought low here. sometimes, in the rubble, movement can be spotted. the robots tireless trying to complete there work. something impossible with there broken body's.'
+            this is when an AIPOP has been almost compleatly destroyed. there is -something- left, but its not doing anything on its own.
+            AI-POP:
+                will provide an market growth bonus.
+                at pop size 5? will be removed?
+                maybe? gives an building of some type for free when removed? or adds an new market condition.
+
+            other markets:
+                at pop size 6? will be removed.
+                will provide -1 stability until then.
+
+        -(redacted?)AI Sentinels(?):
+            this deciv AI was successful in destroying the ludic path that was at war with it. it became extremely specialized in fighting, and has fortresses and hidden gun emplacements all around the world.
+            an more extreme form of unbroken AI workers?
+            ???
+
+        -(needs to know when to lower size)Purging AI world
+            this AI world is having all its robots and infrastructure purged by its ruling faction.
+            it will reduce in growth of (x = stability)   x * 1.5%/ x * 1%/ x * 0.5% ? per momth.
+            will reduce by one when growth = 0.
+            will be removed once growth < 10, and size = 3.
+            it will reduce stability by size - 2.
+            will increase demand from population and instructor by:
+                marines: 1 x size
+                crew: 1 x size - 1
+                supply: 1 x size + 1
+                heavy machinery: 1 x size - 2
+                food: size
+                heavy wepons: 0.5 X size
+            will reduce all other supply to 0?
+            will reduce all other demand to 0?
+            -LUDIC PATH WATCHERS:
+                will increse the x value of the purge speed by 2.
+                will provide 2 stability.
+            -unbroken AI workers:
+                will reduce the x value of the purge speed by 2.
+                will reduce stability by 2.
+            the player MUST be able to stop the purge if its underway and the player owns the world.

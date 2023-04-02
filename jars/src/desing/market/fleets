@@ -1,0 +1,11 @@
+   Fleets:
+        fleets need to be changed into AI fleets, provided they have an robot world as there 'home'
+        they need to:
+        -(DONE)add on the hullmod AI-Retrofit
+        -(DONE)change there image and names of all AI captions
+        -(partly DONE?)replace crew with salvage robots and survey robots in inventory
+        -(DONE?)replace marines with combat robots in inventory
+        -add new dialog if the ships faction is yours
+
+        -from markets in effect by a 'building that perma installs AI-Retrofits hullmod', have said hullmod instead
+        -from markets in effect of an advanced robotic drone factory, need to have the advanced form of robot drones instead.

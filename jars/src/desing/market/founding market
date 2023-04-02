@@ -1,0 +1,24 @@
+right now how  it works:
+    1) get robotforge + AIRetrofits
+    2) go to world with an gamma core, 200 supples, 200 heavy machener, 1000 robot workers.
+    3) found market
+
+issues: this costs an gamma core. and well i love it for the lore (single supper computer at the center of an market)
+        i dont like the cost. its not worth it. at all.
+
+solution:
+    add an new item called 'AI market core'
+        -make it costly. make it cost sub command noes as well.
+        -make it take like 40 cargo space. just to show how seres it is.
+        -make it with robot forge, over time.
+            -require you to know both hullmods 'AI retrofits', and 'robot forge' before unlocking.
+        -use that instead of an gamma core
+
+
+other issues:
+    nex compatibility:
+        this mod founds markets from other markets.
+        -solution: make it so founding an market from an AI-market will found an AI market. ('AIRetrofit_AIPop' market condition)
+         this might be hard though. will require an compatibility test over an long time =(
+    terraform and station construction compatibility:
+        this mod makes stations with crew. i might have to mack an compatibility patch for us, to have my AI market stations.

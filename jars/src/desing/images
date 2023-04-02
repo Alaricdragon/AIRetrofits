@@ -1,0 +1,81 @@
+ideas for images:
+Items:
+    salvage robot:
+        scrapyard look
+        orb body.
+        on a turret have a head with one glowing red eye on top
+        6 arms. ending in a mix of delect and blockly looking grasper's.
+        thruster on the back, for mobility.
+        cargo bars on the front and one side of body. for storing salvage, materials when working.
+        forward profile.
+        when more are in stack, make more appire in the background, like other crew.
+
+    survey robot:
+        less scrapy look.
+        sat-a-light body.
+        radar dish on the bottom.
+        2 'wings' on side. straight out. like solar panels.
+        on the back have a attena.
+        bottom / forward profile.
+        when more are in a stack make more appire in the background
+
+    combat robot.
+        i like what i have now. but i do want a change.
+        they don't look very starsector, although they do look cool.
+
+    matnace parts:
+        a box, with some tools like screwdrivers, wrenches, and drills sticking out of it?
+
+    humon interface node:
+        looks like a person, but with something just ever so slightly off.
+        baggy clothing? nice suit? a mix, maybe.
+        add more as the stack grows. give the extras different clothing.
+
+industrys:
+name
+    Population & Infrastructure:
+        A Subcommand node, glowing bright blue, with manny wires linking to and from it
+    robotic worker assembely:
+        a converter grasper (think starwars robot factory.) with progressively more put together salvage robots
+        robots will be held by the top? side? unknown.
+        on ether side, macanical arms work puting things on the robots as they pass.
+        or welding things on.
+        a dull red light fills the room?
+        forward right profile
+    robot worker factory:
+        same as robotic worker assembely.
+        but more arms. more robots.
+        try to make it more messy. like its barly keeping up.
+        can see one or two more in the background.
+        forward right profile
+    robot worker production center:
+        same as robotic worker factory.
+        but in the background, can see many more distant lines carrying many more robots.
+        try to make the place look big. some are in the distance. robots are being moved everywere.
+        forward right profile.
+    AI Node Production Facility:
+        a picture of some very small and delcate robotic arms, putting together a partly complete sub command node,
+        parts and tools for said sub command node scattered about
+        up profile. have the sub command node look right into your eyes.
+    Robotic Maintenance Center:
+        a belt, moving and dropping a large amount of tools and robot parts into a box.
+        forward/up/left profile. i want a good view of the tools as they fall into the box, and the belt as it moves them, as well as the contents of the box.
+    Synthetic Production Center:
+        a building with some filled growth vats. what seem to be people shrouded i shouwdo are inside
+
+    AIRetrofit shipyard:
+        a ship being worked on.
+        have salvage and survey robots flying around it.
+        have scaffolding around the ship
+
+        ship should have a forward and left profile, so i can see its profile better.
+        maybe use that one midline carrier? the long one with a rounded nose? i like that one.
+
+    Basic Robot Manufactory:
+        like robot worker assembly, but smaller, with a mix of robot types on the belt.
+    Salavage Robot Manufactory:
+        like basic robot manufactory, but with slavage robots.
+    Survey Robot Manufactory:
+        like basic robot manufactory, but with survey robots
+    Combat Robot Manufactory:
+        like basic robot manufactory, but with combat robots.

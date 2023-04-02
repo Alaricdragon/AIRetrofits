@@ -1,0 +1,162 @@
+to do list:
+    find a way to change hazard pay cost (as the cost right now scales to a worlds hazard rating.)
+    fixes all 'potential issues'
+
+current status of market growth:
+    it works, mostly. only freeport remains resistant to my efforts. might even work on mods as well.
+    implementation:
+        2 parts:
+            in robotic population condition:
+                -removes all removal growth.
+                -proceeds to add a negative modifier, equal to all growth that in theory is active on a market.
+            in the report market updated listener:
+                -hides all growth that is not approved.
+    potential issues:
+        in robotic population condition:
+            -might try to remove growth twice, if the growth was industry / market condition based, and was added before
+             this market condition ran.
+        in market update listener:
+            -this removes all pop growth modifiers from being shown. it makes it hard to see when something is wrong.
+current growth modifiers:
+    factorys:
+        3 tiers of factory's. they provide growth to the world/system/sector they are built on respectively.
+        t0:
+            provides 3*marketsize * (1 + alpha + improved) to the world its build on
+            alpha = .3
+            improved = .3
+        t1:
+            provides 5*marketsize * (1+alpha+hazard+improved) devided between all markers in system (based on market size)
+            alpha = .3
+            hazzard = .3
+            improved = .3
+        t2:
+            provides 10*marketsize * (1+alpha+hazard+improved) devided between all markers in the sector (based on market size)
+            alpha = .3
+            hazzard = .3
+            improved = .3
+    hazzard pay:
+        5 * marketsize
+
+    beta core in 'personal salvage robot manufacture'
+        12
+idea:
+    change the way the factorys work so:
+        instead of creating robots in the factors, they create 'robot frames'.
+            -change exsported / imported comodity
+        instead of only being tied to market size, make the share a world receive also be based around 'accessibility' (so its size * accessibility).
+            shares = markersize -> shares = marketsize * accessibility
+            max size shares: 1 -> 100. (same as size 1 with 100% accessibility)
+        (?)make it so world with a high habitability gain an increased amount of growth from there shares.
+            -100% hazard = 1X growth. 200% hazzard = 0.5X 400% = 0.25X 800% = 0.125X.
+            -0% hazzard = 2X. -100% hazzard to 4X
+            -if i do this, i will need to buff robot factorys.
+            -justify it by saying its because the robots need to be more specialized? or that the robots are breaking down?
+
+        why? because right now all growth is liner. the same. no differences ever. its -borring-. this is more interesting.
+new theory 2:
+    -set cost of hazard pay equal to number of robot production building power X 1000.
+        -improves the pop growth boost of T1 and T2 robot factorys.
+        -provides worlds without robot factorys there own weak robot factory. (only effects them)
+        -costs more for every robot factory tier.
+    -add an set of buildings for pop growth, upgraded from the robot drone factory:
+        T0: basic. provides the world with some pop growth.
+        T1: upgraded from T0.
+            -provides this world with a good amount of pop growth,
+            -provides all robot markets in a system pop growth boost.
+                -pop growth boust == marketsize * (base boost / markets sizes to bost). also provide demising returns.
+            require an industry slot.
+        T2: upgraded from T1.
+            -provide this world wih a lot of pop growth.
+            -provide all robot markets in sector with an small pop growth boost.
+                -pop growth boust == base boost / markets to bost. also provide demising returns.
+                -demising returns includes the T1 boost. they are the same boost, yuo cant stack them
+                    -pop growth boost = same as the T1 growth boost
+                require an industry sloot (or two?)
+-replace the population growth speed:
+    normal colonly growth rate
+        without hazzrd pay:
+           base: 9,52
+           hazzard: -20,4
+           total range: -12,56
+        with hazzard pay:
+            base: 14,57
+            hazzard: 0,4
+            total range: 14 , 61
+        hazzard pay cost:
+            (growth penalty from hazzard + 5) x 1000 cr/ month
+            (20,-4) +5 = (25,1) X 1000 cr / month
+            (25,000,1,000) cr / month
+        (0,15)Accessibility (+1 growth point for every 10% accessibility, or -1 for every 10% below 0% accessibility)
+        Instability (-1 growth point for every stability point below 10)
+        (4,-20)Hazard rating (-2 growth points for every 25% hazard rating above 100%, and vice versa for below 100%)
+        (5,25)Free Port status (+5 growth points, increases to +25 growth points over 1 cycle/365 days)
+        (2)Spaceport (+2 growth points)
+        (1,6)Megaport (+1 growth point per colony size)
+        (1,6)Decivilized Subpopulation (+1 growth point per colony size)
+        (+5)Hazard pay (counters the hazard penalty and +5 growth points)
+        (?)Larger, non-hostile markets in system (increases rate)
+        (?)Shortage of commodities for industries (decreases rate based on shortage)
+    basic growth:
+        total:(size 1 - 5)
+            without growth essentives:
+                (4,14)
+            with growth essentives:
+                (18,52)
+        (?)stability based growth:
+            -should have an lowish bonus at max stability.
+            -should have no bonus at 5 stability
+            -should start to apply an harsh negative at low stability
+        robot forge based growth:
+            -(3)+3 before upgrade
+            -(6,9)size +3 after upgrade
+            -not upgraded should give an static growth mod
+            -upgraded should scale with colony size
+        population and infastructor based growth:
+            -(size X 1) base growth rate
+            -(X)should give population growth based on supplied import of worker drones
+            -(-1 growth per missing thing)should give negative population growth based on not supplied import of maintenance parts, and replacement parts.
+            -might replace the stability mod
+        growth incentives based growth:
+            (X)(9,15 at 100% supply)(size X supply% X 3)
+            (X)(25,40)((size x 5) + 10 x supply%)
+            (X)(23,42)((size x 6) + 5 x supply%)
+            (X)(18,36)((size x 6) x supply%)
+            ()(14,38)((size x 8) - 10 x supply%)
+            this is you pumping credits into something to try and make it grow faster.
+            should provide an high growth bonus.
+            (maybe) add on some extra worker drone demand to population. this is you importing more drones? then base the growth of that
+                -might not make mush sense. your workers are cant just be shipped in from no were. also this is not whats happening.
+                -this is not an fun option. it also makes little sence. this is more you paying to have drones grow, but you already do that with imports
+            (maybe) add an demand to population for metles, rare metles and heavy machinery based on population size.
+                -have population output more worker drones (based on meet demand). have the worker drone output also increase the population growth.
+                -effectively this is putting to getter more robots without the proper setups. something used when times are hard, or deadly. such is life.
+
+
+    passive growth:
+        (done)remove all population speed bonuses from everything
+        (done)add an population growth bonus for growth incentives
+        (done) add an industry that builds population
+
+    active growth:
+        (?)add an ability to ship population around.
+            -(??) might be redundant. industrial evolution dose this.
+            -it should add a growth bonus to an world, and an growth negative to another
+            -it should act like an static number of robots are being moved (so at speed 100: -10% growth at size 3, -1% at size 4, -0.1% at size 5)
+            -it should add an negative planet modifier on the world that its taking population from
+            -it should add an negative and positive modifier on the world its going to.
+            -(?)it should be able to down level a population all the way to zero
+    max growth:
+        this population is not limited to a maximum amount of people on it. it requires no people to want to live here.
+        should it be able to grow to an larger word? and if so, how big?
+        population limit:
+            if it dose it should be based off world size.
+            it makes sense that an world could only carry an max amount of workers, before expansion is not possible
+            also hazardous worlds should have an smaller cap. as hazardous places are harder to live, requiring more infastuctor per worker.
+        stealth limit:
+            it gets MUSH harder to hide an world like this if there are to many pops.
+            only so many signals into the void, and moving mettle masses, until everyone that comes to trade will say 'wat the hell'
+        control limit:
+            an reliance on custom made command cores comes with its disadvantages. one of them is that more population means
+            harder to control population, as command cores and command relays become overwhelmed by the incoming data.
+            could be increased with AI cores, but that might be an bad idea.
+

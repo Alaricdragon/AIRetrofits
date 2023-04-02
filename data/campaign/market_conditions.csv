@@ -1,0 +1,7 @@
+name,id,planetary,decivRemove,script,desc,icon,order
+Robotic Population,AIRetrofit_AIPop,,TRUE,data.scripts.AIWorldCode.market_conditions.AIRetrofitsAIPop,"There are no humans here, only robots.",graphics/icons/markets/AIRetrofit_AIPopulation.png,999
+#AI-Ludic War,AIRetrofits_AILudicWar,,FALSE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_AILudicWar,,graphics/icons/markets/AIRetrofits_AILudicWar.png,10
+#Broken AI Constructs,AIRetrofits_BrokenAIWorkers,,FALSE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_BrokenAIWorkers,,graphics/icons/markets/AIRetrofits_BrokenAIWorkers.png,10
+#Ludic Path Watchers,AIRetrofits_LudicPathWatchers,,TRUE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_LudicPathWatchers,,graphics/icons/markets/AIRetrofits_LudicPathWatchers.png,10
+#Purgeing Robots From World,AIRetrofits_PurgingAIWorld,,TRUE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_PurgingAIWorld,,graphics/icons/markets/AIRetrofits_PurgingAIWorld.png,10
+#Unborken AI Constructs,AIRetrofits_UnbrokenAIWorkers,,FALSE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_UnbrokenAIWorkers,,graphics/icons/markets/AIRetrofits_UnbrokenAIWorkers.png,10

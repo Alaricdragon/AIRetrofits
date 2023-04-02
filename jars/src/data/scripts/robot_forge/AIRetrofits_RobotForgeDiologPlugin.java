@@ -32,6 +32,8 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
     //List<PersonAPI> captiveOfficers;
     CampaignFleetAPI fleet;
 
+    private static AIRetrofits_ForgeItem Interaction;
+    public static boolean ActIn = false;
     public AIRetrofits_RobotForgeDiologPlugin(CampaignFleetAPI theFleet) {
         this.fleet = theFleet;
         initDataThing();
@@ -181,7 +183,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
         }*/
 
         //this.text.addParagraph("You currently have " + (int) this.fleet.getCargo().getCommodityQuantity("capturedcrew") + " captive crew and " + this.captiveOfficers.size() + " captive officers.");
-        this.text.addParagraph("TESTING TESTING ONE TWO THREE");
+        this.text.addParagraph("You cafullys consider what you can produce with the knowlage you have...");
         //this.lastSelectedMenu = null;
         //this.lastSelectedItems = null;
         this.populateOptions();
@@ -189,6 +191,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
     }
 
     public void optionMousedOver(String arg0, Object arg1) {
+
     }
 
     public void optionSelected(String optionText, Object optionData) {
@@ -202,7 +205,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
                 this.mainMenu();
             }
             if(optionData.equals("CONFIRM")){
-                text.addParagraph("item sending == " + itemSellected);
+                //text.addParagraph("item sending == " + itemSellected);
                 AIRetrofits_RobotForge.setForgeValue(itemSellected);
                 itemSellected = 0;
                 resetLast();
@@ -240,7 +243,7 @@ public class AIRetrofits_RobotForgeDiologPlugin implements InteractionDialogPlug
                     if(optionData.equals(Items[a])){//optionData == item){
                         //run relevent code here
                         itemSellected = a;
-                        text.addParagraph("item sellected == " + itemSellected);
+                        //text.addParagraph("item sellected == " + itemSellected);
                         addLast(Items[a]);
                         //ItemPage(a);
                         //text.addParagraph("YOU DIDIDDD IT!!!! " + (a));

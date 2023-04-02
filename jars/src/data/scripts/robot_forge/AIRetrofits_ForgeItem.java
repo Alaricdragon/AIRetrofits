@@ -2,8 +2,12 @@ package data.scripts.robot_forge;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.TextPanelAPI;
+import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
+import com.fs.starfarer.api.ui.LabelAPI;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
 import java.util.ArrayList;
@@ -65,12 +69,15 @@ public class AIRetrofits_ForgeItem {
         text.addPara("every day you can forge :");
         for(int a = 0; a < outputItems.size(); a++){
             float numbers = outputNumbers.get(a) * ForgeSpeed;
-            text.addPara(Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(outputItems.get(a)).getName());
+            displayItem(text,numbers,outputItems.get(a));
+            //text.addPara(Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(outputItems.get(a)).getName());
         }
         text.addPara("at the cost of: ");
         for(int a = 0; a < inputItems.size(); a++){
             float numbers = inputNumbers.get(a) * ForgeSpeed;
-            text.addPara(Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName());
+            displayItem(text,numbers,inputItems.get(a));
+
+            //text.addPara(Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName());
         }
 
         //return out;
@@ -114,5 +121,19 @@ public class AIRetrofits_ForgeItem {
             }
         }
         fleet.addFloatingText(text, Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
+    }
+    private void displayItem(TextPanelAPI text, float numberOfItems,String itemName){
+        CommoditySpecAPI spec = Global.getSector().getEconomy().getCommoditySpec(itemName);
+        String displayName = spec.getName();
+
+        TooltipMakerAPI tt = text.beginTooltip();
+        TooltipMakerAPI iwt = tt.beginImageWithText(spec.getIconName(), 24);
+        String numberStr = numberOfItems + "";
+        LabelAPI label = iwt.addPara(numberStr + " " + displayName, 0, Misc.getHighlightColor(), numberStr);
+        tt.addImageWithText(0);
+        text.addTooltip();
+    }
+    public boolean activateDialog(InteractionDialogAPI dialog){
+        return false;
     }
 }
