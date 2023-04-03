@@ -295,21 +295,25 @@ i want to:
 
 	@Override
 	public String getUnapplicableReason(ShipAPI ship) {
-		String hullmods = incompatibleHullMods(ship);
-		if(hullmods != null){
-			return IncombatableReasons[0] + hullmods;//"not compatible with: " + hullmods;
-		}
-		if(ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")){
-			return IncombatableReasons[1];//"cannot be installed on a drone ship, or a ship that otherwise has no crew requirements";
-		}
-		int unusedOP = ship.getVariant().getUnusedOP(Global.getSector().getCharacterData().getPerson().getFleetCommanderStats());//only works for player fleets
-		//int unusedOP = ship.getVariant().getUnusedOP(ship.getFleetMember().getFleetCommanderForStats().getFleetCommanderStats());//might work for all fleets
-		float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
-		HullSize hullsize = ship.getVariant().getHullSize();
-		int cost = GetExstraOpCost(MinCrew,hullsize);
-		int Base_cost = this.spec.getCostFor(hullsize);
-		if(!(cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit"))){
-			return IncombatableReasons[2] + (cost + Base_cost);//"op cost: " + (cost + Base_cost);
+		try {
+			String hullmods = incompatibleHullMods(ship);
+			if (hullmods != null) {
+				return IncombatableReasons[0] + hullmods;//"not compatible with: " + hullmods;
+			}
+			if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")) {
+				return IncombatableReasons[1];//"cannot be installed on a drone ship, or a ship that otherwise has no crew requirements";
+			}
+			int unusedOP = ship.getVariant().getUnusedOP(Global.getSector().getCharacterData().getPerson().getFleetCommanderStats());//only works for player fleets
+			//int unusedOP = ship.getVariant().getUnusedOP(ship.getFleetMember().getFleetCommanderForStats().getFleetCommanderStats());//might work for all fleets
+			float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
+			HullSize hullsize = ship.getVariant().getHullSize();
+			int cost = GetExstraOpCost(MinCrew, hullsize);
+			int Base_cost = this.spec.getCostFor(hullsize);
+			if (!(cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit"))) {
+				return IncombatableReasons[2] + (cost + Base_cost);//"op cost: " + (cost + Base_cost);
+			}
+		}catch (Exception E){
+			AIRetrofit_Log.loging("Error: failed to run getUnapplicableReason. wonder why?",this,true);
 		}
 		return super.getUnapplicableReason(ship);
 	}
