@@ -1,5 +1,9 @@
 changelog for all my changes as i make them so i dont forget again.
-v0.7.18: (release notes), from 0.5:
+v0.7.18.1:
+save compatible with 0.7.9+
+    fixes:
+        (hopefully) fixed a issue in relation to AIRetrofit causing a crash with progressive S-mods on oping the progressive S-mod menu. hopefully.
+v0.7.18: (release notes), from 0.6:
     new:
         added a new way to found a market, (unlucked once you have AI ships skill or have found the relevant hullmods and skills), costing salvage robots and sub command nodes instead of crew. worlds built in this way have some interesting properties:
             -they have different required commodity to maintain stability
@@ -58,6 +62,7 @@ v0.7.18: (release notes), from 0.5:
         all the people i asked seemingly random questions at for tolerating that and helping me. i could not have done this without you all
         all the people who piped up with suggestions and bug reports on the discord. it helped a lot
 v0.7.18:
+save compatible with 0.7.9+
     fixes:
         markets with robotic population no longer change contacts (hopefully).
         fixed the amount of bonus XP removing a S-Mod in the automated ship installation center gives
