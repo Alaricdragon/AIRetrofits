@@ -1,4 +1,9 @@
 changelog for all my changes as i make them so i dont forget again.
+v0.7.19:
+save compatible with 0.7.9+
+    improvements:
+        edited a bunch of text (thank you 'FrownTown' for editing all the text to be more readable)
+        changed the robotic population and infrastructure test to something none placeholder, if boring. as well as adding it the the settings
 v0.7.18.1:
 save compatible with 0.7.9+
     fixes:

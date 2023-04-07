@@ -16,6 +16,10 @@ bugs:
     issue: (partly done. no longer changes contacts) right now i can change the name and portrait of important NPC's. make it so i cant.
     issue: advanced and omega robots have the same price as basic robots. change this plz.
     issue: the cost of a single survey / salvage / combat robot is the same regardless of level. i fixed this by changeing there demand class, but i want them to have the same demand classes so they can be interchangeable. look this up plz.
+
+missing text:
+    population and infastucture:
+        need to move the "number of robots" text into setting sometime
 Industrys:
     Shipyard:
         issues:

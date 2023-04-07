@@ -1,3 +1,44 @@
+notes: on the topic of omega robots:
+    they are currently unobtainable. this is not something i like. they are really cool.
+    so i need to find out ways to get them:
+    first of all, they should rare, like i should not be guaranteed to see them in a game.
+        -in fact, they should be rare enuth, that people question there existence.
+    secondly, they should only be found in limited ish number.
+    thirdly, they should be stronger. im thinking off adding about increasing there defence stat by about 3 or 4X, so they would feel invincible.
+
+    so hays to get them:
+        1) in robot manufacture, you can make them if you find a omega core.
+            - i want to keep this. i like this. its good for business
+            -even though you can make as many as you want, it still requires that you wast a dog dam omega core on it.. quite something.
+        2) find them at random (in resurce stations, or other same type things):
+            -they would need to be -RARE-. like so rare i might never see one.
+            -they would need to come in bunches rangeing from 10 to 100 of them.
+        3) create a that can allow you to get a limited number of them:
+            -the quest would need to be.. something interesting. a boss ship basically.
+            -it would also need to be quite rare. the type of thing you might not even find in a game.
+            -it would also need a difrent boss for each thing. im thinking something like:
+            combat:
+                -uses the crazy combat robot launch bay, with omega combat robots in storage. maybe have one and only one omega weapon.
+                -a omega class ship? something that's hard to communicate with.. very hard. what on earth would we do...?
+            survey:
+                -a crazed surveyor. likes to run away, but keeps talking trash about you well they run. you can follow them, or find them again.
+                -try's there best to avoid combat, and has a large view range. likes to hide, and uses phase ships maybe?.. mmmm.
+                -uses bouth survey ships and phase ships?
+                -i like the 'likes to hide thing'. i like that a lot. seeing a random ship bosting out of a magmatic field into a jump point. of them running away into a nebula. entering a transverse jump just as you see them...
+                -maybe make it so if you can keep on there tail, for like a year, they turn and fight.
+                -change dialog about what is going on depending on if you catch them or if you turn and fight you.
+                -have the dialog of catching them be frantic, and fearfull and have them try to flee.
+                -have the dialog of them turning to fight you be angry. almost mad. they are not happy with you.
+            salvage:
+                -some type of strange, possibly broken automated ship. maybe a mix of rearmament and derelict?
+                -would not care about you existence. would go between random worlds and asteroids in a part of the sector (were there are no markets around)
+                -would have a small sensor profile.
+                -if a market were to form in its roaming area, would find another area to hang out in.
+                -would have a set home base somewere in the sector, were it would return its loot every few cycles (not really, but it would return to that location)
+                -if you were to find its home base, and loot it, it would teleport right in to the system and try to attack you.
+                -if you were to find it, before its home base, and win the fight, you would get a quest to go to its home base.
+                -the salvage robots would be at its home base.
+
 robots:
     3 types:
         salvage

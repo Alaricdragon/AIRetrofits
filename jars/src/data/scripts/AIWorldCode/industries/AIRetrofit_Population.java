@@ -91,8 +91,10 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
         if (size >= 1 && size <= 9) {
             cid = "population_" + size;
             MarketConditionSpecAPI mcs = Global.getSettings().getMarketConditionSpec(cid);
-            String marketAIDescription = "this world is full of automated robots, and not people. a text description";
-
+            String marketAIDescription = Global.getSettings().getString("AIRetrofits_PopulationDescription");//"this world is full of automated robots, and not people. a text description";
+            //String marketSizeDescription = Global.getSettings().getString("AIRetrofits_PopulationSizeDescription");
+            //String[] exstra = {"" + peoples[size]};
+            //marketAIDescription
             if (mcs != null) {
                 return marketAIDescription + "\n\n" + "there are " + peoples[size] + " of robotic workers active on this world";//mcs.getDesc();
             }
