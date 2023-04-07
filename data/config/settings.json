@@ -180,19 +180,19 @@
 	"AIRetrofits_RobotCargoDescription": "every robot of this type is taking up %s cargo space",
 
 	#descriptions for the robot forge people maker":
-	"AIRetrofit_RobotForge_PeopleMaker_mainPage_0": "Using a sub command node, as well as a carefully selected data from a stockpile of data collected both from the com network and from your travels you hae the ability to 'train' a sub command node to mimic the actions of a liven person, allowing it to preform command roles usually reserved for a mush more powerful AI core, or a human. the only real cost to this process, is making the sub command node useless for anything but its trained task, as well as an somewhat costly stream of data, wish prevents the command node from simplifying its data as into mush more simple, but useless, instructions.",#"information about improving an sub command node, into a command node goes here",
-	"AIRetrofit_RobotForge_PeopleMaker_officerPage_0": "using the vast array of data available to you, you can carefully pick and choice the data to let your sub command node mimic a personality, with all the up and downsides that come with said personality.. in addition to this, do to the situational nature of piloting a ship, the command node would need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level officer",#"information about how you can chose an officers personality go here",
-	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0" : "you consider the possibility of creating a %s officer from the data you have.",#"information about the cost of creating an officer here. as well as the type of officer you are creating." ,
-	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1": "the officer you create will cost %s per month. and more as they level up." ,
-	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2": "you require %s sub command node and %s credits to create an officer" ,
-	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0": "you consider the possibility of creating an administrator from the data you can collect. an extremely complicated task, something that many humans cant even do. this will require quite a bit more training data then what is provided by governing a market to maintain its effectiveness" ,
-	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1": "the administrator you create will cost %s per month. at an reduced cost if they are not doing anything" ,
-	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2":"you require %s sub command node and %s credits to create an administrator" ,
-	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0": "removed %s credits and %s subcommand node",
-	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1": "got a new command node",
-	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0": "removed %s credits and %s subcommand node",
-	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "got a new command node",
-	"AIRetrofit_RobotForge_PeopleMaker_init_0":"You cafullys consider what you can produce with the knowlage you have..." ,
+	"AIRetrofit_RobotForge_PeopleMaker_mainPage_0": "Using a sub command node, as well as a carefully selected set of data from your stockpile of intelligence, you may 'train' a sub command node to mimic the actions of a living person, allowing it to perform command-level tasks usually reserved for a human being, or an alpha core. The unfortunately, the process renders the sub command node useless for anything but its trained task, and requires a steady stream of input data to prevent the command node from oversimplifying its instructions.",#"information about improving an sub command node, into a command node goes here",
+	"AIRetrofit_RobotForge_PeopleMaker_officerPage_0": "You may carefully pick and choose data among the vast array available to you to allow a sub command node to mimic a human personality, with all the ups and downs that come with it. Due to the situational nature of piloting a ship, the command node will still need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level officer.",#"information about how you can chose an officers personality go here",
+	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0" : "You consider the possibility of creating a %s officer from the data you have.",#"information about the cost of creating an officer here. as well as the type of officer you are creating." ,
+	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1": "The officer you create will cost %s per month, increasing as they level up." ,
+	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2": "You require %s sub command node and %s credits to create an officer." ,
+	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0": "You consider the possibility of creating an administrator from the data you can collect. This will require quite a bit more training data than what is provided by governing a market to maintain its effectiveness." ,
+	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1": "The administrator you create will cost %s per month, at a reduced cost while they are idle." ,
+	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2":"You require %s sub command node and %s credits to create an administrator." ,
+	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0": "Removed %s credits and %s subcommand node.",
+	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1": "Got a new command node.",
+	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0": "Removed %s credits and %s subcommand node.",
+	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "Got a new command node.",
+	"AIRetrofit_RobotForge_PeopleMaker_init_0":"You carefully consider what you can produce with the knowledge you have..." ,
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,#some advice, dont disable this after you build a market with robotic workers. that will cause issues. before you do should be fine, although this is lagacy code, and should only be changed before starting a new game to be safe
 
@@ -202,14 +202,14 @@
 	"AIRetrofit_MarketCost_reqSupply": 200,
 	"AIRetrofit_MarketCost_reqMachinery": 200,
 	#descriptions when founding a market
-	"AIRetrofit_MarketFoundedText0": "You give the order to send down robotic workers to being to form a market. it will take time before its established, but the rewords once its complete may be worth it.",
-	"AIRetrofit_MarketFoundedText1": "removed the following resorses from cargo",
-	"AIRetrofit_MarketStartupText0": "you consider the possibility of forming a market, ran by robotic workers. it would require very different infrastructure then other a normal market, and would suffer slowly increasing stability penalty as it grows until such infrastructure is present in the sector. in addition to this, do to the nature of the robotic population, the market would not be able to rely on normal immigration to grow, instead relying on factorys to produce more robotic workers. this would likely be a difficult task ahead of you, but the rewards.. would possibly be worth it. the robotic nature of the machines would provide a boost to stability, provided the markets are supplied properly. in addition to this, well populations would require robot factorys to grow, said factorys could be upgraded to provide growth to other worlds eventually. resulting in faster market growth to all robotic markets under your control...",
-	"AIRetrofit_MarketStartupText1": "you have available:",
+	"AIRetrofit_MarketFoundedText0": "You give the order to begin constructing an automated colony. It will take some time before your drones finish establishing it.",
+	"AIRetrofit_MarketFoundedText1": "Removed the following resources from the cargo bay:",
+	"AIRetrofit_MarketStartupText0": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
+	"AIRetrofit_MarketStartupText1": "You have available:",
 	#settings for market growth,
 	#descriptions
-	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing system wide market growth",
-	"AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing sector wide market growth",
+	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing a system-wide boost to automated colony growth.",
+	"AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing a sector-wide boost to automated colony growth.",
 	"AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
 
 	#growth mods,
@@ -242,6 +242,8 @@
 
 
 	#Industry things
+	#Population and infastructure
+	"AIRetrofits_PopulationDescription": "The basic infrastructure required to support a given robotic population, such as clusters of command nodes and command relays, cities were numbers of robots perform various tasks, and mush more.",
 	#Population Replacement Center. feel free to try it out, its not dont yet, but it is OK for now.
 	"AIRetrofits_SwapRobotAndNormalPopulationBuilding": true,
 	"AIRetrofits_PopulationReplacementCenter_baseCost": 1000,#not used yet
@@ -252,16 +254,16 @@
 	"AIRetrofits_PopulationReplacementCenter_exstraSize": 1,#--
 	"AIRetrofits_PopulationReplacementCenter_timesForFree": 90,#this is the amount of time after founding a market that the build time of this building remains zero for.
 
-	"AIRetrofits_PopulationReplacementCenter_exstraDescription": "takes a single day to build if built within %s days of founding the market",
+	"AIRetrofits_PopulationReplacementCenter_exstraDescription": "Takes a single day to build if built within %s days of founding the colony",
 
 	#Shipyard settings,
-	#"AIRetrofitShipyard_Description": "is able to modify %s points of ships per month. ships cost %s/%s/%s/%s points depending on ship size.",
-	"AIRetrofitShipyard_ADescription": "use a alpha core to install a version of the hullmod that increase available op on ship",#description when you inset a alpha core
-	"AIRetrofitShipyard_BDescription": "use a beta core to install a version of the hullmod that has a reduced supply cost",#description when you inset a beta core
-	"AIRetrofitShipyard_GDescription": "use a gamma core to install a version of the hullmod that has a reduced repair cost",#description when you inset a gamma core
-	"AIRetrofitShipyard_IDescription": "Increases the rate that ships are upgraded by %s.",
-	"AIRetrofitShipyard_IedDescription": "Improved ship upgrading speed of %s",
-	"AIRetrofitShipyard_IllegalText": "cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.",
+	#"AIRetrofitShipyard_Description": "Able to modify %s points-worth of ships per month. Ships cost %s/%s/%s/%s points depending on hull size.",
+	"AIRetrofitShipyard_ADescription": "Use an alpha core to install a an upgraded automated system that increases OP.",#description when you inset a alpha core
+	"AIRetrofitShipyard_BDescription": "Use a beta core to install an upgraded automated system that has a reduced supply cost.",#description when you inset a beta core
+	"AIRetrofitShipyard_GDescription": "Use a gamma core to install an upgraded automated system that has a increased repair speed.",#description when you inset a gamma core
+	"AIRetrofitShipyard_IDescription": "Increases the rate that at which ships are upgraded by %s.",
+	"AIRetrofitShipyard_IedDescription": "Further improves ship upgrade speed by %s",
+	"AIRetrofitShipyard_IllegalText": "Unable to perform modifications to ships that require no crew.",
 	"AIRetrofitShipyard_defaultPoints": 8,#number of construction ponits per momth
 	"AIRetrofitShipyard_IValue": 1,#increate in number of production ponits if improved (defalut * (1 + IValue))
 	"AIRetrofitShipyard_perCrewDEFAULT": 4,#Note, that as of this time, its not 'per crew' its 'per ship'. hope to change latter
@@ -270,9 +272,9 @@
 	"AIRetrofitShipyard_perCrewDESTROYER": 2,
 	"AIRetrofitShipyard_perCrewCRUISER": 4,
 	"AIRetrofitShipyard_perCrewCAPITAL_SHIP": 8,
-	"AIRetrofitShipyard_Notification_bonusXP": "got %s bonusXP from removed AI-Retrofit SMods",
-	"AIRetrofitShipyard_Notification_credits": "for a total cost of: %s credits",
-	"AIRetrofitShipyard_Notification_market": "at market %s",
+	"AIRetrofitShipyard_Notification_bonusXP": "Gained %s bonus XP from removed AI-Retrofit S-Mods.",
+	"AIRetrofitShipyard_Notification_credits": "For a total cost of %s credits.",
+	"AIRetrofitShipyard_Notification_market": "at colony %s",
 	"AIRetrofitShipyard_Notification_type": "upgraded with %s",
 	"AIRetrofitShipyard_Credits_perCrewDEFAULT": 20000,#Note, that as of this time, its not 'per crew' its 'per ship'. hope to change latter
 	"AIRetrofitShipyard_Credits_perCrewFIGHTER": 2000,
@@ -282,10 +284,10 @@
 	"AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP": 40000,
 	"AIRetrofitShipyard_storyPointsPerSMod": 1,#a multiplyer on the amount of bonus XP you gain from removing a S-Mod with the shipyard.
 
-	"AIRetrofitShipyard_Description_shipPerMomth": "Can upgrade up to %s/%s/%s/%s ships per momth, depending on shipSize",
-	"AIRetrofitShipyard_Description_creditsPerShip": "Cost %s/%s/%s/%s credits per ship, depending on shipSize",
+	"AIRetrofitShipyard_Description_shipPerMomth": "Able to upgrade up to %s/%s/%s/%s ships per month, depending on hull size.",
+	"AIRetrofitShipyard_Description_creditsPerShip": "Costs %s/%s/%s/%s credits per ship, depending on hull size.",
 
-	"AIRetrofitSubMarket_CantUpgradeDescription": "Cant upgrade ships well the shipyard is non functional",
+	"AIRetrofitSubMarket_CantUpgradeDescription": "Unable to upgrade ships while the shipyard is offline.",
 	#settings for AIRetrofit Shipyard hullmod Power
 	#Basic
 	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,
@@ -324,32 +326,32 @@
 
 	#robotic pop factory T0,
 	#note, that for growth mods from said industrys, see the #growth section.
-	"AIRetrofit_PopFactoryT0_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
-	"AIRetrofit_PopFactoryT0_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
-	"AIRetrofit_PopFactoryT0_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
-	"AIRetrofit_PopFactoryT0_extraDescription": "adds %s market growth to a world with robotic population",
+	"AIRetrofit_PopFactoryT0_alphaDescription": "The alpha core applies a growth increase of %s to the factory.",
+	"AIRetrofit_PopFactoryT0_improveDescription": "Improving this factory would apply a growth increase of %s.",
+	"AIRetrofit_PopFactoryT0_improvedDescription": "This factory has been improved, providing a further growth increase of %s.",
+	"AIRetrofit_PopFactoryT0_extraDescription": "Adds %s growth to an automated colony.",
 	#robotic pop factory T1
-	"AIRetrofit_PopFactoryT1_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
-	"AIRetrofit_PopFactoryT1_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
-	"AIRetrofit_PopFactoryT1_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
-	"AIRetrofit_PopFactoryT1_extraDescription": "this factory is producing %s market growth devided between friendly AIPop worlds in system",
+	"AIRetrofit_PopFactoryT1_alphaDescription": "The alpha core applies a growth increase of %s to the factory.",
+	"AIRetrofit_PopFactoryT1_improveDescription": "Improving this factory would apply a growth increase of %s.",
+	"AIRetrofit_PopFactoryT1_improvedDescription": "This factory has been improved, providing a further growth increase of %s.",
+	"AIRetrofit_PopFactoryT1_extraDescription": "This factory is producing %s growth, divided between all automated colonies in the system.",
 
 	#robotic pop factory T2
-	"AIRetrofit_PopFactoryT2_alphaDescription": "the alpha core applys a growth increase of %s to the factory",
-	"AIRetrofit_PopFactoryT2_improveDescription": "improving this factory apply's a growth increase of %s to the factory",
-	"AIRetrofit_PopFactoryT2_improvedDescription": "this factory has been improved, provide a growth increase of %s to itself",
-	"AIRetrofit_PopFactoryT2_extraDescription": "this factory is producing %s market growth devided between faction AIPop worlds in the sector",
+	"AIRetrofit_PopFactoryT2_alphaDescription": "The alpha core applies a growth increase of %s to the factory.",
+	"AIRetrofit_PopFactoryT2_improveDescription": "Improving this factory would apply a growth increase of %s.",
+	"AIRetrofit_PopFactoryT2_improvedDescription": "This factory has been improved, providing a further growth increase of %s.",
+	"AIRetrofit_PopFactoryT2_extraDescription": "This factory is producing %s growth, divided between all automated colonies in the sector.",
 
 	#personal robot manufactorys,
 	#base settings
 	"AIRetrofit_robotManufactury_gammaMulti": 1.3,
 	"AIRetrofit_robotManufactury_improvedMulti": 1.3,
 	"AIRetrofit_robotManufactury_betaMulti": 0.5,
-	"AIRetrofit_robotManufactury_gammaDescription": "improve robot output by %s",
-	"AIRetrofit_robotManufactury_betaDescription": "reduce robot output by %s",
-	"AIRetrofit_robotManufactury_alphaDescription": "improve the quality of produced robots, but %s output factory output",
-	"AIRetrofit_robotManufactury_alphaDescriptionHighlighted": "reduces",
-	"AIRetrofit_robotManufactury_improvedDescription": "improve robot output by %s",
+	"AIRetrofit_robotManufactury_gammaDescription": "Improve robot output by %s",
+	"AIRetrofit_robotManufactury_betaDescription": "Reduce robot output by %s",
+	"AIRetrofit_robotManufactury_alphaDescription": "Improve the quality of produced robots, but reduce factory output by %s",
+	"AIRetrofit_robotManufactury_alphaDescriptionHighlighted": "reduce",
+	"AIRetrofit_robotManufactury_improvedDescription": "Improve robot output by %s",
 	#combat robots
 	"AIRetrofit_robotManufactury_combat_OS1Min": 75,#base
 	"AIRetrofit_robotManufactury_combat_OS1Max": 125,
@@ -358,8 +360,8 @@
 	"AIRetrofit_robotManufactury_combat_OS3Min": 6,#10X power 10 * 1.2 = 10 + 2 = 12.
 	"AIRetrofit_robotManufactury_combat_OS3Max": 11,
 	"AIRetrofit_robotManufactury_combat_Mod": 1.1,
-	"AIRetrofit_robotManufactury_combat_betaText": "use produced combat robots to boost ground defences by %s",
-	"AIRetrofit_robotManufactury_combat_exstaText": "from combat robot factory",
+	"AIRetrofit_robotManufactury_combat_betaText": "Use produced combat robots to boost ground defences by %s",
+	"AIRetrofit_robotManufactury_combat_exstaText": "From combat robot factory",
 	#salvage robots
 	"AIRetrofit_robotManufactury_salvage_OS1Min": 40,#base
 	"AIRetrofit_robotManufactury_salvage_OS1Max": 60,
@@ -368,7 +370,7 @@
 	"AIRetrofit_robotManufactury_salvage_OS3Min": 11,#,3X power 3 * 1.2 = 3 + 0.6 = 3.6
 	"AIRetrofit_robotManufactury_salvage_OS3Max": 16,
 	"AIRetrofit_robotManufactury_salvage_Mod": 12,
-	"AIRetrofit_robotManufactury_salvage_betaText": "use produced salvage robots to boost population growth by %s",
+	"AIRetrofit_robotManufactury_salvage_betaText": "Use produced salvage robots to boost population growth by %s",
 	#"AIRetrofit_robotManufactury_salvage_exstaText": 0,
 	#survey robots
 	"AIRetrofit_robotManufactury_survey_OS1Min": 40,#base
@@ -378,7 +380,7 @@
 	"AIRetrofit_robotManufactury_survey_OS3Min": 11,#3X power. 3 * 1.2 = 3 + 0.6 = 3.6
 	"AIRetrofit_robotManufactury_survey_OS3Max": 16,
 	"AIRetrofit_robotManufactury_survey_Mod": 1,
-	"AIRetrofit_robotManufactury_survey_betaText": "use produced survey robots to provide severance around this market, and thus stability by %s",
+	"AIRetrofit_robotManufactury_survey_betaText": "Use produced survey robots to provide reconnaissance around this market, increasing stability by %s",
 	"AIRetrofit_robotManufactury_survey_exstaText": "from survey robot manufactory",
 	#temp graphics settings for things im testing
 	"graphics":{
