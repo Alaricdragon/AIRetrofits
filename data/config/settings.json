@@ -78,7 +78,7 @@
 	#sub command node
 	"AIRetrofits_Sc_S":0.25,
 	"AIRetrofits_Sc_B":1,
-	"AIRetrofits_Sc_D":"produce sub command nodes. not very useful on there own, but having one can boost the capability of your robots. they can also be turned into mush more useful command nodes.",
+	"AIRetrofits_Sc_D":"Produce sub command nodes. Not very useful on their own, but having one can boost the capabilities of other drones. Yhey can also be turned into much more useful command nodes.",
 	"AIRetrofits_Sc_1N":"metals",
 	"AIRetrofits_Sc_1C":0.15,
 	"AIRetrofits_Sc_2N":"rare_metals",
@@ -242,7 +242,6 @@
 
 
 	#Industry things
-	#Population and infastructure
 	"AIRetrofits_PopulationDescription": "The basic infrastructure required to support a given robotic population, such as clusters of command nodes and command relays, cities were numbers of robots perform various tasks, and mush more.",
 	#Population Replacement Center. feel free to try it out, its not dont yet, but it is OK for now.
 	"AIRetrofits_SwapRobotAndNormalPopulationBuilding": true,
@@ -260,7 +259,7 @@
 	#"AIRetrofitShipyard_Description": "Able to modify %s points-worth of ships per month. Ships cost %s/%s/%s/%s points depending on hull size.",
 	"AIRetrofitShipyard_ADescription": "Use an alpha core to install a an upgraded automated system that increases OP.",#description when you inset a alpha core
 	"AIRetrofitShipyard_BDescription": "Use a beta core to install an upgraded automated system that has a reduced supply cost.",#description when you inset a beta core
-	"AIRetrofitShipyard_GDescription": "Use a gamma core to install an upgraded automated system that has a increased repair speed.",#description when you inset a gamma core
+	"AIRetrofitShipyard_GDescription": "Use a gamma core to install an upgraded automated system that has a reduced in combat repair time.",#description when you inset a gamma core
 	"AIRetrofitShipyard_IDescription": "Increases the rate that at which ships are upgraded by %s.",
 	"AIRetrofitShipyard_IedDescription": "Further improves ship upgrade speed by %s",
 	"AIRetrofitShipyard_IllegalText": "Unable to perform modifications to ships that require no crew.",

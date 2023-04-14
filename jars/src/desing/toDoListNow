@@ -32,15 +32,7 @@ Industrys:
         desing the concept for: having all the basic resource industry do something cool.
         why? because i never build them. even with up to + 8 stability, its just not worth it.
         so here what i have now:
-        robotic matnace fasility:
-            add a sub market were you can get robotic replacerment parts and robotic matnace pacs for cheep.
-            make it so robotic replacement parts to be used to reduce casualties on robots (like, lose 30 - 40% of robot losses as robotic replacement parts, provided they are available.)
-            make it so robotic matnace pacs can be used to reduce the supply drain on your ships when your using AI-Retrofits, and make it so they use the matnace pacs instead.
-        sub command node prodution place:
-            make a sub market were you can bye sub command nodes, and in very limited number, command nodes.
-                -command nodes will be consumable items that give you a officer or a admen on use. (or spy with nexerlin?)
-        synfetec factory:
-            -i.. dont have any ideas. like, what can they even do? maybe crew ships at a cost? maybe?
+            -moved this information into market - industry.
 Robots:
     -?change how AI cores work to power them, so an AI core can only control so many robot workers.
 AIRetrofits:
