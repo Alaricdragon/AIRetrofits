@@ -1,3 +1,20 @@
+im going to work on the following now:
+    the new hull mods
+        going to add the new hullmods i came up with. the crazy one can wait though
+        -current status:
+            -(started)robot storege thing:
+                -(done)hullmod code
+                -(not started)getting robots to have reduced cargo based on hullmods
+                -(not started)displaying how many robots are in the robot storge
+            -(not started)patchwork AIRetrofits:
+                -extend AIRetrofits without logistic dependency
+                -added to 'remove this hull-mod' to AIRetrofit shipyard
+                -make it so when you dock your ships, and you have the AIRetrofit hullmod, its automatically replaced by AIRetrofit.
+                -made it take a logistic slot, require a logistic slot, but not require dock.
+                -gave it its extra stats (lower CR, chance of malfunctions)
+    the upgrades to the industry to make them all at least somewhat useful
+
+
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
@@ -35,6 +52,9 @@ Industrys:
             -moved this information into market - industry.
 Robots:
     -?change how AI cores work to power them, so an AI core can only control so many robot workers.
+    -if i do this, i could have the power boost decrease as more robots are added. say given 100% bost at 200 of a given type of robot, 50% at 400, 25% at 800 exstra.
+    -could use command realays to increase how mush a single AI-Core or sub command node can power.?
+    -im unsure of this. might be a bad idea.
 AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.

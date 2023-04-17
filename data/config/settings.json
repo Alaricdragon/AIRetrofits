@@ -30,6 +30,15 @@
 	"AIRetrofits_AIRetrofit_NA_MinCrew": "cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
 	"AIRetrofits_AIRetrofit_NA_OppCost": "op cost: ",
 
+	#settings for robot drone storge. #not yet in use. #also i with i knew how to use %s on normal strings. would be helpfull =(
+	"AIRetrofits_RobotDroneStorage_crew_NCDescription_0": "you require at least ",
+	"AIRetrofits_RobotDroneStorage_crew_NCDescription_1": " extra crew space. you have ",
+	"AIRetrofits_RobotDroneStorage_crew_NCDescription_2": " extra crew space space",
+
+	"AIRetrofits_RobotDroneStorage_cargo_NCDescription_0": "you require at least ",
+	"AIRetrofits_RobotDroneStorage_cargo_NCDescription_1": " cargo . you have ",
+	"AIRetrofits_RobotDroneStorage_cargo_NCDescription_2": " cargo space",
+
 	#settings for robot forge power.
 	"AIRetrofits_CorruptedMetal":1,
 	"AIRetrofits_PristineMetal":5,
