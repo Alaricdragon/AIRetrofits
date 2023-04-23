@@ -41,6 +41,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public void reportPlayerOpenedMarket(MarketAPI market){
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
+        AIRetrofits_AbilityAndHullmodAdding.swapPatchworkForAIRetrofit();
         unapplySubMarkets(market);
     }
     private void changePeople(MarketAPI market){
@@ -76,7 +77,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 "AIRetrofit_ShipyardAlpha",
                 "AIRetrofit_ShipyardOmega",
                 "AIRetrofit_ShipyardBase",
-                "AIretrofit_airetrofit"};
+                AIRetrofits_Constants.Hullmod_AIRetrofit,
+                AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit};
         final float startingPonits = shipyardDValue;
         final float bounus = 1 + shipyard_IValue;
         final float[] costs = shipyard_costPerShip;

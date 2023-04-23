@@ -14,6 +14,7 @@ import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
@@ -334,7 +335,8 @@ i want to:
 				"AIRetrofit_ShipyardGamma",
 				"AIRetrofit_ShipyardBeta",
 				"AIRetrofit_ShipyardAlpha",
-				"AIRetrofit_ShipyardOmega"
+				"AIRetrofit_ShipyardOmega",
+				AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit,
 		};
 		final String[] names = {
 				Global.getSettings().getHullModSpec(compatible[0]).getDisplayName(),

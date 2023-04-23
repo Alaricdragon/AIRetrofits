@@ -7,6 +7,7 @@ public class AIRetrofits_Constants {
     public static final boolean AlwaysGiveThings = Global.getSettings().getBoolean("AIRetrofit_alwaysGiveSkillsAndHullmods");;
     public static final String Hullmod_CrewReplacementDrones = "AIretrofit_AutomatedCrewReplacementDrones";
     public static final String Hullmod_AIRetrofit = "AIretrofit_airetrofit";
+    public static final String Hullmod_PatchworkAIRetrofit = "AIRetrofit_Patchwork_airetrofit";
     public static final String ability_RobotForge = "AIretrofit_robot_drone_forge";
     public static final String req_skill = "automated_ships";
 
@@ -108,6 +109,9 @@ public class AIRetrofits_Constants {
             "AIRetrofit_ShipyardAlpha",
             "AIRetrofit_ShipyardOmega",
             "AIRetrofit_ShipyardBase"};
+    public static final String[] ASIC_Secondary_Hullmods = {
+            AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit,
+    };
 
     public final static float ASIC_improveValue = Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
     public final static float ASIC_defaultValue = Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");

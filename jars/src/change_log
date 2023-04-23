@@ -3,7 +3,10 @@ V0.7.20: (not released)
 save compatible with 0.7.9+
     mod combatability:
         made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations
-    did some background work for adding a new hull-mod.
+    improvements:
+        added 108 first and last names to possible names for command nodes. (got them from a online name generator. feel free to suggest more names / name generators.)
+    background work:
+        did some background work for adding a new hull-mod or 2.
 v0.7.19.1:
 save compatible with 0.7.9+
     improvements: a handful more edits (thanks again 'FrownTown' for edits)

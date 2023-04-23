@@ -85,6 +85,11 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
         if(member.getVariant().hasHullMod(OtherHullmod)){
             return false;
         }
+        for(String a : AIRetrofits_Constants.ASIC_Secondary_Hullmods) {
+            if (member.getVariant().hasHullMod(a)) {
+                return false;
+            }
+        }
         if(member.getStats().getMinCrewMod().computeEffective(member.getVariant().getHullSpec().getMinCrew()) <= 0){
             return true;
             //ship.getMutableStats().getVariant().getHullSpec().getMinCrew
