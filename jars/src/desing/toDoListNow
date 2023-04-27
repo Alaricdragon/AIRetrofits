@@ -9,11 +9,13 @@ im going to work on the following now:
             -(not started)patchwork AIRetrofits:
                 -(done)extend AIRetrofits without logistic dependency
                 -(done)added to 'remove this hull-mod' to AIRetrofit shipyard
-                -(NOT TESTED stored code in AIRetrofits_AbilityAndHullmodAdding)make it so when you dock your ships, and you have the AIRetrofit hullmod, its automatically replaced by AIRetrofit.
-                -(NOT DONE. there is a tag in the hullmod CSV that allows this exact scenario)made it take a logistic slot, require a logistic slot, but not require dock?
+                -(done. TESTED)make it so when you dock your ships, and you have the AIRetrofit hullmod, its automatically replaced by AIRetrofit.
+                -(done)made it take a logistic slot, require a logistic slot, but not require dock?
                 -(started)gave it its extra stats (lower CR, chance of malfunctions)
                 -(done)make normal AIRetrofit incompatible with patchwork AIRetrofit
                 -(done)make AIRetrofit_oppAddAll also count patchwork AIRetrofits as a hullmod it does not remove itself for.
+                -change the description and description values of the hullmod to reflet its status as 'patchwork'
+                -change the image of the hullmod to something more brown or broken looking.
     the upgrades to the industry to make them all at least somewhat useful
 
 

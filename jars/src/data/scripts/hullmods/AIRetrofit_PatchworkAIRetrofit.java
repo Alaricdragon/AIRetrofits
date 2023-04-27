@@ -52,15 +52,15 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
 
-        stats.getMaxCombatReadiness().modifyFlat(id,0.2f);
-        stats.getCriticalMalfunctionChance().modifyFlat(id,0.2f);
+        stats.getMaxCombatReadiness().modifyFlat(id,CR_DOWNGRADE);
+        stats.getCriticalMalfunctionChance().modifyFlat(id,MALFUNCTION_CHANCE);
         //isAutomated(stats);
         //int temp = stats.getVariant().computeHullModOPCost();
         //a.1)
 
         int exstra_cost = GetExstraOpCost(MinCrew,hullSize);
         //a.2)
-        boolean temp = stats.getVariant().getSMods().contains("AIretrofit_airetrofit");
+        boolean temp = stats.getVariant().getSMods().contains(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit);
         if(!temp) {
             addExstraOpCost(exstra_cost,stats);
             //stats.getVariant().addMod("mymod_temp0");
@@ -85,7 +85,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         //return "cats";
         switch(index) {
             case 0:
-                return "" + reqCrew(CrewPerCostPerSize[1]);
+                return "" + reqCrew(CrewPerCostPerSize[1]);// + "/" + reqCrew(CrewPerCostPerSize[2]) + "/" + reqCrew(CrewPerCostPerSize[3]) + "/" + reqCrew(CrewPerCostPerSize[4]);
             case 1:
                 return "" + reqCrew(CrewPerCostPerSize[2]);
             case 2:
@@ -130,7 +130,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         }catch (Exception E){
             AIRetrofit_Log.loging("Error: failed to get min crew in AIRetrofit hullmod. what were you even doing?",this);
         }
-        return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit")) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship) && hasMinCrew;
+        return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit)) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship) && hasMinCrew;
     }
     private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
         //example of adding a hullmod

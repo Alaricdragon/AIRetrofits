@@ -48,6 +48,7 @@ public class AIRetrofits_AbilityAndHullmodAdding {
             ShipVariantAPI ship = b.getVariant().clone();
             ship.setSource(VariantSource.REFIT);
             if(ship.hasHullMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit)) {
+                ship.removeMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit);
                 ship.addMod(AIRetrofits_Constants.Hullmod_AIRetrofit);
                 b.setVariant(ship, true, true);
             }
