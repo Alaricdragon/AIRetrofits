@@ -182,6 +182,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     for(String a : addHullMods){
                         ship.removeMod(a);
                         ship.removePermaMod(a);
+                        //AIRetrofit_Log.loging("trying to remove hullmod: " + a,this,true);
                     }
                     ship.addMod(addHullMod);
                 }

@@ -41,11 +41,13 @@ public class AIRetrofits_AbilityAndHullmodAdding {
         }
     }
     public static void swapPatchworkForAIRetrofit(){
+        if(!AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit_CanSwap) return;
         Set<String> a = Global.getSector().getPlayerFaction().getKnownHullMods();
         if(!a.contains(AIRetrofits_Constants.Hullmod_AIRetrofit)) return;
         List<FleetMemberAPI> ships = Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy();
         for(FleetMemberAPI b : ships){
             ShipVariantAPI ship = b.getVariant().clone();
+            //b.getStats().getMaxCombatReadiness();
             ship.setSource(VariantSource.REFIT);
             if(ship.hasHullMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit)) {
                 ship.removeMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit);

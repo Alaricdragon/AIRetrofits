@@ -8,6 +8,7 @@ public class AIRetrofits_Constants {
     public static final String Hullmod_CrewReplacementDrones = "AIretrofit_AutomatedCrewReplacementDrones";
     public static final String Hullmod_AIRetrofit = "AIretrofit_airetrofit";
     public static final String Hullmod_PatchworkAIRetrofit = "AIretrofit_PatchworkAIRetrofit";
+    public static final boolean Hullmod_PatchworkAIRetrofit_CanSwap = Global.getSettings().getBoolean("AIRetrofits_Patchwork_CanSwapHullMpd");
     public static final String ability_RobotForge = "AIretrofit_robot_drone_forge";
     public static final String req_skill = "automated_ships";
 

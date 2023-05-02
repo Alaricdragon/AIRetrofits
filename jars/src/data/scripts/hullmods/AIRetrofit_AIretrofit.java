@@ -363,7 +363,7 @@ i want to:
 		int Base_cost = this.spec.getCostFor(hullsize);
 		parm[0] = cost;
 		parm[1] = (cost + Base_cost);
-		parm[2] = 100;
+		parm[2] = (int)(100 * SUPPLY_USE_MULT);
 		parm[3] = (int) (REPAIR_LOSE * 100);
 		parm[4] = (int) MinCrew;
 		parm[5] = (int) (MinCrew * CREW_USE_MULT);

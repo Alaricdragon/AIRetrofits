@@ -33,9 +33,14 @@
 	#settings for patchwork AIRetrofits hullmod
 	"AIRetrofits_Patchwork_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
 	"AIRetrofits_Patchwork_AIretrofit_CREW_USE_MULT":0,#this is an real multi though. 0 = no crew use, 1 = no change -1 = negitive crew use?
-	"AIRetrofits_Patchwork_AIretrofit_REPAIR_LOSE":0.5,#,and by multi, i mean increase multi. 0 = no repair lose. 1 = mush slower repairs. -1 = faster repairs.
-	"AIRetrofits_Patchwork_AIretrofit_CR_LOSE": -0.2,#random number, not real value yet
-	"AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE": 0.2,#random number, not real value yet.
+	"AIRetrofits_Patchwork_AIretrofit_REPAIR_LOSE":0.75,#,and by multi, i mean increase multi. 0 = no repair lose. 1 = mush slower repairs. -1 = faster repairs.
+	"AIRetrofits_Patchwork_AIretrofit_CR_LOSE": -0.2,
+	"AIRetrofits_Patchwork_CanSwapHullMpd": true,#wether or not this hyllmod swaps for the normal AIRetorfit, provided you have it.
+	"AIRetrofits_Patchwork_CantSwapText": "There has to be a better way to to do this...",
+	"AIRetrofits_Patchwork_CanSwapText1": "Will automatically be replaced with the ",
+	"AIRetrofits_Patchwork_CanSwapText2": " hullmod after docking with a market.",
+	#"AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE": 1,#critical malfunction chance
+	#"AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE2": 0.0005,#wepon malfunction chance
 
 	#(patchworkAIRetrofits hullmod) exstra opp cost per crew per shipsize.
 	"AIRetrofits_Patchwork_AIretrofit_C-OP-Other":2,

@@ -14,6 +14,9 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
+import java.util.Set;
+
+import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
 
 public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
     private static final String[] IncombatableReasons = {
@@ -35,10 +38,15 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
     };
     //private int[] CrewPerCostPerSize = {1,5,10,20,40};
     //private float[] CrewPerCostPerSize = {1f,0.2f,0.01f,0.05f,0.025f};
-    private int[] parm = new int[6];
+    private int[] parm = new int[7];
 
     private static final float CR_DOWNGRADE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_CR_LOSE");
-    private static final float MALFUNCTION_CHANCE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE");
+    //private static final float MALFUNCTION_CHANCE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE");
+    //private static final float MALFUNCTION_CHANCE2 = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE2");
+
+    private static final String CanChangeHullMod1 = Global.getSettings().getString("AIRetrofits_Patchwork_CanSwapText1");
+    private static final String CanChangeHullMod2 = Global.getSettings().getString("AIRetrofits_Patchwork_CanSwapText2");
+    private static final String CantChangeHullMod = Global.getSettings().getString("AIRetrofits_Patchwork_CantSwapText");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id/*, MutableCharacterStatsAPI c*/) {
         //a.0)
@@ -53,7 +61,9 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
 
         stats.getMaxCombatReadiness().modifyFlat(id,CR_DOWNGRADE);
-        stats.getCriticalMalfunctionChance().modifyFlat(id,MALFUNCTION_CHANCE);
+        //stats.getCriticalMalfunctionChance().modifyFlat(id,MALFUNCTION_CHANCE);
+        //stats.getCriticalMalfunctionChance().modifyFlat(id, MALFUNCTION_CHANCE);
+        //stats.getWeaponMalfunctionChance().modifyFlat(id,MALFUNCTION_CHANCE2);
         //isAutomated(stats);
         //int temp = stats.getVariant().computeHullModOPCost();
         //a.1)
@@ -85,25 +95,25 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         //return "cats";
         switch(index) {
             case 0:
-                return "" + reqCrew(CrewPerCostPerSize[1]);// + "/" + reqCrew(CrewPerCostPerSize[2]) + "/" + reqCrew(CrewPerCostPerSize[3]) + "/" + reqCrew(CrewPerCostPerSize[4]);
+                return "" + reqCrew(CrewPerCostPerSize[1]) + "/" + reqCrew(CrewPerCostPerSize[2]) + "/" + reqCrew(CrewPerCostPerSize[3]) + "/" + reqCrew(CrewPerCostPerSize[4]);
             case 1:
-                return "" + reqCrew(CrewPerCostPerSize[2]);
-            case 2:
-                return "" + reqCrew(CrewPerCostPerSize[3]);
-            case 3:
-                return "" + reqCrew(CrewPerCostPerSize[4]);
-            case 4:
                 return "" + parm[0];
-            case 5:
+            case 2:
                 return "" + parm[1];
-            case 6:
+            case 3:
                 return "" + parm[2] + "%";//%
-            case 7:
+            case 4:
                 return "" + parm[3] + "%";//%
-            case 8:
+            case 5:
                 return "" + parm[4];
-            case 9:
-                return "" + parm[5];
+            case 6:
+                return "" + parm[5] + "%";
+            case 7:
+                return "" + parm[6];
+            case 8:
+                Set<String> a = Global.getSector().getPlayerFaction().getKnownHullMods();
+                if(!a.contains(AIRetrofits_Constants.Hullmod_AIRetrofit) || !AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit_CanSwap) return "" + CantChangeHullMod;
+                return "" + CanChangeHullMod1  + Global.getSettings().getHullModSpec(AIRetrofits_Constants.Hullmod_AIRetrofit).getDisplayName() + CanChangeHullMod2;
         }
         return null;
     }
@@ -274,9 +284,10 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         int Base_cost = this.spec.getCostFor(hullsize);
         parm[0] = cost;
         parm[1] = (cost + Base_cost);
-        parm[2] = 100;
+        parm[2] = (int)(100 * SUPPLY_USE_MULT);
         parm[3] = (int) (REPAIR_LOSE * 100);
         parm[4] = (int) MinCrew;
-        parm[5] = (int) (MinCrew * CREW_USE_MULT);
+        parm[5] = (int) (CR_DOWNGRADE*-100);
+        parm[6] = (int) (MinCrew * CREW_USE_MULT);
     }
 }

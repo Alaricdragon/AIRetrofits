@@ -5,8 +5,12 @@ save compatible with 0.7.9+
         made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations
     improvements:
         added 108 first and last names to possible names for command nodes. (got them from a online name generator. feel free to suggest more names / name generators.)
+    fixes:
+        fixed AIRetrofit hull-mod sometimes not displaying its repair time increase correctly.
+        made AIRetrofit hull-mod be a little more clear on how mush repair speed is slowed down hopefully.
     background work:
         did some background work for adding a new hull-mod or 2.
+        did some background work for a interesting item.
 v0.7.19.1:
 save compatible with 0.7.9+
     improvements: a handful more edits (thanks again 'FrownTown' for edits)

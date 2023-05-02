@@ -6,7 +6,8 @@ im going to work on the following now:
                 -(done)hullmod code
                 -(not started)getting robots to have reduced cargo based on hullmods
                 -(not started)displaying how many robots are in the robot storge
-            -(not started)patchwork AIRetrofits:
+                - display and description and everything else
+            -(started)patchwork AIRetrofits:
                 -(done)extend AIRetrofits without logistic dependency
                 -(done)added to 'remove this hull-mod' to AIRetrofit shipyard
                 -(done. TESTED)make it so when you dock your ships, and you have the AIRetrofit hullmod, its automatically replaced by AIRetrofit.
@@ -14,10 +15,18 @@ im going to work on the following now:
                 -(started)gave it its extra stats (lower CR, chance of malfunctions)
                 -(done)make normal AIRetrofit incompatible with patchwork AIRetrofit
                 -(done)make AIRetrofit_oppAddAll also count patchwork AIRetrofits as a hullmod it does not remove itself for.
-                -change the description and description values of the hullmod to reflet its status as 'patchwork'
+                -(done)change the description and description values of the hullmod to reflet its status as 'patchwork'
                 -change the image of the hullmod to something more brown or broken looking.
+                -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
-
+        Command Node and relevent industry:
+            Sub Market:
+            (started)SpecialItem:
+                NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
+                apply skill, name, and personality data to item.
+                display skill, name and personality data on item.
+                right click item to add person to your fleet / admin pull.
+            AICore Changes:
 
 NOTE:
     just tried a thing with growth. it works.
