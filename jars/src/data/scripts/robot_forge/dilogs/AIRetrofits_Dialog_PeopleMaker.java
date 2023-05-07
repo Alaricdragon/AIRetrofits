@@ -20,6 +20,7 @@ import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -135,7 +136,9 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         person.setPersonality(personalities[power]);
         setPerson(person);
         //possibility to add he possibility of having an elite skill to start?
-        for(MutableCharacterStatsAPI.SkillLevelAPI a : person.getStats().getSkillsCopy()) {
+        List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
+        for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
+            MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
             if (a.getSkill().isElite()) {
                 person.getStats().decreaseSkill(a.getSkill().getId());
             }

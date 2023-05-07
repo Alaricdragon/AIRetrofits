@@ -28,16 +28,12 @@ public class AIRetrofits_AbilityAndHullmodAdding {
     }
      public static void addReqAbility(){
         CharacterDataAPI character = Global.getSector().getCharacterData();
-        for(String a: character.getAbilities()){
-            if(a.equals(ability)){
-                return;
-            }
+        if(character.getAbilities().contains(ability)){
+            return;
         }
-        for(String a: character.getHullMods()) {
-            if (a.equals(hullmod)) {
-                character.addAbility(ability);
-                return;
-            }
+        if(character.getHullMods().contains(hullmod)){
+            character.addAbility(ability);
+            return;
         }
     }
     public static void swapPatchworkForAIRetrofit(){
@@ -45,7 +41,8 @@ public class AIRetrofits_AbilityAndHullmodAdding {
         Set<String> a = Global.getSector().getPlayerFaction().getKnownHullMods();
         if(!a.contains(AIRetrofits_Constants.Hullmod_AIRetrofit)) return;
         List<FleetMemberAPI> ships = Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy();
-        for(FleetMemberAPI b : ships){
+        for(int b2 = 0; b2 < ships.size(); b2++){//FleetMemberAPI b : ships){
+            FleetMemberAPI b = ships.get(b2);
             ShipVariantAPI ship = b.getVariant().clone();
             //b.getStats().getMaxCombatReadiness();
             ship.setSource(VariantSource.REFIT);
