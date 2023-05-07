@@ -1,13 +1,20 @@
 changelog for all my changes as i make them so i dont forget again.
-V0.7.20: (not released)
+V0.7.20.1:
+maybe not save combatable?
+    background: worked on something cool
+
+V0.7.20: (was only released as a private project. is part of the 0.7.20.1 update.)
 save compatible with 0.7.9+
-    mod combatability:
-        made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations
+    mod compatibility:
+        made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations (once crew replacer supports this)
     improvements:
         added 108 first and last names to possible names for command nodes. (got them from a online name generator. feel free to suggest more names / name generators.)
     fixes:
         fixed AIRetrofit hull-mod sometimes not displaying its repair time increase correctly.
         made AIRetrofit hull-mod be a little more clear on how mush repair speed is slowed down hopefully.
+        possably fixed a issue that might have been causing crashes?
+    new:
+        added a new hullmod, patchwork AIRetrofits. for when you want to fly the ship back to the spaceport with no crew.
     background work:
         did some background work for adding a new hull-mod or 2.
         did some background work for a interesting item.
