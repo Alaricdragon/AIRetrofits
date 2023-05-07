@@ -1,34 +1,27 @@
-issues:
-    -(done)right now all exstra industries only serve to slow down your game, and this kinda sucks.
-        -option 1: reduce cost
-            reducing the cost means creating the industries first will be less painfull.
-        -option 2: make all industries do something cool
-            still has the same issue, the market MAKES you make them even if they are usefull.
-        -option 3: reduce penalties for not having industries.
-            right now, not having anything provides an massive penalty to stability. unacceptable.
-            instead reduce the penalty to -1 per item, but only after market at market sizes 4,5,6.
-            example:
-                at size 3+, -stab from missing maintains parts.
-                at size 4+, -stab from human interface nodes
-                at size 4+, -stab from missing command relays.
-                at size 5+, -stab from missing sub command nodes.
-            also proved an boost in stability for having said upgrades:
-                +stab from meeting maintains parts.
-                +stab from meeting human interface nodes.
-                +stab from meeting command relays.
-                +stab from meeting sub command nodes.
+issue:
+    almost every building is borring. very very boring. i dont like it.
+    i like automated ship installation center, as well as the personal robot manufactures. i also am ok with the robotic population factorys, and the population replacement center
+    idea: add exstra function to all industry and markets, eater by making the items they produce useful, or by adding extra function themselves.
+    so, in that vain, here are the idea for the 'uninteresting' industrys:
+        robotic matnace fasility:
+            add a sub market were you can get robotic replacerment parts and robotic matnace pacs for cheep.
+            make it so robotic replacement parts to be used to reduce casualties on robots (like, lose 30 - 40% of robot losses as robotic replacement parts, provided they are available.)
+            make it so robotic matnace pacs can be used to reduce the supply drain on your ships when your using AI-Retrofits, and make it so they use the matnace pacs instead.
+        sub command node prodution place:
+            make a sub market were you can bye sub command nodes, and in very limited number, command nodes.
+                -command nodes will be consumable items that give you a officer or a admen on use. (or spy with nexerlin?)
+        synfetec factory:
+            -i.. dont have any ideas. like, what can they even do? maybe crew ships at a cost? maybe?
+       Population Replacement Center
+            -give this a middle ground. something like, letting it grow population of the other type (robots on a normal market, and people on a AI market)
+            -give it a upgrade (or other type of option) that gives it the function of completely replacing the market
+                -provide a massive growth penalty well that is active
+                -provide options for displacement or purge, depending on what you want to do.
+            -make it based on population composition.  so lv 1 of this lets the non main population grow up to lets say 50% of the population.
+            -make it so if i reach 90% population of the non document population type, the main population type will switch.
+            mmmm. this looks like something for market retrofits to handle, but..
+            -let different population compositions interact with each other.
 
-    -right now, there is no 'fun' to be had from an AI market. this might help:
-        option 1: add new industries that do new things to an AI market.
-            right now, an AI market provides nothing -new- lets change that.
-            ideas:
-                -add an industry (or building) to produce high tech robots
-                    -high tech robots could have 2X power for the same size, but not be producible by the players fleets robot forges.
-                    -having this industry could make all ships coming from this market hold high tech robots instead of normal ones.
-                -add an industry (or building) to upgrade ships with an free AI retrofit
-                    -have this building create an ship storage (like the repair dock) that uninstalls 'AI-Retrofits' (if applicable)
-                     and installs 'built-in AI-Retrofits' at an rate of 8/4/2/1 ships per moth.
-                    -have this industry make all same faction AI market ships from this system have the 'built-in AI-Retrofits' instead of the normal 'AI-Retrofits'
 cost data:
     build cost (number X 5000)
     time (days)
@@ -94,12 +87,10 @@ Industry:
         cost:
             same as normal population
         extra:
-            right now, increases stability to ridiculous levels. need to fix that
+
         AI-Cores:
 
         thoughts:
-            a lot of new industry might need to be added, for not making AI markets to simple
-            most likely, i will make them require the 'robotic population' market condition im using to control all of this.
 
     -robotic drone factory T0:
         -requires everything robotic drones require
@@ -112,7 +103,7 @@ Industry:
             heavy_machinery:size - 2
         costs:
             build cost: 15 (75k)
-            time:       60
+            time:       30
             upkeep:     3
             industry: false
         AI-Cores:
@@ -120,7 +111,7 @@ Industry:
             beta: normal
             alpha: normal + growth boost
         extra:
-            if stocked, builds drones at supply ponit and provides population growth.
+            if stocked, provides population grouth to the world.
 
     -robot drone factory T1:
         supply:
@@ -131,7 +122,7 @@ Industry:
             heavy_machinery:        (?)
         costs:
             build cost: 30 (150k)
-            time:       90
+            time:       60
             upkeep:     8
             industry: true
         AI-Cores:
@@ -150,7 +141,7 @@ Industry:
             heavy_machinery:        (?)
         costs:
             build cost: 30 (150k)
-            time:       120
+            time:       90
             upkeep:     14
             industry: true
         AI-Cores:
@@ -160,7 +151,7 @@ Industry:
         extra:
             provides population to friendly AI markets in system
 
-    -(req re-balance)AINode production facility:
+    AINode production facility:
         supply:
         demand:
         cost:
@@ -178,7 +169,8 @@ Industry:
             beta:
             alpha:
         extra:
-            no bonus or minus planed
+            make a sub market were you can bye sub command nodes, and in very limited number, command nodes.
+                -command nodes will be consumable items that give you a officer or a admen on use. (or spy with nexerlin?)
 
     -(req re-balance)robotic maintenance facility:
         supply:
@@ -203,7 +195,9 @@ Industry:
             beta:
             alpha:
         extra:
-            1 stability on worlds with AI pops
+            add a sub market were you can get robotic replacerment parts and robotic matnace pacs for cheep.
+            make it so robotic replacement parts to be used to reduce casualties on robots (like, lose 30 - 40% of robot losses as robotic replacement parts, provided they are available.)
+            make it so robotic matnace pacs can be used to reduce the supply drain on your ships when your using AI-Retrofits, and make it so they use the matnace pacs instead.
 
     -(req re-balance)synthetic production center:
         supply:

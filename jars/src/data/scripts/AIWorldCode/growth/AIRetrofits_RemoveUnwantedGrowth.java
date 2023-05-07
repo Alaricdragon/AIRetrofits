@@ -23,7 +23,8 @@ public class AIRetrofits_RemoveUnwantedGrowth {
     }
     public static void removeKnownImmigration(MarketAPI market, PopulationComposition incoming,ArrayList<String> gone){
         PopulationComposition negitiveIn = new PopulationComposition();
-        for(Industry a : market.getIndustries()){
+        for(int a2 = 0; a2 < market.getIndustries().size(); a2++){
+            Industry a = market.getIndustries().get(a2);
             if (market.hasIndustry(a.getSpec().getId()) && market.getIndustry(a.getSpec().getId()).isFunctional()){
                 try {
                     if(a.getSpec() instanceof MarketImmigrationModifier) {
@@ -38,7 +39,8 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                 }
             }
         }
-        for(MarketConditionAPI a : market.getConditions()){
+        for(int a2 = 0; a2 < market.getConditions().size(); a2++){
+            MarketConditionAPI a = market.getConditions().get(a2);
             if (market.hasCondition(a.getSpec().getId()) && !a.getSpec().getId().equals(AIRetrofits_Constants.Market_Condition)){
                 try{
                     if(a.getPlugin() instanceof MarketImmigrationModifier){
@@ -64,7 +66,8 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                     break;
                 }
             }
-            for(String b:gone){
+            for(int b2 = 0; b2< gone.size(); b2++){
+                String b = gone.get(b2);
                 if(b.equals(mods[a].toString())){
                     AIRetrofit_Log.loging("avoiding removing " + b + " because it was removed elsewere.",logClass,AIRetrofits_Constants.Market_EnableLogs);
                     noOut = true;

@@ -1,3 +1,5 @@
+-issue: until next update, changing market conditions within a condition is impossible. this can only be implemented next update
+
     market conditions and interactions:
         -some market conditions do not make sense on an AI-pop world. they will need to be sorted out.
         -AIPOP(started):

@@ -63,3 +63,161 @@
             should it happen more? mush more? i don't know.
 
             there is an new system being added to events. we will see what this can interface when that is out.
+
+
+NOTE:
+    been written possible situations, but they are quite final.
+    maybe make them more repeatable? i an unsure.
+    right now it sounds frustrating. i need to be carefully about how i handle this, or it will be the worst thing ever.
+    maybe split discovery into friendly discovery, nurture discovery, and hateful discovery?
+    that might be a little better.
+possible situations:
+    suspicion:
+        description:
+            others are starting to notice that something is wrong. why is this market acting so strangely? why is it so hard to find housing...? why os no one leaving
+            a faction (or factions) have noticed you. perhaps they frequent the markets here. maybe they just got a tip from another faction. who knows?
+        causes: (! = start the event. + = increase event movement)
+            + having conditions that should be adding a lot of market growth (close to core worlds, free port, extra)
+            !+ having a sub population that can see your market here (deciv sub population)
+            !++ having worlds already be discovered.
+            !++ having a non robotic-pop market in system
+            !!!!++++ using population replacement center (people to robots)
+            + using population replacement center (robots to people)
+            + faction already being suspicious
+            + world under suspicion de civilizing, provided more markets are in the system
+        reduction:
+            - destroying investigating fleets.
+            - being friendly with a suspicious faction
+            - world under suspicion de civilizing, provided no more markets are in the system
+            - robotic market stability commodity demand met.
+            -- having human interface node demand met.
+            ---fake having a population.
+        options:
+            fake having a population.
+                -fake chatter, fake people in bars, fake everything
+                -requires human interface nodes. in large numbers.
+                -costly.
+            reduce interest.
+            own up to the fact (openly, or privately)
+                -move a faction (or all factions) to discovery.
+                -some friendly factions will like this. some will not.
+        events:
+            low:
+            possibility of suspicious faction fleets to investigate
+            mid:
+            possibility of suspicious factions telling another faction there suspicions
+            high:
+            possibility a suspicious faction will attack a suspicious world. and depending on there thoughts towards AI, they would: invalid, sat bom, disrupt
+                -if world is attacked, and orbital defences full, and the world is a robotic market it becomes !discovered!
+            possibility a suspicious faction will be mad (-reputation)
+            possibility a suspicious faction will send a investigation fleet over to one of the worlds under your control. if its a robotic market, or under AI control, they may attack it. it will also become !discovered!
+        fleets:
+        finishers:
+            if situation drops to zero for a given faction, that faction will lose suspicion
+            a world is discovered by the suspicious faction. this faction might tell there allies this information.
+            discovered worlds are effected by the 'discovery' event.
+        notes:
+            factions are not always sharing information. as a result, factions suspicion is managed by faction.
+    discovery:
+        description:
+            you have been discovered! someone knows whats sup. why this market never seems to do anything. now its time to act...
+        causes:
+            ! +a market was discovered, is the only way to start this event.
+            + this faction disliking you
+            +(per world) this faction having discovered another world
+            + this faction having allies that have discovered you.
+            ++ this faction having vengeance to you (nexertion)
+        reduction:
+            -not being in control of that world anymore
+            --discovered faction being busy (low stability markets, lost a market, ext)
+        options:
+            own up to using robots (publicly only)
+                -all factions discover you. they will all need to decide how to proceed.
+            ???show this faction -all- your roboic worlds, and let them investigate you.
+                -the situation will continue as normal.
+                -the faction will understand that you use robotics.
+                -the situation result will be amplified. (more if done earlier in the situation)
+            destroy the faction that knows
+                -destroying all knowing factions will result in the situation ending. if the situation was far enough along, it might cause something to happen? (like a dead box trigger)
+        events:
+            (events depend on how this faction thinks of you, and what your stance is)
+        fleets:
+        finishers:
+            depending on the factions view on AI, robotics, and relations, a few things can happen
+            likes AI, hates you:
+                if you told them:
+                    no imedeant consequences
+                    war? indifference?
+                    maybe trying to infiltrate the world?
+                if they found out:
+                    try to take it from you?
+            likes AI, likes you:
+                if you told them:
+                    acceptance. this faction will not bug you about this world farther.
+                    maybe a random bit of positive / negative rep, for having cool markets / not telling us?
+                if they found out:
+                    acceptance. this faction will not bug you about this world farther.
+                    maybe a random bit of positive / negative rep, for having cool markets / not telling us?
+            hates AI, hates you:
+                if you told them / not told them:
+                    a permanent max reputation drop. as well as a reputation drop?
+                    try to stat bomb.
+            hates AI, likes you:
+                if you told them:
+                    acceptance -reputation
+                if they found out:
+                    -reputation. something else maybe?
+                    -try to save you. by destroying the world. let it happen and no reputation drop.
+        notes:
+    AI command break down:
+        description:
+            your fancy robotic command structure is breaking down. some robots are going rouge. something needs to be done to avoid consequences
+        causes:
+            !+low stability. large markets without stabilizing commodity.
+            !+sub command node / command really deficiency for a long time
+        reduction:
+            --- met sub command and command really requirements
+            []sleeping market sleeping markets do not advance the situation at all in any way.
+        options:
+            put the market to sleep
+                -this will slow down both the markets income, and upkeep by a percent (up to 75%/50% respectively)
+                -0.2X fleet size.
+                -0.2X ground defence
+                +3 min stability
+            disable the market... for now:
+                -this will remove the cost and gain of the market (0X income. 0X upkeep)
+                -0X fleet size.
+                -0X ground defences
+                +5 min stability.
+
+        events:
+            low:
+                -market command recovers
+                +market command gets worse
+            mid:
+                -market command recovers
+                +market command gets worse
+                +robots go rouge (form a random robotic sub population)
+            high:
+                +a large fleet goes rogue. raids everyone in the system.
+        fleets:
+            low:
+                small amounts of rough fleets (1 / 10 fleet size)
+            mid:
+                mid amounts of rough fleets (2.5 / 10 fleet size)
+            high:
+                high amounts of rough fleets (5 / 10 fleet size)
+        finishers:
+            a large fleet goes rough. raids everyone in the system, then leaves.
+            a rebellion.
+        notes:
+            this feels off. this could use some improvements.
+    AI rebellion
+        description:
+        causes:
+        reduction:
+        options:
+        events:
+        fleets:
+        finishers:
+        notes:

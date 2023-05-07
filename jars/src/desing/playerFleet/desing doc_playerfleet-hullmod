@@ -1,3 +1,54 @@
+issues:
+    i have a few issues with the base AI-Retrofits:
+        1)AIRetrofits hull-mods power varies to mush.
+            on ships with a small min crew, its good.
+            on ships with a large max crew it sucks.
+        2)AIRetrofits provides no change to crew based fighter casaltys.
+            -should it? maybe. defiantly on the alpha version.
+    i have a few issues with the built in AIRetrofits:
+        1) the alpha core is to strong.
+            -the alpha core adding opp feels broken as hell....
+            -possable sullution: make the alpha core reduce the penalty of having a AI-Retrofit hullmod depending on the ratio between max and min crew?
+    i have a few issues with the current version of hull mods:
+        1) there is no way to man a ship you find out in the wasts. i dont like that...
+        2) robots take up far to mush cargo on the ship. this is in theory fine, but it does get to be quite frustrating over time.
+        3) i have all this exstra crew space, and nothing to do with it.
+
+    so new hullmods:
+        1)patchwork AI-Retrofit
+            -exstends AI-Retrofit.
+            -can be instaled anywere.
+            -if you land on a market (and own the AI-Retrofit hullmod) auto installs AI-Retrofit.
+            -drops the ships CR by 15
+            -slightly increases chance of malfunctions.
+            -can not be perma installed.
+            -if AI-Retrofit or its varents are installed, uninstall this hullmod.
+            -would need to be found.
+
+        2) robotic drone storage:
+            -low opp cost.
+            -not compatible with robot forge hullmod
+            -lugistic hullmod?
+            -does one of the following: (2 variants of this hullmod)
+            A: replaces a amount of extra crew storage with "robot storage".
+            B: replaces a amount of cargo storage with "robot storage".
+            "robot storage" is a special storage that only robots can enter.
+            every robot uses there own cargo size in "robot storage"
+            because it costs opp, the robot storage would be more efficient then normal storage. lets say:
+            for every 1 crew storage removed, add 1 robot storage.
+            for every 1 cargo removed, add 2 robot storage
+            you would need to find this one
+
+    crazy hullmod ideas:
+        1) combat robotic lunch bay
+            -a combat hullmod
+            -would consume ammo (robots).
+            -in combat, would fire up to 2/4/8/16 combat robots (of whatever type its set to fire).
+            -(a)the robots would: surround the host ship, and try to attack hostiles. would not be hittable by friendly weapons.
+            -(b)would act like a fighter bay, consiting of one bay of robots, with limited replacements.
+                -would launch 3? drones at a time, with 2/4/8/16 replacements max.
+            -would have 3+ varents: 1 for basic combat robots, one for advanced, and one (very very rare) for omega robots.
+            -??maybe add a variant for salvage / survey robots? make that version apply extra damage / reduce speed / increase EMC rating?
 hullmods:
     AI-Retrofits:
         -sets required crew to 0.

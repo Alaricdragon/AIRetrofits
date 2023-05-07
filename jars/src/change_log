@@ -1,5 +1,29 @@
 changelog for all my changes as i make them so i dont forget again.
-v0.7.18: (release notes), from 0.5:
+V0.7.20: (not released)
+save compatible with 0.7.9+
+    mod combatability:
+        made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations
+    improvements:
+        added 108 first and last names to possible names for command nodes. (got them from a online name generator. feel free to suggest more names / name generators.)
+    fixes:
+        fixed AIRetrofit hull-mod sometimes not displaying its repair time increase correctly.
+        made AIRetrofit hull-mod be a little more clear on how mush repair speed is slowed down hopefully.
+    background work:
+        did some background work for adding a new hull-mod or 2.
+        did some background work for a interesting item.
+v0.7.19.1:
+save compatible with 0.7.9+
+    improvements: a handful more edits (thanks again 'FrownTown' for edits)
+v0.7.19:
+save compatible with 0.7.9+
+    improvements:
+        edited a bunch of text (thank you 'FrownTown' for editing all the text to be more readable)
+        changed the robotic population and infrastructure test to something none placeholder, if boring. as well as adding it the the settings
+v0.7.18.1:
+save compatible with 0.7.9+
+    fixes:
+        (hopefully) fixed a issue in relation to AIRetrofit causing a crash with progressive S-mods on oping the progressive S-mod menu. hopefully.
+v0.7.18: (release notes), from 0.6:
     new:
         added a new way to found a market, (unlucked once you have AI ships skill or have found the relevant hullmods and skills), costing salvage robots and sub command nodes instead of crew. worlds built in this way have some interesting properties:
             -they have different required commodity to maintain stability
@@ -58,6 +82,7 @@ v0.7.18: (release notes), from 0.5:
         all the people i asked seemingly random questions at for tolerating that and helping me. i could not have done this without you all
         all the people who piped up with suggestions and bug reports on the discord. it helped a lot
 v0.7.18:
+save compatible with 0.7.9+
     fixes:
         markets with robotic population no longer change contacts (hopefully).
         fixed the amount of bonus XP removing a S-Mod in the automated ship installation center gives

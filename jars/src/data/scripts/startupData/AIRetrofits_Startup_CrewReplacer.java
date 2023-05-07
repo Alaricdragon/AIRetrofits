@@ -2,6 +2,7 @@ package data.scripts.startupData;
 
 import com.fs.starfarer.api.Global;
 import data.scripts.AIRetrofit_Robots;
+import data.scripts.crewReplacer_CrewSet;
 import data.scripts.crewReplacer_Job;
 import data.scripts.crewReplacer_Main;
 
@@ -13,6 +14,10 @@ public class AIRetrofits_Startup_CrewReplacer {
     public static final String hijack_marinesJob = "Mission_hijack_marines";
     public static final String repairHyperRelayCrewJob = "CoronalHyperShunt_repair_Crew";
     public static final String nexMarinesJob = "nex_groundBattle_marines";
+
+    public static final String normadicSurvival_CrewSet_Crew = "normadicSurvival_crew";
+    public static final String normadicSurvival_CrewSet_Marines = "normadicSurvival_marines";
+
     static public void apply(){
         addMisc();
 
@@ -70,6 +75,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempJob = crewReplacer_Main.getJob(AIWorkerJob);
         tempJob.addNewCrew(robotType,1,10);//AIretrofit_CombatDrone
 
+        crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Crew);
+        tempCrewSet.addCrew(tempCrew);
+
     }
     static private void addCombatRobots(){
         final String robotType = "AIretrofit_CombatDrone";
@@ -106,6 +114,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempCrew.crewPower = nexM_Po;//Hm_Po
         tempCrew.crewPriority = nexM_Pr;//Hm_Pr
         tempJob.addCrew(tempCrew);
+
+        crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);
+        tempCrewSet.addCrew(tempCrew);
     }
     static private void addSurveyRobots(){
         final String robotType = "AIretrofit_SurveyDrone";
@@ -149,6 +160,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         //AIRetorfit found a market.
         tempJob = crewReplacer_Main.getJob(AIWorkerJob);
         tempJob.addNewCrew(robotType,1,10);//AIretrofit_CombatDrone
+
+        crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Crew);
+        tempCrewSet.addCrew(tempCrew);
     }
     static private void addAdvancedCombatRobots(){
         final String robotType = "AIretrofit_Advanced_CombatDrone";
@@ -185,6 +199,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempCrew.crewPower = nexM_Po;//Hm_Po
         tempCrew.crewPriority = nexM_Pr;//Hm_Pr
         tempJob.addCrew(tempCrew);
+
+        crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);
+        tempCrewSet.addCrew(tempCrew);
     }
     static private void addAdvancedSurveyRobots(){
         final String robotType = "AIretrofit_Advanced_SurveyDrone";
@@ -228,6 +245,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         //AIRetorfit found a market.
         tempJob = crewReplacer_Main.getJob(AIWorkerJob);
         tempJob.addNewCrew(robotType,1,10);//AIretrofit_CombatDrone
+
+        crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Crew);
+        tempCrewSet.addCrew(tempCrew);
     }
     static private void addOmegaCombatRobots(){
         final String robotType = "AIretrofit_Omega_CombatDrone";
@@ -264,6 +284,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempCrew.crewPower = nexM_Po;//Hm_Po
         tempCrew.crewPriority = nexM_Pr;//Hm_Pr
         tempJob.addCrew(tempCrew);
+
+        crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);
+        tempCrewSet.addCrew(tempCrew);
     }
     static private void addOmegaSurveyRobots(){
         final String robotType = "AIretrofit_Omega_SurveyDrone";
