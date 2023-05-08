@@ -1,3 +1,27 @@
+im going to work on the following now:
+    the new hull mods
+        going to add the new hullmods i came up with. the crazy one can wait though
+        -current status:
+            -(started)robot storege thing:
+                -(done)hullmod code
+                -(not started)getting robots to have reduced cargo based on hullmods
+                -(not started)displaying how many robots are in the robot storge
+                - display and description and everything else
+            -(started)patchwork AIRetrofits:
+                -(started)gave it its extra stats (lower CR, chance of malfunctions)
+                -change the image of the hullmod to something more brown or broken looking.
+                -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
+    the upgrades to the industry to make them all at least somewhat useful
+        Command Node and relevent industry:
+            Sub Market:
+            (started)SpecialItem:
+                NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
+                apply skill, name, and personality data to item.
+                (maybe done. untested)display skill, name and personality data on item.
+                (maybe done. untested)right click item to add person to your fleet / admin pull.
+                add everything this items needs to special items
+            AICore Changes:
+
 NOTE:
     just tried a thing with growth. it works.
     view growth -AI-Pop for details
@@ -35,6 +59,9 @@ Industrys:
             -moved this information into market - industry.
 Robots:
     -?change how AI cores work to power them, so an AI core can only control so many robot workers.
+    -if i do this, i could have the power boost decrease as more robots are added. say given 100% bost at 200 of a given type of robot, 50% at 400, 25% at 800 exstra.
+    -could use command realays to increase how mush a single AI-Core or sub command node can power.?
+    -im unsure of this. might be a bad idea.
 AIRetrofits:
     -add on the fighter hull type to the crew costs of this hullmod.
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.

@@ -14,6 +14,7 @@ import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
@@ -334,7 +335,8 @@ i want to:
 				"AIRetrofit_ShipyardGamma",
 				"AIRetrofit_ShipyardBeta",
 				"AIRetrofit_ShipyardAlpha",
-				"AIRetrofit_ShipyardOmega"
+				"AIRetrofit_ShipyardOmega",
+				AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit,
 		};
 		final String[] names = {
 				Global.getSettings().getHullModSpec(compatible[0]).getDisplayName(),
@@ -361,7 +363,7 @@ i want to:
 		int Base_cost = this.spec.getCostFor(hullsize);
 		parm[0] = cost;
 		parm[1] = (cost + Base_cost);
-		parm[2] = 100;
+		parm[2] = (int)(100 * SUPPLY_USE_MULT);
 		parm[3] = (int) (REPAIR_LOSE * 100);
 		parm[4] = (int) MinCrew;
 		parm[5] = (int) (MinCrew * CREW_USE_MULT);

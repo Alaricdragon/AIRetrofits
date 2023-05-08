@@ -3,19 +3,14 @@ package data.scripts.AIWorldCode.submarkets;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CoreUIAPI;
 import com.fs.starfarer.api.campaign.SubmarketPlugin;
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
-import com.fs.starfarer.api.loading.IndustrySpecAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.loading.S;
 import data.scripts.AIWorldCode.industries.specal.AIRetrofit_shipYard;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
-import java.util.List;
 
 public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     /*
@@ -84,6 +79,11 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
         }
         if(member.getVariant().hasHullMod(OtherHullmod)){
             return false;
+        }
+        for(String a : AIRetrofits_Constants.ASIC_Secondary_Hullmods) {
+            if (member.getVariant().hasHullMod(a)) {
+                return false;
+            }
         }
         if(member.getStats().getMinCrewMod().computeEffective(member.getVariant().getHullSpec().getMinCrew()) <= 0){
             return true;

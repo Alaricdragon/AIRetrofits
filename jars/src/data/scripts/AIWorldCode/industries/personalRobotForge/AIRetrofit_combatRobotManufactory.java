@@ -1,17 +1,12 @@
 package data.scripts.AIWorldCode.industries.personalRobotForge;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.util.Pair;
-import com.fs.starfarer.loading.S;
-import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
 
 import java.awt.*;
-import java.util.Random;
 
 public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotManufactoryBase {
     private final static String C1 = "metals";

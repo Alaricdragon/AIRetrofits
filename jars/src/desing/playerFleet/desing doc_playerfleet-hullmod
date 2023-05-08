@@ -48,6 +48,7 @@ issues:
             -(b)would act like a fighter bay, consiting of one bay of robots, with limited replacements.
                 -would launch 3? drones at a time, with 2/4/8/16 replacements max.
             -would have 3+ varents: 1 for basic combat robots, one for advanced, and one (very very rare) for omega robots.
+            -??maybe add a variant for salvage / survey robots? make that version apply extra damage / reduce speed / increase EMC rating?
 hullmods:
     AI-Retrofits:
         -sets required crew to 0.

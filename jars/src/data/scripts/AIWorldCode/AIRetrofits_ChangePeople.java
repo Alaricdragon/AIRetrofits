@@ -43,7 +43,7 @@ public class AIRetrofits_ChangePeople {
         /*if(Global.getSector().getImportantPeople().containsPerson(personAPI)){//maybe this will help for avoiding getting story people? hopefully?
             return false;
         }*/
-        if(ContactIntel.playerHasContact(personAPI)){//does not change contacts
+        if(ContactIntel.playerHasContact(personAPI,true)){//does not change contacts
             return false;
         }
         return true;

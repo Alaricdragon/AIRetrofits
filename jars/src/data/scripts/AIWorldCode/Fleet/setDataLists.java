@@ -49,7 +49,8 @@ public class setDataLists {
         return false;
     }
     private static boolean matches(ArrayList<String> list,String input){
-        for(String a : list){
+        for(int b = 0; b < list.size(); b++){
+            String a = list.get(b);
             if(a.equals(input)){
                 return true;
             }

@@ -41,6 +41,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public void reportPlayerOpenedMarket(MarketAPI market){
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
+        AIRetrofits_AbilityAndHullmodAdding.swapPatchworkForAIRetrofit();
         unapplySubMarkets(market);
     }
     private void changePeople(MarketAPI market){
@@ -76,7 +77,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 "AIRetrofit_ShipyardAlpha",
                 "AIRetrofit_ShipyardOmega",
                 "AIRetrofit_ShipyardBase",
-                "AIretrofit_airetrofit"};
+                AIRetrofits_Constants.Hullmod_AIRetrofit,
+                AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit};
         final float startingPonits = shipyardDValue;
         final float bounus = 1 + shipyard_IValue;
         final float[] costs = shipyard_costPerShip;
@@ -126,7 +128,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
         UpgradedShips upgraded = new UpgradedShips(type);
         //CrewReplacer_Log.loging("   looking at ships... ",this,logging);
-        for(FleetMemberAPI ship2 : ships){
+        for(int ship22 = 0; ship22 < ships.size(); ship22++){
+            FleetMemberAPI ship2 = ships.get(ship22);
             //CrewReplacer_Log.loging("       looking at ship " + ship2.getShipName(),this,logging);
             ShipVariantAPI ship = ship2.getVariant().clone();
             ship.setSource(VariantSource.REFIT);
@@ -180,6 +183,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     for(String a : addHullMods){
                         ship.removeMod(a);
                         ship.removePermaMod(a);
+                        //AIRetrofit_Log.loging("trying to remove hullmod: " + a,this,true);
                     }
                     ship.addMod(addHullMod);
                 }
@@ -249,7 +253,8 @@ class UpgradeList{
         }
         float cost = 0;
         float bonusXP = 0;
-        for(UpgradeTypes a : Types){
+        for(int a2 = 0; a2 < Types.size(); a2++){
+            UpgradeTypes a = Types.get(a2);
             //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
             float[] temp = a.getCost();
             cost += temp[0];
@@ -274,7 +279,8 @@ class UpgradeList{
         float cost = 0;
         float bonusXP = 0;
         Color highlight = Misc.getHighlightColor();
-        for(UpgradeTypes a : Types){
+        for(int a2 = 0; a2 < Types.size(); a2++){
+            UpgradeTypes a = Types.get(a2);
             //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
             float[] temp = a.display(info);
             cost += temp[0];
@@ -369,7 +375,8 @@ class UpgradedShips{
         info.addPara(text,pad,highlight,exstra);
         float cost = 0;
         float bonusXP = 0;
-        for(UpgradedShip ship : ships){
+        for(int a = 0; a < ships.size(); a++){
+            UpgradedShip ship = ships.get(a);
             ship.addShipToFleet(fleet);
             if(!playerOwned) {
                 cost += ship.getCost();
@@ -393,7 +400,8 @@ class UpgradedShips{
         ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
         float cost = 0;
         float bonusXP = 0;
-        for(UpgradedShip ship : ships){
+        for(int a = 0; a < ships.size(); a++){
+            UpgradedShip ship = ships.get(a);
             ship.addShipToFleet(fleet);
             if(!playerOwned) {
                 cost += ship.getCost();
