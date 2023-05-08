@@ -3,27 +3,16 @@ package data.scripts.robot_forge.dilogs;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
-import com.fs.starfarer.api.characters.FullName;
-import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
-import com.fs.starfarer.api.characters.OfficerDataAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
-import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.loading.S;
-import com.fs.starfarer.rpg.OfficerData;
-import com.fs.starfarer.rpg.Person;
-import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     TextPanelAPI text;
