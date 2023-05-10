@@ -1,4 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.7.21:
+save compatible with 0.20.1+
+    new:
+        added a new item: command nodes. that are not obtainable. yet =)
 V0.7.20.1:
 updated to 0.96a.
     background: worked on something cool
