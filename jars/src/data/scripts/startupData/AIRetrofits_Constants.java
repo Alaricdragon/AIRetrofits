@@ -220,4 +220,11 @@ public class AIRetrofits_Constants {
     public static final float Market_Growth_logFunctionE = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticE");//0;
 
 
+
+//Command Node and person info:
+    public static final String PersonTypes_Officer = "officer";
+    public static final String PersonTypes_Admin = "admin";
+
+    public static final float PersonWeight_Officer = 1;
+    public static final float PersonWeight_Admin = 1;
 }

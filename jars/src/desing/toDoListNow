@@ -16,10 +16,14 @@ im going to work on the following now:
             Sub Market:
             (started)SpecialItem:
                 NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
-                apply skill, name, and personality data to item.
-                (maybe done. untested)display skill, name and personality data on item.
-                (maybe done. untested)right click item to add person to your fleet / admin pull.
+                (done)apply skill, name, and personality data to item.
+                (done)display skill, name and personality data on item.
+                (done)right click item to add person to your fleet / admin pull.
                 add everything this items needs to special items
+                make items save there data.
+                data is not randomized right. wrong number of skills, level, and everything else.
+                make the supmarket that creates and applys data to the command nodes.
+                stop the command nodes from stacking
             AICore Changes:
 
 NOTE:

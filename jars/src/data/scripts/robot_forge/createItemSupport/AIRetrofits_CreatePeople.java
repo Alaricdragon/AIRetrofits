@@ -17,9 +17,9 @@ public class AIRetrofits_CreatePeople {
         return person;
     }
     private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
-    public static PersonAPI createOfficer(int power){
+    public static PersonAPI createOfficer(int personality){
         PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),1);
-        person.setPersonality(personalities[power]);
+        person.setPersonality(personalities[personality]);
         setPerson(person);
         //possibility to add he possibility of having an elite skill to start?
         List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
@@ -41,7 +41,36 @@ public class AIRetrofits_CreatePeople {
     public static PersonAPI createAdmen(float skillPower){
         /*skillPower represents the possibility to add more skills to this caption on creation. */
         PersonAPI person = createAdmen();
-
+        setPerson(person);
         return person;
     }
+    public static PersonAPI createOfficer(int personality, float skillPower,float skillEpic){
+        PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),(int)skillPower);
+        person.setPersonality(personalities[personality]);
+        setPerson(person);
+        //possibility to add he possibility of having an elite skill to start?
+        float alreadyEpic = 0;
+        List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
+        for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
+            MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
+            if (a.getSkill().isElite()) {
+                if(alreadyEpic > skillEpic) {
+                    person.getStats().decreaseSkill(a.getSkill().getId());
+                }
+                alreadyEpic++;
+            }
+        }
+        if(skillEpic < alreadyEpic){
+            for(int a2 = 0; a2 < skillsCopy.size() && alreadyEpic < skillEpic; a2++) {
+                MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
+                if (!a.getSkill().isElite()) {
+                    //a.getSkill().setElite(true);
+                    person.getStats().increaseSkill(a.getSkill().getId());
+                    alreadyEpic++;
+                }
+            }
+        }
+        return person;
+    }
+
 }
