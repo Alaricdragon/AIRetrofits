@@ -265,6 +265,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
                 Global.getSettings().getHullModSpec(compatible[2]).getDisplayName(),
                 Global.getSettings().getHullModSpec(compatible[3]).getDisplayName(),
                 Global.getSettings().getHullModSpec(compatible[4]).getDisplayName(),
+                Global.getSettings().getHullModSpec(compatible[5]).getDisplayName(),
         };
         for(int a = 0; a < compatible.length; a++){
             if(ship.getVariant().hasHullMod(compatible[a])){
