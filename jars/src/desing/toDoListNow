@@ -12,18 +12,30 @@ im going to work on the following now:
                 -change the image of the hullmod to something more brown or broken looking.
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
-        Command Node and relevent industry:
+        Command Node and relevant industry:
+            questions:
+                how do i add a special item to a sub-markets cargo?
+                how do i save data to a special item? (so the data on it is save presistant)
             Sub Market:
             (started)SpecialItem:
                 NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
                 (done)apply skill, name, and personality data to item.
                 (done)display skill, name and personality data on item.
                 (done)right click item to add person to your fleet / admin pull.
-                add everything this items needs to special items
+                (done)add everything this items needs to special items
                 make items save there data.
-                data is not randomized right. wrong number of skills, level, and everything else.
-                make the supmarket that creates and applys data to the command nodes.
-                stop the command nodes from stacking
+                (working on...)data is not randomized right. wrong number of skills, level, and everything else.
+                stop the command nodes from stacking why are they like this!?!?
+            (started)Submarket:
+                (done)add to csv
+                add image
+                add text.
+                (done)make the market refuse to bye things.
+                make the market only sell command nodes.
+                allow the market to have diffrent strangths on command nodes.
+                (done)make it so the submarket is added and removed with the industry
+                change description of the industry to say it adds this sub market.
+                update the old exstra text in this submarket ()
             AICore Changes:
 
 NOTE:

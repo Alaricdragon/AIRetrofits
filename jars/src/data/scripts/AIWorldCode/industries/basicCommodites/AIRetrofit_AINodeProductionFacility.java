@@ -2,6 +2,7 @@ package data.scripts.AIWorldCode.industries.basicCommodites;
 
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase {
     private final static String C1 = "metals";
@@ -26,7 +27,9 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
         if (!isFunctional()) {
             supply.clear();
         }
-        //deficit = getMaxDeficit(C3);
+        if(!this.market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility) && isFunctional()) {
+            this.market.addSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+        }
     }
     @Override
     protected boolean canImproveToIncreaseProduction() {

@@ -14,7 +14,10 @@ public class AIRetrofits_Constants {
 
     public static final String AlphaCore = "alpha_core";
 
-
+    //industry names:
+    public static final String Industry_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacility";
+    //sub market names:
+    public static final String Submarket_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacilitySubmarket";
 
     //Robot Stats And Descriptions
     public static final String robot_Description = Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";

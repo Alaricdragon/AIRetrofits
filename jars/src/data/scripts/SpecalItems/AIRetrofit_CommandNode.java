@@ -117,8 +117,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     }
 
     public void createPerson(String type){
-        float a = minRandomPower0 + Math.round(Math.random() * maxRandomPower0);
-        float b = minRandomPower1 + Math.round(Math.random() * maxRandomPower1);
+        float a = minRandomPower0 + Math.round(Math.random() * (maxRandomPower0) - minRandomPower0);
+        float b = minRandomPower1 + Math.round(Math.random() * (maxRandomPower1) - minRandomPower1);
         createPerson((int)a,(int)b,type);
     }
     public void createPerson(int power,int power2, String type){

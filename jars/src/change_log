@@ -1,6 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.7.21:
+save compatible with 0.7.20.1+
+    added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
+        -this market sells command nodes as admins and officers. i think its cool.
 V0.7.20.2:
-save compatible with 0.20.1+
+save compatible with 0.7.20.1+
     fixes: fixed 'patchwork AI-retrofit' and AI-retrofit crash when both hullmods were unlocked.
     background:
         dont worry about it.

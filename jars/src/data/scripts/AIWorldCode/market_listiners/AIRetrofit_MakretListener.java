@@ -211,6 +211,19 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             }*/
             market.removeSubmarket(shipYardSubmarket);
         }
+        if(market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility) && !market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility)){
+            /*if (!market.hasSubmarket(storge)){
+                market.addSubmarket(storge);
+            }
+            FleetDataAPI ships = market.getSubmarket(shipYardSubmarket).getCargo().getMothballedShips();
+            ships.getMembersListCopy()
+            for(FleetMemberAPI ship2 : ships.getMembersListCopy()){
+                ShipVariantAPI ship = ship2.getVariant().clone();
+                ship.setSource(VariantSource.REFIT);
+                market.getSubmarket(storge).getCargo().addMothballedShip(ship,ship.getHullVariantId(),ship.getDisplayName());
+            }*/
+            market.removeSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+        }
     }
 
     private void displayAIRetrofit_ShipYardNotification(UpgradeList memory){
