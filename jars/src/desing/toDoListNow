@@ -1,3 +1,5 @@
+doing right now: Sub Command Node thigs. look at the to do here.
+
 im going to work on the following now:
     the new hull mods
         going to add the new hullmods i came up with. the crazy one can wait though
@@ -26,6 +28,12 @@ im going to work on the following now:
                 make items save there data.
                 (working on...)data is not randomized right. wrong number of skills, level, and everything else.
                 stop the command nodes from stacking why are they like this!?!?
+
+                issue: i found a way to bouth save the item and to load it into a sub market, but i cant seem to get this to work!
+                    its very aaaaaa. maybe i should ask online if its possable to set a specal item data on item creation?
+                    but it looks like the awenser is 'not a god darn chance bro.' wish suck for so many reasons.
+                    however, industreal evolution did it, so i can likely find a way to do so as well.
+                    current issue: cant add specal item data onto specal item. need to fix this somehow.
             (started)Submarket:
                 (done)add to csv
                 add image

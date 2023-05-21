@@ -13,6 +13,7 @@ import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.industries.specal.AIRetrofit_shipYard;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
+import data.scripts.SpecalItems.AIRetrofit_CommandNode_SpecalItemData;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
@@ -39,7 +40,12 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             for(float a: power){
                 AIRetrofit_CommandNode item = new AIRetrofit_CommandNode();
                 item.createPerson((int) a,1,AIRetrofit_CommandNode.getPersonTypeByWeight());
+
+
+                AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null, item.person);
+                Global.getSector().getPlayerFleet().getCargo().addSpecial(amb, 1);
                 //cargo.addSpecial(item,1);
+                //getCargo().addSpecial(new SpecialItemData("roider_industry_bp", "roider_union_hq"), 1.0F);
             }
         }
         @Override

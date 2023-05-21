@@ -225,6 +225,7 @@ public class AIRetrofits_Constants {
 
 
 //Command Node and person info:
+    public static final String SpecalItemID_CommandNode = "AIRetrofit_CommandNode";
     public static final String PersonTypes_Officer = "officer";
     public static final String PersonTypes_Admin = "admin";
 

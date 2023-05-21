@@ -1,10 +1,7 @@
 package data.scripts.SpecalItems;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CargoStackAPI;
-import com.fs.starfarer.api.campaign.CargoTransferHandlerAPI;
-import com.fs.starfarer.api.campaign.FactionDoctrineAPI;
-import com.fs.starfarer.api.campaign.InteractionDialogAPI;
+import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
 import com.fs.starfarer.api.campaign.impl.items.BaseSpecialItemPlugin;
@@ -20,7 +17,7 @@ import java.awt.*;
 
 public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     public PersonAPI person;
-    public String personType;
+    public String personType = "";
     public int quality;
     public FactionDoctrineAPI doctrine = Global.getSector().getPlayerFaction().getDoctrine();
     private final static String nameText = "a command node with the designation of %s. they are a %s of level %s";
@@ -33,12 +30,57 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     @Override
     public void init(CargoStackAPI stack) {
         super.init(stack);
+        AIRetrofit_Log.loging("loading data",this,true);
+        if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {
+            AIRetrofit_Log.loging("trying to load data from specaldata",this,true);
+            person = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPerson();
+            findPersonType();
+        }else{
+            //cant  fix stack here. need to fix it somewere else.
+            fixStack();
+        }
+        AIRetrofit_Log.loging("DONE loading / setting data for specal item",this,true);
+    }
+    public void fixStack(){
+        if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {return;}
+        AIRetrofit_Log.loging("createing new data for specal data",this,true);
+        AIRetrofit_Log.push();
+        int b = 0;
+        //while(b < (int)stack.getSize()) {
+        try {
+            AIRetrofit_Log.loging("created person", this, true);
+            createPerson();
+            AIRetrofit_Log.loging("creating specal data", this, true);
+            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null, this.person);
+            AIRetrofit_Log.loging("do we have a cargo bay?", this, true);
+            stack.getCargo().addCommodity("crew",50);
+            AIRetrofit_Log.loging("adding new specal item to cargo bay", this, true);
+            stack.getCargo().addSpecial(a, 1);
+        } catch (Exception e) {
+            AIRetrofit_Log.loging("exeption found. type: " + e, this, true);
+        }
+        b++;
+        //}
+        try {
+            AIRetrofit_Log.loging("removing this stack from cargo bay", this, true);
+            stack.getCargo().removeStack(stack);
+        }catch (Exception e){
+            AIRetrofit_Log.loging("failed to remove bad core. exeption type: "+e,this,true);
+        }
+        AIRetrofit_Log.pop();
     }
     /*
     @Override
     public void render(float x, float y, float w, float h, float alphaMult,
                        float glowMult, SpecialItemRendererAPI renderer) {
     }*/
+
+    @Override
+    public String getId(){
+        //fixStack();
+        return super.getId();
+    }
+
     @Override
     public boolean hasRightClickAction(){
         return true;
@@ -53,6 +95,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     }
     @Override
     public void performRightClickAction(){
+        //super.performRightClickAction();
         switch (personType){
             case AIRetrofits_Constants.PersonTypes_Officer:
                 Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
@@ -65,10 +108,12 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     @Override
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource) {
         super.createTooltip(tooltip, expanded, transferHandler, stackSource, false);
+        //fixStack();
         if(person == null){
             this.createPerson();
         }
         float pad = 3f;
+        float opad = 10f;
         Color highlight = Misc.getHighlightColor();
         String type = "error";
         switch (personType){
@@ -79,7 +124,12 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
                 type = adminText;
                 break;
         }
-        tooltip.addPara(nameText,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel());
+        TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
+        text.addPara(nameText,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel());
+        //text.addPara(person.getNameString() + " is an official faction representative.", pad);
+        //text.addPara("Treat them well, or face the consequences.", pad);
+        tooltip.addImageWithText(opad);
+        //tooltip.addPara(nameText,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel());
         if(expanded){
             tooltip.addSkillPanel(person,pad);
         }
@@ -89,6 +139,11 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         //this.doctrine = market.getFaction().getDoctrine();
         return super.getPrice(market, submarket);
     }
+    @Override
+    protected float	getItemPriceMult() {
+        return super.getItemPriceMult();
+    }
+
     public static String getPersonTypeByWeight(){
         String[] persons = {
                 AIRetrofits_Constants.PersonTypes_Officer,
@@ -114,6 +169,10 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     }
     public void createPerson(){
         createPerson(getPersonTypeByWeight());
+    }
+    public void findPersonType(){
+        if(person.getTags().contains(officerText)) personType = AIRetrofits_Constants.PersonTypes_Officer;
+        if(person.getTags().contains(adminText)) personType = AIRetrofits_Constants.PersonTypes_Admin;
     }
 
     public void createPerson(String type){
@@ -150,4 +209,5 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         AIRetrofit_Log.loging("got aggression level of: "+aggression,this,true);
         return aggression;
     }
+
 }
