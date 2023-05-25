@@ -1,10 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.7.20.3:
-save compatible with 0.20.1+
+save compatible with 0.7.20.1+
     fixes: fixed a rare bug that stoped the player from adding hullmods in very rare conditions hopefully
 
 V0.7.20.2:
-save compatible with 0.20.1+
+save compatible with 0.7.20.1+
     fixes: fixed 'patchwork AI-retrofit' and AI-retrofit crash when both hullmods were unlocked.
     background:
         dont worry about it.
