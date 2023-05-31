@@ -29,11 +29,13 @@ im going to work on the following now:
                 (working on...)data is not randomized right. wrong number of skills, level, and everything else.
                 stop the command nodes from stacking why are they like this!?!?
 
-                issue: i found a way to bouth save the item and to load it into a sub market, but i cant seem to get this to work!
-                    its very aaaaaa. maybe i should ask online if its possable to set a specal item data on item creation?
-                    but it looks like the awenser is 'not a god darn chance bro.' wish suck for so many reasons.
-                    however, industreal evolution did it, so i can likely find a way to do so as well.
-                    current issue: cant add specal item data onto specal item. need to fix this somehow.
+                issue: saving data and load data is working, but i cant remove a junk stake of Command Nodes that has no data on it. arg.
+
+                questions:
+                    1) how does one set a stacks SpecialItemData after said stack has been created?
+                    2) how does one remove a stack from that cargo its in? im trying from its own BaseSpecialItemPlugin, but nothing works
+                        - i have tried: stack.getCargo().removeStack(stack); stack.setSize(0); stack = null; and any combination of all of them.
+                    3) how does one make it so a items max stack size is 1? i have tried changing stack size in the special item CSV to no effect.
             (started)Submarket:
                 (done)add to csv
                 add image

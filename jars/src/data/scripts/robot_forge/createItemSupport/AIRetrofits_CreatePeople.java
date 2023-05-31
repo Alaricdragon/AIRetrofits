@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class AIRetrofits_CreatePeople {
+    PersonAPI person;
     public static PersonAPI createAdmen(){
         PersonAPI person = OfficerManagerEvent.createAdmin(Global.getSector().getPlayerFaction(),0,new Random());
         setPerson(person);

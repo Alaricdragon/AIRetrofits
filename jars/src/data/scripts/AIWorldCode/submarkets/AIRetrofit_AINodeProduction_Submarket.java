@@ -39,7 +39,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             float[] power = getPower();
             for(float a: power){
                 AIRetrofit_CommandNode item = new AIRetrofit_CommandNode();
-                item.createPerson((int) a,1,AIRetrofit_CommandNode.getPersonTypeByWeight());
+                //item.createPerson((int) a,1,AIRetrofit_CommandNode.getPersonTypeByWeight());
 
 
                 AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null, item.person);
