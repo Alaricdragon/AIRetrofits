@@ -6,6 +6,7 @@ import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.List;
 import java.util.Random;
@@ -42,12 +43,14 @@ public class AIRetrofits_CreatePeople {
     public static PersonAPI createAdmen(float skillPower){
         /*skillPower represents the possibility to add more skills to this caption on creation. */
         PersonAPI person = createAdmen();
+        person.getTags().add(AIRetrofits_Constants.PersonTypes_Admin);
         setPerson(person);
         return person;
     }
     public static PersonAPI createOfficer(int personality, float skillPower,float skillEpic){
         PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),(int)skillPower);
         person.setPersonality(personalities[personality]);
+        person.getTags().add(AIRetrofits_Constants.PersonTypes_Officer);
         setPerson(person);
         //possibility to add he possibility of having an elite skill to start?
         float alreadyEpic = 0;

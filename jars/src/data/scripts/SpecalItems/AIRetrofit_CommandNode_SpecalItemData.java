@@ -21,6 +21,9 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
     public PersonAPI getPerson(){
         return person;
     }
+    public void setPerson(PersonAPI person){
+        this.person = person;
+    }
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -70,7 +73,7 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
     private final static float minRandomPower0 = 1;
     private final static float maxRandomPower1 = 3;
     private final static float minRandomPower1 = 1;
-    String personType = "";
+    //String personType = "";
     public static String getPersonTypeByWeight(){
         String[] persons = {
                 AIRetrofits_Constants.PersonTypes_Officer,
@@ -106,12 +109,12 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
         AIRetrofit_Log.loging("got a power,power,type of: "+power+", "+power2+", "+type,this,true);
         switch (type){
             case AIRetrofits_Constants.PersonTypes_Officer:
-                this.personType = type;
+                //this.personType = type;
                 //person = AIRetrofits_CreatePeople.createOfficer(personalityMix(this.doctrine),power,power2);
                 person = AIRetrofits_CreatePeople.createOfficer(personalityMix(Global.getSector().getPlayerFaction().getDoctrine()),power,power2);
                 break;
             case AIRetrofits_Constants.PersonTypes_Admin:
-                this.personType = type;
+                //this.personType = type;
                 person = AIRetrofits_CreatePeople.createAdmen(power);
                 break;
         }

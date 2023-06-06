@@ -32,19 +32,24 @@ im going to work on the following now:
                 issue: saving data and load data is working, but i cant remove a junk stake of Command Nodes that has no data on it. arg.
 
                 questions:
-                    1) how does one set a stacks SpecialItemData after said stack has been created?
-                    2) how does one remove a stack from that cargo its in? im trying from its own BaseSpecialItemPlugin, but nothing works
+                    (CANT)) how does one set a stacks SpecialItemData after said stack has been created?
+                    (CANT)) how does one remove a stack from that cargo its in? im trying from its own BaseSpecialItemPlugin, but nothing works
                         - i have tried: stack.getCargo().removeStack(stack); stack.setSize(0); stack = null; and any combination of all of them.
-                    3) how does one make it so a items max stack size is 1? i have tried changing stack size in the special item CSV to no effect.
+                    (give every item diffrent data.)) how does one make it so a items max stack size is 1? i have tried changing stack size in the special item CSV to no effect.
             (started)Submarket:
                 (done)add to csv
                 add image
                 add text.
                 (done)make the market refuse to bye things.
-                make the market only sell command nodes.
-                allow the market to have diffrent strangths on command nodes.
+                (done)make the market only sell command nodes.
+                (started)allow the market to have diffrent strangths on command nodes.
+                    -need to fix the 'create officer' code.
+                    -need to build the 'add skills to admin' code
+                allow AICores and improvements to change the submarkets AICore stats
                 (done)make it so the submarket is added and removed with the industry
                 change description of the industry to say it adds this sub market.
+                change what the AI cores do on said industry.
+                make it so the sub market A does not exist, or B does not refresh well in industry is offline
                 update the old exstra text in this submarket ()
             AICore Changes:
 

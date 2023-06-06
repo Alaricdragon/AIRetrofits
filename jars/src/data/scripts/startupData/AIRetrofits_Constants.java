@@ -226,9 +226,18 @@ public class AIRetrofits_Constants {
 
 //Command Node and person info:
     public static final String SpecalItemID_CommandNode = "AIRetrofit_CommandNode";
+
     public static final String PersonTypes_Officer = "officer";
     public static final String PersonTypes_Admin = "admin";
+    public static final String[] PersonTypes_List = {
+            PersonTypes_Officer,
+            PersonTypes_Admin
+    };
 
     public static final float PersonWeight_Officer = 1;
     public static final float PersonWeight_Admin = 1;
+    public static final float[] PersonWeight_List = {
+            PersonWeight_Officer,
+            PersonWeight_Admin
+    };
 }

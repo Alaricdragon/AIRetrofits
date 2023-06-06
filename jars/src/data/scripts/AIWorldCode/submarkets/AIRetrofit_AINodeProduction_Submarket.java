@@ -5,18 +5,22 @@ import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.CargoStackAPI;
 import com.fs.starfarer.api.campaign.CoreUIAPI;
 import com.fs.starfarer.api.campaign.SubmarketPlugin;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.rpg.Person;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.industries.specal.AIRetrofit_shipYard;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode_SpecalItemData;
+import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
+import java.util.List;
 
 public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     /*
@@ -36,19 +40,61 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             return output;
         }
         public void resetCargo(CargoAPI cargo){
-            float[] power = getPower();
-            for(float a: power){
-                AIRetrofit_CommandNode item = new AIRetrofit_CommandNode();
-                //item.createPerson((int) a,1,AIRetrofit_CommandNode.getPersonTypeByWeight());
-
-
-                AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null, item.person);
-                Global.getSector().getPlayerFleet().getCargo().addSpecial(amb, 1);
-                //cargo.addSpecial(item,1);
-                //getCargo().addSpecial(new SpecialItemData("roider_industry_bp", "roider_union_hq"), 1.0F);
+            AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
+            //float[] power = getPower();
+            emptyCargo(cargo);
+            float cores = 5;
+            String[] types = AIRetrofits_Constants.PersonTypes_List;
+            float[] weight = AIRetrofits_Constants.PersonWeight_List;
+            float totalWeight=0;
+            for(float a : weight){
+                totalWeight+=a;
+            }
+            float maxPower = 30;
+            float minPower = 10;
+            float maxPower2 = 30;
+            float minPower2 = 10;
+            for(int a = 0; a < cores; a++){
+                float type = (float) (Math.random() * totalWeight);
+                String index = "";
+                float b2=0;
+                for(int b = 0; b < weight.length;b++){
+                    b2+= weight.length;
+                    if(b2 >= type){
+                        index = types[b];
+                        break;
+                    }
+                }
+                int power= (int) (minPower+(Math.random() * maxPower - minPower)), power2=(int) (minPower2+(Math.random() * maxPower2 - minPower2));
+                int aggression = this.market.getFaction().getDoctrine().getAggression();
+                addCore(cargo,power,power2,aggression,index);
             }
         }
-        @Override
+        public void addCore(CargoAPI cargo,int power,int power2,int personality,String type){
+            AIRetrofit_CommandNode item = new AIRetrofit_CommandNode();
+            AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null, item.person);
+            //amb.setPerson();
+            PersonAPI person;
+            switch (type){
+                case AIRetrofits_Constants.PersonTypes_Officer:
+                    person = AIRetrofits_CreatePeople.createOfficer(personality,power,power2);
+                    amb.setPerson(person);
+                    break;
+                case AIRetrofits_Constants.PersonTypes_Admin:
+                    person = AIRetrofits_CreatePeople.createAdmen(power);
+                    amb.setPerson(person);
+                    break;
+                default:
+            }
+            cargo.addSpecial(amb, 1);
+        }
+        public void emptyCargo(CargoAPI cargo){
+            List<CargoStackAPI> a = cargo.getStacksCopy();
+            for(int b = 0; b < a.size(); b++){
+                cargo.removeStack(a.get(b));
+            }
+        }
+    @Override
         public void createTooltip(CoreUIAPI ui, TooltipMakerAPI tooltip, boolean expanded){
             super.createTooltip(ui,tooltip,expanded);
             Color highlight = Misc.getHighlightColor();
@@ -63,14 +109,17 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         public CargoAPI getCargo(){
             AIRetrofit_Log.loging("running getCargo",this,true);
             CargoAPI cargo = super.getCargo();
+            AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
             if(this.okToUpdateShipsAndWeapons()){
                 resetCargo(cargo);
+                this.sinceSWUpdate = 0;
             }
             return cargo;
         }
 
     @Override
         public void advance(float amount){
+            super.advance(amount);
             //runSingleAIRetrofit_Shipyard(market);
             //cargo.getFleetData().getMembersListCopy();
         }
@@ -90,7 +139,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         }
         @Override
         public String getBuyVerb() {
-            return "take";
+            return "create";
         }
 
         @Override

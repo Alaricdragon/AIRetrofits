@@ -33,10 +33,10 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
             findPersonType();
         }else{
             //cant  fix stack here. need to fix it somewere else.
-            fixStack();
+            //fixStack();
         }
         AIRetrofit_Log.loging("DONE loading / setting data for specal item",this,true);
-        AIRetrofit_Log.push();
+        AIRetrofit_Log.pop();
     }
     public void fixStack(){
         if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {return;}
