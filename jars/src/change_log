@@ -1,4 +1,7 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.7.20.5:
+save compatible with 0.7.20.1+
+    fixes: fixed a rare crash involving the intil thing for upgrading ships.
 V0.7.20.4:
 save compatible with 0.7.20.1+
     fixes: did a patchwork fix on the patchwork AIRetrofit for patchwork reasons.

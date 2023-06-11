@@ -3,30 +3,19 @@ package data.scripts.AIWorldCode.market_listiners;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.FullName;
-import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.plog.PlaythroughLog;
-import com.fs.starfarer.api.impl.campaign.plog.SModRecord;
 import com.fs.starfarer.api.loading.VariantSource;
-import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.util.Highlights;
-import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
-import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.hullmods.AIRetrofit_AIretrofit;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
+import data.scripts.notifications.support.shipyard.AIRetrofit_ShipYard_UpgradeList;
+import data.scripts.notifications.support.shipyard.AIRetrofit_UpgradedShips;
 import data.scripts.startupData.AIRetrofits_Constants;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-
-import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
 
 public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public AIRetrofit_MakretListener(boolean permaRegister) {
@@ -53,7 +42,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     static float[] shipyard_costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
     private void runAIRetrofit_Shipyard(){
-        UpgradeList memory = new UpgradeList();
+        AIRetrofit_ShipYard_UpgradeList memory = new AIRetrofit_ShipYard_UpgradeList();
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
             memory.addLocation(market.getId(),runSingleAIRetrofit_Shipyard(market));
         }
@@ -61,7 +50,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         displayAIRetrofit_ShipYardNotification(memory);
     }
     //boolean logging = true;
-    private UpgradedShips runSingleAIRetrofit_Shipyard(MarketAPI market){
+    private AIRetrofit_UpgradedShips runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
         if(!market.hasIndustry(shipYardIndustry) || !market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
             return null;
@@ -126,7 +115,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             addHullMod = addHullMods[4];
             type = 4;
         }
-        UpgradedShips upgraded = new UpgradedShips(type);
+        AIRetrofit_UpgradedShips upgraded = new AIRetrofit_UpgradedShips(type);
         //CrewReplacer_Log.loging("   looking at ships... ",this,logging);
         for(int ship22 = 0; ship22 < ships.size(); ship22++){
             FleetMemberAPI ship2 = ships.get(ship22);
@@ -213,406 +202,30 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
     }
 
-    private void displayAIRetrofit_ShipYardNotification(UpgradeList memory){
+    private void displayAIRetrofit_ShipYardNotification(AIRetrofit_ShipYard_UpgradeList memory){
         if(memory.Types.size() == 0){
             upgrades = null;
             return;
         }
         upgrades = memory;
         //memory.runNotification();
-        Global.getSector().getIntelManager().addIntel(new AIRetrofit_ShipyardNotification());
+        AIRetrofit_ShipyardNotification a = new AIRetrofit_ShipyardNotification();
+        a.setUpgradeData(upgrades);
+        Global.getSector().getIntelManager().addIntel(a);
         //Global.getSector().getCharacterData().getPerson().getStats().addBonusXP();
     }
 
-    public static UpgradeList upgrades;
-    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info){
+    public static AIRetrofit_ShipYard_UpgradeList upgrades;
+    /*public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info){
         //
-        upgrades.display(info);
-    }
+        try {
+            upgrades.display(info);
+        }catch(Exception e){
+            AIRetrofit_Log.loging("failed to displayAIRetrofit_ShipyardNotification. error: "+e,new AIRetrofit_Log(),true);
+        }
+    }*/
 }
 
 
 
-class UpgradeList{
-    ArrayList<UpgradeTypes> Types = new ArrayList<>();
-    public void addLocation(String market,UpgradedShips ships){
-        if(ships == null || ships.ships.size() == 0){return;}
-        while(Types.size() <= ships.type){
-            Types.add(new UpgradeTypes(Types.size()));
-        }
-        Types.get(ships.type).addLocation(market,ships);
-    }
-    public void runNotification(){
-        AIRetrofit_ShipyardNotification intel = new AIRetrofit_ShipyardNotification();
-
-        Global.getSector().getCampaignUI().addMessage(intel);
-    }
-    public void applyCosts(){
-        if(Types.size() == 0){
-            return;
-        }
-        float cost = 0;
-        float bonusXP = 0;
-        for(int a2 = 0; a2 < Types.size(); a2++){
-            UpgradeTypes a = Types.get(a2);
-            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
-            float[] temp = a.getCost();
-            cost += temp[0];
-            bonusXP += temp[1];
-        }
-
-        if(cost != 0){
-            Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
-        }
-        if(bonusXP != 0){
-            long XpPerStory = Global.getSector().getPlayerStats().getBonusXPForSpendingStoryPointBeforeSpendingIt();
-            bonusXP*=XpPerStory;
-            TextPanelAPI a = new TempText();//info.addTextField(0,0);
-            Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
-        }
-    }
-    public void display(TooltipMakerAPI info){
-        if(Types.size() == 0){
-            return;
-        }
-        float pad = 5;
-        float cost = 0;
-        float bonusXP = 0;
-        Color highlight = Misc.getHighlightColor();
-        for(int a2 = 0; a2 < Types.size(); a2++){
-            UpgradeTypes a = Types.get(a2);
-            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
-            float[] temp = a.display(info);
-            cost += temp[0];
-            bonusXP += temp[1];
-        }
-
-        if(cost != 0){
-            String[] exstra = new String[]{"" + cost};
-            String text = AIRetrofits_Constants.ASIC_NotificationCredits;
-            info.addPara(text,pad,highlight,exstra);
-            //Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
-        }
-        if(bonusXP != 0){
-            long XpPerStory = Global.getSector().getPlayerStats().getBonusXPForSpendingStoryPointBeforeSpendingIt();
-            bonusXP*=XpPerStory;
-            highlight = Misc.getStoryOptionColor();
-            AIRetrofit_Log.loging( bonusXP + " bonusXP from AIRetrofitShipyard",this,true);
-            String[] exstra = new String[]{"" + (int)bonusXP};
-            String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;
-            info.addPara(text,pad,highlight,exstra);
-            //TextPanelAPI a = new TempText();//info.addTextField(0,0);
-            //Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
-        }
-    }
-}
-class UpgradeTypes{
-    int type;
-    ArrayList<UpgradedShips> upgrades = new ArrayList<UpgradedShips>();
-    ArrayList<String> markets = new ArrayList<String>();
-
-    UpgradeTypes(int type){
-        this.type = type;
-    }
-    public void addLocation(String market,UpgradedShips ships){
-        if(ships == null || ships.ships.size() == 0){return;}
-        upgrades.add(ships);
-        markets.add(market);
-    }
-    public float[] display(TooltipMakerAPI info){
-        float pad = 5;
-        float cost = 0;
-        float bonusXP = 0;
-        Color highlight = Misc.getHighlightColor();
-        for(int a = 0; a < upgrades.size(); a++){
-            boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
-            String[] exstra = {Global.getSector().getEconomy().getMarket(markets.get(a)).getName()};
-            String text = AIRetrofits_Constants.ASIC_NotificationMarket;
-            info.addPara(text,pad,highlight,exstra);
-            float[] temp = upgrades.get(a).display(info,type,b);
-            cost += temp[0];
-            bonusXP += temp[1];
-        }
-        return new float[]{cost,bonusXP};
-    }
-    public float[] getCost(){
-
-        float cost = 0;
-        float bonusXP = 0;
-        for(int a = 0; a < upgrades.size(); a++){
-            boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
-            float[] temp = upgrades.get(a).getCost(b);
-            cost += temp[0];
-            bonusXP += temp[1];
-        }
-        return new float[]{cost,bonusXP};
-    }
-}
-class UpgradedShips{
-    int type;
-    ArrayList<UpgradedShip> ships = new ArrayList<>();
-    UpgradedShips(int type){
-        this.type = type;
-    }
-    public void addShip(FleetMemberAPI ship, int size){
-        addShip(ship,size,false);
-    }
-    public void addShip(FleetMemberAPI ship, int size,boolean bonus){
-        ships.add(new UpgradedShip(ship,size,bonus));
-    }
-    public float[] display(TooltipMakerAPI info,int type,boolean playerOwned){
-        if(ships.size() == 0){
-            return new float[]{0f,0f};
-        }
-        float pad = 5;
-        Color highlight = Misc.getHighlightColor();
-
-        //CargoAPI cargo = new CargoData(false);
-        //FleetDataAPI fleet = new FleetData("production","production2");
-        ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
-        String[] exstra = {"" + Global.getSettings().getHullModSpec(ASIC_hullmods[type]).getDisplayName()};
-        String text = AIRetrofits_Constants.ASIC_NotificationType;
-        info.addPara(text,pad,highlight,exstra);
-        float cost = 0;
-        float bonusXP = 0;
-        for(int a = 0; a < ships.size(); a++){
-            UpgradedShip ship = ships.get(a);
-            ship.addShipToFleet(fleet);
-            if(!playerOwned) {
-                cost += ship.getCost();
-            }
-            bonusXP += ship.getBonusXP();
-
-        }
-        info.showShips(fleet, 20, true, 5);
-        return new float[]{cost,bonusXP};
-    }
-    public float[] getCost(boolean playerOwned){
-
-        if(ships.size() == 0){
-            return new float[]{0f,0f};
-        }
-        float pad = 5;
-        Color highlight = Misc.getHighlightColor();
-
-        //CargoAPI cargo = new CargoData(false);
-        //FleetDataAPI fleet = new FleetData("production","production2");
-        ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
-        float cost = 0;
-        float bonusXP = 0;
-        for(int a = 0; a < ships.size(); a++){
-            UpgradedShip ship = ships.get(a);
-            ship.addShipToFleet(fleet);
-            if(!playerOwned) {
-                cost += ship.getCost();
-            }
-            bonusXP += ship.getBonusXP();
-
-        }
-        return new float[]{cost,bonusXP};
-    }
-}
-class UpgradedShip{
-    FleetMemberAPI ship;
-    boolean bonus;
-    int size;
-    static float storyGain = Global.getSettings().getFloat("AIRetrofitShipyard_storyPointsPerSMod");
-    UpgradedShip(FleetMemberAPI ship,int size,boolean bonus){
-        this.ship = ship;
-        this.bonus = bonus;
-        this.size = size;
-    }
-    public void addShipToFleet(ArrayList<FleetMemberAPI> fleet){
-        fleet.add(ship);
-        //cargo.addMothballedShip();//(ship);
-    }
-    public float getCost(){
-        float[] costTemp = AIRetrofits_Constants.ASIC_creditsPerShip;
-        return costTemp[size];
-    }
-    public float getBonusXP(){
-        if(bonus){
-            float xp = 1 - Misc.getBuildInBonusXP(Misc.getMod(AIRetrofits_Constants.Hullmod_AIRetrofit),ship.getHullSpec().getHullSize());
-            return xp * storyGain;//Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
-        }
-        return 0f;//AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
-    }
-    public void display(TooltipMakerAPI info,boolean playerOwned){
-    }
-}
-class TempText implements TextPanelAPI{
-    @Override
-    public void setFontInsignia() {
-
-    }
-
-    @Override
-    public void setFontOrbitron() {
-
-    }
-
-    @Override
-    public void setFontVictor() {
-
-    }
-
-    @Override
-    public void setFontSmallInsignia() {
-
-    }
-
-    @Override
-    public LabelAPI addPara(String text) {
-        return null;
-    }
-
-    @Override
-    public LabelAPI addPara(String text, Color color) {
-        return null;
-    }
-
-    @Override
-    public LabelAPI addParagraph(String text) {
-        return null;
-    }
-
-    @Override
-    public LabelAPI addParagraph(String text, Color color) {
-        return null;
-    }
-
-    @Override
-    public void replaceLastParagraph(String text) {
-
-    }
-
-    @Override
-    public void replaceLastParagraph(String text, Color color) {
-
-    }
-
-    @Override
-    public void appendToLastParagraph(String text) {
-
-    }
-
-    @Override
-    public void appendToLastParagraph(int charsToCut, String text) {
-
-    }
-
-    @Override
-    public void highlightFirstInLastPara(String text, Color color) {
-
-    }
-
-    @Override
-    public void highlightLastInLastPara(String text, Color color) {
-
-    }
-
-    @Override
-    public void highlightInLastPara(Color color, String... strings) {
-
-    }
-
-    @Override
-    public void highlightInLastPara(String... strings) {
-
-    }
-
-    @Override
-    public void setHighlightColorsInLastPara(Color... colors) {
-
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public InteractionDialogAPI getDialog() {
-        return null;
-    }
-
-    @Override
-    public boolean isOrbitronMode() {
-        return false;
-    }
-
-    @Override
-    public void setOrbitronMode(boolean orbitronMode) {
-
-    }
-
-    @Override
-    public ResourceCostPanelAPI addCostPanel(String title, float height, Color color, Color dark) {
-        return null;
-    }
-
-    @Override
-    public void setHighlightsInLastPara(Highlights h) {
-
-    }
-
-    @Override
-    public LabelAPI addPara(String format, Color color, Color hl, String... highlights) {
-        return null;
-    }
-
-    @Override
-    public LabelAPI addPara(String format, Color hl, String... highlights) {
-        return null;
-    }
-
-    @Override
-    public void advance(float amount) {
-
-    }
-
-    @Override
-    public TooltipMakerAPI beginTooltip() {
-        return null;
-    }
-
-    @Override
-    public void addTooltip() {
-
-    }
-
-    @Override
-    public void updateSize() {
-
-    }
-
-    @Override
-    public boolean addCostPanel(String title, Color color, Color dark, Object... params) {
-        return false;
-    }
-
-    @Override
-    public boolean addCostPanel(String title, Object... params) {
-        return false;
-    }
-
-    @Override
-    public void addSkillPanel(PersonAPI person, boolean admin) {
-
-    }
-
-    @Override
-    public void setFontOrbitronUnnecessarilyLarge() {
-
-    }
-
-    @Override
-    public void addImage(String category, String key) {
-
-    }
-
-    @Override
-    public void addImage(String spriteName) {
-
-    }
-};
+;

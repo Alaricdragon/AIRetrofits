@@ -10,12 +10,18 @@ import com.fs.starfarer.api.impl.campaign.intel.misc.ProductionReportIntel;
 import com.fs.starfarer.api.ui.CustomPanelAPI;
 import com.fs.starfarer.api.ui.SectorMapAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
+import data.scripts.notifications.support.shipyard.AIRetrofit_ShipYard_UpgradeList;
 
 import java.util.Set;
 
 public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     protected static String name = "Automated Ship Installation Center Production Report";
+    public AIRetrofit_ShipYard_UpgradeList upgradeData;
+    public void setUpgradeData(AIRetrofit_ShipYard_UpgradeList upgradeData){
+        this.upgradeData = upgradeData;
+    }
     @Override
     public java.util.Set<java.lang.String> getIntelTags(SectorMapAPI map){
         Set<String> a = super.getIntelTags(map);
@@ -46,13 +52,13 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     }
     @Override
     public void createSmallDescription(TooltipMakerAPI info, float width, float height){
-        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(info);
+        displayAIRetrofit_ShipYardNotification(info,upgradeData);
     }
     @Override
     public void createLargeDescription(CustomPanelAPI panel,
                                        float width,
                                        float height){
-        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(panel.createUIElement(5,5,true));
+        displayAIRetrofit_ShipYardNotification(panel.createUIElement(5,5,true),upgradeData);
     }
     @Override
     public boolean shouldRemoveIntel() {
@@ -63,5 +69,13 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     @Override
     public String getIcon(){
         return Global.getSector().getEconomy().getCommoditySpec("AIretrofit_SubCommandNode").getIconName();
+    }
+    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info,AIRetrofit_ShipYard_UpgradeList upgrades){
+        //
+        try {
+            upgrades.display(info);
+        }catch(Exception e){
+            AIRetrofit_Log.loging("failed to displayAIRetrofit_ShipyardNotification. error: "+e,new AIRetrofit_Log(),true);
+        }
     }
 }
