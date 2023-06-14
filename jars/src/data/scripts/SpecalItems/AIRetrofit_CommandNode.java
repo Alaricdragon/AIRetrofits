@@ -30,7 +30,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {
             AIRetrofit_Log.loging("trying to load data from specaldata",this,true);
             person = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPerson();
-            findPersonType();
+            personType = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPersonType();//AIRetrofit_Log.loging("returned type: "+((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPersonType(),this,true);
+            //findPersonType();
         }else{
             //cant  fix stack here. need to fix it somewere else.
             //fixStack();
@@ -103,15 +104,25 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     public boolean isTooltipExpandable(){
         return true;
     }
+    protected int timesTriedToAddPerson = 0;
     @Override
     public void performRightClickAction(){
         //super.performRightClickAction();
+        if(timesTriedToAddPerson > 1) return;
         switch (personType){
             case AIRetrofits_Constants.PersonTypes_Officer:
                 Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
                 break;
             case AIRetrofits_Constants.PersonTypes_Admin:
                 Global.getSector().getCharacterData().addAdmin(person);
+                break;
+            default:
+                if(person == null){
+                    person = AIRetrofits_CreatePeople.createPerson();
+                    this.findPersonType();
+                    timesTriedToAddPerson++;
+                    this.performRightClickAction();
+                }
                 break;
         }
     }
@@ -127,6 +138,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         float opad = 10f;
         Color highlight = Misc.getHighlightColor();
         String type = "error";
+        //findPersonType();
         switch (personType){
             case AIRetrofits_Constants.PersonTypes_Officer:
                 type = officerText;
@@ -135,6 +147,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
                 type = adminText;
                 break;
         }
+        AIRetrofit_Log.loging("personType: "+personType,this,true);
         TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
         text.addPara(nameText,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel());
         //text.addPara(person.getNameString() + " is an official faction representative.", pad);
