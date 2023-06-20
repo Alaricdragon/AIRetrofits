@@ -1,6 +1,7 @@
 package data.scripts.startupData;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 
 public class AIRetrofits_Constants {
     //startup settings:
@@ -12,7 +13,7 @@ public class AIRetrofits_Constants {
     public static final String ability_RobotForge = "AIretrofit_robot_drone_forge";
     public static final String req_skill = "automated_ships";
 
-    public static final String AlphaCore = "alpha_core";
+    public static final String AlphaCore = Commodities.ALPHA_CORE;
 
     //industry names:
     public static final String Industry_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacility";
@@ -225,8 +226,27 @@ public class AIRetrofits_Constants {
 
 
 //Command Node and person info:
-    public static final String SpecalItemID_CommandNode = "AIRetrofit_CommandNode";
-
+    public static final String[] SpecalItemID_CommandNodes = {
+            "AIRetrofit_CommandNode_0",
+            "AIRetrofit_CommandNode_1",
+            "AIRetrofit_CommandNode_2",
+            "AIRetrofit_CommandNode_3",
+            "AIRetrofit_CommandNode_4",
+            "AIRetrofit_CommandNode_5",
+            "AIRetrofit_CommandNode_6",
+            "AIRetrofit_CommandNode_7",
+    };
+    public static final float[] SpecalItem_CommandNodes_thresholds = {
+        Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_0"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_1"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_2"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_3"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_4"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_5"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_6"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_7"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_8"),
+    };
     public static final String PersonTypes_Officer = "officer";
     public static final String PersonTypes_Admin = "admin";
     public static final String[] PersonTypes_List = {
@@ -234,8 +254,8 @@ public class AIRetrofits_Constants {
             PersonTypes_Admin
     };
 
-    public static final float PersonWeight_Officer = 1;
-    public static final float PersonWeight_Admin = 1;
+    public static final float PersonWeight_Officer = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_officer");
+    public static final float PersonWeight_Admin = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_admin");
     public static final float[] PersonWeight_List = {
             PersonWeight_Officer,
             PersonWeight_Admin

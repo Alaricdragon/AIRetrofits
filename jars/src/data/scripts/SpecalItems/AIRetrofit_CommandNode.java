@@ -19,24 +19,25 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     //addSpecial AIRetrofit_CommandNode
     public PersonAPI person = null;
     public String personType = "";
-    private final static String nameText = "a command node with the designation of %s. they are a %s of level %s";
-    private final static String officerText = "officer";
-    private final static String adminText = "admin";
+    private final static String officerText = Global.getSettings().getString("AIRetrofit_CommandNode_officerText");//"officer";
+    private final static String officerText2 = Global.getSettings().getString("AIRetrofit_CommandNode_officerText2");//"a command node with the designation of %s. they are a %s of level %s with a personality of %s";
+    private final static String adminText = Global.getSettings().getString("AIRetrofit_CommandNode_adminText");//"admin";
+    private final static String adminText2 = Global.getSettings().getString("AIRetrofit_CommandNode_adminText2");//"a command node with the designation of %s. they are a %s";
+    private final static String errorText = Global.getSettings().getString("AIRetrofit_CommandNode_defaultTExt");//"error";
+    private final static String errorText2 = Global.getSettings().getString("AIRetrofit_CommandNode_defaultText2");//"a command node with the designation of %s. they are a %s";
     @Override
     public void init(CargoStackAPI stack) {
         super.init(stack);
         AIRetrofit_Log.loging("loading data",this,true);
         AIRetrofit_Log.push();
         if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {
-            AIRetrofit_Log.loging("trying to load data from specaldata",this,true);
+            AIRetrofit_Log.loging("trying to load data from specaldata",this);
             person = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPerson();
             personType = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPersonType();//AIRetrofit_Log.loging("returned type: "+((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPersonType(),this,true);
             //findPersonType();
         }else{
-            //cant  fix stack here. need to fix it somewere else.
-            //fixStack();
         }
-        AIRetrofit_Log.loging("DONE loading / setting data for specal item",this,true);
+        AIRetrofit_Log.loging("DONE loading / setting data for specal item",this);
         AIRetrofit_Log.pop();
     }
     public void fixStack(){
@@ -63,7 +64,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         try {
             AIRetrofit_Log.loging("created person", this, true);
             AIRetrofit_Log.loging("creating specal data", this, true);
-            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null);
+            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[0], null);
             AIRetrofit_Log.loging("do we have a cargo bay?", this, true);
             AIRetrofit_Log.loging("adding new specal item to cargo bay", this, true);
             cargo.addSpecial(a, 1);
@@ -128,36 +129,55 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     }
     @Override
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource) {
+        AIRetrofit_Log.loging("personType: "+personType,this,true);
         super.createTooltip(tooltip, expanded, transferHandler, stackSource, false);
-        //fixStack();
-        if(person == null) {
-            return;
-            //this.createPerson();
+        switch (personType){
+            case AIRetrofits_Constants.PersonTypes_Officer:
+                toolTipOfficer(tooltip,expanded,transferHandler,stackSource);
+                break;
+            case AIRetrofits_Constants.PersonTypes_Admin:
+                toolTipAdmin(tooltip,expanded,transferHandler,stackSource);
+                break;
+            default:
+                toolTipNull(tooltip,expanded,transferHandler,stackSource);
+                break;
         }
+    }
+    public void toolTipOfficer(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
         float pad = 3f;
         float opad = 10f;
         Color highlight = Misc.getHighlightColor();
-        String type = "error";
-        //findPersonType();
-        switch (personType){
-            case AIRetrofits_Constants.PersonTypes_Officer:
-                type = officerText;
-                break;
-            case AIRetrofits_Constants.PersonTypes_Admin:
-                type = adminText;
-                break;
-        }
-        AIRetrofit_Log.loging("personType: "+personType,this,true);
+        String type = officerText;
         TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
-        text.addPara(nameText,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel());
-        //text.addPara(person.getNameString() + " is an official faction representative.", pad);
-        //text.addPara("Treat them well, or face the consequences.", pad);
+        text.addPara(officerText2,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel(),person.getPersonalityAPI().getDisplayName());
         tooltip.addImageWithText(opad);
-        //tooltip.addPara(nameText,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel());
         if(expanded){
             tooltip.addSkillPanel(person,pad);
         }
     }
+    public void toolTipAdmin(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
+        float pad = 3f;
+        float opad = 10f;
+        Color highlight = Misc.getHighlightColor();
+        String type = adminText;
+        TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
+        text.addPara(adminText2,pad,highlight,person.getNameString(),type);
+        tooltip.addImageWithText(opad);
+        if(expanded){
+            tooltip.addSkillPanel(person,pad);
+        }
+    }
+    public void toolTipNull(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
+        float pad = 3f;
+        float opad = 10f;
+        Color highlight = Misc.getHighlightColor();
+        String type = "error";
+
+        TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
+        text.addPara(errorText2,pad,highlight,errorText);
+
+    }
+
     @Override
     public int getPrice(MarketAPI market, SubmarketAPI submarket) {
         //this.doctrine = market.getFaction().getDoctrine();
@@ -172,6 +192,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     public void findPersonType(){
         if(person.getTags().contains(officerText)) personType = AIRetrofits_Constants.PersonTypes_Officer;
         if(person.getTags().contains(adminText)) personType = AIRetrofits_Constants.PersonTypes_Admin;
+        if(person.hasTag(officerText)) personType = AIRetrofits_Constants.PersonTypes_Officer;
+        if(person.hasTag(adminText)) personType = AIRetrofits_Constants.PersonTypes_Admin;
     }
 
 

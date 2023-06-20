@@ -28,20 +28,35 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
      */
     private static final String illegalTest = Global.getSettings().getString("AIRetrofitShipyard_IllegalText");
     private static final String cantUseDescription = Global.getSettings().getString("AIRetrofitSubMarket_CantUpgradeDescription");
-    static String industry = "AIRetrofit_shipYard";
     public void resetCargo(CargoAPI cargo){
         AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
         //float[] power = getPower();
         emptyCargo(cargo);
-        float totalPower = 10;
-        int cores = 4;
-        float minPowerWeight = 1;//the diffrence between the two numbers here is how mush range the cores power will have.
-        float maxPowerWeight = 20;//--
+        float totalPower = (market.getSize() * Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize")) + Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BasePower");
+        int cores = (int)((market.getSize() * Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize")) + Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores"));
+        float minPowerWeight = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight");//the diffrence between the two numbers here is how mush range the cores power will have.
+        float maxPowerWeight = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight");//--
+        if(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isImproved()){
+            //run whatever improving this industry will do. extra core and power per level maybe? just more power per level? mmmm
+        }
+        switch (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId()){
+            case Commodities.ALPHA_CORE:
+                break;
+            case Commodities.BETA_CORE:
+                break;
+            case Commodities.GAMMA_CORE:
+                break;
+            case Commodities.OMEGA_CORE:
+                break;
+            default:
+                break;
+        }
+        if(false){
+            //run the code that will determine if i have enough supply to produce a core....
+            //something that could be cool is to remove the 'core per size' and 'power per core' and replace them with the sub command node supply on the world... that would be awesome!
+        }
 
-        int personalityVariance = 3;
-        float varianceChance = 0.1f;
-        int aggression = AIRetrofits_CreatePeople.personalityMix(this.market.getFaction().getDoctrine(),personalityVariance,varianceChance);//this.market.getFaction().getDoctrine().getAggression();
-        AIRetrofits_CreatePeople.addCores(cargo,aggression,totalPower,cores,maxPowerWeight,minPowerWeight);
+        AIRetrofits_CreatePeople.addCores(cargo,this.market.getFaction().getDoctrine(),totalPower,cores,maxPowerWeight,minPowerWeight);
     }
 
     public void emptyCargo(CargoAPI cargo){
@@ -55,18 +70,21 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         super.createTooltip(ui,tooltip,expanded);
         Color highlight = Misc.getHighlightColor();
         float pad = 5;
+        /*
         if(!(market.hasIndustry(industry) && market.getIndustry(industry).isFunctional())){
             tooltip.addPara(cantUseDescription,pad);
             return;
         }
-        AIRetrofit_shipYard.AIRetrofit_ShipyardDescription(tooltip,market);
+        AIRetrofit_shipYard.AIRetrofit_ShipyardDescription(tooltip,market);*/
     }
     @Override
     public CargoAPI getCargo(){
         AIRetrofit_Log.loging("running getCargo",this,true);
         CargoAPI cargo = super.getCargo();
         AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
-        if(this.okToUpdateShipsAndWeapons()||true){
+        if(market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isFunctional()) {
+            emptyCargo(cargo);
+        }else if(this.okToUpdateShipsAndWeapons()){
             resetCargo(cargo);
             this.sinceSWUpdate = 0;
         }

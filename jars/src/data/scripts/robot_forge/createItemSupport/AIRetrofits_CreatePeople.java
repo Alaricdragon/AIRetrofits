@@ -7,6 +7,7 @@ import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
+import com.fs.starfarer.loading.specs.FactionDoctrine;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
@@ -18,7 +19,7 @@ import java.util.Random;
 
 public class AIRetrofits_CreatePeople {
     static AIRetrofits_CreatePeople logClass = new AIRetrofits_CreatePeople();
-    static boolean logs = false;
+    static boolean logs = true;
     //PersonAPI person;
     public static PersonAPI createAdmen(){
         AIRetrofit_Log.loging("running: "+"createAdmen"+" with: ",logClass,logs);
@@ -160,21 +161,6 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         return aggression;
     }
-    public static int personalityMix(FactionDoctrineAPI doctrine,int maxVariance,float varianceChance){
-        AIRetrofit_Log.loging("running: "+"personalityMix"+" with: doctrine,maxVariance,varianceChance: "+doctrine.toString()+", "+maxVariance+", "+varianceChance,logClass,logs);
-        AIRetrofit_Log.push();
-        int personality = personalityMix(doctrine);
-        for(int a = 0; a < maxVariance && varianceChance <= Math.random(); a++){
-            double temp = Math.random();
-            if(temp > 0.5 && personality < personalities.length){
-                personality++;
-            }else if(personality > 0){
-                personality--;
-            }
-        }
-        AIRetrofit_Log.pop();
-        return personality;
-    }
     public static int getRandomPersonality(){
         AIRetrofit_Log.loging("running: "+"getRandomPersonality"+" with: ",logClass,logs);
         AIRetrofit_Log.push();
@@ -200,12 +186,38 @@ public class AIRetrofits_CreatePeople {
         }
         AIRetrofit_Log.pop();
     }
+    public static void addCores(CargoAPI cargo,FactionDoctrineAPI doctrineAPI, float power, int numcores, float minPowerWeight, float maxPowerWeight){
+        AIRetrofit_Log.loging("running: "+"addCores"+" with: cargo,doctoring,power,numcores,minPowerWeight,maxPowerWeight: "+cargo.toString()+", "+doctrineAPI.toString()+", "+power+", "+numcores+", "+minPowerWeight+", "+maxPowerWeight,logClass,logs);
+        AIRetrofit_Log.push();
+        float[] powerWeight = new float[numcores];
+        float totalWeight = 0;
+        float powerPerWeight;
+        for(int a = 0; a < powerWeight.length; a++){
+            float temp = (float) ((Math.random() * (maxPowerWeight - minPowerWeight)) + minPowerWeight);
+            powerWeight[a] = temp;
+            totalWeight+= temp;
+        }
+        powerPerWeight = power / totalWeight;
+        for(int a = 0; a < powerWeight.length; a++){
+            int personality = personalityMix(doctrineAPI);
+            addCore(cargo, (int) (powerPerWeight * powerWeight[a]),personality,AIRetrofits_CreatePeople.getTypeByWeight());
+        }
+        AIRetrofit_Log.pop();
+    }
 
     public static void addCore(CargoAPI cargo,int power,int personality,String type){
         AIRetrofit_Log.loging("running: "+"addCore"+" with: cargo,power,personality,type:"+cargo.toString()+", "+power+", "+personality+", "+type,logClass,logs);
         AIRetrofit_Log.push();
         AIRetrofit_CommandNode item = new AIRetrofit_CommandNode();
-        AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNode, null, item.person);
+        int cost = 0;
+        for(int a = AIRetrofits_Constants.SpecalItemID_CommandNodes.length - 1; a >= 0; a--){
+            if(AIRetrofits_Constants.SpecalItem_CommandNodes_thresholds[a] <= power){
+                cost = a;
+                break;
+            }
+        }
+        //AIRetrofit_Log.loging("cores power, personality,type,cost:"+power+", "+personality+", "+type+", "+cost,logClass,true);
+        AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[cost], null, item.person);
         //amb.setPerson();
         PersonAPI person;
         amb.setPersonType(type);
@@ -224,10 +236,8 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
     }
 
-    private final static float maxRandomPower0 = 7;
-    private final static float minRandomPower0 = 1;
-    private final static float maxRandomPower1 = 3;
-    private final static float minRandomPower1 = 1;
+    private final static float maxRandomPower0 = Global.getSettings().getFloat("AIRetrofit_CommandNode_RandomPower_max");
+    private final static float minRandomPower0 = Global.getSettings().getFloat("AIRetrofit_CommandNode_RandomPower_min");
     public static PersonAPI createPerson(){
         AIRetrofit_Log.loging("running: "+"createPerson"+" with: ",logClass,logs);
         return createPerson(AIRetrofits_CreatePeople.getTypeByWeight());

@@ -1,6 +1,9 @@
 doing right now: Sub Command Node thigs. look at the to do here.
-
 im going to work on the following now:
+    update the robots:
+        new images when i have more robots (see crewReplacer showdo crew remover.)
+        new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.
+        increase the defence on all Omega robots. they need a buff that's not just silly, and greatly reduced losses are something that might just work.
     the new hull mods
         going to add the new hullmods i came up with. the crazy one can wait though
         -current status:
@@ -16,10 +19,11 @@ im going to work on the following now:
     the upgrades to the industry to make them all at least somewhat useful
         Command Node and relevant industry:
             questions:
-                how do i add a special item to a sub-markets cargo?
-                how do i save data to a special item? (so the data on it is save presistant)
+                is it possible to get a list of the skills that a randomly generated officer / admin can spawn with / gain as they level up?
+                how do i get the possible officer personality from a fleet doctrine? i tried doctrine.getAggression(), only to realize that aggression 4 includes both aggressive and reckless officers, and i want my code to be future proof in case more aggression levels have a mix of possible personality.
+                what are the different costs a given admin or officer has to buy at different levels?
             Sub Market:
-            (started)SpecialItem:
+            (almost done)SpecialItem:
                 NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
                 (done)apply skill, name, and personality data to item.
                 (done)display skill, name and personality data on item.
@@ -28,7 +32,7 @@ im going to work on the following now:
                 (done)make items save there data.
                 (moved this issue to people maker)data is not randomized right. wrong number of skills, level, and everything else.
                 (done)stop the command nodes from stacking why are they like this!?!?
-
+                (to do:) find out the costs of people at diffrent skill levels. so i can get diffrent item costs for stronger people.
                 questions:
                     (CANT)) how does one set a stacks SpecialItemData after said stack has been created?
                     (CANT)) how does one remove a stack from that cargo its in? im trying from its own BaseSpecialItemPlugin, but nothing works
@@ -40,7 +44,7 @@ im going to work on the following now:
                 add text.
                 (done)make the market refuse to bye things.
                 (done)make the market only sell command nodes.
-                (started)allow the market to have diffrent strangths on command nodes.
+                (almost done)allow the market to have diffrent strangths on command nodes.
                     -need to fix the 'create officer' code.
                     -need to build the 'add skills to admin' code
                 allow AICores and improvements to change the submarkets AICore stats
@@ -49,6 +53,7 @@ im going to work on the following now:
                 change what the AI cores do on said industry.
                 make it so the sub market A does not exist, or B does not refresh well in industry is offline
                 update the old exstra text in this submarket ()
+                make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
 
                 notes:
                     i have made it so the sub market resets cargo every time you visit it. make it not do that before release.

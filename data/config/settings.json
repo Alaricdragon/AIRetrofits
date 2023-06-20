@@ -414,6 +414,44 @@
 	"AIRetrofit_robotManufactury_survey_Mod": 1,
 	"AIRetrofit_robotManufactury_survey_betaText": "Use produced survey robots to provide reconnaissance around this market, increasing stability by %s",
 	"AIRetrofit_robotManufactury_survey_exstaText": "from survey robot manufactory",
+	#AIRetrofit_AINodeProductionFacility
+	#"AIRetrofit_AINodeProductionFacility_": 0,
+
+	#submarkets
+	#AIRetrofit_AINodeProducetionFacility
+	#number of cores per market size equals (size * coresPerSize) + baseCores
+	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize": 2,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores": -4,
+	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize": 20,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower": -40,
+	#the range on the amount of 'weight' each core is allowed to take from the power pull.
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight": 10,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight": 1,
+	#specalitems,
+	#descriptions
+	"AIRetrofit_CommandNode_officerText": "officer",
+	"AIRetrofit_CommandNode_officerText2": "a command node with the designation of %s. they are a %s of level %s with a personality of %s",
+	"AIRetrofit_CommandNode_adminText": "admin",
+	"AIRetrofit_CommandNode_adminText2": "a command node with the designation of %s. they are a %s",
+	"AIRetrofit_CommandNode_defaultTExt": "error",
+	"AIRetrofit_CommandNode_defaultText2": "a command node with the designation of %s. they are a %s",
+	#power a compleatly random core has
+	"AIRetrofit_CommandNode_RandomPower_max":20,
+	"AIRetrofit_CommandNode_RandomPower_min":1,
+	#power cost theshoolds. this is the required core 'power' to increase a cores cost.
+	"AIRetrofit_CommandNode_PowerCostThreshold_0": 0,
+	"AIRetrofit_CommandNode_PowerCostThreshold_1": 5,
+	"AIRetrofit_CommandNode_PowerCostThreshold_2": 10,
+	"AIRetrofit_CommandNode_PowerCostThreshold_3": 15,
+	"AIRetrofit_CommandNode_PowerCostThreshold_4": 20,
+	"AIRetrofit_CommandNode_PowerCostThreshold_5": 25,
+	"AIRetrofit_CommandNode_PowerCostThreshold_6": 30,
+	"AIRetrofit_CommandNode_PowerCostThreshold_7": 35,
+	"AIRetrofit_CommandNode_PowerCostThreshold_8": 40,
+	#random personalityweight. higher numbers make it more likely to get a core of a given type.
+	"AIRetrofit_CommandNode_PersonalityWeight_officer": 2,
+	"AIRetrofit_CommandNode_PersonalityWeight_admin": 1,
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{
