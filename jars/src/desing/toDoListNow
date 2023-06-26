@@ -22,7 +22,6 @@ im going to work on the following now:
                 is it possible to get a list of the skills that a randomly generated officer / admin can spawn with / gain as they level up?
                 how do i get the possible officer personality from a fleet doctrine? i tried doctrine.getAggression(), only to realize that aggression 4 includes both aggressive and reckless officers, and i want my code to be future proof in case more aggression levels have a mix of possible personality.
                 what are the different costs a given admin or officer has to buy at different levels?
-            Sub Market:
             (almost done)SpecialItem:
                 NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
                 (done)apply skill, name, and personality data to item.
@@ -33,11 +32,14 @@ im going to work on the following now:
                 (moved this issue to people maker)data is not randomized right. wrong number of skills, level, and everything else.
                 (done)stop the command nodes from stacking why are they like this!?!?
                 (to do:) find out the costs of people at diffrent skill levels. so i can get diffrent item costs for stronger people.
-                questions:
-                    (CANT)) how does one set a stacks SpecialItemData after said stack has been created?
-                    (CANT)) how does one remove a stack from that cargo its in? im trying from its own BaseSpecialItemPlugin, but nothing works
-                        - i have tried: stack.getCargo().removeStack(stack); stack.setSize(0); stack = null; and any combination of all of them.
-                    (give every item diffrent data.)) how does one make it so a items max stack size is 1? i have tried changing stack size in the special item CSV to no effect.
+            CreatePeople:
+                make it so i can get an officer or a admin with skills based on a single power stat.
+                    -officers level cost should be liner. the elet skill cost should cost maybe 150% a normal skill.
+                    -officers should be soft caped for eleet skills and total skills based on the players skill level
+                    -officers that are given -a lot- of power should be able to have an skill level or total level higher then the max (should be like 5X more power per skill or something).
+                    -admins should have an expenses increase in power requirements per skill added to them
+                make it so officer personality can be better based on a factions possibly personality.
+                make it possable to have agents (nexerlion) spawn.
             (started)Submarket:
                 (done)add to csv
                 add image
@@ -47,17 +49,19 @@ im going to work on the following now:
                 (almost done)allow the market to have diffrent strangths on command nodes.
                     -need to fix the 'create officer' code.
                     -need to build the 'add skills to admin' code
-                allow AICores and improvements to change the submarkets AICore stats
+                (Cores done. improvements not.)allow AICores and improvements to change the submarkets AICore stats
                 (done)make it so the submarket is added and removed with the industry
                 change description of the industry to say it adds this sub market.
-                change what the AI cores do on said industry.
-                make it so the sub market A does not exist, or B does not refresh well in industry is offline
+                (done)change what the AI cores do on said industry.
+                (dine)make it so the sub market A does not exist, or B does not refresh well in industry is offline
                 update the old exstra text in this submarket ()
-                make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
+                (done. untested.)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
 
                 notes:
                     i have made it so the sub market resets cargo every time you visit it. make it not do that before release.
                     commandNode needs to have its logs set to only output when they are required.
+                issue:
+                    depending on what i make improvements do, i might need to change the text that shows how strong a given industry is.
             AICore Changes:
             CreatePeople to do list:
                 1) make it so i can get officers and admins, based of the power stat (using said stat to set level and number of special skills.)
