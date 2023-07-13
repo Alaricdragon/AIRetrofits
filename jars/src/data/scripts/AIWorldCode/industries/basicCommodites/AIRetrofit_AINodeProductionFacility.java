@@ -7,12 +7,15 @@ import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 
 public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase {
+
     private final static String C1 = "metals";
     private final static String C2 = "rare_metals";
     private final static String C3 = "volatiles";
@@ -23,24 +26,24 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
 
     private final static String BaseAICoreDescription = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_Description");
 
-    private final static String AICore_descriptions_B_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D0");
-    private final static String AICore_descriptions_B_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D1");
+    //private final static String AICore_descriptions_B_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D0");
+    //private final static String AICore_descriptions_B_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D1");
     private final static String AICore_descriptions_B_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D2");
 
-    private final static String AICore_descriptions_G_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D0");
-    private final static String AICore_descriptions_G_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D1");
+    //private final static String AICore_descriptions_G_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D0");
+    //private final static String AICore_descriptions_G_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D1");
     private final static String AICore_descriptions_G_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D2");
 
-    private final static String AICore_descriptions_Be_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D0");
-    private final static String AICore_descriptions_Be_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D1");
+    //private final static String AICore_descriptions_Be_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D0");
+    //private final static String AICore_descriptions_Be_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D1");
     private final static String AICore_descriptions_Be_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D2");
 
-    private final static String AICore_descriptions_A_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D0");
-    private final static String AICore_descriptions_A_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D1");
+    //private final static String AICore_descriptions_A_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D0");
+    //private final static String AICore_descriptions_A_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D1");
     private final static String AICore_descriptions_A_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D2");
 
-    private final static String AICore_descriptions_O_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D0");
-    private final static String AICore_descriptions_O_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D1");
+    //private final static String AICore_descriptions_O_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D0");
+    //private final static String AICore_descriptions_O_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D1");
     private final static String AICore_descriptions_O_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D2");
 
 
@@ -179,25 +182,26 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
         float opad = 10f;
         tooltip.addSpacer(opad);
         String temp = this.getAICoreId();
+        String[] temp2 = this.getDescriptionValues();
         if (temp == null){
-            applyCoreTooltip(tooltip,BaseAICoreDescription,AICore_descriptions_B_0,AICore_descriptions_B_1,AICore_descriptions_B_2);
+            applyCoreTooltip(tooltip,BaseAICoreDescription,temp2[1],temp2[0],AICore_descriptions_B_2);
             return;
         }
         switch (temp){
             case Commodities.ALPHA_CORE:
-                applyCoreTooltip(tooltip,BaseAICoreDescription,AICore_descriptions_A_0,AICore_descriptions_A_1,AICore_descriptions_A_2);
+                applyCoreTooltip(tooltip,BaseAICoreDescription,temp2[1],temp2[0],AICore_descriptions_A_2);
                 break;
             case Commodities.BETA_CORE:
-                applyCoreTooltip(tooltip,BaseAICoreDescription,AICore_descriptions_Be_0,AICore_descriptions_Be_1,AICore_descriptions_Be_2);
+                applyCoreTooltip(tooltip,BaseAICoreDescription,temp2[1],temp2[0],AICore_descriptions_Be_2);
                 break;
             case Commodities.GAMMA_CORE:
-                applyCoreTooltip(tooltip,BaseAICoreDescription,AICore_descriptions_G_0,AICore_descriptions_G_1,AICore_descriptions_G_2);
+                applyCoreTooltip(tooltip,BaseAICoreDescription,temp2[1],temp2[0],AICore_descriptions_G_2);
                 break;
             case Commodities.OMEGA_CORE:
-                applyCoreTooltip(tooltip,BaseAICoreDescription,AICore_descriptions_O_0,AICore_descriptions_O_1,AICore_descriptions_O_2);
+                applyCoreTooltip(tooltip,BaseAICoreDescription,temp2[1],temp2[0],AICore_descriptions_O_2);
                 break;
             default:
-                applyCoreTooltip(tooltip,BaseAICoreDescription,AICore_descriptions_B_0,AICore_descriptions_B_1,AICore_descriptions_B_2);
+                applyCoreTooltip(tooltip,BaseAICoreDescription,temp2[1],temp2[0],AICore_descriptions_B_2);
                 break;
         }
     }
@@ -212,5 +216,28 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
     }
     @Override
     protected void applyImproveModifiers() {
+    }
+    public String[] getDescriptionValues(){
+        //2 values are here: number of cores text, and power in cores text.
+        String[] out = {"",""};
+        float[] temp = AIRetrofit_AINodeProduction_Submarket.getStats(this);
+        if(temp[1] != 0) {
+            temp[0] = temp[0] / temp[1];
+        }else{
+            temp[0] = 0;
+        }
+        for(int a = 0; a < setDataLists.AINodeProductionFacility_powerCoreThresholds.size(); a++){
+            if(temp[0] < setDataLists.AINodeProductionFacility_powerCoreThresholds.get(a) || a+1 >= setDataLists.AINodeProductionFacility_powerCores.size()){
+                out[0] = setDataLists.AINodeProductionFacility_powerCores.get(a);
+                break;
+            }
+        }
+        for(int a = 0; a < setDataLists.AINodeProductionFacility_numCoreThresholds.size(); a++){
+            if(temp[1] < setDataLists.AINodeProductionFacility_numCoreThresholds.get(a) || a+1 >= setDataLists.AINodeProductionFacility_numCores.size()){
+                out[1] = setDataLists.AINodeProductionFacility_numCores.get(a);
+                break;
+            }
+        }
+        return out;
     }
 }

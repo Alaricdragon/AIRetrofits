@@ -416,20 +416,66 @@
 	"AIRetrofit_robotManufactury_survey_exstaText": "from survey robot manufactory",
 	#AIRetrofit_AINodeProductionFacility
 	"AIRetrofit_AINodeProductionFacility_Base_Description": "produces %s cores, with %s quality. has %s variation in quality.",
-	"AIRetrofit_AINodeProductionFacility_Base_D0": "a few",#the description varbles pluged into the base description for all the diffrent corew.
-	"AIRetrofit_AINodeProductionFacility_Base_D1": "alright",#--
+	"AIRetrofit_AINodeProductionFacility_numCores_0": "zero",
+	"AIRetrofit_AINodeProductionFacility_numCores_1": "a single",
+	"AIRetrofit_AINodeProductionFacility_numCores_2": "a couple",
+	"AIRetrofit_AINodeProductionFacility_numCores_3": "a few",
+	"AIRetrofit_AINodeProductionFacility_numCores_4": "an handful of",
+	"AIRetrofit_AINodeProductionFacility_numCores_5": "an large amount of",
+	"AIRetrofit_AINodeProductionFacility_numCores_6": "a lot",
+	"AIRetrofit_AINodeProductionFacility_numCores_7": "many",
+	"AIRetrofit_AINodeProductionFacility_numCores_8": "an excess of",
+	"AIRetrofit_AINodeProductionFacility_numCores_9": "an massive amount",
+	"AIRetrofit_AINodeProductionFacility_numCores_10": "a ridicules amount of",
+
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_0": 1,#when the amount of cores i prudoce is >= to thesshold, moves onto the next descriptor
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_1": 2,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_2": 4,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_3": 6,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_4": 8,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_5": 10,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_6": 14,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_7": 18,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_8": 25,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_9": 35,
+
+	"AIRetrofit_AINodeProductionFacility_powerCores_0": "extremely low",
+	"AIRetrofit_AINodeProductionFacility_powerCores_1": "very low",
+	"AIRetrofit_AINodeProductionFacility_powerCores_2": "low",
+	"AIRetrofit_AINodeProductionFacility_powerCores_3": "amateur",
+	"AIRetrofit_AINodeProductionFacility_powerCores_4": "alright",
+	"AIRetrofit_AINodeProductionFacility_powerCores_5": "good",
+	"AIRetrofit_AINodeProductionFacility_powerCores_6": "high",
+	"AIRetrofit_AINodeProductionFacility_powerCores_7": "very high",
+	"AIRetrofit_AINodeProductionFacility_powerCores_8": "incredible",
+	"AIRetrofit_AINodeProductionFacility_powerCores_9": "awe inspiring",
+	"AIRetrofit_AINodeProductionFacility_powerCores_10": "Incomprehensible",
+
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_0": 10,#when the amount of cores i prudoce is >= to thesshold, moves onto the next descriptor
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_1": 20,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_2": 30,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_3": 40,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_4": 50,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_5": 70,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_6": 90,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_7": 120,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_8": 150,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_9": 200,
+
+	#"AIRetrofit_AINodeProductionFacility_Base_D0": "a few",#the description varbles pluged into the base description for all the diffrent corew.
+	#"AIRetrofit_AINodeProductionFacility_Base_D1": "alright",#--
 	"AIRetrofit_AINodeProductionFacility_Base_D2": "some",#--
-	"AIRetrofit_AINodeProductionFacility_Alpha_D0": "very few",#--
-	"AIRetrofit_AINodeProductionFacility_Alpha_D1": "very good",#--
+	#"AIRetrofit_AINodeProductionFacility_Alpha_D0": "very few",#--
+	#"AIRetrofit_AINodeProductionFacility_Alpha_D1": "very good",#--
 	"AIRetrofit_AINodeProductionFacility_Alpha_D2": "little",#--
-	"AIRetrofit_AINodeProductionFacility_Beta_D0": "a few",#--
-	"AIRetrofit_AINodeProductionFacility_Beta_D1": "good",#--
+	#"AIRetrofit_AINodeProductionFacility_Beta_D0": "a few",#--
+	#"AIRetrofit_AINodeProductionFacility_Beta_D1": "good",#--
 	"AIRetrofit_AINodeProductionFacility_Beta_D2": "almost no",#--
-	"AIRetrofit_AINodeProductionFacility_Gamma_D0": "many",#--
-	"AIRetrofit_AINodeProductionFacility_Gamma_D1": "poor",#--
+	#"AIRetrofit_AINodeProductionFacility_Gamma_D0": "many",#--
+	#"AIRetrofit_AINodeProductionFacility_Gamma_D1": "poor",#--
 	"AIRetrofit_AINodeProductionFacility_Gamma_D2": "extreme",#--
-	"AIRetrofit_AINodeProductionFacility_Omega_D0": "almost none",#--
-	"AIRetrofit_AINodeProductionFacility_Omega_D1": "madding",#--
+	#"AIRetrofit_AINodeProductionFacility_Omega_D0": "almost none",#--
+	#"AIRetrofit_AINodeProductionFacility_Omega_D1": "madding",#--
 	"AIRetrofit_AINodeProductionFacility_Omega_D2": "a lot",#--,
 
 
@@ -503,6 +549,7 @@
 	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega": 10,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_omega": 1,
 	#specalitems,
+	#Command Node,
 	#descriptions
 	"AIRetrofit_CommandNode_officerText": "officer",
 	"AIRetrofit_CommandNode_officerText2": "a command node with the designation of %s. they are a %s of level %s with a personality of %s",
@@ -517,15 +564,30 @@
 	"AIRetrofit_CommandNode_PowerCostThreshold_0": 0,
 	"AIRetrofit_CommandNode_PowerCostThreshold_1": 5,
 	"AIRetrofit_CommandNode_PowerCostThreshold_2": 10,
-	"AIRetrofit_CommandNode_PowerCostThreshold_3": 15,
-	"AIRetrofit_CommandNode_PowerCostThreshold_4": 20,
-	"AIRetrofit_CommandNode_PowerCostThreshold_5": 25,
-	"AIRetrofit_CommandNode_PowerCostThreshold_6": 30,
-	"AIRetrofit_CommandNode_PowerCostThreshold_7": 35,
-	"AIRetrofit_CommandNode_PowerCostThreshold_8": 40,
+	"AIRetrofit_CommandNode_PowerCostThreshold_3": 20,
+	"AIRetrofit_CommandNode_PowerCostThreshold_4": 30,
+	"AIRetrofit_CommandNode_PowerCostThreshold_5": 40,
+	"AIRetrofit_CommandNode_PowerCostThreshold_6": 60,
+	"AIRetrofit_CommandNode_PowerCostThreshold_7": 80,
+	"AIRetrofit_CommandNode_PowerCostThreshold_8": 100,
+	"AIRetrofit_CommandNode_PowerCostThreshold_9": 150,
 	#random personalityweight. higher numbers make it more likely to get a core of a given type.
 	"AIRetrofit_CommandNode_PersonalityWeight_officer": 2,
 	"AIRetrofit_CommandNode_PersonalityWeight_admin": 1,
+	#quality of a power basec CommandNode
+	"AIRetrofit_CreatePerson_Officer_costPerLevel": 10,#the amount of core power required per this
+	"AIRetrofit_CreatePerson_Officer_costPerElite": 10,#--
+	"AIRetrofit_CreatePerson_Officer_costPerLevelExtra": 40,#the amount of core power required for a this, past your maxamum amount
+	"AIRetrofit_CreatePerson_Officer_costPerEliteExtra": 40,#--
+	"AIRetrofit_CreatePerson_Officer_weightPerLevel": 1,#weight of this per pick
+	"AIRetrofit_CreatePerson_Officer_weightPerElite": 0.3,#--
+	"AIRetrofit_CreatePerson_Officer_weightPerLevelExtra": 0.05,#--
+	"AIRetrofit_CreatePerson_Officer_weightPerEliteExtra": 0.05,#--
+
+	"AIRetrofit_CreatePerson_Admin_baseSkillCost": 15,#cost of admin skill.
+	"AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel": 1.3,#cost multi per admin skill aquired.
+
+
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{

@@ -5,6 +5,8 @@ import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.CargoStackAPI;
 import com.fs.starfarer.api.campaign.CoreUIAPI;
 import com.fs.starfarer.api.campaign.SubmarketPlugin;
+import com.fs.starfarer.api.campaign.econ.Industry;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
@@ -64,10 +66,8 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float BC_O =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_omega");
     public static final float MiPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_omega");
     public static final float MaPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega");
-    public void resetCargo(CargoAPI cargo){
-        AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
-        //float[] power = getPower();
-        emptyCargo(cargo);
+    public static float[] getStats(Industry industry){
+        MarketAPI market = industry.getMarket();
         float totalPower=0;
         int cores=0;
         float minPowerWeight=0;//the diffrence between the two numbers here is how mush range the cores power will have.
@@ -115,8 +115,19 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         if(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isImproved()){
             //run whatever improving this industry will do. extra core and power per level maybe? just more power per level? mmmm
         }
+        return new float[]{totalPower,cores,minPowerWeight,maxPowerWeight};
+    }
+    public void resetCargo(CargoAPI cargo){
+        AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
+        //float[] power = getPower();
+        emptyCargo(cargo);
+        float[] temp = getStats(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility));
+        float totalPower=temp[0];
+        int cores=(int)temp[1];
+        float minPowerWeight=temp[2];//the diffrence between the two numbers here is how mush range the cores power will have.
+        float maxPowerWeight=temp[3];//--
 
-        AIRetrofits_CreatePeople.addCores(cargo,this.market.getFaction().getDoctrine(),totalPower,cores,maxPowerWeight,minPowerWeight);
+        AIRetrofits_CreatePeople.addCores(cargo,this.market.getFaction(),totalPower,cores,maxPowerWeight,minPowerWeight);
     }
 
     public void emptyCargo(CargoAPI cargo){
@@ -144,7 +155,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
         if(market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isFunctional()) {
             emptyCargo(cargo);
-        }else if(this.okToUpdateShipsAndWeapons()){
+        }else if(this.okToUpdateShipsAndWeapons()||true){
             resetCargo(cargo);
             this.sinceSWUpdate = 0;
         }

@@ -28,54 +28,54 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     @Override
     public void init(CargoStackAPI stack) {
         super.init(stack);
-        AIRetrofit_Log.loging("loading data",this,true);
-        AIRetrofit_Log.push();
+        //AIRetrofit_Log.loging("loading data",this,true);
+        //AIRetrofit_Log.push();
         if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {
-            AIRetrofit_Log.loging("trying to load data from specaldata",this);
+            //AIRetrofit_Log.loging("trying to load data from specaldata",this);
             person = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPerson();
             personType = ((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPersonType();//AIRetrofit_Log.loging("returned type: "+((AIRetrofit_CommandNode_SpecalItemData) stack.getSpecialDataIfSpecial()).getPersonType(),this,true);
             //findPersonType();
         }else{
         }
-        AIRetrofit_Log.loging("DONE loading / setting data for specal item",this);
-        AIRetrofit_Log.pop();
+        //AIRetrofit_Log.loging("DONE loading / setting data for specal item",this);
+        //AIRetrofit_Log.pop();
     }
     public void fixStack(){
         if (stack.getSpecialDataIfSpecial() instanceof AIRetrofit_CommandNode_SpecalItemData) {return;}
-        AIRetrofit_Log.loging("createing new data for specal data",this,true);
-        AIRetrofit_Log.push();
+        //AIRetrofit_Log.loging("createing new data for specal data",this,true);
+        //AIRetrofit_Log.push();
         //int b = 0;
         //while(b < (int)stack.getSize()) {
         CargoAPI cargo = stack.getCargo();
         try {
-            AIRetrofit_Log.loging("removing this stack from cargo bay", this, true);
-            AIRetrofit_Log.loging("stake : "+stack.toString(),this,true);
-            AIRetrofit_Log.loging("stake.cetCargo : "+stack.getCargo().toString(),this,true);
+            //AIRetrofit_Log.loging("removing this stack from cargo bay", this, true);
+            //AIRetrofit_Log.loging("stake : "+stack.toString(),this,true);
+            //AIRetrofit_Log.loging("stake.cetCargo : "+stack.getCargo().toString(),this,true);
             stack.getCargo().removeStack(stack);
             stack.setSize(0);
             stack = null;
             //stack.getCargo().removeStack(stack);
         }catch (Exception e){
-            AIRetrofit_Log.loging("failed to remove bad core. exeption type: "+e,this,true);
-            AIRetrofit_Log.loging("returning to avoid issues...",this,true);
-            AIRetrofit_Log.pop();
+            //AIRetrofit_Log.loging("failed to remove bad core. exeption type: "+e,this,true);
+            //AIRetrofit_Log.loging("returning to avoid issues...",this,true);
+            //AIRetrofit_Log.pop();
             return;
         }
         try {
-            AIRetrofit_Log.loging("created person", this, true);
-            AIRetrofit_Log.loging("creating specal data", this, true);
+            //AIRetrofit_Log.loging("created person", this, true);
+            //AIRetrofit_Log.loging("creating specal data", this, true);
             AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[0], null);
-            AIRetrofit_Log.loging("do we have a cargo bay?", this, true);
-            AIRetrofit_Log.loging("adding new specal item to cargo bay", this, true);
+            //AIRetrofit_Log.loging("do we have a cargo bay?", this, true);
+            //AIRetrofit_Log.loging("adding new specal item to cargo bay", this, true);
             cargo.addSpecial(a, 1);
             if(cargo.getFleetData().getFleet().isPlayerFleet()){
-                AIRetrofit_Log.loging("is a player fleet",this,true);
+                //AIRetrofit_Log.loging("is a player fleet",this,true);
             }else{
-                AIRetrofit_Log.loging("is NOT a player fleet",this,true);
+                //AIRetrofit_Log.loging("is NOT a player fleet",this,true);
             }
         } catch (Exception e) {
-            AIRetrofit_Log.loging("exeption found. type: " + e, this, true);
-            AIRetrofit_Log.pop();
+            //AIRetrofit_Log.loging("exeption found. type: " + e, this, true);
+            //AIRetrofit_Log.pop();
         }
         //b++;
         //}
@@ -129,7 +129,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     }
     @Override
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource) {
-        AIRetrofit_Log.loging("personType: "+personType,this,true);
+        //AIRetrofit_Log.loging("personType: "+personType,this,true);
         super.createTooltip(tooltip, expanded, transferHandler, stackSource, false);
         switch (personType){
             case AIRetrofits_Constants.PersonTypes_Officer:

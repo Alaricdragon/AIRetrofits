@@ -31,14 +31,21 @@ im going to work on the following now:
                 (done)make items save there data.
                 (moved this issue to people maker)data is not randomized right. wrong number of skills, level, and everything else.
                 (done)stop the command nodes from stacking why are they like this!?!?
-                (to do:) find out the costs of people at diffrent skill levels. so i can get diffrent item costs for stronger people.
+                (to do:) find out the costs of people at different skill levels. so i can get diffrent item costs for stronger people.
             CreatePeople:
-                make it so i can get an officer or a admin with skills based on a single power stat.
+                (started. completed settings for this)make it so i can get an officer or a admin with skills based on a single power stat.
                     -officers level cost should be liner. the elet skill cost should cost maybe 150% a normal skill.
                     -officers should be soft caped for eleet skills and total skills based on the players skill level
                     -officers that are given -a lot- of power should be able to have an skill level or total level higher then the max (should be like 5X more power per skill or something).
                     -admins should have an expenses increase in power requirements per skill added to them
-                make it so officer personality can be better based on a factions possibly personality.
+
+                    -status:
+                        officers: started. i think i have code that can create officers successfully. requires testing.
+                            -need to see if items are being randomized right.
+                            -if skills are being adding in a none elite format.
+                            -if i need to cry.
+                        admin: not started.
+                (DONE)make it so officer personality can be better based on a factions possibly personality.
                 make it possable to have agents (nexerlion) spawn.
             (started)Submarket:
                 (done)add to csv
@@ -55,11 +62,10 @@ im going to work on the following now:
                 (done)change what the AI cores do on said industry.
                 (dine)make it so the sub market A does not exist, or B does not refresh well in industry is offline
                 update the old exstra text in this submarket ()
-                (done. untested.)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
+                (done)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
 
                 notes:
                     i have made it so the sub market resets cargo every time you visit it. make it not do that before release.
-                    commandNode needs to have its logs set to only output when they are required.
                 issue:
                     depending on what i make improvements do, i might need to change the text that shows how strong a given industry is.
             AICore Changes:

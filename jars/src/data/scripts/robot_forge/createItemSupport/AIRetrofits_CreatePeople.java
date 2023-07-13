@@ -2,11 +2,13 @@ package data.scripts.robot_forge.createItemSupport;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
+import com.fs.starfarer.api.campaign.FactionAPI;
 import com.fs.starfarer.api.campaign.FactionDoctrineAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
+import com.fs.starfarer.api.plugins.OfficerLevelupPlugin;
 import com.fs.starfarer.loading.specs.FactionDoctrine;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
@@ -14,6 +16,7 @@ import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode_SpecalItemData;
 import data.scripts.startupData.AIRetrofits_Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -67,48 +70,98 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         return person;
     }
-    public static PersonAPI createOfficer(int personality, float skillPower){
+
+    public static PersonAPI createOfficer(int personality, float skillPower) {
+        return createOfficer(personality,skillPower,5,5);
+    }
+    public static PersonAPI createOfficer(int personality, float skillPower,float softMaxLevel,float softMaxEleteSkills){
         AIRetrofit_Log.loging("running: "+"createOfficer"+" with: personality,skillPower: "+personality+", "+skillPower,logClass,logs);
         AIRetrofit_Log.push();
-        int skillEpic = 0;
-        PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),(int)skillPower);
+        PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),0);
         //OfficerManagerEvent.ski
         person.setPersonality(personalities[personality]);
         person.getTags().add(AIRetrofits_Constants.PersonTypes_Officer);
         setPerson(person);
         //possibility to add he possibility of having an elite skill to start?
-        float alreadyEpic = 0;
-        List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
-        /*for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
-            MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-            if (a.getSkill().isElite()) {
-                if(alreadyEpic > skillEpic) {
-                    person.getStats().decreaseSkill(a.getSkill().getId());
+        //List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
+        int level=0;
+        int epics=0;
+        int normal=0;
+        float powerUsed = 0;
+        //Random random = new Random();
+        /*Officer_Costs[0][a] == normalskill cost, elete skill cost
+        Officer_Costs[1][a] == exstra normalskill cost, exstra elete skill cost
+        Officer_Weights
+
+        */
+        while(skillPower > 0||true){
+            //determine what i can add this loop.
+            ArrayList<ArrayList<Integer>> types = new ArrayList<>();
+            if(epics < level){//can add epics.
+                AIRetrofit_Log.loging("costs array: "+Officer_Costs[0][0]+","+Officer_Costs[0][1]+","+Officer_Costs[1][0]+","+Officer_Costs[1][1]+",",logClass,true);
+                AIRetrofit_Log.loging("is less then?"+ (skillPower <= Officer_Costs[0][1])+","+(skillPower <= Officer_Costs[1][0]),logClass,true);
+                if(epics < softMaxEleteSkills && skillPower >= Officer_Costs[0][1]){//can add moral epics.
+                    AIRetrofit_Log.loging("adding type 2",logClass,true);
+                    types.add(getLocationArray(0,1));
+                }else if(skillPower >= Officer_Costs[1][1]){//can only add exstra epics.
+                    AIRetrofit_Log.loging("adding type 3",logClass,true);
+                    types.add(getLocationArray(1,1));
                 }
-                alreadyEpic++;
+            }
+            if(level < softMaxLevel && skillPower >= Officer_Costs[0][0]){//can add normal level
+                AIRetrofit_Log.loging("adding type 0",logClass,true);
+                types.add(getLocationArray(0,0));
+            }else if(skillPower >= Officer_Costs[1][0]){//can only add epic levels.
+                AIRetrofit_Log.loging("adding type 1",logClass,true);
+                types.add(getLocationArray(1,0));
+            }
+            AIRetrofit_Log.loging("we got "+types.size()+"types this run...",logClass,true);
+            if(types.size() == 0){
+                break;
+            }
+            //get the total random for the items i can add.
+            float totalWeight = 0;
+            for(int a = 0; a < types.size(); a++){
+                totalWeight += Officer_Weights[types.get(a).get(0)][types.get(a).get(0)];
+            }
+            //sellect a random item from the gotten random.
+            float sellected = (float) (Math.random()*totalWeight);
+            int item = types.size() - 1;
+            for(int a = 0; a < types.size() && item > 0; a++){
+                if(totalWeight >= sellected) {
+                    totalWeight -= Officer_Weights[types.get(a).get(0)][types.get(a).get(0)];
+                    item--;
+                }
+            }
+            //add skills to the thing.
+            powerUsed+=Officer_Costs[types.get(item).get(0)][types.get(item).get(1)];
+            skillPower-=Officer_Costs[types.get(item).get(0)][types.get(item).get(1)];
+            AIRetrofit_Log.loging("we have"+skillPower+"power left...",logClass,true);
+            switch (officerNumbers[types.get(item).get(0)][types.get(item).get(0)]){
+                case 0://add normal skill.
+                case 1://add bonus skill
+                    OfficerLevelupPlugin plugin = (OfficerLevelupPlugin) Global.getSettings().getPlugin("officerLevelUp");
+                    List<String> skills = plugin.pickLevelupSkills(person, new Random());
+                    OfficerManagerEvent.pickSkill(person,skills,OfficerManagerEvent.SkillPickPreference.ANY,1,new Random());
+                    level++;
+                    break;
+                case 2://make a skill elite
+                case 3://make a bonus skill elite
+                    OfficerManagerEvent.addEliteSkills(person,1,new Random());
+                    epics++;
+                    break;
             }
         }
-        if(skillEpic < alreadyEpic){
-            for(int a2 = 0; a2 < skillsCopy.size() && alreadyEpic < skillEpic; a2++) {
-                MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-                if (!a.getSkill().isElite()) {
-                    //a.getSkill().setElite(true);
-                    person.getStats().increaseSkill(a.getSkill().getId());
-                    alreadyEpic++;
-                }
-            }
-        }*/
-        /*for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
-            MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-            if (a.getSkill().isElite()) {
-                person.getStats().decreaseSkill(a.getSkill().getId());
-                //person.getStats().increaseSkill("");
-            }
-        }*/
+        person.getStats().setLevel(level);
         AIRetrofit_Log.pop();
         return person;
     }
-
+    private static ArrayList<Integer> getLocationArray(int a,int b){
+        ArrayList<Integer> temp = new ArrayList<>();
+        temp.add(a);
+        temp.add(b);
+        return temp;
+    }
 
 
     public static String getTypeByWeight(float[] weight){
@@ -143,11 +196,18 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         return getTypeByWeight(weight);
     }
-    public static int personalityMix(FactionDoctrineAPI doctrine){
+    public static int personalityMix(FactionAPI doctrine){
         AIRetrofit_Log.loging("running: "+"personalityMix"+" with: doctrine:"+doctrine.toString(),logClass,logs);
         AIRetrofit_Log.push();
         float maxChange = 10;
-        int aggression = doctrine.getAggression();
+        int aggression=3;
+        String temp = doctrine.getPersonalityPicker().pick();
+        for(int a = 0; a < personalities.length; a++){
+            if(personalities[a].equals(temp)){
+                aggression = a;
+                break;
+            }
+        }
         int max = 6;
         int min = 0;
         float changeChance = 0.1f;
@@ -186,7 +246,7 @@ public class AIRetrofits_CreatePeople {
         }
         AIRetrofit_Log.pop();
     }
-    public static void addCores(CargoAPI cargo,FactionDoctrineAPI doctrineAPI, float power, int numcores, float minPowerWeight, float maxPowerWeight){
+    public static void addCores(CargoAPI cargo, FactionAPI doctrineAPI, float power, int numcores, float minPowerWeight, float maxPowerWeight){
         AIRetrofit_Log.loging("running: "+"addCores"+" with: cargo,doctoring,power,numcores,minPowerWeight,maxPowerWeight: "+cargo.toString()+", "+doctrineAPI.toString()+", "+power+", "+numcores+", "+minPowerWeight+", "+maxPowerWeight,logClass,logs);
         AIRetrofit_Log.push();
         float[] powerWeight = new float[numcores];
@@ -205,6 +265,26 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
     }
 
+    public static final float[][] Officer_Costs = {
+        //cost of non extra level/elite
+        {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerLevel"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerElite")},
+        //cost of extra level/elite
+        {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerLevelExtra"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerEliteExtra")}
+    };
+    public static final float[][] Officer_Weights = {
+            //cost of non extra level/elite
+            {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerLevel"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerElite")},
+            //cost of extra level/elite
+            {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerLevelExtra"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerEliteExtra")}
+    };
+    public static final int[][] officerNumbers = {
+            {0,1},
+            {2,3}
+    };
+    public static final float[] Admin_Costs = {
+            //base cost of skills / cost multi per skill that said admin has
+            Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_baseSkillCost"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel")
+    };
     public static void addCore(CargoAPI cargo,int power,int personality,String type){
         AIRetrofit_Log.loging("running: "+"addCore"+" with: cargo,power,personality,type:"+cargo.toString()+", "+power+", "+personality+", "+type,logClass,logs);
         AIRetrofit_Log.push();

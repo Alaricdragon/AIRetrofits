@@ -235,7 +235,9 @@ public class AIRetrofits_Constants {
             "AIRetrofit_CommandNode_5",
             "AIRetrofit_CommandNode_6",
             "AIRetrofit_CommandNode_7",
-    };
+            "AIRetrofit_CommandNode_8",
+            "AIRetrofit_CommandNode_9",
+};
     public static final float[] SpecalItem_CommandNodes_thresholds = {
         Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_0"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_1"),
@@ -246,6 +248,7 @@ public class AIRetrofits_Constants {
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_6"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_7"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_8"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_9"),
     };
     public static final String PersonTypes_Officer = "officer";
     public static final String PersonTypes_Admin = "admin";
