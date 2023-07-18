@@ -75,13 +75,9 @@ public class AIRetrofits_CreatePeople {
         return createOfficer(personality,skillPower,5,5);
     }
     public static PersonAPI createOfficer(int personality, float skillPower,float softMaxLevel,float softMaxEleteSkills){
+        //skillPower*=15;
         AIRetrofit_Log.loging("running: "+"createOfficer"+" with: personality,skillPower: "+personality+", "+skillPower,logClass,logs);
         AIRetrofit_Log.push();
-        PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),0);
-        //OfficerManagerEvent.ski
-        person.setPersonality(personalities[personality]);
-        person.getTags().add(AIRetrofits_Constants.PersonTypes_Officer);
-        setPerson(person);
         //possibility to add he possibility of having an elite skill to start?
         //List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
         int level=0;
@@ -94,7 +90,8 @@ public class AIRetrofits_CreatePeople {
         Officer_Weights
 
         */
-        while(skillPower > 0||true){
+        AIRetrofit_Log.push();
+        while(skillPower > 0){
             //determine what i can add this loop.
             ArrayList<ArrayList<Integer>> types = new ArrayList<>();
             if(epics < level){//can add epics.
@@ -122,14 +119,14 @@ public class AIRetrofits_CreatePeople {
             //get the total random for the items i can add.
             float totalWeight = 0;
             for(int a = 0; a < types.size(); a++){
-                totalWeight += Officer_Weights[types.get(a).get(0)][types.get(a).get(0)];
+                totalWeight += Officer_Weights[types.get(a).get(0)][types.get(a).get(1)];
             }
             //sellect a random item from the gotten random.
             float sellected = (float) (Math.random()*totalWeight);
             int item = types.size() - 1;
             for(int a = 0; a < types.size() && item > 0; a++){
                 if(totalWeight >= sellected) {
-                    totalWeight -= Officer_Weights[types.get(a).get(0)][types.get(a).get(0)];
+                    totalWeight -= Officer_Weights[types.get(a).get(0)][types.get(a).get(1)];
                     item--;
                 }
             }
@@ -137,22 +134,82 @@ public class AIRetrofits_CreatePeople {
             powerUsed+=Officer_Costs[types.get(item).get(0)][types.get(item).get(1)];
             skillPower-=Officer_Costs[types.get(item).get(0)][types.get(item).get(1)];
             AIRetrofit_Log.loging("we have"+skillPower+"power left...",logClass,true);
-            switch (officerNumbers[types.get(item).get(0)][types.get(item).get(0)]){
+            switch (officerNumbers[types.get(item).get(0)][types.get(item).get(1)]){
                 case 0://add normal skill.
                 case 1://add bonus skill
-                    OfficerLevelupPlugin plugin = (OfficerLevelupPlugin) Global.getSettings().getPlugin("officerLevelUp");
-                    List<String> skills = plugin.pickLevelupSkills(person, new Random());
-                    OfficerManagerEvent.pickSkill(person,skills,OfficerManagerEvent.SkillPickPreference.ANY,1,new Random());
+                    //OfficerLevelupPlugin plugin = (OfficerLevelupPlugin) Global.getSettings().getPlugin("officerLevelUp");
+                    //List<String> skills = plugin.pickLevelupSkills(person, new Random());
+                    //OfficerManagerEvent.pickSkill(person,skills,OfficerManagerEvent.SkillPickPreference.ANY,1,new Random());
                     level++;
+                    AIRetrofit_Log.loging("adding a level",logClass,logs);
                     break;
                 case 2://make a skill elite
                 case 3://make a bonus skill elite
-                    OfficerManagerEvent.addEliteSkills(person,1,new Random());
+                    //OfficerManagerEvent.addEliteSkills(person,1,new Random());
                     epics++;
+                    AIRetrofit_Log.loging("adding a epic",logClass,logs);
                     break;
             }
         }
-        person.getStats().setLevel(level);
+        AIRetrofit_Log.pop();
+        AIRetrofit_Log.loging("got a level and elete of: "+level+", "+epics,logClass,logs);
+        PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),1,OfficerManagerEvent.SkillPickPreference.ANY,new Random());
+        int levelTemp=1;
+        level--;
+        while(level> 0){
+            OfficerLevelupPlugin plugin = (OfficerLevelupPlugin) Global.getSettings().getPlugin("officerLevelUp");
+            List<String> skills = plugin.pickLevelupSkills(person, new Random());
+            String temp = OfficerManagerEvent.pickSkill(person,skills,OfficerManagerEvent.SkillPickPreference.ANY,1,new Random());
+            //AIRetrofit_Log.loging("adding the skill called: "+ temp,logClass,logs);
+            if(temp != null) {
+                person.getStats().setSkillLevel(temp, 1);
+                levelTemp++;
+            }
+            level--;
+        }
+        person.getStats().setLevel(levelTemp);
+        //OfficerLevelupPlugin plugin = (OfficerLevelupPlugin) Global.getSettings().getPlugin("officerLevelUp");
+        //List<String> skills = plugin.pickLevelupSkills(person, new Random());
+        //OfficerManagerEvent.pickSkill(person,skills,OfficerManagerEvent.SkillPickPreference.ANY,1,new Random());
+        AIRetrofit_Log.push();
+        AIRetrofit_Log.pop();
+        person.setPersonality(personalities[personality]);
+        person.getTags().add(AIRetrofits_Constants.PersonTypes_Officer);
+        setPerson(person);
+        List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
+        for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
+            MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
+            if(a.getLevel() > 1 && a.getSkill().isCombatOfficerSkill()) {
+                if (epics == 0) {
+                    AIRetrofit_Log.loging("removing epic skill: " + a.getSkill().getName(), logClass, logs);
+                    person.getStats().decreaseSkill(a.getSkill().getId());
+                } else if (epics > 0) {
+                    epics--;
+                }
+            }
+        }
+        if (epics > 0){
+            for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
+                MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
+                if (!(a.getLevel() > 1) && a.getSkill().isCombatOfficerSkill()) {
+                    AIRetrofit_Log.loging("attempting to add a epic: "+a.getSkill().getName(),logClass,logs);
+                    person.getStats().increaseSkill(a.getSkill().getId());
+                    epics--;
+                    if(epics == 0){
+                        break;
+                    }
+                }
+            }
+        }
+        AIRetrofit_Log.loging("final officer skill set has "+person.getStats().getSkillsCopy().size() + " skills",logClass,logs);
+        AIRetrofit_Log.push();
+        for(MutableCharacterStatsAPI.SkillLevelAPI a : person.getStats().getSkillsCopy()){
+            if(a.getSkill().isCombatOfficerSkill()) {
+                AIRetrofit_Log.loging(a.getSkill().getName(), logClass, logs);
+            }
+        }
+        AIRetrofit_Log.pop();
+        //person.getStats().setLevel(level);
         AIRetrofit_Log.pop();
         return person;
     }
@@ -278,8 +335,8 @@ public class AIRetrofits_CreatePeople {
             {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerLevelExtra"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerEliteExtra")}
     };
     public static final int[][] officerNumbers = {
-            {0,1},
-            {2,3}
+            {0,2},
+            {1,3}
     };
     public static final float[] Admin_Costs = {
             //base cost of skills / cost multi per skill that said admin has

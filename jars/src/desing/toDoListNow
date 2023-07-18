@@ -40,13 +40,15 @@ im going to work on the following now:
                     -admins should have an expenses increase in power requirements per skill added to them
 
                     -status:
-                        officers: started. i think i have code that can create officers successfully. requires testing.
-                            -need to see if items are being randomized right.
-                            -if skills are being adding in a none elite format.
-                            -if i need to cry.
+                        officers: working.
                         admin: not started.
                 (DONE)make it so officer personality can be better based on a factions possibly personality.
                 make it possable to have agents (nexerlion) spawn.
+
+                issues:
+                    1) currently, i dont set the max level / max elet skills right.
+                solutions:
+                    1) find out were the max officer level and max eleat level is stored.
             (started)Submarket:
                 (done)add to csv
                 add image
