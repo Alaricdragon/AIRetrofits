@@ -19,9 +19,9 @@ im going to work on the following now:
     the upgrades to the industry to make them all at least somewhat useful
         Command Node and relevant industry:
             questions:
-                is it possible to get a list of the skills that a randomly generated officer / admin can spawn with / gain as they level up?
-                how do i get the possible officer personality from a fleet doctrine? i tried doctrine.getAggression(), only to realize that aggression 4 includes both aggressive and reckless officers, and i want my code to be future proof in case more aggression levels have a mix of possible personality.
-                what are the different costs a given admin or officer has to buy at different levels?
+                (look it up in the rules CSV file) what are the different costs a given admin or officer has to buy at different levels?
+                1) how do i display the skills a given admin has to a TooltipMakerAPI? i tried TooltipMakerAPI.addSkillPanel(person,pad), but it only seemed to work for officers.
+                2) is there a way to find the max level and max elite skills that the players officers can have?
             (almost done)SpecialItem:
                 NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
                 (done)apply skill, name, and personality data to item.
@@ -32,23 +32,25 @@ im going to work on the following now:
                 (moved this issue to people maker)data is not randomized right. wrong number of skills, level, and everything else.
                 (done)stop the command nodes from stacking why are they like this!?!?
                 (to do:) find out the costs of people at different skill levels. so i can get diffrent item costs for stronger people.
+                ISSUE: right now i cant display an admins skills. find out hwo to do that and implement it into AIRetrofit_CommandNode
+
             CreatePeople:
                 (started. completed settings for this)make it so i can get an officer or a admin with skills based on a single power stat.
-                    -officers level cost should be liner. the elet skill cost should cost maybe 150% a normal skill.
-                    -officers should be soft caped for eleet skills and total skills based on the players skill level
+                    -officers level cost should be liner. the elite skill cost should cost maybe 150% a normal skill.
+                    -officers should be soft caped for elite skills and total skills based on the players skill level
                     -officers that are given -a lot- of power should be able to have an skill level or total level higher then the max (should be like 5X more power per skill or something).
                     -admins should have an expenses increase in power requirements per skill added to them
 
                     -status:
-                        officers: working.
-                        admin: not started.
+                        officers: DONE.
+                        admin: DONE.
                 (DONE)make it so officer personality can be better based on a factions possibly personality.
                 make it possable to have agents (nexerlion) spawn.
+                ISSUE:
+                    right now, a given core will use a amount of power, but there is a very real chance that amount is less then the amount that i gave it to use. the issue with that is having 2 cores with the same ability but different costs.
 
-                issues:
-                    1) currently, i dont set the max level / max elet skills right.
-                solutions:
-                    1) find out were the max officer level and max eleat level is stored.
+                sollution:
+                    record the amount of power used for each core, thenr return it, allowing each core to have its real amount used
             (started)Submarket:
                 (done)add to csv
                 add image

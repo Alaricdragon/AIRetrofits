@@ -7,8 +7,11 @@ import com.fs.starfarer.api.campaign.FactionDoctrineAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
+import com.fs.starfarer.api.characters.SkillSpecAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
+import com.fs.starfarer.api.impl.campaign.ids.Skills;
 import com.fs.starfarer.api.plugins.OfficerLevelupPlugin;
+import com.fs.starfarer.api.util.WeightedRandomPicker;
 import com.fs.starfarer.loading.specs.FactionDoctrine;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
@@ -61,16 +64,59 @@ public class AIRetrofits_CreatePeople {
 
 
     public static PersonAPI createAdmen(float skillPower){
+        //skillPower*=1000;
+        ArrayList<String> exstraSkills = new ArrayList<>();
         AIRetrofit_Log.loging("running: "+"createAdmen"+" with: skillPower:"+skillPower,logClass,logs);
         AIRetrofit_Log.push();
+        float maxTier = 9999;
+        maxTier = Math.min(maxTier,getMaxPossableNumberOfAdminSkills());
+        maxTier = Math.min(maxTier,Admin_MaxTier);
         /*skillPower represents the possibility to add more skills to this caption on creation. */
-        PersonAPI person = createAdmen();
+        float cost = Admin_Costs[0];
+        int tier = 0;
+        while(skillPower >= cost && tier < maxTier){
+            tier+=1;
+            skillPower-=cost;
+            cost *= Admin_Costs[1];
+        }
+        AIRetrofit_Log.loging("got a admin tier of "+tier+". ",logClass,logs);
+        PersonAPI person = OfficerManagerEvent.createAdmin(Global.getSector().getPlayerFaction(),tier,new Random());
+
+        if(skillPower >= Admin_PowerForHypercognition){
+            AIRetrofit_Log.loging("giving admin an specal skill (has "+skillPower+" power. requires at least "+Admin_PowerForHypercognition+" power).",logClass,logs);
+            skillPower-= Admin_PowerForHypercognition;
+            exstraSkills.add("hypercognition");
+        }
+        for(String a : exstraSkills){
+            person.getStats().increaseSkill(a);
+        }
+        AIRetrofit_Log.loging("this admin has "+person.getStats().getSkillsCopy().size()+" skills.",logClass,logs);
+        AIRetrofit_Log.push();
+        for(int a = 0; a < person.getStats().getSkillsCopy().size(); a++){
+            if(person.getStats().getSkillsCopy().get(a).getSkill().isAdminSkill()) {
+                AIRetrofit_Log.loging("skill: " + person.getStats().getSkillsCopy().get(a), logClass, logs);
+            }
+        }
+        AIRetrofit_Log.pop();
         person.getTags().add(AIRetrofits_Constants.PersonTypes_Admin);
         setPerson(person);
         AIRetrofit_Log.pop();
         return person;
     }
-
+    public static int getMaxPossableNumberOfAdminSkills(){
+        int a = 0;
+        List<String> allSkillIds = Global.getSettings().getSortedSkillIds();
+        for (String skillId : allSkillIds) {
+            SkillSpecAPI skill = Global.getSettings().getSkillSpec(skillId);
+            if (skill.hasTag(Skills.TAG_DEPRECATED)) continue;
+            if (skill.hasTag(Skills.TAG_PLAYER_ONLY)) continue;
+            if (skill.hasTag(Skills.TAG_AI_CORE_ONLY)) continue;
+            if (skill.isAdminSkill()) {
+                a++;
+            }
+        }
+        return a;
+    }
     public static PersonAPI createOfficer(int personality, float skillPower) {
         return createOfficer(personality,skillPower,5,5);
     }
@@ -342,6 +388,8 @@ public class AIRetrofits_CreatePeople {
             //base cost of skills / cost multi per skill that said admin has
             Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_baseSkillCost"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel")
     };
+    public static final int Admin_MaxTier = Global.getSettings().getInt("AIRetrofit_CreatePerson_Admin_MaxTier");
+    public static final float Admin_PowerForHypercognition = Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_PowerForhypercognition");
     public static void addCore(CargoAPI cargo,int power,int personality,String type){
         AIRetrofit_Log.loging("running: "+"addCore"+" with: cargo,power,personality,type:"+cargo.toString()+", "+power+", "+personality+", "+type,logClass,logs);
         AIRetrofit_Log.push();

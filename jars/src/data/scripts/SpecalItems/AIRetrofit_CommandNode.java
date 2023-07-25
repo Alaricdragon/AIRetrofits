@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
 import com.fs.starfarer.api.campaign.impl.items.BaseSpecialItemPlugin;
+import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -14,6 +15,7 @@ import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
+import java.util.List;
 
 public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     //addSpecial AIRetrofit_CommandNode
@@ -159,12 +161,20 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         float pad = 3f;
         float opad = 10f;
         Color highlight = Misc.getHighlightColor();
+        List<MutableCharacterStatsAPI.SkillLevelAPI> skills = person.getStats().getSkillsCopy();
+        int level = 0;
+        for(int a = 0; a < skills.size(); a++){
+            if(skills.get(a).getSkill().isAdminSkill()){
+                level++;
+            }
+        }
         String type = adminText;
         TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
-        text.addPara(adminText2,pad,highlight,person.getNameString(),type);
+        text.addPara(adminText2,pad,highlight,person.getNameString(),type,""+level);
         tooltip.addImageWithText(opad);
         if(expanded){
-            tooltip.addSkillPanel(person,pad);
+            //tooltip.addSkillPanelOneColumn(person,pad);
+            //tooltip.addSkillPanel(person,pad);
         }
     }
     public void toolTipNull(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){

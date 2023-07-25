@@ -554,7 +554,7 @@
 	"AIRetrofit_CommandNode_officerText": "officer",
 	"AIRetrofit_CommandNode_officerText2": "a command node with the designation of %s. they are a %s of level %s with a personality of %s",
 	"AIRetrofit_CommandNode_adminText": "admin",
-	"AIRetrofit_CommandNode_adminText2": "a command node with the designation of %s. they are a %s",
+	"AIRetrofit_CommandNode_adminText2": "a command node with the designation of %s. they are a %s with %s related skills",
 	"AIRetrofit_CommandNode_defaultTExt": "error",
 	"AIRetrofit_CommandNode_defaultText2": "a command node with the designation of %s. they are a %s",
 	#power a compleatly random core has
@@ -584,9 +584,19 @@
 	"AIRetrofit_CreatePerson_Officer_weightPerLevelExtra": 0.05,#--
 	"AIRetrofit_CreatePerson_Officer_weightPerEliteExtra": 0.05,#--
 
-	"AIRetrofit_CreatePerson_Admin_baseSkillCost": 15,#cost of admin skill.
+	"AIRetrofit_CreatePerson_Admin_baseSkillCost": 50,#cost of admin skill.
 	"AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel": 1.3,#cost multi per admin skill aquired.
+	"AIRetrofit_CreatePerson_Admin_MaxTier": 10,#the max possable number of skills on a admin,
+	"AIRetrofit_CreatePerson_Admin_PowerForhypercognition": 5000,
 
+	"adminSalaryTier3":30000,#this is here to allow higer tier admins then what normaly exsist. if you want to remove, set AIRetrofit_CreatePerson_Admin_MaxTier to 2.
+	"adminSalaryTier4":40000,#--
+	"adminSalaryTier5":50000,#--
+	"adminSalaryTier6":60000,#--
+	"adminSalaryTier7":70000,#--
+	"adminSalaryTier8":80000,#--
+	"adminSalaryTier9":90000,#--
+	"adminSalaryTier10":100000,#--
 
 	#temp graphics settings for things im testing
 	"graphics":{
