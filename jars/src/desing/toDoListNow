@@ -47,7 +47,7 @@ im going to work on the following now:
                 (DONE)make it so officer personality can be better based on a factions possibly personality.
                 make it possable to have agents (nexerlion) spawn.
                 ISSUE:
-                    right now, a given core will use a amount of power, but there is a very real chance that amount is less then the amount that i gave it to use. the issue with that is having 2 cores with the same ability but different costs.
+                    (done)right now, a given core will use a amount of power, but there is a very real chance that amount is less then the amount that i gave it to use. the issue with that is having 2 cores with the same ability but different costs.
 
                 sollution:
                     record the amount of power used for each core, thenr return it, allowing each core to have its real amount used

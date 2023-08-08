@@ -8,13 +8,14 @@ import com.fs.starfarer.api.campaign.impl.items.BaseSpecialItemPlugin;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.ui.UIPanelAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.loading.specs.FactionDoctrine;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
@@ -173,6 +174,28 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         text.addPara(adminText2,pad,highlight,person.getNameString(),type,""+level);
         tooltip.addImageWithText(opad);
         if(expanded){
+            //TextPanelAPI.addSkillPanel(person, true);
+            //text.;
+            //tooltip.addIconGroup(5);
+            //ArrayList<String> skillsTemp = new ArrayList<>();
+            List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
+            for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
+                MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
+                if (/*true||*/a.getSkill().isAdminSkill()) {
+                    //skillsTemp.add(a.getSkill().getSpriteName());
+                    //tooltip.addImage();
+                    //tooltip.addPara(a.getSkill().getName(),5);
+                    TooltipMakerAPI text3 = tooltip.beginImageWithText(a.getSkill().getSpriteName(),30);
+                    text.addPara(a.getSkill().getName(), opad);
+                    tooltip.addImageWithText(opad);
+                }
+            }
+            /*
+            String[] temp = new String[skillsTemp.size()];
+            for(int a = 0; a < skillsTemp.size(); a++){
+                temp[a] = skillsTemp.get(a);
+            }
+            tooltip.addImages(20,20,5,5,temp);*/
             //tooltip.addSkillPanelOneColumn(person,pad);
             //tooltip.addSkillPanel(person,pad);
         }
