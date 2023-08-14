@@ -5,27 +5,20 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
 import com.fs.starfarer.api.campaign.impl.items.BaseSpecialItemPlugin;
-import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.ui.UIPanelAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
+import data.scripts.robot_forge.createItemSupport.CommandNodeTypes.AIRetorfit_CommandNodeTypesBase;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     //addSpecial AIRetrofit_CommandNode
     public PersonAPI person = null;
     public String personType = "";
-    private final static String officerText = Global.getSettings().getString("AIRetrofit_CommandNode_officerText");//"officer";
-    private final static String officerText2 = Global.getSettings().getString("AIRetrofit_CommandNode_officerText2");//"a command node with the designation of %s. they are a %s of level %s with a personality of %s";
-    private final static String adminText = Global.getSettings().getString("AIRetrofit_CommandNode_adminText");//"admin";
-    private final static String adminText2 = Global.getSettings().getString("AIRetrofit_CommandNode_adminText2");//"a command node with the designation of %s. they are a %s";
     private final static String errorText = Global.getSettings().getString("AIRetrofit_CommandNode_defaultTExt");//"error";
     private final static String errorText2 = Global.getSettings().getString("AIRetrofit_CommandNode_defaultText2");//"a command node with the designation of %s. they are a %s";
     @Override
@@ -134,7 +127,12 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource) {
         //AIRetrofit_Log.loging("personType: "+personType,this,true);
         super.createTooltip(tooltip, expanded, transferHandler, stackSource, false);
-        switch (personType){
+        for(AIRetorfit_CommandNodeTypesBase a : AIRetrofits_CreatePeople.CommandNodeTypes){
+            if(a.isMyTypeOfCommandNode(person)){
+                a.commandNodeTooltip(tooltip,expanded,transferHandler,stackSource,this);
+            }
+        }
+        /*switch (personType){
             case AIRetrofits_Constants.PersonTypes_Officer:
                 toolTipOfficer(tooltip,expanded,transferHandler,stackSource);
                 break;
@@ -144,9 +142,9 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
             default:
                 toolTipNull(tooltip,expanded,transferHandler,stackSource);
                 break;
-        }
+        }*/
     }
-    public void toolTipOfficer(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
+    /*public void toolTipOfficer(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
         float pad = 3f;
         float opad = 10f;
         Color highlight = Misc.getHighlightColor();
@@ -181,25 +179,18 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
             List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
             for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
                 MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-                if (/*true||*/a.getSkill().isAdminSkill()) {
+                if (a.getSkill().isAdminSkill()) {
                     //skillsTemp.add(a.getSkill().getSpriteName());
                     //tooltip.addImage();
                     //tooltip.addPara(a.getSkill().getName(),5);
-                    TooltipMakerAPI text3 = tooltip.beginImageWithText(a.getSkill().getSpriteName(),30);
+                    //TooltipMakerAPI text3 = tooltip.beginImageWithText(a.getSkill().getSpriteName(),30);
+                    text.addImage(a.getSkill().getSpriteName(),30);
                     text.addPara(a.getSkill().getName(), opad);
-                    tooltip.addImageWithText(opad);
+                    //tooltip.addImageWithText(opad);
                 }
             }
-            /*
-            String[] temp = new String[skillsTemp.size()];
-            for(int a = 0; a < skillsTemp.size(); a++){
-                temp[a] = skillsTemp.get(a);
-            }
-            tooltip.addImages(20,20,5,5,temp);*/
-            //tooltip.addSkillPanelOneColumn(person,pad);
-            //tooltip.addSkillPanel(person,pad);
         }
-    }
+    }*/
     public void toolTipNull(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
         float pad = 3f;
         float opad = 10f;
@@ -222,11 +213,14 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     }
 
 
-    public void findPersonType(){
-        if(person.getTags().contains(officerText)) personType = AIRetrofits_Constants.PersonTypes_Officer;
-        if(person.getTags().contains(adminText)) personType = AIRetrofits_Constants.PersonTypes_Admin;
-        if(person.hasTag(officerText)) personType = AIRetrofits_Constants.PersonTypes_Officer;
-        if(person.hasTag(adminText)) personType = AIRetrofits_Constants.PersonTypes_Admin;
+    public AIRetorfit_CommandNodeTypesBase findPersonType(){
+        for(AIRetorfit_CommandNodeTypesBase a : AIRetrofits_CreatePeople.CommandNodeTypes){
+            if(a.isMyTypeOfCommandNode(person)){
+                return a;
+                //a.commandNodeTooltip(tooltip,expanded,transferHandler,stackSource,this);
+            }
+        }
+        return null;
     }
 
 

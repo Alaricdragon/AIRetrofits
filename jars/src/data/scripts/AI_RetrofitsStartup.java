@@ -8,6 +8,7 @@ import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
+import data.scripts.startupData.AIRetrofits_Startup_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Startup_CrewReplacer;
 import data.scripts.startupData.AIRetrofits_Startup_MarketRetrofits;
 import data.scripts.startupData.AIRetrofits_Startup_RobotForge;
@@ -26,6 +27,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
         AIRetrofits_Startup_RobotForge.apply();
         setDataLists.init();
+        AIRetrofits_Startup_CreatePeople.apply();
         AIRetrofits_Startup_MarketRetrofits.apply();
 
         AIRetrofits_Startup_CrewReplacer.apply();

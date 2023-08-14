@@ -18,6 +18,7 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode_SpecalItemData;
+import data.scripts.robot_forge.createItemSupport.CommandNodeTypes.AIRetorfit_CommandNodeTypesBase;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.Random;
 
 public class AIRetrofits_CreatePeople {
+    public static ArrayList<AIRetorfit_CommandNodeTypesBase> CommandNodeTypes = new ArrayList<>();
     static AIRetrofits_CreatePeople logClass = new AIRetrofits_CreatePeople();
     static boolean logs = true;
     //PersonAPI person;
@@ -36,7 +38,7 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         return person;
     }
-    private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
+    public static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
     public static PersonAPI createOfficer(int personality){
         AIRetrofit_Log.loging("running: "+"createOfficer"+" with: personality:"+personality,logClass,logs);
         AIRetrofit_Log.push();
@@ -54,7 +56,7 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         return person;
     }
-    private static void setPerson(PersonAPI person){
+    public static void setPerson(PersonAPI person){
         AIRetrofit_Log.loging("running: "+"setPerson"+" with: person:"+person,logClass,logs);
         AIRetrofit_Log.push();
         //PersonAPI person = Global.getFactory().createPerson();
@@ -63,7 +65,7 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
     }
 
-
+/*
     public static PersonAPI createAdmen(float skillPower){
         //skillPower*=1000;
         float TempPower = skillPower;
@@ -73,7 +75,6 @@ public class AIRetrofits_CreatePeople {
         float maxTier = 9999;
         maxTier = Math.min(maxTier,getMaxPossableNumberOfAdminSkills());
         maxTier = Math.min(maxTier,Admin_MaxTier);
-        /*skillPower represents the possibility to add more skills to this caption on creation. */
         float cost = Admin_Costs[0];
         int tier = 0;
         while(skillPower >= cost && tier < maxTier){
@@ -105,7 +106,7 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         powerLastUsed = TempPower - skillPower;
         return person;
-    }
+    }*/
     public static int getMaxPossableNumberOfAdminSkills(){
         int a = 0;
         List<String> allSkillIds = Global.getSettings().getSortedSkillIds();
@@ -120,7 +121,7 @@ public class AIRetrofits_CreatePeople {
         }
         return a;
     }
-    public static PersonAPI createOfficer(int personality, float skillPower) {
+    /*public static PersonAPI createOfficer(int personality, float skillPower) {
         float maxLV = 0;
         float maxESkills = 0;
         PersonAPI player = new Person();//Global.getSector().getPlayerPerson();
@@ -131,7 +132,8 @@ public class AIRetrofits_CreatePeople {
         maxLV = plugin.getMaxLevel(player);
         AIRetrofit_Log.loging("max lv and elet set to: "+maxLV+", "+maxESkills,logClass,logs);
         return createOfficer(personality,skillPower,maxLV,maxESkills);
-    }
+    }*/
+    /*
     public static PersonAPI createOfficer(int personality, float skillPower,float softMaxLevel,float softMaxEleteSkills){
         //skillPower*=15;
         AIRetrofit_Log.loging("running: "+"createOfficer"+" with: personality,skillPower: "+personality+", "+skillPower,logClass,logs);
@@ -142,12 +144,6 @@ public class AIRetrofits_CreatePeople {
         int epics=0;
         int normal=0;
         float powerUsed = 0;
-        //Random random = new Random();
-        /*Officer_Costs[0][a] == normalskill cost, elete skill cost
-        Officer_Costs[1][a] == exstra normalskill cost, exstra elete skill cost
-        Officer_Weights
-
-        */
         AIRetrofit_Log.push();
         while(skillPower > 0){
             //determine what i can add this loop.
@@ -271,9 +267,9 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.pop();
         powerLastUsed = powerUsed;
         return person;
-    }
+    }*/
     private static float powerLastUsed = 0;
-    private static ArrayList<Integer> getLocationArray(int a,int b){
+    public static ArrayList<Integer> getLocationArray(int a, int b){
         ArrayList<Integer> temp = new ArrayList<>();
         temp.add(a);
         temp.add(b);
@@ -281,10 +277,11 @@ public class AIRetrofits_CreatePeople {
     }
 
 
-    public static String getTypeByWeight(float[] weight){
+    public static AIRetorfit_CommandNodeTypesBase getTypeByWeight(float[] weight){
         AIRetrofit_Log.loging("running: "+"getTypeByWeight"+" with: weight:"+weight.toString(),logClass,logs);
         AIRetrofit_Log.push();
-        String[] types = AIRetrofits_Constants.PersonTypes_List;
+        //String[] types = AIRetrofits_Constants.PersonTypes_List;
+        AIRetorfit_CommandNodeTypesBase[] types = CommandNodeTypes.toArray(new AIRetorfit_CommandNodeTypesBase[CommandNodeTypes.size()]);
         float totalWeight=0;
         for(float a : weight){
             totalWeight+=a;
@@ -304,9 +301,9 @@ public class AIRetrofits_CreatePeople {
             }
         }
         AIRetrofit_Log.pop();
-        return "error";
+        return null;
     }
-    public static String getTypeByWeight(){
+    public static AIRetorfit_CommandNodeTypesBase getTypeByWeight(){
         AIRetrofit_Log.loging("running: "+"getTypeByWeight"+" with: ",logClass,logs);
         AIRetrofit_Log.push();
         float[] weight = AIRetrofits_Constants.PersonWeight_List;
@@ -366,7 +363,7 @@ public class AIRetrofits_CreatePeople {
     public static void addCores(CargoAPI cargo, FactionAPI doctrineAPI, float power, int numcores, float minPowerWeight, float maxPowerWeight){
         AIRetrofit_Log.loging("running: "+"addCores"+" with: cargo,doctoring,power,numcores,minPowerWeight,maxPowerWeight: "+cargo.toString()+", "+doctrineAPI.toString()+", "+power+", "+numcores+", "+minPowerWeight+", "+maxPowerWeight,logClass,logs);
         AIRetrofit_Log.push();
-        power*=20;
+        //power*=2000;
         float[] powerWeight = new float[numcores];
         float totalWeight = 0;
         float powerPerWeight;
@@ -382,45 +379,14 @@ public class AIRetrofits_CreatePeople {
         }
         AIRetrofit_Log.pop();
     }
-
-    public static final float[][] Officer_Costs = {
-        //cost of non extra level/elite
-        {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerLevel"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerElite")},
-        //cost of extra level/elite
-        {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerLevelExtra"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_costPerEliteExtra")}
-    };
-    public static final float[][] Officer_Weights = {
-            //cost of non extra level/elite
-            {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerLevel"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerElite")},
-            //cost of extra level/elite
-            {Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerLevelExtra"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Officer_weightPerEliteExtra")}
-    };
-    public static final int[][] officerNumbers = {
-            {0,2},
-            {1,3}
-    };
-    public static final float[] Admin_Costs = {
-            //base cost of skills / cost multi per skill that said admin has
-            Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_baseSkillCost"),Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel")
-    };
-    public static final int Admin_MaxTier = Global.getSettings().getInt("AIRetrofit_CreatePerson_Admin_MaxTier");
-    public static final float Admin_PowerForHypercognition = Global.getSettings().getFloat("AIRetrofit_CreatePerson_Admin_PowerForhypercognition");
-    public static void addCore(CargoAPI cargo,int power,int personality,String type){
+    public static void addCore(CargoAPI cargo,int power,int personality,AIRetorfit_CommandNodeTypesBase type){
         AIRetrofit_Log.loging("running: "+"addCore"+" with: cargo,power,personality,type:"+cargo.toString()+", "+power+", "+personality+", "+type,logClass,logs);
         AIRetrofit_Log.push();
         AIRetrofit_CommandNode item = new AIRetrofit_CommandNode();
         //AIRetrofit_Log.loging("cores power, personality,type,cost:"+power+", "+personality+", "+type+", "+cost,logClass,true);
         //amb.setPerson();
-        PersonAPI person;
-        switch (type){
-            default:
-            case AIRetrofits_Constants.PersonTypes_Officer:
-                person = AIRetrofits_CreatePeople.createOfficer(personality,power);
-                break;
-            case AIRetrofits_Constants.PersonTypes_Admin:
-                person = AIRetrofits_CreatePeople.createAdmen(power);
-                break;
-        }
+        PersonAPI person = type.createPersonForNode(cargo,power,personality);
+        type.setTagForPerson(person);
         int cost = 0;
         AIRetrofit_Log.loging("(used power should be <= to power.)got power, used power: "+power+", "+powerLastUsed,logClass,logs);
         for(int a = AIRetrofits_Constants.SpecalItemID_CommandNodes.length - 1; a >= 0; a--){
@@ -430,7 +396,7 @@ public class AIRetrofits_CreatePeople {
             }
         }
         AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[cost], null, item.person);
-        amb.setPersonType(type);
+        //amb.setPersonType(type);
         amb.setPerson(person);
         cargo.addSpecial(amb, 1);
         AIRetrofit_Log.pop();
@@ -442,27 +408,20 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.loging("running: "+"createPerson"+" with: ",logClass,logs);
         return createPerson(AIRetrofits_CreatePeople.getTypeByWeight());
     }
-    public static PersonAPI createPerson(String type){
+    public static PersonAPI createPerson(AIRetorfit_CommandNodeTypesBase type){
         AIRetrofit_Log.loging("running: "+"createPerson"+" with: type: "+type,logClass,logs);
         float a = minRandomPower0 + Math.round(Math.random() * (maxRandomPower0) - minRandomPower0);
         //float b = minRandomPower1 + Math.round(Math.random() * (maxRandomPower1) - minRandomPower1);
         return createPerson((int)a,type);
     }
-    public static PersonAPI createPerson(int power, String type){
+    public static PersonAPI createPerson(int power, AIRetorfit_CommandNodeTypesBase type){
         AIRetrofit_Log.loging("running: "+"createPerson"+" with: power,type"+power+", "+type,logClass,logs);
         return createPerson(power,type,getRandomPersonality());
     }
-    public static PersonAPI createPerson(int power, String type,int personality){
+    public static PersonAPI createPerson(int power, AIRetorfit_CommandNodeTypesBase type,int personality){
         AIRetrofit_Log.loging("running: "+"createPerson"+" with: power,type,personality:"+power+", "+type+", "+personality,logClass,logs);
-        switch (type){
-            case AIRetrofits_Constants.PersonTypes_Officer:
-            default:
-                //this.personType = type;
-                //person = AIRetrofits_CreatePeople.createOfficer(personalityMix(this.doctrine),power,power2);
-                return AIRetrofits_CreatePeople.createOfficer(personality,power);
-            case AIRetrofits_Constants.PersonTypes_Admin:
-                //this.personType = type;
-                return AIRetrofits_CreatePeople.createAdmen(power);
-        }
+        PersonAPI person = type.createPersonForNode(null,power,personality);
+        type.setTagForPerson(person);
+        return person;
     }
 }

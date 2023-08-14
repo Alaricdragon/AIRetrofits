@@ -18,39 +18,29 @@ im going to work on the following now:
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
         Command Node and relevant industry:
-            questions:
-                (look it up in the rules CSV file) what are the different costs a given admin or officer has to buy at different levels?
-                1) how do i display the skills a given admin has to a TooltipMakerAPI? i tried TooltipMakerAPI.addSkillPanel(person,pad), but it only seemed to work for officers.
-                2) is there a way to find the max level and max elite skills that the players officers can have?
-            (almost done)SpecialItem:
-                NOTE: possible issue with were this is placed maybe. we will find out at some point. might need to be stored in a certain folder or location to work right?
-                (done)apply skill, name, and personality data to item.
-                (done)display skill, name and personality data on item.
-                (done)right click item to add person to your fleet / admin pull.
-                (done)add everything this items needs to special items
-                (done)make items save there data.
-                (moved this issue to people maker)data is not randomized right. wrong number of skills, level, and everything else.
-                (done)stop the command nodes from stacking why are they like this!?!?
-                (to do:) find out the costs of people at different skill levels. so i can get diffrent item costs for stronger people.
-                ISSUE: right now i cant display an admins skills. find out hwo to do that and implement it into AIRetrofit_CommandNode
+            (done)SpecialItem:
+                add the new AIRetorfit_CommandNodeTypeBase to the display and detection of what type is what in this class.
+            (done)create person:
+                add the new AIRetrofit_CommandNodeTypeBase to the createion code for addCores.
+            (done)AIRetrofit_CommandNodeTypeBase:
+                add a class for the following command node types:
+                    1) (done)admin
+                    2) (done)officer
+                    3) (only enabled with nexerlin) operative
+                (done)also, i need to set everything in AIRetrofit_CreatePeople to have this same class.
+                (done)also, i need to set all displays and identifying what type of person a given person is in AIRetrofit_CommandNode to have this same class
+            nexerlin mod combatability:
+                i want to have a way to have Command Nodes be operatives from nexerlin. to do this will require some background work:
+                    1)(done) create a class and call it something like 'sub command node type'. this class will hold:
+                        -the weight of getting said command node.
+                        -the name of said command node.
+                        -how to identivy said command nodes person in the command node class.
+                        -how the person is set and applies there power.
+                        -how the person is displayed on the sub command node.
+                        -how the person is added to the player when the sub command node is right clicked.
+                    2) create a 'combatability patches' class. it will be responsable for all feuture combatability patches.
+                        -see market retrofits, and crew replacer for examples. they bouth have working combatability classes.
 
-            CreatePeople:
-                (started. completed settings for this)make it so i can get an officer or a admin with skills based on a single power stat.
-                    -officers level cost should be liner. the elite skill cost should cost maybe 150% a normal skill.
-                    -officers should be soft caped for elite skills and total skills based on the players skill level
-                    -officers that are given -a lot- of power should be able to have an skill level or total level higher then the max (should be like 5X more power per skill or something).
-                    -admins should have an expenses increase in power requirements per skill added to them
-
-                    -status:
-                        officers: DONE.
-                        admin: DONE.
-                (DONE)make it so officer personality can be better based on a factions possibly personality.
-                make it possable to have agents (nexerlion) spawn.
-                ISSUE:
-                    (done)right now, a given core will use a amount of power, but there is a very real chance that amount is less then the amount that i gave it to use. the issue with that is having 2 cores with the same ability but different costs.
-
-                sollution:
-                    record the amount of power used for each core, thenr return it, allowing each core to have its real amount used
             (started)Submarket:
                 (done)add to csv
                 add image
