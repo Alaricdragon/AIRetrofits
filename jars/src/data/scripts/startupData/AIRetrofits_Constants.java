@@ -250,17 +250,4 @@ public class AIRetrofits_Constants {
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_8"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_9"),
     };
-    public static final String PersonTypes_Officer = "officer";
-    public static final String PersonTypes_Admin = "admin";
-    public static final String[] PersonTypes_List = {
-            PersonTypes_Officer,
-            PersonTypes_Admin
-    };
-
-    public static final float PersonWeight_Officer = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_officer");
-    public static final float PersonWeight_Admin = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_admin");
-    public static final float[] PersonWeight_List = {
-            PersonWeight_Officer,
-            PersonWeight_Admin
-    };
 }

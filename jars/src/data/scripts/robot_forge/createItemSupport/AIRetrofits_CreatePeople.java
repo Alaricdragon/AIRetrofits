@@ -306,7 +306,10 @@ public class AIRetrofits_CreatePeople {
     public static AIRetorfit_CommandNodeTypesBase getTypeByWeight(){
         AIRetrofit_Log.loging("running: "+"getTypeByWeight"+" with: ",logClass,logs);
         AIRetrofit_Log.push();
-        float[] weight = AIRetrofits_Constants.PersonWeight_List;
+        float[] weight = new float[CommandNodeTypes.size()]; //AIRetrofits_Constants.PersonWeight_List;
+        for(int a = 0; a < CommandNodeTypes.size(); a++){
+            weight[a] = CommandNodeTypes.get(a).weight;
+        }
         AIRetrofit_Log.pop();
         return getTypeByWeight(weight);
     }
@@ -363,7 +366,7 @@ public class AIRetrofits_CreatePeople {
     public static void addCores(CargoAPI cargo, FactionAPI doctrineAPI, float power, int numcores, float minPowerWeight, float maxPowerWeight){
         AIRetrofit_Log.loging("running: "+"addCores"+" with: cargo,doctoring,power,numcores,minPowerWeight,maxPowerWeight: "+cargo.toString()+", "+doctrineAPI.toString()+", "+power+", "+numcores+", "+minPowerWeight+", "+maxPowerWeight,logClass,logs);
         AIRetrofit_Log.push();
-        //power*=2000;
+        power*=2000;
         float[] powerWeight = new float[numcores];
         float totalWeight = 0;
         float powerPerWeight;
@@ -386,6 +389,7 @@ public class AIRetrofits_CreatePeople {
         //AIRetrofit_Log.loging("cores power, personality,type,cost:"+power+", "+personality+", "+type+", "+cost,logClass,true);
         //amb.setPerson();
         PersonAPI person = type.createPersonForNode(cargo,power,personality);
+        powerLastUsed = type.getAmountOfPowerUsed();
         type.setTagForPerson(person);
         int cost = 0;
         AIRetrofit_Log.loging("(used power should be <= to power.)got power, used power: "+power+", "+powerLastUsed,logClass,logs);

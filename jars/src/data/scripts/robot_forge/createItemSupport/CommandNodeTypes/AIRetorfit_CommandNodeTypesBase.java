@@ -36,4 +36,7 @@ public class AIRetorfit_CommandNodeTypesBase {
     public void setTagForPerson(PersonAPI person){
         person.addTag(name);
     }
+    public void performRightClickAction(PersonAPI person){
+
+    }
 }

@@ -38,8 +38,15 @@ im going to work on the following now:
                         -how the person is set and applies there power.
                         -how the person is displayed on the sub command node.
                         -how the person is added to the player when the sub command node is right clicked.
-                    2) create a 'combatability patches' class. it will be responsable for all feuture combatability patches.
+                    2)(done) create a 'combatability patches' class. it will be responsable for all feuture combatability patches.
                         -see market retrofits, and crew replacer for examples. they bouth have working combatability classes.
+
+                    issues:
+                        the new core type needs to create itself on a market. it might be choseing the wrong market in some situations.
+                            -unknown reasons.
+                        the f1 exstend description needs to show the relevent tasks a given operative can do.
+                        (done)require rebalance: the thressholds per core cost.
+                            -right now they are liner. might need to make them not so, as even a not to costly core can cost a lot of credits, for no reason.
 
             (started)Submarket:
                 (done)add to csv

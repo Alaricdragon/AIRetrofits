@@ -63,6 +63,10 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         PersonAPI person = createOfficer(personality,power);
         return person;
     }
+    @Override
+    public void performRightClickAction(PersonAPI person){
+        Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
+    }
     public PersonAPI createOfficer(int personality, float skillPower) {
         float maxLV = 0;
         float maxESkills = 0;
@@ -175,7 +179,6 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         AIRetrofit_Log.push();
         AIRetrofit_Log.pop();
         person.setPersonality(AIRetrofits_CreatePeople.personalities[personality]);
-        person.getTags().add(AIRetrofits_Constants.PersonTypes_Officer);
         AIRetrofits_CreatePeople.setPerson(person);
         List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
         for(int a2 = 0; a2 < skillsCopy.size(); a2++) {

@@ -71,7 +71,6 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
             }
         }
         AIRetrofit_Log.pop();
-        person.getTags().add(AIRetrofits_Constants.PersonTypes_Admin);
         AIRetrofits_CreatePeople.setPerson(person);
         AIRetrofit_Log.pop();
         this.setAmountOfPowerUsed((int) (TempPower - skillPower));
@@ -125,7 +124,10 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
             //tooltip.addSkillPanel(person,pad);
         }
     }
-
+    @Override
+    public void performRightClickAction(PersonAPI person){
+        Global.getSector().getCharacterData().addAdmin(person);
+    }
 
 
     public static int getMaxPossableNumberOfAdminSkills(){

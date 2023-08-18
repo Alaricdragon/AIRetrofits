@@ -555,6 +555,8 @@
 	"AIRetrofit_CommandNode_officerText2": "a command node with the designation of %s. they are a %s of level %s with a personality of %s",
 	"AIRetrofit_CommandNode_adminText": "admin",
 	"AIRetrofit_CommandNode_adminText2": "a command node with the designation of %s. they are a %s with %s related skills",
+	"AIRetrofit_CommandNode_Nexerlin_Operative_Text": "Operative",
+	"AIRetrofit_CommandNode_Nexerlin_Operative_Text2": "a command node with the designation of %s. they are a level %s %s with a specialty in %s",
 	"AIRetrofit_CommandNode_defaultTExt": "error",
 	"AIRetrofit_CommandNode_defaultText2": "a command node with the designation of %s. they are a %s",
 	#power a compleatly random core has
@@ -565,16 +567,18 @@
 	"AIRetrofit_CommandNode_PowerCostThreshold_1": 5,
 	"AIRetrofit_CommandNode_PowerCostThreshold_2": 10,
 	"AIRetrofit_CommandNode_PowerCostThreshold_3": 20,
-	"AIRetrofit_CommandNode_PowerCostThreshold_4": 30,
-	"AIRetrofit_CommandNode_PowerCostThreshold_5": 40,
-	"AIRetrofit_CommandNode_PowerCostThreshold_6": 60,
-	"AIRetrofit_CommandNode_PowerCostThreshold_7": 80,
-	"AIRetrofit_CommandNode_PowerCostThreshold_8": 100,
-	"AIRetrofit_CommandNode_PowerCostThreshold_9": 150,
+	"AIRetrofit_CommandNode_PowerCostThreshold_4": 40,#30,
+	"AIRetrofit_CommandNode_PowerCostThreshold_5": 80,#40,
+	"AIRetrofit_CommandNode_PowerCostThreshold_6": 160,#60,
+	"AIRetrofit_CommandNode_PowerCostThreshold_7": 320,#80,
+	"AIRetrofit_CommandNode_PowerCostThreshold_8": 640,#100,
+	"AIRetrofit_CommandNode_PowerCostThreshold_9": 1280,#150,
 	#random personalityweight. higher numbers make it more likely to get a core of a given type.
 	"AIRetrofit_CommandNode_PersonalityWeight_officer": 2,
 	"AIRetrofit_CommandNode_PersonalityWeight_admin": 1,
-	#quality of a power basec CommandNode
+	"AIRetrofit_CommandNode_PersonalityWeight_Nexerlin_Operative": 1000.2,
+	#Cost and weight of adding things to a given command node type.,
+	#for Officer Command Node type
 	"AIRetrofit_CreatePerson_Officer_costPerLevel": 10,#the amount of core power required per this
 	"AIRetrofit_CreatePerson_Officer_costPerElite": 10,#--
 	"AIRetrofit_CreatePerson_Officer_costPerLevelExtra": 40,#the amount of core power required for a this, past your maxamum amount
@@ -583,12 +587,15 @@
 	"AIRetrofit_CreatePerson_Officer_weightPerElite": 0.3,#--
 	"AIRetrofit_CreatePerson_Officer_weightPerLevelExtra": 0.05,#--
 	"AIRetrofit_CreatePerson_Officer_weightPerEliteExtra": 0.05,#--
-
+	#for Admin Command Node Type
 	"AIRetrofit_CreatePerson_Admin_baseSkillCost": 50,#cost of admin skill.
 	"AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel": 1.3,#cost multi per admin skill aquired.
 	"AIRetrofit_CreatePerson_Admin_MaxTier": 10,#the max possable number of skills on a admin,
 	"AIRetrofit_CreatePerson_Admin_PowerForhypercognition": 5000,
-
+	#for Nexerlin Opertive Command Node Type
+	"AIRetrofit_CreatePerson_Nexerlin_Opertive_baseLevelCost": 20,
+	"AIRetrofit_CreatePerson_Nexerlin_Opertive_LEvelCostMulti": 1.3,
+	"AIRetrofit_CreatePerson_Nexerlin_Opertive_MaxLevel": 5,#no more then 5, as that is nexerlins max level for opratives.
 	"adminSalaryTier3":30000,#this is here to allow higer tier admins then what normaly exsist. if you want to remove, set AIRetrofit_CreatePerson_Admin_MaxTier to 2.
 	"adminSalaryTier4":40000,#--
 	"adminSalaryTier5":50000,#--

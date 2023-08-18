@@ -7,6 +7,7 @@ import data.scripts.AIWorldCode.supplyDemandClasses.*;
 import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.AIRetrofits_Startup_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Startup_CrewReplacer;
@@ -31,6 +32,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         AIRetrofits_Startup_MarketRetrofits.apply();
 
         AIRetrofits_Startup_CrewReplacer.apply();
+        AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
     }
     @Override
     public void onGameLoad(boolean newGame) {
@@ -50,6 +52,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().getEconomy().addUpdateListener(a);
 
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
+        AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
     }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")

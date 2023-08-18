@@ -1,0 +1,26 @@
+package data.scripts.combatabilityPatches;
+
+import com.fs.starfarer.api.Global;
+import data.scripts.AIRetrofit_Log;
+import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_Patches_Nexerlin;
+
+public class AIRetrofits_InitCombatabilityPatches {
+    public static String[] modNames = {
+            "nexerelin"
+    };
+    public static AIRetrofits_PatchBase[] patches = {
+            new AIRetrofits_Patches_Nexerlin(),
+    };
+    public static void onApplicationLoad() {
+        for(int a = 0; a < modNames.length; a++) {
+            if (Global.getSettings().getModManager().isModEnabled(modNames[a])) {
+                AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ...", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
+                patches[a].apply();
+            }
+        }
+    }
+    public static void onGameLoad(boolean newGame) {
+        if(Global.getSettings().getModManager().isModEnabled(modNames[0])) {
+        }
+    }
+}

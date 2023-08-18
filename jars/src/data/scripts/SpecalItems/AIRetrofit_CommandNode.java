@@ -106,43 +106,20 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     public void performRightClickAction(){
         //super.performRightClickAction();
         if(timesTriedToAddPerson > 1) return;
-        switch (personType){
-            case AIRetrofits_Constants.PersonTypes_Officer:
-                Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
-                break;
-            case AIRetrofits_Constants.PersonTypes_Admin:
-                Global.getSector().getCharacterData().addAdmin(person);
-                break;
-            default:
-                if(person == null){
-                    person = AIRetrofits_CreatePeople.createPerson();
-                    this.findPersonType();
-                    timesTriedToAddPerson++;
-                    this.performRightClickAction();
-                }
-                break;
+        AIRetorfit_CommandNodeTypesBase temp = findPersonType();
+        if(temp != null){
+            findPersonType().performRightClickAction(person);
+            return;
         }
+        person = AIRetrofits_CreatePeople.createPerson();
+        timesTriedToAddPerson++;
+        this.performRightClickAction();
     }
     @Override
     public void createTooltip(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource) {
         //AIRetrofit_Log.loging("personType: "+personType,this,true);
         super.createTooltip(tooltip, expanded, transferHandler, stackSource, false);
-        for(AIRetorfit_CommandNodeTypesBase a : AIRetrofits_CreatePeople.CommandNodeTypes){
-            if(a.isMyTypeOfCommandNode(person)){
-                a.commandNodeTooltip(tooltip,expanded,transferHandler,stackSource,this);
-            }
-        }
-        /*switch (personType){
-            case AIRetrofits_Constants.PersonTypes_Officer:
-                toolTipOfficer(tooltip,expanded,transferHandler,stackSource);
-                break;
-            case AIRetrofits_Constants.PersonTypes_Admin:
-                toolTipAdmin(tooltip,expanded,transferHandler,stackSource);
-                break;
-            default:
-                toolTipNull(tooltip,expanded,transferHandler,stackSource);
-                break;
-        }*/
+        findPersonType().commandNodeTooltip(tooltip,expanded,transferHandler,stackSource,this);
     }
     /*public void toolTipOfficer(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
         float pad = 3f;
