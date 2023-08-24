@@ -11,8 +11,10 @@ import com.fs.starfarer.api.impl.campaign.ids.Ranks;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.rpg.Person;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
+import data.scripts.startupData.AIRetrofits_Constants;
 import exerelin.campaign.intel.agents.AgentIntel;
 
 import java.awt.*;
@@ -107,8 +109,10 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
         if(market != null){
             return market;
         }*/
-        float hyperDistance = 99999999999f;
-        float distince = 999999999999f;
+        double Distance = Double.MAX_VALUE;
+        double HyperDistance = Double.MAX_VALUE;
+        boolean found = false;
+        boolean inSystem = false;
         float[] playerLocationHyper = {
                 Global.getSector().getPlayerFleet().getLocationInHyperspace().getX(),
                 Global.getSector().getPlayerFleet().getLocationInHyperspace().getY()
@@ -119,42 +123,18 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
         };
         List<MarketAPI> temp = Global.getSector().getEconomy().getMarketsCopy();
         for(int a = 0; a < temp.size(); a++){
-            float[] hyperSpace = {
-                    temp.get(a).getLocationInHyperspace().getX(),
-                    temp.get(a).getLocationInHyperspace().getY()
-            };
-            float[] localSpace = {
-                    temp.get(a).getLocation().getX(),
-                    temp.get(a).getLocation().getY()
-            };
-            float b1 = hyperSpace[0] - playerLocationHyper[0];
-            float b2 = hyperSpace[1] - playerLocationHyper[1];
-            float c1 = Math.max(b1,-b1)+Math.max(b2,-b2);
-            float b3 = localSpace[0] - playerLocation[0];
-            float b4 = localSpace[1] - playerLocation[1];
-            float c2 = Math.max(b3,-b3)+Math.max(b4,-b4);
-            if (c1 < hyperDistance || (c1 == hyperDistance && c2 < distince)){
-                hyperDistance = c1;
-                distince = c2;
+            double distanceTemp = Misc.getDistance(Global.getSector().getPlayerFleet(),temp.get(a).getPrimaryEntity());
+            double hyperDistanceTemp = Misc.getDistanceToPlayerLY(temp.get(a).getPrimaryEntity());
+            if(!found || hyperDistanceTemp <= HyperDistance || (hyperDistanceTemp == HyperDistance && distanceTemp < Distance)){
+                if(!found || hyperDistanceTemp <= HyperDistance) {
+                    Distance = distanceTemp;
+                }
+                HyperDistance = hyperDistanceTemp;
                 market = temp.get(a);
+                AIRetrofit_Log.loging("name, distance, distanceHyper, forced find: "+temp.get(a).getName()+", "+Distance+", "+HyperDistance+","+!found,new AIRetrofit_Log().getClass());
+                found = true;
             }
         }
         return market;
-    }
-    public void temp() {
-        /*PersonAPI agent = Global.getSector().getPlayerFaction().createRandomPerson();
-        agent.setRankId(Ranks.AGENT);
-        agent.setPostId(Ranks.POST_AGENT);
-        AgentIntel intel = new AgentIntel(agent, Global.getSector().getPlayerFaction(), level);
-
-        if (tmp.length > 2) {
-            AgentIntel.Specialization spec = AgentIntel.Specialization.valueOf(tmp[2].toUpperCase(Locale.ENGLISH));
-            intel.addSpecialization(spec);
-        }
-
-        intel.setMarket(market);
-        intel.init();
-        Console.showMessage("Added level " + level + " agent " + agent.getNameString() + " to market " + market.getName());
-        */
     }
 }

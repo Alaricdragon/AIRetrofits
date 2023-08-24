@@ -1,5 +1,7 @@
 doing right now: Sub Command Node thigs. look at the to do here.
 im going to work on the following now:
+    finalize the upgrades person robot forges
+        -a industry level forge. with more output. yay output. (also fixes the issue with not enouth survey robots, without making a mess of things.)
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.
@@ -18,31 +20,10 @@ im going to work on the following now:
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
         Command Node and relevant industry:
-            (done)SpecialItem:
-                add the new AIRetorfit_CommandNodeTypeBase to the display and detection of what type is what in this class.
-            (done)create person:
-                add the new AIRetrofit_CommandNodeTypeBase to the createion code for addCores.
-            (done)AIRetrofit_CommandNodeTypeBase:
-                add a class for the following command node types:
-                    1) (done)admin
-                    2) (done)officer
-                    3) (only enabled with nexerlin) operative
-                (done)also, i need to set everything in AIRetrofit_CreatePeople to have this same class.
-                (done)also, i need to set all displays and identifying what type of person a given person is in AIRetrofit_CommandNode to have this same class
             nexerlin mod combatability:
                 i want to have a way to have Command Nodes be operatives from nexerlin. to do this will require some background work:
-                    1)(done) create a class and call it something like 'sub command node type'. this class will hold:
-                        -the weight of getting said command node.
-                        -the name of said command node.
-                        -how to identivy said command nodes person in the command node class.
-                        -how the person is set and applies there power.
-                        -how the person is displayed on the sub command node.
-                        -how the person is added to the player when the sub command node is right clicked.
-                    2)(done) create a 'combatability patches' class. it will be responsable for all feuture combatability patches.
-                        -see market retrofits, and crew replacer for examples. they bouth have working combatability classes.
-
                     issues:
-                        the new core type needs to create itself on a market. it might be choseing the wrong market in some situations.
+                        (done)ithe new core type needs to create itself on a market. it might be choseing the wrong market in some situations.
                             -unknown reasons.
                         the f1 exstend description needs to show the relevent tasks a given operative can do.
                         (done)require rebalance: the thressholds per core cost.
@@ -54,28 +35,19 @@ im going to work on the following now:
                 add text.
                 (done)make the market refuse to bye things.
                 (done)make the market only sell command nodes.
-                (almost done)allow the market to have diffrent strangths on command nodes.
-                    -need to fix the 'create officer' code.
-                    -need to build the 'add skills to admin' code
-                (Cores done. improvements not.)allow AICores and improvements to change the submarkets AICore stats
+                (done)allow the market to have diffrent strangths on command nodes.
+                (done)allow AICores to change the submarkets AICore stats
                 (done)make it so the submarket is added and removed with the industry
                 change description of the industry to say it adds this sub market.
                 (done)change what the AI cores do on said industry.
                 (dine)make it so the sub market A does not exist, or B does not refresh well in industry is offline
                 update the old exstra text in this submarket ()
                 (done)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
-
-                notes:
-                    i have made it so the sub market resets cargo every time you visit it. make it not do that before release.
-                issue:
-                    depending on what i make improvements do, i might need to change the text that shows how strong a given industry is.
+                 make it so improving the industry does something. right now nothing happens.
+                 make it so when i move a item out of the submarket, i can put it back in
             AICore Changes:
-            CreatePeople to do list:
-                1) make it so i can get officers and admins, based of the power stat (using said stat to set level and number of special skills.)
-                2) make the constants for making random people have links to the config and also make sense.
-NOTE:
-    just tried a thing with growth. it works.
-    view growth -AI-Pop for details
+                make it so the price of a given core is visable.
+                make it so the nexerlin operative command node shows the jobs it can do when you press F1 on it.
 
 Note:
     regarding replacing crew and marines with salvage robots and combat robots:
@@ -83,7 +55,6 @@ Note:
         i have no idea if this works or not. i don't think it does.
         tried an invasion fleet. none of my marines were combat robots like they should have been.
         although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
-
 robot forge plugin:
     find a new sound for the robot forge
 bugs:
@@ -91,7 +62,7 @@ bugs:
     issue: (partly done. no longer changes contacts) right now i can change the name and portrait of important NPC's. make it so i cant.
     issue: advanced and omega robots have the same price as basic robots. change this plz.
     issue: the cost of a single survey / salvage / combat robot is the same regardless of level. i fixed this by changeing there demand class, but i want them to have the same demand classes so they can be interchangeable. look this up plz.
-
+    issue: patchwork AIRetrofits being removed when it should not be. being swaped with AIRetrofits when it should not be. frusterating.
 missing text:
     population and infastucture:
         need to move the "number of robots" text into setting sometime
@@ -118,11 +89,4 @@ AIRetrofits:
     -add this hullmod to all fighters the ship fires. this would be kinda coolness.
 
 AI Market plugin:
-    new plan: in market retrofits, build a system for founding markets. with or without certain data.
-              make it so the AI Market plugin must be ran through that instead.
-              make the market retrofits plugin replace the old old one.
-    Note: possible solution is to only use one plugin and make it open an dialog with the world, then go from there. dialog is mush easier...
-    fix the fact you can click on the plugin when you should not be able to (should be greyed out)
-        -when in an sector without hyperSpace transit?
-            -might keep this. no reason not to?
-        -when an enemy fleet is near by, and is blocking you.
+

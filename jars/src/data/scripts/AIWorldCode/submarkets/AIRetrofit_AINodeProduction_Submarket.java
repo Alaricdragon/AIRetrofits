@@ -155,7 +155,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
         if(market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isFunctional()) {
             emptyCargo(cargo);
-        }else if(this.okToUpdateShipsAndWeapons()||true){
+        }else if(this.okToUpdateShipsAndWeapons()){//||true){
             resetCargo(cargo);
             this.sinceSWUpdate = 0;
         }

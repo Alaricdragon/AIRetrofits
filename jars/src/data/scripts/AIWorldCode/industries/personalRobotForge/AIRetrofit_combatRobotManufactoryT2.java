@@ -1,0 +1,4 @@
+package data.scripts.AIWorldCode.industries.personalRobotForge;
+
+public class AIRetrofit_combatRobotManufactoryT2 extends AIRetrofit_combatRobotManufactory{
+}

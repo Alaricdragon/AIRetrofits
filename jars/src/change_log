@@ -6,8 +6,26 @@ save compatible with 0.7.20.1+
     added a new item called a 'command node'.
         -this item can only be found in the new sub-market.
         -it can be right clicked on to get a new officer or admen.
+    changes:
+        changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
     fixes:
         fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
+V0.7.21.4(private):
+save compatible with 0.7.20.1+
+    changes:
+        changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
+    new classes:
+        AIRetrofit_MarketRetrofit_CustomMarketFounder
+        AIRetrofit_salvageRobotManufactoryT2 //(not yet implemented)
+        AIRetrofit_surveyRobotManufactoryT2  //--
+        AIRetrofit_combatRobotManufactoryT2  //--
+    new constants:
+        added latterly every single item to AIRetrofits_Constants.
+    fixes:
+        fixes command node: nexerline operative being added to a world that isn't the closest.
+    debug:
+        reset the command node power, and operative weight back down to its normal values.
+        disabled the 'always reset cargo' function on the AIRetrofit_AInodeProduction_Submarket
 V0.7.21.3(private):
 save compatible with 0.7.20.1+
     new classes:

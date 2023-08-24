@@ -229,16 +229,21 @@
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,#some advice, dont disable this after you build a market with robotic workers. that will cause issues. before you do should be fine, although this is lagacy code, and should only be changed before starting a new game to be safe
 
-	#cost for founding a market
+	#cost for founding a market,
+	"AIRetrofit_MarketFounder_Name": "Build an automated drone colony",
+	"AIRetrofit_MarketFounder_Description": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
+	"AIRetrofit_MarketFounder_Order": 1,
+	"AIRetrofit_MarketFounder_CanFoundInCutOffSystem": true,
+	"AIRetrofit_MarketFounder_CanFoundWellUnderThreat": false,
 	"AIRetrofit_MarketCost_reqAICore": 10,
 	"AIRetrofit_MarketCost_reqWorker": 1000,
 	"AIRetrofit_MarketCost_reqSupply": 200,
 	"AIRetrofit_MarketCost_reqMachinery": 200,
 	#descriptions when founding a market
-	"AIRetrofit_MarketFoundedText0": "You give the order to begin constructing an automated colony. It will take some time before your drones finish establishing it.",
-	"AIRetrofit_MarketFoundedText1": "Removed the following resources from the cargo bay:",
-	"AIRetrofit_MarketStartupText0": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
-	"AIRetrofit_MarketStartupText1": "You have available:",
+	#"AIRetrofit_MarketFoundedText0": "You give the order to begin constructing an automated colony. It will take some time before your drones finish establishing it.",
+	#"AIRetrofit_MarketFoundedText1": "Removed the following resources from the cargo bay:",
+	#"AIRetrofit_MarketStartupText0": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
+	#"AIRetrofit_MarketStartupText1": "You have available:",
 	#settings for market growth,
 	#descriptions
 	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing a system-wide boost to automated colony growth.",
@@ -576,7 +581,7 @@
 	#random personalityweight. higher numbers make it more likely to get a core of a given type.
 	"AIRetrofit_CommandNode_PersonalityWeight_officer": 2,
 	"AIRetrofit_CommandNode_PersonalityWeight_admin": 1,
-	"AIRetrofit_CommandNode_PersonalityWeight_Nexerlin_Operative": 1000.2,
+	"AIRetrofit_CommandNode_PersonalityWeight_Nexerlin_Operative": 0.2,
 	#Cost and weight of adding things to a given command node type.,
 	#for Officer Command Node type
 	"AIRetrofit_CreatePerson_Officer_costPerLevel": 10,#the amount of core power required per this

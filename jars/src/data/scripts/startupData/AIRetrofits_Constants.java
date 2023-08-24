@@ -15,6 +15,24 @@ public class AIRetrofits_Constants {
 
     public static final String AlphaCore = Commodities.ALPHA_CORE;
 
+    public static final String Commodity_T0_WorkerDrone = "AIretrofit_WorkerDrone";
+    public static final String Commodity_T0_CombatDrone = "AIretrofit_CombatDrone";
+    public static final String Commodity_T0_SurveyDrone = "AIretrofit_SurveyDrone";
+
+    public static final String Commodity_T1_WorkerDrone = "AIretrofit_Advanced_WorkerDrone";
+    public static final String Commodity_T1_CombatDrone = "AIretrofit_Advanced_CombatDrone";
+    public static final String Commodity_T1_SurveyDrone = "AIretrofit_Advanced_SurveyDrone";
+
+    public static final String Commodity_T2_WorkerDrone = "AIretrofit_Omega_WorkerDrone";
+    public static final String Commodity_T2_CombatDrone = "AIretrofit_Omega_CombatDrone";
+    public static final String Commodity_T2_SurveyDrone = "AIretrofit_Omega_SurveyDrone";
+
+    public static final String Commodity_CommandRely = "AIretrofit_CommandRely";
+    public static final String Commodity_MaintenanceParts = "AIretrofit_maintainsPacts";
+    public static final String Commodity_SubCommandNode = "AIretrofit_SubCommandNode";
+    public static final String Commodity_RoboticReplacementParts = "AIretrofit_roboticReplacementParts";
+    public static final String Commodity_HumanInterfaceNode = "AIretrofit_humanInterfaceNode";
+
     //industry names:
     public static final String Industry_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacility";
     //sub market names:

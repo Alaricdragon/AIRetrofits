@@ -1,6 +1,7 @@
 package data.scripts;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import data.scripts.AIWorldCode.FoundAMarket.AIRetrofit_MarketRetrofit_CustomMarketFounder;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_econUpdateListiner;
 import data.scripts.AIWorldCode.supplyDemandClasses.*;
@@ -52,6 +53,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().getEconomy().addUpdateListener(a);
 
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
+
+        AIRetrofit_MarketRetrofit_CustomMarketFounder.setMarketFounder();
         AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
     }
     private void descriptions(){
