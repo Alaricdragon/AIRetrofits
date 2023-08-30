@@ -10,6 +10,17 @@ save compatible with 0.7.20.1+
         changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
     fixes:
         fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
+        fixed patchwork AIRetrofit being removed / replaced by AI-Retrofits at moments it should not have
+V0.7.21.5(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed being able to find a market without required things.
+        fixed patchwork AIRetrofit being removed / replaced by AI-Retrofits at moments it should not have
+    improvements:
+        made 'AI Node Production Facility' Improvement do something.
+        added descriptions for 'AI Node Production Facility' improvements.
+    balance:
+        very slightly rebalanced the production code.
 V0.7.21.4(private):
 save compatible with 0.7.20.1+
     changes:

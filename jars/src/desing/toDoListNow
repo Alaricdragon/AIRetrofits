@@ -1,4 +1,6 @@
-doing right now: Sub Command Node thigs. look at the to do here.
+questions:
+    1) how do i run ShipVariantAPI.removeMod() and ShipVariantAPI.addMod() without having said ship lose combat readyness?
+    2)
 im going to work on the following now:
     finalize the upgrades person robot forges
         -a industry level forge. with more output. yay output. (also fixes the issue with not enouth survey robots, without making a mess of things.)
@@ -14,9 +16,9 @@ im going to work on the following now:
                 -(not started)getting robots to have reduced cargo based on hullmods
                 -(not started)displaying how many robots are in the robot storge
                 - display and description and everything else
-            -(done)patchwork AIRetrofits:
-                -gave it its extra stats (lower CR, chance of malfunctions)
-                -change the image of the hullmod to something more brown or broken looking.
+            -(started)patchwork AIRetrofits:
+                -(done)gave it its extra stats (lower CR, chance of malfunctions)
+                -(not done)change the image of the hullmod to something more brown or broken looking.
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
         Command Node and relevant industry:
@@ -38,16 +40,30 @@ im going to work on the following now:
                 (done)allow the market to have diffrent strangths on command nodes.
                 (done)allow AICores to change the submarkets AICore stats
                 (done)make it so the submarket is added and removed with the industry
-                change description of the industry to say it adds this sub market.
+                (done)change description of the industry to say it adds this sub market.
                 (done)change what the AI cores do on said industry.
-                (dine)make it so the sub market A does not exist, or B does not refresh well in industry is offline
+                (done)make it so the sub market A does not exist, or B does not refresh well in industry is offline
                 update the old exstra text in this submarket ()
                 (done)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
-                 make it so improving the industry does something. right now nothing happens.
-                 make it so when i move a item out of the submarket, i can put it back in
+                (done)make it so improving the industry does something. right now nothing happens.
+                make it so when i move a item out of the submarket, i can put it back in
+                re ballance the sub markets AI-Cores. i calculate that they are never going to reach max level. power per core should -increase- as output does.
+                    -to fix this, i should make the quality improve with a slight increase per production? maybe a increase of 5 percent power per production, so at production 3, its 15% increase, and production 10, its a 50% increase?
+                    -options: (S = supply, P = powerPerSize, I = increasePerSize)
+                        a) POWER = (P*S)*(I*S).
+                            (S=5,P=1,I=1.05) = 5*1.25 = 6.25
+                            (S=5,P=1,I=1.1)  = 5*1.5 = 7.5
+                        b) POWER = (P*S)*(I^S).
+                            (S=5,P=1,I=1.05) = 5*1.2762815625 = 6.3814078125
+                            (S=5,P=1,I=1.1)  = 5*1.61051 = 8.05255
             AICore Changes:
                 make it so the price of a given core is visable.
                 make it so the nexerlin operative command node shows the jobs it can do when you press F1 on it.
+
+            (not started) person robot manufactorys:
+                -change amount of bots prouced to be based on the supply of the market.
+                -add a upgraded version of each manufactroy that scailes with market size.
+                -make the beta core bonus scale with supply, at the cost of reduceing per supply robo production of the manufacture, and with a smaler base bonus.
 
 Note:
     regarding replacing crew and marines with salvage robots and combat robots:

@@ -499,6 +499,10 @@
 	"AIRetrofit_AINodeProductionFacility_Omega_D2_1": "greatly increase",#--
 	#submarkets
 	#AIRetrofit_AINodeProducetionFacility
+	#Improvement
+	"AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti": 1.1,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription": "Improved produced Command Node quality by %s",
+	"AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription": "Command Node quality improved By %s",
 	#without AI cores
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize": 2,
@@ -515,7 +519,7 @@
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_Gamma": 3,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_Gamma": -1,
 	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
-	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_Gamma": 15,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_Gamma": 20,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_Gamma": 0,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
 	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_Gamma": 30,
@@ -537,7 +541,7 @@
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_alpha": 1,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_alpha": 0,
 	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
-	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_alpha": 15,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_alpha": 20,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_alpha": 0,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
 	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_alpha": 2.5,
@@ -548,7 +552,7 @@
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_omega": 1,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_omega": -2,
 	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
-	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_omega": 10,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_omega": 30,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_omega": 0,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
 	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega": 10,

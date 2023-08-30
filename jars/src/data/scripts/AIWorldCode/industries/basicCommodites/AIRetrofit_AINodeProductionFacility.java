@@ -23,7 +23,8 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
     private final static String S1 = "AIretrofit_SubCommandNode";
     private final static String S2 = "AIretrofit_CommandRely";
 
-
+    private final static String improveDescription = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription");
+    private final static String improvedDescription = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription");
     private final static String BaseAICoreDescription = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_Description");
 
     //private final static String AICore_descriptions_B_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D0");
@@ -89,6 +90,12 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
     protected boolean canImproveToIncreaseProduction() {
         return true;
     }
+
+    @Override
+    protected int getImproveProductionBonus() {
+        return 0;
+    }
+
     @Override
     public void unapply() {
         super.unapply();
@@ -160,12 +167,12 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
         float opad = 10f;
         Color highlight = Misc.getHighlightColor();
 
-        //String aStr = "" + (100 * improveValue) + "%";
+        String aStr = "" + ((100 * AIRetrofit_AINodeProduction_Submarket.PM_I)-100) + "%";
 
         if (mode == ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
-            //info.addPara(improveDescription, 0f, highlight, aStr);
+            info.addPara(improveDescription, 0f, highlight, aStr);
         } else {
-            //info.addPara(improvedDescription, 0f, highlight, aStr);
+            info.addPara(improvedDescription, 0f, highlight, aStr);
         }
 
         info.addSpacer(opad);

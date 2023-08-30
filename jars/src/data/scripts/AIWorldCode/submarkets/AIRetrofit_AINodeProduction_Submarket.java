@@ -31,6 +31,8 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     private static final String illegalTest = Global.getSettings().getString("AIRetrofitShipyard_IllegalText");
     private static final String cantUseDescription = Global.getSettings().getString("AIRetrofitSubMarket_CantUpgradeDescription");
 
+    public static final float PM_I = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti");
+
     public static final float PPS_B = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize");
     public static final float BP_B = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BasePower");
     public static final float CPS_B =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize");
@@ -114,6 +116,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         }
         if(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isImproved()){
             //run whatever improving this industry will do. extra core and power per level maybe? just more power per level? mmmm
+            totalPower*=PM_I;
         }
         return new float[]{totalPower,cores,minPowerWeight,maxPowerWeight};
     }

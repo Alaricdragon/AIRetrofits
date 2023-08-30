@@ -41,7 +41,14 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public void reportPlayerOpenedMarket(MarketAPI market){
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
-        AIRetrofits_AbilityAndHullmodAdding.swapPatchworkForAIRetrofit();
+        try {
+            if (market != null && !market.getFaction().isNeutralFaction() && market.getFaction().getRelationshipLevel(Global.getSector().getPlayerFaction()).isAtWorst(RepLevel.SUSPICIOUS)) {
+                AIRetrofit_Log.loging("faction of world im at is: "+market.getFaction().getId(),this,true);
+                AIRetrofits_AbilityAndHullmodAdding.swapPatchworkForAIRetrofit();
+            }
+        }catch (Exception e){
+
+        }
         unapplySubMarkets(market);
     }
     private void changePeople(MarketAPI market){
