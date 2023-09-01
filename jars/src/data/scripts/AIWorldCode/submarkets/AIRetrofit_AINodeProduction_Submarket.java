@@ -124,6 +124,9 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
         //float[] power = getPower();
         emptyCargo(cargo);
+        if(market == null || market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) == null){
+            return;
+        }
         float[] temp = getStats(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility));
         float totalPower=temp[0];
         int cores=(int)temp[1];
