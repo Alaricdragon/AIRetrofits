@@ -188,7 +188,6 @@ public class AIRetrofits_Constants {
     public static final String Market_GrowthMod_LocalRobotFactorys = "LocalRobotFactory's";
     public static final String Market_GrowthMod_FactionWideRobotFactorys = "FactionWideRobotFactory's";
     public static final String Market_GrowthMod_AIRetrofits_RobotFactoryGrowthMod = "AIRetrofits_RobotFactoryGrowthMod";
-
     //growth descriptions
     public static final String Market_GrowthDescription_hazzardPay = Global.getSettings().getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
     //public static final String Market_GrowthDescription_population_AIRetrofit_0 = "";//not required

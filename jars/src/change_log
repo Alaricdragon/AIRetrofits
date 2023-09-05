@@ -1,16 +1,36 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.8:
 save compatible with 0.7.20.1+
-    added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
-        -this market sells command nodes as admins and officers. i think its cool.
+    new:
+        added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
+            -this market sells command nodes as admins and officers. i think its cool.
+        added T2 robot manufactures. because sometimes you want more
     added a new item called a 'command node'.
         -this item can only be found in the new sub-market.
         -it can be right clicked on to get a new officer or admen.
     changes:
         changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
+        changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
+        changed the way the personal robot output works for the personal robot manufacture. they now scale with output
     fixes:
         fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
-        fixed patchwork AIRetrofit being removed / replaced by AI-Retrofits at moments it should not have
+        personal robot manucatroys:
+            changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
+            changed the way the personal robot output works for the personal robot manufacture. they now scale with output
+V0.7.21.7(private):
+save compatible with 0.7.20.1+
+    new:
+        added T2 robot manufactures. because sometimes you want more
+    fixes:
+        added a new varuble to the config of the new submarket, letting the cores in the market grow in power LIKE THEY WERE SUPPOSE TO.
+        (note: growth is exspanensal, but slowly.)
+        fixed the option to found a automated market showing up when it should not have.
+        fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
+    changes:
+        made it so the cores produces in the AINodeProducton submarket have there variation increased by 3X
+        personal robot manucatroys:
+            changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
+            changed the way the personal robot output works for the personal robot manufacture. they now scale with output
 V0.7.21.6(private):
 save compatible with 0.7.20.1+
     fixes:

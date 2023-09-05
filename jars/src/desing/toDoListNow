@@ -47,23 +47,24 @@ im going to work on the following now:
                 (done)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
                 (done)make it so improving the industry does something. right now nothing happens.
                 make it so when i move a item out of the submarket, i can put it back in
-                re ballance the sub markets AI-Cores. i calculate that they are never going to reach max level. power per core should -increase- as output does.
+                (done)re ballance the sub markets AI-Cores. i calculate that they are never going to reach max level. power per core should -increase- as output does.
                     -to fix this, i should make the quality improve with a slight increase per production? maybe a increase of 5 percent power per production, so at production 3, its 15% increase, and production 10, its a 50% increase?
                     -options: (S = supply, P = powerPerSize, I = increasePerSize)
-                        a) POWER = (P*S)*(I*S).
+                        (not)a) POWER = (P*S)*(I*S).
                             (S=5,P=1,I=1.05) = 5*1.25 = 6.25
                             (S=5,P=1,I=1.1)  = 5*1.5 = 7.5
-                        b) POWER = (P*S)*(I^S).
+                        (yes)b) POWER = (P*S)*(I^S).
                             (S=5,P=1,I=1.05) = 5*1.2762815625 = 6.3814078125
                             (S=5,P=1,I=1.1)  = 5*1.61051 = 8.05255
             AICore Changes:
                 make it so the price of a given core is visable.
                 make it so the nexerlin operative command node shows the jobs it can do when you press F1 on it.
 
-            (not started) person robot manufactorys:
-                -change amount of bots prouced to be based on the supply of the market.
-                -add a upgraded version of each manufactroy that scailes with market size.
-                -make the beta core bonus scale with supply, at the cost of reduceing per supply robo production of the manufacture, and with a smaler base bonus.
+            (started) person robot manufactorys:
+                -(done)change amount of bots prouced to be based on the supply of the market.
+                -(done)add a upgraded version of each manufactroy that scailes with market size.
+                -(done)make the beta core bonus scale with supply, at the cost of reduceing per supply robo production of the manufacture, and with a smaler base bonus.
+                -add images to the t2 personal robot manufactures
 
 Note:
     regarding replacing crew and marines with salvage robots and combat robots:

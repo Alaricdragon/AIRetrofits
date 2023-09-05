@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
+import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
@@ -12,6 +13,7 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,8 +21,8 @@ import java.util.List;
 import java.util.Random;
 
 public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_IndustryBase {
-    private static final String alphaCore = "alpha_core";
-    private static final String omegaCore = "omega_core";
+    protected static final String alphaCore = Commodities.ALPHA_CORE;
+    protected static final String omegaCore = Commodities.OMEGA_CORE;
     @Override
     public void apply(){
         super.apply(true);
@@ -141,7 +143,12 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     }
     private void translateOutput(Object[] output){
         item = (String) output[0];
-        amount = (int)output[1];
+        if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
+            amount = (int) (output[1]);
+            amount *= market.getIndustry(this.getSpec().getId()).getSupply(item).getQuantity().getModifiedValue();
+        }else {
+            amount = (int) output[1];
+        }
     }
 
     @Override

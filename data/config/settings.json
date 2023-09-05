@@ -390,34 +390,34 @@
 	"AIRetrofit_robotManufactury_alphaDescriptionHighlighted": "reduce",
 	"AIRetrofit_robotManufactury_improvedDescription": "Improve robot output by %s",
 	#combat robots
-	"AIRetrofit_robotManufactury_combat_OS1Min": 75,#base
-	"AIRetrofit_robotManufactury_combat_OS1Max": 125,
-	"AIRetrofit_robotManufactury_combat_OS2Min": 25,#2.5X power 2.5 * 1.2 = 2.5 + 0.4 + 0.1 = 3.
-	"AIRetrofit_robotManufactury_combat_OS2Max": 42,
+	"AIRetrofit_robotManufactury_combat_OS1Min": 25,#base
+	"AIRetrofit_robotManufactury_combat_OS1Max": 40,
+	"AIRetrofit_robotManufactury_combat_OS2Min": 12,#2.5X power 2.5 * 1.2 = 2.5 + 0.4 + 0.1 = 3.
+	"AIRetrofit_robotManufactury_combat_OS2Max": 24,
 	"AIRetrofit_robotManufactury_combat_OS3Min": 6,#10X power 10 * 1.2 = 10 + 2 = 12.
 	"AIRetrofit_robotManufactury_combat_OS3Max": 11,
-	"AIRetrofit_robotManufactury_combat_Mod": 1.1,
-	"AIRetrofit_robotManufactury_combat_betaText": "Use produced combat robots to boost ground defences by %s",
+	"AIRetrofit_robotManufactury_combat_Mod": 0.034,
+	"AIRetrofit_robotManufactury_combat_betaText": "Use produced combat robots to boost ground defences by %s. defence scales with robot production",
 	"AIRetrofit_robotManufactury_combat_exstaText": "From combat robot factory",
 	#salvage robots
-	"AIRetrofit_robotManufactury_salvage_OS1Min": 40,#base
-	"AIRetrofit_robotManufactury_salvage_OS1Max": 60,
-	"AIRetrofit_robotManufactury_salvage_OS2Min": 26,#1.25X power 1.25 * 1.2 = 1.25 + 0.01 + 0.04 + 0.2 = 1.5
-	"AIRetrofit_robotManufactury_salvage_OS2Max": 40,
+	"AIRetrofit_robotManufactury_salvage_OS1Min": 7,#base
+	"AIRetrofit_robotManufactury_salvage_OS1Max": 20,
+	"AIRetrofit_robotManufactury_salvage_OS2Min": 13,#1.25X power 1.25 * 1.2 = 1.25 + 0.01 + 0.04 + 0.2 = 1.5
+	"AIRetrofit_robotManufactury_salvage_OS2Max": 20,
 	"AIRetrofit_robotManufactury_salvage_OS3Min": 11,#,3X power 3 * 1.2 = 3 + 0.6 = 3.6
 	"AIRetrofit_robotManufactury_salvage_OS3Max": 16,
-	"AIRetrofit_robotManufactury_salvage_Mod": 12,
-	"AIRetrofit_robotManufactury_salvage_betaText": "Use produced salvage robots to boost population growth by %s",
+	"AIRetrofit_robotManufactury_salvage_Mod": 4,
+	"AIRetrofit_robotManufactury_salvage_betaText": "Use produced salvage robots to boost population growth by %s. growth scales with robot production",
 	#"AIRetrofit_robotManufactury_salvage_exstaText": 0,
 	#survey robots
-	"AIRetrofit_robotManufactury_survey_OS1Min": 40,#base
-	"AIRetrofit_robotManufactury_survey_OS1Max": 60,
-	"AIRetrofit_robotManufactury_survey_OS2Min": 34,#1X power. 1 * 1.2 = 1.2
-	"AIRetrofit_robotManufactury_survey_OS2Max": 50,
-	"AIRetrofit_robotManufactury_survey_OS3Min": 11,#3X power. 3 * 1.2 = 3 + 0.6 = 3.6
-	"AIRetrofit_robotManufactury_survey_OS3Max": 16,
-	"AIRetrofit_robotManufactury_survey_Mod": 1,
-	"AIRetrofit_robotManufactury_survey_betaText": "Use produced survey robots to provide reconnaissance around this market, increasing stability by %s",
+	"AIRetrofit_robotManufactury_survey_OS1Min": 7,#base
+	"AIRetrofit_robotManufactury_survey_OS1Max": 20,
+	"AIRetrofit_robotManufactury_survey_OS2Min": 17,#1X power. 1 * 1.2 = 1.2
+	"AIRetrofit_robotManufactury_survey_OS2Max": 25,
+	"AIRetrofit_robotManufactury_survey_OS3Min": 5,#3X power. 3 * 1.2 = 3 + 0.6 = 3.6
+	"AIRetrofit_robotManufactury_survey_OS3Max": 8,
+	"AIRetrofit_robotManufactury_survey_Mod": 0.34,
+	"AIRetrofit_robotManufactury_survey_betaText": "Use produced survey robots to provide reconnaissance around this market, increasing stability by %s. stability bonus scales with robot production",
 	"AIRetrofit_robotManufactury_survey_exstaText": "from survey robot manufactory",
 	#AIRetrofit_AINodeProductionFacility
 	"AIRetrofit_AINodeProductionFacility_Base_Description": "produces %s cores, with %s quality. has %s variation in quality.",
@@ -484,7 +484,7 @@
 	"AIRetrofit_AINodeProductionFacility_Omega_D2": "a lot",#--,
 
 
-	"AIRetrofit_AINodeProductionFacility_Base_Description_1": "this core would %s amount of Command Cores produces, make the quality of said cores %s with %s variation in quality",
+	"AIRetrofit_AINodeProductionFacility_Base_Description_1": "this core would %s amount of Command Cores produced, make the quality of said cores %s with %s variation in quality",
 	"AIRetrofit_AINodeProductionFacility_Alpha_D0_1": "greatly reduce",#--
 	"AIRetrofit_AINodeProductionFacility_Alpha_D1_1": "significantly increase",#--
 	"AIRetrofit_AINodeProductionFacility_Alpha_D2_1": "reduced",#--
@@ -507,9 +507,10 @@
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize": 2,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores": -1,
-	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
 	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize": 20,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower": 1.1,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
 	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight": 5,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight": 1,
@@ -518,44 +519,48 @@
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_Gamma": 3,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_Gamma": -1,
-	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
 	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_Gamma": 20,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_Gamma": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_Gamma": 1.1,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
-	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_Gamma": 30,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_Gamma": 90,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_Gamma": 1,
 
 	#with beta core //same number of cores. slightly stronger power, but more consistant?
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_beta": 2,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_beta": -1,
-	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
 	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_beta": 25,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_beta": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_beta": 1.1,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
-	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_beta": 1.5,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_beta": 4.5,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_beta": 1,
 
 	#with alpha core#less cores. stronger overall.
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_alpha": 1,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_alpha": 0,
-	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
 	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_alpha": 20,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_alpha": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_alpha": 1.1,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
-	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_alpha": 2.5,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_alpha": 7.5,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_alpha": 1,
 
 	#with omega core#very few cores. massive power?
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_omega": 1,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_omega": -2,
-	#power is devided between all cores. amount of total core power per size equals (size * power per size) + basesize
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
 	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_omega": 30,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_omega": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega": 1.1,
 	#the range on the amount of 'weight' each core is allowed to take from the power pull.
-	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega": 10,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega": 30,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_omega": 1,
 	#specalitems,
 	#Command Node,

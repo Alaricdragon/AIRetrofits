@@ -3,30 +3,19 @@ package data.scripts.AIWorldCode.market_listiners;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.FullName;
-import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.plog.PlaythroughLog;
-import com.fs.starfarer.api.impl.campaign.plog.SModRecord;
 import com.fs.starfarer.api.loading.VariantSource;
-import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.util.Highlights;
-import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
-import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.hullmods.AIRetrofit_AIretrofit;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
+import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
+import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeShips;
 import data.scripts.startupData.AIRetrofits_Constants;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-
-import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
 
 public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public AIRetrofit_MakretListener(boolean permaRegister) {
@@ -60,7 +49,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     static float[] shipyard_costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
     private void runAIRetrofit_Shipyard(){
-        UpgradeList memory = new UpgradeList();
+        AIRetrofit_Shipyard_UpgradeList memory = new AIRetrofit_Shipyard_UpgradeList();
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
             memory.addLocation(market.getId(),runSingleAIRetrofit_Shipyard(market));
         }
@@ -68,7 +57,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         displayAIRetrofit_ShipYardNotification(memory);
     }
     //boolean logging = true;
-    private UpgradedShips runSingleAIRetrofit_Shipyard(MarketAPI market){
+    private AIRetrofit_Shipyard_UpgradeShips runSingleAIRetrofit_Shipyard(MarketAPI market){
         market = Global.getSector().getEconomy().getMarket(market.getId());
         if(!market.hasIndustry(shipYardIndustry) || !market.hasSubmarket(shipYardSubmarket) || (market.hasIndustry(shipYardIndustry) && !market.getIndustry(shipYardIndustry).isFunctional())){
             return null;
@@ -133,7 +122,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             addHullMod = addHullMods[4];
             type = 4;
         }
-        UpgradedShips upgraded = new UpgradedShips(type);
+        AIRetrofit_Shipyard_UpgradeShips upgraded = new AIRetrofit_Shipyard_UpgradeShips(type);
         //CrewReplacer_Log.loging("   looking at ships... ",this,logging);
         for(int ship22 = 0; ship22 < ships.size(); ship22++){
             FleetMemberAPI ship2 = ships.get(ship22);
@@ -233,26 +222,30 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
     }
 
-    private void displayAIRetrofit_ShipYardNotification(UpgradeList memory){
+    private void displayAIRetrofit_ShipYardNotification(AIRetrofit_Shipyard_UpgradeList memory){
         if(memory.Types.size() == 0){
             upgrades = null;
             return;
         }
         upgrades = memory;
         //memory.runNotification();
-        Global.getSector().getIntelManager().addIntel(new AIRetrofit_ShipyardNotification());
+        Global.getSector().getIntelManager().addIntel(new AIRetrofit_ShipyardNotification(upgrades));
         //Global.getSector().getCharacterData().getPerson().getStats().addBonusXP();
     }
 
-    public static UpgradeList upgrades;
-    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info){
+    public static AIRetrofit_Shipyard_UpgradeList upgrades;
+    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info,AIRetrofit_Shipyard_UpgradeList list){
         //
-        upgrades.display(info);
+        try {
+            list.display(info);
+        }catch (Exception e){
+
+        }
     }
 }
 
 
-
+/*
 class UpgradeList{
     ArrayList<UpgradeTypes> Types = new ArrayList<>();
     public void addLocation(String market,UpgradedShips ships){
@@ -635,4 +628,4 @@ class TempText implements TextPanelAPI{
     public void addImage(String spriteName) {
 
     }
-};
+};*/

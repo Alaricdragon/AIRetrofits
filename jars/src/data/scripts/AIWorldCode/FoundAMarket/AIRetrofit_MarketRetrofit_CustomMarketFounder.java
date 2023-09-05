@@ -6,6 +6,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.characters.AbilityPlugin;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
+import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.customMarketFounding.MarketRetrofits_MarketFounder;
 import data.scripts.customMarketFounding.MarketRetrofits_MarketFounderMasterList;
 import data.scripts.startupData.AIRetrofits_Constants;
@@ -54,13 +55,16 @@ public class AIRetrofit_MarketRetrofit_CustomMarketFounder extends MarketRetrofi
     }
 
     @Override
+    public boolean showOption(SectorEntityToken planet, boolean hostileActivity, boolean cutOffFromHyperspace) {
+        return super.showOption(planet, hostileActivity, cutOffFromHyperspace) && hasReqStuffToCreateMarket();
+    }
+
+    @Override
     public boolean canEstablishAMarketHere(SectorEntityToken planet, boolean hostileActivity, boolean cutOffFromHyperspace) {
         return hasReqStuffToCreateMarket() && super.canEstablishAMarketHere(planet, hostileActivity, cutOffFromHyperspace);
     }
     private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;
     public static boolean hasReqStuffToCreateMarket(){
-        CampaignFleetAPI fleet = Global.getSector().getPlayerFleet();
-        AbilityPlugin a = fleet.getAbility("AIretrofit_robot_drone_forge");
-        return a!=null && can;
+        return AIretrofit_canBuild.canFoundMarket();
     }
 }

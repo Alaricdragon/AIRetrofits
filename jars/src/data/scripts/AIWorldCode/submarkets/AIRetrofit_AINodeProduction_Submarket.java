@@ -39,7 +39,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float BC_B =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores");
     public static final float MiPW_B=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight");
     public static final float MaPW_B=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight");
-
+    public static final float PI_B = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower");
 
     public static final float PPS_G = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_Gamma");
     public static final float BP_G = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_Gamma");
@@ -47,6 +47,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float BC_G =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_Gamma");
     public static final float MiPW_G=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_Gamma");
     public static final float MaPW_G=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_Gamma");
+    public static final float PI_G = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_Gamma");
 
     public static final float PPS_Be = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_beta");
     public static final float BP_Be = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_beta");
@@ -54,6 +55,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float BC_Be =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_beta");
     public static final float MiPW_Be=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_beta");
     public static final float MaPW_Be=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_beta");
+    public static final float PI_Be = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_beta");
 
     public static final float PPS_A = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_alpha");
     public static final float BP_A = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_alpha");
@@ -61,6 +63,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float BC_A =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_alpha");
     public static final float MiPW_A=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_alpha");
     public static final float MaPW_A=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_alpha");
+    public static final float PI_A = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_alpha");
 
     public static final float PPS_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_omega");
     public static final float BP_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_omega");
@@ -68,6 +71,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float BC_O =Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_omega");
     public static final float MiPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_omega");
     public static final float MaPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega");
+    public static final float PI_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega");
     public static float[] getStats(Industry industry){
         MarketAPI market = industry.getMarket();
         float totalPower=0;
@@ -79,30 +83,35 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             switch (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId()) {
                 case Commodities.ALPHA_CORE:
                     totalPower = (produce * PPS_A) + BP_A;
+                    totalPower *= Math.pow(produce,PI_A);
                     cores = (int) ((produce * CPS_A) + BC_A);
                     minPowerWeight = MiPW_A;//the diffrence between the two numbers here is how mush range the cores power will have.
                     maxPowerWeight = MaPW_A;//--
                     break;
                 case Commodities.BETA_CORE:
                     totalPower = (produce * PPS_Be) + BP_Be;
+                    totalPower *= Math.pow(produce,PI_Be);
                     cores = (int) ((produce * CPS_Be) + BC_Be);
                     minPowerWeight = MiPW_Be;//the diffrence between the two numbers here is how mush range the cores power will have.
                     maxPowerWeight = MaPW_Be;//--
                     break;
                 case Commodities.GAMMA_CORE:
                     totalPower = (produce * PPS_G) + BP_G;
+                    totalPower *= Math.pow(produce,PI_G);
                     cores = (int) ((produce * CPS_G) + BC_G);
                     minPowerWeight = MiPW_G;//the diffrence between the two numbers here is how mush range the cores power will have.
                     maxPowerWeight = MaPW_G;//--
                     break;
                 case Commodities.OMEGA_CORE:
                     totalPower = (produce * PPS_O) + BP_O;
+                    totalPower *= Math.pow(produce,PI_O);
                     cores = (int) ((produce * CPS_O) + BC_O);
                     minPowerWeight = MiPW_O;//the diffrence between the two numbers here is how mush range the cores power will have.
                     maxPowerWeight = MaPW_O;//--
                     break;
                 default:
                     totalPower = (produce * PPS_B) + BP_B;
+                    totalPower *= Math.pow(produce,PI_B);
                     cores = (int) ((produce * CPS_B) + BC_B);
                     minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
                     maxPowerWeight = MaPW_B;//--
@@ -110,6 +119,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             }
         }else {
             totalPower = (produce * PPS_B) + BP_B;
+            totalPower *= Math.pow(produce,PI_B);
             cores = (int) ((produce * CPS_B) + BC_B);
             minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
             maxPowerWeight = MaPW_B;//--

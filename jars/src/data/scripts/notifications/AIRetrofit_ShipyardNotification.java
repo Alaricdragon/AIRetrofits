@@ -11,11 +11,16 @@ import com.fs.starfarer.api.ui.CustomPanelAPI;
 import com.fs.starfarer.api.ui.SectorMapAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
+import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
 
 import java.util.Set;
 
 public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     protected static String name = "Automated Ship Installation Center Production Report";
+    public AIRetrofit_Shipyard_UpgradeList list = null;
+    public AIRetrofit_ShipyardNotification(AIRetrofit_Shipyard_UpgradeList list){
+        this.list = list;
+    }
     @Override
     public java.util.Set<java.lang.String> getIntelTags(SectorMapAPI map){
         Set<String> a = super.getIntelTags(map);
@@ -46,13 +51,13 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     }
     @Override
     public void createSmallDescription(TooltipMakerAPI info, float width, float height){
-        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(info);
+        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(info,list);
     }
     @Override
     public void createLargeDescription(CustomPanelAPI panel,
                                        float width,
                                        float height){
-        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(panel.createUIElement(5,5,true));
+        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(panel.createUIElement(5,5,true),list);
     }
     @Override
     public boolean shouldRemoveIntel() {
