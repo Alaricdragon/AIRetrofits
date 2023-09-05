@@ -1,13 +1,126 @@
 changelog for all my changes as i make them so i dont forget again.
-V0.7.20: (not released)
+V0.8:
+save compatible with 0.7.20.1+
+    new:
+        added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
+            -this market sells command nodes as admins and officers. i think its cool.
+        added T2 robot manufactures. because sometimes you want more
+    added a new item called a 'command node'.
+        -this item can only be found in the new sub-market.
+        -it can be right clicked on to get a new officer or admen.
+    changes:
+        changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
+        changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
+        changed the way the personal robot output works for the personal robot manufacture. they now scale with output
+    fixes:
+        fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
+        personal robot manucatroys:
+            changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
+            changed the way the personal robot output works for the personal robot manufacture. they now scale with output
+V0.7.21.7(private):
+save compatible with 0.7.20.1+
+    new:
+        added T2 robot manufactures. because sometimes you want more
+    fixes:
+        added a new varuble to the config of the new submarket, letting the cores in the market grow in power LIKE THEY WERE SUPPOSE TO.
+        (note: growth is exspanensal, but slowly.)
+        fixed the option to found a automated market showing up when it should not have.
+        fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
+    changes:
+        made it so the cores produces in the AINodeProducton submarket have there variation increased by 3X
+        personal robot manucatroys:
+            changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
+            changed the way the personal robot output works for the personal robot manufacture. they now scale with output
+V0.7.21.6(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed random crashes
+V0.7.21.5(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed being able to find a market without required things.
+        fixed patchwork AIRetrofit being removed / replaced by AI-Retrofits at moments it should not have
+    improvements:
+        made 'AI Node Production Facility' Improvement do something.
+        added descriptions for 'AI Node Production Facility' improvements.
+    balance:
+        very slightly rebalanced the production code.
+V0.7.21.4(private):
+save compatible with 0.7.20.1+
+    changes:
+        changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
+    new classes:
+        AIRetrofit_MarketRetrofit_CustomMarketFounder
+        AIRetrofit_salvageRobotManufactoryT2 //(not yet implemented)
+        AIRetrofit_surveyRobotManufactoryT2  //--
+        AIRetrofit_combatRobotManufactoryT2  //--
+    new constants:
+        added latterly every single item to AIRetrofits_Constants.
+    fixes:
+        fixes command node: nexerline operative being added to a world that isn't the closest.
+    debug:
+        reset the command node power, and operative weight back down to its normal values.
+        disabled the 'always reset cargo' function on the AIRetrofit_AInodeProduction_Submarket
+V0.7.21.3(private):
+save compatible with 0.7.20.1+
+    new classes:
+        AIRetrofits_InitCombatabilityPatches
+        AIRetrofits_PatchBase
+        AIRetrofits_Patches_Nexerlin
+    fixes:
+        fixed a few random issues with AIRetrofit_CreatePeople.
+        added a performRightClickAction function to AIRetrofit_CommandNodeTypeBase.
+        AIRetrofit_CommandNodes:
+            fixed display sometimes outputting duplicates.
+            fixed onClick not runing code from AIRetrofit_CommandBase
+    new:
+        added the nexerlin operative to the possable command nodes.
+V0.7.21.2(private):
+save compatible with 0.7.20.1+
+    improvements:
+        fixed up the admin display a little bit. but its still not quite there yet.
+        changed over all refrences to creating command nodes over to a new system that makes them -better-
+    new classes:
+        AIRetorfit_CommandNodeTypesBase
+        AIRetrofit_CommandNodeType_Admin
+        AIRetrofit_CommandNodeType_NexerlinOperative
+        AIRetrofit_CommandNodeType_Officer
+V0.7.21.1(private):
+save compatible with 0.7.20.1+
+    debug:
+        made the submarkets AICores have 20X the power again.
+    worked on:
+       spent some time working on the admin display code. it sucks. asked discord about it.
+V0.7.21(private beta):
+save compatible with 0.7.20.1+
+    added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
+        -this market sells command nodes as admins and officers. i think its cool.
+    added a new item called a 'command node'.
+        -this item can only be found in the new sub-market.
+        -it can be right clicked on to get a new officer or admen.
+    fixes:
+        fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
+V0.7.20.2:
+save compatible with 0.7.20.1+
+    fixes: fixed 'patchwork AI-retrofit' and AI-retrofit crash when both hullmods were unlocked.
+    background:
+        dont worry about it.
+V0.7.20.1:
+updated to 0.96a.
+    background: worked on something cool
+
+V0.7.20: (was only released as a private project. is part of the 0.7.20.1 update.)
 save compatible with 0.7.9+
-    mod combatability:
-        made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations
+    mod compatibility:
+        made it so combat and salvage robots could be used in 'nomadic survivals' planetary operations (once crew replacer supports this)
     improvements:
         added 108 first and last names to possible names for command nodes. (got them from a online name generator. feel free to suggest more names / name generators.)
     fixes:
         fixed AIRetrofit hull-mod sometimes not displaying its repair time increase correctly.
         made AIRetrofit hull-mod be a little more clear on how mush repair speed is slowed down hopefully.
+        possably fixed a issue that might have been causing crashes?
+    new:
+        added a new hullmod, patchwork AIRetrofits. for when you want to fly the ship back to the spaceport with no crew.
     background work:
         did some background work for adding a new hull-mod or 2.
         did some background work for a interesting item.

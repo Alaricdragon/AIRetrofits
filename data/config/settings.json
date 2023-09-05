@@ -229,16 +229,21 @@
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,#some advice, dont disable this after you build a market with robotic workers. that will cause issues. before you do should be fine, although this is lagacy code, and should only be changed before starting a new game to be safe
 
-	#cost for founding a market
+	#cost for founding a market,
+	"AIRetrofit_MarketFounder_Name": "Build an automated drone colony",
+	"AIRetrofit_MarketFounder_Description": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
+	"AIRetrofit_MarketFounder_Order": 1,
+	"AIRetrofit_MarketFounder_CanFoundInCutOffSystem": true,
+	"AIRetrofit_MarketFounder_CanFoundWellUnderThreat": false,
 	"AIRetrofit_MarketCost_reqAICore": 10,
 	"AIRetrofit_MarketCost_reqWorker": 1000,
 	"AIRetrofit_MarketCost_reqSupply": 200,
 	"AIRetrofit_MarketCost_reqMachinery": 200,
 	#descriptions when founding a market
-	"AIRetrofit_MarketFoundedText0": "You give the order to begin constructing an automated colony. It will take some time before your drones finish establishing it.",
-	"AIRetrofit_MarketFoundedText1": "Removed the following resources from the cargo bay:",
-	"AIRetrofit_MarketStartupText0": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
-	"AIRetrofit_MarketStartupText1": "You have available:",
+	#"AIRetrofit_MarketFoundedText0": "You give the order to begin constructing an automated colony. It will take some time before your drones finish establishing it.",
+	#"AIRetrofit_MarketFoundedText1": "Removed the following resources from the cargo bay:",
+	#"AIRetrofit_MarketStartupText0": "You consider the possibility of building an automated colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on drone-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. Drone factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
+	#"AIRetrofit_MarketStartupText1": "You have available:",
 	#settings for market growth,
 	#descriptions
 	"AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing a system-wide boost to automated colony growth.",
@@ -385,35 +390,235 @@
 	"AIRetrofit_robotManufactury_alphaDescriptionHighlighted": "reduce",
 	"AIRetrofit_robotManufactury_improvedDescription": "Improve robot output by %s",
 	#combat robots
-	"AIRetrofit_robotManufactury_combat_OS1Min": 75,#base
-	"AIRetrofit_robotManufactury_combat_OS1Max": 125,
-	"AIRetrofit_robotManufactury_combat_OS2Min": 25,#2.5X power 2.5 * 1.2 = 2.5 + 0.4 + 0.1 = 3.
-	"AIRetrofit_robotManufactury_combat_OS2Max": 42,
+	"AIRetrofit_robotManufactury_combat_OS1Min": 25,#base
+	"AIRetrofit_robotManufactury_combat_OS1Max": 40,
+	"AIRetrofit_robotManufactury_combat_OS2Min": 12,#2.5X power 2.5 * 1.2 = 2.5 + 0.4 + 0.1 = 3.
+	"AIRetrofit_robotManufactury_combat_OS2Max": 24,
 	"AIRetrofit_robotManufactury_combat_OS3Min": 6,#10X power 10 * 1.2 = 10 + 2 = 12.
 	"AIRetrofit_robotManufactury_combat_OS3Max": 11,
-	"AIRetrofit_robotManufactury_combat_Mod": 1.1,
-	"AIRetrofit_robotManufactury_combat_betaText": "Use produced combat robots to boost ground defences by %s",
+	"AIRetrofit_robotManufactury_combat_Mod": 0.034,
+	"AIRetrofit_robotManufactury_combat_betaText": "Use produced combat robots to boost ground defences by %s. defence scales with robot production",
 	"AIRetrofit_robotManufactury_combat_exstaText": "From combat robot factory",
 	#salvage robots
-	"AIRetrofit_robotManufactury_salvage_OS1Min": 40,#base
-	"AIRetrofit_robotManufactury_salvage_OS1Max": 60,
-	"AIRetrofit_robotManufactury_salvage_OS2Min": 26,#1.25X power 1.25 * 1.2 = 1.25 + 0.01 + 0.04 + 0.2 = 1.5
-	"AIRetrofit_robotManufactury_salvage_OS2Max": 40,
+	"AIRetrofit_robotManufactury_salvage_OS1Min": 7,#base
+	"AIRetrofit_robotManufactury_salvage_OS1Max": 20,
+	"AIRetrofit_robotManufactury_salvage_OS2Min": 13,#1.25X power 1.25 * 1.2 = 1.25 + 0.01 + 0.04 + 0.2 = 1.5
+	"AIRetrofit_robotManufactury_salvage_OS2Max": 20,
 	"AIRetrofit_robotManufactury_salvage_OS3Min": 11,#,3X power 3 * 1.2 = 3 + 0.6 = 3.6
 	"AIRetrofit_robotManufactury_salvage_OS3Max": 16,
-	"AIRetrofit_robotManufactury_salvage_Mod": 12,
-	"AIRetrofit_robotManufactury_salvage_betaText": "Use produced salvage robots to boost population growth by %s",
+	"AIRetrofit_robotManufactury_salvage_Mod": 4,
+	"AIRetrofit_robotManufactury_salvage_betaText": "Use produced salvage robots to boost population growth by %s. growth scales with robot production",
 	#"AIRetrofit_robotManufactury_salvage_exstaText": 0,
 	#survey robots
-	"AIRetrofit_robotManufactury_survey_OS1Min": 40,#base
-	"AIRetrofit_robotManufactury_survey_OS1Max": 60,
-	"AIRetrofit_robotManufactury_survey_OS2Min": 34,#1X power. 1 * 1.2 = 1.2
-	"AIRetrofit_robotManufactury_survey_OS2Max": 50,
-	"AIRetrofit_robotManufactury_survey_OS3Min": 11,#3X power. 3 * 1.2 = 3 + 0.6 = 3.6
-	"AIRetrofit_robotManufactury_survey_OS3Max": 16,
-	"AIRetrofit_robotManufactury_survey_Mod": 1,
-	"AIRetrofit_robotManufactury_survey_betaText": "Use produced survey robots to provide reconnaissance around this market, increasing stability by %s",
+	"AIRetrofit_robotManufactury_survey_OS1Min": 7,#base
+	"AIRetrofit_robotManufactury_survey_OS1Max": 20,
+	"AIRetrofit_robotManufactury_survey_OS2Min": 17,#1X power. 1 * 1.2 = 1.2
+	"AIRetrofit_robotManufactury_survey_OS2Max": 25,
+	"AIRetrofit_robotManufactury_survey_OS3Min": 5,#3X power. 3 * 1.2 = 3 + 0.6 = 3.6
+	"AIRetrofit_robotManufactury_survey_OS3Max": 8,
+	"AIRetrofit_robotManufactury_survey_Mod": 0.34,
+	"AIRetrofit_robotManufactury_survey_betaText": "Use produced survey robots to provide reconnaissance around this market, increasing stability by %s. stability bonus scales with robot production",
 	"AIRetrofit_robotManufactury_survey_exstaText": "from survey robot manufactory",
+	#AIRetrofit_AINodeProductionFacility
+	"AIRetrofit_AINodeProductionFacility_Base_Description": "produces %s cores, with %s quality. has %s variation in quality.",
+	"AIRetrofit_AINodeProductionFacility_numCores_0": "zero",
+	"AIRetrofit_AINodeProductionFacility_numCores_1": "a single",
+	"AIRetrofit_AINodeProductionFacility_numCores_2": "a couple",
+	"AIRetrofit_AINodeProductionFacility_numCores_3": "a few",
+	"AIRetrofit_AINodeProductionFacility_numCores_4": "an handful of",
+	"AIRetrofit_AINodeProductionFacility_numCores_5": "an large amount of",
+	"AIRetrofit_AINodeProductionFacility_numCores_6": "a lot",
+	"AIRetrofit_AINodeProductionFacility_numCores_7": "many",
+	"AIRetrofit_AINodeProductionFacility_numCores_8": "an excess of",
+	"AIRetrofit_AINodeProductionFacility_numCores_9": "an massive amount",
+	"AIRetrofit_AINodeProductionFacility_numCores_10": "a ridicules amount of",
+
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_0": 1,#when the amount of cores i prudoce is >= to thesshold, moves onto the next descriptor
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_1": 2,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_2": 4,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_3": 6,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_4": 8,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_5": 10,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_6": 14,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_7": 18,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_8": 25,
+	"AIRetrofit_AINodeProductionFacility_numCoreThresholds_9": 35,
+
+	"AIRetrofit_AINodeProductionFacility_powerCores_0": "extremely low",
+	"AIRetrofit_AINodeProductionFacility_powerCores_1": "very low",
+	"AIRetrofit_AINodeProductionFacility_powerCores_2": "low",
+	"AIRetrofit_AINodeProductionFacility_powerCores_3": "amateur",
+	"AIRetrofit_AINodeProductionFacility_powerCores_4": "alright",
+	"AIRetrofit_AINodeProductionFacility_powerCores_5": "good",
+	"AIRetrofit_AINodeProductionFacility_powerCores_6": "high",
+	"AIRetrofit_AINodeProductionFacility_powerCores_7": "very high",
+	"AIRetrofit_AINodeProductionFacility_powerCores_8": "incredible",
+	"AIRetrofit_AINodeProductionFacility_powerCores_9": "awe inspiring",
+	"AIRetrofit_AINodeProductionFacility_powerCores_10": "Incomprehensible",
+
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_0": 10,#when the amount of cores i prudoce is >= to thesshold, moves onto the next descriptor
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_1": 20,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_2": 30,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_3": 40,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_4": 50,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_5": 70,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_6": 90,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_7": 120,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_8": 150,
+	"AIRetrofit_AINodeProductionFacility_powerCoreThresholds_9": 200,
+
+	#"AIRetrofit_AINodeProductionFacility_Base_D0": "a few",#the description varbles pluged into the base description for all the diffrent corew.
+	#"AIRetrofit_AINodeProductionFacility_Base_D1": "alright",#--
+	"AIRetrofit_AINodeProductionFacility_Base_D2": "some",#--
+	#"AIRetrofit_AINodeProductionFacility_Alpha_D0": "very few",#--
+	#"AIRetrofit_AINodeProductionFacility_Alpha_D1": "very good",#--
+	"AIRetrofit_AINodeProductionFacility_Alpha_D2": "little",#--
+	#"AIRetrofit_AINodeProductionFacility_Beta_D0": "a few",#--
+	#"AIRetrofit_AINodeProductionFacility_Beta_D1": "good",#--
+	"AIRetrofit_AINodeProductionFacility_Beta_D2": "almost no",#--
+	#"AIRetrofit_AINodeProductionFacility_Gamma_D0": "many",#--
+	#"AIRetrofit_AINodeProductionFacility_Gamma_D1": "poor",#--
+	"AIRetrofit_AINodeProductionFacility_Gamma_D2": "extreme",#--
+	#"AIRetrofit_AINodeProductionFacility_Omega_D0": "almost none",#--
+	#"AIRetrofit_AINodeProductionFacility_Omega_D1": "madding",#--
+	"AIRetrofit_AINodeProductionFacility_Omega_D2": "a lot",#--,
+
+
+	"AIRetrofit_AINodeProductionFacility_Base_Description_1": "this core would %s amount of Command Cores produced, make the quality of said cores %s with %s variation in quality",
+	"AIRetrofit_AINodeProductionFacility_Alpha_D0_1": "greatly reduce",#--
+	"AIRetrofit_AINodeProductionFacility_Alpha_D1_1": "significantly increase",#--
+	"AIRetrofit_AINodeProductionFacility_Alpha_D2_1": "reduced",#--
+	"AIRetrofit_AINodeProductionFacility_Beta_D0_1": "reduce",#--
+	"AIRetrofit_AINodeProductionFacility_Beta_D1_1": "increase",#--
+	"AIRetrofit_AINodeProductionFacility_Beta_D2_1": "greatly reduce",#--
+	"AIRetrofit_AINodeProductionFacility_Gamma_D0_1": "increase",#--
+	"AIRetrofit_AINodeProductionFacility_Gamma_D1_1": "reduce",#--
+	"AIRetrofit_AINodeProductionFacility_Gamma_D2_1": "extreme increase",#--
+	"AIRetrofit_AINodeProductionFacility_Omega_D0_1": "reduce by an extreme amount",#--
+	"AIRetrofit_AINodeProductionFacility_Omega_D1_1": "maddeningly increase",#--
+	"AIRetrofit_AINodeProductionFacility_Omega_D2_1": "greatly increase",#--
+	#submarkets
+	#AIRetrofit_AINodeProducetionFacility
+	#Improvement
+	"AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti": 1.1,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription": "Improved produced Command Node quality by %s",
+	"AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription": "Command Node quality improved By %s",
+	#without AI cores
+	#number of cores per market size equals (size * coresPerSize) + baseCores
+	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize": 2,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores": -1,
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize": 20,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower": 1.1,
+	#the range on the amount of 'weight' each core is allowed to take from the power pull.
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight": 5,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight": 1,
+
+	#with gamma core //more cores. more power range. less advrage power.
+	#number of cores per market size equals (size * coresPerSize) + baseCores
+	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_Gamma": 3,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_Gamma": -1,
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_Gamma": 20,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_Gamma": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_Gamma": 1.1,
+	#the range on the amount of 'weight' each core is allowed to take from the power pull.
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_Gamma": 90,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_Gamma": 1,
+
+	#with beta core //same number of cores. slightly stronger power, but more consistant?
+	#number of cores per market size equals (size * coresPerSize) + baseCores
+	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_beta": 2,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_beta": -1,
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_beta": 25,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_beta": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_beta": 1.1,
+	#the range on the amount of 'weight' each core is allowed to take from the power pull.
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_beta": 4.5,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_beta": 1,
+
+	#with alpha core#less cores. stronger overall.
+	#number of cores per market size equals (size * coresPerSize) + baseCores
+	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_alpha": 1,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_alpha": 0,
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_alpha": 20,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_alpha": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_alpha": 1.1,
+	#the range on the amount of 'weight' each core is allowed to take from the power pull.
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_alpha": 7.5,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_alpha": 1,
+
+	#with omega core#very few cores. massive power?
+	#number of cores per market size equals (size * coresPerSize) + baseCores
+	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize_omega": 1,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BaseCores_omega": -2,
+	#power is devided between all cores. amount of total core power per size equals ((size * power per size) + basesize) * (Increase power^size)
+	"AIRetrofit_AINodeProducetionFacility_Submarket_PowerPerSize_omega": 30,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_BasePower_omega": 0,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega": 1.1,
+	#the range on the amount of 'weight' each core is allowed to take from the power pull.
+	"AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega": 30,
+	"AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_omega": 1,
+	#specalitems,
+	#Command Node,
+	#descriptions
+	"AIRetrofit_CommandNode_officerText": "officer",
+	"AIRetrofit_CommandNode_officerText2": "a command node with the designation of %s. they are a %s of level %s with a personality of %s",
+	"AIRetrofit_CommandNode_adminText": "admin",
+	"AIRetrofit_CommandNode_adminText2": "a command node with the designation of %s. they are a %s with %s related skills",
+	"AIRetrofit_CommandNode_Nexerlin_Operative_Text": "Operative",
+	"AIRetrofit_CommandNode_Nexerlin_Operative_Text2": "a command node with the designation of %s. they are a level %s %s with a specialty in %s",
+	"AIRetrofit_CommandNode_defaultTExt": "error",
+	"AIRetrofit_CommandNode_defaultText2": "a command node with the designation of %s. they are a %s",
+	#power a compleatly random core has
+	"AIRetrofit_CommandNode_RandomPower_max":20,
+	"AIRetrofit_CommandNode_RandomPower_min":1,
+	#power cost theshoolds. this is the required core 'power' to increase a cores cost.
+	"AIRetrofit_CommandNode_PowerCostThreshold_0": 0,
+	"AIRetrofit_CommandNode_PowerCostThreshold_1": 5,
+	"AIRetrofit_CommandNode_PowerCostThreshold_2": 10,
+	"AIRetrofit_CommandNode_PowerCostThreshold_3": 20,
+	"AIRetrofit_CommandNode_PowerCostThreshold_4": 40,#30,
+	"AIRetrofit_CommandNode_PowerCostThreshold_5": 80,#40,
+	"AIRetrofit_CommandNode_PowerCostThreshold_6": 160,#60,
+	"AIRetrofit_CommandNode_PowerCostThreshold_7": 320,#80,
+	"AIRetrofit_CommandNode_PowerCostThreshold_8": 640,#100,
+	"AIRetrofit_CommandNode_PowerCostThreshold_9": 1280,#150,
+	#random personalityweight. higher numbers make it more likely to get a core of a given type.
+	"AIRetrofit_CommandNode_PersonalityWeight_officer": 2,
+	"AIRetrofit_CommandNode_PersonalityWeight_admin": 1,
+	"AIRetrofit_CommandNode_PersonalityWeight_Nexerlin_Operative": 0.2,
+	#Cost and weight of adding things to a given command node type.,
+	#for Officer Command Node type
+	"AIRetrofit_CreatePerson_Officer_costPerLevel": 10,#the amount of core power required per this
+	"AIRetrofit_CreatePerson_Officer_costPerElite": 10,#--
+	"AIRetrofit_CreatePerson_Officer_costPerLevelExtra": 40,#the amount of core power required for a this, past your maxamum amount
+	"AIRetrofit_CreatePerson_Officer_costPerEliteExtra": 40,#--
+	"AIRetrofit_CreatePerson_Officer_weightPerLevel": 1,#weight of this per pick
+	"AIRetrofit_CreatePerson_Officer_weightPerElite": 0.3,#--
+	"AIRetrofit_CreatePerson_Officer_weightPerLevelExtra": 0.05,#--
+	"AIRetrofit_CreatePerson_Officer_weightPerEliteExtra": 0.05,#--
+	#for Admin Command Node Type
+	"AIRetrofit_CreatePerson_Admin_baseSkillCost": 50,#cost of admin skill.
+	"AIRetrofit_CreatePerson_Admin_SkillMultiPerLevel": 1.3,#cost multi per admin skill aquired.
+	"AIRetrofit_CreatePerson_Admin_MaxTier": 10,#the max possable number of skills on a admin,
+	"AIRetrofit_CreatePerson_Admin_PowerForhypercognition": 5000,
+	#for Nexerlin Opertive Command Node Type
+	"AIRetrofit_CreatePerson_Nexerlin_Opertive_baseLevelCost": 20,
+	"AIRetrofit_CreatePerson_Nexerlin_Opertive_LEvelCostMulti": 1.3,
+	"AIRetrofit_CreatePerson_Nexerlin_Opertive_MaxLevel": 5,#no more then 5, as that is nexerlins max level for opratives.
+	"adminSalaryTier3":30000,#this is here to allow higer tier admins then what normaly exsist. if you want to remove, set AIRetrofit_CreatePerson_Admin_MaxTier to 2.
+	"adminSalaryTier4":40000,#--
+	"adminSalaryTier5":50000,#--
+	"adminSalaryTier6":60000,#--
+	"adminSalaryTier7":70000,#--
+	"adminSalaryTier8":80000,#--
+	"adminSalaryTier9":90000,#--
+	"adminSalaryTier10":100000,#--
+
 	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{

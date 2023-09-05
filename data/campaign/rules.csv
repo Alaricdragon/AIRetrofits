@@ -5,19 +5,19 @@ id,trigger,conditions,script,text,options,notes
 #me_miningStart,DialogOptionSelected,$market.isPlanetConditionMarketOnly,my_mod_StartAutomatedColony SetEnabled me_miningLeave true,NOOO DONT LEAVE ME,me_miningLeave: GO AWAY ATTACK CARS,
 #me_miningLeave,DialogOptionSelected,$option == me_miningLeave,DismissDialog,bye,,
 ,,,SetEnabled AIRetrofit_OutpostStart true,,,
-AIRetrofit_CanOutpostBuild,PopulateOptions,"$market.isPlanetConditionMarketOnly
+#AIRetrofit_CanOutpostBuild,PopulateOptions,"$market.isPlanetConditionMarketOnly
 $market.isSurveyed
 !$market.hasUnexploredRuins
 AIRetrofit_BuildOutpostOptionScript",SetEnabled AIRetrofit_OutpostStart true,,2:AIRetrofit_OutpostStart:Build an automated drone colony.,
-AIRetrofit_OutpostBuild,DialogOptionSelected,$option == AIRetrofit_OutpostBuild,AIRetfofit_BuildOutpostScript,,0:AIRetrofit_OutpostBuilt:Leave.,
-AIRetrofit_OutpostLeave,DialogOptionSelected,$option == AIRetrofit_OutpostLeave,FireAll PopulateOptions,,,
-AIRetrofit_OutpostStart,DialogOptionSelected,$option == AIRetrofit_OutpostStart,"AIRetfofit_PrepBuildOutpostScript
+#AIRetrofit_OutpostBuild,DialogOptionSelected,$option == AIRetrofit_OutpostBuild,AIRetfofit_BuildOutpostScript,,0:AIRetrofit_OutpostBuilt:Leave.,
+#AIRetrofit_OutpostLeave,DialogOptionSelected,$option == AIRetrofit_OutpostLeave,FireAll PopulateOptions,,,
+#AIRetrofit_OutpostStart,DialogOptionSelected,$option == AIRetrofit_OutpostStart,"AIRetfofit_PrepBuildOutpostScript
 FireAll AIRetrofit_OutpostBuildOptions",,,
-AIRetrofit_OutpostCanBuild,AIRetrofit_OutpostBuildOptions,"AIRetrofit_CanBuildOutpostScript
+#AIRetrofit_OutpostCanBuild,AIRetrofit_OutpostBuildOptions,"AIRetrofit_CanBuildOutpostScript
 !HostileFleetNearbyAndAware",,you have the required resorses to found a market here,"0:AIRetrofit_OutpostBuild:construct outpost
 1:AIRetrofit_OutpostLeave:back",
-AIRetrofit_OutpostBuilt,DialogOptionSelected,$option == AIRetrofit_OutpostBuilt,DismissDialog,,,
-AIRetrofit_OutpostCantbuild,AIRetrofit_OutpostBuildOptions,"!AIRetrofit_CanBuildOutpostScript
+#AIRetrofit_OutpostBuilt,DialogOptionSelected,$option == AIRetrofit_OutpostBuilt,DismissDialog,,,
+#AIRetrofit_OutpostCantbuild,AIRetrofit_OutpostBuildOptions,"!AIRetrofit_CanBuildOutpostScript
 !HostileFleetNearbyAndAware",,you require more resorses to found a market here,0:AIRetrofit_OutpostLeave:Back.,
-AIRetrofit_OutpostCantbuildFleet,AIRetrofit_OutpostBuildOptions,"HostileFleetNearbyAndAware
+#AIRetrofit_OutpostCantbuildFleet,AIRetrofit_OutpostBuildOptions,"HostileFleetNearbyAndAware
 !AIRetrofit_CanBuildOutpostScript",,you cannot preform this opperation while a hostile fleet is traking your movememnts,0:AIRetrofit_OutpostLeave:Back.,

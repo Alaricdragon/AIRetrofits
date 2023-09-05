@@ -3,26 +3,16 @@ package data.scripts.robot_forge.dilogs;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
-import com.fs.starfarer.api.characters.FullName;
-import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
-import com.fs.starfarer.api.characters.OfficerDataAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
-import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.loading.S;
-import com.fs.starfarer.rpg.OfficerData;
-import com.fs.starfarer.rpg.Person;
-import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;
+import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     TextPanelAPI text;
@@ -121,8 +111,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     private void createAdmen(){
         Global.getSector().getPlayerFleet().getCargo().removeCommodity(SubCommandNode,administratorSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(administratorCreditCost);
-        PersonAPI person = OfficerManagerEvent.createAdmin(Global.getSector().getPlayerFaction(),0,new Random());
-        setPerson(person);
+        PersonAPI person = AIRetrofits_CreatePeople.createAdmen();
         Global.getSector().getCharacterData().addAdmin(person);
         CommandNode = person;
         //exit();
@@ -132,20 +121,9 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     private void createOfficer(int power){
         Global.getSector().getPlayerFleet().getCargo().removeCommodity(SubCommandNode,officerSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(officerCreditCost);
-        PersonAPI person = OfficerManagerEvent.createOfficer(Global.getSector().getPlayerFaction(),1);
-        person.setPersonality(personalities[power]);
-        setPerson(person);
-        //possibility to add he possibility of having an elite skill to start?
-        List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
-        for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
-            MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-            if (a.getSkill().isElite()) {
-                person.getStats().decreaseSkill(a.getSkill().getId());
-            }
-        }
+        PersonAPI person = AIRetrofits_CreatePeople.createOfficer(power);
         Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
         CommandNode = person;
-        //exit();
     }
     private void exitOfficer(){
         this.dialog.getVisualPanel().showPersonInfo(CommandNode);
@@ -163,17 +141,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options.clearOptions();
         this.options.addOption("exit","exit");
     }
-    private void setPerson(PersonAPI person){
-        //PersonAPI person = Global.getFactory().createPerson();
-        person.setPortraitSprite(setDataLists.getRandom(2));
-        person.setName(new FullName(setDataLists.getRandom(0), setDataLists.getRandom(1), FullName.Gender.ANY));
-    }
-    private PersonAPI setPerson(){
-        PersonAPI person = Global.getFactory().createPerson();
-        person.setPortraitSprite(setDataLists.getRandom(2));
-        person.setName(new FullName(setDataLists.getRandom(0), setDataLists.getRandom(1), FullName.Gender.ANY));
-        return person;
-    }
+
     @Override
     public void init(InteractionDialogAPI dialog) {
         this.dialog = dialog;

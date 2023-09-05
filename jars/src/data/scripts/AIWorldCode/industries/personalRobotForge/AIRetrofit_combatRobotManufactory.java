@@ -1,17 +1,12 @@
 package data.scripts.AIWorldCode.industries.personalRobotForge;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.util.Pair;
-import com.fs.starfarer.loading.S;
-import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
 
 import java.awt.*;
-import java.util.Random;
 
 public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotManufactoryBase {
     private final static String C1 = "metals";
@@ -61,8 +56,13 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         }
         float bonus = BetaDefenceMulti;
         if (this.isImproved()){
-            bonus *= 2;
+            //bonus *= 2;
         }
+        String[] itemsTemp = this.getItems();
+        if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
+            bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
+        }
+        bonus+=1;
         market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id,bonus,groundDefenceText);
     }
     @Override
@@ -81,7 +81,13 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
     protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        String[] exstra = {"" + ((BetaDefenceMulti - 1) * 100) + "%"};
+        String[] itemsTemp = this.getItems();
+        float bonus = BetaDefenceMulti;
+        if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
+            bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
+        }
+        bonus+=1;
+        String[] exstra = {"" + ((bonus - 1) * 100) + "%"};
         tooltip.addPara(pre + BetaText,pad,highlight,exstra);
     }
 
