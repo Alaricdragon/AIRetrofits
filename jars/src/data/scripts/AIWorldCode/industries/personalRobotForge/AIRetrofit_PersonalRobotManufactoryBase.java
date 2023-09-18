@@ -11,6 +11,7 @@ import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.startupData.AIRetrofits_Constants;

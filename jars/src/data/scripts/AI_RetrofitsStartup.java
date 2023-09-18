@@ -55,7 +55,6 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
 
         AIRetrofit_MarketRetrofit_CustomMarketFounder.setMarketFounder();
-        AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
     }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")
