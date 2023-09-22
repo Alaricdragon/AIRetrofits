@@ -171,7 +171,8 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     private static final String officerConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2");
     private static final String exitOfficer_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0");
     private static final String exitOfficer_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1");
-    private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
+    private static final String[] personalities = {AgentIntel.Specialization.SABOTEUR.getName(),AgentIntel.Specialization.HYBRID.getName(),AgentIntel.Specialization.NEGOTIATOR.getName()};
+
     private int temp=0;
     private PersonAPI personTemp=null;
     private static final String MyOptionData = "operative";
@@ -185,6 +186,7 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     }
     @Override
     public void createOptionForCore(OptionPanelAPI options){
+        powerTemp=0;
         options.addOption(MyOptionText,MyOptionData,MyOptionHoverOver);
         //options.setEnabled(MyOptionData,canBuildCommandNode());
     }
@@ -192,6 +194,8 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     public boolean optionSelected(String optionText, Object optionData) {
         String optionDataTemp = (String)optionData;
         return optionDataTemp.equals(MyOptionData);
+    }
+    private void addAdjent(){
     }
     private void officerConfirmPage(int power,OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){
         String[] exstras = {"" + personalities[power]};
@@ -204,12 +208,6 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
             case 1:
                 break;
             case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
                 break;
         }
         temp = power;
@@ -227,9 +225,9 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     public void startPage(OptionPanelAPI options, InteractionDialogAPI dialog, String optionText, Object optionData){
         dialog.getTextPanel().addPara(officerPage_0);
         options.clearOptions();
-        options.addOption("nogiceater","officerConfirmPage_0");
-        options.addOption("hybrid","officerConfirmPage_1");
-        options.addOption("sabatoor","officerConfirmPage_2");
+        options.addOption(personalities[0],"officerConfirmPage_0");
+        options.addOption(personalities[1],"officerConfirmPage_1");
+        options.addOption(personalities[2],"officerConfirmPage_2");
         //fearless dose not work. no idea why.
         //this.options.addOption("fearless","officerConfirmPage_5");
 
@@ -263,9 +261,23 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     public void createPerson(){
         Global.getSector().getPlayerFleet().getCargo().removeCommodity(AIRetrofits_Constants.Commodity_SubCommandNode,officerSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(officerCreditCost);
-        //PersonAPI person = AIRetrofits_CreatePeople.createOfficer(temp);
-        //Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
-        //personTemp = person;
+        PersonAPI person = AIRetrofits_CreatePeople.createPerson();
+        String type2 = personalities[powerTemp];
+        AgentIntel.Specialization type = AgentIntel.Specialization.HYBRID;
+        if(type2.equals(AgentIntel.Specialization.HYBRID.getName())){
+            type = AgentIntel.Specialization.HYBRID;
+        }
+        if(type2.equals(AgentIntel.Specialization.NEGOTIATOR.getName())){
+            type = AgentIntel.Specialization.NEGOTIATOR;
+        }
+        if(type2.equals(AgentIntel.Specialization.SABOTEUR.getName())) {
+            type = AgentIntel.Specialization.SABOTEUR;
+        }
+        AgentIntel intel = new AgentIntel(person, Global.getSector().getPlayerFaction(), 1);
+        intel.addSpecialization(type);
+        intel.setMarket(getClosestMarket());
+        intel.init();
+        personTemp = person;
 
     }
 

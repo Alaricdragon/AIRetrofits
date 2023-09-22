@@ -249,6 +249,7 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
     }
     @Override
     public void createOptionForCore(OptionPanelAPI options){
+        powerTemp=0;
         options.addOption(MyOptionText,MyOptionData,MyOptionHoverOver);
         //options.setEnabled(MyOptionData,canBuildCommandNode());
     }
@@ -341,6 +342,5 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         PersonAPI person = AIRetrofits_CreatePeople.createOfficer(temp);
         Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
         personTemp = person;
-
     }
 }

@@ -5,6 +5,7 @@ save compatible with 0.7.20.1+
         added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
             -this market sells command nodes as admins and officers. i think its cool.
         added T2 robot manufactures. because sometimes you want more
+        added version checker support (hopefully)
     added a new item called a 'command node'.
         -this item can only be found in the new sub-market.
         -it can be right clicked on to get a new officer or admen.
@@ -15,6 +16,16 @@ save compatible with 0.7.20.1+
     fixes:
         fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
         fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
+V0.7.21.10(private):
+save compatible with 0.7.20.1+
+    new:
+        luna lib support
+    fixes:
+        fixed a rare crash when opining the new submarket.
+        fixed a random crash that probably never happened when creating a officer command node.
+    improvements:
+        made the 'admin' command node skill's display in a way that is not completely terrible.
+        added new 'cant trade here' text for the command node.
 V0.7.21.9(private):
 save compatible with 0.7.20.1+
     improvements:

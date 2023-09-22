@@ -366,7 +366,7 @@ public class AIRetrofits_CreatePeople {
     public static void addCores(CargoAPI cargo, FactionAPI doctrineAPI, float power, int numcores, float minPowerWeight, float maxPowerWeight){
         AIRetrofit_Log.loging("running: "+"addCores"+" with: cargo,doctoring,power,numcores,minPowerWeight,maxPowerWeight: "+cargo.toString()+", "+doctrineAPI.toString()+", "+power+", "+numcores+", "+minPowerWeight+", "+maxPowerWeight,logClass,logs);
         AIRetrofit_Log.push();
-        float[] powerWeight = new float[numcores];
+        float[] powerWeight = new float[Math.max(numcores,0)];
         float totalWeight = 0;
         float powerPerWeight;
         for(int a = 0; a < powerWeight.length; a++){

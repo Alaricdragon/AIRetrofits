@@ -106,17 +106,32 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
             //tooltip.addIconGroup(5);
             //ArrayList<String> skillsTemp = new ArrayList<>();
             List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
+            int stat = 0;
+            int stat2 = 0;
             for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
                 MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
                 if (/*true||*/a.getSkill().isAdminSkill()) {
-                    //skillsTemp.add(a.getSkill().getSpriteName());
-                    //tooltip.addImage();
-                    //tooltip.addPara(a.getSkill().getName(),5);
-                    //TooltipMakerAPI text3 = tooltip.beginImageWithText(a.getSkill().getSpriteName(),30);
-                    text.addImage(a.getSkill().getSpriteName(),30);
+                    text = tooltip.beginImageWithText(a.getSkill().getSpriteName(), 32);
                     text.addPara(a.getSkill().getName(), opad);
-                    //tooltip.addImageWithText(opad);
+                    tooltip.addImageWithText(opad);
+                    /*if (stat == 0) {
+                        text = tooltip.beginImageWithText(a.getSkill().getSpriteName(), 32);
+                        text.addPara(a.getSkill().getName(), opad);
+                        stat = 1;
+                    }else{
+                        text.addImage(a.getSkill().getSpriteName(), 32);
+                        text.addPara(a.getSkill().getName(), opad);
+                    }
+                    stat2++;
+                    if (stat2 >= 2) {
+                        tooltip.addImageWithText(opad);
+                        stat = 0;
+                        stat2 = 0;
+                    }*/
                 }
+                /*if (stat2 != 0) {
+                    tooltip.addImageWithText(opad);
+                }*/
             }
             /*
             String[] temp = new String[skillsTemp.size()];
