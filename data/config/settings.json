@@ -503,6 +503,7 @@
 	"AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti": 1.1,
 	"AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription": "Improved produced Command Node quality by %s",
 	"AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription": "Command Node quality improved By %s",
+	"AIRetrofit_AINodeProducetionFacility_Submarket_IllegalText": "Cannot sell anything here",
 	#without AI cores
 	#number of cores per market size equals (size * coresPerSize) + baseCores
 	"AIRetrofit_AINodeProducetionFacility_Submarket_CoresPerSize": 2,

@@ -28,8 +28,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     /*
     put the upgrade code in AIRetrofit_MarketListener.
      */
-    private static final String illegalTest = Global.getSettings().getString("AIRetrofitShipyard_IllegalText");
-    private static final String cantUseDescription = Global.getSettings().getString("AIRetrofitSubMarket_CantUpgradeDescription");
+    private static final String illegalTest = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_IllegalText");
 
     public static final float PM_I = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti");
 
@@ -166,9 +165,9 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     }
     @Override
     public CargoAPI getCargo(){
-        AIRetrofit_Log.loging("running getCargo",this,true);
+        //AIRetrofit_Log.loging("running getCargo",this,true);
         CargoAPI cargo = super.getCargo();
-        AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
+        //AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
         if(market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isFunctional()) {
             emptyCargo(cargo);
         }else if(this.okToUpdateShipsAndWeapons()){//||true){
@@ -190,7 +189,10 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     }
     @Override
     public float getTariff() {
-        return 0f;
+        if (market.getFaction().isPlayerFaction()) {
+            return 0f;
+        }
+        return super.getTariff();
     }
 
     @Override
@@ -253,7 +255,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             return false;
         }*/
     @Override
-    public String getIllegalTransferText(FleetMemberAPI member,SubmarketPlugin.TransferAction action){
+    public String getIllegalTransferText(CargoStackAPI stack, SubmarketPlugin.TransferAction action){
         return illegalTest;//"cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.";
     }
     @Override

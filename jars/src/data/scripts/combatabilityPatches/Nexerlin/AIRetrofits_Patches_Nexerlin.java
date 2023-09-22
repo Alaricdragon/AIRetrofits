@@ -10,6 +10,6 @@ public class AIRetrofits_Patches_Nexerlin extends AIRetrofits_PatchBase {
     public static final float PersonWeight_Nex_Operative = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_Nexerlin_Operative");
     @Override
     public void apply() {
-        new AIRetrofit_CommandNodeType_NexerlinOperative("NexerlinOperative",PersonWeight_Nex_Operative);
+        new AIRetrofit_CommandNodeType_NexerlinOperative("NexerlinOperative",PersonWeight_Nex_Operative,true,false);
     }
 }

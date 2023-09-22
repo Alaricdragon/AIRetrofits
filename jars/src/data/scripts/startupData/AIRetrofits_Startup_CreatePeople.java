@@ -9,7 +9,7 @@ public class AIRetrofits_Startup_CreatePeople {
     public static final float PersonWeight_Officer = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_officer");
     public static final float PersonWeight_Admin = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_admin");
     public static void apply(){
-        new AIRetrofit_CommandNodeType_Officer("officer",PersonWeight_Officer);
-        new AIRetrofit_CommandNodeType_Admin("admin",PersonWeight_Admin);
+        new AIRetrofit_CommandNodeType_Officer("officer",PersonWeight_Officer,true,true);
+        new AIRetrofit_CommandNodeType_Admin("admin",PersonWeight_Admin,true,true);
     }
 }

@@ -3,9 +3,12 @@ package data.scripts.robot_forge.createItemSupport.CommandNodeTypes;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.CargoTransferHandlerAPI;
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
+import com.fs.starfarer.api.campaign.OptionPanelAPI;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
+import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.plugins.OfficerLevelupPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -13,6 +16,7 @@ import com.fs.starfarer.rpg.Person;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
+import data.scripts.robot_forge.dilogs.AIRetrofits_Dialog_PeopleMaker;
 import data.scripts.startupData.AIRetrofits_Constants;
 
 import java.awt.*;
@@ -39,8 +43,8 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
             {0,2},
             {1,3}
     };
-    public AIRetrofit_CommandNodeType_Officer(String name, float weight) {
-        super(name, weight);
+    public AIRetrofit_CommandNodeType_Officer(String name, float weight,boolean addToCommandNodes,boolean addToRobotForge) {
+        super(name, weight,addToCommandNodes,addToRobotForge);
     }
     private final static String officerText = Global.getSettings().getString("AIRetrofit_CommandNode_officerText");//"officer";
     private final static String officerText2 = Global.getSettings().getString("AIRetrofit_CommandNode_officerText2");//"a command node with the designation of %s. they are a %s of level %s with a personality of %s";
@@ -217,5 +221,126 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         AIRetrofit_Log.pop();
         this.setAmountOfPowerUsed((int)powerUsed);
         return person;
+    }
+
+
+
+
+    private static final int officerCreditCost = AIRetrofits_Constants.RobotForge_officerCreditCost;//Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
+    private static final int officerSubCommandNodeCost = AIRetrofits_Constants.RobotForge_officerSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Officer_SCN");
+    private static final int officerCreditsPerMomth = AIRetrofits_Constants.RobotForge_officerCreditsPerMomth;//900;
+    private static final String officerPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerPage_0");
+    private static final String officerConfirmPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0");
+    private static final String officerConfirmPage_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1");
+    private static final String officerConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2");
+    private static final String exitOfficer_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0");
+    private static final String exitOfficer_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1");
+    private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
+    private int temp=0;
+    private PersonAPI personTemp=null;
+    private static final String MyOptionData = "officer";
+    private static final String MyOptionText = "create officer";
+    private static String MyOptionHoverOver = "requires a sub command node";
+    public boolean canBuildCommandNode(){
+        Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode);//,officerSubCommandNodeCost);
+        Global.getSector().getPlayerFleet().getCargo().getCredits(); // officerCreditCost;
+        //TooltipMakerAPI tooltip
+        return false;
+    }
+    @Override
+    public void createOptionForCore(OptionPanelAPI options){
+        powerTemp=0;
+        options.addOption(MyOptionText,MyOptionData,MyOptionHoverOver);
+        //options.setEnabled(MyOptionData,canBuildCommandNode());
+    }
+    @Override
+    public boolean optionSelected(String optionText, Object optionData) {
+        String optionDataTemp = (String)optionData;
+        return optionDataTemp.equals(MyOptionData);
+    }
+    private void officerConfirmPage(int power,OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){
+        String[] exstras = {"" + personalities[power]};
+        Color highlight = Misc.getHighlightColor();
+        dialog.getTextPanel().addPara(officerConfirmPage_0,highlight,exstras);//infermation about the officer your creating go here.
+        options.clearOptions();
+        switch (power){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+        }
+        temp = power;
+        exstras = new String[]{"" + officerCreditsPerMomth};
+        dialog.getTextPanel().addPara(officerConfirmPage_1,highlight,exstras);//"the officer you create will cost " + officerCreditsPerMomth + "per month. and more as they level up.");
+        exstras = new String[]{"" + officerSubCommandNodeCost, "" + officerCreditCost};
+        dialog.getTextPanel().addPara(officerConfirmPage_2,highlight,exstras);//"you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
+        if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost){
+            options.addOption("continue","createOfficer");
+        }
+        SetStoryOption.set(dialog,1,"createOfficer","promoteCrewMember","ui_char_spent_story_point","");
+        AIRetrofits_Dialog_PeopleMaker.addBack(options);
+    }
+    @Override
+    public void startPage(OptionPanelAPI options, InteractionDialogAPI dialog, String optionText, Object optionData){
+        dialog.getTextPanel().addPara(officerPage_0);
+        options.clearOptions();
+        options.addOption("Timid","officerConfirmPage_0");
+        options.addOption("Cautious","officerConfirmPage_1");
+        options.addOption("Steady","officerConfirmPage_2");
+        options.addOption("Aggressive","officerConfirmPage_3");
+        options.addOption("Reckless","officerConfirmPage_4");
+        //fearless dose not work. no idea why.
+        //this.options.addOption("fearless","officerConfirmPage_5");
+
+        options.addOption("back","menu");
+    }
+    @Override
+    public void confermPage(OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){
+        switch ((String)optionData) {
+            case "officerConfirmPage_0":
+                officerConfirmPage(0,options,dialog,optionText,optionData);
+                break;
+            case "officerConfirmPage_1":
+                officerConfirmPage(1,options,dialog,optionText,optionData);
+                break;
+            case "officerConfirmPage_2":
+                officerConfirmPage(2,options,dialog,optionText,optionData);
+                break;
+            case "officerConfirmPage_3":
+                officerConfirmPage(3,options,dialog,optionText,optionData);
+                break;
+            case "officerConfirmPage_4":
+                officerConfirmPage(4,options,dialog,optionText,optionData);
+                break;
+            case "officerConfirmPage_5":
+                officerConfirmPage(5,options,dialog,optionText,optionData);
+                break;
+        }
+    }
+    @Override
+    public void exitPage(OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){
+        Color highlight = Misc.getHighlightColor();
+        dialog.getVisualPanel().showPersonInfo(personTemp);
+        dialog.getTextPanel().addSkillPanel(personTemp,false);
+        dialog.getTextPanel().addPara(exitOfficer_0,highlight,"" + officerCreditCost,""+officerSubCommandNodeCost);//"removed the credits and subcommand node");
+        dialog.getTextPanel().addPara(exitOfficer_1);//"information about the officer you have created here");
+        options.clearOptions();
+        AIRetrofits_Dialog_PeopleMaker.addExit(options);
+    }
+    @Override
+    public void createPerson(){
+        Global.getSector().getPlayerFleet().getCargo().removeCommodity(AIRetrofits_Constants.Commodity_SubCommandNode,officerSubCommandNodeCost);
+        Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(officerCreditCost);
+        PersonAPI person = AIRetrofits_CreatePeople.createOfficer(temp);
+        Global.getSector().getPlayerFleet().getFleetData().addOfficer(person);
+        personTemp = person;
     }
 }
