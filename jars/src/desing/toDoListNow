@@ -1,3 +1,8 @@
+Ground battle unit defs are now moddable, can add new ones or modify existing ones in data/config/exerelin/groundBattleDefs.json
+Player can create units with modded unit types if the unit def allows it
+NPCs will use default ground units, use a GroundBattleListener to add or replace units as necessary
+    in GroundBattleListiner: InvasionIntel.from to ge the market in from.
+    in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     1) how do i run ShipVariantAPI.removeMod() and ShipVariantAPI.addMod() without having said ship lose combat readiness
     2) with a 'TooltipMakerAPI' how do i add a set of images in a row, with some text next to each one? the text always seems to end up below the image for some reason.

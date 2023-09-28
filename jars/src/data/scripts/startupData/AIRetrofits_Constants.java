@@ -72,8 +72,10 @@ public class AIRetrofits_Constants {
     //people maker
     public static final int RobotForge_officerCreditCost = Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
     public static final int RobotForge_administratorCreditCost = Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
+    public static final int RobotForge_operativeCreditCost = Global.getSettings().getInt("AIRetrofits_Operative_credits");//1000;
     public static final int RobotForge_officerSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Officer_SCN");
     public static final int RobotForge_administratorSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Admin_SCN");
+    public static final int RobotForge_operativeSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Operative_SCN");
     public static final int RobotForge_officerCreditsPerMomth = 900;
     public static final int RobotForge_administratorCreditsPerMomth = 2000;
     public static final String RobotForge_SubCommandNode = "AIretrofit_SubCommandNode";

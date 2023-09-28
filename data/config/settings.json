@@ -120,8 +120,10 @@
 	#creating officers and admenistrators with robot forge
 	"AIRetrofits_Officer_credits":1000,
 	"AIRetrofits_Admin_credits":1000,
+	"AIRetrofits_Operative_credits":10000,
 	"AIRetrofits_Officer_SCN":1,
 	"AIRetrofits_Admin_SCN": 1,
+	"AIRetrofits_Operative_SCN":1,
 	#settings for crewPower and Priority
 	#power multi for AI cores:
 	"AIRetrofits_BaseMulti":0.85,
@@ -218,6 +220,8 @@
 	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0" : "You consider the possibility of creating a %s officer from the data you have.",#"information about the cost of creating an officer here. as well as the type of officer you are creating." ,
 	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1": "The officer you create will cost %s per month, increasing as they level up." ,
 	"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2": "You require %s sub command node and %s credits to create an officer." ,
+	"AIRetrofit_RobotForge_PeopleMaker_OfficerOption": "create officer",
+	"AIRetrofit_RobotForge_PeopleMaker_OfficerHoverOver": "requires a sub command node",
 	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0": "You consider the possibility of creating an administrator from the data you can collect. This will require quite a bit more training data than what is provided by governing a market to maintain its effectiveness." ,
 	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1": "The administrator you create will cost %s per month, at a reduced cost while they are idle." ,
 	"AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2":"You require %s sub command node and %s credits to create an administrator." ,
@@ -225,7 +229,19 @@
 	"AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1": "Got a new command node.",
 	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0": "Removed %s credits and %s subcommand node.",
 	"AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "Got a new command node.",
+	"AIRetrofit_RobotForge_PeopleMaker_AdminOption": "create admin",
+	"AIRetrofit_RobotForge_PeopleMaker_AdminHoverOver": "requires a sub command node",
 	"AIRetrofit_RobotForge_PeopleMaker_init_0":"You carefully consider what you can produce with the knowledge you have..." ,
+	#requires nexerlin
+	"AIRetrofit_RobotForge_PeopleMaker_OperativePage_0": "you may carefully select data and tune the command node to beable to hack, organize mechanical spies, and deploy complicated tactics such as blackmail to manipulate groups and peoples on a given market or faction. do to the extremely complicated nature of such tasks, with little room for error, this command node will require a large amount of data to be shifted through to even beable to preform the most basics of its trained tasks. however, do to the completed nature of its task, it will likely be able to improve overtime. orvided, a large amount of data is fed into the command node, to prevent simplification fo data",#"You may carefully pick and choose data among the vast array available to you to allow a sub command node to mimic a human personality, with all the ups and downs that come with it. Due to the situational nature of piloting a ship, the command node will still need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level Operative.",#"information about how you can chose an Operatives personality go here",
+	"AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0" : "You consider the possibility of creating a %s Operative from the data you have.",#"information about the cost of creating an Operative here. as well as the type of Operative you are creating." ,
+	"AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0_1" : "this Operative will be able to do the following jobs: %s.",#"information about the cost of creating an Operative here. as well as the type of Operative you are creating." ,
+	"AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_1": "The Operative you create will cost %s per month, increasing as they level up." ,
+	"AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_2": "You require %s sub command node and %s credits to create an Operative." ,
+	"AIRetrofit_RobotForge_PeopleMaker_exitOperative_0": "Removed %s credits and %s subcommand node.",
+	"AIRetrofit_RobotForge_PeopleMaker_exitOperative_1": "Got a new command node.",
+	"AIRetrofit_RobotForge_PeopleMaker_OperativeOption": "create operative",
+	"AIRetrofit_RobotForge_PeopleMaker_OperativeHoverOver": "requires a sub command node",
 	#colony data
 	"AIRetrofits_EnableColonyFeatures":true,#some advice, dont disable this after you build a market with robotic workers. that will cause issues. before you do should be fine, although this is lagacy code, and should only be changed before starting a new game to be safe
 

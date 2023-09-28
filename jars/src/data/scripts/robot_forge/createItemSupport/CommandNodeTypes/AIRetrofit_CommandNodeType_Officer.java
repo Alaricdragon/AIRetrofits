@@ -239,8 +239,8 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
     private int temp=0;
     private PersonAPI personTemp=null;
     private static final String MyOptionData = "officer";
-    private static final String MyOptionText = "create officer";
-    private static String MyOptionHoverOver = "requires a sub command node";
+    private static final String MyOptionText = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OfficerOption");//"create officer";
+    private static String MyOptionHoverOver = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OfficerHoverOver");//"requires a sub command node";
     public boolean canBuildCommandNode(){
         Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode);//,officerSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits(); // officerCreditCost;
