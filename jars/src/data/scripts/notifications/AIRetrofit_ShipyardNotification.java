@@ -10,8 +10,10 @@ import com.fs.starfarer.api.impl.campaign.intel.misc.ProductionReportIntel;
 import com.fs.starfarer.api.ui.CustomPanelAPI;
 import com.fs.starfarer.api.ui.SectorMapAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
+import data.scripts.notifications.support.shipyard.AIRetrofit_ShipYard_UpgradeList;
 
 import java.util.Set;
 
@@ -21,6 +23,11 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     public AIRetrofit_ShipyardNotification(AIRetrofit_Shipyard_UpgradeList list){
         this.list = list;
     }
+
+    public AIRetrofit_ShipyardNotification() {
+
+    }
+
     @Override
     public java.util.Set<java.lang.String> getIntelTags(SectorMapAPI map){
         Set<String> a = super.getIntelTags(map);
@@ -68,5 +75,13 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     @Override
     public String getIcon(){
         return Global.getSector().getEconomy().getCommoditySpec("AIretrofit_SubCommandNode").getIconName();
+    }
+    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info, AIRetrofit_ShipYard_UpgradeList upgrades){
+        //
+        try {
+            upgrades.display(info);
+        }catch(Exception e){
+            AIRetrofit_Log.loging("failed to displayAIRetrofit_ShipyardNotification. error: "+e,new AIRetrofit_Log(),true);
+        }
     }
 }
