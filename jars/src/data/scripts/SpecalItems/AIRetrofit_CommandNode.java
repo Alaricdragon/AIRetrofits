@@ -91,11 +91,11 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
 
     @Override
     public boolean hasRightClickAction(){
-        return true;
+        return findPersonType().hasRightClickAction();
     }
     @Override
     public boolean shouldRemoveOnRightClickAction(){
-        return true;
+        return findPersonType().shouldRemoveOnRightClickAction();
     }
     @Override
     public boolean isTooltipExpandable(){

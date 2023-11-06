@@ -588,6 +588,8 @@
 	"AIRetrofit_CommandNode_adminText2": "a command node with the designation of %s. they are a %s with %s related skills",
 	"AIRetrofit_CommandNode_Nexerlin_Operative_Text": "Operative",
 	"AIRetrofit_CommandNode_Nexerlin_Operative_Text2": "a command node with the designation of %s. they are a level %s %s with a specialty in %s",
+	"AIRetrofit_CommandNode_Nexerlin_Operative_Text_maxOpp": "you cannot manage any more agents",
+	"AIRetrofit_CommandNode_Nexerlin_Operative_Text_possableJobStart": "this command node is capable of doing the following jobs: ",
 	"AIRetrofit_CommandNode_defaultTExt": "error",
 	"AIRetrofit_CommandNode_defaultText2": "a command node with the designation of %s. they are a %s",
 	#power a compleatly random core has

@@ -1,6 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.8:
 save compatible with 0.7.20.1+
+    NOTE:
+        requires marketRetrofits V0.2+
     new:
         added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
             -this market sells command nodes as admins and officers. i think its cool.
@@ -19,6 +21,12 @@ save compatible with 0.7.20.1+
         fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
     config:
         added the midding create command node text tot he config
+V0.7.21.22(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed part of the description on the operative command node.
+        added a warning label to operatives command nodes when you have the max number of them
+        fixed some random missing things from the config.
 V0.7.21.11(private):
 save compatible with 0.7.20.1+
     fixes:
