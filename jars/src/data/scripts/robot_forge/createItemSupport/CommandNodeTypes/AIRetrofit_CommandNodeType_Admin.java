@@ -180,8 +180,8 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
     private static final int administratorSubCommandNodeCost = AIRetrofits_Constants.RobotForge_administratorSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Admin_SCN");
     private static final int administratorCreditsPerMomth = AIRetrofits_Constants.RobotForge_administratorCreditsPerMomth;//2000;
     private static final String MyOptionData = "admin";
-    private static final String MyOptionText = "create admin";
-    private static final String MyOptionHoverOver = "requires a sub command node";
+    private static final String MyOptionText = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_AdminOption");//"create admin";
+    private static final String MyOptionHoverOver = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_AdminHoverOver");//"requires a sub command node";
     public boolean canBuildCommandNode(){
         return false;
     }

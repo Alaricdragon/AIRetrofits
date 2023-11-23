@@ -222,8 +222,12 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         }*/
     @Override
     public boolean isIllegalOnSubmarket(CargoStackAPI stack, TransferAction action) {
-        if(stack.getCargo().equals(cargo)){
-            return false;
+        try {
+            if (stack.getCargo().equals(cargo)) {
+                return false;
+            }
+        }catch (Exception e){
+
         }
         /*
             if (stack.getCommodityId() == null) return true;
@@ -258,9 +262,9 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public String getIllegalTransferText(CargoStackAPI stack, SubmarketPlugin.TransferAction action){
         return illegalTest;//"cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.";
     }
-    @Override
+    /*@Override
     public 	boolean isMilitaryMarket(){
         return true;
-    }
+    }*/
 }
 

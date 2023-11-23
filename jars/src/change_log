@@ -1,14 +1,17 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.8:
 save compatible with 0.7.20.1+
+    NOTE:
+        requires marketRetrofits V0.2+
     new:
         added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
             -this market sells command nodes as admins and officers. i think its cool.
         added T2 robot manufactures. because sometimes you want more
         added version checker support (hopefully)
-    added a new item called a 'command node'.
-        -this item can only be found in the new sub-market.
-        -it can be right clicked on to get a new officer or admen.
+        added a new item called a 'command node'.
+            -this item can only be found in the new sub-market.
+            -it can be right clicked on to get a new officer or admen.
+        (with nexerlin) added a new person that can be made in the robot forge.
     changes:
         changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
         changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
@@ -16,6 +19,22 @@ save compatible with 0.7.20.1+
     fixes:
         fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
         fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
+    config:
+        added the midding create command node text tot he config
+V0.7.21.22(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed part of the description on the operative command node.
+        added a warning label to operatives command nodes when you have the max number of them
+        fixed some random missing things from the config.
+V0.7.21.11(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed radom crash when after scrolling through the build a indusry screen, the game would crash if you tried to view submarkets
+        fixed the new submarket maybe doing something strange in if the market was a military market (what?)
+    added nexerlin operative to the list of command nodes that can be created in the robot forge.
+    config:
+        added the midding create command node text tot he config
 V0.7.21.10(private):
 save compatible with 0.7.20.1+
     new:

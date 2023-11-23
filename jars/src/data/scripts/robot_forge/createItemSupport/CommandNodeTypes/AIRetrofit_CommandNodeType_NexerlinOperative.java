@@ -20,6 +20,7 @@ import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.robot_forge.dilogs.AIRetrofits_Dialog_PeopleMaker;
 import data.scripts.startupData.AIRetrofits_Constants;
+import exerelin.campaign.intel.agents.AgentBarEvent;
 import exerelin.campaign.intel.agents.AgentIntel;
 
 import java.awt.*;
@@ -33,6 +34,9 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     public static final String CommandNodeType = Global.getSettings().getString("AIRetrofit_CommandNode_Nexerlin_Operative_Text");
     public static final String CommandNodeType2 = Global.getSettings().getString("AIRetrofit_CommandNode_Nexerlin_Operative_Text2");
     public static final int maxLevel = (int) Global.getSettings().getFloat("AIRetrofit_CreatePerson_Nexerlin_Opertive_MaxLevel");
+
+    public static final String possableJobStart = Global.getSettings().getString("AIRetrofit_CommandNode_Nexerlin_Operative_Text_possableJobStart");//"this command node is capable of doing the following jobs: ";
+    public static final String maxAgentsText = Global.getSettings().getString("AIRetrofit_CommandNode_Nexerlin_Operative_Text_maxOpp");//"you cannot manage any more agents";
     public AIRetrofit_CommandNodeType_NexerlinOperative(String name, float weight,boolean addToCommandNodes,boolean addToRobotForge) {
         super(name, weight,addToCommandNodes,addToRobotForge);
     }
@@ -49,17 +53,28 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
         text.addPara(CommandNodeType2,pad,highlight,person.getNameString(),""+level,CommandNodeType,type);
         tooltip.addImageWithText(opad);
         if(expanded){
-            String text2 = "this command node is capable of doing the following jobs: ";
+            String text2 = possableJobStart;
             String[] actions = getType(person).getAllowedActionNames(false).toArray(new String[0]);
             for(int a = 0; a < actions.length - 1; a++){
                 text2 += actions[a] + ", ";
             }
             text2 += actions[actions.length - 1];
-            tempPad = text.addPara(text2,pad,highlight,actions).computeTextHeight(text2)*4;
+            text.addPara(text2,pad,highlight,actions);
+            //tempPad = text.addPara(text2,pad,highlight,actions).computeTextHeight(text2)*4;
             //put what the operative can do here?
+
         }else{
-            tempPad = 0;
+            //tempPad = 0;
         }
+        if (!canAddMoreAgents()){
+            Color highlight2 = Misc.getNegativeHighlightColor();
+            text.addPara(maxAgentsText,pad,highlight2,maxAgentsText);
+            //tempPad += (text.addPara(maxAgentsText,pad,highlight2,maxAgentsText).computeTextHeight(maxAgentsText)*4);
+            //return;
+        }
+        //tempPad = tooltip.getHeightSoFar();
+        tempPad = text.getHeightSoFar() - 48;
+        tempPad = Math.max(tempPad,0);
     }
 
     @Override
@@ -99,12 +114,20 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
 
     @Override
     public void performRightClickAction(PersonAPI person) {
-        AgentIntel.Specialization type = getType(person);
-        int level = person.getStats().getLevel();
-        AgentIntel intel = new AgentIntel(person, Global.getSector().getPlayerFaction(), level);
-        intel.addSpecialization(type);
-        intel.setMarket(getClosestMarket());
-        intel.init();
+        if(canAddMoreAgents()) {
+            AgentIntel.Specialization type = getType(person);
+            int level = person.getStats().getLevel();
+            AgentIntel intel = new AgentIntel(person, Global.getSector().getPlayerFaction(), level);
+            intel.addSpecialization(type);
+            intel.setMarket(getClosestMarket());
+            intel.init();
+        }
+    }
+    public boolean hasRightClickAction(){
+        return canAddMoreAgents();
+    }
+    public boolean shouldRemoveOnRightClickAction(){
+        return canAddMoreAgents();
     }
     public static AgentIntel.Specialization getType(PersonAPI person){
         AgentIntel.Specialization type = AgentIntel.Specialization.HYBRID;
@@ -158,26 +181,29 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     }
 
 
+    public static boolean canAddMoreAgents(){
+        return !AgentBarEvent.isAtMaxAgents();
+    }
 
 
 
-
-    private static final int officerCreditCost = AIRetrofits_Constants.RobotForge_officerCreditCost;//Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
-    private static final int officerSubCommandNodeCost = AIRetrofits_Constants.RobotForge_officerSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Officer_SCN");
-    private static final int officerCreditsPerMomth = AIRetrofits_Constants.RobotForge_officerCreditsPerMomth;//900;
-    private static final String officerPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerPage_0");
-    private static final String officerConfirmPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0");
-    private static final String officerConfirmPage_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1");
-    private static final String officerConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2");
-    private static final String exitOfficer_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0");
-    private static final String exitOfficer_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1");
+    private static final int officerCreditCost = AIRetrofits_Constants.RobotForge_operativeCreditCost;//Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
+    private static final int officerSubCommandNodeCost = AIRetrofits_Constants.RobotForge_operativeSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Officer_SCN");
+    private static final int officerCreditsPerMomth = AgentIntel.getSalary(1);
+    private static final String officerPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativePage_0");
+    private static final String officerConfirmPage_0_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0_1");
+    private static final String officerConfirmPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0");
+    private static final String officerConfirmPage_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_1");
+    private static final String officerConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_2");
+    private static final String exitOfficer_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOperative_0");
+    private static final String exitOfficer_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitOperative_1");
     private static final String[] personalities = {AgentIntel.Specialization.SABOTEUR.getName(),AgentIntel.Specialization.HYBRID.getName(),AgentIntel.Specialization.NEGOTIATOR.getName()};
 
     private int temp=0;
     private PersonAPI personTemp=null;
     private static final String MyOptionData = "operative";
-    private static final String MyOptionText = "create operative";
-    private static String MyOptionHoverOver = "requires a sub command node";
+    private static final String MyOptionText = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativeOption");//"create operative";
+    private static String MyOptionHoverOver = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_OperativeHoverOver");//"requires a sub command node";
     public boolean canBuildCommandNode(){
         Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode);//,officerSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits(); // officerCreditCost;
@@ -202,21 +228,35 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
         Color highlight = Misc.getHighlightColor();
         dialog.getTextPanel().addPara(officerConfirmPage_0,highlight,exstras);//infermation about the officer your creating go here.
         options.clearOptions();
+        String[] actions = {};
+        String exstra2 = "";
         switch (power){
             case 0:
+                actions = AgentIntel.Specialization.SABOTEUR.getAllowedActionNames(false).toArray(new String[0]);
                 break;
             case 1:
+                actions = AgentIntel.Specialization.HYBRID.getAllowedActionNames(false).toArray(new String[0]);
                 break;
             case 2:
+                actions = AgentIntel.Specialization.NEGOTIATOR.getAllowedActionNames(false).toArray(new String[0]);
                 break;
         }
+        for(int a = 0; a < actions.length - 1; a++){
+            exstra2 += actions[a] + ", ";
+        }
+        exstra2 += actions[actions.length - 1];
+        dialog.getTextPanel().addPara(officerConfirmPage_0_0,highlight,exstra2);//infermation about the officer your creating go here.
         temp = power;
         exstras = new String[]{"" + officerCreditsPerMomth};
         dialog.getTextPanel().addPara(officerConfirmPage_1,highlight,exstras);//"the officer you create will cost " + officerCreditsPerMomth + "per month. and more as they level up.");
         exstras = new String[]{"" + officerSubCommandNodeCost, "" + officerCreditCost};
         dialog.getTextPanel().addPara(officerConfirmPage_2,highlight,exstras);//"you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
-        if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost){
+        if (!canAddMoreAgents()){
+            dialog.getTextPanel().addPara(maxAgentsText,Misc.getNegativeHighlightColor(),maxAgentsText);
+        }
+        if(canAddMoreAgents() && Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost){
             options.addOption("continue","createOfficer");
+            powerTemp = power;
         }
         SetStoryOption.set(dialog,1,"createOfficer","promoteCrewMember","ui_char_spent_story_point","");
         AIRetrofits_Dialog_PeopleMaker.addBack(options);
@@ -251,7 +291,7 @@ public class AIRetrofit_CommandNodeType_NexerlinOperative extends AIRetorfit_Com
     public void exitPage(OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){
         Color highlight = Misc.getHighlightColor();
         dialog.getVisualPanel().showPersonInfo(personTemp);
-        dialog.getTextPanel().addSkillPanel(personTemp,false);
+        //dialog.getTextPanel().addSkillPanel(personTemp,false);
         dialog.getTextPanel().addPara(exitOfficer_0,highlight,"" + officerCreditCost,""+officerSubCommandNodeCost);//"removed the credits and subcommand node");
         dialog.getTextPanel().addPara(exitOfficer_1);//"information about the officer you have created here");
         options.clearOptions();

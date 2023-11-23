@@ -45,6 +45,13 @@ public class AIRetorfit_CommandNodeTypesBase {
     public void setTagForPerson(PersonAPI person){
         person.addTag(name);
     }
+
+    public boolean hasRightClickAction(){
+        return true;
+    }
+    public boolean shouldRemoveOnRightClickAction(){
+        return true;
+    }
     public void performRightClickAction(PersonAPI person){
 
     }
