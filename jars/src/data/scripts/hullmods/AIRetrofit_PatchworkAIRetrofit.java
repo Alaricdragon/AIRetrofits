@@ -140,7 +140,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         //a.3)
         boolean hasMinCrew = true;
         try {
-            if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")) {
+            if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit)) {
                 hasMinCrew = false;
             }
         }catch (Exception E){

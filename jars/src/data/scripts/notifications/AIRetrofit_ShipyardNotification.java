@@ -12,16 +12,22 @@ import com.fs.starfarer.api.ui.SectorMapAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
+import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
 import data.scripts.notifications.support.shipyard.AIRetrofit_ShipYard_UpgradeList;
 
 import java.util.Set;
 
 public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     protected static String name = "Automated Ship Installation Center Production Report";
-    public AIRetrofit_ShipYard_UpgradeList upgradeData;
-    public void setUpgradeData(AIRetrofit_ShipYard_UpgradeList upgradeData){
-        this.upgradeData = upgradeData;
+    public AIRetrofit_Shipyard_UpgradeList list = null;
+    public AIRetrofit_ShipyardNotification(AIRetrofit_Shipyard_UpgradeList list){
+        this.list = list;
     }
+
+    public AIRetrofit_ShipyardNotification() {
+
+    }
+
     @Override
     public java.util.Set<java.lang.String> getIntelTags(SectorMapAPI map){
         Set<String> a = super.getIntelTags(map);
@@ -52,13 +58,13 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     }
     @Override
     public void createSmallDescription(TooltipMakerAPI info, float width, float height){
-        displayAIRetrofit_ShipYardNotification(info,upgradeData);
+        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(info,list);
     }
     @Override
     public void createLargeDescription(CustomPanelAPI panel,
                                        float width,
                                        float height){
-        displayAIRetrofit_ShipYardNotification(panel.createUIElement(5,5,true),upgradeData);
+        AIRetrofit_MakretListener.displayAIRetrofit_ShipYardNotification(panel.createUIElement(5,5,true),list);
     }
     @Override
     public boolean shouldRemoveIntel() {
@@ -70,7 +76,7 @@ public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
     public String getIcon(){
         return Global.getSector().getEconomy().getCommoditySpec("AIretrofit_SubCommandNode").getIconName();
     }
-    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info,AIRetrofit_ShipYard_UpgradeList upgrades){
+    public static void displayAIRetrofit_ShipYardNotification(TooltipMakerAPI info, AIRetrofit_ShipYard_UpgradeList upgrades){
         //
         try {
             upgrades.display(info);

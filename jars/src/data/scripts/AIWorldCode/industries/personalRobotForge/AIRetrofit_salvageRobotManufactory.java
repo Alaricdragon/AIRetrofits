@@ -9,6 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
 import data.scripts.startupData.AIRetrofits_Constants;
 
@@ -72,7 +73,12 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
     protected void exstraBetaDescription(String pre,TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        String[] exstra = {"" + BetaGrowthMod};
+        String[] itemsTemp = this.getItems();
+        int bonus = 1;
+        if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
+            bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
+        }
+        String[] exstra = {"" + (BetaGrowthMod*bonus)};
         tooltip.addPara(pre + BetaText,pad,highlight,exstra);
     }
     @Override
@@ -82,8 +88,13 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
         }
         float bonus = BetaGrowthMod;
         if (this.isImproved()){
-            bonus *= 2;
+            //bonus *= 2;
+        }
+        String[] itemsTemp = this.getItems();
+        if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
+            bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
         incoming.getWeight().modifyFlat(m1, bonus, getNameForModifier());
+        AIRetrofit_Log.loging("trying a log for some reason plz egnore. (modfication name was: )"+m1,this,true);
     }
 }

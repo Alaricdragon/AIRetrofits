@@ -1,13 +1,16 @@
 package data.scripts;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import data.scripts.AIWorldCode.FoundAMarket.AIRetrofit_MarketRetrofit_CustomMarketFounder;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_econUpdateListiner;
 import data.scripts.AIWorldCode.supplyDemandClasses.*;
 import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
+import data.scripts.startupData.AIRetrofits_Startup_CreatePeople;
 import data.scripts.startupData.AIRetrofits_Startup_CrewReplacer;
 import data.scripts.startupData.AIRetrofits_Startup_MarketRetrofits;
 import data.scripts.startupData.AIRetrofits_Startup_RobotForge;
@@ -26,9 +29,11 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
         AIRetrofits_Startup_RobotForge.apply();
         setDataLists.init();
+        AIRetrofits_Startup_CreatePeople.apply();
         AIRetrofits_Startup_MarketRetrofits.apply();
 
         AIRetrofits_Startup_CrewReplacer.apply();
+        AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
     }
     @Override
     public void onGameLoad(boolean newGame) {
@@ -48,6 +53,8 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().getEconomy().addUpdateListener(a);
 
         Global.getSector().addTransientListener(new AIRetrofit_MakretListener(false));
+
+        AIRetrofit_MarketRetrofit_CustomMarketFounder.setMarketFounder();
     }
     private void descriptions(){
         //Global.getSector().getEconomy().getCommoditySpec("")

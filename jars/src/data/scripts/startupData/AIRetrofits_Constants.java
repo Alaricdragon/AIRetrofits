@@ -1,6 +1,7 @@
 package data.scripts.startupData;
 
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 
 public class AIRetrofits_Constants {
     //startup settings:
@@ -12,9 +13,30 @@ public class AIRetrofits_Constants {
     public static final String ability_RobotForge = "AIretrofit_robot_drone_forge";
     public static final String req_skill = "automated_ships";
 
-    public static final String AlphaCore = "alpha_core";
+    public static final String AlphaCore = Commodities.ALPHA_CORE;
 
+    public static final String Commodity_T0_WorkerDrone = "AIretrofit_WorkerDrone";
+    public static final String Commodity_T0_CombatDrone = "AIretrofit_CombatDrone";
+    public static final String Commodity_T0_SurveyDrone = "AIretrofit_SurveyDrone";
 
+    public static final String Commodity_T1_WorkerDrone = "AIretrofit_Advanced_WorkerDrone";
+    public static final String Commodity_T1_CombatDrone = "AIretrofit_Advanced_CombatDrone";
+    public static final String Commodity_T1_SurveyDrone = "AIretrofit_Advanced_SurveyDrone";
+
+    public static final String Commodity_T2_WorkerDrone = "AIretrofit_Omega_WorkerDrone";
+    public static final String Commodity_T2_CombatDrone = "AIretrofit_Omega_CombatDrone";
+    public static final String Commodity_T2_SurveyDrone = "AIretrofit_Omega_SurveyDrone";
+
+    public static final String Commodity_CommandRely = "AIretrofit_CommandRely";
+    public static final String Commodity_MaintenanceParts = "AIretrofit_maintainsPacts";
+    public static final String Commodity_SubCommandNode = "AIretrofit_SubCommandNode";
+    public static final String Commodity_RoboticReplacementParts = "AIretrofit_roboticReplacementParts";
+    public static final String Commodity_HumanInterfaceNode = "AIretrofit_humanInterfaceNode";
+
+    //industry names:
+    public static final String Industry_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacility";
+    //sub market names:
+    public static final String Submarket_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacilitySubmarket";
 
     //Robot Stats And Descriptions
     public static final String robot_Description = Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
@@ -50,8 +72,10 @@ public class AIRetrofits_Constants {
     //people maker
     public static final int RobotForge_officerCreditCost = Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
     public static final int RobotForge_administratorCreditCost = Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
+    public static final int RobotForge_operativeCreditCost = Global.getSettings().getInt("AIRetrofits_Operative_credits");//1000;
     public static final int RobotForge_officerSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Officer_SCN");
     public static final int RobotForge_administratorSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Admin_SCN");
+    public static final int RobotForge_operativeSubCommandNodeCost = Global.getSettings().getInt("AIRetrofits_Operative_SCN");
     public static final int RobotForge_officerCreditsPerMomth = 900;
     public static final int RobotForge_administratorCreditsPerMomth = 2000;
     public static final String RobotForge_SubCommandNode = "AIretrofit_SubCommandNode";
@@ -166,7 +190,6 @@ public class AIRetrofits_Constants {
     public static final String Market_GrowthMod_LocalRobotFactorys = "LocalRobotFactory's";
     public static final String Market_GrowthMod_FactionWideRobotFactorys = "FactionWideRobotFactory's";
     public static final String Market_GrowthMod_AIRetrofits_RobotFactoryGrowthMod = "AIRetrofits_RobotFactoryGrowthMod";
-
     //growth descriptions
     public static final String Market_GrowthDescription_hazzardPay = Global.getSettings().getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
     //public static final String Market_GrowthDescription_population_AIRetrofit_0 = "";//not required
@@ -222,9 +245,28 @@ public class AIRetrofits_Constants {
 
 
 //Command Node and person info:
-    public static final String PersonTypes_Officer = "officer";
-    public static final String PersonTypes_Admin = "admin";
-
-    public static final float PersonWeight_Officer = 1;
-    public static final float PersonWeight_Admin = 1;
+    public static final String[] SpecalItemID_CommandNodes = {
+            "AIRetrofit_CommandNode_0",
+            "AIRetrofit_CommandNode_1",
+            "AIRetrofit_CommandNode_2",
+            "AIRetrofit_CommandNode_3",
+            "AIRetrofit_CommandNode_4",
+            "AIRetrofit_CommandNode_5",
+            "AIRetrofit_CommandNode_6",
+            "AIRetrofit_CommandNode_7",
+            "AIRetrofit_CommandNode_8",
+            "AIRetrofit_CommandNode_9",
+};
+    public static final float[] SpecalItem_CommandNodes_thresholds = {
+        Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_0"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_1"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_2"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_3"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_4"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_5"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_6"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_7"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_8"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_9"),
+    };
 }

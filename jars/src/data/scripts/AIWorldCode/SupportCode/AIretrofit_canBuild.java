@@ -11,7 +11,11 @@ public class AIretrofit_canBuild {
     }
     public static boolean hasRobotForge(){
         return Global.getSector().getPlayerFleet().hasAbility("AIretrofit_robot_drone_forge") && can;
-    }/*
+    }
+    public static boolean canFoundMarket(){
+        return hasRobotForge();
+    }
+    /*
     public static boolean hasRoboticShips(){
         return Global.getSector().getPlayerFaction().getKnownHullMods().get("") && can;
     }*/

@@ -107,3 +107,4 @@ public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase {
     }
 
 }
+

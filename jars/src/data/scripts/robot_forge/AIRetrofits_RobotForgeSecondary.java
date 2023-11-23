@@ -18,14 +18,14 @@ public class AIRetrofits_RobotForgeSecondary {
     static float ForgePowerMulti = AIRetrofits_Constants.RobotForge_ForgePowerMulti;//Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
 
     public static float iCalculateBonus(CampaignFleetAPI fleet) {
-            try {
-                float iBonus = getFleetsForgeModules(fleet);
-                return iBonus + (Math.min(iBonus, getFleetsNanoforgePower(fleet)))/*+1*/;
-            }catch (Exception e){
-                AIRetrofit_Log.loging("failed to get the forge power in fleet. error: "+e,new AIRetrofits_RobotForgeSecondary().getClass(),true);
-                return 0f;
-            }
+        try {
+            float iBonus = getFleetsForgeModules(fleet);
+            return iBonus + (Math.min(iBonus, getFleetsNanoforgePower(fleet)))/*+1*/;
+        }catch (Exception e){
+            AIRetrofit_Log.loging("failed to get the forge power in fleet. error: "+e,new AIRetrofits_RobotForgeSecondary().getClass(),true);
+            return 0f;
         }
+    }
 
 
     public static float getFleetsForgeModules(CampaignFleetAPI fleet){

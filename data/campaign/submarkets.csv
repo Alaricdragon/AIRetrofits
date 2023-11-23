@@ -1,4 +1,4 @@
 id,name,faction,desc,script,icon,order
 AIRetrofit_ShipyardSubmarket,AI Shipyard,player,deposit ships here to insteal the thing,data.scripts.AIWorldCode.submarkets.AIRetrofit_Shipyard,graphics/submarkets/AIRetrofit_ShipyardSubmarket.png,2000
-,,,,,,
+AIRetrofit_AINodeProductionFacilitySubmarket,Command Node Training Center,player,allows you to train a command node with a given specality from data gatherd acrose the com networks. although at a cost,data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket,graphics/submarkets/AIRetrofits_AINodeProduction_Submarket.png,2000
 ,,,,,,
