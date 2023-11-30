@@ -4,12 +4,21 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in GroundBattleListiner: InvasionIntel.from to ge the market in from.
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
-    1) how do i run ShipVariantAPI.removeMod() and ShipVariantAPI.addMod() without having said ship lose combat readiness
-    2) with a 'TooltipMakerAPI' how do i add a set of images in a row, with some text next to each one? the text always seems to end up below the image for some reason.
-    -)note: what im trying to do is mimic tooltip.addSkillPanel with things that are not officer skills..
+    (for nexerlins deeluper):
+    in regards to invasions and the groundBattleDefs.json
+    so i have been exsperamenting with the groundBattleDefs.json and have some questions/ bug reports:
+    questions:
+        1) in unsure how the "unitSizeMult" stat works. i tried changing it to 2, but my troops didn't form into units twice as large as normal troops did. i got about 1.83X the number of troops in each platoon. what could i do to get 2X the size in troop size? (marines formed squads of 40, my new troops formed squads of 62.)
+        2) is there a way to 'hide' the option of creating a certain troop type (on the invasion screen), until i tell the game to let the player use it? I dont want to clutter the UI to mush with random things i want to add.
+        3) is there a way to deside what is hidden and not in the 'resources on fleet' part of a invasion? I find that it shows some things i want very hidden for a surprise (things that are in the crew replacer job for nex_groundBattle_marines, i mean.), and does not show anything related to new unitTypes.
+        4) is there a way to change the way a unitType looks based off code on a per platoon basis? i want to change what image a unit appears as depending on what crew replacer ends up putting in it.
+    reports:
+        1) in the screen before the invasion begins, were it displays your forces it does not take into acount any new troop types you may have on bord.
+        2) when trying to make a unit type with both 'equipment' and 'personnel' i find that the number of each used is not reflective of there relevant 'mult' stat. in testing with equipment mult: 10 and personnel multi: 1, i got 31 personnel to 400 equipment in a platoon.
+
+    please understand that i have only been testing this for a few hours now, and have just started to unravel how all this works. some of my questions and reports might just be user error that i will uncover in the upcoming days, so sorry if i said something silly.
+    PS: this is really really cool system you added. i have all sorts of interesting plans its going to be flavorful =)
 im going to work on the following now:
-    finalize the upgrades person robot forges
-        -a industry level forge. with more output. yay output. (also fixes the issue with not enouth survey robots, without making a mess of things.)
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.
@@ -27,50 +36,7 @@ im going to work on the following now:
                 -(not done)change the image of the hullmod to something more brown or broken looking.
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
-        Command Node and relevant industry:
-            nexerlin mod combatability:
-                i want to have a way to have Command Nodes be operatives from nexerlin. to do this will require some background work:
-                    issues:
-                        (done)ithe new core type needs to create itself on a market. it might be choseing the wrong market in some situations.
-                            -unknown reasons.
-                        the f1 exstend description needs to show the relevent tasks a given operative can do.
-                        (done)require rebalance: the thressholds per core cost.
-                            -right now they are liner. might need to make them not so, as even a not to costly core can cost a lot of credits, for no reason.
-
-            (started)Submarket:
-                (done)add to csv
-                (done)add image
-                (done?)add text.
-                (done)make the market refuse to bye things.
-                (done)make the market only sell command nodes.
-                (done)allow the market to have diffrent strangths on command nodes.
-                (done)allow AICores to change the submarkets AICore stats
-                (done)make it so the submarket is added and removed with the industry
-                (done)change description of the industry to say it adds this sub market.
-                (done)change what the AI cores do on said industry.
-                (done)make it so the sub market A does not exist, or B does not refresh well in industry is offline
-                (done)update the old exstra text in this submarket ()
-                (done)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
-                (done)make it so improving the industry does something. right now nothing happens.
-                (NEED TO DO THIS)make it so when i move a item out of the submarket, i can put it back in
-                (done)re ballance the sub markets AI-Cores. i calculate that they are never going to reach max level. power per core should -increase- as output does.
-                    -to fix this, i should make the quality improve with a slight increase per production? maybe a increase of 5 percent power per production, so at production 3, its 15% increase, and production 10, its a 50% increase?
-                    -options: (S = supply, P = powerPerSize, I = increasePerSize)
-                        (not)a) POWER = (P*S)*(I*S).
-                            (S=5,P=1,I=1.05) = 5*1.25 = 6.25
-                            (S=5,P=1,I=1.1)  = 5*1.5 = 7.5
-                        (yes)b) POWER = (P*S)*(I^S).
-                            (S=5,P=1,I=1.05) = 5*1.2762815625 = 6.3814078125
-                            (S=5,P=1,I=1.1)  = 5*1.61051 = 8.05255
-            AICore Changes:
-                (done)make it so the price of a given core is visable.
-                (done)make it so the nexerlin operative command node shows the jobs it can do when you press F1 on it.
-                (started)make it so the AIRetrofit_CommandNodeType_Base class has a implementation that adds a given command node type to the robot forge.
-            (started) person robot manufactorys:
-                -(done)change amount of bots prouced to be based on the supply of the market.
-                -(done)add a upgraded version of each manufactroy that scailes with market size.
-                -(done)make the beta core bonus scale with supply, at the cost of reduceing per supply robo production of the manufacture, and with a smaler base bonus.
-                -add images to the t2 personal robot manufactures
+         -add images to the t2 personal robot manufactures
 
 Note:
     regarding replacing crew and marines with salvage robots and combat robots:
@@ -85,7 +51,12 @@ bugs:
     issue: (partly done. no longer changes contacts) right now i can change the name and portrait of important NPC's. make it so i cant.
     issue: advanced and omega robots have the same price as basic robots. change this plz.
     issue: the cost of a single survey / salvage / combat robot is the same regardless of level. i fixed this by changeing there demand class, but i want them to have the same demand classes so they can be interchangeable. look this up plz.
-    issue: patchwork AIRetrofits being removed when it should not be. being swaped with AIRetrofits when it should not be. frusterating.
+
+    report:
+        Unsure if this is already known or not:
+        Using that construction mod that allows for space station construction,etc. Made a station and tried to change the pop there to your ai.
+        The building was made. Only problem was that the colony growth thing that showed % only showed "NaN".
+        Waited for a few ingame months but it was still the same and there was no growth on said stations.
 missing text:
     population and infastucture:
         need to move the "number of robots" text into setting sometime

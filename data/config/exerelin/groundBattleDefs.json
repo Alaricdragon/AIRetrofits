@@ -1,0 +1,63 @@
+{
+	"industries":{	
+	},
+	
+	"conditions":{
+	},
+	
+	"abilities":{
+	},
+	
+	"unitTypes":{
+		"CombatRobots":{
+			"name":"CombatRobots",
+			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+			#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+			"playerCanCreate":true,
+			"strength":0.5,
+			"moraleMult":2,
+			"dropCostMult":0.5,
+			"damageTakenMult":1,
+
+			"unitSizeMult":2,
+			#"offensiveStrMult":1.25,
+			#"crampedStrMult":0.75,
+			"personnel":{
+				"commodityId":"AIretrofit_CombatDrone",
+				"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+				"mult":1,	# integer, at least for now
+			},
+			"tags":["marine"],
+			"sortOrder":1,
+		},
+		"CombatRobots_Heavy":{
+			"name":"heavy_combatrobots",
+			"type":"HEAVY",
+			"playerCanCreate":true,
+			"strength":5.5,
+			"unitSizeMult":1,
+			"dropCostMult":7.5,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
+			"equipment":{
+				"commodityId":"hand_weapons",
+				"crewReplacerJobId":"nex_groundBattle_heavyarms",
+				"mult":10,
+			},
+			"personnel":{
+				"commodityId":"AIretrofit_CombatDrone",
+				"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+				"mult":1,
+			},
+			"tags":["heavy"],
+			"sortOrder":2,
+		},
+	},
+	
+	
+	#"natoAlphabet":[
+	#	"Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", 
+	#	"Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", 
+	#	"Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"
+	#],
+}

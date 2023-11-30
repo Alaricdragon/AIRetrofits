@@ -108,11 +108,18 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempJob.addCrew(tempCrew);
 
         //nex job basic:
-        tempJob = crewReplacer_Main.getJob(nexMarinesJob);
+        /*tempJob = crewReplacer_Main.getJob(nexMarinesJob);
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = robotType;
         tempCrew.crewPower = nexM_Po;//Hm_Po
         tempCrew.crewPriority = nexM_Pr;//Hm_Pr
+        tempJob.addCrew(tempCrew);*/
+
+        tempJob = crewReplacer_Main.getJob("AIretrofit_groundBattle_CombatDrone");
+        tempCrew = new AIRetrofit_Robots();
+        tempCrew.name = robotType;
+        tempCrew.crewPower = 1;//Hm_Po
+        tempCrew.crewPriority = 10;//Hm_Pr
         tempJob.addCrew(tempCrew);
 
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);

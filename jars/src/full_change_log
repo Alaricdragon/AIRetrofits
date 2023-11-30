@@ -1,4 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.8.1:
+save compatible with 0.7.20.1+
+    started:
+        started to add my own definitions to the nexerlin invasions, so i can have my own troop types
 V0.8:
 save compatible with 0.7.20.1+
     NOTE:
@@ -26,6 +30,7 @@ save compatible with 0.7.20.1+
     fixes:
         fixed part of the description on the operative command node.
         added a warning label to operatives command nodes when you have the max number of them
+        fixed the issue of being able to create as many nexerlin operatives as you wanted. opps.
         fixed some random missing things from the config.
 V0.7.21.11(private):
 save compatible with 0.7.20.1+
