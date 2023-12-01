@@ -14,13 +14,17 @@ public class AIRetrofits_InitCombatabilityPatches {
     public static void onApplicationLoad() {
         for(int a = 0; a < modNames.length; a++) {
             if (Global.getSettings().getModManager().isModEnabled(modNames[a])) {
-                AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ...", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
+                AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ... part 1", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
                 patches[a].apply();
             }
         }
     }
     public static void onGameLoad(boolean newGame) {
-        if(Global.getSettings().getModManager().isModEnabled(modNames[0])) {
+        for(int a = 0; a < modNames.length; a++) {
+            if (Global.getSettings().getModManager().isModEnabled(modNames[a])) {
+                AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ... part 2", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
+                patches[a].onGameLoad(newGame);
+            }
         }
     }
 }

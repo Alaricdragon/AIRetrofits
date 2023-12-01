@@ -1,5 +1,15 @@
 changelog for all my changes as i make them so i dont forget again.
-V0.8.1:
+V0.9:
+save compatible with 0.7.20.1+
+    fixed:
+        fixed broken version checker support. sorry that was a thing.
+V0.8.2:(private)
+save compatible with 0.7.20.1+
+    fixed:
+        fixed broken version checker support. sorry that was a thing.
+    started:
+        created a more modable way to swap out combat units in a fight.
+V0.8.1:(private)
 save compatible with 0.7.20.1+
     started:
         started to add my own definitions to the nexerlin invasions, so i can have my own troop types

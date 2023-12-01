@@ -4,11 +4,14 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in GroundBattleListiner: InvasionIntel.from to ge the market in from.
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
-    (for nexerlins deeluper):
+    (for nexerlins developer):
     in regards to invasions and the groundBattleDefs.json
     so i have been exsperamenting with the groundBattleDefs.json and have some questions/ bug reports:
+
+
+    (already reported. dont send this please.)
     questions:
-        1) in unsure how the "unitSizeMult" stat works. i tried changing it to 2, but my troops didn't form into units twice as large as normal troops did. i got about 1.83X the number of troops in each platoon. what could i do to get 2X the size in troop size? (marines formed squads of 40, my new troops formed squads of 62.)
+        1) in unsure how the "unitSizeMult" stat works. i tried changing it to 2, but my troops didn't form into units twice as large as normal troops did. i got about 1.5X the number of troops in each platoon. what could i do to get 2X the size in troop size? (marines formed squads of 40, my new troops formed squads of 62.)
         2) is there a way to 'hide' the option of creating a certain troop type (on the invasion screen), until i tell the game to let the player use it? I dont want to clutter the UI to mush with random things i want to add.
         3) is there a way to deside what is hidden and not in the 'resources on fleet' part of a invasion? I find that it shows some things i want very hidden for a surprise (things that are in the crew replacer job for nex_groundBattle_marines, i mean.), and does not show anything related to new unitTypes.
         4) is there a way to change the way a unitType looks based off code on a per platoon basis? i want to change what image a unit appears as depending on what crew replacer ends up putting in it.
@@ -18,6 +21,24 @@ questions:
 
     please understand that i have only been testing this for a few hours now, and have just started to unravel how all this works. some of my questions and reports might just be user error that i will uncover in the upcoming days, so sorry if i said something silly.
     PS: this is really really cool system you added. i have all sorts of interesting plans its going to be flavorful =)
+plans for the invasions:
+    i require a class that can swap out base combat units the AI uses based on conditions and ratios.
+    this class will need to beable to:
+    1) have a condition to actavate swaping.
+    2) have a function that determines the ratio of unswaped units that will be swapped.
+    3) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers)
+
+    --) there is a issue however. that is that i want players to beable to create there own units as well, without to mush hassle.
+        -how would one do this? simple:
+        a) find a way to keep trake of the number and type of units in a squad and transfer them over to a new squad type on squad createdion.
+            -note: the units in a crew is likely stored somewere in GroundUnit.data. this is a issue, because i will need to get all items from this. maybe there is a way now that i think of it........
+                   i have ran a few tests and found that yes. yes i can do the thing in relation to this. its not even that hard to do, you know.
+                   so ya. it returns the data in the form of something that i might beable to use. i am unsure. but how usefull will it be? unknown.
+                   so, things i can do for this:
+                   provied a platoon only contains robots, i can change the platoon to a robotic force, provided all the inputed items are already in the crew replacer for said robotic force.
+        b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
+
+
 im going to work on the following now:
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)

@@ -43,6 +43,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         AIMarketModSet();
         descriptions();
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
+        AIRetrofits_InitCombatabilityPatches.onGameLoad(newGame);
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?

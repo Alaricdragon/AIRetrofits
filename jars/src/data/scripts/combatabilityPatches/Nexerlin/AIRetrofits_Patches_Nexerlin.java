@@ -12,4 +12,9 @@ public class AIRetrofits_Patches_Nexerlin extends AIRetrofits_PatchBase {
     public void apply() {
         new AIRetrofit_CommandNodeType_NexerlinOperative("NexerlinOperative",PersonWeight_Nex_Operative,true,true);
     }
+
+    @Override
+    public void onGameLoad(boolean newGame) {
+        Global.getSector().getListenerManager().addListener(new AIRetrofits_GroundBattleListiner(), true);
+    }
 }
