@@ -21,6 +21,15 @@ questions:
 
     please understand that i have only been testing this for a few hours now, and have just started to unravel how all this works. some of my questions and reports might just be user error that i will uncover in the upcoming days, so sorry if i said something silly.
     PS: this is really really cool system you added. i have all sorts of interesting plans its going to be flavorful =)
+
+    question list 2: la la loo:
+    so, i have been working with this system some more, and i have a request for when/if you might chose to change it:
+    1)could you maybe add a way to have me change what unit definition a players ground force uses once its created? some type of playerGroundForceCreationListener?
+    1.a)I want to have the player be able to see there combat robots running around (without having to add 6 new buttons to the interface, because tbh that is just a little bit to mush for me, especially when its just going to do the same thing as the other 2 buttons 3 more times.), but as is, i don't think its possible to change player units on creation. at least i could not find a way..
+    2?)I should have likely asked if you knew a way to do this. maybe i should have opened with that, but it seems its not to be.
+    3)also there was a secondary issue with that here when i tried doing this anyways and the ground units transformed (after the round of combat ended) the ground units seemed to loss all there item data, so after the combat, i had.. nothing. no combat units returned from the fight. is there a way to transfer this data once i create a new ground unit to replace the old one?
+
+    sorry if i was a bit rude here. and sorry for how disorganized this is. i have been trying a thing were i do things and am tired. anyways, have a good day weak year eon.
 plans for the invasions:
     i require a class that can swap out base combat units the AI uses based on conditions and ratios.
     this class will need to beable to:

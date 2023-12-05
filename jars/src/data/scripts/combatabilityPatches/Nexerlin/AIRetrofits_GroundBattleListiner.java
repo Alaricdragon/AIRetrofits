@@ -7,6 +7,7 @@ import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
+import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofit_groundTroopSwaper_Base;
 import data.scripts.startupData.AIRetrofits_Constants;
 import exerelin.campaign.intel.groundbattle.GroundBattleCampaignListener;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
@@ -20,31 +21,24 @@ public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignLis
     public static final String heveyUnitDefId = "heavy";
     @Override
     public void reportBattleStarted(GroundBattleIntel battle) {
-        //battle.getSide().
-        //battle.getAllUnits();
-        //battle.getAllUnits().get(0).getUnitDef();
-        //battle.getSide().getUnits().get(0);
-        //battle.getSide(true).getData()
-        //InvasionIntel.
-        //battle.getAllUnits().get(0).get
-        swapGroundForces(battle);
+        AIRetrofit_groundTroopSwaper_Base.replaceAllForces(battle);
         AIRetrofit_Log.loging("the thing below is da thing",this,true);
         AIRetrofit_Log.loging(battle.getSide(false).getUnits().get(0).getPersonnelMap().toString(),this,true);
 
     }
     @Override
     public void reportBattleBeforeTurn(GroundBattleIntel battle, int turn) {
-        swapGroundForces(battle);
+        AIRetrofit_groundTroopSwaper_Base.replaceAllForces(battle);
     }
 
     @Override
     public void reportBattleAfterTurn(GroundBattleIntel battle, int turn) {
-        swapGroundForces(battle);
+        AIRetrofit_groundTroopSwaper_Base.replaceAllForces(battle);
     }
 
     @Override
     public void reportBattleEnded(GroundBattleIntel battle) {
-        swapGroundForces(battle);
+        AIRetrofit_groundTroopSwaper_Base.replaceAllForces(battle);
     }
 
 

@@ -3,6 +3,10 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.3:(private)
+save compatible with 0.7.20.1+
+    done. not tested:
+        created a system for swaping out old troops from ground battles. its quite cool so far.
 V0.8.2:(private)
 save compatible with 0.7.20.1+
     fixed:
