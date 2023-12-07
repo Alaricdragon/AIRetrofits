@@ -17,10 +17,10 @@ public class AIRetrofit_groundTroopSwaper_AIMarket extends AIRetrofit_groundTroo
     @Override
     public boolean active(GroundUnit unit, GroundBattleIntel battle, boolean isAttacker, int turn) {
         if (unit.getFleet().isPlayerFleet()) return false;
-        if (isAttacker && setDataLists.fleetMod(unit.getFleet())){
+        if (unit.getFleet() != null && setDataLists.fleetMod(unit.getFleet())){
             return super.active(unit, battle, isAttacker, turn);
         }
-        if (!isAttacker && battle.getMarket().hasCondition(AIRetrofits_Constants.Market_Condition)){
+        if (unit.getFleet() == null && !isAttacker && battle.getMarket().hasCondition(AIRetrofits_Constants.Market_Condition)){
             return super.active(unit, battle, isAttacker, turn);
         }
         return false;

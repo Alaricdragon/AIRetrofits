@@ -243,6 +243,13 @@ public class AIRetrofits_Constants {
     public static final float Market_Growth_logFunctionE = Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticE");//0;
 
 
+    //market robot types calculater ID's.
+    public static final String RobotTypeCalculatorID_CombatT0 = "CombatT0";
+    public static final String RobotTypeCalculatorID_CombatT1 = "CombatT1";
+    public static final String RobotTypeCalculatorID_CombatT2 = "CombatT2";
+    public static final String RobotTypeCalculatorID_WorkerT0 = "WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT1 = "WorkerT1";
+    public static final String RobotTypeCalculatorID_WorkerT2 = "WorkerT2";
 
 //Command Node and person info:
     public static final String[] SpecalItemID_CommandNodes = {

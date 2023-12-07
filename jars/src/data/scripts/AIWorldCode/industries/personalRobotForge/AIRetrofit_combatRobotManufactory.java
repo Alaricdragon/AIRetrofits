@@ -25,7 +25,7 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
     private final static int OS3Min = Global.getSettings().getInt("AIRetrofit_robotManufactury_combat_OS3Min");
     private final static int OS3Max = Global.getSettings().getInt("AIRetrofit_robotManufactury_combat_OS3Max");
 
-    private final static float BetaDefenceMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_combat_Mod");//1.1f;
+    protected final static float BetaDefenceMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_combat_Mod");//1.1f;
 
     private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_combat_exstaText");//"from combat robot factory";
     private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_combat_betaText");//"use produced combat robots to boost ground defences by %s";
@@ -54,6 +54,9 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         if (!isFunctional()) {
             return;
         }
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id,getCombatMulti(),groundDefenceText);
+    }
+    public float getCombatMulti(){
         float bonus = BetaDefenceMulti;
         if (this.isImproved()){
             //bonus *= 2;
@@ -63,7 +66,7 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
         bonus+=1;
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id,bonus,groundDefenceText);
+        return bonus;
     }
     @Override
     protected void removeBetaMods(){
@@ -81,12 +84,7 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
     protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        String[] itemsTemp = this.getItems();
-        float bonus = BetaDefenceMulti;
-        if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
-            bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
-        }
-        bonus+=1;
+        float bonus = getCombatMulti();
         String[] exstra = {"" + ((bonus - 1) * 100) + "%"};
         tooltip.addPara(pre + BetaText,pad,highlight,exstra);
     }

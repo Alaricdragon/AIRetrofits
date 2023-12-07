@@ -9,7 +9,9 @@
 	},
 	
 	"unitTypes":{
-		"CombatRobots":{
+		#basic combat robots,
+		#2X size, 0.5X strangth, 2X moral, 0.5X cost
+		"CombatRobots_T0_marine":{
 			"name":"CombatRobots",
 			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 			#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
@@ -30,34 +32,142 @@
 			"tags":["marine"],
 			"sortOrder":1,
 		},
-		"CombatRobots_Heavy":{
-			"name":"heavy_combatrobots",
+
+		"CombatRobots_T0_Heavy":{
+			"name":"heavy",
 			"type":"HEAVY",
-			"playerCanCreate":true,
+			"playerCanCreate":false,
 			"strength":5.5,
-			"unitSizeMult":1,
+			"unitSizeMult":0.166667,
 			"dropCostMult":7.5,
 			"offensiveStrMult":1.25,
 			"crampedStrMult":0.75,
 			"equipment":{
 				"commodityId":"hand_weapons",
 				"crewReplacerJobId":"nex_groundBattle_heavyarms",
-				"mult":10,
-			},
-			"personnel":{
-				"commodityId":"AIretrofit_CombatDrone",
-				"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
 				"mult":1,
 			},
+			"personnel":{
+				"commodityId":"marines",
+				"crewReplacerJobId":"nex_groundBattle_tankCrew",
+				"mult":2,
+			},
 			"tags":["heavy"],
-			"sortOrder":2,
+			"sortOrder":2
 		},
+		"CombatRobots_T0_militia":{
+			"name":"robotic militia",
+			"type":"MILITIA",
+			"playerCanCreate":false,
+			"strength":0.4,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
+			"personnel":{
+				"commodityId":"AIretrofit_WorkerDrone",
+				"crewReplacerJobId":"nex_groundBattle_militia",
+				"mult":1,
+			},
+			"tags":["militia"],
+			"sortOrder":3,
+		},
+		"CombatRobots_T0_rebel":{
+			"name":"robotic rebel",
+			"type":"REBEL",
+			"playerCanCreate":false,
+			"strength":0.3,
+			"moraleMult":0.7,
+			"dropCostMult":0.7,
+			"damageTakenMult":0.6,
+			"personnel":{
+				"commodityId":"AIretrofit_WorkerDrone",
+				"crewReplacerJobId":"nex_groundBattle_rebel",
+				"mult":1,
+			},
+			"tags":["rebel"],
+			"sortOrder":4,
+		},
+
+
+	"CombatRobots_T1_marine":{
+		"name":"CombatRobots",
+		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+		#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+		"playerCanCreate":false,
+		"strength":0.5,
+		"moraleMult":2,
+		"dropCostMult":0.5,
+		"damageTakenMult":1,
+
+		"unitSizeMult":2,
+		#"offensiveStrMult":1.25,
+		#"crampedStrMult":0.75,
+		"personnel":{
+			"commodityId":"AIretrofit_CombatDrone",
+			"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+			"mult":1,	# integer, at least for now
+		},
+		"tags":["marine"],
+		"sortOrder":1,
 	},
-	
-	
-	#"natoAlphabet":[
-	#	"Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", 
-	#	"Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", 
+	"CombatRobots_T1_Heavy":{
+		"name":"heavy",
+		"type":"HEAVY",
+		"playerCanCreate":false,
+		"strength":5.5,
+		"unitSizeMult":0.166667,
+		"dropCostMult":7.5,
+		"offensiveStrMult":1.25,
+		"crampedStrMult":0.75,
+		"equipment":{
+			"commodityId":"hand_weapons",
+			"crewReplacerJobId":"nex_groundBattle_heavyarms",
+			"mult":1,
+		},
+		"personnel":{
+			"commodityId":"marines",
+			"crewReplacerJobId":"nex_groundBattle_tankCrew",
+			"mult":2,
+		},
+		"tags":["heavy"],
+		"sortOrder":2
+	},
+	"CombatRobots_T1_militia":{
+		"name":"robotic militia",
+		"type":"MILITIA",
+		"playerCanCreate":false,
+		"strength":0.4,
+		"moraleMult":0.6,
+		"dropCostMult":0.7,
+		"personnel":{
+			"commodityId":"AIretrofit_WorkerDrone",
+			"crewReplacerJobId":"nex_groundBattle_militia",
+			"mult":1,
+		},
+		"tags":["militia"],
+		"sortOrder":3,
+	},
+	"CombatRobots_T1_rebel":{
+		"name":"robotic rebel",
+		"type":"REBEL",
+		"playerCanCreate":false,
+		"strength":0.3,
+		"moraleMult":0.7,
+		"dropCostMult":0.7,
+		"damageTakenMult":0.6,
+		"personnel":{
+			"commodityId":"AIretrofit_WorkerDrone",
+			"crewReplacerJobId":"nex_groundBattle_rebel",
+			"mult":1,
+		},
+		"tags":["rebel"],
+		"sortOrder":4,
+	}
+},
+
+
+#"natoAlphabet":[
+#	"Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India",
+#	"Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
 	#	"Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"
 	#],
 }

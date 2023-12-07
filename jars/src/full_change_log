@@ -3,6 +3,13 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.4:(private)
+save compatible with 0.7.20.1+
+    done. not tested:
+        built a way to easly calculate how many 'robots' of a given type i should have, by percentage.
+        built 4 diffrent 'type' of ways to calculate the amount of robots i want to have.
+        started to prepare to use said things in code. its in AIRetrofits_Startup_RobotTypesCalculater. nothing is yet set to work, but it does exsist.
+        this system is for use in the new ground battle changer system, so i can have different types of combat units easier.
 V0.8.3:(private)
 save compatible with 0.7.20.1+
     done. not tested:
