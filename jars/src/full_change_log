@@ -3,6 +3,15 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.5:(private)
+save compatible with 0.7.20.1+
+    debugging:
+        added a 'try catch' statment to AIRetrofits_Robot_Types_checker_Supply_1, to prevent wrong industry uses causing a crash
+    worked on, not tested:
+        started to build the functions that set the definitions for the 'how many robots do i have' calculation
+        added all definitions for things that supply and demand basic combat bots.
+        added all of said things to the config, there is so many.
+        have not tested them yet.
 V0.8.4:(private)
 save compatible with 0.7.20.1+
     done. not tested:

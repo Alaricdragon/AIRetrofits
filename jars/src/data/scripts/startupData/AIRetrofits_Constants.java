@@ -35,6 +35,10 @@ public class AIRetrofits_Constants {
 
     //industry names:
     public static final String Industry_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacility";
+    public static final String Industry_AIRetrofit_salvageRobotManufactory = "AIRetrofit_salvageRobotManufactory";
+    public static final String Industry_AIRetrofit_combatRobotManufactory = "AIRetrofit_combatRobotManufactory";
+    public static final String Industry_AIRetrofit_salvageRobotManufactory_V2 = "AIRetrofit_salvageRobotManufactory_V2";
+    public static final String AIndustry_IRetrofit_combatRobotManufactory_V2 = "AIRetrofit_combatRobotManufactory_V2";
     //sub market names:
     public static final String Submarket_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacilitySubmarket";
 
@@ -244,14 +248,30 @@ public class AIRetrofits_Constants {
 
 
     //market robot types calculater ID's.
-    public static final String RobotTypeCalculatorID_CombatT0 = "CombatT0";
-    public static final String RobotTypeCalculatorID_CombatT1 = "CombatT1";
-    public static final String RobotTypeCalculatorID_CombatT2 = "CombatT2";
-    public static final String RobotTypeCalculatorID_WorkerT0 = "WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT1 = "WorkerT1";
-    public static final String RobotTypeCalculatorID_WorkerT2 = "WorkerT2";
+    public static final String RobotTypeCalculatorID_CombatT0_Attack = "A_CombatT0";
+    public static final String RobotTypeCalculatorID_HevCombatT0_Attack = "A_Hev_CombatT0";
+    //public static final String RobotTypeCalculatorID_MalCombatT0_Attack = "A_Mal_CombatT0";
+    public static final String RobotTypeCalculatorID_CombatT1_Attack = "A_CombatT1";
+    public static final String RobotTypeCalculatorID_CombatT2_Attack = "A_CombatT2";
+    /*public static final String RobotTypeCalculatorID_WorkerT0_militia_Attack = "A_Mal_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT0_Rebel_Attack = "A_Reb_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT1_militia_Attack = "A_Mal_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT1_Rebel_Attack = "A_Reb_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT2_militia_Attack = "A_Mal_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT2_Rebel_Attack = "A_Reb_WorkerT0";*/
 
-//Command Node and person info:
+    public static final String RobotTypeCalculatorID_CombatT0_Defence = "D_CombatT0";
+    public static final String RobotTypeCalculatorID_HevCombatT0_Defence = "D_Hev_CombatT0";
+    public static final String RobotTypeCalculatorID_MalCombatT0_Defence = "D_Mal_CombatT0";
+    public static final String RobotTypeCalculatorID_CombatT1_Defence = "D_CombatT1";
+    public static final String RobotTypeCalculatorID_CombatT2_Defence = "D_CombatT2";
+    public static final String RobotTypeCalculatorID_WorkerT0_militia_Defence = "D_Mal_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT0_Rebel_Defence = "D_Reb_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT1_militia_Defence = "D_Mal_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT1_Rebel_Defence = "D_Reb_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT2_militia_Defence = "D_Mal_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT2_Rebel_Defence = "D_Reb_WorkerT0";
+    //Command Node and person info:
     public static final String[] SpecalItemID_CommandNodes = {
             "AIRetrofit_CommandNode_0",
             "AIRetrofit_CommandNode_1",
