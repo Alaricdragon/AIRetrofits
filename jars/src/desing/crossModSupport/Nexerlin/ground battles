@@ -320,3 +320,27 @@ robot forge(REDACTED):
         heavy:
         militia:
         rebel:
+
+
+lets take some time to talk about the supply and demand concept.
+but first backstory: the chance of a certen type of robot replaceing a 'base' unit (marines, heavy wepon, milita, rebel) is if random(1) < chance.
+so 1 is 100% of the time. 0 is never.
+so what should provide supply were (attacking, defending, attacking local, defending local)?
+so:
+T0 factory's should -NEVER- provide faction wide supply. only local.
+all C-factorys with a beta core should provide 0.5X the attacking local supply.
+all C-factorys with a beta core should provide there local supply into the malita as well, replacing them with themselves.
+all T1 factorys should provide faction supply in some way.
+
+should T1 non C-Factorys provide faction wide supply? its something to think about.
+    -on one hand, it goes into the idea of the faction useing said bots....
+    -although i suppose beta core mods in survey and salvage bots indecate more bots being on the world. maybe keep the basic rules for them...? i dont know...
+T1 and T2 bots should be hard to compleatly fill out your supply with (so you cant have 100% advanced combat robots -easy-). it should still be possable though.
+
+T0 bots should be easier to end up with a faction supply, because they are junk. literal junk.
+T1 and T2 bots should be a bit harder, but maybe this is already done, do to the fact the alpha cores and [DATA_EXPUNGED] are quire rare.
+so:
+
+T0 factory:
+    attack:
+    defence:

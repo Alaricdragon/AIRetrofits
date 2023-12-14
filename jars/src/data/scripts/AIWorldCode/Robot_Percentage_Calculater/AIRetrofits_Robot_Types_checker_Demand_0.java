@@ -25,8 +25,10 @@ public class AIRetrofits_Robot_Types_checker_Demand_0 extends AIRetrofits_Robot_
                 float a0 =0;
                 float a1 =0;
                 for(Industry b : a.getIndustries()){
-                    float b0 = b.getDemand(this.demand).getQuantity().getModifiedValue();
-                    float b1 = b.getSupply(this.supply).getQuantity().getModifiedValue();
+                    float b0 = 0;
+                    float b1 = 0;
+                    if(!(this.demand == null)) b0 = b.getDemand(this.demand).getQuantity().getModifiedValue();
+                    if(!(this.supply == null)) b1 = b.getSupply(this.supply).getQuantity().getModifiedValue();
                     if(a0 < b0) {
                         a0 = b0;
                     }

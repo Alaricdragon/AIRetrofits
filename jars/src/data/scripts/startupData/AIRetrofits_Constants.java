@@ -252,19 +252,17 @@ public class AIRetrofits_Constants {
     public static final String RobotTypeCalculatorID_HevCombatT0_Attack = "A_Hev_CombatT0";
     //public static final String RobotTypeCalculatorID_MalCombatT0_Attack = "A_Mal_CombatT0";
     public static final String RobotTypeCalculatorID_CombatT1_Attack = "A_CombatT1";
+    public static final String RobotTypeCalculatorID_HevCombatT1_Attack = "A_Hev_CombatT1";
     public static final String RobotTypeCalculatorID_CombatT2_Attack = "A_CombatT2";
-    /*public static final String RobotTypeCalculatorID_WorkerT0_militia_Attack = "A_Mal_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT0_Rebel_Attack = "A_Reb_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT1_militia_Attack = "A_Mal_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT1_Rebel_Attack = "A_Reb_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT2_militia_Attack = "A_Mal_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT2_Rebel_Attack = "A_Reb_WorkerT0";*/
+    public static final String RobotTypeCalculatorID_HevCombatT2_Attack = "A_Hev_CombatT2";
 
     public static final String RobotTypeCalculatorID_CombatT0_Defence = "D_CombatT0";
     public static final String RobotTypeCalculatorID_HevCombatT0_Defence = "D_Hev_CombatT0";
     public static final String RobotTypeCalculatorID_MalCombatT0_Defence = "D_Mal_CombatT0";
     public static final String RobotTypeCalculatorID_CombatT1_Defence = "D_CombatT1";
+    public static final String RobotTypeCalculatorID_HevCombatT1_Defence = "D_Hev_CombatT1";
     public static final String RobotTypeCalculatorID_CombatT2_Defence = "D_CombatT2";
+    public static final String RobotTypeCalculatorID_HevCombatT2_Defence = "D_Hev_CombatT2";
     public static final String RobotTypeCalculatorID_WorkerT0_militia_Defence = "D_Mal_WorkerT0";
     public static final String RobotTypeCalculatorID_WorkerT0_Rebel_Defence = "D_Reb_WorkerT0";
     public static final String RobotTypeCalculatorID_WorkerT1_militia_Defence = "D_Mal_WorkerT0";

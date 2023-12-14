@@ -582,25 +582,26 @@
 
 	#ground combat units. please note, this requires nexerlin to function.
 	#what does it do? replaces ground units with robots provided conditions are met.,
-	#percent of robots that replace marines in a fight equals supply / demand. 1 = 100%. 0.1 = 10%. exstra
+	#percent of robots that replace marines in a fight equals supply / demand. 1 = 100%. 0.1 = 10%. eq used is (Gs / Gd) + Ls
 	"AIRetrofit_Nexerlin_GroundBattles_enableReplacer": true;
 	#unit type, core, forge level, local/gloal/ attack/defence
 	#"AIRetrofit_Nexerlin_GroundBattles_ROBOTTYPE_AICORE_FORGELEVEL_LOCAL/GLOBAL/ATTACK/DEFENCE": value,
-	#,marines -> basicrobot, atk, supply
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_L_A": 0,
+	#most numbers, unless said otherwize, are on a per output basses.
+	#,marines -> basicrobot, atk, supply,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_L_A": 0.02,#10 = 20%
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_G_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_L_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_L_A": 0.04,#10 = 40%
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_G_A": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_L_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_L_A": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_G_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_L_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_G_A": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_L_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_L_A": 0.01,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_G_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_L_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_L_A": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_G_A": 1,
 
 	#marines -> basicrobot, def, supply
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_L_D": 0,
@@ -608,70 +609,236 @@
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_L_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_G_D": 0,
 
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_G_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T1_G_D": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_L_D": 1,#this is a multiplyer based on how mush defence the robot forge with a beta core is given.
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_G_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_L_D": 1,#--
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_G_D": 1,
 
 
 	#Heavy units -> Hevey basicrobot, atk, supply
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_L_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_L_A": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_G_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_L_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_G_A": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T0_L_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T0_L_A": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T0_G_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_L_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_G_A": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_L_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_L_A": 0.01,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_G_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_L_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_L_A": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_G_A": 1,
 
 	#Heavy units -> Hevey basicrobot, def, supply
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_G_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T1_G_D": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T0_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T0_G_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CGa_T1_G_D": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_L_D": 1,#a multiplyer. base number is the ground defence multi from this industry
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_G_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_L_D": 1,#--
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_G_D": 1,
 
+	#marines -> advanced combat robots, attack, supply
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T0_L_A": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T0_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T1_G_A": 1,
+
+	#marines -> advanced combat robots, defence, supply
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_CAl_T1_G_D": 1,
+
+	#Heavy units -> heavy advanced combat robots, attack, supply
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T0_L_A": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T0_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T1_G_A": 1,
+
+	#Heavy units -> heavy advanced combat robots, defence, supply
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_CAl_T1_G_D": 1,
+
+	#marines -> T2 combat robots, attack, supply
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T0_L_A": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T0_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T1_G_A": 1,
+
+	#marines -> T2 combat robots, defence, supply
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_CAl_T1_G_D": 1,
+
+	#Heavy units -> heavy T2 combat robots, attack, supply
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T0_L_A": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T0_G_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T1_L_A": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T1_G_A": 1,
+
+	#Heavy units -> heavy T2 combat robots, defence, supply
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_CAl_T1_G_D": 1,
+
+
+
+
+
+	#militia -> basic worker robots, def, supply
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T1_G_D": 0,
+
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T1_G_D": 0,
+
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T1_G_D": 0,
+
+	#rebel -> basic worker robots, def, supply
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T1_G_D": 0,
+
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T1_G_D": 0,
+
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T1_G_D": 0,
+
+	#militia => advanced worker robots, def, supply
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_CAl_T1_G_D": 1,
+
+	#rebel -> advanced worker robots, def, supply
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_CAl_T1_G_D": 1,
+
+	#militia => T2 worker robots, def, supply
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_CAl_T1_G_D": 1,
+
+	#rebel -> T2 worker robots, def, supply
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_CAl_T0_L_D": 0.02,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_CAl_T0_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_CAl_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_CAl_T1_G_D": 1,
 
 	#malita -> baisc combat robots, def, supply,
-	"AIRetrofit_Nexerlin_GroundBattles_Mil_CBe_T0_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_Mil_CBe_T1_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_Mil_CBe_T0_L_D": 1,#--
+	"AIRetrofit_Nexerlin_GroundBattles_Mil_CBe_T1_L_D": 1,#--
 
 	#marine -> baisc combat robots demand, attack
-	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Mar_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Pop_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Mar_A": 1,#demand per marine requirement
+	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Pop_A": 1,#demand per population size
 
 	#marine -> baisc combat robots demand, defence
-	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Mar_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Pop_D": 0,
-
+	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Mar_D": 1,#demand per marine requirement
+	"AIRetrofit_Nexerlin_GroundBattles_D_BCR_Pop_D": 1,#demand per population size
 
 	#Hevey -> Hevy baisc combat robots demand, attack
-	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Mar_A": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Pop_A": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Mar_A": 1,#demand per parine requierment
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Pop_A": 1,#demand per population size
 
 	#Hevy -> Hevy marine -> baisc combat robots demand, defence
-	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Mar_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Pop_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Mar_D": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeBCR_Pop_D": 1,#demand per population size
+
+
+	#marine -> advanced combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_ACR_Mar_A": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_ACR_Bcr_A": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_ACR_Pop_A": 1,#demand per population size
+
+	#marine -> advanced combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_ACR_Mar_D": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_ACR_Bcr_D": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_ACR_Pop_D": 1,#demand per population size
+
+	#heavy -> heavy advanced combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeACR_Mar_A": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeACR_Bcr_A": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeACR_Pop_A": 1,#demand per population size
+
+	#heavy -> heacy advanced combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeACR_Mar_D": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeACR_Bcr_D": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeACR_Pop_D": 1,#demand per population size
+
+
+	#marine -> T2 combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_OCR_Mar_A": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_OCR_Bcr_A": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_OCR_Pop_A": 1,#demand per population size
+
+	#marine -> T2 combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_OCR_Mar_D": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_OCR_Bcr_D": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_OCR_Pop_D": 1,#demand per population size
+
+	#heavy -> heavy T2 combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeOCR_Mar_A": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeOCR_Bcr_A": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeOCR_Pop_A": 1,#demand per population size
+
+	#heavy -> heacy T2 combat robots demand, attack
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeOCR_Mar_D": 1,#demand per marine requieremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeOCR_Bcr_D": 1,#demand per combat robot requiremnt
+	"AIRetrofit_Nexerlin_GroundBattles_D_HeOCR_Pop_D": 1,#demand per population size
+
+	#milita -> basic worker robot. deamnd. defance
+	"AIRetrofit_Nexerlin_GroundBattles_D_BWRm_Pop_D": 2,#demand per population size (set to 2 because they are not fighting things, youknow)
+
+	#rebel -> basic worker robot. deamnd. defance
+	"AIRetrofit_Nexerlin_GroundBattles_D_BWRr_Pop_D": 2,#--
+
+	#milita -> advanced worker robot. deamnd. defance
+	"AIRetrofit_Nexerlin_GroundBattles_D_AWRm_Pop_D": 2,#--
+
+	#rebel -> advanced worker robot. deamnd. defance
+	"AIRetrofit_Nexerlin_GroundBattles_D_AWRr_Pop_D": 2,#--
+
+	#milita -> T2 worker robot. deamnd. defance
+	"AIRetrofit_Nexerlin_GroundBattles_D_OWRm_Pop_D": 2,#--
+
+	#rebel -> T2 worker robot. deamnd. defance
+	"AIRetrofit_Nexerlin_GroundBattles_D_OWRr_Pop_D": 2,#--
 
 	#specalitems,
 	#Command Node,

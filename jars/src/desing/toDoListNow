@@ -30,7 +30,19 @@ questions:
     3)also there was a secondary issue with that here when i tried doing this anyways and the ground units transformed (after the round of combat ended) the ground units seemed to loss all there item data, so after the combat, i had.. nothing. no combat units returned from the fight. is there a way to transfer this data once i create a new ground unit to replace the old one?
 
     sorry if i was a bit rude here. and sorry for how disorganized this is. i have been trying a thing were i do things and am tired. anyways, have a good day weak year eon.
+
+    question list 3: (not yet sent)
+    so i took a not to long look at this. im no were near finished looking at it yet, but i do have some questions:
+    questions related to things you added (I have not looked at everything yet)
+    1) i have failed to find the 'player unit setter'. i dont know were it is, but its not in the GroundUnit class. any clues were i should look.
+
+    new questions:
+    I am having a slight issue with something. so i am trying to make marines and heavy weapons be replaced with a different crew class only some of the time (based off a percent chance), and have some questions.
+
 plans for the invasions:
+    status:
+        I have a in built system that looks at and determins the number of each type of bots one should have for each job.
+        I need to hock this up into the spot were changes can accor.
     i require a class that can swap out base combat units the AI uses based on conditions and ratios.
     this class will need to beable to:
     1) have a condition to actavate swaping.
@@ -49,6 +61,10 @@ plans for the invasions:
 
 
 im going to work on the following now:
+    random required changes:
+    1) change automated shipyard to be by crew basis, and slowly increase its production the longer something is inside of it.
+    2) change images of robots (see 'update the robots')
+    3) cry
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.

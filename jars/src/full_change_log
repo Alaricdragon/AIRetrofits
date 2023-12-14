@@ -3,6 +3,12 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.6:(private)
+save compatible with 0.7.20.1+
+    worked on, not tested:
+        compleated the configs for the 'robot supply' thing. so i know how many robots should be present in a ground operation.
+    started:
+        the code that will let me replace ground units with my own when a fight begins. finally.
 V0.8.5:(private)
 save compatible with 0.7.20.1+
     debugging:

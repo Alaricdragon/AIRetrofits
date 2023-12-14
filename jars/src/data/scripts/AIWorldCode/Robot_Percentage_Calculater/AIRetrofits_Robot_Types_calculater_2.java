@@ -25,7 +25,7 @@ public class AIRetrofits_Robot_Types_calculater_2 {
         addons.add(checker);
     }
     public float getOddsOfRobot(MarketAPI market){
-        float odds = getSupply(market) / getDemand(market);
+        float odds = getSupply(market) / Math.min(getDemand(market),1);
         return odds + getLocalSupply(market);
     }
     public float getDemand(MarketAPI market){
