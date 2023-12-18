@@ -3,6 +3,12 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.7:(private)
+save compatible with 0.7.20.1+
+    finished, not tested:
+        the ground battles inter 'swap ground units' thing. the only part left is to set up the memory key to elt me swap things.
+    documentation:
+        updated all the ground units in documentation to have the normal default ground combat strength. this will make it easier to modify by percentages
 V0.8.6:(private)
 save compatible with 0.7.20.1+
     worked on, not tested:

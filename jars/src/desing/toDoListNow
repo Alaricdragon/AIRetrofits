@@ -32,22 +32,60 @@ questions:
     sorry if i was a bit rude here. and sorry for how disorganized this is. i have been trying a thing were i do things and am tired. anyways, have a good day weak year eon.
 
     question list 3: (not yet sent)
-    so i took a not to long look at this. im no were near finished looking at it yet, but i do have some questions:
-    questions related to things you added (I have not looked at everything yet)
-    1) i have failed to find the 'player unit setter'. i dont know were it is, but its not in the GroundUnit class. any clues were i should look.
+    hey, it's been a while. i still have not quite gotten around to looking at all the things you added yet, as i have been busy preparing to do some things with ground battles, and had to create... a lot of things to support what i wanted to do.
+    regarding it being more reasonable to simply use the crew replacer integration rather then a bunch of unit definitions, it is, but there are things this does not allow.
+    for example: having my units have there own icons. or squad sizes, or moral, or any of the things that would be -different- for robots. but mostly the icons. i always felt a little sad at not having my AI lead ground invasions not have combat robots in them, so im fixing that. with a lot of effort. thats why i have not responded to you with speed. and why i still have not yet tested all the things i need to. lots of infrastructure
 
-    new questions:
-    I am having a slight issue with something. so i am trying to make marines and heavy weapons be replaced with a different crew class only some of the time (based off a percent chance), and have some questions.
+    might not even be able to get to the new things you added soon, but i do have some questions and reports:
+    question:
+        1) is it possible to 'mark' a 'GroundUnit' in the 'GroundBattleIntel'? im trying to make a way to change units but only on a percent chance, and with all the complexity of ground battles, I worry about failing to check a ground unit, or checking one more then once.
+           baring a way to mark them, is there a way to tell them apart? like some type of 'battle unit ID'? I can only seem to find the 'getUnitDefId' and i think that's the same between squads of the same type.
+           I know most ground units are only created on the 'GroundBattleCampaignListener.reportBattleStarted(GroundBattleIntel)' function, but I know of a few more instances were NPC ground units are added. like 'militia' and i have no clue if there are others. (like a NPC fleet showing up to proved ground troops mid battle or something)
+        2) is there a way to change the unit icon that appears in a ground battle for a given ground unit? have i asked that already? I don't think so. but i really want to do that for some of my 'heavy' units im making, so they look different.
+        3) is there a way to also hide the number of available commodity available for a given unit type? does the one that hides the button to create a unit also hide the available units? i have not used it yet, so i don't know. yet. i will be able to use check this soonish, but things are taking forever because of reasons.
+        4) how does the number of units in a squad effect there defences? i understand that a units 'strength' = to there strength stat * (personnel + equipment), but does this also have the same effect on a platoons hit points, or is it not like that?
+        5) is it possible to have more then one type of required 'personnel' or 'equipment' on the same 'groundBattleDefs.unitTypes' (not like a crew replacer job, but something that requires 3+ different types of commodity's)? for making some units be really frustrating to make (because strong units need a downside)
+        6) also, wait does 'moral multi' in 'groundBattleDefs.unitTypes' do? is it a multiplyer on how mush moral you have, or how mush moral damage you take, or how mush moral damage you do? something else intierly? I am confused
+    reports:
+    7) in records to the crew replacer implementation of invasions, i managed to find a thing i missed the last few times i looked this over for one reason or another, and it raises some interesting questions.
+       namely, that different commodity added to a ground units crewReplacer_Job with differing power are treated interestingly.
+       so, when you increase the 'power' of a commodity in the job, lets say 'nex_groundBattle_marines', what will happen is that how must 'space' in the squad this commodity uses is increased, but this will weaking the squad.
+       I think the reason behind this is that a squads 'damage' is equal to numberOfUnits*UnitDefDamage. but this does lead to some interesting mechanics, that might not be intentional:
+       7.a) it means that any time someone adds a commodity with more then one power, it will result in the squad being weaker, as it is smaller.
+       7.b) it mean that any time someone adds a commodity with less then one power, it will result in the squad being mush stronger, as there are more units inside of it.
 
+       this seems fine at first, but the moment someone wants to create a commodity that is stronger, or weaker per unit then a normal marine, its simply impossible to do so without creating a new 'unitTypes' in the 'groundBattleDefs.json'.
+       granted the ability to make mush bigger/smaller squads then normal is quite interesting, but i cant quite help but feel like somethings off about that. but maybe that's just because im confused.
+
+       anyhow, i almost prepared some solutions to this, but i um, ended up not doing that. the ground units are very complicated with a lot of stats, and all my solutions involved doing some things crew replacer is not built for, but could do in theory, and the more i thought about it the more it seemed like 'asking for trouble'.
+       but in the mean time, might you conform if ground forces power being on a per number of units basses is a bug or not? i seem to recall it not doing that before, but i have forgetting things before.
+
+    8) complete removal of the 'create ground unit' interface in a ground battle. how? 6 steps:
+        8.0) create a new ground unit type that does not use marines.
+        8.1) start a ground battle with only units for that unit (no marines).
+        8.2) create a ground unit with the not marines.
+        8.3) deploy your new ground unit
+        8.4) click on the now clickable 'new marines platoon' button.
+        8.5) be in awe at the fact you cant deploy anything (until next turn).
+
+        please note: i have some 12 new ground unit types (for all types of ground units * all types of robots). only one was player deployable in this example. don't know if that changed anything.
+
+
+    so at first i only had like 3 things to say, so uh sorry for the loong block of text. it was not my intention, but i did it anyways.
+    also, sorry i didn't get the chance to try out and of the things you created. I got caught up in making a thing.
+questions for others:
+    hello again everyone! i have returned with but a single question
+    1) is there a way to edit a rules.csv $memory_whatsit with code?
+    thanks again for answering my question in the past everyone. its been helpful.
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
         I need to hock this up into the spot were changes can accor.
     i require a class that can swap out base combat units the AI uses based on conditions and ratios.
     this class will need to beable to:
-    1) have a condition to actavate swaping.
-    2) have a function that determines the ratio of unswaped units that will be swapped.
-    3) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers)
+    1)(done) have a condition to actavate swaping.
+    2)(done) have a function that determines the ratio of unswaped units that will be swapped.
+    3)(NOT done.) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers)
 
     --) there is a issue however. that is that i want players to beable to create there own units as well, without to mush hassle.
         -how would one do this? simple:
@@ -64,7 +102,9 @@ im going to work on the following now:
     random required changes:
     1) change automated shipyard to be by crew basis, and slowly increase its production the longer something is inside of it.
     2) change images of robots (see 'update the robots')
-    3) cry
+    3) update spelling and grammer from all my texts. aparently, the defalt way to handles capitals in the game is to only have the first letter of a name (even if the name has multiple words) to be capitalized.
+        -also, there was a issue with the 'population and infrastructure' displaying the word 'name' after its world name. will need to look into that.
+    4) update the automated shipyard to work on a by crew basis. please.
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.

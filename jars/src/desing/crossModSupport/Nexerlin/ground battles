@@ -101,6 +101,41 @@ ideology of deploying high level robots:
                 for real though, thejksfkakjsdcfnvm sz
 
 Combat units:
+		"marine":{
+			"strength":1,
+			"personnel":{
+				"mult":1,	# integer, at least for now
+			},
+		},
+		"heavy":{
+			"strength":5.5,
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
+			"equipment":{
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2,
+			},
+		},
+		"militia":{
+			"strength":0.4,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
+			"personnel":{
+				"mult":1,
+			},
+		},
+		"rebel":{
+			"strength":0.3,
+			"moraleMult":0.7,
+			"dropCostMult":0.7,
+			"damageTakenMult":0.6,
+			"personnel":{
+				"mult":1,
+			},
     i need to decide on how the combat units are going to act on various levels, now they they will all (in theory) be usable
     T0:
         notes: the T0 robot always has been a bit of a peace of scrap. easy to make and mantain, lots of pew pew, but low combat ability.
@@ -125,23 +160,29 @@ Combat units:
                         more armer and less firepower might just make it worse do to the way math goes (also make ground battles -LONGER- wish sucks).
                         -... youknow, there might be a spot to use this. have a third button added to the game that makes 'big boys'. have the option to deploy some heave armor, provided you have the
                          robots and metals to do it. it could be interesting to add a third unit.
-            "strength":1,
-			"unitSizeMult":1,
-			"dropCostMult":1,
+			"strength":5.5,
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5,
 			"moraleMult":1,
-			"offensiveStrMult":1,
-			"crampedStrMult":1,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
 			"damageTakenMult":1,
+			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2,
+			},
         militia:
             image: T0 salvage robots with guns on them?
             notes:
                 this is simple enouth. but i have a idea.
                 why not make this desing based around the salvage robot instead of the combat robot? it could be interesting. having
                 a salvage robot that just shows up at some ponit. would be coooooolllll. also would give cadance to the idea of having the 'malita' be part combat robots being a good thing, instead of baaaaddd
-            "strength":1,
-			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":1,
+			"strength":0.4,
+			"unitSizeMult":2,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
 			"damageTakenMult":1,
@@ -151,13 +192,14 @@ Combat units:
                 i want rebels to be just like malita. like the same basicly. they already are in the base mod, but they have a higher defence. so what could i do that matches that?
                 ...
                 i would need to think about that.
-            "strength":1,
+
+			"strength":0.3,
 			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":1,
+			"dropCostMult":0.7,
+			"moraleMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
-			"damageTakenMult":1,
+			"damageTakenMult":0.6,
     T1:
         notes: 0.75, 1.25. mush stronger them T1 robots. since they should be rare, they should relfect this strangth.
         there is only one issue: the possability of 'increaseing' the combat strangth of a force by more then the player wants. having the
@@ -181,33 +223,39 @@ Combat units:
                 so, if i keep in the possable theam of 'big robots' how would i like to do this? they are a bit floaty by nature, so i might have to do something with that.
                 a floating gundom? i am joking. proboly something more akin to a floating tank of some sort. something a bit stange though, but not very..
                 what would this units stats even look like?
-            "strength":1,
-			"unitSizeMult":1,
-			"dropCostMult":1,
+			"strength":5.5,
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5,
 			"moraleMult":1,
-			"offensiveStrMult":1,
-			"crampedStrMult":1,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
 			"damageTakenMult":1,
+			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2,
+			},
         militia:T1 survey robot with guns?
             image:
             notes: i want to keep this on theam. do what i did for T0, but use the T1 salvage bot.
-            "strength":1,
+			"strength":0.4,
 			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":1,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
 			"damageTakenMult":1,
         rebel:
             image: ---
             notes: ---
-            "strength":1,
+			"strength":0.3,
 			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":1,
+			"dropCostMult":0.7,
+			"moraleMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
-			"damageTakenMult":1,
+			"damageTakenMult":0.6,
     T2:
         note: 1,5. and here we are. the htjaaksdal;psd/.f noting matters anymore, the world is doomed. they must be 2 strong.
               let the player feel ether all powerful, or completely gucking helpless, depending on whats going on.
@@ -228,33 +276,39 @@ Combat units:
                     ... cry? if i work with this, it needs to be something diffrent, but wrong somehow. how could i make this more disturbing?
                     ... its something to think about, at least. something to feel fear about. something to... to....
                     ... sometimes, its better to think of something wity to say, but really, what can one even say to a fucking what, 25 damage unit? is that what would be required?
-            "strength":1,
-			"unitSizeMult":1,
-			"dropCostMult":1,
+			"strength":5.5,
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5,
 			"moraleMult":1,
-			"offensiveStrMult":1,
-			"crampedStrMult":1,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
 			"damageTakenMult":1,
+			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2,
+			},
         militia:
             image: T2 salvage robots? goodness knows they look like combat robots to me...
             notes:.... same as T0 but i use T3 robots?
-            "strength":1,
+			"strength":0.4,
 			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":1,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
 			"damageTakenMult":1,
         rebel:
             image: ---
             notes: --
-            "strength":1,
+			"strength":0.3,
 			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":1,
+			"dropCostMult":0.7,
+			"moraleMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
-			"damageTakenMult":1,
+			"damageTakenMult":0.6,
 AI-World:
     attacking:
         marine:

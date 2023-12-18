@@ -17,10 +17,10 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
         addT0WorkerRobots();
     }
     public static final String
-            BMar = "",BHev="",BReb="",BMil="",
-            T0Mar = "",T0Hev="",T0Reb="",T0Mil="",
-            T1Mar = "",T1Hev="",T1Reb="",T1Mil="",
-            T2Mar = "",T2Hev="",T2Reb="",T2Mil="";
+            BMar = "marine",BHev="heavy",BReb="rebel",BMil="militia",
+            T0Mar = "CombatRobots_T0_marine",T0Hev="CombatRobots_T0_Heavy",T0Reb="CombatRobots_T0_rebel",T0Mil="CombatRobots_T0_militia",
+            T1Mar = "CombatRobots_T1_marine",T1Hev="CombatRobots_T1_Heavy",T1Reb="CombatRobots_T1_rebel",T1Mil="CombatRobots_T1_militia",
+            T2Mar = "CombatRobots_T2_marine",T2Hev="CombatRobots_T2_Heavy",T2Reb="CombatRobots_T2_rebel",T2Mil="CombatRobots_T2_militia";
 
 
     public static final String marineID="marines";

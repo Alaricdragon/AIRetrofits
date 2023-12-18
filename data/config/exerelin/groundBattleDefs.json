@@ -12,9 +12,9 @@
 		#basic combat robots,
 		#2X size, 0.5X strangth, 2X moral, 0.5X cost
 		"CombatRobots_T0_marine":{
-			"name":"CombatRobots",
+			"name":"combat robots",
 			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
-			#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+			#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
 			"playerCanCreate":true,
 			"strength":0.5,
 			"moraleMult":2,
@@ -34,7 +34,7 @@
 		},
 
 		"CombatRobots_T0_Heavy":{
-			"name":"heavy",
+			"name":"heavy CR",
 			"type":"HEAVY",
 			"playerCanCreate":false,
 			"strength":5.5,
@@ -89,9 +89,9 @@
 
 
 	"CombatRobots_T1_marine":{
-		"name":"CombatRobots",
+		"name":"advanced combat robots",
 		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
-		#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+		"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
 		"playerCanCreate":false,
 		"strength":0.5,
 		"moraleMult":2,
@@ -110,7 +110,7 @@
 		"sortOrder":1,
 	},
 	"CombatRobots_T1_Heavy":{
-		"name":"heavy",
+		"name":"advanced heavy CR",
 		"type":"HEAVY",
 		"playerCanCreate":false,
 		"strength":5.5,
@@ -132,7 +132,7 @@
 		"sortOrder":2
 	},
 	"CombatRobots_T1_militia":{
-		"name":"robotic militia",
+		"name":"advanced robotic militia",
 		"type":"MILITIA",
 		"playerCanCreate":false,
 		"strength":0.4,
@@ -147,7 +147,83 @@
 		"sortOrder":3,
 	},
 	"CombatRobots_T1_rebel":{
-		"name":"robotic rebel",
+		"name":"advanced robotic rebel",
+		"type":"REBEL",
+		"playerCanCreate":false,
+		"strength":0.3,
+		"moraleMult":0.7,
+		"dropCostMult":0.7,
+		"damageTakenMult":0.6,
+		"personnel":{
+			"commodityId":"AIretrofit_WorkerDrone",
+			"crewReplacerJobId":"nex_groundBattle_rebel",
+			"mult":1,
+		},
+		"tags":["rebel"],
+		"sortOrder":4,
+	},
+
+
+	"CombatRobots_T2_marine":{
+		"name":"omega combat robots",
+		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+		#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+		"playerCanCreate":false,
+		"strength":0.5,
+		"moraleMult":2,
+		"dropCostMult":0.5,
+		"damageTakenMult":1,
+
+		"unitSizeMult":2,
+		#"offensiveStrMult":1.25,
+		#"crampedStrMult":0.75,
+		"personnel":{
+			"commodityId":"AIretrofit_CombatDrone",
+			"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+			"mult":1,	# integer, at least for now
+		},
+		"tags":["marine"],
+		"sortOrder":1,
+	},
+	"CombatRobots_T2_Heavy":{
+		"name":"omega heavy CR",
+		"type":"HEAVY",
+		"playerCanCreate":false,
+		"strength":5.5,
+		"unitSizeMult":0.166667,
+		"dropCostMult":7.5,
+		"offensiveStrMult":1.25,
+		"crampedStrMult":0.75,
+		"equipment":{
+			"commodityId":"hand_weapons",
+			"crewReplacerJobId":"nex_groundBattle_heavyarms",
+			"mult":1,
+		},
+		"personnel":{
+			"commodityId":"marines",
+			"crewReplacerJobId":"nex_groundBattle_tankCrew",
+			"mult":2,
+		},
+		"tags":["heavy"],
+		"sortOrder":2
+	},
+	"CombatRobots_T2_militia":{
+		"name":"omega robotic militia",
+		"type":"MILITIA",
+		"playerCanCreate":false,
+		"strength":0.4,
+		"moraleMult":0.6,
+		"dropCostMult":0.7,
+		"personnel":{
+			"commodityId":"AIretrofit_WorkerDrone",
+			"crewReplacerJobId":"nex_groundBattle_militia",
+			"mult":1,
+		},
+		"tags":["militia"],
+		"sortOrder":3,
+	},
+	"CombatRobots_T2_rebel":{
+		"name":"omega robotic rebel",
 		"type":"REBEL",
 		"playerCanCreate":false,
 		"strength":0.3,
