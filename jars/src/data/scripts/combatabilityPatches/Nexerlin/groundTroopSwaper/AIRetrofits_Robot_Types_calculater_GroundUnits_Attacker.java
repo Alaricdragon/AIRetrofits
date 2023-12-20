@@ -34,6 +34,7 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
     }
     public void swap(GroundBattleIntel battle, GroundUnit unit,float odds){
         String newDefinition = getNewDef(unit.getUnitDefId());
+        if (newDefinition == null) return;
         if (Math.random() < odds){
             FactionAPI faction = unit.getFaction();
             /*unit.getFleet();

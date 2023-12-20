@@ -10,10 +10,7 @@ import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
-import data.scripts.startupData.AIRetrofits_Startup_CreatePeople;
-import data.scripts.startupData.AIRetrofits_Startup_CrewReplacer;
-import data.scripts.startupData.AIRetrofits_Startup_MarketRetrofits;
-import data.scripts.startupData.AIRetrofits_Startup_RobotForge;
+import data.scripts.startupData.*;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
 
@@ -31,7 +28,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         setDataLists.init();
         AIRetrofits_Startup_CreatePeople.apply();
         AIRetrofits_Startup_MarketRetrofits.apply();
-
+        AIRetrofits_Startup_RobotTypesCalculater.apply();
         AIRetrofits_Startup_CrewReplacer.apply();
         AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
     }

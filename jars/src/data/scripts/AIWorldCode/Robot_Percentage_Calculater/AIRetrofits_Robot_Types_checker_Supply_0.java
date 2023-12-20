@@ -2,6 +2,7 @@ package data.scripts.AIWorldCode.Robot_Percentage_Calculater;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import data.scripts.AIRetrofit_Log;
 
 public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_Types_checker_Base{
 
@@ -26,7 +27,9 @@ public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_
 
     @Override
     public float getLocalSupply(MarketAPI market) {
-        if (market.hasIndustry(industry) && market.getIndustry(industry).getAICoreId().equals(aICore)){
+        String marketCore = market.getIndustry(industry).getAICoreId();
+        if (marketCore == null) marketCore = "";
+        if (market.hasIndustry(industry) && marketCore.equals(aICore)){
             return localPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
         }
         return 0;
@@ -37,7 +40,11 @@ public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_
         String factionID = market.getFactionId();
         float power = 0;
         for (MarketAPI a : Global.getSector().getEconomy().getMarketsCopy()) {
-            if (a.getFactionId().equals(factionID) && market.hasIndustry(industry) && market.getIndustry(industry).getAICoreId().equals(aICore)) {
+            //a.getFactionId().equals(factionID);
+            //AIRetrofit_Log.loging("comparing: "+ market.getIndustry(industry).getAICoreId()+ " to "+ aICore,this,true);//.equals(aICore);
+            String marketCore = market.getIndustry(industry).getAICoreId();
+            if (marketCore == null) marketCore = "";
+            if (a.getFactionId().equals(factionID) && market.hasIndustry(industry) && marketCore.equals(aICore)) {
                 power += factionPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
             }
         }

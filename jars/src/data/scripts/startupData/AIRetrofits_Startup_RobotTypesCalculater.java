@@ -9,12 +9,33 @@ import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_
 public class AIRetrofits_Startup_RobotTypesCalculater {
     public static void apply(){
         if (!Global.getSettings().getBoolean("AIRetrofit_Nexerlin_GroundBattles_enableReplacer")) return;
-        addT2CombatRobots();
+        test();
+        /*addT2CombatRobots();
         addT1CombatRobots();
         addT0CombatRobots();
         addT2WorkerRobots();
         addT1WorkerRobots();
-        addT0WorkerRobots();
+        addT0WorkerRobots();*/
+    }
+    public static void test(){
+
+        new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence,new String[]{BMar},new String[]{T0Mar});
+        //supply
+        //NO core
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence,"","spaceport","crew",0.5f,1);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence, "","spaceport","crew",0.5f,1);
+        //demand
+        new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence, D_BCR_Pop_D);
+
+
+        new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT0_militia_Defence,new String[]{BMil},new String[]{T0Mil});
+        //supply
+        //NO core
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence,"","spaceport","crew",0.5f,1);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence, "","spaceport","crew",0.5f,1);
+        //demand
+        new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT0_Defence, D_BCR_Pop_D);
+
     }
     public static final String
             BMar = "marine",BHev="heavy",BReb="rebel",BMil="militia",

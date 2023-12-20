@@ -5,78 +5,43 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-    in regards to invasions and the groundBattleDefs.json
-    so i have been exsperamenting with the groundBattleDefs.json and have some questions/ bug reports:
-
-
-    (already reported. dont send this please.)
-    questions:
-        1) in unsure how the "unitSizeMult" stat works. i tried changing it to 2, but my troops didn't form into units twice as large as normal troops did. i got about 1.5X the number of troops in each platoon. what could i do to get 2X the size in troop size? (marines formed squads of 40, my new troops formed squads of 62.)
-        2) is there a way to 'hide' the option of creating a certain troop type (on the invasion screen), until i tell the game to let the player use it? I dont want to clutter the UI to mush with random things i want to add.
-        3) is there a way to deside what is hidden and not in the 'resources on fleet' part of a invasion? I find that it shows some things i want very hidden for a surprise (things that are in the crew replacer job for nex_groundBattle_marines, i mean.), and does not show anything related to new unitTypes.
-        4) is there a way to change the way a unitType looks based off code on a per platoon basis? i want to change what image a unit appears as depending on what crew replacer ends up putting in it.
-    reports:
-        1) in the screen before the invasion begins, were it displays your forces it does not take into acount any new troop types you may have on bord.
-        2) when trying to make a unit type with both 'equipment' and 'personnel' i find that the number of each used is not reflective of there relevant 'mult' stat. in testing with equipment mult: 10 and personnel multi: 1, i got 31 personnel to 400 equipment in a platoon.
-
-    please understand that i have only been testing this for a few hours now, and have just started to unravel how all this works. some of my questions and reports might just be user error that i will uncover in the upcoming days, so sorry if i said something silly.
-    PS: this is really really cool system you added. i have all sorts of interesting plans its going to be flavorful =)
-
-    question list 2: la la loo:
-    so, i have been working with this system some more, and i have a request for when/if you might chose to change it:
-    1)could you maybe add a way to have me change what unit definition a players ground force uses once its created? some type of playerGroundForceCreationListener?
-    1.a)I want to have the player be able to see there combat robots running around (without having to add 6 new buttons to the interface, because tbh that is just a little bit to mush for me, especially when its just going to do the same thing as the other 2 buttons 3 more times.), but as is, i don't think its possible to change player units on creation. at least i could not find a way..
-    2?)I should have likely asked if you knew a way to do this. maybe i should have opened with that, but it seems its not to be.
-    3)also there was a secondary issue with that here when i tried doing this anyways and the ground units transformed (after the round of combat ended) the ground units seemed to loss all there item data, so after the combat, i had.. nothing. no combat units returned from the fight. is there a way to transfer this data once i create a new ground unit to replace the old one?
-
-    sorry if i was a bit rude here. and sorry for how disorganized this is. i have been trying a thing were i do things and am tired. anyways, have a good day weak year eon.
-
-    question list 3: (not yet sent)
-    hey, it's been a while. i still have not quite gotten around to looking at all the things you added yet, as i have been busy preparing to do some things with ground battles, and had to create... a lot of things to support what i wanted to do.
-    regarding it being more reasonable to simply use the crew replacer integration rather then a bunch of unit definitions, it is, but there are things this does not allow.
-    for example: having my units have there own icons. or squad sizes, or moral, or any of the things that would be -different- for robots. but mostly the icons. i always felt a little sad at not having my AI lead ground invasions not have combat robots in them, so im fixing that. with a lot of effort. thats why i have not responded to you with speed. and why i still have not yet tested all the things i need to. lots of infrastructure
-
-    might not even be able to get to the new things you added soon, but i do have some questions and reports:
-    question:
-        1) is it possible to 'mark' a 'GroundUnit' in the 'GroundBattleIntel'? im trying to make a way to change units but only on a percent chance, and with all the complexity of ground battles, I worry about failing to check a ground unit, or checking one more then once.
-           baring a way to mark them, is there a way to tell them apart? like some type of 'battle unit ID'? I can only seem to find the 'getUnitDefId' and i think that's the same between squads of the same type.
-           I know most ground units are only created on the 'GroundBattleCampaignListener.reportBattleStarted(GroundBattleIntel)' function, but I know of a few more instances were NPC ground units are added. like 'militia' and i have no clue if there are others. (like a NPC fleet showing up to proved ground troops mid battle or something)
-        2) is there a way to change the unit icon that appears in a ground battle for a given ground unit? have i asked that already? I don't think so. but i really want to do that for some of my 'heavy' units im making, so they look different.
-        3) is there a way to also hide the number of available commodity available for a given unit type? does the one that hides the button to create a unit also hide the available units? i have not used it yet, so i don't know. yet. i will be able to use check this soonish, but things are taking forever because of reasons.
-        4) how does the number of units in a squad effect there defences? i understand that a units 'strength' = to there strength stat * (personnel + equipment), but does this also have the same effect on a platoons hit points, or is it not like that?
-        5) is it possible to have more then one type of required 'personnel' or 'equipment' on the same 'groundBattleDefs.unitTypes' (not like a crew replacer job, but something that requires 3+ different types of commodity's)? for making some units be really frustrating to make (because strong units need a downside)
-        6) also, wait does 'moral multi' in 'groundBattleDefs.unitTypes' do? is it a multiplyer on how mush moral you have, or how mush moral damage you take, or how mush moral damage you do? something else intierly? I am confused
-    reports:
-    7) in records to the crew replacer implementation of invasions, i managed to find a thing i missed the last few times i looked this over for one reason or another, and it raises some interesting questions.
-       namely, that different commodity added to a ground units crewReplacer_Job with differing power are treated interestingly.
-       so, when you increase the 'power' of a commodity in the job, lets say 'nex_groundBattle_marines', what will happen is that how must 'space' in the squad this commodity uses is increased, but this will weaking the squad.
-       I think the reason behind this is that a squads 'damage' is equal to numberOfUnits*UnitDefDamage. but this does lead to some interesting mechanics, that might not be intentional:
-       7.a) it means that any time someone adds a commodity with more then one power, it will result in the squad being weaker, as it is smaller.
-       7.b) it mean that any time someone adds a commodity with less then one power, it will result in the squad being mush stronger, as there are more units inside of it.
-
-       this seems fine at first, but the moment someone wants to create a commodity that is stronger, or weaker per unit then a normal marine, its simply impossible to do so without creating a new 'unitTypes' in the 'groundBattleDefs.json'.
-       granted the ability to make mush bigger/smaller squads then normal is quite interesting, but i cant quite help but feel like somethings off about that. but maybe that's just because im confused.
-
-       anyhow, i almost prepared some solutions to this, but i um, ended up not doing that. the ground units are very complicated with a lot of stats, and all my solutions involved doing some things crew replacer is not built for, but could do in theory, and the more i thought about it the more it seemed like 'asking for trouble'.
-       but in the mean time, might you conform if ground forces power being on a per number of units basses is a bug or not? i seem to recall it not doing that before, but i have forgetting things before.
-
-    8) complete removal of the 'create ground unit' interface in a ground battle. how? 6 steps:
-        8.0) create a new ground unit type that does not use marines.
-        8.1) start a ground battle with only units for that unit (no marines).
-        8.2) create a ground unit with the not marines.
-        8.3) deploy your new ground unit
-        8.4) click on the now clickable 'new marines platoon' button.
-        8.5) be in awe at the fact you cant deploy anything (until next turn).
-
-        please note: i have some 12 new ground unit types (for all types of ground units * all types of robots). only one was player deployable in this example. don't know if that changed anything.
-
-
-    so at first i only had like 3 things to say, so uh sorry for the loong block of text. it was not my intention, but i did it anyways.
-    also, sorry i didn't get the chance to try out and of the things you created. I got caught up in making a thing.
-questions for others:
-    hello again everyone! i have returned with but a single question
-    1) is there a way to edit a rules.csv $memory_whatsit with code?
-    thanks again for answering my question in the past everyone. its been helpful.
+hey, thanks for agreeing to look at the possibility of adding a crewSet system to your nexerlin. i know im asking for a bunch of things right now, but thank you for being not mad at that. hopefully.
+ok, so i now have more reports, and responses:
+1) so i found some new issues: the version you sent me does not seem to take into account crew replacer added commodity when it should relevant ground strength at the start of a battle. (different from it not displaying ground strength from new unit creatable unit types, probably.)
+2) ok, in this regard to response 7), i did some testing, and with the following code, i was able to create issues. it seems that your code is not taking into account a crew crewReplacer.getCrewPower(), at least for how mush damage each commodity was using. It was however for how mush space each commodity should be using. that's why the stats i was seeing were so odd.
+[code] crewReplacer_Crew temp = new crewReplacer_Crew(){
+    @Override
+     public float getCrewPower(CargoAPI cargo) {
+         return 5;
+     }
+};
+temp.crewPower = 1f;
+temp.name = "ore";
+crewReplacer_Main.getJob("nex_groundBattle_marines").addCrew(temp);
+[/code]
+3) you asked for something to try and replecate bugs with, so i desided to minamize a thing, so you could get the 'you cant build units any more' bug. as its the only one i dont understand yet.
+I used crew replacer for this, btw.
+so yay, just approach a market with only heavy arms, create a platoon, deploy it onto the surface, then watch as the 'marine' button lets you click it and breaks things. simple ish hopefully
+[code]
+	"unitTypes":{
+		#basic combat robots,
+		#2X size, 0.5X strangth, 2X moral, 0.5X cost
+		"breakYourGame":{
+			"name":"bugy bug",
+			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+			#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+			"playerCanCreate":true,
+			"strength":1,
+			"personnel":{
+				"commodityId":"hand_weapons",
+				"crewReplacerJobId":"nex_groundBattle_heavyarms",
+				"mult":1,	# integer, at least for now
+			},
+			"tags":["marine"],
+			"sortOrder":1,
+		}
+	},
+[/code]
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
@@ -96,6 +61,20 @@ plans for the invasions:
                    so, things i can do for this:
                    provied a platoon only contains robots, i can change the platoon to a robotic force, provided all the inputed items are already in the crew replacer for said robotic force.
         b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
+
+
+    on creating player units:
+        3 possibility:
+            a) use the normal buttons. whenever spawned, get the unit that is most prominent (be it the highest level, or largest number of units) in said group and set the unit def to reflect this, copying over the personnel map for said group.
+                -issues:
+                    1) the possibility of losing data when i change the robot type.
+                    2) my crewReplacerJob for my robots will need to use the normal nex jobs for this. but this has the possible issue of forcefully changing my icon to something i dont want.
+            b) the same as a, but use my own 'create robot' buttons.
+                -issues:
+                    1) the possibility of losing data when i change the robot type.
+            c) have a button for each robot type. avoid the issue of changing robot types entirely.
+                -issues:
+                    1)this is a mess to interact with. i can help reduce the mess by 'hiding' buttons when they are not available, but that... does not really help me that mush. because the moment you have 2 types of robots, BAM messy as flip.
 
 
 im going to work on the following now:

@@ -9,6 +9,7 @@ import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofit_g
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Defender;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.groundBattleMemory.AIRetrofits_GroundBattleTroopOddsMemory;
+import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import exerelin.campaign.intel.groundbattle.GroundBattleCampaignListener;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
@@ -99,11 +100,11 @@ public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignLis
     }
 
     public boolean isUnitMarked(GroundUnit unit){
-        return false;
+        return this.My_Memory.isUnitsChanged(unit);
     }
     public void markUnit(GroundUnit unit){
         if (isUnitMarked(unit)) return;
-        //mark unit here
+        this.My_Memory.addUnitToChanged(unit);
     }
 
 

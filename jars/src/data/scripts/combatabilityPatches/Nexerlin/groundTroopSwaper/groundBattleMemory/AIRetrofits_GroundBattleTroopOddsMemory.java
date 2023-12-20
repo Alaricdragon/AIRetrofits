@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class AIRetrofits_GroundBattleTroopOddsMemory {
     public ArrayList<AIRetrofits_GB_WroldFactionMemory> data = new ArrayList();
-
+    public ArrayList<GroundUnit> unitsChanged = new ArrayList<>();
     public float getOdds(GroundBattleIntel battle,GroundUnit b, AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker type){
         String factionID = b.getFaction().getId();
         MarketAPI market = AIRetrofits_GroundBattleListiner.getUnitsMarket(b,battle);
@@ -25,5 +25,11 @@ public class AIRetrofits_GroundBattleTroopOddsMemory {
             if(a.compare(type,factionID,market)) return a;
         }
         return new AIRetrofits_GB_WroldFactionMemory(type,factionID,market,type.getOddsOfRobot(market));
+    }
+    public boolean isUnitsChanged(GroundUnit unit){
+        return unitsChanged.contains(unit);
+    }
+    public void addUnitToChanged(GroundUnit unit){
+        unitsChanged.add(unit);
     }
 }

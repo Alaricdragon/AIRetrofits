@@ -32,6 +32,7 @@ public class AIRetrofits_Startup_CrewReplacer {
         addOmegaSalvageRobots();
         addOmegaCombatRobots();
         addOmegaSurveyRobots();
+        //crewReplacer_Main.getJob("AIretrofit_groundBattle_CombatDrone").addNewCrew("ore",1,10);
     }
 
 
