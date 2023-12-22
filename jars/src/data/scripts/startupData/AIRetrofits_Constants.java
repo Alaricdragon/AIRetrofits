@@ -38,7 +38,7 @@ public class AIRetrofits_Constants {
     public static final String Industry_AIRetrofit_salvageRobotManufactory = "AIRetrofit_salvageRobotManufactory";
     public static final String Industry_AIRetrofit_combatRobotManufactory = "AIRetrofit_combatRobotManufactory";
     public static final String Industry_AIRetrofit_salvageRobotManufactory_V2 = "AIRetrofit_salvageRobotManufactory_V2";
-    public static final String AIndustry_IRetrofit_combatRobotManufactory_V2 = "AIRetrofit_combatRobotManufactory_V2";
+    public static final String Industry_AIRetrofit_combatRobotManufactory_V2 = "AIRetrofit_combatRobotManufactory_V2";
     //sub market names:
     public static final String Submarket_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacilitySubmarket";
 

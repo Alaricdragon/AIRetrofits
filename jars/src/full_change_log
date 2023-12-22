@@ -3,6 +3,11 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.9:(private)
+save compatible with 0.7.20.1+
+    fixes:
+        fixed most the bugs i could find in the robot swapper thing. attackers dont work yet for some reaons...
+
 V0.8.0.8:(private)
 save compatible with 0.7.20.1+
     new:

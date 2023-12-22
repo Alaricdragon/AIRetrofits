@@ -11,7 +11,7 @@
 	"unitTypes":{
 		#basic combat robots,
 		#2X size, 0.5X strangth, 2X moral, 0.5X cost
-		"CombatRobots_T0_marine":{
+		"AIRetrofit_CombatRobots_T0_marine":{
 			"name":"combat robots",
 			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 			#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
@@ -34,7 +34,7 @@
 			"sortOrder":1,
 		},
 
-		"CombatRobots_T0_Heavy":{
+		"AIRetrofit_CombatRobots_T0_Heavy":{
 			"name":"heavy CR",
 			"type":"HEAVY",
 			"playerCanCreate":true,
@@ -57,7 +57,7 @@
 			"tags":["heavy"],
 			"sortOrder":2
 		},
-		"CombatRobots_T0_militia":{
+		"AIRetrofit_CombatRobots_T0_militia":{
 			"name":"robotic militia",
 			"type":"MILITIA",
 			"playerCanCreate":false,
@@ -72,7 +72,7 @@
 			"tags":["militia"],
 			"sortOrder":3,
 		},
-		"CombatRobots_T0_rebel":{
+		"AIRetrofit_CombatRobots_T0_rebel":{
 			"name":"robotic rebel",
 			"type":"REBEL",
 			"playerCanCreate":false,
@@ -90,7 +90,7 @@
 		},
 
 
-	"CombatRobots_T1_marine":{
+	"AIRetrofit_CombatRobots_T1_marine":{
 		"name":"advanced combat robots",
 		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 		"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
@@ -105,14 +105,14 @@
 		#"offensiveStrMult":1.25,
 		#"crampedStrMult":0.75,
 		"personnel":{
-			"commodityId":"AIretrofit_CombatDrone",
+			"commodityId":"AIretrofit_Advanced_CombatDrone",
 			"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
 			"mult":1,	# integer, at least for now
 		},
 		"tags":["marine"],
 		"sortOrder":1,
 	},
-	"CombatRobots_T1_Heavy":{
+	"AIRetrofit_CombatRobots_T1_Heavy":{
 		"name":"advanced heavy CR",
 		"type":"HEAVY",
 		"playerCanCreate":true,
@@ -135,7 +135,7 @@
 		"tags":["heavy"],
 		"sortOrder":2
 	},
-	"CombatRobots_T1_militia":{
+	"AIRetrofit_CombatRobots_T1_militia":{
 		"name":"advanced robotic militia",
 		"type":"MILITIA",
 		"playerCanCreate":false,
@@ -143,14 +143,14 @@
 		"moraleMult":0.6,
 		"dropCostMult":0.7,
 		"personnel":{
-			"commodityId":"AIretrofit_WorkerDrone",
+			"commodityId":"AIretrofit_Advanced_CombatDrone",
 			"crewReplacerJobId":"nex_groundBattle_militia",
 			"mult":1,
 		},
 		"tags":["militia"],
 		"sortOrder":3,
 	},
-	"CombatRobots_T1_rebel":{
+	"AIRetrofit_CombatRobots_T1_rebel":{
 		"name":"advanced robotic rebel",
 		"type":"REBEL",
 		"playerCanCreate":false,
@@ -159,7 +159,7 @@
 		"dropCostMult":0.7,
 		"damageTakenMult":0.6,
 		"personnel":{
-			"commodityId":"AIretrofit_WorkerDrone",
+			"commodityId":"AIretrofit_Advanced_CombatDrone",
 			"crewReplacerJobId":"nex_groundBattle_rebel",
 			"mult":1,
 		},
@@ -168,7 +168,7 @@
 	},
 
 
-	"CombatRobots_T2_marine":{
+	"AIRetrofit_CombatRobots_T2_marine":{
 		"name":"omega combat robots",
 		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 		#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
@@ -183,14 +183,14 @@
 		#"offensiveStrMult":1.25,
 		#"crampedStrMult":0.75,
 		"personnel":{
-			"commodityId":"AIretrofit_CombatDrone",
+			"commodityId":"AIretrofit_Omega_CombatDrone",
 			"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
 			"mult":1,	# integer, at least for now
 		},
 		"tags":["marine"],
 		"sortOrder":1,
 	},
-	"CombatRobots_T2_Heavy":{
+	"AIRetrofit_CombatRobots_T2_Heavy":{
 		"name":"omega heavy CR",
 		"type":"HEAVY",
 		"playerCanCreate":true,
@@ -213,7 +213,7 @@
 		"tags":["heavy"],
 		"sortOrder":2
 	},
-	"CombatRobots_T2_militia":{
+	"AIRetrofit_CombatRobots_T2_militia":{
 		"name":"omega robotic militia",
 		"type":"MILITIA",
 		"playerCanCreate":false,
@@ -221,14 +221,14 @@
 		"moraleMult":0.6,
 		"dropCostMult":0.7,
 		"personnel":{
-			"commodityId":"AIretrofit_WorkerDrone",
+			"commodityId":"AIretrofit_Omega_WorkerDrone",
 			"crewReplacerJobId":"nex_groundBattle_militia",
 			"mult":1,
 		},
 		"tags":["militia"],
 		"sortOrder":3,
 	},
-	"CombatRobots_T2_rebel":{
+	"AIRetrofit_CombatRobots_T2_rebel":{
 		"name":"omega robotic rebel",
 		"type":"REBEL",
 		"playerCanCreate":false,
@@ -237,7 +237,7 @@
 		"dropCostMult":0.7,
 		"damageTakenMult":0.6,
 		"personnel":{
-			"commodityId":"AIretrofit_WorkerDrone",
+			"commodityId":"AIretrofit_Omega_WorkerDrone",
 			"crewReplacerJobId":"nex_groundBattle_rebel",
 			"mult":1,
 		},

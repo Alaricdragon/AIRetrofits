@@ -840,6 +840,22 @@
 	#rebel -> T2 worker robot. deamnd. defance
 	"AIRetrofit_Nexerlin_GroundBattles_D_OWRr_Pop_D": 2,#--
 
+	#squad size diffrences. higher numbers means bigger squads when units are replaced. for player squads, see the groundBattleDefs.json.
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Raito": 2,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR2_Raito": 1.25,#for the malita to combat robot calculation
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Raito": 1,
+
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_Raito": 1,
+
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_Raito": 1,
 	#specalitems,
 	#Command Node,
 	#descriptions

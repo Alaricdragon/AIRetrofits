@@ -5,43 +5,6 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-hey, thanks for agreeing to look at the possibility of adding a crewSet system to your nexerlin. i know im asking for a bunch of things right now, but thank you for being not mad at that. hopefully.
-ok, so i now have more reports, and responses:
-1) so i found some new issues: the version you sent me does not seem to take into account crew replacer added commodity when it should relevant ground strength at the start of a battle. (different from it not displaying ground strength from new unit creatable unit types, probably.)
-2) ok, in this regard to response 7), i did some testing, and with the following code, i was able to create issues. it seems that your code is not taking into account a crew crewReplacer.getCrewPower(), at least for how mush damage each commodity was using. It was however for how mush space each commodity should be using. that's why the stats i was seeing were so odd.
-[code] crewReplacer_Crew temp = new crewReplacer_Crew(){
-    @Override
-     public float getCrewPower(CargoAPI cargo) {
-         return 5;
-     }
-};
-temp.crewPower = 1f;
-temp.name = "ore";
-crewReplacer_Main.getJob("nex_groundBattle_marines").addCrew(temp);
-[/code]
-3) you asked for something to try and replecate bugs with, so i desided to minamize a thing, so you could get the 'you cant build units any more' bug. as its the only one i dont understand yet.
-I used crew replacer for this, btw.
-so yay, just approach a market with only heavy arms, create a platoon, deploy it onto the surface, then watch as the 'marine' button lets you click it and breaks things. simple ish hopefully
-[code]
-	"unitTypes":{
-		#basic combat robots,
-		#2X size, 0.5X strangth, 2X moral, 0.5X cost
-		"breakYourGame":{
-			"name":"bugy bug",
-			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
-			#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
-			"playerCanCreate":true,
-			"strength":1,
-			"personnel":{
-				"commodityId":"hand_weapons",
-				"crewReplacerJobId":"nex_groundBattle_heavyarms",
-				"mult":1,	# integer, at least for now
-			},
-			"tags":["marine"],
-			"sortOrder":1,
-		}
-	},
-[/code]
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
@@ -62,7 +25,10 @@ plans for the invasions:
                    provied a platoon only contains robots, i can change the platoon to a robotic force, provided all the inputed items are already in the crew replacer for said robotic force.
         b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
 
-
+    ISSUES:
+        1)right now, attacker units from alpha-T2 manufactuory are never being changed. need to do more logs...
+            -theory: all units 'market i came from' memory is equal to the attacking world.
+            -theory: YHW-FOMSLKFJKSDNJKDSAJDJNAJASD
     on creating player units:
         3 possibility:
             a) use the normal buttons. whenever spawned, get the unit that is most prominent (be it the highest level, or largest number of units) in said group and set the unit def to reflect this, copying over the personnel map for said group.
@@ -81,9 +47,14 @@ im going to work on the following now:
     random required changes:
     1) change automated shipyard to be by crew basis, and slowly increase its production the longer something is inside of it.
     2) change images of robots (see 'update the robots')
-    3) update spelling and grammer from all my texts. aparently, the defalt way to handles capitals in the game is to only have the first letter of a name (even if the name has multiple words) to be capitalized.
+    3) update spelling and grammar from all my texts. apparently, the default way to handles capitals in the game is to only have the first letter of a name (even if the name has multiple words) to be capitalized.
         -also, there was a issue with the 'population and infrastructure' displaying the word 'name' after its world name. will need to look into that.
+        -also, combat robots alpha core description might be bugged.
+        -also, i want to put all the strings into thtere own part of the config.
     4) update the automated shipyard to work on a by crew basis. please.
+    5) check all my items and make sure the distance between them is what i want it to be (example of something that needs to improve: advanced combat robot)
+    6) add descriptions to what the omega core does on each industry (new game version has a function for that now. so thats cool)
+    7) make sure the fleet inflater for AI-Retrofits is not applying its hullmod to ships with no crew requirements
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.

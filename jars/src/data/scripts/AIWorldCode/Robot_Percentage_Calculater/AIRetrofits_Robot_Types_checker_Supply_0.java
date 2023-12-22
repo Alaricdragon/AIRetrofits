@@ -27,9 +27,12 @@ public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_
 
     @Override
     public float getLocalSupply(MarketAPI market) {
+        AIRetrofit_Log.loging("I am going to be sad. market,industry: "+market.getName()+", "+industry,this,true);
+        if (!market.hasIndustry(industry)) return 0f;
         String marketCore = market.getIndustry(industry).getAICoreId();
         if (marketCore == null) marketCore = "";
-        if (market.hasIndustry(industry) && marketCore.equals(aICore)){
+        AIRetrofit_Log.loging("market core lol "+marketCore,this,true);
+        if (marketCore.equals(aICore)){
             return localPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
         }
         return 0;
@@ -42,10 +45,12 @@ public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_
         for (MarketAPI a : Global.getSector().getEconomy().getMarketsCopy()) {
             //a.getFactionId().equals(factionID);
             //AIRetrofit_Log.loging("comparing: "+ market.getIndustry(industry).getAICoreId()+ " to "+ aICore,this,true);//.equals(aICore);
-            String marketCore = market.getIndustry(industry).getAICoreId();
-            if (marketCore == null) marketCore = "";
-            if (a.getFactionId().equals(factionID) && market.hasIndustry(industry) && marketCore.equals(aICore)) {
-                power += factionPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
+            if(market.hasIndustry(industry)) {
+                String marketCore = market.getIndustry(industry).getAICoreId();
+                if (marketCore == null) marketCore = "";
+                if (a.getFactionId().equals(factionID) && marketCore.equals(aICore)) {
+                    power += factionPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
+                }
             }
         }
         return power;

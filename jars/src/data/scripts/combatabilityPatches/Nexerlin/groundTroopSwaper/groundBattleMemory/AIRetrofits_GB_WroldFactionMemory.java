@@ -1,6 +1,7 @@
 package data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.groundBattleMemory;
 
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 
 public class AIRetrofits_GB_WroldFactionMemory {

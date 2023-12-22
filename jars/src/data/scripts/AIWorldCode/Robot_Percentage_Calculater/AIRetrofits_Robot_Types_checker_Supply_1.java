@@ -22,9 +22,10 @@ public class AIRetrofits_Robot_Types_checker_Supply_1 extends AIRetrofits_Robot_
     @Override
     public float getLocalSupply(MarketAPI market) {
         try {
+            if (!market.hasIndustry(industry)) return 0f;
             String marketCore = market.getIndustry(industry).getAICoreId();
             if (marketCore == null) marketCore = "";
-            if (market.hasIndustry(industry) && marketCore.equals(aICore)){//market.getIndustry(industry).getAICoreId().equals(aICore)) {
+            if (marketCore.equals(aICore)){//market.getIndustry(industry).getAICoreId().equals(aICore)) {
                 AIRetrofit_combatRobotManufactory a = (AIRetrofit_combatRobotManufactory) market.getIndustry(industry);
                 float power = a.getCombatMulti();
                 power = (power - 1) / power;//(DM-1)/DM

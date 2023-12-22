@@ -76,18 +76,31 @@ public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignLis
     public void runSwapers2(GroundBattleIntel battle){
 
         for(AIRetrofits_Robot_Types_calculater_2 a : AIRetrofits_Robot_Types_calculater_2.masterList){
+            AIRetrofit_Log.loging("one of da things for defender",this,true);
             if(a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Defender){
-                for (GroundUnit b : battle.getSide(false).getUnits()){
+                for (int c = 0; c < battle.getSide(false).getUnits().size(); c++){
+                    GroundUnit b = battle.getSide(false).getUnits().get(c);
                     if (!b.isPlayer() && !isUnitMarked(b)){
+                        AIRetrofit_Log.loging("unit type scaning: "+b.getUnitDefId(),this,true);
                         float odds = My_Memory.getOdds(battle,b, (AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a);
-                        ((AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a).swap(battle,b,odds);
+                        if(((AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a).swap(battle,b,odds)){
+                            c--;
+                        }
                     }
                 }
             }else if(a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker){
-                for (GroundUnit b : battle.getSide(true).getUnits()){
+                AIRetrofit_Log.loging("one of da things for attacker",this,true);
+                for (int c = 0; c < battle.getSide(false).getUnits().size(); c++){
+                    GroundUnit b = battle.getSide(false).getUnits().get(c);
+                    AIRetrofit_Log.loging("I GOT A UNIT FOR ATTACKERS 000",this,true);
                     if (!b.isPlayer() && !isUnitMarked(b)){
+                        AIRetrofit_Log.loging("I GOT A UNIT FOR ATTACKERS 001",this,true);
+                        AIRetrofit_Log.loging("unit type scaning: "+b.getUnitDefId(),this,true);
                         float odds = My_Memory.getOdds(battle,b, (AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a);
-                        ((AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a).swap(battle,b,odds);
+                        if(((AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a).swap(battle,b,odds)){
+                            c--;
+                            AIRetrofit_Log.loging("I GOT A UNIT FOR ATTACKERS 002",this,true);
+                        }
                     }
                 }
 
@@ -114,16 +127,25 @@ public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignLis
         MarketAPI market;
         if (b.getFleet() == null){
             if (b.isAttacker()){
+                AIRetrofit_Log.loging("getUnitsMarket: "+0,new AIRetrofit_Log(),true);
                 return null;
             }else{
-                market = battle.getMarket();
+                AIRetrofit_Log.loging("getUnitsMarket: "+1,new AIRetrofit_Log(),true);
+                return battle.getMarket();
             }
         }else{
             market = Global.getSector().getEconomy().getMarket(b.getFleet().getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
             if (market == null){
-                return null;
+                if (b.isAttacker()){
+                    AIRetrofit_Log.loging("getUnitsMarket: "+2,new AIRetrofit_Log(),true);
+                    return null;
+                }else{
+                    AIRetrofit_Log.loging("getUnitsMarket: "+3,new AIRetrofit_Log(),true);
+                    return battle.getMarket();
+                }
             }
+            AIRetrofit_Log.loging("getUnitsMarket: "+4,new AIRetrofit_Log(),true);
+            return market;
         }
-        return market;
     }
 }

@@ -3,6 +3,7 @@ package data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.groundBattl
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
@@ -24,7 +25,9 @@ public class AIRetrofits_GroundBattleTroopOddsMemory {
         for (AIRetrofits_GB_WroldFactionMemory a : data){
             if(a.compare(type,factionID,market)) return a;
         }
-        return new AIRetrofits_GB_WroldFactionMemory(type,factionID,market,type.getOddsOfRobot(market));
+        AIRetrofits_GB_WroldFactionMemory temp = new AIRetrofits_GB_WroldFactionMemory(type,factionID,market,type.getOddsOfRobot(market));
+        data.add(temp);
+        return temp;
     }
     public boolean isUnitsChanged(GroundUnit unit){
         return unitsChanged.contains(unit);
