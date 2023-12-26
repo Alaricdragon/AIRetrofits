@@ -9,7 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="marketRetrofit" level="project" />
     <orderEntry type="library" name="LazyLib-Kotlin" level="project" />
-    <orderEntry type="library" name="crew_replacer" level="project" />
     <orderEntry type="library" name="starsector-core" level="project" />
+    <orderEntry type="library" name="crew_replacer" level="project" />
   </component>
 </module>
