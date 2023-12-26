@@ -44,6 +44,16 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
+        AIRetrofit_Log.loging("checking population comp. issues go below:",this,true);
+        try{
+            if (incoming == null){
+                AIRetrofit_Log.loging("POPULATION COMP IS NULL",this,true);
+                incoming = new PopulationComposition();
+            }
+        }catch (Exception e){
+            AIRetrofit_Log.loging("POPULATION COMP IS ERROR",this,true);
+            incoming = new PopulationComposition();
+        }
         ArrayList<String> removed = AIRetrofits_RemoveUnwantedGrowth.removeGrowthOther(market,incoming);
         AIRetrofits_RemoveUnwantedGrowth.removeKnownImmigration(market,incoming,removed);
         AIRetrofit_MarketGrowthMods.applyGrowth(incoming,market);
