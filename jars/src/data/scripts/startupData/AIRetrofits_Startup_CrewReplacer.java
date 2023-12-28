@@ -18,6 +18,40 @@ public class AIRetrofits_Startup_CrewReplacer {
     public static final String normadicSurvival_CrewSet_Crew = "normadicSurvival_crew";
     public static final String normadicSurvival_CrewSet_Marines = "normadicSurvival_marines";
 
+
+    //ground combat
+    public static final String GB_BCR = "AIRetrofit_GB_BCR";
+    public static final String GB_BTC = "AIRetrofit_GB_BTC";
+    public static final String GB_BWRm = "AIRetrofit_GB_BWRm";
+    public static final String GB_BWRr = "AIRetrofit_GB_BWRr";
+
+    public static final String GB_ACR = "AIRetrofit_GB_ACR";
+    public static final String GB_ATC = "AIRetrofit_GB_ATC";
+    public static final String GB_AWRm = "AIRetrofit_GB_AWRm";
+    public static final String GB_AWRr = "AIRetrofit_GB_AWRr";
+
+    public static final String GB_OCR = "AIRetrofit_GB_OCR";
+    public static final String GB_OTC = "AIRetrofit_GB_OTC";
+    public static final String GB_OWRm = "AIRetrofit_GB_OWRm";
+    public static final String GB_OWRr = "AIRetrofit_GB_OWRr";
+
+
+    public static final float GB_BCR_V = 1f;
+    public static final float GB_BTC_V= 1f;
+    public static final float GB_BWRm_V = 1f;
+    public static final float GB_BWRr_V = 1f;
+
+    public static final float GB_ACR_V = 1f;
+    public static final float GB_ATC_V= 1f;
+    public static final float GB_AWRm_V = 1f;
+    public static final float GB_AWRr_V = 1f;
+
+    public static final float GB_OCR_V = 1f;
+    public static final float GB_OTC_V= 1f;
+    public static final float GB_OWRm_V = 1f;
+    public static final float GB_OWRr_V = 1f;
+
+
     static public void apply(){
         addMisc();
 
@@ -79,6 +113,9 @@ public class AIRetrofits_Startup_CrewReplacer {
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Crew);
         tempCrewSet.addCrew(tempCrew);
 
+        //nex job for combat
+        crewReplacer_Main.getJob(GB_BWRm).addNewCrew(robotType,GB_BWRm_V,10);
+        crewReplacer_Main.getJob(GB_BWRr).addNewCrew(robotType,GB_BWRr_V,10);
     }
     static private void addCombatRobots(){
         final String robotType = "AIretrofit_CombatDrone";
@@ -116,12 +153,17 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempCrew.crewPriority = nexM_Pr;//Hm_Pr
         tempJob.addCrew(tempCrew);*/
 
-        tempJob = crewReplacer_Main.getJob("AIretrofit_groundBattle_CombatDrone");
+        //temp job that i removed
+        /*tempJob = crewReplacer_Main.getJob("AIretrofit_groundBattle_CombatDrone");
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = robotType;
         tempCrew.crewPower = 1;//Hm_Po
         tempCrew.crewPriority = 10;//Hm_Pr
-        tempJob.addCrew(tempCrew);
+        tempJob.addCrew(tempCrew);*/
+
+        //nex job for combat
+        crewReplacer_Main.getJob(GB_BCR).addNewCrew(robotType,GB_BCR_V,10);
+        crewReplacer_Main.getJob(GB_BTC).addNewCrew(robotType,GB_BTC_V,10);
 
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);
         tempCrewSet.addCrew(tempCrew);
@@ -171,6 +213,10 @@ public class AIRetrofits_Startup_CrewReplacer {
 
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Crew);
         tempCrewSet.addCrew(tempCrew);
+
+        //nex job for combat
+        crewReplacer_Main.getJob(GB_AWRm).addNewCrew(robotType,GB_AWRm_V,10);
+        crewReplacer_Main.getJob(GB_AWRr).addNewCrew(robotType,GB_AWRr_V,10);
     }
     static private void addAdvancedCombatRobots(){
         final String robotType = "AIretrofit_Advanced_CombatDrone";
@@ -201,15 +247,20 @@ public class AIRetrofits_Startup_CrewReplacer {
         tempJob.addCrew(tempCrew);
 
         //nex job basic:
-        tempJob = crewReplacer_Main.getJob(nexMarinesJob);
+        /*tempJob = crewReplacer_Main.getJob(nexMarinesJob);
         tempCrew = new AIRetrofit_Robots();
         tempCrew.name = robotType;
         tempCrew.crewPower = nexM_Po;//Hm_Po
         tempCrew.crewPriority = nexM_Pr;//Hm_Pr
-        tempJob.addCrew(tempCrew);
+        tempJob.addCrew(tempCrew);*/
 
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);
         tempCrewSet.addCrew(tempCrew);
+
+
+        //nex job for combat
+        crewReplacer_Main.getJob(GB_ACR).addNewCrew(robotType,GB_ACR_V,10);
+        crewReplacer_Main.getJob(GB_ATC).addNewCrew(robotType,GB_ATC_V,10);
     }
     static private void addAdvancedSurveyRobots(){
         final String robotType = "AIretrofit_Advanced_SurveyDrone";
@@ -256,6 +307,10 @@ public class AIRetrofits_Startup_CrewReplacer {
 
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Crew);
         tempCrewSet.addCrew(tempCrew);
+
+        //nex job for combat
+        crewReplacer_Main.getJob(GB_OWRm).addNewCrew(robotType,GB_OWRm_V,10);
+        crewReplacer_Main.getJob(GB_OWRr).addNewCrew(robotType,GB_OWRr_V,10);
     }
     static private void addOmegaCombatRobots(){
         final String robotType = "AIretrofit_Omega_CombatDrone";
@@ -295,6 +350,10 @@ public class AIRetrofits_Startup_CrewReplacer {
 
         crewReplacer_CrewSet tempCrewSet = crewReplacer_Main.getCrewSet(normadicSurvival_CrewSet_Marines);
         tempCrewSet.addCrew(tempCrew);
+
+        //nex job for combat
+        crewReplacer_Main.getJob(GB_OCR).addNewCrew(robotType,GB_OCR_V,10);
+        crewReplacer_Main.getJob(GB_OTC).addNewCrew(robotType,GB_OTC_V,10);
     }
     static private void addOmegaSurveyRobots(){
         final String robotType = "AIretrofit_Omega_SurveyDrone";

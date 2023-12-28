@@ -27,7 +27,7 @@
 			#"crampedStrMult":0.75,
 			"personnel":{
 				"commodityId":"AIretrofit_CombatDrone",
-				"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+				"crewReplacerJobId":"AIRetrofit_GB_BCR",
 				"mult":1,	# integer, at least for now
 			},
 			"tags":["marine"],
@@ -51,7 +51,7 @@
 			},
 			"personnel":{
 				"commodityId":"marines",
-				"crewReplacerJobId":"nex_groundBattle_tankCrew",
+				"crewReplacerJobId":"AIRetrofit_GB_BTC",
 				"mult":2,
 			},
 			"tags":["heavy"],
@@ -66,7 +66,7 @@
 			"dropCostMult":0.7,
 			"personnel":{
 				"commodityId":"AIretrofit_WorkerDrone",
-				"crewReplacerJobId":"nex_groundBattle_militia",
+				"crewReplacerJobId":"AIRetrofit_GB_BWRm",
 				"mult":1,
 			},
 			"tags":["militia"],
@@ -82,7 +82,7 @@
 			"damageTakenMult":0.6,
 			"personnel":{
 				"commodityId":"AIretrofit_WorkerDrone",
-				"crewReplacerJobId":"nex_groundBattle_rebel",
+				"crewReplacerJobId":"AIRetrofit_GB_BWRr",
 				"mult":1,
 			},
 			"tags":["rebel"],
@@ -106,7 +106,7 @@
 		#"crampedStrMult":0.75,
 		"personnel":{
 			"commodityId":"AIretrofit_Advanced_CombatDrone",
-			"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_ACR",
 			"mult":1,	# integer, at least for now
 		},
 		"tags":["marine"],
@@ -129,7 +129,7 @@
 		},
 		"personnel":{
 			"commodityId":"marines",
-			"crewReplacerJobId":"nex_groundBattle_tankCrew",
+			"crewReplacerJobId":"AIRetrofit_GB_ATC",
 			"mult":2,
 		},
 		"tags":["heavy"],
@@ -144,7 +144,7 @@
 		"dropCostMult":0.7,
 		"personnel":{
 			"commodityId":"AIretrofit_Advanced_CombatDrone",
-			"crewReplacerJobId":"nex_groundBattle_militia",
+			"crewReplacerJobId":"AIRetrofit_GB_AWRm",
 			"mult":1,
 		},
 		"tags":["militia"],
@@ -160,7 +160,7 @@
 		"damageTakenMult":0.6,
 		"personnel":{
 			"commodityId":"AIretrofit_Advanced_CombatDrone",
-			"crewReplacerJobId":"nex_groundBattle_rebel",
+			"crewReplacerJobId":"AIRetrofit_GB_AWRr",
 			"mult":1,
 		},
 		"tags":["rebel"],
@@ -184,7 +184,7 @@
 		#"crampedStrMult":0.75,
 		"personnel":{
 			"commodityId":"AIretrofit_Omega_CombatDrone",
-			"crewReplacerJobId":"AIretrofit_groundBattle_CombatDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_OCR",
 			"mult":1,	# integer, at least for now
 		},
 		"tags":["marine"],
@@ -207,7 +207,7 @@
 		},
 		"personnel":{
 			"commodityId":"marines",
-			"crewReplacerJobId":"nex_groundBattle_tankCrew",
+			"crewReplacerJobId":"AIRetrofit_GB_OTC",
 			"mult":2,
 		},
 		"tags":["heavy"],
@@ -222,7 +222,7 @@
 		"dropCostMult":0.7,
 		"personnel":{
 			"commodityId":"AIretrofit_Omega_WorkerDrone",
-			"crewReplacerJobId":"nex_groundBattle_militia",
+			"crewReplacerJobId":"AIRetrofit_GB_OWRm",
 			"mult":1,
 		},
 		"tags":["militia"],
@@ -238,7 +238,7 @@
 		"damageTakenMult":0.6,
 		"personnel":{
 			"commodityId":"AIretrofit_Omega_WorkerDrone",
-			"crewReplacerJobId":"nex_groundBattle_rebel",
+			"crewReplacerJobId":"AIRetrofit_GB_OWRr",
 			"mult":1,
 		},
 		"tags":["rebel"],
@@ -246,6 +246,9 @@
 	}
 },
 
+"plugins":{
+	"AIRetrofits_GroundBattleCode":"data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner2",
+},
 
 #"natoAlphabet":[
 #	"Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India",

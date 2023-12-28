@@ -5,64 +5,31 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.AIRetrofits_Robot_Types_calculater_2;
-import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofit_groundTroopSwaper_Base;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Defender;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.groundBattleMemory.AIRetrofits_GroundBattleTroopOddsMemory;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.interfaces.AIRetrofits_GroundCombatTypeReplacement;
-import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
-import exerelin.campaign.intel.groundbattle.GroundBattleCampaignListener;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
+import exerelin.campaign.intel.groundbattle.plugins.BaseGroundBattlePlugin;
 
 import java.util.ArrayList;
 
-public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignListener/*, CampaignEventListener */{
+public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
     public AIRetrofits_GroundBattleTroopOddsMemory My_Memory = new AIRetrofits_GroundBattleTroopOddsMemory();
     @Override
-    public void reportBattleStarted(GroundBattleIntel battle) {
-        AIRetrofit_Log.loging("the thing below is da thing",this,true);
-        AIRetrofit_Log.loging(battle.getSide(false).getUnits().get(0).getPersonnelMap().toString(),this,true);
+    public void onBattleStart(){
+        GroundBattleIntel battle = this.intel;
+        AIRetrofit_Log.loging("IS THIS WORKING",this,true);
         AIRetrofit_Log.loging("BS total units, attack, defender: "+battle.getAllUnits().size()+", "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,true);
-        //runSwapers2(battle);
-    }
-    @Override
-    public void reportBattleBeforeTurn(GroundBattleIntel battle, int turn) {
-        AIRetrofit_Log.loging("BBT total units, attack, defender: "+battle.getAllUnits().size()+", "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,true);
-        //runSwapers2(battle);
     }
 
     @Override
-    public void reportBattleAfterTurn(GroundBattleIntel battle, int turn) {
-        AIRetrofit_Log.loging("BAT total units, attack, defender: "+battle.getAllUnits().size()+", "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,true);
-        //runSwapers2(battle);
+    public void apply() {
+        super.apply();
     }
 
-    @Override
-    public void reportBattleEnded(GroundBattleIntel battle) {
-    }
-
-
-    public void runSwapers(String[] exsclude,GroundBattleIntel battle){
-        for(AIRetrofits_Robot_Types_calculater_2 a : AIRetrofits_Robot_Types_calculater_2.masterList){
-            if(a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Defender){
-                ArrayList<String> temp = getCanDoUnits(exsclude,((AIRetrofits_Robot_Types_calculater_GroundUnits_Defender) a).replaced);
-                for (GroundUnit b : battle.getSide(false).getUnits()){
-                    if (!b.isPlayer() && temp.contains(b.getUnitDefId())){
-                        ((AIRetrofits_Robot_Types_calculater_GroundUnits_Defender) a).swap(battle,b);
-                    }
-                }
-            }else if(a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker){
-                ArrayList<String> temp = getCanDoUnits(exsclude,((AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a).replaced);
-                for (GroundUnit b : battle.getSide(true).getUnits()){
-                    if (!b.isPlayer() && temp.contains(b.getUnitDefId())){
-                        ((AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) a).swap(battle,b);
-                    }
-                }
-            }
-        }
-    }
-    public ArrayList<String> getCanDoUnits(String[] exclude,String[] available){
+    public ArrayList<String> getCanDoUnits(String[] exclude, String[] available){
         ArrayList<String> out = new ArrayList<String>();
         for(String a : available) {
             boolean can = true;
@@ -90,8 +57,8 @@ public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignLis
                             AIRetrofit_Log.loging("unit type scaning: " + b.getUnitDefId(), this, true);
                             float odds = My_Memory.getOdds(battle, b,a);
                             if (( a).swap(battle, b, odds)) {
-                            c--;
-                        }
+                                c--;
+                            }
                         }
                     }
                 } else if (((AIRetrofits_GroundCombatTypeReplacement) d).type().equals(AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker.type)){//a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Defender){
@@ -132,10 +99,6 @@ public class AIRetrofits_GroundBattleListiner implements GroundBattleCampaignLis
         if (isUnitMarked(unit)) return;
         this.My_Memory.addUnitToChanged(unit);
     }
-
-
-
-
     public static MarketAPI getUnitsMarket(GroundUnit b, GroundBattleIntel battle){
         MarketAPI market;
         if (b.getFleet() == null){

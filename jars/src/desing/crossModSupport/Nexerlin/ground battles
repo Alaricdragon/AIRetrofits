@@ -154,16 +154,21 @@ Combat units:
             image: a mush thicker robot? maybe like some type of multi-bot? multibull robots merged together i mean?
             notes: I have a few ideas for heavy units. so i might need to return to this idea. but let me list them here:
                 a: make it like the normal heavy wepon, but with the same mods the marine of T0 has.
+                    -2X crew (size from 3 to 5.) (so 0.6 multi) (same unit size).
+                    -power *0.6
+                    -drop cost *0.6
+                    moral = 1/0.6 = 1.666666666666666666666666666666
                 b: make it some type of heavyly armerd big boy.
                     -issues:
                         balance.
                         more armer and less firepower might just make it worse do to the way math goes (also make ground battles -LONGER- wish sucks).
                         -... youknow, there might be a spot to use this. have a third button added to the game that makes 'big boys'. have the option to deploy some heave armor, provided you have the
                          robots and metals to do it. it could be interesting to add a third unit.
-			"strength":5.5,
+
+			"strength":5.5, //3.3
 			"unitSizeMult":0.166667,
-			"dropCostMult":7.5,
-			"moraleMult":1,
+			"dropCostMult":7.5, //4.5
+			"moraleMult":1, //1.66667
 			"offensiveStrMult":1.25,
 			"crampedStrMult":0.75,
 			"damageTakenMult":1,
@@ -171,7 +176,7 @@ Combat units:
 				"mult":1,
 			},
 			"personnel":{
-				"mult":2,
+				"mult":2, //4
 			},
         militia:
             image: T0 salvage robots with guns on them?
@@ -179,8 +184,10 @@ Combat units:
                 this is simple enouth. but i have a idea.
                 why not make this desing based around the salvage robot instead of the combat robot? it could be interesting. having
                 a salvage robot that just shows up at some ponit. would be coooooolllll. also would give cadance to the idea of having the 'malita' be part combat robots being a good thing, instead of baaaaddd
+
+                note: as the salvage robot has a power of 1, so to does this unit.
 			"strength":0.4,
-			"unitSizeMult":2,
+			"unitSizeMult":1,
 			"moraleMult":0.6,
 			"dropCostMult":0.7,
 			"offensiveStrMult":1,
@@ -193,6 +200,7 @@ Combat units:
                 ...
                 i would need to think about that.
 
+                if this is going to be a salvage robot, it should have the normal stats, to represent the salvage robots '1' stats.
 			"strength":0.3,
 			"unitSizeMult":1,
 			"dropCostMult":0.7,
@@ -204,12 +212,18 @@ Combat units:
         notes: 0.75, 1.25. mush stronger them T1 robots. since they should be rare, they should relfect this strangth.
         there is only one issue: the possability of 'increaseing' the combat strangth of a force by more then the player wants. having the
         numbers be all wrong like that does not sound fun....
+        issues:
+            (1.5625 damage density, compaired to mariens and BCRs being 1.)
+            as the robots here have a mush high 'power density' then normal, i run into a issue:
+                note: this issue has been moved to the TO do list now.
+
+
         marine:
             image: T2 robot.
             notes: as a temp, im just going to copy the T1 marines, but change there numbers a little bit.
             "strength":1.25,
 			"unitSizeMult":1.25,
-			"dropCostMult":0.80,
+			"dropCostMult":0.75,
 			"moraleMult":2,
 			#"offensiveStrMult":1,
 			#"crampedStrMult":1,

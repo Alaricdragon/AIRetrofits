@@ -5,6 +5,7 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
+    hello again.
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
@@ -13,7 +14,14 @@ plans for the invasions:
     this class will need to beable to:
     1)(done) have a condition to actavate swaping.
     2)(done) have a function that determines the ratio of unswaped units that will be swapped.
-    3)(NOT done.) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers)
+    3)(no longer doing) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers
+    3.b)so, because i have 'stronger' combat robots, this therefore means i have a higher damage density, makeing things like for example, the defence value of a world, not be true.
+        the sollution is simple ish:
+            1) give every world a modifier to its defence stat, based on the % of robots that are upgraded on said world (example, i have a 30% chance of advanced robots, add a defnce multi of(0.3*1.5625 )) AKA (cahnce * powerDensity). this will allow for more acreate damage numbers.
+                note: also note, there are more then one type of robots, so the calculation should be something like... OR = (cahnce * powerDensity), AR = (math.max(1-OR,change) * pwoerDensity). then have 2 mods one for OR, and one for AR.
+            2) make it so every time i add a new 'advanced' robot, a certen number of not advanced robots on the battle field. (example: I replace 2 marrines (2 DD) for 2 advanced robots (3.125 DD) I have 1.125 exstra DD, so next time my code checks to remove a marrine, remove it instead.
+            this is good, because it lets my new robots : buff the worlds/faction, display correct 'defence' number, and be power houses that you should be afraid of.
+            (NOTE: this will need to be done in the ground battle listener)
 
     --) there is a issue however. that is that i want players to beable to create there own units as well, without to mush hassle.
         -how would one do this? simple:
@@ -48,6 +56,7 @@ im going to work on the following now:
     1) change automated shipyard to be by crew basis, and slowly increase its production the longer something is inside of it.
     2) change images of robots (see 'update the robots')
     3) update spelling and grammar from all my texts. apparently, the default way to handles capitals in the game is to only have the first letter of a name (even if the name has multiple words) to be capitalized.
+        NOTE: something useful here, is to copy the system from crew replacer over to this mod, so i might have more string control.
         -also, there was a issue with the 'population and infrastructure' displaying the word 'name' after its world name. will need to look into that.
         -also, combat robots alpha core description might be bugged.
         -also, i want to put all the strings into thtere own part of the config.
@@ -55,6 +64,8 @@ im going to work on the following now:
     5) check all my items and make sure the distance between them is what i want it to be (example of something that needs to improve: advanced combat robot)
     6) add descriptions to what the omega core does on each industry (new game version has a function for that now. so thats cool)
     7) make sure the fleet inflater for AI-Retrofits is not applying its hullmod to ships with no crew requirements
+    8) review, and attempt to fix the issue related to stations growth being equal to null. the reason for this is unkown, but reseting the population when its null might work maybe?
+    9) add a custom 'market card' to nexerlin, that lets you change your market to a AI-Pop market at the start of the game.
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.

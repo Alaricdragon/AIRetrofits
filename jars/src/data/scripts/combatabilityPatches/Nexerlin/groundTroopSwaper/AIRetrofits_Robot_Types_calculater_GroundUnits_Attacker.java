@@ -19,6 +19,7 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
         this.created = created;
         this.multi = multi;
     }
+    public static final String type = "attacker";
     public float[] multi;
     public String[] replaced,created;
     @Override
@@ -30,6 +31,12 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
     public String[] unitTypeCreated() {
         return created;
     }
+
+    @Override
+    public String type() {
+        return type;
+    }
+
     public boolean swap(GroundBattleIntel battle, GroundUnit unit){
         MarketAPI market = AIRetrofits_GroundBattleListiner.getUnitsMarket(unit,battle);
         //AIRetrofit_Log.loging("looking for market",this,true);

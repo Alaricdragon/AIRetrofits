@@ -4,4 +4,10 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Defender extends AIR
     public AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(String ID, String[] replaced, String[] created,float[] multi) {
         super(ID, replaced, created,multi);
     }
+    public static final String type = "defender";
+
+    @Override
+    public String type() {
+        return type;
+    }
 }
