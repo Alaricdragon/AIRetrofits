@@ -22,6 +22,7 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         GroundBattleIntel battle = this.intel;
         AIRetrofit_Log.loging("IS THIS WORKING",this,true);
         AIRetrofit_Log.loging("BS total units, attack, defender: "+battle.getAllUnits().size()+", "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,true);
+        runSwapers2(battle);
     }
 
     @Override
@@ -44,45 +45,54 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         return out;
     }
 
+    float[][] powerOverflow = new float[2][4];
+    public static final String
+            BMar = "marine",BHev="heavy",BReb="rebel",BMil="militia";
+    public void runSwapersPart(GroundBattleIntel battle,AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker a,boolean isAttacker){
+        int atkOrDef = 0;
+        if(isAttacker) atkOrDef = 1;
+        AIRetrofit_Log.loging("one of da things for attacker? "+isAttacker, this, true);
+        for (int c = 0; c < battle.getSide(isAttacker).getUnits().size(); c++) {
+            GroundUnit b = battle.getSide(isAttacker).getUnits().get(c);
+            int POT = getPowerOverflowID(b);
+            boolean done = false;
+            while(!done) {
+                done = true;
+                while (b.isPlayer() || isUnitMarked(b)) {
+                    c++;
+                    if (c >= battle.getSide(isAttacker).getUnits().size()) return;
+                    b = battle.getSide(isAttacker).getUnits().get(c);
+                    done = false;
+                }
+                POT = getPowerOverflowID(b);
+                while (POT != -1 && powerOverflow[atkOrDef][POT] >= 1) {
+                    b.removeUnit(false);
+                    powerOverflow[atkOrDef][POT]--;
+                    AIRetrofit_Log.loging("unit type removing: " + b.getUnitDefId()+". got "+powerOverflow[atkOrDef][POT]+" units left to remove", this, true);
+                    if (c >= battle.getSide(isAttacker).getUnits().size()) return;
+                    b = battle.getSide(isAttacker).getUnits().get(c);
+                    POT = getPowerOverflowID(b);
+                    done = false;
+                }
+            }
+            AIRetrofit_Log.loging("unit type scaning: " + b.getUnitDefId(), this, true);
+            float odds = My_Memory.getOdds(battle, b,a);
+            if ((a).swap(battle, b, odds)) {
+                if (POT != -1) {
+                    powerOverflow[atkOrDef][POT] += a.getPowerToSizeRaitio() - 1;
+                }
+                c--;
+            }
+        }
+    }
     public void runSwapers2(GroundBattleIntel battle){
 
         for(AIRetrofits_Robot_Types_calculater_2 d : AIRetrofits_Robot_Types_calculater_2.masterList) {
             if (d instanceof AIRetrofits_GroundCombatTypeReplacement) {
                 if (((AIRetrofits_GroundCombatTypeReplacement) d).type().equals(AIRetrofits_Robot_Types_calculater_GroundUnits_Defender.type)){//a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Defender){
-                    AIRetrofits_Robot_Types_calculater_GroundUnits_Defender a = (AIRetrofits_Robot_Types_calculater_GroundUnits_Defender) d;
-                    AIRetrofit_Log.loging("one of da things for defender", this, true);
-                    for (int c = 0; c < battle.getSide(false).getUnits().size(); c++) {
-                        GroundUnit b = battle.getSide(false).getUnits().get(c);
-                        if (!b.isPlayer() && !isUnitMarked(b)) {
-                            AIRetrofit_Log.loging("unit type scaning: " + b.getUnitDefId(), this, true);
-                            float odds = My_Memory.getOdds(battle, b,a);
-                            if (( a).swap(battle, b, odds)) {
-                                c--;
-                            }
-                        }
-                    }
+                    runSwapersPart(battle, (AIRetrofits_Robot_Types_calculater_GroundUnits_Defender) d,false);
                 } else if (((AIRetrofits_GroundCombatTypeReplacement) d).type().equals(AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker.type)){//a instanceof AIRetrofits_Robot_Types_calculater_GroundUnits_Defender){
-                    AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker a = (AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) d;
-                    AIRetrofit_Log.loging("one of da things for attacker", this, true);
-                    for (int c = 0; c < battle.getSide(true).getUnits().size(); c++) {
-                        GroundUnit b = battle.getSide(true).getUnits().get(c);
-                        AIRetrofit_Log.loging("I GOT A UNIT FOR ATTACKERS 000", this, true);
-                        if (!b.isPlayer() && !isUnitMarked(b)) {
-                            AIRetrofit_Log.loging("I GOT A UNIT FOR ATTACKERS 001", this, true);
-                            AIRetrofit_Log.loging("unit type scaning: " + b.getUnitDefId(), this, true);
-                            try {
-                                AIRetrofit_Log.loging(" from market of " + getUnitsMarket(b, battle).getName(), this, true);
-                            }catch (Exception e){
-                                AIRetrofit_Log.loging(" null makret????",this,true);
-                            }
-                            float odds = My_Memory.getOdds(battle, b, a);
-                            if (( a).swap(battle, b, odds)) {
-                                c--;
-                                AIRetrofit_Log.loging("I GOT A UNIT FOR ATTACKERS 002", this, true);
-                            }
-                        }
-                    }
-
+                    runSwapersPart(battle, (AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker) d,false);
                 }
             }
         }
@@ -90,6 +100,19 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         for (GroundUnit a : battle.getAllUnits()){
             markUnit(a);
         }
+    }
+    public int getPowerOverflowID(GroundUnit unit){
+        switch (unit.getUnitDefId()){
+            case BHev:
+                return 0;
+            case BMar:
+                return 1;
+            case BMil:
+                return 2;
+            case BReb:
+                return 3;
+        }
+        return -1;
     }
 
     public boolean isUnitMarked(GroundUnit unit){

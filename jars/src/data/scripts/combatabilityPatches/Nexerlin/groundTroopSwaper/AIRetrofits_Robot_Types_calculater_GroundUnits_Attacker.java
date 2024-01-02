@@ -13,15 +13,17 @@ import exerelin.campaign.intel.groundbattle.GroundUnit;
 import java.util.ArrayList;
 
 public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIRetrofits_Robot_Types_calculater_2 implements AIRetrofits_GroundCombatTypeReplacement {
-    public AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker(String ID, String[] replaced, String[] created,float[] multi) {
+    public AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker(String ID,float PTS, String[] replaced, String[] created,float[] multi) {
         super(ID);
         this.replaced = replaced;
         this.created = created;
         this.multi = multi;
+        this.PTS = PTS;
     }
     public static final String type = "attacker";
     public float[] multi;
     public String[] replaced,created;
+    public float PTS;
     @Override
     public String[] unitTypeReplaced() {
         return replaced;
@@ -35,6 +37,9 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
     @Override
     public String type() {
         return type;
+    }
+    public float getPowerToSizeRaitio(){
+        return PTS;
     }
 
     public boolean swap(GroundBattleIntel battle, GroundUnit unit){
@@ -59,6 +64,8 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
             unit.getLocation();
             unit.getDestination();*/
             GroundUnit NewUnit = battle.getSide(unit.isAttacker()).createUnit(newDefinition,faction, (int) (unit.getSize()*multi));
+
+
             NewUnit.setDestination(unit.getDestination());
             NewUnit.setLocation(unit.getLocation());
             //NewUnit.setSize(,false);

@@ -3,6 +3,11 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.11:(private)
+save compatible with 0.7.20.1+
+    worked on:
+        built the system that reduces defender units, provided i have to mush power on the field.
+        started on the system that adds a 'ground defence multi' to defending worlds.
 V0.8.0.10:(private)
 save compatible with 0.7.20.1+
     fixes:
