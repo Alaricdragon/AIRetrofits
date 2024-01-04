@@ -865,7 +865,7 @@
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_PTSR": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_PTSR": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_ACR_PTSR": 1.5,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_PTSR": 1.5625,
 	"AIRetrofit_Nexerlin_GroundBattles_HeACR_PTSR": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_AWRr_PTSR": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_AWRm_PTSR": 1,
@@ -874,6 +874,10 @@
 	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_PTSR": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_OWRr_PTSR": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_OWRm_PTSR": 1,
+
+	#the increase in ground defences from a given defencive unit quantity. (should be equal to PTSR-1 for a given bot.)
+	"AIRetrofit_MaxGroundDefenceBonusFromT1Bots": 0.5625,
+	"AIRetrofit_MaxGroundDefenceBonusFromT2Bots": 1,#temp value, untill i figger out what the real value should be
 	#specalitems,
 	#Command Node,
 	#descriptions
@@ -932,6 +936,12 @@
 	"adminSalaryTier8":80000,#--
 	"adminSalaryTier9":90000,#--
 	"adminSalaryTier10":100000,#--
+
+
+	#string data here. (moveing all string data to this ponit because it lets me edit it easyer)
+	#"AIRetrofitString_ClassName_Function_Item": "",
+	"AIRetrofitString_AIRetrofit_econUpdateListiner_applyDefenceBonuses_0": "%s% defending ground forces are omega combat robots",#% of robots that are T2 at this market.
+	"AIRetrofitString_AIRetrofit_econUpdateListiner_applyDefenceBonuses_1": "%s% defending ground forces are advanced combat robots",#% of robots that are T1 at this market.
 
 	#temp graphics settings for things im testing
 	"graphics":{

@@ -1,8 +1,14 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.9:
 save compatible with 0.7.20.1+
+    new:
+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.12:(private)
+save compatible with 0.7.20.1+
+    fixed the ground combat strength bonus from T1 and T2 robot supply being not right.
+    started to work on the basic combat robots image
 V0.8.0.11:(private)
 save compatible with 0.7.20.1+
     worked on:

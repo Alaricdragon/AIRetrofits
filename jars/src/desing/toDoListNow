@@ -63,29 +63,35 @@ im going to work on the following now:
                     -modify definitions.
                     -modify the 'PTSR' for all units.
                     -modify the 'Raito' for all units.
+                    -modify the AIRetrofit_MaxGroundDefenceBonusFromT2Bots to match the PTSR
                     -create images for heavy robots, provided i want them.
                 1.1) updated combat robot image:
                 1.2)(DONE)ratio of bot types depending on conditions:
-                1.3)(started)increase defence when higher teir robots are in play:
-                    -is causing lag right now. it should be ok once i remove the logs.
-                    -still need to set the defence values and add said values to the config.
-                    -need to add the description text of this ability to the config.
-                    -need to make it so this recalculates when i remove core's or build industry. right now its not. i had no clue that was a thing lol.
-                    -NOTE: if this proves to laggy, i can make it a 'end of the month' calculation. pretend its taking time to produce robots.
+                1.3)(DONE)increase defence when higher teir robots are in play:
                 1.4)(DONE)remove defenders based on the 'power-size ratio' of newly added defenders:
                     -ths idea of this, is to increase the number of defence value i have based on how many (T1,T2) robots will be present. so the 'defences' on a colonly will always match said colonlys defencive value
                 1.5)(NOT REQUIRED)remove attackers based on the 'size ratio' for newly added attackers
                     -do to reasons (mainly how i plan to set up the unit definitions), this is always 1. so this never factors in.
                 1.6) add description to alpha level core for what it does to ground forces. (saying something like 'some units are replaced' or something.)
+                    -maybe even something more detailed, like saying how mush supply and demand there is on the player markets, and how mush local and none local supply this forge is adding.
+                1.7) PASSABLE ISSUES:
+                    1.7.a) tested out some things related to combat robots. supply and demand of marines might not be taken into effect? testing required.
     2) change automated shipyard to be by crew basis, and slowly increase its production the longer something is inside of it.
-    3) change images of robots (see 'update the robots')
+    3) change images of robots (see 'update the robots') and other items
+        -robot forge needs new image.
+            -new combat robot needs to follow the ideology of 'low tech' robots.
+                -need some new parts:
+                    -recolored base.
+                    -new legs of some type. (the current ones suck like really suck i hate them >=( )
+        -combat robot needs new image.
+        -all robot images need to have there scales and positions (in picture) standardized.
     4) update spelling and grammar from all my texts. apparently, the default way to handles capitals in the game is to only have the first letter of a name (even if the name has multiple words) to be capitalized.
         NOTE: something useful here, is to copy the system from crew replacer over to this mod, so i might have more string control.
         -also, there was a issue with the 'population and infrastructure' displaying the word 'name' after its world name. will need to look into that.
         -also, combat robots alpha core description might be bugged.
         -also, i want to put all the strings into thtere own part of the config.
     5) update the automated shipyard to work on a by crew basis. please.
-    6) check all my items and make sure the distance between them is what i want it to be (example of something that needs to improve: advanced combat robot)
+    6) check all my items and make sure the distance between them is what i want it to be (example of something that needs to improve: advanced combat robot,Omega combat robot)
     7) add descriptions to what the omega core does on each industry (new game version has a function for that now. so thats cool)
     8) make sure the fleet inflater for AI-Retrofits is not applying its hullmod to ships with no crew requirements
     9) review, and attempt to fix the issue related to stations growth being equal to null. the reason for this is unkown, but reseting the population when its null might work maybe?
@@ -111,7 +117,20 @@ im going to work on the following now:
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
          -add images to the t2 personal robot manufactures
-
+    updated robot forge.
+    change to interface to have 2 parts:
+        forgeing
+        improve command node.
+        keep 'imporve command node' the same.
+        in 'forgeing' put all my crafting resapies, and allow for the following:
+        1) a 'scroll bar' (like what nexerlin 'request a fleet' interface has for fleet strangth). this will allow you to determin 2 things:
+            1) the 'wight' of production for a given robot.
+            2) how many robots you desire to be made.
+        2) let the forge overview show the following:
+            1) how mush resources you are projected to use (as well as how many items you are projected to gain)
+            2) the projected time to complete each robot type.
+            3) the max number of robots you can build with your resources.
+            4) how mush cargo you are projected to have at the end of the robot forgeing process.
 Note:
     regarding replacing crew and marines with salvage robots and combat robots:
         invasions work even with alpha shipyard modifier.

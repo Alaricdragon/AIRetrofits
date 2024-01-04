@@ -529,24 +529,24 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
     public static void addT2WorkerRobots(){
         new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,T2MilPTSR,new String[]{BMil},new String[]{T2Mil},new float[]{T2MilR});
 
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,Commodities.ALPHA_CORE,I_T0_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRm_CAl_T0_L_D,OWRm_CAl_T0_G_D);
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,Commodities.ALPHA_CORE,I_T1_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRm_CAl_T1_L_D,OWRm_CAl_T1_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,Commodities.OMEGA_CORE,I_T0_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRm_CAl_T0_L_D,OWRm_CAl_T0_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,Commodities.OMEGA_CORE,I_T1_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRm_CAl_T1_L_D,OWRm_CAl_T1_G_D);
 
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,D_OWRm_Pop_D);
 
 
         new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,T2RebPTSR,new String[]{BReb},new String[]{T2Reb},new float[]{T2RebR});
 
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,Commodities.ALPHA_CORE,I_T0_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRr_CAl_T0_L_D,OWRr_CAl_T0_G_D);
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,Commodities.ALPHA_CORE,I_T1_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRr_CAl_T1_L_D,OWRr_CAl_T1_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,Commodities.OMEGA_CORE,I_T0_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRr_CAl_T0_L_D,OWRr_CAl_T0_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,Commodities.OMEGA_CORE,I_T1_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRr_CAl_T1_L_D,OWRr_CAl_T1_G_D);
 
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,D_OWRr_Pop_D);
     }
     public static void addT2CombatRobots(){
         new AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,T2MarPTSR,new String[]{BMar},new String[]{T2Mar},new float[]{T2MarR});
 
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,Commodities.ALPHA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,OCR_CAl_T0_L_D,OCR_CAl_T0_G_D);
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,Commodities.ALPHA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,OCR_CAl_T1_L_D,OCR_CAl_T1_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,Commodities.OMEGA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,OCR_CAl_T0_L_D,OCR_CAl_T0_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,Commodities.OMEGA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,OCR_CAl_T1_L_D,OCR_CAl_T1_G_D);
 
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,D_OCR_Pop_A);
         new AIRetrofits_Robot_Types_checker_Demand_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Attack,Commodities.MARINES,null,D_OCR_Mar_A,0);
@@ -555,8 +555,8 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
 
         new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,T2MarPTSR,new String[]{BMar},new String[]{T2Mar},new float[]{T2MarR});
 
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,Commodities.ALPHA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,OCR_CAl_T0_L_A,OCR_CAl_T0_G_A);
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,Commodities.ALPHA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,OCR_CAl_T1_L_A,OCR_CAl_T1_G_A);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,Commodities.OMEGA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,OCR_CAl_T0_L_A,OCR_CAl_T0_G_A);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,Commodities.OMEGA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,OCR_CAl_T1_L_A,OCR_CAl_T1_G_A);
 
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,D_OCR_Pop_D);
         new AIRetrofits_Robot_Types_checker_Demand_0(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence,Commodities.MARINES,null,D_OCR_Mar_D,0);
@@ -566,8 +566,8 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
 
         new AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,T2HevPTSR,new String[]{BHev},new String[]{T2Hev},new float[]{T2HevR});
 
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,Commodities.ALPHA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,HeOCR_CAl_T0_L_D,HeOCR_CAl_T0_G_D);
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,Commodities.ALPHA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,HeOCR_CAl_T1_L_D,HeOCR_CAl_T1_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,Commodities.OMEGA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,HeOCR_CAl_T0_L_D,HeOCR_CAl_T0_G_D);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,Commodities.OMEGA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,HeOCR_CAl_T1_L_D,HeOCR_CAl_T1_G_D);
 
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,D_HeOCR_Pop_A);
         new AIRetrofits_Robot_Types_checker_Demand_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Attack,Commodities.MARINES,null,D_HeOCR_Mar_A,0);
@@ -576,8 +576,8 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
 
         new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,T2HevPTSR,new String[]{BHev},new String[]{T2Hev},new float[]{T2HevR});
 
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,Commodities.ALPHA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,HeOCR_CAl_T0_L_A,HeOCR_CAl_T0_G_A);
-        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,Commodities.ALPHA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T1_CombatDrone,HeOCR_CAl_T1_L_A,HeOCR_CAl_T1_G_A);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,Commodities.OMEGA_CORE,I_T0_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,HeOCR_CAl_T0_L_A,HeOCR_CAl_T0_G_A);
+        new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,Commodities.OMEGA_CORE,I_T1_CRForge,AIRetrofits_Constants.Commodity_T2_CombatDrone,HeOCR_CAl_T1_L_A,HeOCR_CAl_T1_G_A);
 
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,D_HeOCR_Pop_D);
         new AIRetrofits_Robot_Types_checker_Demand_0(AIRetrofits_Constants.RobotTypeCalculatorID_HevCombatT2_Defence,Commodities.MARINES,null,D_HeOCR_Mar_D,0);

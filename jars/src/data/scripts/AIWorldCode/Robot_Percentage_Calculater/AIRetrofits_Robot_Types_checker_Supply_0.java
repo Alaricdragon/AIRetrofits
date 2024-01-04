@@ -27,11 +27,11 @@ public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_
 
     @Override
     public float getLocalSupply(MarketAPI market) {
-        AIRetrofit_Log.loging("I am going to be sad. market,industry: "+market.getName()+", "+industry,this,true);
+        //AIRetrofit_Log.loging("I am going to be sad. market,industry: "+market.getName()+", "+industry,this,true);
         if (!market.hasIndustry(industry)) return 0f;
         String marketCore = market.getIndustry(industry).getAICoreId();
         if (marketCore == null) marketCore = "";
-        AIRetrofit_Log.loging("market core lol "+marketCore,this,true);
+        //AIRetrofit_Log.loging("market core lol "+marketCore,this,true);
         if (marketCore.equals(aICore)){
             return localPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
         }

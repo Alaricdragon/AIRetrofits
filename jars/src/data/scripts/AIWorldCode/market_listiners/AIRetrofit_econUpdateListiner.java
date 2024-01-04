@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.econ.EconomyAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.AIRetrofits_Robot_Types_calculater_2;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.startupData.AIRetrofits_Constants;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateListener {
     private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
+    private static final String className = "AIRetrofit_econUpdateListiner";
     static private boolean Override = true;//when true, act as normal.
     private void applyMarketData() {
         if(can && Override) {
@@ -27,12 +29,12 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
             }
         }
     }
-    private final static String defenceID_A = "something or other????";
-    private final static String defenceDescription_A = "something or other????";
-    private final static String defenceID_O = "something or other2????";
-    private final static String defenceDescription_O = "something or other2????";
-    private final static float defenceMulti_OD = 1f;
-    private final static float defenceMulti_AD = 1f;
+    private final static String defenceID_A = "AIRetrofits_T1_CombatDroneSupplyBonus";
+    private final static String defenceDescription_A = "%s% of robots at this colony are advanced combat robots";
+    private final static String defenceID_O = "AIRetrofits_T2_CombatDroneSupplyBonus";
+    private final static String defenceDescription_O = "%s% of robots at this colony are omega combat robots";
+    private final static float defenceMulti_OD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT2Bots");//1f;
+    private final static float defenceMulti_AD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT1Bots");//0.5f;
     public ArrayList<String> defencive_factionIDs;
     public ArrayList<Float> defencive_factionPower;
     public float getPowerTemp(MarketAPI market,String ID){
@@ -49,7 +51,7 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
         }catch (Exception e){
             return 0f;
         }
-        float global;
+        float global=0;
         if (typeID != -1){
             global = defencive_factionPower.get(typeID) + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market);
         }else{
@@ -57,21 +59,25 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
             defencive_factionIDs.add(market.getFactionId());
             global = defencive_factionPower.get(defencive_factionPower.size() - 1);
         }
-        return Math.max(1,Math.min(0,global + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market)));
+        return Math.min(1,Math.max(0,global + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market)));
     }
     private void applyDefenceBonuses(MarketAPI market){
-        float OD = Math.min(1,getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence));//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));
-        float AD = Math.min(1-OD,getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence));//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence).getOddsOfRobot(market));
-        //if (AD > 1-OD) AD = 1-OD;
-        if (OD <= 0){
-            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodifyMult(defenceDescription_O);
+        float OD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));
+        float AD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence).getOddsOfRobot(market));
+        //AIRetrofit_Log.loging("AD before min is: "+AD+" for market: "+market.getName(),this,true);
+        //AIRetrofit_Log.loging("OD before min is: "+OD+" for market: "+market.getName(),this,true);
+        AD = Math.min(1-OD,AD);
+        //AIRetrofit_Log.loging("AD after min is: "+AD+" for market: "+market.getName(),this,true);
+        if (OD <= 0.01f){
+            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodifyMult(defenceID_O);
         }else{
-            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(defenceID_O,defenceMulti_OD*(1+OD),defenceDescription_O);
+            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(defenceID_O,(defenceMulti_OD*OD)+1, AIRetrofits_StringHelper.getString(className,"applyDefenceBonuses",0,""+(int)(OD*100)));
         }
-        if (AD <= 0){
-            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodifyMult(defenceDescription_A);
+        if (AD <= 0.01f){
+            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodifyMult(defenceID_A);
         }else{
-            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(defenceID_A,defenceMulti_AD*(1+AD),defenceDescription_A);
+            //AIRetrofit_Log.loging("market power multi is: "+AD+" for market: "+market.getName()+" for a total of "+defenceMulti_AD*(AD)+" defence multi",this,true);
+            market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(defenceID_A,(defenceMulti_AD*AD)+1,AIRetrofits_StringHelper.getString(className,"applyDefenceBonuses",1,""+(int)(AD*100)));
         }
     }
     @Override
