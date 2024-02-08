@@ -64,7 +64,8 @@ public class AIRetrofit_groundTroopSwaper_Base {
         unit.getLocation();
         unit.getFaction();*/
         //unit.data.get();
-        GroundUnit a = battle.getSide(isAttacker).createUnit(getDefinition(unit, battle, isAttacker, turn),unit.getFaction(), (int) (unit.getSize()*getPlatoonsCreatedMulti(unit, battle,isAttacker,turn)));
+        GroundUnit a = battle.createUnit(definition,unit.getFaction(),isAttacker,(int) (unit.getSize()*getPlatoonsCreatedMulti(unit, battle,isAttacker,turn)),unit.getFleet(),unit.getIndex());
+        //GroundUnit a = battle.getSide(isAttacker).createUnit(getDefinition(unit, battle, isAttacker, turn),unit.getFaction(), (int) (unit.getSize()*getPlatoonsCreatedMulti(unit, battle,isAttacker,turn)));
         a.setLocation(unit.getLocation());
         a.setDestination(unit.getDestination());
 

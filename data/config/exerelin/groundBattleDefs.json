@@ -195,7 +195,7 @@
 		"type":"HEAVY",
 		"playerCanCreate":true,
 		"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
-		"strength":5.5,
+		"strength":500.5,
 		"unitSizeMult":0.166667,
 		"dropCostMult":7.5,
 		"offensiveStrMult":1.25,

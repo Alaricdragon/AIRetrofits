@@ -5,6 +5,14 @@ save compatible with 0.7.20.1+
 
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.14(private):
+save compatible with 0.7.20.1+
+    fixes:
+        did some work on groun battle replacer. attacker issues are now understood.
+        did some work on the ground defence modifyer from having higher level cmobat units. it is still not working.
+V0.8.0.13(private):
+save compatible with 0.7.20.1+
+    did some fixes with the ground battle replacer. attacker almost works now.
 V0.8.0.12:(private)
 save compatible with 0.7.20.1+
     fixed the ground combat strength bonus from T1 and T2 robot supply being not right.

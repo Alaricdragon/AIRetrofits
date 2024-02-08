@@ -1,10 +1,7 @@
 package data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.groundBattleMemory;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
-import data.scripts.AIRetrofit_Log;
-import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner;
+import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner2;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
@@ -16,8 +13,11 @@ public class AIRetrofits_GroundBattleTroopOddsMemory {
     public ArrayList<GroundUnit> unitsChanged = new ArrayList<>();
     public float getOdds(GroundBattleIntel battle,GroundUnit b, AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker type){
         String factionID = b.getFaction().getId();
-        MarketAPI market = AIRetrofits_GroundBattleListiner.getUnitsMarket(b,battle);
-        if (market == null) return 0f;
+        MarketAPI market = AIRetrofits_GroundBattleListiner2.getUnitsMarket(b,battle);
+        if (market == null) {
+            //AIRetrofit_Log.loging("market null, failing to get data",this,true);
+            return 0f;
+        }
         return getMemory(type,factionID,market).getValue();
     }
 

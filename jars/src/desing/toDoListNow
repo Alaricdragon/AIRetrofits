@@ -5,7 +5,13 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-    hello again.
+hello once again ____. its me again.
+I know its been a while since i gave you a report, and i do hope im not bugging you to mush with them, but i do know the issues of getting debug data sometimes, so im sending you a thingy.
+I have found the following bugs in nexerlins invasions: (in the BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)).
+heavy units on the attackers side don't seem to have there fleet set to anything. the marines do, but the heavys don't. its very strange.
+please note, that this test was conducted using a AI invasion.
+also, thanks for adding the 'reportUnitCreated' function. its making doing changes to none player ground troops so mush easier.
+
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
@@ -15,7 +21,7 @@ plans for the invasions:
     1)(done) have a condition to actavate swaping.
     2)(done) have a function that determines the ratio of unswaped units that will be swapped.
     3)(no longer doing) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers
-    3.b)so, because i have 'stronger' combat robots, this therefore means i have a higher damage density, makeing things like for example, the defence value of a world, not be true.
+    3.b)(done)so, because i have 'stronger' combat robots, this therefore means i have a higher damage density, makeing things like for example, the defence value of a world, not be true.
         the sollution is simple ish:
             1) give every world a modifier to its defence stat, based on the % of robots that are upgraded on said world (example, i have a 30% chance of advanced robots, add a defnce multi of(0.3*1.5625 )) AKA (cahnce * powerDensity). this will allow for more acreate damage numbers.
                 note: also note, there are more then one type of robots, so the calculation should be something like... OR = (cahnce * powerDensity), AR = (math.max(1-OR,change) * pwoerDensity). then have 2 mods one for OR, and one for AR.
@@ -34,9 +40,18 @@ plans for the invasions:
         b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
 
     ISSUES:
-        1)right now, attacker units from alpha-T2 manufactuory are never being changed. need to do more logs...
-            -theory: all units 'market i came from' memory is equal to the attacking world.
-            -theory: YHW-FOMSLKFJKSDNJKDSAJDJNAJASD
+        1) (might no longer be a issue.) T1 mariens seems to be forming at 100% of the time for some reason?
+        2) T1 hevey seem to never form for some reason?? (instead its just basic heavy).
+            -note: the reason for this is because attackers heavy units have no fleet for some reason? why? i dont know. i dont understand.
+            but it does happen and it frustrates me =(
+        3) when set to have everything always form, T2 heavy seems to overwrite everything, but like a few marines.
+            -the marines turn into T2 marines instead.
+            -I dont know why this happens....
+        4)  there might be a issue were worlds without the right industry wont get the global robot bonuses applied to them.
+            -i found this issue when i was messing around with the global defence bonuses. hopefully i can debug this next time.
+            -also of note: there might still be issues in the global defence bonuses getting the wrong values when more then one world are evolved.
+            -also of note: when i had more then one world, the game clamed i had mush more supply then i remember having for T1 combat robots? must test.
+                -notes: i managed to conferm this. supply is 9 with one world, 18 with 2, 27 with 3. i will need to find out why
     on creating player units:
         3 possibility:
             a) use the normal buttons. whenever spawned, get the unit that is most prominent (be it the highest level, or largest number of units) in said group and set the unit def to reflect this, copying over the personnel map for said group.
@@ -49,7 +64,6 @@ plans for the invasions:
             c) have a button for each robot type. avoid the issue of changing robot types entirely.
                 -issues:
                     1)this is a mess to interact with. i can help reduce the mess by 'hiding' buttons when they are not available, but that... does not really help me that mush. because the moment you have 2 types of robots, BAM messy as flip.
-
 
 im going to work on the following now:
     random required changes:
@@ -131,12 +145,6 @@ im going to work on the following now:
             2) the projected time to complete each robot type.
             3) the max number of robots you can build with your resources.
             4) how mush cargo you are projected to have at the end of the robot forgeing process.
-Note:
-    regarding replacing crew and marines with salvage robots and combat robots:
-        invasions work even with alpha shipyard modifier.
-        i have no idea if this works or not. i don't think it does.
-        tried an invasion fleet. none of my marines were combat robots like they should have been.
-        although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
 robot forge plugin:
     find a new sound for the robot forge
 bugs:
@@ -177,3 +185,9 @@ AIRetrofits:
 
 AI Market plugin:
 
+
+
+
+
+
+massages:

@@ -35,31 +35,63 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
     private final static String defenceDescription_O = "%s% of robots at this colony are omega combat robots";
     private final static float defenceMulti_OD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT2Bots");//1f;
     private final static float defenceMulti_AD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT1Bots");//0.5f;
+    public String[] defenciveType = {AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence};
     public ArrayList<String> defencive_factionIDs;
     public ArrayList<Float> defencive_factionPower;
+    public ArrayList<String> defencive_factionID2s;
+    public ArrayList<Float> defencive_factionPowe2r;
     public float getPowerTemp(MarketAPI market,String ID){
-        AIRetrofits_Robot_Types_calculater_2.getType(ID).getGlobalOddsOfRobot(market);
-
+        AIRetrofit_Log.loging("HERE HERE HERE",this,true);
+        AIRetrofit_Log.loging("test",this,true);
+        AIRetrofit_Log.push();
+        AIRetrofits_Robot_Types_calculater_2.getType(ID).getOddsOfRobot(market);
+        AIRetrofit_Log.pop();
+        AIRetrofit_Log.loging("test over. starting acsual",this,true);
         int typeID = -1;
+        int RobotType = -1;
+        ArrayList<String> factionID;
+        ArrayList<Float> factionPower;
         try {
-            for (int a = 0; a < defencive_factionIDs.size(); a++) {
-                if (market.getFactionId().equals(defencive_factionIDs.get(a))) {
+            for (int a = 0; a < defenciveType.length; a++){
+                if (ID.equals(defenciveType[a])){
+                    RobotType = a;
+                    break;
+                }
+            }
+            switch (RobotType){
+                case 0:
+                    factionID = defencive_factionIDs;
+                    factionPower = defencive_factionPower;
+                    break;
+                case 1:
+                    factionID = defencive_factionID2s;
+                    factionPower = defencive_factionPowe2r;
+                    break;
+                default:
+                    return 0f;
+            }
+            for (int a = 0; a < factionID.size(); a++) {
+                if (market.getFactionId().equals(factionID.get(a))) {
                     typeID = a;
                     break;
                 }
             }
         }catch (Exception e){
+            AIRetrofit_Log.loging("FAILED TO GET THE REQUIED DATA",this,true);
             return 0f;
         }
         float global=0;
         if (typeID != -1){
-            global = defencive_factionPower.get(typeID) + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market);
+            global = factionPower.get(typeID);// + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market);
         }else{
-            defencive_factionPower.add(AIRetrofits_Robot_Types_calculater_2.getType(ID).getGlobalOddsOfRobot(market));
-            defencive_factionIDs.add(market.getFactionId());
+            factionPower.add(AIRetrofits_Robot_Types_calculater_2.getType(ID).getGlobalOddsOfRobot(market));
+            factionID.add(market.getFactionId());
             global = defencive_factionPower.get(defencive_factionPower.size() - 1);
         }
-        return Math.min(1,Math.max(0,global + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market)));
+        AIRetrofit_Log.loging("global: "+global,this,true);
+        global += AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market);
+        AIRetrofit_Log.loging("total (before min ,max): "+global,this,true);
+        return Math.min(1,Math.max(0,global));
     }
     private void applyDefenceBonuses(MarketAPI market){
         float OD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));

@@ -1,16 +1,12 @@
 package data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.FactionAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.AIRetrofits_Robot_Types_calculater_2;
-import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner;
+import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner2;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.interfaces.AIRetrofits_GroundCombatTypeReplacement;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
-
-import java.util.ArrayList;
 
 public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIRetrofits_Robot_Types_calculater_2 implements AIRetrofits_GroundCombatTypeReplacement {
     public AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker(String ID,float PTS, String[] replaced, String[] created,float[] multi) {
@@ -43,7 +39,7 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
     }
 
     public boolean swap(GroundBattleIntel battle, GroundUnit unit){
-        MarketAPI market = AIRetrofits_GroundBattleListiner.getUnitsMarket(unit,battle);
+        MarketAPI market = AIRetrofits_GroundBattleListiner2.getUnitsMarket(unit,battle);
         //AIRetrofit_Log.loging("looking for market",this,true);
         if (market == null)return false;
         //AIRetrofit_Log.loging("market found",this,true);
@@ -59,24 +55,30 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
         double tempb = Math.random();
         AIRetrofit_Log.loging("dice, odds:"+tempb+", "+odds,this,true);
         if (tempb < odds){
-            FactionAPI faction = unit.getFaction();
-            /*unit.getFleet();
-            unit.getLocation();
-            unit.getDestination();*/
-            GroundUnit NewUnit = battle.getSide(unit.isAttacker()).createUnit(newDefinition,faction, (int) (unit.getSize()*multi));
+            AIRetrofit_Log.loging("attmpting to swap "+unit.getUnitDefId()+" with "+newDefinition,this,true);
+            AIRetrofit_Log.loging("old attack stat"+unit.getAttackStat().getModifiedValue(),this,true);
+
+            unit.setUnitDef(newDefinition);
+            AIRetrofit_Log.loging("new attack stat before size changes"+unit.getAttackStat().getModifiedValue(),this,true);
+            unit.setSize((int)(unit.getSize()*multi),false);
+
+            AIRetrofit_Log.loging("new attack stat"+unit.getAttackStat().getModifiedValue(),this,true);
+            //GroundUnit NewUnit = battle.getSide(unit.isAttacker()).createUnit(newDefinition,unit.getFaction(),(int)(unit.getSize()*multi),unit.getFleet());
+            //GroundUnit NewUnit = battle.createUnit(newDefinition,unit.getFaction(),unit.isAttacker(),(int) (unit.getSize()*multi),unit.getFleet(),unit.getIndex());
+            //GroundUnit NewUnit = battle.getSide(unit.isAttacker()).createUnit(newDefinition,faction, (int) (unit.getSize()*multi));
 
 
-            NewUnit.setDestination(unit.getDestination());
-            NewUnit.setLocation(unit.getLocation());
+            //NewUnit.setDestination(unit.getDestination());
+            //NewUnit.setLocation(unit.getLocation());
             //NewUnit.setSize(,false);
             //NewUnit.set
             //battle.getSide(unit.isAttacker()).getUnits().remove(unit);
-            AIRetrofit_Log.loging("creating a new unit of unit definition: '"+newDefinition+"'. it also has definition for sure of: '"+NewUnit.getUnitDefId()+"'",this,true);
+            /*AIRetrofit_Log.loging("creating a new unit of unit definition: '"+newDefinition+"'. it also has definition for sure of: '"+NewUnit.getUnitDefId()+"'",this,true);
             AIRetrofit_Log.push();
             AIRetrofit_Log.loging("oldOnit: definition,destination,location,size,faction: "+unit.getUnitDefId()+","+unit.getDestination()+","+unit.getLocation()+","+unit.getSize()+","+unit.getFaction(),this,true);
             AIRetrofit_Log.loging("newUnit: definition,destination,location,size,faction: "+NewUnit.getUnitDefId()+","+NewUnit.getDestination()+","+NewUnit.getLocation()+","+NewUnit.getSize()+","+NewUnit.getFaction(),this,true);
-            AIRetrofit_Log.pop();
-            unit.removeUnit(false);
+            AIRetrofit_Log.pop();*/
+            //unit.removeUnit(false);
             return true;
         }
         return false;

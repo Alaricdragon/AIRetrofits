@@ -32,7 +32,7 @@ public class AIRetrofits_Robot_Types_calculater_2 {
     }
     public float getGlobalOddsOfRobot(MarketAPI market){
         float odds = getSupply(market) / Math.max(getDemand(market),1);
-        //AIRetrofit_Log.loging("odds of robot: "+this.ID+" are "+odds+" at market named: "+market.getName(),this,true);
+        AIRetrofit_Log.loging("odds of robot: "+this.ID+" are "+odds+" at market named: "+market.getName(),this,true);
         return odds;
     }
     public float getDemand(MarketAPI market){
@@ -40,7 +40,7 @@ public class AIRetrofits_Robot_Types_calculater_2 {
         for (AIRetrofits_Robot_Types_checker_Base a : this.addons){
             power += a.getDemand(market);
         }
-        //AIRetrofit_Log.loging("demand of (global) robot: "+this.ID+" are "+power+ " at market named "+market.getName(),this,true);
+        AIRetrofit_Log.loging("demand of (global) robot: "+this.ID+" are "+power+ " at market named "+market.getName(),this,true);
         return power;
     }
     public float getSupply(MarketAPI market){
@@ -48,7 +48,7 @@ public class AIRetrofits_Robot_Types_calculater_2 {
         for (AIRetrofits_Robot_Types_checker_Base a : this.addons){
             power += a.getSupply(market);
         }
-        //AIRetrofit_Log.loging("supply of (global) robot: "+this.ID+" are "+power,this,true);
+        AIRetrofit_Log.loging("supply of (global) robot: "+this.ID+" are "+power,this,true);
         return power;
     }
     public float getLocalSupply(MarketAPI market){
@@ -56,7 +56,7 @@ public class AIRetrofits_Robot_Types_calculater_2 {
         for (AIRetrofits_Robot_Types_checker_Base a : this.addons){
             power += a.getLocalSupply(market);
         }
-        //AIRetrofit_Log.loging("supply of (local) robot: "+this.ID+" are "+power,this,true);
+        AIRetrofit_Log.loging("supply of (local) robot: "+this.ID+" are "+power,this,true);
         return power;
     }
 

@@ -21,7 +21,7 @@ public class AIRetrofits_Patches_Nexerlin extends AIRetrofits_PatchBase {
 
     @Override
     public void onGameLoad(boolean newGame) {
-        Global.getSector().getListenerManager().addListener(new AIRetrofits_GroundBattleListiner(), true);
+        //Global.getSector().getListenerManager().addListener(new AIRetrofits_GroundBattleListiner(), true);
         //Global.getSector().getListenerManager().addListener(new AIRetrofits_GroundBattleListiner2(), true);
     }
 }
