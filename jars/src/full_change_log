@@ -1,10 +1,15 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.9:
 save compatible with 0.7.20.1+
-    new:
-
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.15(private):
+save compatible with 0.7.20.1+
+    new:
+        added a setting config to logs related to nexerlin ground combat, and the robot percentage calculator.
+    fixes:
+        fixed robot_types_checker_supply_0 applying its supply * the number of markets its faction controls.
+        fixed some broken memory in the ground defence calculator.
 V0.8.0.14(private):
 save compatible with 0.7.20.1+
     fixes:

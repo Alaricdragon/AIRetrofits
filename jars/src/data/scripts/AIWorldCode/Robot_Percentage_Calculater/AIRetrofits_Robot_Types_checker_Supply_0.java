@@ -45,11 +45,11 @@ public class AIRetrofits_Robot_Types_checker_Supply_0 extends AIRetrofits_Robot_
         for (MarketAPI a : Global.getSector().getEconomy().getMarketsCopy()) {
             //a.getFactionId().equals(factionID);
             //AIRetrofit_Log.loging("comparing: "+ market.getIndustry(industry).getAICoreId()+ " to "+ aICore,this,true);//.equals(aICore);
-            if(market.hasIndustry(industry)) {
-                String marketCore = market.getIndustry(industry).getAICoreId();
+            if(a.hasIndustry(industry)) {
+                String marketCore = a.getIndustry(industry).getAICoreId();
                 if (marketCore == null) marketCore = "";
                 if (a.getFactionId().equals(factionID) && marketCore.equals(aICore)) {
-                    power += factionPowerPerOutput * market.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
+                    power += factionPowerPerOutput * a.getIndustry(industry).getSupply(output).getQuantity().getModifiedValue();
                 }
             }
         }

@@ -5,13 +5,6 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-hello once again ____. its me again.
-I know its been a while since i gave you a report, and i do hope im not bugging you to mush with them, but i do know the issues of getting debug data sometimes, so im sending you a thingy.
-I have found the following bugs in nexerlins invasions: (in the BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)).
-heavy units on the attackers side don't seem to have there fleet set to anything. the marines do, but the heavys don't. its very strange.
-please note, that this test was conducted using a AI invasion.
-also, thanks for adding the 'reportUnitCreated' function. its making doing changes to none player ground troops so mush easier.
-
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.

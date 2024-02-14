@@ -9,6 +9,8 @@
 	#logs active (for debuging)
 	"AIRetrofit_logs": true,
 	"AIRetrofit_GrowthLogs": false,
+	"AIRetrofits_Logs_Robot_Type_calculator": false,
+	"AIRetrofits_Logs_Nexerlin_GroundCombat": false,
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 

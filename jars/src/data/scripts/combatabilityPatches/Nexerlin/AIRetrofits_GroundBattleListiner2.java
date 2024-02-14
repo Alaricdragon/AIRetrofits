@@ -16,12 +16,13 @@ import exerelin.campaign.intel.groundbattle.plugins.BaseGroundBattlePlugin;
 import java.util.ArrayList;
 
 public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
+    private static final Boolean logs = Global.getSettings().getBoolean("AIRetrofits_Logs_Nexerlin_GroundCombat");
     public AIRetrofits_GroundBattleTroopOddsMemory My_Memory = new AIRetrofits_GroundBattleTroopOddsMemory();
     @Override
     public void onBattleStart(){
         //GroundBattleIntel battle = this.intel;
-        //AIRetrofit_Log.loging("IS THIS WORKING",this,true);
-        //AIRetrofit_Log.loging("BS total units, attack, defender: "+battle.getAllUnits().size()+", "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,true);
+        //AIRetrofit_Log.loging("IS THIS WORKING",this,logs);
+        //AIRetrofit_Log.loging("BS total units, attack, defender: "+battle.getAllUnits().size()+", "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,logs);
         //runSwapers2(battle);
     }
     @Override
@@ -29,18 +30,16 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         if (b.isPlayer()){
             return;
         }
+        AIRetrofit_Log.loging("checking ground unit: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),this,logs);
         changeUnitOverSwapers(b);
-        //b.setUnitDef("AIRetrofit_CombatRobots_T2_Heavy");//164 //1.6 = 307 = 200ish???
-        //AIRetrofit_Log.loging("Is Unit Still In GB: "+intel.getAllUnits().contains(b),this,true);
-        //AIRetrofit_Log.loging("IS THIS WORKING",this,true);
-        AIRetrofit_Log.loging("BS total units, attack, defender: "+this.intel.getAllUnits().size()+", "+this.intel.getSide(true).getUnits().size()+", "+this.intel.getSide(false).getUnits().size(),this,true);
+        AIRetrofit_Log.loging("BS total units, attack, defender: "+this.intel.getAllUnits().size()+", "+this.intel.getSide(true).getUnits().size()+", "+this.intel.getSide(false).getUnits().size(),this,logs);
     }
     public boolean changeSingleUnit(GroundUnit b,AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker a){
         int atkOrDef = 0;
         if (b.isAttacker()) atkOrDef = 1;
         int POT = getPowerOverflowID(b);
         float size = b.getSize();
-        //AIRetrofit_Log.loging("get me dat size???"+size,this,true);
+        //AIRetrofit_Log.loging("get me dat size???"+size,this,logs);
 
         if (!b.isAttacker() && POT != -1 && powerOverflow[atkOrDef][POT] >= size) {
             b.removeUnit(false);
@@ -50,10 +49,10 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         }
         //AIRetrofit_Log.loging("unit type scaning: " + b.getUnitDefId(), this, true);
         float odds = My_Memory.getOdds(this.intel, b, a);
-        //AIRetrofit_Log.loging("get odds of this robot:"+odds,this,true);
-        AIRetrofit_Log.loging("Attacker? "+b.isAttacker()+" unit type: "+b.getUnitDefId()+", calculaterID "+a.ID+", odds of robot: "+odds+", unit size: "+size,this,true);
+        //AIRetrofit_Log.loging("get odds of this robot:"+odds,this,logs);
+        AIRetrofit_Log.loging("Attacker? "+b.isAttacker()+" unit type: "+b.getUnitDefId()+", calculaterID "+a.ID+", odds of robot: "+odds+", unit size: "+size,this,logs);
         if ((a).swap(this.intel, b, odds)) {
-            AIRetrofit_Log.loging("UNIT TYPE HAS BEEN ADDED AT BATTLE NAMED: "+this.intel.getMarket().getName(),this,true);
+            AIRetrofit_Log.loging("UNIT TYPE HAS BEEN ADDED AT BATTLE NAMED: "+this.intel.getMarket().getName(),this,logs);
             if (POT != -1) {
                 powerOverflow[atkOrDef][POT] += size*(a.getPowerToSizeRaitio() - 1);
             }
@@ -62,7 +61,7 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         return false;
     }
     public void changeUnitOverSwapers(GroundUnit b){
-        AIRetrofit_Log.loging("running changes for unit of definition "+b.getUnitDefId(),this,true);
+        AIRetrofit_Log.loging("running changes for unit of definition "+b.getUnitDefId(),this,logs);
         AIRetrofit_Log.push();
         for(AIRetrofits_Robot_Types_calculater_2 d : AIRetrofits_Robot_Types_calculater_2.masterList) {
             if (d instanceof AIRetrofits_GroundCombatTypeReplacement) {
@@ -166,25 +165,25 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         MarketAPI market;
         if (b.getFleet() == null){
             if (b.isAttacker()){
-                AIRetrofit_Log.loging("unit, fleet"+b.getUnitDefId()+", "+b.getFleet(),new AIRetrofit_Log(),true);
-                AIRetrofit_Log.loging("getUnitsMarket: "+0,new AIRetrofit_Log(),true);
+                AIRetrofit_Log.loging("unit, fleet"+b.getUnitDefId()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
+                AIRetrofit_Log.loging("getUnitsMarket: "+0,new AIRetrofit_Log(),logs);
                 return null;
             }else{
-                AIRetrofit_Log.loging("getUnitsMarket: "+1,new AIRetrofit_Log(),true);
+                AIRetrofit_Log.loging("getUnitsMarket: "+1,new AIRetrofit_Log(),logs);
                 return battle.getMarket();
             }
         }else{
             market = Global.getSector().getEconomy().getMarket(b.getFleet().getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
             if (market == null){
                 if (b.isAttacker()){
-                    AIRetrofit_Log.loging("getUnitsMarket: "+2,new AIRetrofit_Log(),true);
+                    AIRetrofit_Log.loging("getUnitsMarket: "+2,new AIRetrofit_Log(),logs);
                     return null;
                 }else{
-                    AIRetrofit_Log.loging("getUnitsMarket: "+3,new AIRetrofit_Log(),true);
+                    AIRetrofit_Log.loging("getUnitsMarket: "+3,new AIRetrofit_Log(),logs);
                     return battle.getMarket();
                 }
             }
-            AIRetrofit_Log.loging("getUnitsMarket: "+4,new AIRetrofit_Log(),true);
+            AIRetrofit_Log.loging("getUnitsMarket: "+4,new AIRetrofit_Log(),logs);
             return market;
         }
     }/**/

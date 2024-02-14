@@ -4,7 +4,7 @@
 	"author":"Alaricdragon",
 	"version":"0.8",
 	"description":"Adds some hullmods, abilitys, and colony facilities to replace the humons in your fleet/faction",
-	"gameVersion":"0.96a-RC8",
+	"gameVersion":"0.97a-RC10",
     	"dependencies": [
         	{
         	    "id": "aaacrew_replacer",

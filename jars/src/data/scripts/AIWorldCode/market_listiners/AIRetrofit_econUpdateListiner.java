@@ -29,6 +29,7 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
             }
         }
     }
+    private final static boolean robot_type_logs = AIRetrofits_Robot_Types_calculater_2.robot_type_logs;
     private final static String defenceID_A = "AIRetrofits_T1_CombatDroneSupplyBonus";
     private final static String defenceDescription_A = "%s% of robots at this colony are advanced combat robots";
     private final static String defenceID_O = "AIRetrofits_T2_CombatDroneSupplyBonus";
@@ -36,25 +37,27 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
     private final static float defenceMulti_OD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT2Bots");//1f;
     private final static float defenceMulti_AD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT1Bots");//0.5f;
     public String[] defenciveType = {AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence};
-    public ArrayList<String> defencive_factionIDs;
-    public ArrayList<Float> defencive_factionPower;
-    public ArrayList<String> defencive_factionID2s;
-    public ArrayList<Float> defencive_factionPowe2r;
+    public ArrayList<String> defencive_factionIDs = new ArrayList<>();
+    public ArrayList<Float> defencive_factionPower = new ArrayList<>();
+    public ArrayList<String> defencive_factionID2s = new ArrayList<>();
+    public ArrayList<Float> defencive_factionPowe2r = new ArrayList<>();
     public float getPowerTemp(MarketAPI market,String ID){
-        AIRetrofit_Log.loging("HERE HERE HERE",this,true);
-        AIRetrofit_Log.loging("test",this,true);
+        AIRetrofit_Log.loging("HERE HERE HERE. runing test for ID of "+ID,this,robot_type_logs);
+        AIRetrofit_Log.loging("test",this,robot_type_logs);
         AIRetrofit_Log.push();
         AIRetrofits_Robot_Types_calculater_2.getType(ID).getOddsOfRobot(market);
         AIRetrofit_Log.pop();
-        AIRetrofit_Log.loging("test over. starting acsual",this,true);
+        AIRetrofit_Log.loging("test over. starting acsual",this,robot_type_logs);
         int typeID = -1;
         int RobotType = -1;
         ArrayList<String> factionID;
         ArrayList<Float> factionPower;
         try {
             for (int a = 0; a < defenciveType.length; a++){
+                AIRetrofit_Log.loging("running check for type of "+defenciveType[a],this,robot_type_logs);
                 if (ID.equals(defenciveType[a])){
                     RobotType = a;
+                    AIRetrofit_Log.loging("got check for type of "+defenciveType[a],this,robot_type_logs);
                     break;
                 }
             }
@@ -77,29 +80,31 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
                 }
             }
         }catch (Exception e){
-            AIRetrofit_Log.loging("FAILED TO GET THE REQUIED DATA",this,true);
+            AIRetrofit_Log.loging("FAILED TO GET THE REQUIED DATA. exseption type: "+e.getLocalizedMessage(),this,robot_type_logs);
             return 0f;
         }
         float global=0;
         if (typeID != -1){
             global = factionPower.get(typeID);// + AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market);
+            AIRetrofit_Log.loging("get global stored data of: "+global,this,robot_type_logs);
         }else{
             factionPower.add(AIRetrofits_Robot_Types_calculater_2.getType(ID).getGlobalOddsOfRobot(market));
             factionID.add(market.getFactionId());
-            global = defencive_factionPower.get(defencive_factionPower.size() - 1);
+            global = factionPower.get(factionPower.size() - 1);
+            AIRetrofit_Log.loging("stored global stored data of: "+global,this,robot_type_logs);
         }
-        AIRetrofit_Log.loging("global: "+global,this,true);
+        AIRetrofit_Log.loging("global: "+global,this,robot_type_logs);
         global += AIRetrofits_Robot_Types_calculater_2.getType(ID).getLocalSupply(market);
-        AIRetrofit_Log.loging("total (before min ,max): "+global,this,true);
+        AIRetrofit_Log.loging("total (before min ,max): "+global,this,robot_type_logs);
         return Math.min(1,Math.max(0,global));
     }
     private void applyDefenceBonuses(MarketAPI market){
         float OD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));
         float AD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence).getOddsOfRobot(market));
-        //AIRetrofit_Log.loging("AD before min is: "+AD+" for market: "+market.getName(),this,true);
-        //AIRetrofit_Log.loging("OD before min is: "+OD+" for market: "+market.getName(),this,true);
+        //AIRetrofit_Log.loging("AD before min is: "+AD+" for market: "+market.getName(),this,robot_type_logs);
+        //AIRetrofit_Log.loging("OD before min is: "+OD+" for market: "+market.getName(),this,robot_type_logs);
         AD = Math.min(1-OD,AD);
-        //AIRetrofit_Log.loging("AD after min is: "+AD+" for market: "+market.getName(),this,true);
+        //AIRetrofit_Log.loging("AD after min is: "+AD+" for market: "+market.getName(),this,robot_type_logs);
         if (OD <= 0.01f){
             market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodifyMult(defenceID_O);
         }else{
@@ -108,7 +113,7 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
         if (AD <= 0.01f){
             market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodifyMult(defenceID_A);
         }else{
-            //AIRetrofit_Log.loging("market power multi is: "+AD+" for market: "+market.getName()+" for a total of "+defenceMulti_AD*(AD)+" defence multi",this,true);
+            //AIRetrofit_Log.loging("market power multi is: "+AD+" for market: "+market.getName()+" for a total of "+defenceMulti_AD*(AD)+" defence multi",this,robot_type_logs);
             market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(defenceID_A,(defenceMulti_AD*AD)+1,AIRetrofits_StringHelper.getString(className,"applyDefenceBonuses",1,""+(int)(AD*100)));
         }
     }
