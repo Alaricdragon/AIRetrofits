@@ -59,31 +59,37 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
             AIRetrofit_Log.loging("attmpting to swap "+unit.getUnitDefId()+" with "+newDefinition,this,logs);
             AIRetrofit_Log.loging("old attack stat"+unit.getAttackStat().getModifiedValue(),this,logs);
 
+            AIRetrofit_Log.loging("before",this,true);
+            AIRetrofit_Log.push();
+            displayMaps(unit);
+            AIRetrofit_Log.pop();
             unit.setUnitDef(newDefinition);
             AIRetrofit_Log.loging("new attack stat before size changes"+unit.getAttackStat().getModifiedValue(),this,logs);
             unit.setSize((int)(unit.getSize()*multi),false);
-
-            AIRetrofit_Log.loging("new attack stat"+unit.getAttackStat().getModifiedValue(),this,logs);
-            //GroundUnit NewUnit = battle.getSide(unit.isAttacker()).createUnit(newDefinition,unit.getFaction(),(int)(unit.getSize()*multi),unit.getFleet());
-            //GroundUnit NewUnit = battle.createUnit(newDefinition,unit.getFaction(),unit.isAttacker(),(int) (unit.getSize()*multi),unit.getFleet(),unit.getIndex());
-            //GroundUnit NewUnit = battle.getSide(unit.isAttacker()).createUnit(newDefinition,faction, (int) (unit.getSize()*multi));
-
-
-            //NewUnit.setDestination(unit.getDestination());
-            //NewUnit.setLocation(unit.getLocation());
-            //NewUnit.setSize(,false);
-            //NewUnit.set
-            //battle.getSide(unit.isAttacker()).getUnits().remove(unit);
-            /*AIRetrofit_Log.loging("creating a new unit of unit definition: '"+newDefinition+"'. it also has definition for sure of: '"+NewUnit.getUnitDefId()+"'",this,logs);
+            AIRetrofit_Log.loging("after",this,true);
             AIRetrofit_Log.push();
-            AIRetrofit_Log.loging("oldOnit: definition,destination,location,size,faction: "+unit.getUnitDefId()+","+unit.getDestination()+","+unit.getLocation()+","+unit.getSize()+","+unit.getFaction(),this,logs);
-            AIRetrofit_Log.loging("newUnit: definition,destination,location,size,faction: "+NewUnit.getUnitDefId()+","+NewUnit.getDestination()+","+NewUnit.getLocation()+","+NewUnit.getSize()+","+NewUnit.getFaction(),this,logs);
-            AIRetrofit_Log.pop();*/
-            //unit.removeUnit(false);
+            displayMaps(unit);
+            AIRetrofit_Log.pop();
+            AIRetrofit_Log.loging("new attack stat"+unit.getAttackStat().getModifiedValue(),this,logs);
+
             return true;
         }
         return false;
         /*put the rest of the 'replacement' code here.*/
+    }
+    private void displayMaps(GroundUnit unit){
+        AIRetrofit_Log.loging("personell map",this,true);
+        AIRetrofit_Log.push();
+        for (String key : unit.getPersonnelMap().keySet()){
+            AIRetrofit_Log.loging("of key: "+key + " unit count: "+unit.getPersonnelMap().get(key),this,true);
+        }
+        AIRetrofit_Log.pop();
+        AIRetrofit_Log.loging("equipment map",this,true);
+        AIRetrofit_Log.push();
+        for (String key : unit.getEquipmentMap().keySet()){
+            AIRetrofit_Log.loging("of key: "+key + " unit count: "+unit.getEquipmentMap().get(key),this,true);
+        }
+        AIRetrofit_Log.pop();
     }
     public Object[] getNewDef(String oldDef){
         for (int a = 0; a < replaced.length; a++){

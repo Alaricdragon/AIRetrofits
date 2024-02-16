@@ -10,7 +10,7 @@
 	"AIRetrofit_logs": true,
 	"AIRetrofit_GrowthLogs": false,
 	"AIRetrofits_Logs_Robot_Type_calculator": false,
-	"AIRetrofits_Logs_Nexerlin_GroundCombat": false,
+	"AIRetrofits_Logs_Nexerlin_GroundCombat": true,
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
@@ -603,13 +603,13 @@
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_L_A": 0.01,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T0_G_A": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_L_A": 0.02,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_G_A": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_CBe_T1_G_A": 0.5,
 
 	#marines -> basicrobot, def, supply
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_L_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T0_G_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_L_D": 0,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_L_D": 0.04,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR_Cna_T1_G_D": 1,
 
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_CGa_T0_G_D": 0,
@@ -636,7 +636,7 @@
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_L_A": 0.01,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T0_G_A": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_L_A": 0.02,
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_G_A": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_CBe_T1_G_A": 0.5,
 
 	#Heavy units -> Hevey basicrobot, def, supply
 	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Cna_T0_L_D": 0.02,
@@ -710,33 +710,33 @@
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T0_G_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T1_L_D": 0.04,
-	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Cna_T1_G_D": 1,
 
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T0_G_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T1_L_D": 0.04,
-	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CGa_T1_G_D": 1,
 
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T0_G_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T1_L_D": 0.04,
-	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRm_CBe_T1_G_D": 1,
 
 	#rebel -> basic worker robots, def, supply
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T0_G_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T1_L_D": 0.04,
-	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Cna_T1_G_D": 1,
 
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T0_G_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T1_L_D": 0.04,
-	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CGa_T1_G_D": 1,
 
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T0_L_D": 0.02,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T0_G_D": 0,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T1_L_D": 0.04,
-	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T1_G_D": 0,
+	"AIRetrofit_Nexerlin_GroundBattles_BWRr_CBe_T1_G_D": 1,
 
 	#militia => advanced worker robots, def, supply
 	"AIRetrofit_Nexerlin_GroundBattles_AWRm_CAl_T0_L_D": 0.02,
@@ -845,20 +845,20 @@
 	#squad size diffrences. higher numbers means bigger squads when units are replaced. for player squads, see the groundBattleDefs.json.,
 	#defalt values should always be equal to (unitSize / baseUnitsize)
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_Raito": 2,
-	"AIRetrofit_Nexerlin_GroundBattles_BCR2_Raito": 1.25,#for the malita to combat robot calculation
-	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_BCR2_Raito": 2,#for the malita to combat robot calculation
+	"AIRetrofit_Nexerlin_GroundBattles_HeBCR_Raito": 1,#1 / 1
 	"AIRetrofit_Nexerlin_GroundBattles_BWRr_Raito": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_Raito": 1,
 
-	"AIRetrofit_Nexerlin_GroundBattles_ACR_Raito": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_HeACR_Raito": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_AWRr_Raito": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_AWRm_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_ACR_Raito": 1.25,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_Raito": 1.25,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_Raito": 1.25,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_Raito": 1.25,
 
 	"AIRetrofit_Nexerlin_GroundBattles_OCR_Raito": 1,
 	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_Raito": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_OWRr_Raito": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_OWRm_Raito": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_Raito": 2,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_Raito": 2,
 
 	#PTSR is Power To Size Raitio. should be equal to a ground units ((power / size) / (basePower / baseSize)).
 	"AIRetrofit_Nexerlin_GroundBattles_BCR_PTSR": 1,
@@ -868,18 +868,18 @@
 	"AIRetrofit_Nexerlin_GroundBattles_BWRm_PTSR": 1,
 
 	"AIRetrofit_Nexerlin_GroundBattles_ACR_PTSR": 1.5625,
-	"AIRetrofit_Nexerlin_GroundBattles_HeACR_PTSR": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_AWRr_PTSR": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_AWRm_PTSR": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_HeACR_PTSR": 1.5625,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRr_PTSR": 1.5625,
+	"AIRetrofit_Nexerlin_GroundBattles_AWRm_PTSR": 1.5625,
 
-	"AIRetrofit_Nexerlin_GroundBattles_OCR_PTSR": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_PTSR": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_OWRr_PTSR": 1,
-	"AIRetrofit_Nexerlin_GroundBattles_OWRm_PTSR": 1,
+	"AIRetrofit_Nexerlin_GroundBattles_OCR_PTSR": 5,
+	"AIRetrofit_Nexerlin_GroundBattles_HeOCR_PTSR": 5,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRr_PTSR": 6,
+	"AIRetrofit_Nexerlin_GroundBattles_OWRm_PTSR": 6,
 
 	#the increase in ground defences from a given defencive unit quantity. (should be equal to PTSR-1 for a given bot.)
 	"AIRetrofit_MaxGroundDefenceBonusFromT1Bots": 0.5625,
-	"AIRetrofit_MaxGroundDefenceBonusFromT2Bots": 1,#temp value, untill i figger out what the real value should be
+	"AIRetrofit_MaxGroundDefenceBonusFromT2Bots": 5,
 	#specalitems,
 	#Command Node,
 	#descriptions

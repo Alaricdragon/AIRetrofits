@@ -14,6 +14,7 @@ import exerelin.campaign.intel.groundbattle.GroundUnit;
 import exerelin.campaign.intel.groundbattle.plugins.BaseGroundBattlePlugin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
     private static final Boolean logs = Global.getSettings().getBoolean("AIRetrofits_Logs_Nexerlin_GroundCombat");
@@ -166,24 +167,32 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         if (b.getFleet() == null){
             if (b.isAttacker()){
                 AIRetrofit_Log.loging("unit, fleet"+b.getUnitDefId()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
-                AIRetrofit_Log.loging("getUnitsMarket: "+0,new AIRetrofit_Log(),logs);
+                String faction = b.getFaction().getId();
+                List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
+                for (int a = 0; a < markets.size(); a++){
+                    if (markets.get(a).getFactionId().equals(faction)){
+                        AIRetrofit_Log.loging("getUnitsMarket: "+0,new AIRetrofit_Log(),logs);
+                        return markets.get(a);
+                    }
+                }
+                AIRetrofit_Log.loging("getUnitsMarket: "+1,new AIRetrofit_Log(),logs);
                 return null;
             }else{
-                AIRetrofit_Log.loging("getUnitsMarket: "+1,new AIRetrofit_Log(),logs);
+                AIRetrofit_Log.loging("getUnitsMarket: "+2,new AIRetrofit_Log(),logs);
                 return battle.getMarket();
             }
         }else{
             market = Global.getSector().getEconomy().getMarket(b.getFleet().getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
             if (market == null){
                 if (b.isAttacker()){
-                    AIRetrofit_Log.loging("getUnitsMarket: "+2,new AIRetrofit_Log(),logs);
+                    AIRetrofit_Log.loging("getUnitsMarket: "+3,new AIRetrofit_Log(),logs);
                     return null;
                 }else{
-                    AIRetrofit_Log.loging("getUnitsMarket: "+3,new AIRetrofit_Log(),logs);
+                    AIRetrofit_Log.loging("getUnitsMarket: "+4,new AIRetrofit_Log(),logs);
                     return battle.getMarket();
                 }
             }
-            AIRetrofit_Log.loging("getUnitsMarket: "+4,new AIRetrofit_Log(),logs);
+            AIRetrofit_Log.loging("getUnitsMarket: "+5,new AIRetrofit_Log(),logs);
             return market;
         }
     }/**/

@@ -3,6 +3,13 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.16(private):
+save compatible with 0.7.20.1+
+    fixes:
+        added a backup system for finding markets for attacker ground units in combat. this should fix units refusing to accept global values in the worse of times.
+    changed:
+        set the unset values for the robot type calculator and ground battle ratios to the settings.
+        set the stats for all ground units.
 V0.8.0.15(private):
 save compatible with 0.7.20.1+
     new:

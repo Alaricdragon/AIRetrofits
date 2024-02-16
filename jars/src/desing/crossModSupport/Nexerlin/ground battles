@@ -141,6 +141,7 @@ Combat units:
         notes: the T0 robot always has been a bit of a peace of scrap. easy to make and mantain, lots of pew pew, but low combat ability.
         let this reflect that
         marine:
+            status: done
             notes: deploying this robot in swames should have always been the way. i like it. but it requires more moral. and testing to make sure im not gimping my players.
             image:
             "strength":0.5,
@@ -151,6 +152,7 @@ Combat units:
 			#"crampedStrMult":1,
 			#"damageTakenMult":1,
         heavy:
+            status: needs image.
             image: a mush thicker robot? maybe like some type of multi-bot? multibull robots merged together i mean?
             notes: I have a few ideas for heavy units. so i might need to return to this idea. but let me list them here:
                 a: make it like the normal heavy wepon, but with the same mods the marine of T0 has.
@@ -179,6 +181,7 @@ Combat units:
 				"mult":2, //4
 			},
         militia:
+            status: done
             image: T0 salvage robots with guns on them?
             notes:
                 this is simple enouth. but i have a idea.
@@ -194,6 +197,7 @@ Combat units:
 			"crampedStrMult":1,
 			"damageTakenMult":1,
         rebel:
+            status: done
             image: same as militia?
             notes:
                 i want rebels to be just like malita. like the same basicly. they already are in the base mod, but they have a higher defence. so what could i do that matches that?
@@ -219,7 +223,8 @@ Combat units:
 
 
         marine:
-            image: T2 robot.
+            status: done
+            image: T1 robot.
             notes: as a temp, im just going to copy the T1 marines, but change there numbers a little bit.
             "strength":1.25,
 			"unitSizeMult":1.25,
@@ -229,6 +234,7 @@ Combat units:
 			#"crampedStrMult":1,
 			#"damageTakenMult":1,
         heavy:
+            status: need image.
             image: I.. dont know. the idea is that im useing heavy wepons right? so why not use them? what would this robot look like with more guns?
             notes:
                 god, the thihngs i could do here...
@@ -237,9 +243,13 @@ Combat units:
                 so, if i keep in the possable theam of 'big robots' how would i like to do this? they are a bit floaty by nature, so i might have to do something with that.
                 a floating gundom? i am joking. proboly something more akin to a floating tank of some sort. something a bit stange though, but not very..
                 what would this units stats even look like?
-			"strength":5.5,
-			"unitSizeMult":0.166667,
-			"dropCostMult":7.5,
+
+                something to keep in mind: what should the ratio of hepons to robot be? i think it shouold go down for higher levels of robots. so....
+                1 : 1 for this? or 2 : 1 for this? what one should i chose...!!!!!
+                I think i will save the 1 : 2 ratio for the T2 robots. for now, 2 : 1 should be good.
+			"strength":6.825,// 1.25 + 0.125 = 1.325 + 5.5 = 6.825
+			"unitSizeMult":0.208333,//0.166667 * 1.25 = 1/6 * 5/4 = 5/24
+			"dropCostMult":5.625,//7.5 * 0.75 = 0.25*7 + 0.125 = 1.75 + 0.125 = 1.875 = 7.5 - 1.875 = 5.625
 			"moraleMult":1,
 			"offensiveStrMult":1.25,
 			"crampedStrMult":0.75,
@@ -251,21 +261,24 @@ Combat units:
 				"mult":2,
 			},
         militia:T1 survey robot with guns?
+            status: done
             image:
             notes: i want to keep this on theam. do what i did for T0, but use the T1 salvage bot.
-			"strength":0.4,
-			"unitSizeMult":1,
+                   T1 salvage has 1.25 power, 0.75 size. i will use said multis to calculate this.
+			"strength":0.5,//0.4 * 1.25 = 4/10 * 5/4 = 20/40 = 1/2 = 0.5
+			"unitSizeMult":1.25,// 1 * 1.25 = 1.25
 			"moraleMult":0.6,
-			"dropCostMult":0.7,
+			"dropCostMult":0.525,// 0.7 * 0.75 = 7/10 * 3/4 = 21/40 = 0.525
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
 			"damageTakenMult":1,
         rebel:
+            status: done
             image: ---
             notes: ---
-			"strength":0.3,
-			"unitSizeMult":1,
-			"dropCostMult":0.7,
+			"strength":0.375,//0.3 * 1.25 = 3/10 * 5/4 = 15/40 = 3/8 = 0.375
+			"unitSizeMult":0.75,//1 * 1.25 = 1.25
+			"dropCostMult":0.525,//0.7 * 0.75 = 0.525
 			"moraleMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
@@ -273,52 +286,61 @@ Combat units:
     T2:
         note: 1,5. and here we are. the htjaaksdal;psd/.f noting matters anymore, the world is doomed. they must be 2 strong.
               let the player feel ether all powerful, or completely gucking helpless, depending on whats going on.
+              bots have 5X(1,5) the damage density as marines.
+              bots have 6X(0.5,3) the damage density as workers.
+              NOTE: because im going to give all T2 bots a 0.5X losses raitio anyways, might as well make all combat units have that...
+              but not right now. i will add that when i change up the robots in the intierty.
         marine:
+            status: done, needs defence edit
             image: T2 robot.
             notes: changed the defnece of this unit to 0.5, pending a change to the T2 robots that increases there survivability.
                    why? because YOUR NOT SUPPOSE TO GET MORE. not now, not ever. you need to learn how to keep you mind intact mortal.
-            "strength":5,
-			"unitSizeMult":1,
-			"dropCostMult":1,
-			"moraleMult":2,
+            "strength":5,//1*5 = 5
+			"unitSizeMult":1,//--
+			"dropCostMult":1,//--
+			"moraleMult":1,//
 			#"offensiveStrMult":1,
 			#"crampedStrMult":1,
 			"damageTakenMult":0.5,
         heavy:
+            status: needs image
             image: ... the issue with this is that this robot exsists in demensions not visable to us. its were most its pew pew fires from. what could i even do to represent mroe pew pew when the guns are not visable?
             notes:  ... i feel like they are already heavy units. so what do i do here?
                     ... cry? if i work with this, it needs to be something diffrent, but wrong somehow. how could i make this more disturbing?
                     ... its something to think about, at least. something to feel fear about. something to... to....
                     ... sometimes, its better to think of something wity to say, but really, what can one even say to a fucking what, 25 damage unit? is that what would be required?
-			"strength":5.5,
-			"unitSizeMult":0.166667,
-			"dropCostMult":7.5,
-			"moraleMult":1,
-			"offensiveStrMult":1.25,
-			"crampedStrMult":0.75,
-			"damageTakenMult":1,
+                    ...
+                    ... make it 2 eqipment to a unit. this will make it very relevent just how -big- the bot is. this also lets the raitio of totoal units to power stay the same.
+			"strength":27.5,5.5 * 5 = 27.5 because (25 + 2.5)
+			"unitSizeMult":0.166667,//--
+			"dropCostMult":7.5,//--
+			"moraleMult":1,//--
+			"offensiveStrMult":1.25,//--
+			"crampedStrMult":0.75,//--
+			"damageTakenMult":1,//--
 			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
-				"mult":1,
-			},
-			"personnel":{
 				"mult":2,
 			},
+			"personnel":{
+				"mult":1,
+			},
         militia:
+            status: done
             image: T2 salvage robots? goodness knows they look like combat robots to me...
-            notes:.... same as T0 but i use T3 robots?
-			"strength":0.4,
-			"unitSizeMult":1,
+            notes:.... same as T0 but i use T2 robots?
+			"strength":1.2,//0.4 * 3 = 1.2
+			"unitSizeMult":2,//1 * 2 = 2
 			"moraleMult":0.6,
-			"dropCostMult":0.7,
+			"dropCostMult":0.35,//0.7 * 0.5 = 0.35
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
 			"damageTakenMult":1,
         rebel:
             image: ---
             notes: --
-			"strength":0.3,
-			"unitSizeMult":1,
-			"dropCostMult":0.7,
+			"strength":0.3,//0.3 * 3 = 0.9
+			"unitSizeMult":1,//1 * 2 = 2
+			"dropCostMult":0.7,//0.7 * 0.5 = 0.35
 			"moraleMult":0.7,
 			"offensiveStrMult":1,
 			"crampedStrMult":1,
