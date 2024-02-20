@@ -1,6 +1,9 @@
 package data.scripts;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.comm.IntelInfoPlugin;
+import com.fs.starfarer.api.campaign.comm.IntelManagerAPI;
+import com.fs.starfarer.api.ui.CustomPanelAPI;
 import data.scripts.AIWorldCode.FoundAMarket.AIRetrofit_MarketRetrofit_CustomMarketFounder;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_econUpdateListiner;
@@ -13,6 +16,8 @@ import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.*;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
+
+import java.util.List;
 
 public class AI_RetrofitsStartup extends BaseModPlugin {
     public void onNewGame(){
@@ -63,5 +68,14 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         Global.getSector().getListenerManager().addListener(AIRetrofit_RobotDescriptions.getCommodityTooltipModifier(),true);
         //}
 
+    }
+    private void getTestingData(){
+        /*
+        IntelManagerAPI manager = Global.getSector().getIntelManager();
+        List<IntelInfoPlugin> intell = manager.getIntel();
+        //intell.get(0).getSmallDescriptionTitle();
+        //intell.get(0).getMapLocation();
+        CustomPanelAPI panel= null;
+        intell.get(0).createLargeDescription(panel,0,0);*/
     }
 }

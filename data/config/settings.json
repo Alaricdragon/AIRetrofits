@@ -10,7 +10,7 @@
 	"AIRetrofit_logs": true,
 	"AIRetrofit_GrowthLogs": false,
 	"AIRetrofits_Logs_Robot_Type_calculator": false,
-	"AIRetrofits_Logs_Nexerlin_GroundCombat": true,
+	"AIRetrofits_Logs_Nexerlin_GroundCombat": false,
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
@@ -156,8 +156,11 @@
 	"AIRetrofits_MissionHijack_priority":11,
 
 	#combat drones (nex_ground battle)
-	"AIRetrofits_GroundBattle_Power":0.5,
-	"AIRetrofits_GroundBattle_priority":11,
+	#2 sets of value. first 2 are for marine combat group. second 2 are for heavy combat groups.
+	"AIRetrofits_Basic_GroundBattle_BM_Power":0.5,
+	"AIRetrofits_Basic_GroundBattle_BM_priority":11,
+	"AIRetrofits_Basic_GroundBattle_BH_Power":0.5,
+	"AIRetrofits_Basic_GroundBattle_BH_priority":11,
 
 	#for advanced robots
 	#Advanced salvage drones (salage)
@@ -182,8 +185,15 @@
 
 
 	#Advanced combat drones (nex_ground battle)
-	"AIRetrofits_Advanced_GroundBattle_Power":1.25,
-	"AIRetrofits_Advanced_GroundBattle_priority":11,
+	#4 sets of value. first 2 are for marine combat group. second 2 are for heavy combat groups. third 2 are for basic combat groups with only robots. fourth 2 are for basic heavy groups with only robots.
+	"AIRetrofits_Advanced_GroundBattle_BM_Power":1.25,
+	"AIRetrofits_Advanced_GroundBattle_BM_priority":12,
+	"AIRetrofits_Advanced_GroundBattle_BH_Power":1.25,
+	"AIRetrofits_Advanced_GroundBattle_BH_priority":12,
+	"AIRetrofits_Advanced_GroundBattle_RM_Power":1.25,
+	"AIRetrofits_Advanced_GroundBattle_RM_priority":12,
+	"AIRetrofits_Advanced_GroundBattle_RH_Power":1.25,
+	"AIRetrofits_Advanced_GroundBattle_RH_priority":12,
 
 	#for Omega robots
 	#Omega salvage drones (salage)
@@ -206,9 +216,16 @@
 	"AIRetrofits_Omega_MissionHijack_Power":5,
 	"AIRetrofits_Omega_MissionHijack_priority":11,
 
-	#Omega combat drones (nex_ground battle)
-	"AIRetrofits_Omega_GroundBattle_Power":5,
-	"AIRetrofits_Omega_GroundBattle_priority":11,
+	#Omega combat drones (nex_ground battle),
+	#4 sets of value. first 2 are for marine combat group. second 2 are for heavy combat groups. third 2 are for basic combat groups with only robots. fourth 2 are for basic heavy groups with only robots.
+	"AIRetrofits_Omega_GroundBattle_BM_Power":5,
+	"AIRetrofits_Omega_GroundBattle_BM_priority":13,
+	"AIRetrofits_Omega_GroundBattle_BH_Power":5,
+	"AIRetrofits_Omega_GroundBattle_BH_priority":13,
+	"AIRetrofits_Omega_GroundBattle_RM_Power":5,
+	"AIRetrofits_Omega_GroundBattle_RM_priority":13,
+	"AIRetrofits_Omega_GroundBattle_RH_Power":5,
+	"AIRetrofits_Omega_GroundBattle_RH_priority":13,
 
 	#ExstraDescriptionOfItems
 	#all robot types power description
@@ -879,7 +896,7 @@
 
 	#the increase in ground defences from a given defencive unit quantity. (should be equal to PTSR-1 for a given bot.)
 	"AIRetrofit_MaxGroundDefenceBonusFromT1Bots": 0.5625,
-	"AIRetrofit_MaxGroundDefenceBonusFromT2Bots": 5,
+	"AIRetrofit_MaxGroundDefenceBonusFromT2Bots": 4,
 	#specalitems,
 	#Command Node,
 	#descriptions

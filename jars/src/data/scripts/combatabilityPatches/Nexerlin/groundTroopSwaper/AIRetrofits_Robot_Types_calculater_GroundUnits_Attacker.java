@@ -63,9 +63,13 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
             AIRetrofit_Log.push();
             displayMaps(unit);
             AIRetrofit_Log.pop();
+            int sizeTemp = unit.getSize();
+            //unit.setSize(0,false);
             unit.setUnitDef(newDefinition);
+            AIRetrofit_Log.loging("AM I SETTING THIS RIGHT!?!?!?",this,true);
             AIRetrofit_Log.loging("new attack stat before size changes"+unit.getAttackStat().getModifiedValue(),this,logs);
-            unit.setSize((int)(unit.getSize()*multi),false);
+            unit.setSize((int)(sizeTemp*multi),false);
+            spliceMarines(unit.getPersonnelMap());
             AIRetrofit_Log.loging("after",this,true);
             AIRetrofit_Log.push();
             displayMaps(unit);
@@ -76,6 +80,9 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
         }
         return false;
         /*put the rest of the 'replacement' code here.*/
+    }
+    public void spliceMarines(java.util.Map<String, Integer> map){
+        map.remove("marines");
     }
     private void displayMaps(GroundUnit unit){
         AIRetrofit_Log.loging("personell map",this,true);

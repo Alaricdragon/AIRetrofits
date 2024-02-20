@@ -99,6 +99,10 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
         return Math.min(1,Math.max(0,global));
     }
     private void applyDefenceBonuses(MarketAPI market){
+        defencive_factionIDs = new ArrayList<>();
+        defencive_factionPower = new ArrayList<>();
+        defencive_factionID2s = new ArrayList<>();
+        defencive_factionPowe2r = new ArrayList<>();
         float OD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));
         float AD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence).getOddsOfRobot(market));
         //AIRetrofit_Log.loging("AD before min is: "+AD+" for market: "+market.getName(),this,robot_type_logs);

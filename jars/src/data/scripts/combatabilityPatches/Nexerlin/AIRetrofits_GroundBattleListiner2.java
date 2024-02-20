@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.AIRetrofits_Robot_Types_calculater_2;
+import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofit_PlayerGroundUnitSwaper;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Defender;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.groundBattleMemory.AIRetrofits_GroundBattleTroopOddsMemory;
@@ -29,8 +30,10 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
     @Override
     public void reportUnitCreated(GroundUnit b) {
         if (b.isPlayer()){
+            AIRetrofit_PlayerGroundUnitSwaper.attemptToSwap(b,this.intel);
             return;
         }
+        this.intel.getUnitSize();
         AIRetrofit_Log.loging("checking ground unit: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),this,logs);
         changeUnitOverSwapers(b);
         AIRetrofit_Log.loging("BS total units, attack, defender: "+this.intel.getAllUnits().size()+", "+this.intel.getSide(true).getUnits().size()+", "+this.intel.getSide(false).getUnits().size(),this,logs);
