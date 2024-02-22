@@ -3,6 +3,17 @@ V0.9:
 save compatible with 0.7.20.1+
     fixed:
         fixed broken version checker support. sorry that was a thing.
+V0.8.0.18(private):
+save compatible with 0.7.20.1+
+    (delayed. will do this time i work on this mod!)changes (to make it not mess up math to have a calculation change)
+        ACR - heavy
+        OCR - heavy:
+            size 0.66667 -> 0.041667
+            eq: 2 -> 10
+            pe: 1 -> 2
+
+    fixes:
+        fixed a issue causing wired unit maps in heavy units.
 V0.8.0.17(private):
 save compatible with 0.7.20.1+
     fixed:

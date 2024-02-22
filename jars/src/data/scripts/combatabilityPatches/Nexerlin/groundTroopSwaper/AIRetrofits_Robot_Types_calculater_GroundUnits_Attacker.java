@@ -46,31 +46,34 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
         //AIRetrofit_Log.loging("market found",this,logs);
         return this.swap(battle,unit,getOddsOfRobot(market));
     }
+    //private static int count = 0;
     public boolean swap(GroundBattleIntel battle, GroundUnit unit,float odds){
         if (odds == 0) return false;
         //AIRetrofit_Log.loging("swap",this,logs);
         Object[] temp = getNewDef(unit.getUnitDefId());
-        if (temp == null) return false;
+        //if (temp == null) return false;
         String newDefinition = (String) temp[0];
         float multi = (float) temp[1];
         double tempb = Math.random();
         AIRetrofit_Log.loging("dice, odds:"+tempb+", "+odds,this,logs);
         if (tempb < odds){
+            //if (true) return true;
+            //count++;
+            //AIRetrofit_Log.loging("CHANGING A UNIT NAMED: "+ unit.getUnitDefId()+". from side "+unit.isAttacker()+". a total of "+count+" units have been changed. battlesize is: "+battle.getSide(true).getUnits().size()+", "+battle.getSide(false).getUnits().size(),this,true);
             AIRetrofit_Log.loging("attmpting to swap "+unit.getUnitDefId()+" with "+newDefinition,this,logs);
             AIRetrofit_Log.loging("old attack stat"+unit.getAttackStat().getModifiedValue(),this,logs);
 
-            AIRetrofit_Log.loging("before",this,true);
+            AIRetrofit_Log.loging("before",this,logs);
             AIRetrofit_Log.push();
             displayMaps(unit);
             AIRetrofit_Log.pop();
             int sizeTemp = unit.getSize();
             //unit.setSize(0,false);
             unit.setUnitDef(newDefinition);
-            AIRetrofit_Log.loging("AM I SETTING THIS RIGHT!?!?!?",this,true);
             AIRetrofit_Log.loging("new attack stat before size changes"+unit.getAttackStat().getModifiedValue(),this,logs);
-            unit.setSize((int)(sizeTemp*multi),false);
             spliceMarines(unit.getPersonnelMap());
-            AIRetrofit_Log.loging("after",this,true);
+            unit.setSize((int)(sizeTemp*multi),false);
+            AIRetrofit_Log.loging("after",this,logs);
             AIRetrofit_Log.push();
             displayMaps(unit);
             AIRetrofit_Log.pop();
@@ -85,16 +88,16 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
         map.remove("marines");
     }
     private void displayMaps(GroundUnit unit){
-        AIRetrofit_Log.loging("personell map",this,true);
+        AIRetrofit_Log.loging("personell map",this,logs);
         AIRetrofit_Log.push();
         for (String key : unit.getPersonnelMap().keySet()){
-            AIRetrofit_Log.loging("of key: "+key + " unit count: "+unit.getPersonnelMap().get(key),this,true);
+            AIRetrofit_Log.loging("of key: "+key + " unit count: "+unit.getPersonnelMap().get(key),this,logs);
         }
         AIRetrofit_Log.pop();
-        AIRetrofit_Log.loging("equipment map",this,true);
+        AIRetrofit_Log.loging("equipment map",this,logs);
         AIRetrofit_Log.push();
         for (String key : unit.getEquipmentMap().keySet()){
-            AIRetrofit_Log.loging("of key: "+key + " unit count: "+unit.getEquipmentMap().get(key),this,true);
+            AIRetrofit_Log.loging("of key: "+key + " unit count: "+unit.getEquipmentMap().get(key),this,logs);
         }
         AIRetrofit_Log.pop();
     }

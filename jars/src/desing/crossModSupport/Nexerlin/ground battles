@@ -312,7 +312,7 @@ Combat units:
                     ...
                     ... make it 2 eqipment to a unit. this will make it very relevent just how -big- the bot is. this also lets the raitio of totoal units to power stay the same.
 			"strength":27.5,5.5 * 5 = 27.5 because (25 + 2.5)
-			"unitSizeMult":0.166667,//--
+			"unitSizeMult":0.166667,//-- //3/12 = 0.66667*.25 = 0.04166675
 			"dropCostMult":7.5,//--
 			"moraleMult":1,//--
 			"offensiveStrMult":1.25,//--

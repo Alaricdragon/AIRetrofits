@@ -33,6 +33,12 @@ plans for the invasions:
         b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
 
     ISSUES:
+    on AI generated units:
+        OCR - heavy plattons have a strange number to them. i cant tell if this is just something cosmetic, or if this is something very mush not cosmetic. what is happing?
+            the game is displaying a mush large number of plattons then what should exsist. i dont know why. investagation reveals that its larger then the number of platoons created...
+            -NOTE: after farther investagating....
+            thats just the number of units i was deploying. apparently.
+            for real, i tested it in every way. there is a slight possability im underdeploying ACR, but i can look into that latter....
     on creating player units:
         3 possibility:
             a) use the normal buttons. whenever spawned, get the unit that is most prominent (be it the highest level, or largest number of units) in said group and set the unit def to reflect this, copying over the personnel map for said group.
@@ -48,7 +54,14 @@ plans for the invasions:
                     1) heavy and none heavy ratios: they are diffrent. options:
                         a) make 4 sets of values: one for with marrine units, one for basic heavy units, one for only robot units. one for only robot heavy units.
                             -issues: would result in wired results with basic heavy units, and i cant seperate them at all =(
-
+                            -issues: the heavy unit results are... nonsensical. i would need to do something crazy to make this work....
+                                -why? the number of robots per heavy weapons would be very different between a basic squad, a robot squad, and the squad they are designed around....
+                            -the best i can see this working is simple: simple splice off the OCR and ACR from the basic groups (as there ratio makes no sense). effectively refuse to let them deploy. if a unit is detected with said robots in it,
+                            remove that unit and attempt to make a robotic unit instead.
+                            -NOTE: for the same reasons, this will prevent group mixing. effectively, i can only have groups with one type of robot at a time.
+                            -NOTE: group mixing works for BCR and marrines, because they have the same unit per HW raitio...
+                            -note: there is a second option: simply make the ratio of weapons per (robot*robotPower) the same on each...
+                            for example: OCR = 5. base H/M raitio is 1/2. so therefor a unit would have 10/2 of H/OCR. this would let the robot have 5 power in a HCU and 10 power in a RCU...
                 -to do right now (as im trying to get this working)
                     1) set the values for every type of robot, for every one of its possible 4 jobs, in the settings file (already linked in code to the relevant jobs.).
                     2) test
