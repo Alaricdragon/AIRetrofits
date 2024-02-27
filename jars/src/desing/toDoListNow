@@ -5,6 +5,16 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
+    hello again, its been a while.
+    I have returned with another report (sorry i always have to bring bad news)
+    1) In 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' 'b.isPlayer()' is always false. i was able to get around this by useing 'b.getFleet().isPlayerFleet()', but i felt like this was not intentional.
+    2) in 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' player units (and only player units) don't seem to have there personnel map set yet (i didn't check the equipment map). i don't know if this is intentional or not.
+    3) dont know if this is intentional or not, but well testing i happened to deploy on a world that i gifted to pirates, and there were rebels there. of my faction. thought you should know, cause it felt wired, but i dont know the desing behind the rebels that well.
+    4) Im unsure if im just doing something wrong, but 'rebels' seem to never enter the 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' at all.
+
+    as a side note, i think im finaly almost done with this feature. im quite existed, as this is something i wanted for a really really long time, but could not do. although i might have went quite overboard with the design. exspecaly considering how few people are going to see this. but i will see this, and it will make doing invasions feel mush better then before. as well as defending on the ground.
+
+
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
@@ -33,6 +43,8 @@ plans for the invasions:
         b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
 
     ISSUES:
+    on gorund defences:
+        2) rebels on worlds are set to the attacking faction. i want this to not be the case. so i will need a specal class to habdle that.
     on AI generated units:
         OCR - heavy plattons have a strange number to them. i cant tell if this is just something cosmetic, or if this is something very mush not cosmetic. what is happing?
             the game is displaying a mush large number of plattons then what should exsist. i dont know why. investagation reveals that its larger then the number of platoons created...
@@ -41,6 +53,20 @@ plans for the invasions:
             for real, i tested it in every way. there is a slight possability im underdeploying ACR, but i can look into that latter....
     on creating player units:
         3 possibility:
+            a_2) use the normal buttons. whenever i group is spawned, if it contains robots, reset the personnel and equipment map, then spawn a unit of that squad from the players inventory.
+                -if i go with this, i will need to do the following:
+                    1) set each unit to have a power in nexerline_mareins and nexerline_tankcrew.
+                    2) create a system that goes though the personell map, and checks to see if any personell match a robot type.
+                    3) if a robot type is found:
+                        3.1) change the unit definition to the robots definition.
+                        3.2) return both the personell and equitmet maps to cargo.
+                        3.3) calculate the size of squad i can create with this methood.
+                        3.4) unit.setSize.
+                   -NOTE: if i do this, i will need to remove the options for each robot's powers (for a robot group, and for marine group) from the config, because they will no longer matter.
+                -issue:
+                    1)  reportUnitCreated(GroundUnit b) does not do anything for player units.
+                        this is frusterating. like omg its so nm sakdknasdkjsajkdsakjdkjaskdjsakjksa
+                        i will ask the nexerlin person about this later
             a) use the normal buttons. whenever spawned, get the unit that is most prominent (be it the highest level, or largest number of units) in said group and set the unit def to reflect this, copying over the personnel map for said group.
                 -if i go with this i will need to preform the following process for each unit:
                     -both:

@@ -10,6 +10,7 @@ public class AIRetrofits_ItemInCargoMemory {
     public static void runall(){
         for (AIRetrofits_ItemInCargoMemory a : list){
             a.checkMemory();
+            //a.activeCodeRunner();
         }
     }
     public AIRetrofits_ItemInCargoMemory(String key, String item){
@@ -17,6 +18,9 @@ public class AIRetrofits_ItemInCargoMemory {
         this.item=item;
         list.add(this);
     }
+    /*public void activeCodeRunner(){
+        //Global.getSector().getPlayerMemoryWithoutUpdate().get();
+    }*/
     protected String key;
     protected String item;
     public void checkMemory(){

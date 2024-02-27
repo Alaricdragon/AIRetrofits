@@ -5,6 +5,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.*;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Defender;
+import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.AIRetrofits_Robot_Types_calculater_GroundUnits_Rebel;
 
 public class AIRetrofits_Startup_RobotTypesCalculater {
     public static void apply(){
@@ -351,7 +352,7 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
 
 
 
-        new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT0_Rebel_Defence,T0RebPTSR,new String[]{BReb},new String[]{T0Reb},new float[]{T0RebR});
+        new AIRetrofits_Robot_Types_calculater_GroundUnits_Rebel(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT0_Rebel_Defence,T0RebPTSR,new String[]{BReb},new String[]{T0Reb},new float[]{T0RebR});
 
         new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT0_Rebel_Defence,"",I_T0_WRForge,AIRetrofits_Constants.Commodity_T0_WorkerDrone,BWRr_Cna_T0_L_D,BWRr_Cna_T0_G_D);
         new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT0_Rebel_Defence, "",I_T1_WRForge,AIRetrofits_Constants.Commodity_T0_WorkerDrone,BWRr_Cna_T1_L_D,BWRr_Cna_T1_G_D);
@@ -478,7 +479,7 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT1_militia_Defence,D_AWRm_Pop_D);
 
 
-        new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT1_Rebel_Defence,T1RebPTSR,new String[]{BReb},new String[]{T1Reb},new float[]{T1RebR});
+        new AIRetrofits_Robot_Types_calculater_GroundUnits_Rebel(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT1_Rebel_Defence,T1RebPTSR,new String[]{BReb},new String[]{T1Reb},new float[]{T1RebR});
 
         new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT1_Rebel_Defence,Commodities.ALPHA_CORE,I_T0_WRForge,AIRetrofits_Constants.Commodity_T1_WorkerDrone,AWRr_CAl_T0_L_D,AWRr_CAl_T0_G_D);
         new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT1_Rebel_Defence,Commodities.ALPHA_CORE,I_T1_WRForge,AIRetrofits_Constants.Commodity_T1_WorkerDrone,AWRr_CAl_T1_L_D,AWRr_CAl_T1_G_D);
@@ -535,7 +536,7 @@ public class AIRetrofits_Startup_RobotTypesCalculater {
         new AIRetrofits_Robot_Types_checker_Demand_1(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_militia_Defence,D_OWRm_Pop_D);
 
 
-        new AIRetrofits_Robot_Types_calculater_GroundUnits_Defender(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,T2RebPTSR,new String[]{BReb},new String[]{T2Reb},new float[]{T2RebR});
+        new AIRetrofits_Robot_Types_calculater_GroundUnits_Rebel(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,T2RebPTSR,new String[]{BReb},new String[]{T2Reb},new float[]{T2RebR});
 
         new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,Commodities.OMEGA_CORE,I_T0_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRr_CAl_T0_L_D,OWRr_CAl_T0_G_D);
         new AIRetrofits_Robot_Types_checker_Supply_0(AIRetrofits_Constants.RobotTypeCalculatorID_WorkerT2_Rebel_Defence,Commodities.OMEGA_CORE,I_T1_WRForge,AIRetrofits_Constants.Commodity_T2_WorkerDrone,OWRr_CAl_T1_L_D,OWRr_CAl_T1_G_D);

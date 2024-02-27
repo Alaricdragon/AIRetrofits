@@ -11,6 +11,7 @@
 	"AIRetrofit_GrowthLogs": false,
 	"AIRetrofits_Logs_Robot_Type_calculator": false,
 	"AIRetrofits_Logs_Nexerlin_GroundCombat": false,
+	"AIRetrofits_Logs_Nexerlin_GroundCombat_playerUnitCreation": false,
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 
@@ -190,10 +191,10 @@
 	"AIRetrofits_Advanced_GroundBattle_BM_priority":12,
 	"AIRetrofits_Advanced_GroundBattle_BH_Power":1.25,
 	"AIRetrofits_Advanced_GroundBattle_BH_priority":12,
-	"AIRetrofits_Advanced_GroundBattle_RM_Power":1.25,
-	"AIRetrofits_Advanced_GroundBattle_RM_priority":12,
-	"AIRetrofits_Advanced_GroundBattle_RH_Power":1.25,
-	"AIRetrofits_Advanced_GroundBattle_RH_priority":12,
+	#"AIRetrofits_Advanced_GroundBattle_RM_Power":1.25,
+	#"AIRetrofits_Advanced_GroundBattle_RM_priority":12,
+	#"AIRetrofits_Advanced_GroundBattle_RH_Power":1.25,
+	#"AIRetrofits_Advanced_GroundBattle_RH_priority":12,
 
 	#for Omega robots
 	#Omega salvage drones (salage)
@@ -222,10 +223,10 @@
 	"AIRetrofits_Omega_GroundBattle_BM_priority":13,
 	"AIRetrofits_Omega_GroundBattle_BH_Power":5,
 	"AIRetrofits_Omega_GroundBattle_BH_priority":13,
-	"AIRetrofits_Omega_GroundBattle_RM_Power":5,
-	"AIRetrofits_Omega_GroundBattle_RM_priority":13,
-	"AIRetrofits_Omega_GroundBattle_RH_Power":5,
-	"AIRetrofits_Omega_GroundBattle_RH_priority":13,
+	#"AIRetrofits_Omega_GroundBattle_RM_Power":5,
+	#"AIRetrofits_Omega_GroundBattle_RM_priority":13,
+	#"AIRetrofits_Omega_GroundBattle_RH_Power":5,
+	#"AIRetrofits_Omega_GroundBattle_RH_priority":13,
 
 	#ExstraDescriptionOfItems
 	#all robot types power description

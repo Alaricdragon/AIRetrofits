@@ -13,7 +13,7 @@ public class AIRetrofits_GroundBattleTroopOddsMemory {
     public ArrayList<GroundUnit> unitsChanged = new ArrayList<>();
     public float getOdds(GroundBattleIntel battle,GroundUnit b, AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker type){
         String factionID = b.getFaction().getId();
-        MarketAPI market = AIRetrofits_GroundBattleListiner2.getUnitsMarket(b,battle);
+        MarketAPI market = type.getUnitsMarket(b,battle);
         if (market == null) {
             //AIRetrofit_Log.loging("market null, failing to get data",this,true);
             return 0f;

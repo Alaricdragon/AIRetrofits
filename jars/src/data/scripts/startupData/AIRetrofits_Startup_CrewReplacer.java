@@ -34,10 +34,10 @@ public class AIRetrofits_Startup_CrewReplacer {
     public static final float GB_BCR_BH_P = Global.getSettings().getFloat("AIRetrofits_Basic_GroundBattle_BH_priority");
 
     //advanced robot group values
-    public static final float GB_ACR_RB_V = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RM_Power");
-    public static final float GB_ACR_RB_P = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RM_priority");
-    public static final float GB_ACR_RH_V = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RH_Power");
-    public static final float GB_ACR_RH_P = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RH_priority");
+    //public static final float GB_ACR_RB_V = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RM_Power");
+    //public static final float GB_ACR_RB_P = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RM_priority");
+    //public static final float GB_ACR_RH_V = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RH_Power");
+    //public static final float GB_ACR_RH_P = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_RH_priority");
     //advanced basic group values
     public static final float GB_ACR_BB_V = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_BM_Power");
     public static final float GB_ACR_BB_P = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_BM_priority");
@@ -45,10 +45,10 @@ public class AIRetrofits_Startup_CrewReplacer {
     public static final float GB_ACR_BH_P = Global.getSettings().getFloat("AIRetrofits_Advanced_GroundBattle_BH_priority");
 
     //omega robot group values
-    public static final float GB_OCR_RB_V = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RM_Power");
-    public static final float GB_OCR_RB_P = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RM_priority");
-    public static final float GB_OCR_RH_V = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RH_Power");
-    public static final float GB_OCR_RH_P = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RH_priority");
+    //public static final float GB_OCR_RB_V = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RM_Power");
+    //public static final float GB_OCR_RB_P = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RM_priority");
+    //public static final float GB_OCR_RH_V = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RH_Power");
+    //public static final float GB_OCR_RH_P = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_RH_priority");
     //omega basic group values
     public static final float GB_OCR_BB_V = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_BM_Power");
     public static final float GB_OCR_BB_P = Global.getSettings().getFloat("AIRetrofits_Omega_GroundBattle_BM_priority");
@@ -302,8 +302,8 @@ public class AIRetrofits_Startup_CrewReplacer {
         crewReplacer_Main.getJob(nexMarinesJob).addNewCrew(robotType,GB_ACR_BB_V,GB_ACR_BB_P);
         crewReplacer_Main.getJob(nexTankMarinesJob).addNewCrew(robotType,GB_ACR_BH_V,GB_ACR_BH_P);
         //robot squads
-        crewReplacer_Main.getJob(GB_BCR).addNewCrew(robotType,GB_ACR_RB_V,GB_ACR_RB_P);
-        crewReplacer_Main.getJob(GB_BTC).addNewCrew(robotType,GB_ACR_RH_V,GB_ACR_RH_P);
+        //crewReplacer_Main.getJob(GB_BCR).addNewCrew(robotType,GB_ACR_RB_V,GB_ACR_RB_P);
+        //crewReplacer_Main.getJob(GB_BTC).addNewCrew(robotType,GB_ACR_RH_V,GB_ACR_RH_P);
     }
     static private void addAdvancedSurveyRobots(){
         final String robotType = "AIretrofit_Advanced_SurveyDrone";
@@ -397,15 +397,15 @@ public class AIRetrofits_Startup_CrewReplacer {
 
 
         //nex job for combat
-        //own squad.
+        //own squad. (NOTE: this is handled in the AIRetrofits_Patches_Nexerlin class. it also hids the robots when they have never been seen before.)
         crewReplacer_Main.getJob(GB_OCR).addNewCrew(robotType,GB_OCR_V,10);
         crewReplacer_Main.getJob(GB_OTC).addNewCrew(robotType,GB_OTC_V,10);
         //base squads
         crewReplacer_Main.getJob(nexMarinesJob).addNewCrew(robotType,GB_OCR_BB_V,GB_OCR_BB_P);
         crewReplacer_Main.getJob(nexTankMarinesJob).addNewCrew(robotType,GB_OCR_BH_V,GB_OCR_BH_P);
         //robot squads
-        crewReplacer_Main.getJob(GB_BCR).addNewCrew(robotType,GB_OCR_RB_V,GB_OCR_RB_P);
-        crewReplacer_Main.getJob(GB_BTC).addNewCrew(robotType,GB_OCR_RH_V,GB_OCR_RH_P);
+        //crewReplacer_Main.getJob(GB_BCR).addNewCrew(robotType,GB_OCR_RB_V,GB_OCR_RB_P);
+        //crewReplacer_Main.getJob(GB_BTC).addNewCrew(robotType,GB_OCR_RH_V,GB_OCR_RH_P);
     }
     static private void addOmegaSurveyRobots(){
         final String robotType = "AIretrofit_Omega_SurveyDrone";

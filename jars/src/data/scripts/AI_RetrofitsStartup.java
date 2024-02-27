@@ -12,6 +12,8 @@ import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
+import data.scripts.memory.AIRetrofit_ItemFoundMemory;
+import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.*;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
@@ -46,6 +48,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         descriptions();
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
         AIRetrofits_InitCombatabilityPatches.onGameLoad(newGame);
+        AIRetrofit_ItemFoundMemory.onGameLoad();
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?

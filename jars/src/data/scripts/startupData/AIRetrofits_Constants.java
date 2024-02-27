@@ -265,10 +265,10 @@ public class AIRetrofits_Constants {
     public static final String RobotTypeCalculatorID_HevCombatT2_Defence = "D_Hev_CombatT2";
     public static final String RobotTypeCalculatorID_WorkerT0_militia_Defence = "D_Mal_WorkerT0";
     public static final String RobotTypeCalculatorID_WorkerT0_Rebel_Defence = "D_Reb_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT1_militia_Defence = "D_Mal_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT1_Rebel_Defence = "D_Reb_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT2_militia_Defence = "D_Mal_WorkerT0";
-    public static final String RobotTypeCalculatorID_WorkerT2_Rebel_Defence = "D_Reb_WorkerT0";
+    public static final String RobotTypeCalculatorID_WorkerT1_militia_Defence = "D_Mal_WorkerT1";
+    public static final String RobotTypeCalculatorID_WorkerT1_Rebel_Defence = "D_Reb_WorkerT1";
+    public static final String RobotTypeCalculatorID_WorkerT2_militia_Defence = "D_Mal_WorkerT2";
+    public static final String RobotTypeCalculatorID_WorkerT2_Rebel_Defence = "D_Reb_WorkerT2";
     //Command Node and person info:
     public static final String[] SpecalItemID_CommandNodes = {
             "AIRetrofit_CommandNode_0",

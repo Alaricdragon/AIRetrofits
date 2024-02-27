@@ -15,8 +15,8 @@
 			"name":"combat robots",
 			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 			#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
-			"playerCanCreate":true,
-			"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
+			"playerCanCreate":false,
+			#"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
 			"strength":0.5,
 			"moraleMult":2,
 			"dropCostMult":0.5,
@@ -37,8 +37,8 @@
 		"AIRetrofit_CombatRobots_T0_Heavy":{
 			"name":"heavy CR",
 			"type":"HEAVY",
-			"playerCanCreate":true,
-			"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
+			"playerCanCreate":false,
+			#"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
 			"strength":3.3,
 			"unitSizeMult":0.166667,
 			"dropCostMult":4.5,
@@ -94,8 +94,8 @@
 		"name":"advanced combat robots",
 		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 		"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
-		"playerCanCreate":true,
-		"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
 		"strength":1.25,
 		"moraleMult":1,
 		"dropCostMult":0.75,
@@ -115,8 +115,8 @@
 	"AIRetrofit_CombatRobots_T1_Heavy":{
 		"name":"advanced heavy CR",
 		"type":"HEAVY",
-		"playerCanCreate":true,
-		"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
 		"strength":6.825,
 		"unitSizeMult":0.208333,
 		"dropCostMult":5.625,
@@ -174,8 +174,8 @@
 		"name":"omega combat robots",
 		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
 		#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
-		"playerCanCreate":true,
-		"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
 		"strength":5,
 		"moraleMult":1,
 		"dropCostMult":35,
@@ -195,8 +195,8 @@
 	"AIRetrofit_CombatRobots_T2_Heavy":{
 		"name":"omega heavy CR",
 		"type":"HEAVY",
-		"playerCanCreate":true,
-		"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
 		"strength":27.5,
 		"unitSizeMult":0.166667,
 		"dropCostMult":7.5,

@@ -29,11 +29,14 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
     }
     @Override
     public void reportUnitCreated(GroundUnit b) {
-        if (b.isPlayer()){
+        if (b.isPlayer() || (b.getFleet() != null && b.getFleet().isPlayerFleet())){
+            AIRetrofit_Log.loging("Looking into swaping a player unit of definition of "+b.getUnitDefId()+"",new AIRetrofit_Log(),AIRetrofit_PlayerGroundUnitSwaper.logs);
+            AIRetrofit_Log.loging("checking ground unit: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),this,AIRetrofit_PlayerGroundUnitSwaper.logs);
+            AIRetrofit_Log.push();
             AIRetrofit_PlayerGroundUnitSwaper.attemptToSwap(b,this.intel);
+            AIRetrofit_Log.pop();
             return;
         }
-        this.intel.getUnitSize();
         AIRetrofit_Log.loging("checking ground unit: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),this,logs);
         changeUnitOverSwapers(b);
         AIRetrofit_Log.loging("BS total units, attack, defender: "+this.intel.getAllUnits().size()+", "+this.intel.getSide(true).getUnits().size()+", "+this.intel.getSide(false).getUnits().size(),this,logs);
@@ -104,7 +107,8 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
     float[][] powerOverflow = new float[2][4];
     public static final String
             BMar = "marine",BHev="heavy",BReb="rebel",BMil="militia";
-    /**/public void runSwapersPart(GroundBattleIntel battle,AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker a,boolean isAttacker){
+    /**/
+    /*public void runSwapersPart(GroundBattleIntel battle,AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker a,boolean isAttacker){
         int atkOrDef = 0;
         if(isAttacker) atkOrDef = 1;
         AIRetrofit_Log.loging("one of da things for attacker? "+isAttacker, this, true);
@@ -140,8 +144,8 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
                 c--;
             }
         }
-    }
-    public void runSwapers2(GroundBattleIntel battle){
+    }*/
+    /*public void runSwapers2(GroundBattleIntel battle){
 
         for(AIRetrofits_Robot_Types_calculater_2 d : AIRetrofits_Robot_Types_calculater_2.masterList) {
             if (d instanceof AIRetrofits_GroundCombatTypeReplacement) {
@@ -156,16 +160,16 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
         for (GroundUnit a : battle.getAllUnits()){
             markUnit(a);
         }
-    }
+    }*/
 
-    public boolean isUnitMarked(GroundUnit unit){
+    /*public boolean isUnitMarked(GroundUnit unit){
         return this.My_Memory.isUnitsChanged(unit);
     }
     public void markUnit(GroundUnit unit){
         if (isUnitMarked(unit)) return;
         this.My_Memory.addUnitToChanged(unit);
-    }
-    public static MarketAPI getUnitsMarket(GroundUnit b, GroundBattleIntel battle){
+    }*/
+/*    public static MarketAPI getUnitsMarket(GroundUnit b, GroundBattleIntel battle){
         MarketAPI market;
         if (b.getFleet() == null){
             if (b.isAttacker()){
@@ -198,5 +202,5 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
             AIRetrofit_Log.loging("getUnitsMarket: "+5,new AIRetrofit_Log(),logs);
             return market;
         }
-    }/**/
+    }*/
 }

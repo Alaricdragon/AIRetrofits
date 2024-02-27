@@ -1,12 +1,16 @@
 package data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.AIRetrofits_Robot_Types_calculater_2;
 import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner2;
 import data.scripts.combatabilityPatches.Nexerlin.groundTroopSwaper.interfaces.AIRetrofits_GroundCombatTypeReplacement;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
+
+import java.util.List;
 
 public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIRetrofits_Robot_Types_calculater_2 implements AIRetrofits_GroundCombatTypeReplacement {
     private final static boolean logs = AIRetrofits_Robot_Types_calculater_2.robot_type_logs;
@@ -40,7 +44,7 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
     }
 
     public boolean swap(GroundBattleIntel battle, GroundUnit unit){
-        MarketAPI market = AIRetrofits_GroundBattleListiner2.getUnitsMarket(unit,battle);
+        MarketAPI market = getUnitsMarket(unit,battle);
         //AIRetrofit_Log.loging("looking for market",this,logs);
         if (market == null)return false;
         //AIRetrofit_Log.loging("market found",this,logs);
@@ -51,7 +55,7 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
         if (odds == 0) return false;
         //AIRetrofit_Log.loging("swap",this,logs);
         Object[] temp = getNewDef(unit.getUnitDefId());
-        //if (temp == null) return false;
+        if (temp == null) return false;
         String newDefinition = (String) temp[0];
         float multi = (float) temp[1];
         double tempb = Math.random();
@@ -108,5 +112,40 @@ public class AIRetrofits_Robot_Types_calculater_GroundUnits_Attacker extends AIR
             }
         }
         return null;
+    }
+
+    public MarketAPI getUnitsMarket(GroundUnit b, GroundBattleIntel battle){
+        MarketAPI market;
+        if (b.getFleet() == null){
+            if (b.isAttacker()){
+                AIRetrofit_Log.loging("unit, fleet"+b.getUnitDefId()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
+                String faction = b.getFaction().getId();
+                List<MarketAPI> markets = Global.getSector().getEconomy().getMarketsCopy();
+                for (int a = 0; a < markets.size(); a++){
+                    if (markets.get(a).getFactionId().equals(faction)){
+                        AIRetrofit_Log.loging("getUnitsMarket: "+0,new AIRetrofit_Log(),logs);
+                        return markets.get(a);
+                    }
+                }
+                AIRetrofit_Log.loging("getUnitsMarket: "+1,new AIRetrofit_Log(),logs);
+                return null;
+            }else{
+                AIRetrofit_Log.loging("getUnitsMarket: "+2,new AIRetrofit_Log(),logs);
+                return battle.getMarket();
+            }
+        }else{
+            market = Global.getSector().getEconomy().getMarket(b.getFleet().getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
+            if (market == null){
+                if (b.isAttacker()){
+                    AIRetrofit_Log.loging("getUnitsMarket: "+3,new AIRetrofit_Log(),logs);
+                    return null;
+                }else{
+                    AIRetrofit_Log.loging("getUnitsMarket: "+4,new AIRetrofit_Log(),logs);
+                    return battle.getMarket();
+                }
+            }
+            AIRetrofit_Log.loging("getUnitsMarket: "+5,new AIRetrofit_Log(),logs);
+            return market;
+        }
     }
 }

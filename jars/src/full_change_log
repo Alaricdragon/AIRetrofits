@@ -1,8 +1,24 @@
 changelog for all my changes as i make them so i dont forget again.
 V0.9:
 save compatible with 0.7.20.1+
+    updated to the latest version
     fixed:
         fixed broken version checker support. sorry that was a thing.
+        fixed some things not being hidden that should have never been noticed.
+    new:
+
+V0.8.0.19(private):
+save compatible with 0.7.20.1+
+    started work on swaping player units. I have a way that works, but i need to conferm with nexerline person to make sure its the way he intended.
+    -started to debug the 'defence' part of the 'swap ground units'
+    -completed a system that lets me 'hide' what units are used in ground combat untill the player finds them. for now, only the highest tire of combat robots are hidden.
+    fixes:
+        -fixed the robotic malita always being T2 worker robots.
+    removed:
+        -removed settings and code for 'mixed' robot squads. they are not balanced to deploy. wrong stats....
+        also i like having them all look difrent a lot its the best thing ever.
+        -everything related to the buttons that create combat robot squads directly.
+
 V0.8.0.18(private):
 save compatible with 0.7.20.1+
     (delayed. will do this time i work on this mod!)changes (to make it not mess up math to have a calculation change)
