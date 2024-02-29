@@ -6,7 +6,11 @@ save compatible with 0.7.20.1+
         fixed broken version checker support. sorry that was a thing.
         fixed some things not being hidden that should have never been noticed.
     new:
-
+    changes:
+        changed the image for the basic combat robot. its not better, but i needed to change it, and i think im going to redo it because it sucks.
+V0.8.0.20(private):
+save compatible with 0.7.20.1+
+    built a temp system for creating player units. untill nexerlin has time to change there system to work again. still in testing. still not working.
 V0.8.0.19(private):
 save compatible with 0.7.20.1+
     started work on swaping player units. I have a way that works, but i need to conferm with nexerline person to make sure its the way he intended.

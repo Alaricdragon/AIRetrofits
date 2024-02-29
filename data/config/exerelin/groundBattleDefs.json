@@ -93,7 +93,7 @@
 	"AIRetrofit_CombatRobots_T1_marine":{
 		"name":"advanced combat robots",
 		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
-		"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+		#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
 		"playerCanCreate":false,
 		#"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
 		"strength":1.25,

@@ -7,6 +7,7 @@ import data.scripts.crewReplacer_Main;
 import data.scripts.startupData.AIRetrofits_Constants;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
+import exerelin.campaign.intel.groundbattle.GroundUnitDef;
 
 public class AIRetrofit_PlayerGroundUnitSwaper {
     public final static boolean logs = Global.getSettings().getBoolean("AIRetrofits_Logs_Nexerlin_GroundCombat_playerUnitCreation");
@@ -14,7 +15,13 @@ public class AIRetrofit_PlayerGroundUnitSwaper {
     private static final String[][] definitions = {{"AIRetrofit_CombatRobots_T0_marine","AIRetrofit_CombatRobots_T1_marine","AIRetrofit_CombatRobots_T2_marine"},{"AIRetrofit_CombatRobots_T0_Heavy","AIRetrofit_CombatRobots_T1_Heavy","AIRetrofit_CombatRobots_T2_Heavy"}};
     private static final String[] personell = {AIRetrofits_Constants.Commodity_T0_CombatDrone,AIRetrofits_Constants.Commodity_T1_CombatDrone,AIRetrofits_Constants.Commodity_T2_CombatDrone};
     public static void attemptToSwap(GroundUnit b, GroundBattleIntel intel){
-        //GroundUnit.returnCommodityMapToCargo();
+        if (b.getPersonnelMap().size() != 0){
+            swap_WithMap(b,intel);
+            return;
+        }
+        swap_blank(b,intel);
+    }
+    public static void swap_WithMap(GroundUnit b, GroundBattleIntel intel){
         int robotType = -1;
         int baseType = -1;
         AIRetrofit_Log.loging("Looking into swaping a player unit of definition of "+b.getUnitDefId()+"",new AIRetrofit_Log(),logs);
@@ -56,60 +63,43 @@ public class AIRetrofit_PlayerGroundUnitSwaper {
         AIRetrofit_Log.loging("gettting available 'units' as: "+available,new AIRetrofit_Log(),logs);
         b.setSize(Math.min(available,intel.getUnitSize().getMaxSizeForType(definitions[baseType][robotType])),true);
         AIRetrofit_Log.loging("checking ground unit after new size set: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
-        /*int presentTypes = 0;
-        for (String[] c : definitions) {
-            for (String a : c) {
-                if (b.getPersonnelMap().containsKey(a)) {
-                    presentTypes++;
-                }
+    }
+    public static void swap_blank(GroundUnit b, GroundBattleIntel intel){
+        int bd = -1;
+        for (int a = 0; a < basicDefinitions.length; a++){
+            if (basicDefinitions[a].equals(b.getUnitDefId())){
+                bd = a;
+                break;
             }
         }
-        if (presentTypes != b.getPersonnelMap().size()) return;
-        if (presentTypes == 1){
-            changeTemp(b,intel);
-            return;
-        }
-        if (b.getUnitDefId().equals(basic)){
-            b.setUnitDef(definitions[0][0]);
-            return;
-        }
-        if (b.getUnitDefId().equals(heavy)){
-            b.setUnitDef(definitions[1][0]);
-            return;
-        }*/
-    }
-    /*
-    public void changeMarine(GroundUnit b){
-
-    }
-    public void changeHeavy(GroundUnit b){
-
-    }
-    public static void changeTemp(GroundUnit b,GroundBattleIntel intel){
-
-        String definition = getDefinition(b);
-        if (definition == null) return;
-        //b.;
+        if (bd == -1) return;
         CargoAPI cargo = Global.getSector().getPlayerFleet().getCargo();
-        GroundUnit.returnCommodityMapToCargo(b.getPersonnelMap(),cargo,1);
-        GroundUnit.returnCommodityMapToCargo(b.getEquipmentMap(),cargo,1);
+        String oldDef = b.getUnitDefId();
+        for (int a = definitions[bd].length - 1; a >= 0; a--){
+            b.setUnitDef(definitions[bd][a]);
+            int sizeA = 999999999;
+            int sizeB = 0;
+            try {
+                sizeA = (int) (crewReplacer_Main.getJob(b.getUnitDef().equipment.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().equipment.mult);
+            }catch (Exception e){
 
-        b.setUnitDef(definition);
-        int sizeA = (int) (crewReplacer_Main.getJob(b.getUnitDef().equipment.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().equipment.mult);
-        int sizeB = (int) (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().personnel.mult);
-        int available = Math.min(sizeA,sizeB);
-        b.setSize(Math.min(available,intel.getUnitSize().getMaxSizeForType(definition)),true);
-    }
-    public static String getDefinition(GroundUnit b){
-        for (String[] c : definitions) {
-            for (String a : c) {
-                if (b.getPersonnelMap().containsKey(a)) {
-                    return a;
-                }
+            }
+            if (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).hasCrew("marines")) {
+                AIRetrofit_Log.loging("NO NO NO NO NO NO NO NO NO NO NO WHY WHY WHY WHY WHY WHY WHY", new AIRetrofit_Log(), true);
+            }
+            try {
+                sizeB = (int) (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().personnel.mult);
+            }catch (Exception e){
+
+            }
+            AIRetrofit_Log.loging("for changing from to: "+oldDef+", "+b.getUnitDefId()+" i have personell,heavy of: "+sizeA+", "+sizeB,new AIRetrofit_Log(),true);
+            int available = Math.min(sizeA,sizeB);
+            if (available != 0){
+                return;
             }
         }
-        return null;
-    }*/
+        b.setUnitDef(oldDef);
+    }
     private static void displayMaps(GroundUnit unit){
         AIRetrofit_Log.loging("personell map",new AIRetrofit_Log(),logs);
         AIRetrofit_Log.push();

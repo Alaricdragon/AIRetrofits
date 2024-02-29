@@ -5,14 +5,6 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-    hello again, its been a while.
-    I have returned with another report (sorry i always have to bring bad news)
-    1) In 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' 'b.isPlayer()' is always false. i was able to get around this by useing 'b.getFleet().isPlayerFleet()', but i felt like this was not intentional.
-    2) in 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' player units (and only player units) don't seem to have there personnel map set yet (i didn't check the equipment map). i don't know if this is intentional or not.
-    3) dont know if this is intentional or not, but well testing i happened to deploy on a world that i gifted to pirates, and there were rebels there. of my faction. thought you should know, cause it felt wired, but i dont know the desing behind the rebels that well.
-    4) Im unsure if im just doing something wrong, but 'rebels' seem to never enter the 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' at all.
-
-    as a side note, i think im finaly almost done with this feature. im quite existed, as this is something i wanted for a really really long time, but could not do. although i might have went quite overboard with the design. exspecaly considering how few people are going to see this. but i will see this, and it will make doing invasions feel mush better then before. as well as defending on the ground.
 
 
 plans for the invasions:
@@ -31,27 +23,20 @@ plans for the invasions:
             2) make it so every time i add a new 'advanced' robot, a certen number of not advanced robots on the battle field. (example: I replace 2 marrines (2 DD) for 2 advanced robots (3.125 DD) I have 1.125 exstra DD, so next time my code checks to remove a marrine, remove it instead.
             this is good, because it lets my new robots : buff the worlds/faction, display correct 'defence' number, and be power houses that you should be afraid of.
             (NOTE: this will need to be done in the ground battle listener)
-
-    --) there is a issue however. that is that i want players to beable to create there own units as well, without to mush hassle.
-        -how would one do this? simple:
-        a) find a way to keep trake of the number and type of units in a squad and transfer them over to a new squad type on squad createdion.
-            -note: the units in a crew is likely stored somewere in GroundUnit.data. this is a issue, because i will need to get all items from this. maybe there is a way now that i think of it........
-                   i have ran a few tests and found that yes. yes i can do the thing in relation to this. its not even that hard to do, you know.
-                   so ya. it returns the data in the form of something that i might beable to use. i am unsure. but how usefull will it be? unknown.
-                   so, things i can do for this:
-                   provied a platoon only contains robots, i can change the platoon to a robotic force, provided all the inputed items are already in the crew replacer for said robotic force.
-        b) find a way to simply swap the picture and stats of each platoon indavidgualy. as to avoid any unesseary issues
-
     ISSUES:
     on gorund defences:
         2) rebels on worlds are set to the attacking faction. i want this to not be the case. so i will need a specal class to habdle that.
     on AI generated units:
-        OCR - heavy plattons have a strange number to them. i cant tell if this is just something cosmetic, or if this is something very mush not cosmetic. what is happing?
-            the game is displaying a mush large number of plattons then what should exsist. i dont know why. investagation reveals that its larger then the number of platoons created...
-            -NOTE: after farther investagating....
-            thats just the number of units i was deploying. apparently.
-            for real, i tested it in every way. there is a slight possability im underdeploying ACR, but i can look into that latter....
+        1) unit number: the size of a given squad does not seem to respect the 'multi' of the squad in size.
+           this might be a bug, but this also might be a issue with nexerlin. i will report this just in case
+        2) everytime i attempt to make a ground unit, for a single moment, and only one, marrines are included in omega robots equation.
+            what the fuck is even going on?!?!?!?!!!!?!? how why??!? i dont get it... i will need mroe data
+            -in farther testing:
+                T1 robot not effected.
+                T0 robot sometimes still has marine in it even after...??????
+                T2 robot always effected???????
     on creating player units:
+        issues: when basic robots, and marrines are in my invatory, my code thinks that the marrines are part of omega combat robots (but only the basic ground ones)??????
         3 possibility:
             a_2) use the normal buttons. whenever i group is spawned, if it contains robots, reset the personnel and equipment map, then spawn a unit of that squad from the players inventory.
                 -if i go with this, i will need to do the following:
