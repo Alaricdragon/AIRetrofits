@@ -178,7 +178,7 @@
 		#"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
 		"strength":5,
 		"moraleMult":1,
-		"dropCostMult":35,
+		"dropCostMult":1,
 		"damageTakenMult":1,
 
 		"unitSizeMult":1,

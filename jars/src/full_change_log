@@ -8,6 +8,12 @@ save compatible with 0.7.20.1+
     new:
     changes:
         changed the image for the basic combat robot. its not better, but i needed to change it, and i think im going to redo it because it sucks.
+V0.8.0.21(private):
+save compatible with 0.7.20.1+
+    fixed:
+        fixed broken player units. they are only partly borken now
+    changed:
+        added options to enable or disable nexerlin invasion features to the config. they do nothing until i finish adding the code to make them work
 V0.8.0.20(private):
 save compatible with 0.7.20.1+
     built a temp system for creating player units. untill nexerlin has time to change there system to work again. still in testing. still not working.

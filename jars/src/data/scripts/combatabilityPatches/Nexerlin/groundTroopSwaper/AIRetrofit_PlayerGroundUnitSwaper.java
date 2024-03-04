@@ -10,6 +10,23 @@ import exerelin.campaign.intel.groundbattle.GroundUnit;
 import exerelin.campaign.intel.groundbattle.GroundUnitDef;
 
 public class AIRetrofit_PlayerGroundUnitSwaper {
+    //addItem AIRetrofit_CombatDrone 500; addItem AIRetrofit_AdvancedCombatDrone 500; addItem AIRetrofits_OmegaCombatDrone 500; addItem marrines 500; addItem handWepons 500;
+    /*
+        displayed sizes:
+            P   H
+        BCR:120,0
+        BHR:80,20
+
+        ACR:120,
+        AHR:40,20
+
+        OCR:120,0
+        OHR:20,40
+
+        m:120,0
+        h:40,20
+
+     */
     public final static boolean logs = Global.getSettings().getBoolean("AIRetrofits_Logs_Nexerlin_GroundCombat_playerUnitCreation");
     private final static String[] basicDefinitions = {"marine", "heavy"};
     private static final String[][] definitions = {{"AIRetrofit_CombatRobots_T0_marine","AIRetrofit_CombatRobots_T1_marine","AIRetrofit_CombatRobots_T2_marine"},{"AIRetrofit_CombatRobots_T0_Heavy","AIRetrofit_CombatRobots_T1_Heavy","AIRetrofit_CombatRobots_T2_Heavy"}};
@@ -77,6 +94,11 @@ public class AIRetrofit_PlayerGroundUnitSwaper {
         String oldDef = b.getUnitDefId();
         for (int a = definitions[bd].length - 1; a >= 0; a--){
             b.setUnitDef(definitions[bd][a]);
+            if (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).hasCrew("marines")) {
+                AIRetrofit_Log.loging("001 crewReplacer_Job of: "+b.getUnitDef().personnel.crewReplacerJobId+" has marines", new AIRetrofit_Log(), true);
+                crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).removeCrew("marines");
+                crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).organizePriority();
+            }
             int sizeA = 999999999;
             int sizeB = 0;
             try {
@@ -84,15 +106,12 @@ public class AIRetrofit_PlayerGroundUnitSwaper {
             }catch (Exception e){
 
             }
-            if (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).hasCrew("marines")) {
-                AIRetrofit_Log.loging("NO NO NO NO NO NO NO NO NO NO NO WHY WHY WHY WHY WHY WHY WHY", new AIRetrofit_Log(), true);
-            }
             try {
                 sizeB = (int) (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().personnel.mult);
             }catch (Exception e){
 
             }
-            AIRetrofit_Log.loging("for changing from to: "+oldDef+", "+b.getUnitDefId()+" i have personell,heavy of: "+sizeA+", "+sizeB,new AIRetrofit_Log(),true);
+            AIRetrofit_Log.loging("for changing from to: "+oldDef+", "+b.getUnitDefId()+" i have personell,heavy of: "+sizeA+", "+sizeB,new AIRetrofit_Log(),logs);
             int available = Math.min(sizeA,sizeB);
             if (available != 0){
                 return;
