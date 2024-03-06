@@ -1,4 +1,161 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.9:
+save compatible with 0.7.20.1+
+    updated to the latest version
+    fixed:
+        fixed broken version checker support. sorry that was a thing.
+        fixed some things not being hidden that should have never been noticed.
+    new:
+        cross mod content!!
+            Invasions with nexerline on AI-Pop worlds, or other worlds were there are robots do to industrys, now might have robot defenders!
+            Invasions with nexerline from AI-Pop worlds, or other worlds were there are robots do to industrys, now have robot attackers!
+            you can now have robotic heavy units!
+            all robots now have there own unit definitions, so they can have dramatically different stats
+            sometimes, you can even have more 'advanced' robots in your invasions, provided you can create them
+            -note: this can all be disabled in the settings.
+        added a defence bonus for creating more advanced combat robots on your colony's.
+    changes:
+        changed the image for the basic combat robot. its not better, but i needed to change it, and i think im going to redo it because it sucks.
+
+    note: to the ones who are waiting fixes to my terrible, inconsistent spelling and grammar, that will (hopefully) be next update. this was delayed to long however, so i needed to post it before then.
+V0.8.0.21(private):
+save compatible with 0.7.20.1+
+    fixed:
+        unit stats being off or otherwise wrong.
+        the 'not yet working' systems from crashing the game whenever you tried to create a new ground unit.
+    implemented:
+        the options for disabling the new fetures.
+V0.8.0.21(private):
+save compatible with 0.7.20.1+
+    fixed:
+        fixed broken player units. they are only partly borken now
+    changed:
+        added options to enable or disable nexerlin invasion features to the config. they do nothing until i finish adding the code to make them work
+V0.8.0.20(private):
+save compatible with 0.7.20.1+
+    built a temp system for creating player units. untill nexerlin has time to change there system to work again. still in testing. still not working.
+V0.8.0.19(private):
+save compatible with 0.7.20.1+
+    started work on swaping player units. I have a way that works, but i need to conferm with nexerline person to make sure its the way he intended.
+    -started to debug the 'defence' part of the 'swap ground units'
+    -completed a system that lets me 'hide' what units are used in ground combat untill the player finds them. for now, only the highest tire of combat robots are hidden.
+    fixes:
+        -fixed the robotic malita always being T2 worker robots.
+    removed:
+        -removed settings and code for 'mixed' robot squads. they are not balanced to deploy. wrong stats....
+        also i like having them all look difrent a lot its the best thing ever.
+        -everything related to the buttons that create combat robot squads directly.
+
+V0.8.0.18(private):
+save compatible with 0.7.20.1+
+    (delayed. will do this time i work on this mod!)changes (to make it not mess up math to have a calculation change)
+        ACR - heavy
+        OCR - heavy:
+            size 0.66667 -> 0.041667
+            eq: 2 -> 10
+            pe: 1 -> 2
+
+    fixes:
+        fixed a issue causing wired unit maps in heavy units.
+V0.8.0.17(private):
+save compatible with 0.7.20.1+
+    fixed:
+        fixed broken unit maps.
+        fixed missing heavy units.
+    now:
+        started work on the 'player fleet' ground unit changer.
+        -added settings to the config for this.
+        -added more settings to the config for this
+V0.8.0.16(private):
+save compatible with 0.7.20.1+
+    fixes:
+        added a backup system for finding markets for attacker ground units in combat. this should fix units refusing to accept global values in the worse of times.
+    changed:
+        set the unset values for the robot type calculator and ground battle ratios to the settings.
+        set the stats for all ground units.
+V0.8.0.15(private):
+save compatible with 0.7.20.1+
+    new:
+        added a setting config to logs related to nexerlin ground combat, and the robot percentage calculator.
+    fixes:
+        fixed robot_types_checker_supply_0 applying its supply * the number of markets its faction controls.
+        fixed some broken memory in the ground defence calculator.
+V0.8.0.14(private):
+save compatible with 0.7.20.1+
+    fixes:
+        did some work on groun battle replacer. attacker issues are now understood.
+        did some work on the ground defence modifyer from having higher level cmobat units. it is still not working.
+V0.8.0.13(private):
+save compatible with 0.7.20.1+
+    did some fixes with the ground battle replacer. attacker almost works now.
+V0.8.0.12:(private)
+save compatible with 0.7.20.1+
+    fixed the ground combat strength bonus from T1 and T2 robot supply being not right.
+    started to work on the basic combat robots image
+V0.8.0.11:(private)
+save compatible with 0.7.20.1+
+    worked on:
+        built the system that reduces defender units, provided i have to mush power on the field.
+        started on the system that adds a 'ground defence multi' to defending worlds.
+V0.8.0.10:(private)
+save compatible with 0.7.20.1+
+    fixes:
+        tried to fix broken attackers. need to report this to nexerlin person.
+    worked on:
+        started to add more definition to the new ground units and there abilitys.
+V0.8.0.9:(private)
+save compatible with 0.7.20.1+
+    fixes:
+        fixed most the bugs i could find in the robot swapper thing. attackers dont work yet for some reaons...
+V0.8.0.8:(private)
+save compatible with 0.7.20.1+
+    new:
+        added a system to remember things based on items in the players innovatory.
+        added the options for all the strange ground troop types.
+    worked on:
+        completely finished the 'ground unit swapper thing'. it remembers what it changed and everything. testing is only just started and god the crahses...
+V0.8.0.7:(private)
+save compatible with 0.7.20.1+
+    finished, not tested:
+        the ground battles inter 'swap ground units' thing. the only part left is to set up the memory key to elt me swap things.
+    documentation:
+        updated all the ground units in documentation to have the normal default ground combat strength. this will make it easier to modify by percentages
+V0.8.0.6:(private)
+save compatible with 0.7.20.1+
+    worked on, not tested:
+        compleated the configs for the 'robot supply' thing. so i know how many robots should be present in a ground operation.
+    started:
+        the code that will let me replace ground units with my own when a fight begins. finally.
+V0.8.0.5:(private)
+save compatible with 0.7.20.1+
+    debugging:
+        added a 'try catch' statment to AIRetrofits_Robot_Types_checker_Supply_1, to prevent wrong industry uses causing a crash
+    worked on, not tested:
+        started to build the functions that set the definitions for the 'how many robots do i have' calculation
+        added all definitions for things that supply and demand basic combat bots.
+        added all of said things to the config, there is so many.
+        have not tested them yet.
+V0.8.0.4:(private)
+save compatible with 0.7.20.1+
+    done. not tested:
+        built a way to easly calculate how many 'robots' of a given type i should have, by percentage.
+        built 4 diffrent 'type' of ways to calculate the amount of robots i want to have.
+        started to prepare to use said things in code. its in AIRetrofits_Startup_RobotTypesCalculater. nothing is yet set to work, but it does exsist.
+        this system is for use in the new ground battle changer system, so i can have different types of combat units easier.
+V0.8.0.3:(private)
+save compatible with 0.7.20.1+
+    done. not tested:
+        created a system for swaping out old troops from ground battles. its quite cool so far.
+V0.8.0.2:(private)
+save compatible with 0.7.20.1+
+    fixed:
+        fixed broken version checker support. sorry that was a thing.
+    started:
+        created a more modable way to swap out combat units in a fight.
+V0.8.0.1:(private)
+save compatible with 0.7.20.1+
+    started:
+        started to add my own definitions to the nexerlin invasions, so i can have my own troop types
 V0.8:
 save compatible with 0.7.20.1+
     NOTE:
@@ -26,6 +183,7 @@ save compatible with 0.7.20.1+
     fixes:
         fixed part of the description on the operative command node.
         added a warning label to operatives command nodes when you have the max number of them
+        fixed the issue of being able to create as many nexerlin operatives as you wanted. opps.
         fixed some random missing things from the config.
 V0.7.21.11(private):
 save compatible with 0.7.20.1+

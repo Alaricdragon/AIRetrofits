@@ -1,0 +1,262 @@
+{
+	"industries":{	
+	},
+	
+	"conditions":{
+	},
+	
+	"abilities":{
+	},
+	
+	"unitTypes":{
+		#basic combat robots,
+		#2X size, 0.5X strangth, 2X moral, 0.5X cost
+		"AIRetrofit_CombatRobots_T0_marine":{
+			"name":"combat robots",
+			"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+			#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+			"playerCanCreate":false,
+			#"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
+			"strength":0.5,
+			"moraleMult":2,
+			"dropCostMult":0.5,
+			"damageTakenMult":1,
+
+			"unitSizeMult":2,
+			#"offensiveStrMult":1.25,
+			#"crampedStrMult":0.75,
+			"personnel":{
+				"commodityId":"AIretrofit_CombatDrone",
+				"crewReplacerJobId":"AIRetrofit_GB_BCR",
+				"mult":1,	# integer, at least for now
+			},
+			"tags":["marine"],
+			"sortOrder":1,
+		},
+
+		"AIRetrofit_CombatRobots_T0_Heavy":{
+			"name":"heavy CR",
+			"type":"HEAVY",
+			"playerCanCreate":false,
+			#"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
+			"strength":5.5,
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
+			"equipment":{
+				"commodityId":"hand_weapons",
+				"crewReplacerJobId":"nex_groundBattle_heavyarms",
+				"mult":1,
+			},
+			"personnel":{
+				"commodityId":"AIretrofit_CombatDrone",
+				"crewReplacerJobId":"AIRetrofit_GB_BTC",
+				"mult":4,
+			},
+			"tags":["heavy"],
+			"sortOrder":2
+		},
+		"AIRetrofit_CombatRobots_T0_militia":{
+			"name":"robotic militia",
+			"type":"MILITIA",
+			"playerCanCreate":false,
+			"strength":0.4,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
+			"personnel":{
+				"commodityId":"AIretrofit_WorkerDrone",
+				"crewReplacerJobId":"AIRetrofit_GB_BWRm",
+				"mult":1,
+			},
+			"tags":["militia"],
+			"sortOrder":3,
+		},
+		"AIRetrofit_CombatRobots_T0_rebel":{
+			"name":"robotic rebel",
+			"type":"REBEL",
+			"playerCanCreate":false,
+			"strength":0.3,
+			"moraleMult":0.7,
+			"dropCostMult":0.7,
+			"damageTakenMult":0.6,
+			"personnel":{
+				"commodityId":"AIretrofit_WorkerDrone",
+				"crewReplacerJobId":"AIRetrofit_GB_BWRr",
+				"mult":1,
+			},
+			"tags":["rebel"],
+			"sortOrder":4,
+		},
+
+
+	"AIRetrofit_CombatRobots_T1_marine":{
+		"name":"advanced combat robots",
+		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+		#"sprite":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
+		"strength":1.25,
+		"moraleMult":1,
+		"dropCostMult":0.75,
+		"damageTakenMult":1,
+
+		"unitSizeMult":1.25,
+		#"offensiveStrMult":1.25,
+		#"crampedStrMult":0.75,
+		"personnel":{
+			"commodityId":"AIretrofit_Advanced_CombatDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_ACR",
+			"mult":1,	# integer, at least for now
+		},
+		"tags":["marine"],
+		"sortOrder":1,
+	},
+	"AIRetrofit_CombatRobots_T1_Heavy":{
+		"name":"advanced heavy CR",
+		"type":"HEAVY",
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T1_Combat_Available",
+		"strength":6.825,
+		"unitSizeMult":0.208333,
+		"dropCostMult":5.625,
+		"offensiveStrMult":1.25,
+		"crampedStrMult":0.75,
+		"equipment":{
+			"commodityId":"hand_weapons",
+			"crewReplacerJobId":"nex_groundBattle_heavyarms",
+			"mult":1,
+		},
+		"personnel":{
+			"commodityId":"AIretrofit_Advanced_CombatDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_ATC",
+			"mult":2,
+		},
+		"tags":["heavy"],
+		"sortOrder":2
+	},
+	"AIRetrofit_CombatRobots_T1_militia":{
+		"name":"advanced robotic militia",
+		"type":"MILITIA",
+		"playerCanCreate":false,
+		"strength":0.5,
+		"moraleMult":0.6,
+		"unitSizeMult":1.25,
+		"dropCostMult":0.525,
+		"personnel":{
+			"commodityId":"AIretrofit_Advanced_WorkerDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_AWRm",
+			"mult":1,
+		},
+		"tags":["militia"],
+		"sortOrder":3,
+	},
+	"AIRetrofit_CombatRobots_T1_rebel":{
+		"name":"advanced robotic rebel",
+		"type":"REBEL",
+		"playerCanCreate":false,
+		"strength":0.375,
+		"moraleMult":0.7,
+		"unitSizeMult":1.25,
+		"dropCostMult":0.525,
+		"damageTakenMult":0.6,
+		"personnel":{
+			"commodityId":"AIretrofit_Advanced_WorkerDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_AWRr",
+			"mult":1,
+		},
+		"tags":["rebel"],
+		"sortOrder":4,
+	},
+
+
+	"AIRetrofit_CombatRobots_T2_marine":{
+		"name":"omega combat robots",
+		"type":"MARINE",	# legacy setting, may remove later; for now it's mandatory though
+		#"sprite":"optional/path_to/sprite.png",	# used in background of unit card; not automatically loaded so specify it in settings.json if needed
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
+		"strength":5,
+		"moraleMult":1,
+		"dropCostMult":1,
+		"damageTakenMult":1,
+
+		"unitSizeMult":1,
+		#"offensiveStrMult":1.25,
+		#"crampedStrMult":0.75,
+		"personnel":{
+			"commodityId":"AIretrofit_Omega_CombatDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_OCR",
+			"mult":1,	# integer, at least for now
+		},
+		"tags":["marine"],
+		"sortOrder":1,
+	},
+	"AIRetrofit_CombatRobots_T2_Heavy":{
+		"name":"omega heavy CR",
+		"type":"HEAVY",
+		"playerCanCreate":false,
+		#"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
+		"strength":13.75,
+		"unitSizeMult":0.166667,
+		"dropCostMult":3.75,
+		"offensiveStrMult":1.25,
+		"crampedStrMult":0.75,
+		"equipment":{
+			"commodityId":"hand_weapons",
+			"crewReplacerJobId":"nex_groundBattle_heavyarms",
+			"mult":2,
+		},
+		"personnel":{
+			"commodityId":"AIretrofit_Omega_CombatDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_OTC",
+			"mult":1,
+		},
+		"tags":["heavy"],
+		"sortOrder":2
+	},
+	"AIRetrofit_CombatRobots_T2_militia":{
+		"name":"omega robotic militia",
+		"type":"MILITIA",
+		"playerCanCreate":false,
+		"strength":1.2,
+		"moraleMult":0.6,
+		"unitSizeMult":2,
+		"dropCostMult":0.35,
+		"personnel":{
+			"commodityId":"AIretrofit_Omega_WorkerDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_OWRm",
+			"mult":1,
+		},
+		"tags":["militia"],
+		"sortOrder":3,
+	},
+	"AIRetrofit_CombatRobots_T2_rebel":{
+		"name":"omega robotic rebel",
+		"type":"REBEL",
+		"playerCanCreate":false,
+		"strength":0.9,
+		"moraleMult":0.7,
+		"unitSizeMult":2,
+		"dropCostMult":0.35,
+		"damageTakenMult":0.6,
+		"personnel":{
+			"commodityId":"AIretrofit_Omega_WorkerDrone",
+			"crewReplacerJobId":"AIRetrofit_GB_OWRr",
+			"mult":1,
+		},
+		"tags":["rebel"],
+		"sortOrder":4,
+	}
+},
+
+"plugins":{
+	"AIRetrofits_GroundBattleCode":"data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_GroundBattleListiner2",
+},
+
+#"natoAlphabet":[
+#	"Alfa", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India",
+#	"Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
+	#	"Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"
+	#],
+}

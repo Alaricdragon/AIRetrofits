@@ -4,12 +4,153 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in GroundBattleListiner: InvasionIntel.from to ge the market in from.
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
-    1) how do i run ShipVariantAPI.removeMod() and ShipVariantAPI.addMod() without having said ship lose combat readiness
-    2) with a 'TooltipMakerAPI' how do i add a set of images in a row, with some text next to each one? the text always seems to end up below the image for some reason.
-    -)note: what im trying to do is mimic tooltip.addSkillPanel with things that are not officer skills..
+    (for nexerlins developer):
+    hello again. i have tested out the new patch you sent me and it seems to be working well! i have found no issues with anything thous far, so thats nice.
+    however, i do have some suggestings for notes in the ground battle definition:
+        1) please also say that the dropCostMult is also dependent on the equipment, provided it exists. i made some false assumptions by assuming that was not the case, and the confusion is confusion.
+    additional, i am forced to give some additional reports:
+        1) when you first start a ground battle, the game will automaticly build some units for you, provided you have marines in your fleet. you might want to change that to the relevant crew replacer jobs, for consistency sakes.
+            its confusing having my custom units only form when marines are in cargo, even though they technically act as marines and heavy units.
+    and lastly, i have some questions:
+        1) when the player creates a unit, it seems to get its 'getAverageSizeForType', wish is fine, but i do have the question of if there is a option to change it somewere in the config, and if there is, if its possible for me to read it in my mod, so i can have the player made units form at the right sizes
+        2) is there some way to detect and make changes to a unit when its resized? if not, its fine. its just a single edge case that can let my robots be merged with normal units, and that can cause some weird values (mostly odd amounts of deployment costs), but its mostly fine.
+plans for the invasions:
+    status:
+        I have a in built system that looks at and determins the number of each type of bots one should have for each job.
+        I need to hock this up into the spot were changes can accor.
+    i require a class that can swap out base combat units the AI uses based on conditions and ratios.
+    this class will need to beable to:
+    1)(done) have a condition to actavate swaping.
+    2)(done) have a function that determines the ratio of unswaped units that will be swapped.
+    3)(no longer doing) beable to alture the number of platoons created by this method, (to match what the actual combat strength should have been from the attackers
+    3.b)(done)so, because i have 'stronger' combat robots, this therefore means i have a higher damage density, makeing things like for example, the defence value of a world, not be true.
+        the sollution is simple ish:
+            1) give every world a modifier to its defence stat, based on the % of robots that are upgraded on said world (example, i have a 30% chance of advanced robots, add a defnce multi of(0.3*1.5625 )) AKA (cahnce * powerDensity). this will allow for more acreate damage numbers.
+                note: also note, there are more then one type of robots, so the calculation should be something like... OR = (cahnce * powerDensity), AR = (math.max(1-OR,change) * pwoerDensity). then have 2 mods one for OR, and one for AR.
+            2) make it so every time i add a new 'advanced' robot, a certen number of not advanced robots on the battle field. (example: I replace 2 marrines (2 DD) for 2 advanced robots (3.125 DD) I have 1.125 exstra DD, so next time my code checks to remove a marrine, remove it instead.
+            this is good, because it lets my new robots : buff the worlds/faction, display correct 'defence' number, and be power houses that you should be afraid of.
+            (NOTE: this will need to be done in the ground battle listener)
+    ISSUES:
+    on gorund defences:
+        2) rebels on worlds are set to the attacking faction. i want this to not be the case. so i will need a specal class to habdle that.
+            -i talked to the develuper of nexerlin about this issue. they say its fixed next update.
+    on AI generated units:
+        1) unit number: the size of a given squad does not seem to respect the 'multi' of the squad in size.
+           this might be a bug, but this also might be a issue with nexerlin. i will report this just in case
+        2) everytime i attempt to make a ground unit, for a single moment, and only one, marrines are included in omega robots equation.
+            what the fuck is even going on?!?!?!?!!!!?!? how why??!? i dont get it... i will need mroe data
+            -in farther testing:
+                T1 robot not effected.
+                T0 robot sometimes still has marine in it even after...??????
+                T2 robot always effected???????
+    on creating player units:
+        issues:
+            incorrect unit sizes. the reason is believed to be a issue with the unit multi.
+            heavy units might not have the right power, as i might have guessed the eq for that wrong.
+            -power and deploy cost are dependent on the number of heavy units for heavy units. the number of personnel is not relevant.
+        3 possibility:
+            a_2) use the normal buttons. whenever i group is spawned, if it contains robots, reset the personnel and equipment map, then spawn a unit of that squad from the players inventory.
+                -if i go with this, i will need to do the following:
+                    1) set each unit to have a power in nexerline_mareins and nexerline_tankcrew.
+                    2) create a system that goes though the personell map, and checks to see if any personell match a robot type.
+                    3) if a robot type is found:
+                        3.1) change the unit definition to the robots definition.
+                        3.2) return both the personell and equitmet maps to cargo.
+                        3.3) calculate the size of squad i can create with this methood.
+                        3.4) unit.setSize.
+                   -NOTE: if i do this, i will need to remove the options for each robot's powers (for a robot group, and for marine group) from the config, because they will no longer matter.
+                -issue:
+                    1)  reportUnitCreated(GroundUnit b) does not do anything for player units.
+                        this is frusterating. like omg its so nm sakdknasdkjsajkdsakjdkjaskdjsakjksa
+                        i will ask the nexerlin person about this later
+            a) use the normal buttons. whenever spawned, get the unit that is most prominent (be it the highest level, or largest number of units) in said group and set the unit def to reflect this, copying over the personnel map for said group.
+                -if i go with this i will need to preform the following process for each unit:
+                    -both:
+                        1) give each unit a power equal to its units power.
+                        2) when i create a unit with a mix of units, if its only robots, set it to the basic combat robot definition?
+                        3) if its one type of robot, change the units definition to that type, and then attempt to adjust the size of the squad to the right number for that unit squad. (some squads are more dense then others.)
+                            -if its a heavy unit, make sure to adjust its 'heavy units' as well, using the crew replacer job, if available.
+                            -NOTE: doing this might require that i -reduce- the number of heavy units, and because its a job, im likely going to just have to remove and recreate the squad, making sure to return items to the players cargo bay.
+
+                -issue:
+                    1) heavy and none heavy ratios: they are diffrent. options:
+                        a) make 4 sets of values: one for with marrine units, one for basic heavy units, one for only robot units. one for only robot heavy units.
+                            -issues: would result in wired results with basic heavy units, and i cant seperate them at all =(
+                            -issues: the heavy unit results are... nonsensical. i would need to do something crazy to make this work....
+                                -why? the number of robots per heavy weapons would be very different between a basic squad, a robot squad, and the squad they are designed around....
+                            -the best i can see this working is simple: simple splice off the OCR and ACR from the basic groups (as there ratio makes no sense). effectively refuse to let them deploy. if a unit is detected with said robots in it,
+                            remove that unit and attempt to make a robotic unit instead.
+                            -NOTE: for the same reasons, this will prevent group mixing. effectively, i can only have groups with one type of robot at a time.
+                            -NOTE: group mixing works for BCR and marrines, because they have the same unit per HW raitio...
+                            -note: there is a second option: simply make the ratio of weapons per (robot*robotPower) the same on each...
+                            for example: OCR = 5. base H/M raitio is 1/2. so therefor a unit would have 10/2 of H/OCR. this would let the robot have 5 power in a HCU and 10 power in a RCU...
+                -to do right now (as im trying to get this working)
+                    1) set the values for every type of robot, for every one of its possible 4 jobs, in the settings file (already linked in code to the relevant jobs.).
+                    2) test
+            b) the same as a, but use my own 'create robot' buttons.
+                -issues:
+                    1) the possibility of losing data when i change the robot type.
+            c) have a button for each robot type. avoid the issue of changing robot types entirely.
+                -issues:
+                    1)this is a mess to interact with. i can help reduce the mess by 'hiding' buttons when they are not available, but that... does not really help me that mush. because the moment you have 2 types of robots, BAM messy as flip.
+
 im going to work on the following now:
-    finalize the upgrades person robot forges
-        -a industry level forge. with more output. yay output. (also fixes the issue with not enouth survey robots, without making a mess of things.)
+    random required changes:
+    1) update invasions
+        -status:
+            defender works.
+            attacker works
+            detailes:
+                1.0) new unit types and icons:
+                    -modify definitions.
+                    -modify the 'PTSR' for all units.
+                    -modify the 'Raito' for all units.
+                    -modify the AIRetrofit_MaxGroundDefenceBonusFromT2Bots to match the PTSR
+                    -create images for heavy robots, provided i want them.
+                1.1)(started)updated combat robot image:
+                1.2)(DONE)ratio of bot types depending on conditions:
+                1.3)(DONE)increase defence when higher teir robots are in play:
+                1.4)(DONE)remove defenders based on the 'power-size ratio' of newly added defenders:
+                    -ths idea of this, is to increase the number of defence value i have based on how many (T1,T2) robots will be present. so the 'defences' on a colonly will always match said colonlys defencive value
+                1.5)(NOT REQUIRED)remove attackers based on the 'size ratio' for newly added attackers
+                    -do to reasons (mainly how i plan to set up the unit definitions), this is always 1. so this never factors in.
+                1.6) add description to alpha level core for what it does to ground forces. (saying something like 'some units are replaced' or something.)
+                    -maybe even something more detailed, like saying how mush supply and demand there is on the player markets, and how mush local and none local supply this forge is adding.
+                1.7) PASSABLE ISSUES:
+                    1.7.a) (fixed) tested out some things related to combat robots. supply and demand of marines might not be taken into effect? testing required.
+                    1.7.b) (fixed) ground units are vanishing. pasificly the ones i get from changing heavy unitd. i think it has something to do with an invalid unit map. see groundUnit Attacker for logs.
+                    1.7.c) (fixed) omega core bonus will not vanish when multiple worlds are present.
+                1.8)(done) set the relevent values to the config.
+                    -note: damage density diffrences:
+                        T1 Cr = 1.5625
+                        T1 Wr = 1.5625
+                        T2 Cr = 5
+                        T2 Wr = 6
+                        T1 Cr / mal = 2.5 (NOTE: this might cause issues, having this value so high, so i might reduce this to 2)
+                1.9)(done) set the relevent values in the ground combat json.
+    2) change automated shipyard to be by crew basis, and slowly increase its production the longer something is inside of it.
+    3) change images of robots (see 'update the robots') and other items
+        -robot forge needs new image.
+            -new combat robot needs to follow the ideology of 'low tech' robots.
+                -need some new parts:
+                    -recolored base.
+                    -new legs of some type. (the current ones suck like really suck i hate them >=( )
+        -combat robot needs new image.
+        -all robot images need to have there scales and positions (in picture) standardized.
+    4) update spelling and grammar from all my texts. apparently, the default way to handles capitals in the game is to only have the first letter of a name (even if the name has multiple words) to be capitalized.
+        NOTE: something useful here, is to copy the system from crew replacer over to this mod, so i might have more string control.
+        -also, there was a issue with the 'population and infrastructure' displaying the word 'name' after its world name. will need to look into that.
+        -also, combat robots alpha core description might be bugged.
+        -also, i want to put all the strings into thtere own part of the config.
+    5) update the automated shipyard to work on a by crew basis. please.
+    6) check all my items and make sure the distance between them is what i want it to be (example of something that needs to improve: advanced combat robot,Omega combat robot)
+    7) add descriptions to what the omega core does on each industry (new game version has a function for that now. so thats cool)
+    8) make sure the fleet inflater for AI-Retrofits is not applying its hullmod to ships with no crew requirements
+    9) review, and attempt to fix the issue related to stations growth being equal to null. the reason for this is unkown, but reseting the population when its null might work maybe?
+        -note: population composition might need to be reinitialized.
+        -note: terraforming and station construction might be causing issues.
+    10) add a custom 'market card' to nexerlin, that lets you change your market to a AI-Pop market at the start of the game.
+    11) deal with all the misc logs that are everywere that i dont need. keep error logs.
     update the robots:
         new images when i have more robots (see crewReplacer showdo crew remover.)
         new survey drone mechanics. survey drones can now be consumed on worlds. are stronger, smaller, cheeper and build faster.
@@ -27,57 +168,21 @@ im going to work on the following now:
                 -(not done)change the image of the hullmod to something more brown or broken looking.
                 -make it so swapping the patchwork AIRetrofit hullmod does not reduce combat readiness.
     the upgrades to the industry to make them all at least somewhat useful
-        Command Node and relevant industry:
-            nexerlin mod combatability:
-                i want to have a way to have Command Nodes be operatives from nexerlin. to do this will require some background work:
-                    issues:
-                        (done)ithe new core type needs to create itself on a market. it might be choseing the wrong market in some situations.
-                            -unknown reasons.
-                        the f1 exstend description needs to show the relevent tasks a given operative can do.
-                        (done)require rebalance: the thressholds per core cost.
-                            -right now they are liner. might need to make them not so, as even a not to costly core can cost a lot of credits, for no reason.
-
-            (started)Submarket:
-                (done)add to csv
-                (done)add image
-                (done?)add text.
-                (done)make the market refuse to bye things.
-                (done)make the market only sell command nodes.
-                (done)allow the market to have diffrent strangths on command nodes.
-                (done)allow AICores to change the submarkets AICore stats
-                (done)make it so the submarket is added and removed with the industry
-                (done)change description of the industry to say it adds this sub market.
-                (done)change what the AI cores do on said industry.
-                (done)make it so the sub market A does not exist, or B does not refresh well in industry is offline
-                (done)update the old exstra text in this submarket ()
-                (done)make it so the number of core and total power is based on the amount of sub command node supply, and not something else.
-                (done)make it so improving the industry does something. right now nothing happens.
-                (NEED TO DO THIS)make it so when i move a item out of the submarket, i can put it back in
-                (done)re ballance the sub markets AI-Cores. i calculate that they are never going to reach max level. power per core should -increase- as output does.
-                    -to fix this, i should make the quality improve with a slight increase per production? maybe a increase of 5 percent power per production, so at production 3, its 15% increase, and production 10, its a 50% increase?
-                    -options: (S = supply, P = powerPerSize, I = increasePerSize)
-                        (not)a) POWER = (P*S)*(I*S).
-                            (S=5,P=1,I=1.05) = 5*1.25 = 6.25
-                            (S=5,P=1,I=1.1)  = 5*1.5 = 7.5
-                        (yes)b) POWER = (P*S)*(I^S).
-                            (S=5,P=1,I=1.05) = 5*1.2762815625 = 6.3814078125
-                            (S=5,P=1,I=1.1)  = 5*1.61051 = 8.05255
-            AICore Changes:
-                (done)make it so the price of a given core is visable.
-                (done)make it so the nexerlin operative command node shows the jobs it can do when you press F1 on it.
-                (started)make it so the AIRetrofit_CommandNodeType_Base class has a implementation that adds a given command node type to the robot forge.
-            (started) person robot manufactorys:
-                -(done)change amount of bots prouced to be based on the supply of the market.
-                -(done)add a upgraded version of each manufactroy that scailes with market size.
-                -(done)make the beta core bonus scale with supply, at the cost of reduceing per supply robo production of the manufacture, and with a smaler base bonus.
-                -add images to the t2 personal robot manufactures
-
-Note:
-    regarding replacing crew and marines with salvage robots and combat robots:
-        invasions work even with alpha shipyard modifier.
-        i have no idea if this works or not. i don't think it does.
-        tried an invasion fleet. none of my marines were combat robots like they should have been.
-        although, it is known that currently in nexerlin, its not possible to tell if marines are marines after they have landed.
+         -add images to the t2 personal robot manufactures
+    updated robot forge.
+    change to interface to have 2 parts:
+        forgeing
+        improve command node.
+        keep 'imporve command node' the same.
+        in 'forgeing' put all my crafting resapies, and allow for the following:
+        1) a 'scroll bar' (like what nexerlin 'request a fleet' interface has for fleet strangth). this will allow you to determin 2 things:
+            1) the 'wight' of production for a given robot.
+            2) how many robots you desire to be made.
+        2) let the forge overview show the following:
+            1) how mush resources you are projected to use (as well as how many items you are projected to gain)
+            2) the projected time to complete each robot type.
+            3) the max number of robots you can build with your resources.
+            4) how mush cargo you are projected to have at the end of the robot forgeing process.
 robot forge plugin:
     find a new sound for the robot forge
 bugs:
@@ -85,7 +190,12 @@ bugs:
     issue: (partly done. no longer changes contacts) right now i can change the name and portrait of important NPC's. make it so i cant.
     issue: advanced and omega robots have the same price as basic robots. change this plz.
     issue: the cost of a single survey / salvage / combat robot is the same regardless of level. i fixed this by changeing there demand class, but i want them to have the same demand classes so they can be interchangeable. look this up plz.
-    issue: patchwork AIRetrofits being removed when it should not be. being swaped with AIRetrofits when it should not be. frusterating.
+    issue: nomadic survival crewSet for my robots does not have its own item in the config. just uses a random robot instead. will need to fix this.
+    report:
+        Unsure if this is already known or not:
+        Using that construction mod that allows for space station construction,etc. Made a station and tried to change the pop there to your ai.
+        The building was made. Only problem was that the colony growth thing that showed % only showed "NaN".
+        Waited for a few ingame months but it was still the same and there was no growth on said stations.
 missing text:
     population and infastucture:
         need to move the "number of robots" text into setting sometime
@@ -113,3 +223,9 @@ AIRetrofits:
 
 AI Market plugin:
 
+
+
+
+
+
+massages:

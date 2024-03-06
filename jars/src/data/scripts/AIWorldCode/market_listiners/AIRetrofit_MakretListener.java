@@ -5,11 +5,14 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
+import data.scripts.memory.AIRetrofit_ItemFoundMemory;
+import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeShips;
@@ -30,9 +33,11 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public void reportPlayerOpenedMarket(MarketAPI market){
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
+        AIRetrofits_ItemInCargoMemory.runall();
+        AIRetrofit_ItemFoundMemory.changeMemory();
         try {
             if (market != null && !market.getFaction().isNeutralFaction() && market.getFaction().getRelationshipLevel(Global.getSector().getPlayerFaction()).isAtWorst(RepLevel.SUSPICIOUS)) {
-                AIRetrofit_Log.loging("faction of world im at is: "+market.getFaction().getId(),this,true);
+                //AIRetrofit_Log.loging("faction of world im at is: "+market.getFaction().getId(),this,true);
                 AIRetrofits_AbilityAndHullmodAdding.swapPatchworkForAIRetrofit();
             }
         }catch (Exception e){
