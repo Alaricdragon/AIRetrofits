@@ -16,7 +16,7 @@
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
 	#cross mod content enable / disable.
 	"AIRetrofits_AllowAINexerlineTroops": true,
-	"AIRetrofits_AllowPlayerNexerlineTroops": false,#this is not ready yet. it works, but the amount of units in each group is not right. you have been warned.
+	"AIRetrofits_AllowPlayerNexerlineTroops": true,#this works, but might have a bug or 3. if you notice anything wrong with the units formed here, please do tell me.
 	#i hope this works, but i have no darn clue if it does. might do nothing...,
 	"AIRetrofits_SwapAICrew": true,
 	"AIRetrofits_allowChangingOfImportantNPC": false,

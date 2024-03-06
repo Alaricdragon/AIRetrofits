@@ -39,9 +39,9 @@
 			"type":"HEAVY",
 			"playerCanCreate":false,
 			#"playerMemKeyToShow":"$AIRetrofits_T0_Combat_Available",
-			"strength":3.3,
+			"strength":5.5,
 			"unitSizeMult":0.166667,
-			"dropCostMult":4.5,
+			"dropCostMult":7.5,
 			"offensiveStrMult":1.25,
 			"crampedStrMult":0.75,
 			"equipment":{
@@ -197,9 +197,9 @@
 		"type":"HEAVY",
 		"playerCanCreate":false,
 		#"playerMemKeyToShow":"$AIRetrofits_T2_Combat_Available",
-		"strength":27.5,
+		"strength":13.75,
 		"unitSizeMult":0.166667,
-		"dropCostMult":7.5,
+		"dropCostMult":3.75,
 		"offensiveStrMult":1.25,
 		"crampedStrMult":0.75,
 		"equipment":{

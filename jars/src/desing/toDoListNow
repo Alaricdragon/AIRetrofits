@@ -5,24 +5,15 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-    hello again.
-    I compleatly understand that its going to be a while before you fix this, but i do need to report the bugggsssss. sorry if i sound inpatient in writing, its because im mean.
-    so a few things, all found in 'BaseGroundBattlePlugin.reportUnitCreated(GroundUnit b)' when trying to modify player units.
-    so first of all, i need to get something off my chest: the way im currently changing player units is by, when a unit made by the player is detected, im rapidly swapping said unit between definitions to find one that works. (the game then seems to automatically create the unit if i change said unit to the definition i want, so that nice.)
-    I know thats a wired way of doing it, but it handles a few frustrating edge cases i wanted to avoid dealing with.
-    so my issues:
-        1) when i try to create a unit with this methood, i find that sometimes, but not all the time? 'marines' will appear in there crew replacer.job.
-            this is a odd bug to. the issue seems to only exist as the ground unit runs thorough this function, but vanishes just before its time for crew replacer to add commodity to the maps, resulting in a size 0 crew?
-            I cant find anything in the logs, my code, or crew replacer that could be doing this. I have comed through the logs, looked at my code, your code, everything i could think of, and i have no clue what is causing this, so i need to ask the question, just in case i missed this:
-            are you by chance adding 'marines' to the 'personnel' crewReplacer_job of ground units, pacifically by directly modifying the 'crewReplacer_Job.Crews' directly, or in another way that would circumnavigate crew replacers logging system? if so, um please don't do that. if not, please tell me so i can keep looking for this witchcraft.
-        2) when i created player units using this method, i noticed something odd: this method does not seem to respect the following stats:
-            unit size multi.
-            it seems to use the unit size from marines or heavy units. what it was before i changed its definition, i mean.
-            please note, i have no clue if this could also be effecting other units changed using this, as im not atoned to how big the ground units should be in a battle
-        3) how does power work on units with equipment? because it does not seem to be (personnel+equipment)*power. in fact, i have no idea what the equation is, or how it works.
-            at present, I believe the EQ is something like equipment*power, but the amount of power each 'heavy' unit has is about 36% to high for that to be true, regardless of unit definition stats.
-            I suppose what im asking is, what is the eq for power on units with equipment? and is changing the unit definition when i am going to cause issues, other then the unusual unit sizes?
-        4) when i have a unit type with a very high base power, and deploy it into combat by any methood, it shows up as a large 'amount' of said unit on the industry its attacking / defending. (like, the little commodity images that represent the ground unit. there is a lot of them)
+    hello again. i have tested out the new patch you sent me and it seems to be working well! i have found no issues with anything thous far, so thats nice.
+    however, i do have some suggestings for notes in the ground battle definition:
+        1) please also say that the dropCostMult is also dependent on the equipment, provided it exists. i made some false assumptions by assuming that was not the case, and the confusion is confusion.
+    additional, i am forced to give some additional reports:
+        1) when you first start a ground battle, the game will automaticly build some units for you, provided you have marines in your fleet. you might want to change that to the relevant crew replacer jobs, for consistency sakes.
+            its confusing having my custom units only form when marines are in cargo, even though they technically act as marines and heavy units.
+    and lastly, i have some questions:
+        1) when the player creates a unit, it seems to get its 'getAverageSizeForType', wish is fine, but i do have the question of if there is a option to change it somewere in the config, and if there is, if its possible for me to read it in my mod, so i can have the player made units form at the right sizes
+        2) is there some way to detect and make changes to a unit when its resized? if not, its fine. its just a single edge case that can let my robots be merged with normal units, and that can cause some weird values (mostly odd amounts of deployment costs), but its mostly fine.
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
@@ -42,6 +33,7 @@ plans for the invasions:
     ISSUES:
     on gorund defences:
         2) rebels on worlds are set to the attacking faction. i want this to not be the case. so i will need a specal class to habdle that.
+            -i talked to the develuper of nexerlin about this issue. they say its fixed next update.
     on AI generated units:
         1) unit number: the size of a given squad does not seem to respect the 'multi' of the squad in size.
            this might be a bug, but this also might be a issue with nexerlin. i will report this just in case
@@ -55,6 +47,7 @@ plans for the invasions:
         issues:
             incorrect unit sizes. the reason is believed to be a issue with the unit multi.
             heavy units might not have the right power, as i might have guessed the eq for that wrong.
+            -power and deploy cost are dependent on the number of heavy units for heavy units. the number of personnel is not relevant.
         3 possibility:
             a_2) use the normal buttons. whenever i group is spawned, if it contains robots, reset the personnel and equipment map, then spawn a unit of that squad from the players inventory.
                 -if i go with this, i will need to do the following:

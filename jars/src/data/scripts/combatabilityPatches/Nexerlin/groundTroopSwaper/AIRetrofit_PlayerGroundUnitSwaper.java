@@ -69,16 +69,22 @@ public class AIRetrofit_PlayerGroundUnitSwaper {
         AIRetrofit_Log.loging("preparing to set unit definitions....",new AIRetrofit_Log(),logs);
 
         b.setUnitDef(definitions[baseType][robotType]);
+        GroundUnitDef.GroundUnitCommodity temp3 = b.getUnitDef().equipment;
         AIRetrofit_Log.loging("checking ground unit after defintion change: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
         CargoAPI cargo = Global.getSector().getPlayerFleet().getCargo();
         GroundUnit.returnCommodityMapToCargo(b.getPersonnelMap(),cargo,1);
         GroundUnit.returnCommodityMapToCargo(b.getEquipmentMap(),cargo,1);
         AIRetrofit_Log.loging("checking ground unit after map clear: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
-        int sizeA = (int) (crewReplacer_Main.getJob(b.getUnitDef().equipment.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().equipment.mult);
+        int sizeA = 999999999;
+        try {
+            sizeA = (int) (crewReplacer_Main.getJob(b.getUnitDef().equipment.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().equipment.mult);
+        }catch (Exception e){
+
+        }
         int sizeB = (int) (crewReplacer_Main.getJob(b.getUnitDef().personnel.crewReplacerJobId).getAvailableCrewPower(cargo) / b.getUnitDef().personnel.mult);
         int available = Math.min(sizeA,sizeB);
         AIRetrofit_Log.loging("gettting available 'units' as: "+available,new AIRetrofit_Log(),logs);
-        b.setSize(Math.min(available,intel.getUnitSize().getMaxSizeForType(definitions[baseType][robotType])),true);
+        b.setSize(Math.min(available,intel.getUnitSize().getAverageSizeForType(definitions[baseType][robotType])),true);
         AIRetrofit_Log.loging("checking ground unit after new size set: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),new AIRetrofit_Log(),logs);
     }
     public static void swap_blank(GroundUnit b, GroundBattleIntel intel){

@@ -30,6 +30,7 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
     @Override
     public void reportUnitCreated(GroundUnit b) {
         if (b.isPlayer() || (b.getFleet() != null && b.getFleet().isPlayerFleet())){
+            if (!Global.getSettings().getBoolean("AIRetrofits_AllowPlayerNexerlineTroops")) return;
             AIRetrofit_Log.loging("Looking into swaping a player unit of definition of "+b.getUnitDefId()+"",new AIRetrofit_Log(),AIRetrofit_PlayerGroundUnitSwaper.logs);
             AIRetrofit_Log.loging("checking ground unit: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),this,AIRetrofit_PlayerGroundUnitSwaper.logs);
             AIRetrofit_Log.push();
@@ -37,6 +38,7 @@ public class AIRetrofits_GroundBattleListiner2 extends BaseGroundBattlePlugin {
             AIRetrofit_Log.pop();
             return;
         }
+        if (!Global.getSettings().getBoolean("AIRetrofits_AllowAINexerlineTroops")) return;
         AIRetrofit_Log.loging("checking ground unit: def, attacker, size, location, fleet "+b.getUnitDefId()+", "+b.isAttacker()+", "+b.getSize()+", "+b.getLocation()+", "+b.getFleet(),this,logs);
         changeUnitOverSwapers(b);
         AIRetrofit_Log.loging("BS total units, attack, defender: "+this.intel.getAllUnits().size()+", "+this.intel.getSide(true).getUnits().size()+", "+this.intel.getSide(false).getUnits().size(),this,logs);

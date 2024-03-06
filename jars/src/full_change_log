@@ -6,8 +6,25 @@ save compatible with 0.7.20.1+
         fixed broken version checker support. sorry that was a thing.
         fixed some things not being hidden that should have never been noticed.
     new:
+        cross mod content!!
+            Invasions with nexerline on AI-Pop worlds, or other worlds were there are robots do to industrys, now might have robot defenders!
+            Invasions with nexerline from AI-Pop worlds, or other worlds were there are robots do to industrys, now have robot attackers!
+            you can now have robotic heavy units!
+            all robots now have there own unit definitions, so they can have dramatically different stats
+            sometimes, you can even have more 'advanced' robots in your invasions, provided you can create them
+            -note: this can all be disabled in the settings.
+        added a defence bonus for creating more advanced combat robots on your colony's.
     changes:
         changed the image for the basic combat robot. its not better, but i needed to change it, and i think im going to redo it because it sucks.
+
+    note: to the ones who are waiting fixes to my terrible, inconsistent spelling and grammar, that will (hopefully) be next update. this was delayed to long however, so i needed to post it before then.
+V0.8.0.21(private):
+save compatible with 0.7.20.1+
+    fixed:
+        unit stats being off or otherwise wrong.
+        the 'not yet working' systems from crashing the game whenever you tried to create a new ground unit.
+    implemented:
+        the options for disabling the new fetures.
 V0.8.0.21(private):
 save compatible with 0.7.20.1+
     fixed:

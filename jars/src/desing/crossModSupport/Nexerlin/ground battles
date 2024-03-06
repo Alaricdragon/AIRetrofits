@@ -167,9 +167,9 @@ Combat units:
                         -... youknow, there might be a spot to use this. have a third button added to the game that makes 'big boys'. have the option to deploy some heave armor, provided you have the
                          robots and metals to do it. it could be interesting to add a third unit.
 
-			"strength":5.5, //3.3
+			"strength":5.5, //5.5
 			"unitSizeMult":0.166667,
-			"dropCostMult":7.5, //4.5
+			"dropCostMult":7.5, //7.5
 			"moraleMult":1, //1.66667
 			"offensiveStrMult":1.25,
 			"crampedStrMult":0.75,
@@ -311,9 +311,9 @@ Combat units:
                     ... sometimes, its better to think of something wity to say, but really, what can one even say to a fucking what, 25 damage unit? is that what would be required?
                     ...
                     ... make it 2 eqipment to a unit. this will make it very relevent just how -big- the bot is. this also lets the raitio of totoal units to power stay the same.
-			"strength":27.5,5.5 * 5 = 27.5 because (25 + 2.5)
+			"strength":27.5,5.5 * 5 = 27.5 because (25 + 2.5) // 27.5 / 2 = 10 + 3.5 + 0.25 = 13.75
 			"unitSizeMult":0.166667,//-- //3/12 = 0.66667*.25 = 0.04166675
-			"dropCostMult":7.5,//--
+			"dropCostMult":7.5,//--//7.5 / 2 = 3.75
 			"moraleMult":1,//--
 			"offensiveStrMult":1.25,//--
 			"crampedStrMult":0.75,//--
