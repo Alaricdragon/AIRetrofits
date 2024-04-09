@@ -14,7 +14,8 @@
 	"AIRetrofits_Logs_Nexerlin_GroundCombat_playerUnitCreation": false,
 	#option to startwith/always have new hullmods and abilitys from the start.
 	"AIRetrofit_alwaysGiveSkillsAndHullmods": false,
-	#cross mod content enable / disable.
+	#cross mod content enable / disable.,
+	"AIRetrofits_AllowDefenceBounusFromAdvancedBots": false,#you can try to enable this, but might cause lots of lag late game
 	"AIRetrofits_AllowAINexerlineTroops": true,
 	"AIRetrofits_AllowPlayerNexerlineTroops": true,#this works, but might have a bug or 3. if you notice anything wrong with the units formed here, please do tell me.
 	#i hope this works, but i have no darn clue if it does. might do nothing...,

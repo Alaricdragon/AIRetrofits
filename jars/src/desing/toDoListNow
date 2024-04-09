@@ -5,15 +5,6 @@ NPCs will use default ground units, use a GroundBattleListener to add or replace
     in groundBattleDefs.json, you gotta scrol down a little to get to the part about troop types.
 questions:
     (for nexerlins developer):
-    hello again. i have tested out the new patch you sent me and it seems to be working well! i have found no issues with anything thous far, so thats nice.
-    however, i do have some suggestings for notes in the ground battle definition:
-        1) please also say that the dropCostMult is also dependent on the equipment, provided it exists. i made some false assumptions by assuming that was not the case, and the confusion is confusion.
-    additional, i am forced to give some additional reports:
-        1) when you first start a ground battle, the game will automaticly build some units for you, provided you have marines in your fleet. you might want to change that to the relevant crew replacer jobs, for consistency sakes.
-            its confusing having my custom units only form when marines are in cargo, even though they technically act as marines and heavy units.
-    and lastly, i have some questions:
-        1) when the player creates a unit, it seems to get its 'getAverageSizeForType', wish is fine, but i do have the question of if there is a option to change it somewere in the config, and if there is, if its possible for me to read it in my mod, so i can have the player made units form at the right sizes
-        2) is there some way to detect and make changes to a unit when its resized? if not, its fine. its just a single edge case that can let my robots be merged with normal units, and that can cause some weird values (mostly odd amounts of deployment costs), but its mostly fine.
 plans for the invasions:
     status:
         I have a in built system that looks at and determins the number of each type of bots one should have for each job.
