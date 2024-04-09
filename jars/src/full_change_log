@@ -1,4 +1,8 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.9.1:
+save compatible with 0.7.20.1+
+    disabled the 'increased defences with higher their bots' feature that was causeing lag end game. maybe. if you are lucky.
+    you can re enable it by going into settings and setting 'AIRetrofits_AllowDefenceBounusFromAdvancedBots' to true
 V0.9:
 save compatible with 0.7.20.1+
     updated to the latest version

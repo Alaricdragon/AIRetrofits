@@ -17,6 +17,7 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
     private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     private static final String className = "AIRetrofit_econUpdateListiner";
     static private boolean Override = true;//when true, act as normal.
+    public static final boolean canAddDefences = Global.getSettings().getBoolean("AIRetrofits_AllowDefenceBounusFromAdvancedBots");
     private void applyMarketData() {
         if(can && Override) {
             defencive_factionIDs = new ArrayList<>();
@@ -25,7 +26,9 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
                 market = Global.getSector().getEconomy().getMarket(market.getId());
                 //crewReplacer_SupplyDemandLists.getRuleSet(RuleSet).applyMarket(market, false);
                 AIRetrofit_MarketGrowthMods.applyData(market,"");
-                applyDefenceBonuses(market);
+                if(canAddDefences) {
+                    applyDefenceBonuses(market);
+                }
             }
         }
     }
