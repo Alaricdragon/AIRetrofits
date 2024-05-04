@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.9.2:
+save compatible with 0.7.20.1+
+    fixed:
+        fixed a random crash with my AINodeProduction submarket.
+        hopefully.
+        thank you to the user who reported this.
 V0.9.1:
 save compatible with 0.7.20.1+
     disabled the 'increased defences with higher their bots' feature that was causeing lag end game. maybe. if you are lucky.
