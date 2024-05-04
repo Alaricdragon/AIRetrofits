@@ -72,62 +72,67 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float MaPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega");
     public static final float PI_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega");
     public static float[] getStats(Industry industry){
-        MarketAPI market = industry.getMarket();
-        float totalPower=0;
-        int cores=0;
-        float minPowerWeight=0;//the diffrence between the two numbers here is how mush range the cores power will have.
-        float maxPowerWeight=0;//--
-        float produce = market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue();
-        if(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId() != null) {
-            switch (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId()) {
-                case Commodities.ALPHA_CORE:
-                    totalPower = (produce * PPS_A) + BP_A;
-                    totalPower *= Math.pow(produce,PI_A);
-                    cores = (int) ((produce * CPS_A) + BC_A);
-                    minPowerWeight = MiPW_A;//the diffrence between the two numbers here is how mush range the cores power will have.
-                    maxPowerWeight = MaPW_A;//--
-                    break;
-                case Commodities.BETA_CORE:
-                    totalPower = (produce * PPS_Be) + BP_Be;
-                    totalPower *= Math.pow(produce,PI_Be);
-                    cores = (int) ((produce * CPS_Be) + BC_Be);
-                    minPowerWeight = MiPW_Be;//the diffrence between the two numbers here is how mush range the cores power will have.
-                    maxPowerWeight = MaPW_Be;//--
-                    break;
-                case Commodities.GAMMA_CORE:
-                    totalPower = (produce * PPS_G) + BP_G;
-                    totalPower *= Math.pow(produce,PI_G);
-                    cores = (int) ((produce * CPS_G) + BC_G);
-                    minPowerWeight = MiPW_G;//the diffrence between the two numbers here is how mush range the cores power will have.
-                    maxPowerWeight = MaPW_G;//--
-                    break;
-                case Commodities.OMEGA_CORE:
-                    totalPower = (produce * PPS_O) + BP_O;
-                    totalPower *= Math.pow(produce,PI_O);
-                    cores = (int) ((produce * CPS_O) + BC_O);
-                    minPowerWeight = MiPW_O;//the diffrence between the two numbers here is how mush range the cores power will have.
-                    maxPowerWeight = MaPW_O;//--
-                    break;
-                default:
-                    totalPower = (produce * PPS_B) + BP_B;
-                    totalPower *= Math.pow(produce,PI_B);
-                    cores = (int) ((produce * CPS_B) + BC_B);
-                    minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
-                    maxPowerWeight = MaPW_B;//--
-                    break;
+        try {
+            MarketAPI market = industry.getMarket();
+            float totalPower = 0;
+            int cores = 0;
+            float minPowerWeight = 0;//the diffrence between the two numbers here is how mush range the cores power will have.
+            float maxPowerWeight = 0;//--
+            float produce = market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue();
+            if (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId() != null) {
+                switch (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId()) {
+                    case Commodities.ALPHA_CORE:
+                        totalPower = (produce * PPS_A) + BP_A;
+                        totalPower *= Math.pow(produce, PI_A);
+                        cores = (int) ((produce * CPS_A) + BC_A);
+                        minPowerWeight = MiPW_A;//the diffrence between the two numbers here is how mush range the cores power will have.
+                        maxPowerWeight = MaPW_A;//--
+                        break;
+                    case Commodities.BETA_CORE:
+                        totalPower = (produce * PPS_Be) + BP_Be;
+                        totalPower *= Math.pow(produce, PI_Be);
+                        cores = (int) ((produce * CPS_Be) + BC_Be);
+                        minPowerWeight = MiPW_Be;//the diffrence between the two numbers here is how mush range the cores power will have.
+                        maxPowerWeight = MaPW_Be;//--
+                        break;
+                    case Commodities.GAMMA_CORE:
+                        totalPower = (produce * PPS_G) + BP_G;
+                        totalPower *= Math.pow(produce, PI_G);
+                        cores = (int) ((produce * CPS_G) + BC_G);
+                        minPowerWeight = MiPW_G;//the diffrence between the two numbers here is how mush range the cores power will have.
+                        maxPowerWeight = MaPW_G;//--
+                        break;
+                    case Commodities.OMEGA_CORE:
+                        totalPower = (produce * PPS_O) + BP_O;
+                        totalPower *= Math.pow(produce, PI_O);
+                        cores = (int) ((produce * CPS_O) + BC_O);
+                        minPowerWeight = MiPW_O;//the diffrence between the two numbers here is how mush range the cores power will have.
+                        maxPowerWeight = MaPW_O;//--
+                        break;
+                    default:
+                        totalPower = (produce * PPS_B) + BP_B;
+                        totalPower *= Math.pow(produce, PI_B);
+                        cores = (int) ((produce * CPS_B) + BC_B);
+                        minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
+                        maxPowerWeight = MaPW_B;//--
+                        break;
+                }
+            } else {
+                totalPower = (produce * PPS_B) + BP_B;
+                totalPower *= Math.pow(produce, PI_B);
+                cores = (int) ((produce * CPS_B) + BC_B);
+                minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
+                maxPowerWeight = MaPW_B;//--
             }
-        }else {
-            totalPower = (produce * PPS_B) + BP_B;
-            totalPower *= Math.pow(produce,PI_B);
-            cores = (int) ((produce * CPS_B) + BC_B);
-            minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
-            maxPowerWeight = MaPW_B;//--
+            if (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isImproved()) {
+                //run whatever improving this industry will do. extra core and power per level maybe? just more power per level? mmmm
+                totalPower *= PM_I;
+            }
+            return new float[]{totalPower, cores, minPowerWeight, maxPowerWeight};
+        }catch (Exception e){
+            AIRetrofit_Log.loging("failed to get stats for AIRetrofit AINodeProduction industry. preventing new cores from being generated",new AIRetrofit_Log());
+            return new float[]{0,0,0,0};
         }
-        if(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isImproved()){
-            //run whatever improving this industry will do. extra core and power per level maybe? just more power per level? mmmm
-            totalPower*=PM_I;
-        }
-        return new float[]{totalPower,cores,minPowerWeight,maxPowerWeight};
     }
     public void resetCargo(CargoAPI cargo){
         AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
