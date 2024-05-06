@@ -78,9 +78,9 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             int cores = 0;
             float minPowerWeight = 0;//the diffrence between the two numbers here is how mush range the cores power will have.
             float maxPowerWeight = 0;//--
-            float produce = market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue();
-            if (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId() != null) {
-                switch (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).getAICoreId()) {
+            float produce = industry.getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue();
+            if (industry.getAICoreId() != null) {
+                switch (industry.getAICoreId()) {
                     case Commodities.ALPHA_CORE:
                         totalPower = (produce * PPS_A) + BP_A;
                         totalPower *= Math.pow(produce, PI_A);
@@ -130,7 +130,17 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             }
             return new float[]{totalPower, cores, minPowerWeight, maxPowerWeight};
         }catch (Exception e){
-            AIRetrofit_Log.loging("failed to get stats for AIRetrofit AINodeProduction industry. preventing new cores from being generated",new AIRetrofit_Log());
+            try {
+                AIRetrofit_Log.loging("failed to get stats for AIRetrofit AINodeProduction industry. preventing new cores from being generated. exception of "+e,new AIRetrofit_Log(),true);
+                AIRetrofit_Log.push();
+                AIRetrofit_Log.loging("getting all relevent data. please hold. if this crashes your game, report it to me please please.",new AIRetrofit_Log(),true);
+                AIRetrofit_Log.loging("getting industry: "+industry.getId(),new AIRetrofit_Log(),true);
+                AIRetrofit_Log.loging("getting market: "+industry.getMarket().getName(),new AIRetrofit_Log(),true);
+                AIRetrofit_Log.loging("getting attempting to get supply: "+industry.getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue(),new AIRetrofit_Log(),true);
+                AIRetrofit_Log.pop();
+            }catch (Exception e2){
+                AIRetrofit_Log.loging("cant display full info. caused a crash: "+e2,new AIRetrofit_Log(),true);
+            }
             return new float[]{0,0,0,0};
         }
     }

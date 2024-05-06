@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.9.3:(private)
+save compatible with 0.7.20.1+
+    fixes:
+        fixed a missing error from a error log. hopefully its never used.
+        fixed a error log never running arg
+        added some more debugging information.
 V0.9.2:
 save compatible with 0.7.20.1+
     fixed:
