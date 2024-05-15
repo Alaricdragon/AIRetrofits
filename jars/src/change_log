@@ -1,4 +1,38 @@
-changelog for all my changes as i make them so i dont forget again.
+V0.9.4:
+save compatible with 0.7.20.1+
+    fixes:
+        fixed issues of randomly disappearing cargo. should take effect over the course of 6? months if you install it mid game.
+    logs:
+        added toggleable logs to the AINodeProduction sub market. should help me if there are more issues.
+V0.9.2:
+save compatible with 0.7.20.1+
+    fixed:
+        fixed a random crash with my AINodeProduction submarket.
+        hopefully.
+        thank you to the user who reported this.
+V0.9.1:
+save compatible with 0.7.20.1+
+    disabled the 'increased defences with higher their bots' feature that was causeing lag end game. maybe. if you are lucky.
+    you can re enable it by going into settings and setting 'AIRetrofits_AllowDefenceBounusFromAdvancedBots' to true
+V0.9:
+save compatible with 0.7.20.1+
+    updated to the latest version
+    fixed:
+        fixed broken version checker support. sorry that was a thing.
+        fixed some things not being hidden that should have never been noticed.
+    new:
+        cross mod content!!
+            Invasions with nexerline on AI-Pop worlds, or other worlds were there are robots do to industrys, now might have robot defenders!
+            Invasions with nexerline from AI-Pop worlds, or other worlds were there are robots do to industrys, now might have robot attackers!
+            you can now have robotic heavy units!
+            all robots now have there own unit definitions, so they can have dramatically different stats
+            sometimes, you can even have more 'advanced' robots in your invasions, provided you can create them
+            -note: this can all be disabled in the settings.
+        added a defence bonus for creating more advanced combat robots on your colony's.
+    changes:
+        changed the image for the basic combat robot. its not better, but i needed to change it, and i think im going to redo it because it sucks.
+
+    note: to the ones who are waiting fixes to my terrible, inconsistent spelling and grammar, that will (hopefully) be next update. this was delayed to long however, so i needed to post it before then.
 V0.8:
 save compatible with 0.7.20.1+
     NOTE:
@@ -21,126 +55,15 @@ save compatible with 0.7.20.1+
         fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
     config:
         added the midding create command node text tot he config
-V0.7.21.22(private):
+V0.7.20.5:
 save compatible with 0.7.20.1+
-    fixes:
-        fixed part of the description on the operative command node.
-        added a warning label to operatives command nodes when you have the max number of them
-        fixed some random missing things from the config.
-V0.7.21.11(private):
+    fixes: fixed a rare crash involving the intil thing for upgrading ships.
+V0.7.20.4:
 save compatible with 0.7.20.1+
-    fixes:
-        fixed radom crash when after scrolling through the build a indusry screen, the game would crash if you tried to view submarkets
-        fixed the new submarket maybe doing something strange in if the market was a military market (what?)
-    added nexerlin operative to the list of command nodes that can be created in the robot forge.
-    config:
-        added the midding create command node text tot he config
-V0.7.21.10(private):
+    fixes: did a patchwork fix on the patchwork AIRetrofit for patchwork reasons.
+V0.7.20.3:
 save compatible with 0.7.20.1+
-    new:
-        luna lib support
-    fixes:
-        fixed a rare crash when opining the new submarket.
-        fixed a random crash that probably never happened when creating a officer command node.
-    improvements:
-        made the 'admin' command node skill's display in a way that is not completely terrible.
-        added new 'cant trade here' text for the command node.
-V0.7.21.9(private):
-save compatible with 0.7.20.1+
-    improvements:
-        made it so my robot forge has a way to add new people types to be created.
-    fixes:
-        fixed nerxilin operatives having 2 chances to be set as a command node
-    started:
-        started to add nexerlin operatives to the options that i can deploy with robot forge create people
-V0.7.21.8(private):
-save compatible with 0.7.20.1+
-    fixes:
-        made 'specal item' command nodes show there costs.
-        made the 'nexerlin operative' from 'specal item' command nodes display the jobs its able to do
-V0.7.21.7(private):
-save compatible with 0.7.20.1+
-    new:
-        added T2 robot manufactures. because sometimes you want more
-    fixes:
-        added a new varuble to the config of the new submarket, letting the cores in the market grow in power LIKE THEY WERE SUPPOSE TO.
-        (note: growth is exspanensal, but slowly.)
-        fixed the option to found a automated market showing up when it should not have.
-        fixed the game crashing when you went to look at the production report for the AI-Retrofits shipyard if you loaded the game after it was created
-    changes:
-        made it so the cores produces in the AINodeProducton submarket have there variation increased by 3X
-        personal robot manucatroys:
-            changed the way beta core modifiers work for the personal robot manufacture. they now scale with output
-            changed the way the personal robot output works for the personal robot manufacture. they now scale with output
-V0.7.21.6(private):
-save compatible with 0.7.20.1+
-    fixes:
-        fixed random crashes
-V0.7.21.5(private):
-save compatible with 0.7.20.1+
-    fixes:
-        fixed being able to find a market without required things.
-        fixed patchwork AIRetrofit being removed / replaced by AI-Retrofits at moments it should not have
-    improvements:
-        made 'AI Node Production Facility' Improvement do something.
-        added descriptions for 'AI Node Production Facility' improvements.
-    balance:
-        very slightly rebalanced the production code.
-V0.7.21.4(private):
-save compatible with 0.7.20.1+
-    changes:
-        changed the way you found an robotic market, you now need to use the 'establish a colony', then select the appropriate option to do so.
-    new classes:
-        AIRetrofit_MarketRetrofit_CustomMarketFounder
-        AIRetrofit_salvageRobotManufactoryT2 //(not yet implemented)
-        AIRetrofit_surveyRobotManufactoryT2  //--
-        AIRetrofit_combatRobotManufactoryT2  //--
-    new constants:
-        added latterly every single item to AIRetrofits_Constants.
-    fixes:
-        fixes command node: nexerline operative being added to a world that isn't the closest.
-    debug:
-        reset the command node power, and operative weight back down to its normal values.
-        disabled the 'always reset cargo' function on the AIRetrofit_AInodeProduction_Submarket
-V0.7.21.3(private):
-save compatible with 0.7.20.1+
-    new classes:
-        AIRetrofits_InitCombatabilityPatches
-        AIRetrofits_PatchBase
-        AIRetrofits_Patches_Nexerlin
-    fixes:
-        fixed a few random issues with AIRetrofit_CreatePeople.
-        added a performRightClickAction function to AIRetrofit_CommandNodeTypeBase.
-        AIRetrofit_CommandNodes:
-            fixed display sometimes outputting duplicates.
-            fixed onClick not runing code from AIRetrofit_CommandBase
-    new:
-        added the nexerlin operative to the possable command nodes.
-V0.7.21.2(private):
-save compatible with 0.7.20.1+
-    improvements:
-        fixed up the admin display a little bit. but its still not quite there yet.
-        changed over all refrences to creating command nodes over to a new system that makes them -better-
-    new classes:
-        AIRetorfit_CommandNodeTypesBase
-        AIRetrofit_CommandNodeType_Admin
-        AIRetrofit_CommandNodeType_NexerlinOperative
-        AIRetrofit_CommandNodeType_Officer
-V0.7.21.1(private):
-save compatible with 0.7.20.1+
-    debug:
-        made the submarkets AICores have 20X the power again.
-    worked on:
-       spent some time working on the admin display code. it sucks. asked discord about it.
-V0.7.21(private beta):
-save compatible with 0.7.20.1+
-    added a new sub market, wish is added a market when you build a 'AI Node Production Facility'
-        -this market sells command nodes as admins and officers. i think its cool.
-    added a new item called a 'command node'.
-        -this item can only be found in the new sub-market.
-        -it can be right clicked on to get a new officer or admen.
-    fixes:
-        fixed a possible issue with detecting if an alpha core was in a industry. probably never happened though.
+    fixes: fixed a rare bug that stoped the player from adding hullmods in very rare conditions hopefully
 V0.7.20.2:
 save compatible with 0.7.20.1+
     fixes: fixed 'patchwork AI-retrofit' and AI-retrofit crash when both hullmods were unlocked.

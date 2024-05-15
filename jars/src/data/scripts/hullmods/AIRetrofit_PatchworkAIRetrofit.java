@@ -111,8 +111,14 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
             case 7:
                 return "" + parm[6];
             case 8:
-                Set<String> a = Global.getSector().getPlayerFaction().getKnownHullMods();
-                if(!a.contains(AIRetrofits_Constants.Hullmod_AIRetrofit) || !AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit_CanSwap) return "" + CantChangeHullMod;
+                try {
+                    Set<String> a = Global.getSector().getPlayerFaction().getKnownHullMods();
+                    if (!a.contains(AIRetrofits_Constants.Hullmod_AIRetrofit) || !AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit_CanSwap)
+                        return "" + CantChangeHullMod;
+                }catch (Exception e){
+                    AIRetrofit_Log.loging("failed to get a parm. error: " + e,this,true);
+                    return "" + CantChangeHullMod;
+                }
                 return "" + CanChangeHullMod1  + Global.getSettings().getHullModSpec(AIRetrofits_Constants.Hullmod_AIRetrofit).getDisplayName() + CanChangeHullMod2;
         }
         return null;

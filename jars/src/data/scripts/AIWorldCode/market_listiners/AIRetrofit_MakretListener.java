@@ -5,11 +5,16 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
+import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
+import data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket;
+import data.scripts.memory.AIRetrofit_ItemFoundMemory;
+import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeShips;
@@ -30,9 +35,11 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public void reportPlayerOpenedMarket(MarketAPI market){
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
+        AIRetrofits_ItemInCargoMemory.runall();
+        AIRetrofit_ItemFoundMemory.changeMemory();
         try {
             if (market != null && !market.getFaction().isNeutralFaction() && market.getFaction().getRelationshipLevel(Global.getSector().getPlayerFaction()).isAtWorst(RepLevel.SUSPICIOUS)) {
-                AIRetrofit_Log.loging("faction of world im at is: "+market.getFaction().getId(),this,true);
+                //AIRetrofit_Log.loging("faction of world im at is: "+market.getFaction().getId(),this,true);
                 AIRetrofits_AbilityAndHullmodAdding.swapPatchworkForAIRetrofit();
             }
         }catch (Exception e){
@@ -40,6 +47,17 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
         unapplySubMarkets(market);
     }
+
+    @Override
+    public void reportPlayerClosedMarket(MarketAPI market) {
+        super.reportPlayerClosedMarket(market);
+        /*if (market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility)){
+            BaseSubmarketPlugin b = (BaseSubmarketPlugin)market.getSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+            AIRetrofit_AINodeProduction_Submarket a = (AIRetrofit_AINodeProduction_Submarket)b;
+            a.backupCargo();
+        }*/
+    }
+
     private void changePeople(MarketAPI market){
         AIRetrofits_ChangePeople.changePeopleMarket(market);
     }

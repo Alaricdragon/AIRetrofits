@@ -1,0 +1,436 @@
+ground units and nexerlin:
+so back in the day, when i first asked Histidine to add crew replacer support for nexerlin ground battles. when they shoued me the
+thing, something interesting happend. and i hand that back.
+the ground units formed by my robots, were my robots. i loved this. it was the fucking best thing ever. my favorut thing ever. i love love love it.
+thats gone now. replaced with a mush more powerful system one i intend to use to swap out all ground combatants in in a combat. im going to use it for my robots. but first thing first:
+
+the base ground combatants:
+"marine": represent the basic combatants in a ground battle. player made.
+    str: normal
+    cost: normal
+    morale: normal
+    def: normal
+"heavy": represents the heavy guns in the ground battle. like artilary and tanks
+    str: high
+    cost: very high
+    morale: normal
+    def: normal
+"militia": represents the basic people of the world, (not the milatary, but armed civs) entering the battle
+    str: low
+    cost: NA
+    morale: low
+    def: normal
+"rebel": represents anti goverment ground forces entering the battle, to retake the world for there own reasons.
+    str: low
+    cost: NA
+    morale: low
+    def: high
+
+i want to replace each one of said ground combatants with one of my own for each tier of robot. i have a few options for this:
+option 1: make each tier of robot have strangth equal to there robot strangth.
+    example: T0 robot have 2X the numbers, but 0.5X the strength.
+option 2: make each tier of robot have different strengths and weaknesses
+    example: T0 robots being very weak, but high numbers, and T0 'heavy' robots being very tanky, but with only mid damage?
+
+mmmm
+
+for now though, let us talk about what robots will be deployed when:
+idealogagy:
+    note: this is talking about what i should do with each unit in each situation. just a basic overview, so i dont stray to far away from what i might want to.
+    attacking:
+        marine: in a attack, marines are the forces brought with into battle. this means i was willing to bouth transport them, and to attack someones base with them.
+        heavy: in a attack, heavy is a considerable investment. if i brough them into battle, i was willing to transport them, be seen with them, and invest the resorses to make em fight.
+    defending:
+        marine: in a defence, this is the standing forces of a army that you have ready to repell a attack.
+        heavy: --
+        militia: in a defence, this is the forces that i was hastely armed and armored for the reasons of defending my base. i must keep that in mind
+        rebel: in a defence, this is my own forces that were turned on me. i must keep this in mind.
+
+ideology of deploying high level robots:
+    high level robots are hard to produce and rare. i feel like it should be possible to deploy a lot of them, but at a cost.
+    let the amount of alpha level robots be: total robot output across all worlds.
+    let the amount of places robots need to be: total population size?
+        -maybe change this to something like 'total number of military bases? make each miltary base want a few high level bots, provided they exist?
+
+    ok, new plan:
+    lets decide how we are going to organize this today. because high tier robots are highly valuable, so i think i need a solution
+    so lets look at the effect of each robot forge of each level on the factions total defences?
+
+    robot forges effects:
+        T0 robot forge:
+            notes:
+                T0 robot forges always have only provided robots to the player (mostly). i might be able to stretch it to it also provides for the players world its built on. so lets keep that theam.
+            base:
+                does nothing here.
+            gamma:
+                improves player robot output. nothing more here.
+            beta:
+                in a attack, does nothing, but in a defence, replaces a percent of player defences equal to its defence multi.
+                (this eq:)(DM-1)/DM.
+                so if i have a defence multi of 1.1, (increase of 10 percent more defneces) i would have 0.1/1.1 of my defence troops replaced by basic robots.
+            alpha:
+                in a defence, replaces 1% of forces per output with alpha robots.
+                in a attack, replaces 1% of forces per output with alpha robots.
+                the reasoning for this i feel, is that i could easily see the world picking up a few robots for a assault, provided there was some extra. or having a few fresh out of the factory to use as defenders.
+            [REDACTED]:
+                the same as alpha. this must be kept rare, or it can really mess things up.
+        T1 robot forge:
+            base:
+                does nothing here.
+            gamma:
+                does nothing here.
+            beta:
+                with the improved industry level of output from the forge, i feel like it would produce more?
+                i need to check the code, but i might change this so there is more defencive robots in this case,
+                because at that ponit, you are puting a industry onto defending your world. so there should be a LOT of robots ready to defend.
+
+                OOOOO i have a idea. maybe i could have this also effect malita? have a normal robot malita, that kinda sucks,
+                 but make this one a little stronger. so there is a extra reason to have this factory up and running.
+            alpha:
+                this is were it gets interesting. and we need to talk about something i have been thining off:
+                i have the idea, that if a faction had acsess to even a small amount of robots of this type, they would fucking use them.
+                this is a extremely powerful resource. so:
+                every military base and high command will demand 1 alpha bot per 5 marine output (or maybe every world will demand 1 alpha bot per 5 marine supply? mmmmm), up to the max output of the faction.
+                for every -calculated- demand of alpha bot present anywhere, create one 'cost'. (NOTE: this is not using the actual demand, because them it creates a case were you dont want your robot forge worlds to grow, because then the 'cost' will go up grammatical.)
+                also make it so every missing supply of a alpha bot creates 2 'cost' (so if you lose a shipment from raiding, it hurts more).
+                for every output of alpha bot from a T1 robot forge, create one 'supply'
+                now, in EVERY combat engagement, both attack and defence, swap out anything lower tier for a alpha robot provided random 1 is greater then: ((supply / demand) * 0.5)
+                this would also effect militia, and rebels? as more advanced combat units resolts in them being used more
+            [REDACTED]:
+                the same as alpha, but it would use the [VERY FUCKING REDACTED] instead. also, it would have its own set of supply and demand. because why the flipy flip not?
+                for real though, thejksfkakjsdcfnvm sz
+
+Combat units:
+		"marine":{
+			"strength":1,
+			"personnel":{
+				"mult":1,	# integer, at least for now
+			},
+		},
+		"heavy":{
+			"strength":5.5,
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
+			"equipment":{
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2,
+			},
+		},
+		"militia":{
+			"strength":0.4,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
+			"personnel":{
+				"mult":1,
+			},
+		},
+		"rebel":{
+			"strength":0.3,
+			"moraleMult":0.7,
+			"dropCostMult":0.7,
+			"damageTakenMult":0.6,
+			"personnel":{
+				"mult":1,
+			},
+    i need to decide on how the combat units are going to act on various levels, now they they will all (in theory) be usable
+    T0:
+        notes: the T0 robot always has been a bit of a peace of scrap. easy to make and mantain, lots of pew pew, but low combat ability.
+        let this reflect that
+        marine:
+            status: done
+            notes: deploying this robot in swames should have always been the way. i like it. but it requires more moral. and testing to make sure im not gimping my players.
+            image:
+            "strength":0.5,
+			"unitSizeMult":2,
+			"dropCostMult":0.5,
+			"moraleMult":2,
+			#"offensiveStrMult":1,
+			#"crampedStrMult":1,
+			#"damageTakenMult":1,
+        heavy:
+            status: needs image.
+            image: a mush thicker robot? maybe like some type of multi-bot? multibull robots merged together i mean?
+            notes: I have a few ideas for heavy units. so i might need to return to this idea. but let me list them here:
+                a: make it like the normal heavy wepon, but with the same mods the marine of T0 has.
+                    -2X crew (size from 3 to 5.) (so 0.6 multi) (same unit size).
+                    -power *0.6
+                    -drop cost *0.6
+                    moral = 1/0.6 = 1.666666666666666666666666666666
+                b: make it some type of heavyly armerd big boy.
+                    -issues:
+                        balance.
+                        more armer and less firepower might just make it worse do to the way math goes (also make ground battles -LONGER- wish sucks).
+                        -... youknow, there might be a spot to use this. have a third button added to the game that makes 'big boys'. have the option to deploy some heave armor, provided you have the
+                         robots and metals to do it. it could be interesting to add a third unit.
+
+			"strength":5.5, //5.5
+			"unitSizeMult":0.166667,
+			"dropCostMult":7.5, //7.5
+			"moraleMult":1, //1.66667
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
+			"damageTakenMult":1,
+			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2, //4
+			},
+        militia:
+            status: done
+            image: T0 salvage robots with guns on them?
+            notes:
+                this is simple enouth. but i have a idea.
+                why not make this desing based around the salvage robot instead of the combat robot? it could be interesting. having
+                a salvage robot that just shows up at some ponit. would be coooooolllll. also would give cadance to the idea of having the 'malita' be part combat robots being a good thing, instead of baaaaddd
+
+                note: as the salvage robot has a power of 1, so to does this unit.
+			"strength":0.4,
+			"unitSizeMult":1,
+			"moraleMult":0.6,
+			"dropCostMult":0.7,
+			"offensiveStrMult":1,
+			"crampedStrMult":1,
+			"damageTakenMult":1,
+        rebel:
+            status: done
+            image: same as militia?
+            notes:
+                i want rebels to be just like malita. like the same basicly. they already are in the base mod, but they have a higher defence. so what could i do that matches that?
+                ...
+                i would need to think about that.
+
+                if this is going to be a salvage robot, it should have the normal stats, to represent the salvage robots '1' stats.
+			"strength":0.3,
+			"unitSizeMult":1,
+			"dropCostMult":0.7,
+			"moraleMult":0.7,
+			"offensiveStrMult":1,
+			"crampedStrMult":1,
+			"damageTakenMult":0.6,
+    T1:
+        notes: 0.75, 1.25. mush stronger them T1 robots. since they should be rare, they should relfect this strangth.
+        there is only one issue: the possability of 'increaseing' the combat strangth of a force by more then the player wants. having the
+        numbers be all wrong like that does not sound fun....
+        issues:
+            (1.5625 damage density, compaired to mariens and BCRs being 1.)
+            as the robots here have a mush high 'power density' then normal, i run into a issue:
+                note: this issue has been moved to the TO do list now.
+
+
+        marine:
+            status: done
+            image: T1 robot.
+            notes: as a temp, im just going to copy the T1 marines, but change there numbers a little bit.
+            "strength":1.25,
+			"unitSizeMult":1.25,
+			"dropCostMult":0.75,
+			"moraleMult":2,
+			#"offensiveStrMult":1,
+			#"crampedStrMult":1,
+			#"damageTakenMult":1,
+        heavy:
+            status: need image.
+            image: I.. dont know. the idea is that im useing heavy wepons right? so why not use them? what would this robot look like with more guns?
+            notes:
+                god, the thihngs i could do here...
+                so something to keep in mind is that T1 combat robots are, to put it bluntly, a powerhouse. they are fucking strong.
+                they are also not able to be built without a [DATA_EXPUNGED] so having the 'heavy' form of them be cool as f*uck is something thats ok.
+                so, if i keep in the possable theam of 'big robots' how would i like to do this? they are a bit floaty by nature, so i might have to do something with that.
+                a floating gundom? i am joking. proboly something more akin to a floating tank of some sort. something a bit stange though, but not very..
+                what would this units stats even look like?
+
+                something to keep in mind: what should the ratio of hepons to robot be? i think it shouold go down for higher levels of robots. so....
+                1 : 1 for this? or 2 : 1 for this? what one should i chose...!!!!!
+                I think i will save the 1 : 2 ratio for the T2 robots. for now, 2 : 1 should be good.
+			"strength":6.825,// 1.25 + 0.125 = 1.325 + 5.5 = 6.825
+			"unitSizeMult":0.208333,//0.166667 * 1.25 = 1/6 * 5/4 = 5/24
+			"dropCostMult":5.625,//7.5 * 0.75 = 0.25*7 + 0.125 = 1.75 + 0.125 = 1.875 = 7.5 - 1.875 = 5.625
+			"moraleMult":1,
+			"offensiveStrMult":1.25,
+			"crampedStrMult":0.75,
+			"damageTakenMult":1,
+			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
+				"mult":1,
+			},
+			"personnel":{
+				"mult":2,
+			},
+        militia:T1 survey robot with guns?
+            status: done
+            image:
+            notes: i want to keep this on theam. do what i did for T0, but use the T1 salvage bot.
+                   T1 salvage has 1.25 power, 0.75 size. i will use said multis to calculate this.
+			"strength":0.5,//0.4 * 1.25 = 4/10 * 5/4 = 20/40 = 1/2 = 0.5
+			"unitSizeMult":1.25,// 1 * 1.25 = 1.25
+			"moraleMult":0.6,
+			"dropCostMult":0.525,// 0.7 * 0.75 = 7/10 * 3/4 = 21/40 = 0.525
+			"offensiveStrMult":1,
+			"crampedStrMult":1,
+			"damageTakenMult":1,
+        rebel:
+            status: done
+            image: ---
+            notes: ---
+			"strength":0.375,//0.3 * 1.25 = 3/10 * 5/4 = 15/40 = 3/8 = 0.375
+			"unitSizeMult":0.75,//1 * 1.25 = 1.25
+			"dropCostMult":0.525,//0.7 * 0.75 = 0.525
+			"moraleMult":0.7,
+			"offensiveStrMult":1,
+			"crampedStrMult":1,
+			"damageTakenMult":0.6,
+    T2:
+        note: 1,5. and here we are. the htjaaksdal;psd/.f noting matters anymore, the world is doomed. they must be 2 strong.
+              let the player feel ether all powerful, or completely gucking helpless, depending on whats going on.
+              bots have 5X(1,5) the damage density as marines.
+              bots have 6X(0.5,3) the damage density as workers.
+              NOTE: because im going to give all T2 bots a 0.5X losses raitio anyways, might as well make all combat units have that...
+              but not right now. i will add that when i change up the robots in the intierty.
+        marine:
+            status: done, needs defence edit
+            image: T2 robot.
+            notes: changed the defnece of this unit to 0.5, pending a change to the T2 robots that increases there survivability.
+                   why? because YOUR NOT SUPPOSE TO GET MORE. not now, not ever. you need to learn how to keep you mind intact mortal.
+            "strength":5,//1*5 = 5
+			"unitSizeMult":1,//--
+			"dropCostMult":1,//--
+			"moraleMult":1,//
+			#"offensiveStrMult":1,
+			#"crampedStrMult":1,
+			"damageTakenMult":0.5,
+        heavy:
+            status: needs image
+            image: ... the issue with this is that this robot exsists in demensions not visable to us. its were most its pew pew fires from. what could i even do to represent mroe pew pew when the guns are not visable?
+            notes:  ... i feel like they are already heavy units. so what do i do here?
+                    ... cry? if i work with this, it needs to be something diffrent, but wrong somehow. how could i make this more disturbing?
+                    ... its something to think about, at least. something to feel fear about. something to... to....
+                    ... sometimes, its better to think of something wity to say, but really, what can one even say to a fucking what, 25 damage unit? is that what would be required?
+                    ...
+                    ... make it 2 eqipment to a unit. this will make it very relevent just how -big- the bot is. this also lets the raitio of totoal units to power stay the same.
+			"strength":27.5,5.5 * 5 = 27.5 because (25 + 2.5) // 27.5 / 2 = 10 + 3.5 + 0.25 = 13.75
+			"unitSizeMult":0.166667,//-- //3/12 = 0.66667*.25 = 0.04166675
+			"dropCostMult":7.5,//--//7.5 / 2 = 3.75
+			"moraleMult":1,//--
+			"offensiveStrMult":1.25,//--
+			"crampedStrMult":0.75,//--
+			"damageTakenMult":1,//--
+			"equipment":{#note: the amount of items here dramaticly changed the 'strangth' of a unit. power equal to: strangth * (equipment+personnel). this has a -UNKNOWN- effect on unit defences. and HP
+				"mult":2,
+			},
+			"personnel":{
+				"mult":1,
+			},
+        militia:
+            status: done
+            image: T2 salvage robots? goodness knows they look like combat robots to me...
+            notes:.... same as T0 but i use T2 robots?
+			"strength":1.2,//0.4 * 3 = 1.2
+			"unitSizeMult":2,//1 * 2 = 2
+			"moraleMult":0.6,
+			"dropCostMult":0.35,//0.7 * 0.5 = 0.35
+			"offensiveStrMult":1,
+			"crampedStrMult":1,
+			"damageTakenMult":1,
+        rebel:
+            image: ---
+            notes: --
+			"strength":0.3,//0.3 * 3 = 0.9
+			"unitSizeMult":1,//1 * 2 = 2
+			"dropCostMult":0.7,//0.7 * 0.5 = 0.35
+			"moraleMult":0.7,
+			"offensiveStrMult":1,
+			"crampedStrMult":1,
+			"damageTakenMult":0.6,
+AI-World:
+    attacking:
+        marine:
+            (robot forge omega output * 1) percent of bots omega
+            (robot forge alpha output * 2) percent of bots alpha
+            remainder T0 combats
+        heavy:
+            (robot forge omega output * 1) percent of bots omega
+            (robot forge alpha output * 2) percent of bots alpha
+            remainder T0 combats
+            100% T0 heavy
+    defending:
+        marine: 100% T0 combats
+        heavy: 100% basic robots
+        militia: 25%
+        rebel:
+robot forge (base):
+    attacking:
+        marine:
+        heavy:
+    defending:
+        marine:
+        heavy:
+        militia:
+        rebel:
+
+robot forge (gamma):
+    attacking:
+        marine:
+        heavy:
+    defending:
+        marine:
+        heavy:
+        militia:
+        rebel:
+
+robot forge(beta):
+    attacking:
+        marine:
+        heavy:
+    defending:
+        marine:
+        heavy:
+        militia:
+        rebel:
+
+robot forge(alpha):
+    attacking:
+        marine:
+        heavy:
+    defending:
+        marine:
+        heavy:
+        militia:
+        rebel:
+
+robot forge(REDACTED):
+    attacking:
+        marine:
+        heavy:
+    defending:
+        marine:
+        heavy:
+        militia:
+        rebel:
+
+
+lets take some time to talk about the supply and demand concept.
+but first backstory: the chance of a certen type of robot replaceing a 'base' unit (marines, heavy wepon, milita, rebel) is if random(1) < chance.
+so 1 is 100% of the time. 0 is never.
+so what should provide supply were (attacking, defending, attacking local, defending local)?
+so:
+T0 factory's should -NEVER- provide faction wide supply. only local.
+all C-factorys with a beta core should provide 0.5X the attacking local supply.
+all C-factorys with a beta core should provide there local supply into the malita as well, replacing them with themselves.
+all T1 factorys should provide faction supply in some way.
+
+should T1 non C-Factorys provide faction wide supply? its something to think about.
+    -on one hand, it goes into the idea of the faction useing said bots....
+    -although i suppose beta core mods in survey and salvage bots indecate more bots being on the world. maybe keep the basic rules for them...? i dont know...
+T1 and T2 bots should be hard to compleatly fill out your supply with (so you cant have 100% advanced combat robots -easy-). it should still be possable though.
+
+T0 bots should be easier to end up with a faction supply, because they are junk. literal junk.
+T1 and T2 bots should be a bit harder, but maybe this is already done, do to the fact the alpha cores and [DATA_EXPUNGED] are quire rare.
+so:
+
+T0 factory:
+    attack:
+    defence:
