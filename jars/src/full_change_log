@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i dont forget again.
+V0.9.4:
+save compatible with 0.7.20.1+
+    fixes:
+        fixed issues of randomly disappearing cargo. should take effect over the course of 6? months if you install it mid game.
+    logs:
+        added toggleable logs to the AINodeProduction sub market. should help me if there are more issues.
 V0.9.3:(private)
 save compatible with 0.7.20.1+
     fixes:

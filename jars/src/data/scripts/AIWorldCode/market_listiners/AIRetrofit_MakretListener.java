@@ -6,11 +6,13 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
+import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
+import data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
 import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
@@ -45,6 +47,17 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
         }
         unapplySubMarkets(market);
     }
+
+    @Override
+    public void reportPlayerClosedMarket(MarketAPI market) {
+        super.reportPlayerClosedMarket(market);
+        /*if (market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility)){
+            BaseSubmarketPlugin b = (BaseSubmarketPlugin)market.getSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+            AIRetrofit_AINodeProduction_Submarket a = (AIRetrofit_AINodeProduction_Submarket)b;
+            a.backupCargo();
+        }*/
+    }
+
     private void changePeople(MarketAPI market){
         AIRetrofits_ChangePeople.changePeopleMarket(market);
     }
