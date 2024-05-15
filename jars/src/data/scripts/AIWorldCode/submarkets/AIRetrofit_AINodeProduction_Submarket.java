@@ -191,7 +191,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         AIRetrofit_Log.loging("running getCargo",this,logs);
         AIRetrofit_Log.push();
         CargoAPI cargo = super.getCargo();
-        if (cargoBackup != null && !cargoBackup.isEmpty()){//(cargo == null || cargo.isEmpty())){
+        if (cargoBackup != null && !cargoBackup.isEmpty() && (cargo == null || cargo.isEmpty())){
             AIRetrofit_Log.loging("attempting to get backup cargo do to random empty cargo...",this,logs);
             try {
                 cargo = cargoBackup;
