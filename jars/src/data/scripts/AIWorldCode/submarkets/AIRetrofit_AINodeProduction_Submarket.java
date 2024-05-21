@@ -1,10 +1,7 @@
 package data.scripts.AIWorldCode.submarkets;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.CargoAPI;
-import com.fs.starfarer.api.campaign.CargoStackAPI;
-import com.fs.starfarer.api.campaign.CoreUIAPI;
-import com.fs.starfarer.api.campaign.SubmarketPlugin;
+import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
@@ -13,6 +10,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.campaign.fleet.CargoData;
 import com.fs.starfarer.rpg.Person;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.industries.specal.AIRetrofit_shipYard;
@@ -28,6 +26,8 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     /*
     put the upgrade code in AIRetrofit_MarketListener.
      */
+    protected CargoAPI cargoBackup = null;
+    public static final boolean logs = Global.getSettings().getBoolean("AIRetrofit_SubMarket_AINodeProductionLogs");
     private static final String illegalTest = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_IllegalText");
 
     public static final float PM_I = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti");
@@ -71,6 +71,14 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float MiPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_minWeight_omega");
     public static final float MaPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega");
     public static final float PI_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega");
+
+    @Override
+    public void reportPlayerMarketTransaction(PlayerMarketTransaction transaction) {
+        super.reportPlayerMarketTransaction(transaction);
+        AIRetrofit_Log.loging("running per interaction backup",this,logs);
+        backupCargo();
+    }
+
     public static float[] getStats(Industry industry){
         try {
             MarketAPI market = industry.getMarket();
@@ -145,7 +153,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         }
     }
     public void resetCargo(CargoAPI cargo){
-        AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,true);
+        AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,logs);
         //float[] power = getPower();
         emptyCargo(cargo);
         if(market == null || market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) == null){
@@ -180,18 +188,39 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     }
     @Override
     public CargoAPI getCargo(){
-        //AIRetrofit_Log.loging("running getCargo",this,true);
+        AIRetrofit_Log.loging("running getCargo",this,logs);
+        AIRetrofit_Log.push();
         CargoAPI cargo = super.getCargo();
-        //AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,true);
+        if (cargoBackup != null && !cargoBackup.isEmpty() && (cargo == null || cargo.isEmpty())){
+            AIRetrofit_Log.loging("attempting to get backup cargo do to random empty cargo...",this,logs);
+            try {
+                cargo = cargoBackup;
+                this.cargo = cargoBackup;
+            }catch (Exception e){
+                AIRetrofit_Log.loging("failed to get backup cargo. possible error. if you notice anything odd, please report. exception: "+e,this,true);
+                cargo = super.getCargo();
+            }
+        }
+        AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,logs);
         if(market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isFunctional()) {
+            AIRetrofit_Log.loging("attempting to empty cargo becuase of noone functional industry",this,logs);
             emptyCargo(cargo);
         }else if(this.okToUpdateShipsAndWeapons()){//||true){
+            AIRetrofit_Log.loging("attempting to get new cargo do to time passed",this,true);
             resetCargo(cargo);
             this.sinceSWUpdate = 0;
         }
+        backupCargo();
+        AIRetrofit_Log.pop();
         return cargo;
     }
-
+    public void backupCargo(){
+        AIRetrofit_Log.loging("backing up cargo",this,logs);
+        cargoBackup = Global.getFactory().createCargo(true);
+        for (int a = 0; a < cargo.getStacksCopy().size(); a++){
+            cargoBackup.addFromStack(cargo.getStacksCopy().get(a));
+        }
+    }
     @Override
     public void advance(float amount){
         super.advance(amount);

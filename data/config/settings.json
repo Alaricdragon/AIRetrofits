@@ -7,8 +7,9 @@
 		"data.scripts.starfarer.api.impl.campaign.rulemd"
 	],
 	#logs active (for debuging)
-	"AIRetrofit_logs": true,
+	"AIRetrofit_logs": false,
 	"AIRetrofit_GrowthLogs": false,
+	"AIRetrofit_SubMarket_AINodeProductionLogs": false,
 	"AIRetrofits_Logs_Robot_Type_calculator": false,
 	"AIRetrofits_Logs_Nexerlin_GroundCombat": false,
 	"AIRetrofits_Logs_Nexerlin_GroundCombat_playerUnitCreation": false,
