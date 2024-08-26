@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 
 public class AIRetrofits_Constants {
+    public static final String ModID = "AI-Retrofits";
     //startup settings:
     public static final boolean AlwaysGiveThings = Global.getSettings().getBoolean("AIRetrofit_alwaysGiveSkillsAndHullmods");;
     public static final String Hullmod_CrewReplacementDrones = "AIretrofit_AutomatedCrewReplacementDrones";

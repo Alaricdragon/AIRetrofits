@@ -1,3 +1,49 @@
+THE GRAND DE-JANKIFICATION
+this is the process of making my mod make some fucking sense. it will be divided into a few parts.
+1) strings
+    -move all strings (both from the settings.json file, and hardcoded strings) into there own json file. this file will allow easyer editing of strings.
+    -make sure to edit all the strings. go into every possable folder and fix the shit that does not work.
+        -note: a lot of strings use like, 3+ strings instead of the %s system. this needs to be fixed. i should use this oprotunity to go into each string and chance it drying the editing phase.
+2) for robots crewReplacer_jobs:
+    1) make it so robots are withen the 'crewSet' system. for real, how da fuck did i forget this!!?!!
+3) colonly
+    -for main colonly demands:
+        1) make it so the colonly loses stability at any level.
+        2) make it so the colony losses extra stability as it losses items (like how food normaly behaves)
+        3) make it so other industrys loss supply based on the missing demand (with the changed demand beign caused by the supply demand libary)
+        4) rebalanced the amount of demand population and infrastructure requires. in addition to this, rebalanced the amount of supply it produces (for things like robotic replacement parts
+        5) create a building that, at the cost of demanding a lot of things, as well as a quite high upkeep, nullifies the 'missing demand' penalitys
+            other options for this include:
+                -making it so you can only have one
+                -making it into a industry, that produces no income(so the player wants to get rid of it faster)
+            note: i want it to demand a bunch of stuff to meet its functional requirements, and if it starts to miss demand, it slowly stops nullifing the penalitys.
+    -for the shipyard:
+        1) make it so the shipyard scales with colonly size (its so slow without its smod bonus, but to fast with it.
+        2) make it so the shipyard costs a certen amount of 'time' to convert a ship ('MinCrew' + shipsize). let this value keep in mind modified values (excluding other AI-Retrofits)?
+        3) make it so the shipyard can convert ships not at the end of the month (just gives a report then), but only update that information when the player looks at it.
+        4) make it so the shipyard losses production as demand is unmet
+    -for growth:
+        change the way growth works to the following:
+            1) make the commodity used for growth into 'robot frames'
+            2) make it so markets demand robot frames (up to the max number produced that is available to them). the market can then loss growth based on the number of missing demand for robot frames.
+            3) make it so the markets accessibility is marked when calculating how many robot frames / growth the market gets.
+            4) make it so high hazard worlds receive a growth negative (to represent robots being destroyed by damage)
+    -descriptions:
+        1) make it so the most advanced AI-Cores have descriptions in the relevant industry's
+4) update items????
+    most items do nothing. i want to change that. i had this idea for a while, but now its finaly time.
+    (this feels wried)
+    1) make it so 'robotic replacement parts' reduce the casualty of robots after operations by ?%. (at the cost to themselves)
+    2) make it so 'robotic matnace packs' increase the total power of your robots by up to ?% (at equal numbers packs to robots)? (or maybe 1/5 packs to robots)?, but use them at a rate of 1/20 per operation????
+        -i dont like this.
+        -if they should do anything, they should be used as acusal matnace for more advaned robot types maybe? that could at least not suck...
+    3) maybe edit the way the 'robotic interface thingy mabob' works. so its no longer like, a flush golem, but instead more like a... like a robot you talk to?? i dont know...
+5) edit the robot forge
+    -this reuqires acsess to the one, the only, forge production. but i want to move my robot forge over to that, for all sorts of reasons. this will also help with some issues in the display, as well as haveing 1 > x > 0 items. becuase it forges by days.
+6) reactavate and rebuild the 'what is defending' libary
+    -this is something that has been on my nerves for a while now. and i dont fucking like it. i love this system, and i wanna use it dam you!
+    so, im going to make a libary, then ask the nexerlin person if they want it.
+
 Ground battle unit defs are now moddable, can add new ones or modify existing ones in data/config/exerelin/groundBattleDefs.json
 Player can create units with modded unit types if the unit def allows it
 NPCs will use default ground units, use a GroundBattleListener to add or replace units as necessary

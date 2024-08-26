@@ -1,4 +1,8 @@
-changelog for all my changes as i make them so i dont forget again.
+changelog for all my changes as i make them so i don't forget again.
+V0.9.4.1(private):
+save compatible with 0.7.20.1+
+    new: created and tested a json file reader thing, to read my files.
+    started: started to move data over to the new strings.json file
 V0.9.4:
 save compatible with 0.7.20.1+
     fixes:

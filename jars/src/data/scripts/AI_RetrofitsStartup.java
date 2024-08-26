@@ -12,12 +12,14 @@ import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
+import data.scripts.jsonDataReader.AIRetrofits_JsonReaderBase;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
 import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.*;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
 import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     public void onNewGame(){
     }
     @Override
-    public void onApplicationLoad() {
+    public void onApplicationLoad() throws JSONException {
         /*
         XStream x = new XStream();
         x.alias("PLStatMarines", PLStatMarines.class);*/
@@ -38,6 +40,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         AIRetrofits_Startup_RobotTypesCalculater.apply();
         AIRetrofits_Startup_CrewReplacer.apply();
         AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
+        AIRetrofits_JsonReaderBase.startup();
     }
     @Override
     public void onGameLoad(boolean newGame) {
