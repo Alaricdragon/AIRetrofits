@@ -48,7 +48,7 @@ public class AIRetrofits_Constants_3 {
     public static final String Submarket_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacilitySubmarket";
 
     //Robot Stats And Descriptions
-    public static final String robot_Description = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
+    public static final String robot_Description = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
     public static final String robot_SizeDescriptions = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotCargoDescription");
     final public static String robot_baseText = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerNoCoreMessage");
     public static final float robot_baseBonus = Global.getSettings().getFloat("AIRetrofits_BaseMulti");
