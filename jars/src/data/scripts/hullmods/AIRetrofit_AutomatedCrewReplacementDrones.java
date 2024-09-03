@@ -2,13 +2,12 @@ package data.scripts.hullmods;
 
 import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -36,7 +35,7 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         try {
             if (stats.getFleetMember() != null && stats.getFleetMember().getFleetData().getFleet().isPlayerFleet()) {
                 //AIRetrofit_Log.loging("adding robot forge ability from player owned robot forge ship...",this);
-                Global.getSector().getCharacterData().addAbility(AIRetrofits_Constants.ability_RobotForge);
+                Global.getSector().getCharacterData().addAbility(AIRetrofits_Constants_3.ability_RobotForge);
             }
         }catch (Exception E){
 

@@ -1,6 +1,7 @@
 package data.scripts.startupData;
 
 import com.fs.starfarer.api.Global;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.AIRetrofits_ForgeItem;
 import data.scripts.robot_forge.AIRetrofits_ForgeList;
 import data.scripts.robot_forge.AIRetrofits_RobotForge;
@@ -46,10 +47,11 @@ public class AIRetrofits_Startup_RobotForge {
     private static final String Sc3N = Global.getSettings().getString("AIRetrofits_Sc_3N");
     private static final float Sc3C = Global.getSettings().getFloat("AIRetrofits_Sc_3C");
 
-    private static final String SaD = Global.getSettings().getString("AIRetrofits_Sa_D");
-    private static final String SuD = Global.getSettings().getString("AIRetrofits_Su_D");
-    private static final String CoD = Global.getSettings().getString("AIRetrofits_Co_D");
-    private static final String ScD = Global.getSettings().getString("AIRetrofits_Sc_D");
+    public static final String SaD = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Sa_D");
+    private static final String SuD = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Su_D");
+    private static final String CoD = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Co_D");
+    private static final String ScD = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Sc_D");
+
     private static void robot_forge_set(){
         AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem("salvage Drones",SaD,SaS);
         robotAddReq(Sa1C,Sa1N,item);
@@ -85,6 +87,7 @@ public class AIRetrofits_Startup_RobotForge {
 
         AIRetrofits_RobotForge.setInitData();
     }
+
     /*
     1) metals = 30
     2) supplies = 100

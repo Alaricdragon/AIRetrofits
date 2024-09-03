@@ -5,20 +5,16 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
-import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
-import data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
 import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeShips;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.List;
 
@@ -26,7 +22,6 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     public AIRetrofit_MakretListener(boolean permaRegister) {
         super(permaRegister);
     }
-    //static String look1 = Global.getSettings().getString("characters","AIRetofit_AIOfficer");
     @Override
     public void reportEconomyMonthEnd(){
         runAIRetrofit_Shipyard();
@@ -51,8 +46,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     @Override
     public void reportPlayerClosedMarket(MarketAPI market) {
         super.reportPlayerClosedMarket(market);
-        /*if (market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility)){
-            BaseSubmarketPlugin b = (BaseSubmarketPlugin)market.getSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+        /*if (market.hasSubmarket(AIRetrofits_Constants_3.Submarket_AINodeProductionFacility)){
+            BaseSubmarketPlugin b = (BaseSubmarketPlugin)market.getSubmarket(AIRetrofits_Constants_3.Submarket_AINodeProductionFacility);
             AIRetrofit_AINodeProduction_Submarket a = (AIRetrofit_AINodeProduction_Submarket)b;
             a.backupCargo();
         }*/
@@ -61,11 +56,11 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     private void changePeople(MarketAPI market){
         AIRetrofits_ChangePeople.changePeopleMarket(market);
     }
-    final static String shipYardIndustry = AIRetrofits_Constants.ASIC_shipYardIndustry;//"AIRetrofit_shipYard";
-    final static String shipYardSubmarket = AIRetrofits_Constants.ASIC_subbmarket;//"AIRetrofit_ShipyardSubmarket";
-    static float shipyard_IValue = AIRetrofits_Constants.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
-    static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
-    static float[] shipyard_costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
+    final static String shipYardIndustry = AIRetrofits_Constants_3.ASIC_shipYardIndustry;//"AIRetrofit_shipYard";
+    final static String shipYardSubmarket = AIRetrofits_Constants_3.ASIC_subbmarket;//"AIRetrofit_ShipyardSubmarket";
+    static float shipyard_IValue = AIRetrofits_Constants_3.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    static float shipyardDValue = AIRetrofits_Constants_3.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    static float[] shipyard_costPerShip = AIRetrofits_Constants_3.ASIC_costPerShip;
     private void runAIRetrofit_Shipyard(){
         AIRetrofit_Shipyard_UpgradeList memory = new AIRetrofit_Shipyard_UpgradeList();
         for (MarketAPI market : Global.getSector().getEconomy().getMarketsCopy()) {
@@ -91,8 +86,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 "AIRetrofit_ShipyardAlpha",
                 "AIRetrofit_ShipyardOmega",
                 "AIRetrofit_ShipyardBase",
-                AIRetrofits_Constants.Hullmod_AIRetrofit,
-                AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit};
+                AIRetrofits_Constants_3.Hullmod_AIRetrofit,
+                AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit};
         final float startingPonits = shipyardDValue;
         final float bounus = 1 + shipyard_IValue;
         final float[] costs = shipyard_costPerShip;
@@ -189,7 +184,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 if(cost <= points){
                     //CrewReplacer_Log.loging("          adding hullmod '" + addHullMod + "'",this,logging);
                     points -= cost;
-                    if(ship.getPermaMods().contains(AIRetrofits_Constants.Hullmod_AIRetrofit)){
+                    if(ship.getPermaMods().contains(AIRetrofits_Constants_3.Hullmod_AIRetrofit)){
                         upgraded.addShip(ship2,size,true);
                     }else{
                         upgraded.addShip(ship2,size);
@@ -225,7 +220,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             }*/
             market.removeSubmarket(shipYardSubmarket);
         }
-        if(market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility) && !market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility)){
+        if(market.hasSubmarket(AIRetrofits_Constants_3.Submarket_AINodeProductionFacility) && !market.hasIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility)){
             /*if (!market.hasSubmarket(storge)){
                 market.addSubmarket(storge);
             }
@@ -236,7 +231,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                 ship.setSource(VariantSource.REFIT);
                 market.getSubmarket(storge).getCargo().addMothballedShip(ship,ship.getHullVariantId(),ship.getDisplayName());
             }*/
-            market.removeSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+            market.removeSubmarket(AIRetrofits_Constants_3.Submarket_AINodeProductionFacility);
         }
     }
 
@@ -286,7 +281,7 @@ class UpgradeList{
         float bonusXP = 0;
         for(int a2 = 0; a2 < Types.size(); a2++){
             UpgradeTypes a = Types.get(a2);
-            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
+            //info.addPara("upgraded with " + AIRetrofits_Constants_3.ASIC_hullmods[a.type],10);
             float[] temp = a.getCost();
             cost += temp[0];
             bonusXP += temp[1];
@@ -312,7 +307,7 @@ class UpgradeList{
         Color highlight = Misc.getHighlightColor();
         for(int a2 = 0; a2 < Types.size(); a2++){
             UpgradeTypes a = Types.get(a2);
-            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
+            //info.addPara("upgraded with " + AIRetrofits_Constants_3.ASIC_hullmods[a.type],10);
             float[] temp = a.display(info);
             cost += temp[0];
             bonusXP += temp[1];
@@ -320,7 +315,7 @@ class UpgradeList{
 
         if(cost != 0){
             String[] exstra = new String[]{"" + cost};
-            String text = AIRetrofits_Constants.ASIC_NotificationCredits;
+            String text = AIRetrofits_Constants_3.ASIC_NotificationCredits;
             info.addPara(text,pad,highlight,exstra);
             //Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
         }
@@ -330,7 +325,7 @@ class UpgradeList{
             highlight = Misc.getStoryOptionColor();
             AIRetrofit_Log.loging( bonusXP + " bonusXP from AIRetrofitShipyard",this,true);
             String[] exstra = new String[]{"" + (int)bonusXP};
-            String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;
+            String text = AIRetrofits_Constants_3.ASIC_NotificationBonusXP;
             info.addPara(text,pad,highlight,exstra);
             //TextPanelAPI a = new TempText();//info.addTextField(0,0);
             //Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);
@@ -358,7 +353,7 @@ class UpgradeTypes{
         for(int a = 0; a < upgrades.size(); a++){
             boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
             String[] exstra = {Global.getSector().getEconomy().getMarket(markets.get(a)).getName()};
-            String text = AIRetrofits_Constants.ASIC_NotificationMarket;
+            String text = AIRetrofits_Constants_3.ASIC_NotificationMarket;
             info.addPara(text,pad,highlight,exstra);
             float[] temp = upgrades.get(a).display(info,type,b);
             cost += temp[0];
@@ -402,7 +397,7 @@ class UpgradedShips{
         //FleetDataAPI fleet = new FleetData("production","production2");
         ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
         String[] exstra = {"" + Global.getSettings().getHullModSpec(ASIC_hullmods[type]).getDisplayName()};
-        String text = AIRetrofits_Constants.ASIC_NotificationType;
+        String text = AIRetrofits_Constants_3.ASIC_NotificationType;
         info.addPara(text,pad,highlight,exstra);
         float cost = 0;
         float bonusXP = 0;
@@ -458,15 +453,15 @@ class UpgradedShip{
         //cargo.addMothballedShip();//(ship);
     }
     public float getCost(){
-        float[] costTemp = AIRetrofits_Constants.ASIC_creditsPerShip;
+        float[] costTemp = AIRetrofits_Constants_3.ASIC_creditsPerShip;
         return costTemp[size];
     }
     public float getBonusXP(){
         if(bonus){
-            float xp = 1 - Misc.getBuildInBonusXP(Misc.getMod(AIRetrofits_Constants.Hullmod_AIRetrofit),ship.getHullSpec().getHullSize());
+            float xp = 1 - Misc.getBuildInBonusXP(Misc.getMod(AIRetrofits_Constants_3.Hullmod_AIRetrofit),ship.getHullSpec().getHullSize());
             return xp * storyGain;//Misc.getBonusXPForScuttling(ship)[0] * getBonusXPForScuttling(ship)[1];
         }
-        return 0f;//AIRetrofits_Constants.ASIC_bonusXPForRemoveSMod;
+        return 0f;//AIRetrofits_Constants_3.ASIC_bonusXPForRemoveSMod;
     }
     public void display(TooltipMakerAPI info,boolean playerOwned){
     }

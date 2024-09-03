@@ -5,6 +5,7 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 public class AIRetrofit_RobotDroneStorage_Crew extends AIRetrofit_RobotDroneStorage_Base{
     /**/
@@ -31,9 +32,9 @@ public class AIRetrofit_RobotDroneStorage_Crew extends AIRetrofit_RobotDroneStor
         float a = MaxCrew - MinCrew;
         return super.isApplicableToShip(ship) && a > reqExtraCrew;
     }
-    static final String incombatbleReason_1_0 = Global.getSettings().getString("AIRetrofits_RobotDroneStorage_crew_NCDescription_0");//"you require at least";
-    static final String incombatbleReason_1_1 = Global.getSettings().getString("AIRetrofits_RobotDroneStorage_crew_NCDescription_1");//"extra crew space . you have";
-    static final String incombatbleReason_1_2 = Global.getSettings().getString("AIRetrofits_RobotDroneStorage_crew_NCDescription_2");//"extra crew space space";
+    static final String incombatbleReason_1_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotDroneStorage_crew_NCDescription_0");//"you require at least";
+    static final String incombatbleReason_1_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotDroneStorage_crew_NCDescription_1");//"extra crew space . you have";
+    static final String incombatbleReason_1_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotDroneStorage_crew_NCDescription_2");//"extra crew space space";
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
         if(ship == null) return "";

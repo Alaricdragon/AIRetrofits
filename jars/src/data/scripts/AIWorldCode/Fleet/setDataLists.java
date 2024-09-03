@@ -4,12 +4,12 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 
 public class setDataLists {
-    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;
+    private static boolean can = AIRetrofits_Constants_3.Market_EnableMarketFetures;
     static public ArrayList<String> CaptionFirstNames;
     static public ArrayList<String> CaptionLastNames;
     static public ArrayList<String> CaptionPortraits;
@@ -24,7 +24,7 @@ public class setDataLists {
     static private String numThresholdsName = "AIRetrofit_AINodeProductionFacility_numCoreThresholds_";
     static private String powerCoresName = "AIRetrofit_AINodeProductionFacility_powerCores_";
     static private String powerCoreThresholdsName = "AIRetrofit_AINodeProductionFacility_powerCoreThresholds_";
-    static String Condition = AIRetrofits_Constants.Market_Condition;
+    static String Condition = AIRetrofits_Constants_3.Market_Condition;
     public static boolean fleetMod(CampaignFleetAPI fleet){
         MarketAPI market = Global.getSector().getEconomy().getMarket(fleet.getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
         return (market != null && market.hasCondition(Condition) && market.getFaction().getId().equals(fleet.getFaction().getId()) && can);

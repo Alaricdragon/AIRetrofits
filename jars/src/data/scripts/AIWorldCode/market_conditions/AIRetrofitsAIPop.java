@@ -1,6 +1,5 @@
 package data.scripts.AIWorldCode.market_conditions;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.econ.BaseMarketConditionPlugin;
@@ -11,7 +10,7 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.AIWorldCode.growth.AIRetrofits_RemoveUnwantedGrowth;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 
@@ -21,7 +20,7 @@ applys things like market condition changes, and supply demand changes.
 public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements MarketImmigrationModifier {
     public static float STABILITY_BONUS = 2;
     String ID;
-    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
+    private static boolean can = AIRetrofits_Constants_3.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     //private boolean setUpStart = false;
     //private boolean setUpDone = false;
     public void apply(String id) {

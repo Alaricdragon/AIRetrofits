@@ -10,7 +10,8 @@ import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -23,49 +24,49 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
     private final static String S1 = "AIretrofit_SubCommandNode";
     private final static String S2 = "AIretrofit_CommandRely";
 
-    private final static String improveDescription = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription");
-    private final static String improvedDescription = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription");
-    private final static String BaseAICoreDescription = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_Description");
+    private final static String improveDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription");
+    private final static String improvedDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription");
+    private final static String BaseAICoreDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Base_Description");
 
-    //private final static String AICore_descriptions_B_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D0");
-    //private final static String AICore_descriptions_B_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D1");
-    private final static String AICore_descriptions_B_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_D2");
+    //private final static String AICore_descriptions_B_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Base_D0");
+    //private final static String AICore_descriptions_B_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Base_D1");
+    private final static String AICore_descriptions_B_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Base_D2");
 
-    //private final static String AICore_descriptions_G_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D0");
-    //private final static String AICore_descriptions_G_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D1");
-    private final static String AICore_descriptions_G_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D2");
+    //private final static String AICore_descriptions_G_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Gamma_D0");
+    //private final static String AICore_descriptions_G_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Gamma_D1");
+    private final static String AICore_descriptions_G_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Gamma_D2");
 
-    //private final static String AICore_descriptions_Be_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D0");
-    //private final static String AICore_descriptions_Be_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D1");
-    private final static String AICore_descriptions_Be_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D2");
+    //private final static String AICore_descriptions_Be_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Beta_D0");
+    //private final static String AICore_descriptions_Be_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Beta_D1");
+    private final static String AICore_descriptions_Be_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Beta_D2");
 
-    //private final static String AICore_descriptions_A_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D0");
-    //private final static String AICore_descriptions_A_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D1");
-    private final static String AICore_descriptions_A_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D2");
+    //private final static String AICore_descriptions_A_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Alpha_D0");
+    //private final static String AICore_descriptions_A_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Alpha_D1");
+    private final static String AICore_descriptions_A_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Alpha_D2");
 
-    //private final static String AICore_descriptions_O_0 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D0");
-    //private final static String AICore_descriptions_O_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D1");
-    private final static String AICore_descriptions_O_2 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D2");
+    //private final static String AICore_descriptions_O_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Omega_D0");
+    //private final static String AICore_descriptions_O_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Omega_D1");
+    private final static String AICore_descriptions_O_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Omega_D2");
 
 
 
-    private final static String BaseAICoreDescription_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Base_Description_1");
+    private final static String BaseAICoreDescription_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Base_Description_1");
 
-    private final static String AICore_descriptions_G_0_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D0_1");
-    private final static String AICore_descriptions_G_1_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D1_1");
-    private final static String AICore_descriptions_G_2_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Gamma_D2_1");
+    private final static String AICore_descriptions_G_0_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Gamma_D0_1");
+    private final static String AICore_descriptions_G_1_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Gamma_D1_1");
+    private final static String AICore_descriptions_G_2_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Gamma_D2_1");
 
-    private final static String AICore_descriptions_Be_0_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D0_1");
-    private final static String AICore_descriptions_Be_1_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D1_1");
-    private final static String AICore_descriptions_Be_2_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Beta_D2_1");
+    private final static String AICore_descriptions_Be_0_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Beta_D0_1");
+    private final static String AICore_descriptions_Be_1_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Beta_D1_1");
+    private final static String AICore_descriptions_Be_2_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Beta_D2_1");
 
-    private final static String AICore_descriptions_A_0_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D0_1");
-    private final static String AICore_descriptions_A_1_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D1_1");
-    private final static String AICore_descriptions_A_2_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Alpha_D2_1");
+    private final static String AICore_descriptions_A_0_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Alpha_D0_1");
+    private final static String AICore_descriptions_A_1_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Alpha_D1_1");
+    private final static String AICore_descriptions_A_2_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Alpha_D2_1");
 
-    private final static String AICore_descriptions_O_0_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D0_1");
-    private final static String AICore_descriptions_O_1_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D1_1");
-    private final static String AICore_descriptions_O_2_1 = Global.getSettings().getString("AIRetrofit_AINodeProductionFacility_Omega_D2_1");
+    private final static String AICore_descriptions_O_0_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Omega_D0_1");
+    private final static String AICore_descriptions_O_1_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Omega_D1_1");
+    private final static String AICore_descriptions_O_2_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProductionFacility_Omega_D2_1");
     @Override
     public void apply() {
         super.apply(true);
@@ -82,8 +83,8 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
         if (!isFunctional()) {
             supply.clear();
         }
-        if(!this.market.hasSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility) && isFunctional()) {
-            this.market.addSubmarket(AIRetrofits_Constants.Submarket_AINodeProductionFacility);
+        if(!this.market.hasSubmarket(AIRetrofits_Constants_3.Submarket_AINodeProductionFacility) && isFunctional()) {
+            this.market.addSubmarket(AIRetrofits_Constants_3.Submarket_AINodeProductionFacility);
         }
     }
     @Override

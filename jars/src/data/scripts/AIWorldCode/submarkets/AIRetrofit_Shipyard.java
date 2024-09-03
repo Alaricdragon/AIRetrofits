@@ -1,6 +1,5 @@
 package data.scripts.AIWorldCode.submarkets;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CoreUIAPI;
 import com.fs.starfarer.api.campaign.SubmarketPlugin;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
@@ -8,7 +7,8 @@ import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.industries.specal.AIRetrofit_shipYard;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -16,12 +16,12 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     /*
     put the upgrade code in AIRetrofit_MarketListener.
      */
-    private static final String[] hullmods = AIRetrofits_Constants.ASIC_hullmods;
-    private static final String OtherHullmod = AIRetrofits_Constants.ASIC_BaseHullmod;
-    private static final String illegalTest = Global.getSettings().getString("AIRetrofitShipyard_IllegalText");
-    private static final String cantUseDescription = Global.getSettings().getString("AIRetrofitSubMarket_CantUpgradeDescription");
-    static float shipyard_IValue = AIRetrofits_Constants.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
-    static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    private static final String[] hullmods = AIRetrofits_Constants_3.ASIC_hullmods;
+    private static final String OtherHullmod = AIRetrofits_Constants_3.ASIC_BaseHullmod;
+    private static final String illegalTest = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_IllegalText");
+    private static final String cantUseDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitSubMarket_CantUpgradeDescription");
+    static float shipyard_IValue = AIRetrofits_Constants_3.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    static float shipyardDValue = AIRetrofits_Constants_3.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     static String industry = "AIRetrofit_shipYard";
     @Override
     public void createTooltip(CoreUIAPI ui, TooltipMakerAPI tooltip, boolean expanded){
@@ -80,7 +80,7 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
         if(member.getVariant().hasHullMod(OtherHullmod)){
             return false;
         }
-        for(String a : AIRetrofits_Constants.ASIC_Secondary_Hullmods) {
+        for(String a : AIRetrofits_Constants_3.ASIC_Secondary_Hullmods) {
             if (member.getVariant().hasHullMod(a)) {
                 return false;
             }

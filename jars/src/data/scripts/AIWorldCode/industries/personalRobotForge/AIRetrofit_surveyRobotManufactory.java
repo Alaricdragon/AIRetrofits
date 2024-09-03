@@ -8,6 +8,7 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
 import java.util.Random;
@@ -31,8 +32,8 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
 
     private final static float BetaDefenceMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_survey_Mod");//1.1f;
 
-    private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_survey_exstaText");//"from combat robot factory";
-    private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_survey_betaText");//"use produced combat robots to boost ground defences by %s";
+    private final static String groundDefenceText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_survey_exstaText");//"from combat robot factory";
+    private final static String BetaText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_survey_betaText");//"use produced combat robots to boost ground defences by %s";
 
     @Override
     protected String[] getItems(){

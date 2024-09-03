@@ -4,25 +4,23 @@ import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.Set;
 
-import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
-
 public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
     private static final String[] IncombatableReasons = {
-            Global.getSettings().getString("AIRetrofits_Patchwork_AIRetrofit_NA_combatable"),
-            Global.getSettings().getString("AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew"),
-            Global.getSettings().getString("AIRetrofits_Patchwork_AIRetrofit_NA_OppCost"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_AIRetrofit_NA_combatable"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_AIRetrofit_NA_OppCost"),
     };
 
     private static final int[] Base_OP_COST = {5,10,15,25};
@@ -44,9 +42,9 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
     //private static final float MALFUNCTION_CHANCE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE");
     //private static final float MALFUNCTION_CHANCE2 = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE2");
 
-    private static final String CanChangeHullMod1 = Global.getSettings().getString("AIRetrofits_Patchwork_CanSwapText1");
-    private static final String CanChangeHullMod2 = Global.getSettings().getString("AIRetrofits_Patchwork_CanSwapText2");
-    private static final String CantChangeHullMod = Global.getSettings().getString("AIRetrofits_Patchwork_CantSwapText");
+    private static final String CanChangeHullMod1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText1");
+    private static final String CanChangeHullMod2 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText2");
+    private static final String CantChangeHullMod = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CantSwapText");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id/*, MutableCharacterStatsAPI c*/) {
         //a.0)
@@ -70,7 +68,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
 
         int exstra_cost = GetExstraOpCost(MinCrew,hullSize);
         //a.2)
-        boolean temp = stats.getVariant().getSMods().contains(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit);
+        boolean temp = stats.getVariant().getSMods().contains(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit);
         if(!temp) {
             addExstraOpCost(exstra_cost,stats);
             //stats.getVariant().addMod("mymod_temp0");
@@ -113,13 +111,13 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
             case 8:
                 try {
                     Set<String> a = Global.getSector().getPlayerFaction().getKnownHullMods();
-                    if (!a.contains(AIRetrofits_Constants.Hullmod_AIRetrofit) || !AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit_CanSwap)
+                    if (!a.contains(AIRetrofits_Constants_3.Hullmod_AIRetrofit) || !AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit_CanSwap)
                         return "" + CantChangeHullMod;
                 }catch (Exception e){
                     AIRetrofit_Log.loging("failed to get a parm. error: " + e,this,true);
                     return "" + CantChangeHullMod;
                 }
-                return "" + CanChangeHullMod1  + Global.getSettings().getHullModSpec(AIRetrofits_Constants.Hullmod_AIRetrofit).getDisplayName() + CanChangeHullMod2;
+                return "" + CanChangeHullMod1  + Global.getSettings().getHullModSpec(AIRetrofits_Constants_3.Hullmod_AIRetrofit).getDisplayName() + CanChangeHullMod2;
         }
         return null;
     }
@@ -140,13 +138,13 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         //a.3)
         boolean hasMinCrew = true;
         try {
-            if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit)) {
+            if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit)) {
                 hasMinCrew = false;
             }
         }catch (Exception E){
             AIRetrofit_Log.loging("Error: failed to get min crew in AIRetrofit hullmod. what were you even doing?",this);
         }
-        return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod(AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit)) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship) && hasMinCrew;
+        return ship != null && (cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit)) && incompatibleHullMods(ship) == null && super.isApplicableToShip(ship) && hasMinCrew;
     }
     private void addExstraOpCost(int exstra_cost,MutableShipStatsAPI stats){
         //example of adding a hullmod
@@ -263,7 +261,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
                 "AIRetrofit_ShipyardBeta",
                 "AIRetrofit_ShipyardAlpha",
                 "AIRetrofit_ShipyardOmega",
-                AIRetrofits_Constants.Hullmod_AIRetrofit
+                AIRetrofits_Constants_3.Hullmod_AIRetrofit
         };
         final String[] names = {
                 Global.getSettings().getHullModSpec(compatible[0]).getDisplayName(),

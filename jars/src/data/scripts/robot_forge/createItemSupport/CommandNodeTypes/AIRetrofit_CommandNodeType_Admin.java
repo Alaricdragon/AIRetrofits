@@ -13,12 +13,12 @@ import com.fs.starfarer.api.impl.campaign.ids.Skills;
 import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.rpg.Person;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.robot_forge.dilogs.AIRetrofits_Dialog_PeopleMaker;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -81,8 +81,8 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
         return person;
     }
 
-    private final static String adminText = Global.getSettings().getString("AIRetrofit_CommandNode_adminText");//"admin";
-    private final static String adminText2 = Global.getSettings().getString("AIRetrofit_CommandNode_adminText2");//"a command node with the designation of %s. they are a %s";
+    private final static String adminText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_adminText");//"admin";
+    private final static String adminText2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_adminText2");//"a command node with the designation of %s. they are a %s";
     @Override
     public void commandNodeTooltip(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource, AIRetrofit_CommandNode commandNode) {
         PersonAPI person = commandNode.person;
@@ -171,17 +171,17 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
 
 
 
-    private static final String admenConfirmPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0");
-    private static final String admenConfirmPage_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1");
-    private static final String admenConfirmPage_2 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2");
-    private static final String exitAdmen_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0");
-    private static final String exitAdmen_1 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1");
-    private static final int administratorCreditCost = AIRetrofits_Constants.RobotForge_administratorCreditCost;//Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
-    private static final int administratorSubCommandNodeCost = AIRetrofits_Constants.RobotForge_administratorSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Admin_SCN");
-    private static final int administratorCreditsPerMomth = AIRetrofits_Constants.RobotForge_administratorCreditsPerMomth;//2000;
+    private static final String admenConfirmPage_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0");
+    private static final String admenConfirmPage_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1");
+    private static final String admenConfirmPage_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2");
+    private static final String exitAdmen_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0");
+    private static final String exitAdmen_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1");
+    private static final int administratorCreditCost = AIRetrofits_Constants_3.RobotForge_administratorCreditCost;//Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
+    private static final int administratorSubCommandNodeCost = AIRetrofits_Constants_3.RobotForge_administratorSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Admin_SCN");
+    private static final int administratorCreditsPerMomth = AIRetrofits_Constants_3.RobotForge_administratorCreditsPerMomth;//2000;
     private static final String MyOptionData = "admin";
-    private static final String MyOptionText = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_AdminOption");//"create admin";
-    private static final String MyOptionHoverOver = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_AdminHoverOver");//"requires a sub command node";
+    private static final String MyOptionText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_AdminOption");//"create admin";
+    private static final String MyOptionHoverOver = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_AdminHoverOver");//"requires a sub command node";
     public boolean canBuildCommandNode(){
         return false;
     }
@@ -207,7 +207,7 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
         options.clearOptions();
         dialog.getTextPanel().addPara(admenConfirmPage_1,highlight,new String[]{"" + administratorCreditsPerMomth});//"the officer you create will cost " + administratorCreditsPerMomth + "per month. at an reduced cost if they are not doing anything.");
         dialog.getTextPanel().addPara(admenConfirmPage_2,highlight, "" + administratorSubCommandNodeCost,"" + administratorCreditCost);//"you require " + administratorSubCommandNodeCost + " sub command node and " + administratorCreditCost + " credits to create an administrator");
-        if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants.Commodity_SubCommandNode) >= administratorSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= administratorCreditCost){
+        if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= administratorSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= administratorCreditCost){
             options.addOption("continue","createAdmen");
         }
         SetStoryOption.set(dialog,1,"createAdmen","promoteCrewMember","ui_char_spent_story_point","");
@@ -227,7 +227,7 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
     }
     @Override
     public void createPerson(){
-        Global.getSector().getPlayerFleet().getCargo().removeCommodity(AIRetrofits_Constants.Commodity_SubCommandNode,administratorSubCommandNodeCost);
+        Global.getSector().getPlayerFleet().getCargo().removeCommodity(AIRetrofits_Constants_3.Commodity_SubCommandNode,administratorSubCommandNodeCost);
         Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(administratorCreditCost);
         PersonAPI person = AIRetrofits_CreatePeople.createAdmen();
         Global.getSector().getCharacterData().addAdmin(person);

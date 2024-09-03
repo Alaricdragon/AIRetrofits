@@ -4,6 +4,15 @@ this is the process of making my mod make some fucking sense. it will be divided
     -move all strings (both from the settings.json file, and hardcoded strings) into there own json file. this file will allow easyer editing of strings.
     -make sure to edit all the strings. go into every possable folder and fix the shit that does not work.
         -note: a lot of strings use like, 3+ strings instead of the %s system. this needs to be fixed. i should use this oprotunity to go into each string and chance it drying the editing phase.
+    -ISSUE:
+        constants file is failing to gather json data. or maybe it is working?
+        it crashes when loaded. but only when a bunch of other classes are importing it, and when it has json objects in it.
+        sollution?:
+            1) doplecate the class
+            2) remove all json objects form the first class.
+            3) slowly, bit by bit, replace each files constants class with the new class.
+            4) when it starts to crash, i will have found the issue
+
 2) for robots crewReplacer_jobs:
     1) make it so robots are withen the 'crewSet' system. for real, how da fuck did i forget this!!?!!
 3) colonly

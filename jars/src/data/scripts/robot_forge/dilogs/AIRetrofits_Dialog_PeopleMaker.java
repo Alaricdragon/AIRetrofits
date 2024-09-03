@@ -3,14 +3,12 @@ package data.scripts.robot_forge.dilogs;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
-import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
-import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeDiologPlugin2;
-import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.robot_forge.createItemSupport.CommandNodeTypes.AIRetorfit_CommandNodeTypesBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -23,10 +21,10 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     OptionPanelAPI options;
     int temp = 0;
 
-    private static final String SubCommandNode = AIRetrofits_Constants.RobotForge_SubCommandNode;//"AIretrofit_SubCommandNode";
+    private static final String SubCommandNode = AIRetrofits_Constants_3.RobotForge_SubCommandNode;//"AIretrofit_SubCommandNode";
 
-    private static final String mainPage_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_mainPage_0");//"information about improving an sub command node, into a command node goes here";
-    private static final String init_0 = Global.getSettings().getString("AIRetrofit_RobotForge_PeopleMaker_init_0");
+    private static final String mainPage_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_mainPage_0");//"information about improving an sub command node, into a command node goes here";
+    private static final String init_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_init_0");
     private static final Color highlight = Misc.getHighlightColor();
 
     public static int stat = 0;

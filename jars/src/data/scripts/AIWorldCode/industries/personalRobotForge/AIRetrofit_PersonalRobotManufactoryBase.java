@@ -5,16 +5,14 @@ import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
-import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
-import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -81,11 +79,11 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     //alpha multi is not necessary.
     //static private final float alphaMulti = 0.75f;
 
-    static private final String gammaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_gammaDescription");//"improve robot output by %s";
-    static private final String betaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_betaDescription");//"reduce robot output by %s";
-    static private final String alphaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_alphaDescription");//"improve the quality of produced robots, but %s output factory output";
-    static private final String alphaDescriptionHighlighted = Global.getSettings().getString("AIRetrofit_robotManufactury_alphaDescriptionHighlighted");//"reduces";
-    static final String improvedDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_improvedDescription");//"improve robot output by %s";
+    static private final String gammaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_gammaDescription");//"improve robot output by %s";
+    static private final String betaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_betaDescription");//"reduce robot output by %s";
+    static private final String alphaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_alphaDescription");//"improve the quality of produced robots, but %s output factory output";
+    static private final String alphaDescriptionHighlighted = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_alphaDescriptionHighlighted");//"reduces";
+    static final String improvedDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_improvedDescription");//"improve robot output by %s";
     @Override
     public CargoAPI generateCargoForGatheringPoint(Random random) {
         if(!isFunctional()){

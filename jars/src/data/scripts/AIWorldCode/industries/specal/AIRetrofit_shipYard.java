@@ -7,7 +7,8 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -15,17 +16,17 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
     private final static String C1 = "AIretrofit_SubCommandNode";
     private final static String C2 = "AIretrofit_WorkerDrone";
     //static String C3 = "heavy_machinery";
-    private final static String subbmarket = AIRetrofits_Constants.ASIC_subbmarket;//"AIRetrofit_ShipyardSubmarket";
+    private final static String subbmarket = AIRetrofits_Constants_3.ASIC_subbmarket;//"AIRetrofit_ShipyardSubmarket";
 
-    private final static String alphaDescription = Global.getSettings().getString("AIRetrofitShipyard_ADescription");
-    private final static String betaDescription = Global.getSettings().getString("AIRetrofitShipyard_BDescription");
-    private final static String gammaDescription = Global.getSettings().getString("AIRetrofitShipyard_GDescription");
-    private final static float improveValue = AIRetrofits_Constants.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
-    private final static float defaultValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
-    private final static String improveDescription = Global.getSettings().getString("AIRetrofitShipyard_IDescription");
-    private final static String improvedDescription = Global.getSettings().getString("AIRetrofitShipyard_IedDescription");
-    //private final static String extraDescription = Global.getSettings().getString("AIRetrofitShipyard_Description");
-    private final static float[] costPerShip = AIRetrofits_Constants.ASIC_costPerShip;
+    private final static String alphaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_ADescription");
+    private final static String betaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_BDescription");
+    private final static String gammaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_GDescription");
+    private final static float improveValue = AIRetrofits_Constants_3.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    private final static float defaultValue = AIRetrofits_Constants_3.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    private final static String improveDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_IDescription");
+    private final static String improvedDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_IedDescription");
+    //private final static String extraDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description");
+    private final static float[] costPerShip = AIRetrofits_Constants_3.ASIC_costPerShip;
     @Override
     public void apply() {
         super.apply(true);
@@ -171,8 +172,8 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
         AIRetrofit_ShipyardDescription(tooltip,market,true);
     }
 
-    static float shipyard_IValue = AIRetrofits_Constants.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
-    static float shipyardDValue = AIRetrofits_Constants.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
+    static float shipyard_IValue = AIRetrofits_Constants_3.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
+    static float shipyardDValue = AIRetrofits_Constants_3.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     static String industry = "AIRetrofit_shipYard";
     public static void AIRetrofit_ShipyardDescription(TooltipMakerAPI tooltip, MarketAPI market) {
         AIRetrofit_ShipyardDescription(tooltip,market,false);
@@ -187,21 +188,21 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
             startingPonits *= bounus;
         }
         String[] ex = {
-                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[2]),
-                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[3]),
-                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[4]),
-                "" + (int)(startingPonits / AIRetrofits_Constants.ASIC_costPerShip[5]),
+                "" + (int)(startingPonits / AIRetrofits_Constants_3.ASIC_costPerShip[2]),
+                "" + (int)(startingPonits / AIRetrofits_Constants_3.ASIC_costPerShip[3]),
+                "" + (int)(startingPonits / AIRetrofits_Constants_3.ASIC_costPerShip[4]),
+                "" + (int)(startingPonits / AIRetrofits_Constants_3.ASIC_costPerShip[5]),
         };
-        tooltip.addPara(AIRetrofits_Constants.ASIC_Description_SPM,pad,highlight,ex);
+        tooltip.addPara(AIRetrofits_Constants_3.ASIC_Description_SPM,pad,highlight,ex);
         if(!market.isPlayerOwned() && !forceAvoidCostModifier){
 
             ex = new String[]{
-                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[2],
-                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[3],
-                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[4],
-                    "" + (int)AIRetrofits_Constants.ASIC_creditsPerShip[5],
+                    "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[2],
+                    "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[3],
+                    "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[4],
+                    "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[5],
             };
-            tooltip.addPara(AIRetrofits_Constants.ASIC_Description_CPS,pad,highlight,ex);
+            tooltip.addPara(AIRetrofits_Constants_3.ASIC_Description_CPS,pad,highlight,ex);
         }
     }
 }

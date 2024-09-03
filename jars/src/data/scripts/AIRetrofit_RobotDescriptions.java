@@ -3,11 +3,9 @@ package data.scripts;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoStackAPI;
 import com.fs.starfarer.api.campaign.listeners.CommodityTooltipModifier;
-import com.fs.starfarer.api.impl.PlayerFleetPersonnelTracker;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants;
-import org.apache.log4j.Logger;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -99,7 +97,7 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
         displayCrewSize(robots[8].name,info,width,expanded,stack);
         displayCrewPower(robots[8],info,width,expanded,stack);
     }
-    private static final String robotDescription = AIRetrofits_Constants.robot_Description;//Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
+    private static final String robotDescription = AIRetrofits_Constants_3.robot_Description;//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
     private void displayCrewPower(AIRetrofit_Robots robot, TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {
@@ -112,7 +110,7 @@ public class AIRetrofit_RobotDescriptions implements CommodityTooltipModifier {
             /*this will hold the crew power of every job for this crew.*/
         }
     }
-    private static final String robotSizeDescriptions = AIRetrofits_Constants.robot_SizeDescriptions;//Global.getSettings().getString("AIRetrofits_RobotCargoDescription");
+    private static final String robotSizeDescriptions = AIRetrofits_Constants_3.robot_SizeDescriptions;
     private void displayCrewSize(String name,TooltipMakerAPI info, float width, boolean expanded, CargoStackAPI stack){
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {

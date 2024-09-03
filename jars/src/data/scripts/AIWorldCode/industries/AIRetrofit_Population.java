@@ -13,6 +13,7 @@ import com.fs.starfarer.api.loading.IndustrySpecAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 //exstending PopulationAndInfrastructure dose not work for my porpusses.
 /*option: market condition that dose what i want?
@@ -91,8 +92,8 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
         if (size >= 1 && size <= 9) {
             cid = "population_" + size;
             MarketConditionSpecAPI mcs = Global.getSettings().getMarketConditionSpec(cid);
-            String marketAIDescription = Global.getSettings().getString("AIRetrofits_PopulationDescription");//"this world is full of automated robots, and not people. a text description";
-            //String marketSizeDescription = Global.getSettings().getString("AIRetrofits_PopulationSizeDescription");
+            String marketAIDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofits_PopulationDescription");//"this world is full of automated robots, and not people. a text description";
+            //String marketSizeDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofits_PopulationSizeDescription");
             //String[] exstra = {"" + peoples[size]};
             //marketAIDescription
             if (mcs != null) {

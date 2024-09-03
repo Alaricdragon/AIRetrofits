@@ -4,17 +4,15 @@ import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
-import com.fs.starfarer.api.combat.ShipVariantAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -112,9 +110,9 @@ i want to:
 
 	 */
 	private static final String[] IncombatableReasons = {
-		Global.getSettings().getString("AIRetrofits_AIRetrofit_NA_combatable"),
-		Global.getSettings().getString("AIRetrofits_AIRetrofit_NA_MinCrew"),
-		Global.getSettings().getString("AIRetrofits_AIRetrofit_NA_OppCost"),
+		AIRetrofits_StringGetterProtection.getString("AIRetrofits_AIRetrofit_NA_combatable"),
+		AIRetrofits_StringGetterProtection.getString("AIRetrofits_AIRetrofit_NA_MinCrew"),
+		AIRetrofits_StringGetterProtection.getString("AIRetrofits_AIRetrofit_NA_OppCost"),
 	};
 
 	private static final int[] Base_OP_COST = {5,10,15,25};
@@ -336,7 +334,7 @@ i want to:
 				"AIRetrofit_ShipyardBeta",
 				"AIRetrofit_ShipyardAlpha",
 				"AIRetrofit_ShipyardOmega",
-				AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit,
+				AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit,
 		};
 		final String[] names = {
 				Global.getSettings().getHullModSpec(compatible[0]).getDisplayName(),

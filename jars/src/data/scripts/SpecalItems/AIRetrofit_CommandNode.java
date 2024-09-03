@@ -1,6 +1,5 @@
 package data.scripts.SpecalItems;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
@@ -9,9 +8,10 @@ import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.robot_forge.createItemSupport.CommandNodeTypes.AIRetorfit_CommandNodeTypesBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -19,8 +19,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     //addSpecial AIRetrofit_CommandNode
     public PersonAPI person = null;
     public String personType = "";
-    private final static String errorText = Global.getSettings().getString("AIRetrofit_CommandNode_defaultTExt");//"error";
-    private final static String errorText2 = Global.getSettings().getString("AIRetrofit_CommandNode_defaultText2");//"a command node with the designation of %s. they are a %s";
+    private final static String errorText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_defaultTExt");//"error";
+    private final static String errorText2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_defaultText2");//"a command node with the designation of %s. they are a %s";
     @Override
     public void init(CargoStackAPI stack) {
         super.init(stack);
@@ -60,7 +60,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         try {
             //AIRetrofit_Log.loging("created person", this, true);
             //AIRetrofit_Log.loging("creating specal data", this, true);
-            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[0], null);
+            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants_3.SpecalItemID_CommandNodes[0], null);
             //AIRetrofit_Log.loging("do we have a cargo bay?", this, true);
             //AIRetrofit_Log.loging("adding new specal item to cargo bay", this, true);
             cargo.addSpecial(a, 1);

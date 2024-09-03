@@ -3,26 +3,25 @@ package data.scripts.starfarer.api.impl.campaign.rulemd;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
-import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.crewReplacer_Job;
 import data.scripts.crewReplacer_Main;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.List;
 import java.util.Map;
 
 public class AIRetrofit_CanBuildOutpostScript extends BaseCommandPlugin {
-    float reqAICore = AIRetrofits_Constants.FoundAMarket_reqAICore;
-    float reqWorker = AIRetrofits_Constants.FoundAMarket_reqWorker;
-    float reqSupply = AIRetrofits_Constants.FoundAMarket_reqSupply;
-    float reqMachinery = AIRetrofits_Constants.FoundAMarket_reqMachinery;
-    String AICoreJob = AIRetrofits_Constants.FoundAMarket_AICoreJob;
-    String AIWorkerJob = AIRetrofits_Constants.FoundAMarket_AIWorkerJob;
-    String SupplyJob = AIRetrofits_Constants.FoundAMarket_SupplyJob;
-    String MachineryJob = AIRetrofits_Constants.FoundAMarket_MachineryJob;
+    float reqAICore = AIRetrofits_Constants_3.FoundAMarket_reqAICore;
+    float reqWorker = AIRetrofits_Constants_3.FoundAMarket_reqWorker;
+    float reqSupply = AIRetrofits_Constants_3.FoundAMarket_reqSupply;
+    float reqMachinery = AIRetrofits_Constants_3.FoundAMarket_reqMachinery;
+    String AICoreJob = AIRetrofits_Constants_3.FoundAMarket_AICoreJob;
+    String AIWorkerJob = AIRetrofits_Constants_3.FoundAMarket_AIWorkerJob;
+    String SupplyJob = AIRetrofits_Constants_3.FoundAMarket_SupplyJob;
+    String MachineryJob = AIRetrofits_Constants_3.FoundAMarket_MachineryJob;
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         CampaignFleetAPI fleet = Global.getSector().getPlayerFleet();
         float[] got = new float[4];

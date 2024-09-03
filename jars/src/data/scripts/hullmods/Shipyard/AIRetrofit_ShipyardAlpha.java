@@ -1,28 +1,21 @@
 package data.scripts.hullmods.Shipyard;
 
-import com.fs.starfarer.api.GameState;
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants;
-
-import java.awt.*;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 public class AIRetrofit_ShipyardAlpha  extends AIRetrofit_ShipyardBase {
-    final static String automationLevel = AIRetrofits_Constants.AIRetrofit_Perma_Alpha_automationLevel;//"Alpha-Core";
-    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants.AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
-    private static final float CREW_USE_MULT = AIRetrofits_Constants.AIRetrofit_Perma_Alpha_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
-    private static final float REPAIR_LOSE = AIRetrofits_Constants.AIRetrofit_Perma_Alpha_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
+    final static String automationLevel = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_automationLevel;//"Alpha-Core";
+    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
+    private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
+    private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
 
     private String[] parm = {"0","1","2","3","4","5","6","7","8","9","10"};
 
-    private static final float[] maxOp = AIRetrofits_Constants.AIRetrofit_Perma_Alpha_maxOp;
-    private static final float[] CrewPerCostPerSize = AIRetrofits_Constants.AIRetrofit_Perma_Alpha_CrewPerCostPerSize;
+    private static final float[] maxOp = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_maxOp;
+    private static final float[] CrewPerCostPerSize = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CrewPerCostPerSize;
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();

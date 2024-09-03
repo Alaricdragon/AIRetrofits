@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
 
@@ -27,8 +28,8 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
 
     protected final static float BetaDefenceMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_combat_Mod");//1.1f;
 
-    private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_combat_exstaText");//"from combat robot factory";
-    private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_combat_betaText");//"use produced combat robots to boost ground defences by %s";
+    private final static String groundDefenceText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_combat_exstaText");//"from combat robot factory";
+    private final static String BetaText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_combat_betaText");//"use produced combat robots to boost ground defences by %s";
     @Override
     protected String[] getItems(){
         return new String[] {C1,C2,C3,S1,S2,S3};

@@ -6,15 +6,14 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.intel.contacts.ContactIntel;
-import com.fs.starfarer.rpg.Person;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.List;
 
 public class AIRetrofits_ChangePeople {
     public static void changePeopleMarket(MarketAPI market){
-        if(!market.hasCondition(AIRetrofits_Constants.Market_Condition)){
+        if(!market.hasCondition(AIRetrofits_Constants_3.Market_Condition)){
             return;
         }
         List<PersonAPI> peopletemp = market.getPeopleCopy();
@@ -65,9 +64,9 @@ public class AIRetrofits_ChangePeople {
             }
         }
     }
-    static private String[] itemIn = AIRetrofits_Constants.fleetChange_itemIn;
-    static private String[] itemOut = AIRetrofits_Constants.fleetChange_itemOut;
-    static private boolean ChangeCrew = AIRetrofits_Constants.fleetChange_ChangeCrew;
+    static private String[] itemIn = AIRetrofits_Constants_3.fleetChange_itemIn;
+    static private String[] itemOut = AIRetrofits_Constants_3.fleetChange_itemOut;
+    static private boolean ChangeCrew = AIRetrofits_Constants_3.fleetChange_ChangeCrew;
     public static void swapFleetCrew(CampaignFleetAPI fleet){
         if(!ChangeCrew){
             return;

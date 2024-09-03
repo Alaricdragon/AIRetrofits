@@ -3,23 +3,18 @@ package data.scripts.robot_forge.createItemSupport;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.FactionAPI;
-import com.fs.starfarer.api.campaign.FactionDoctrineAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.characters.SkillSpecAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.ids.Skills;
-import com.fs.starfarer.api.plugins.OfficerLevelupPlugin;
-import com.fs.starfarer.api.util.WeightedRandomPicker;
-import com.fs.starfarer.loading.specs.FactionDoctrine;
-import com.fs.starfarer.rpg.Person;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode;
 import data.scripts.SpecalItems.AIRetrofit_CommandNode_SpecalItemData;
 import data.scripts.robot_forge.createItemSupport.CommandNodeTypes.AIRetorfit_CommandNodeTypesBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +96,7 @@ public class AIRetrofits_CreatePeople {
             }
         }
         AIRetrofit_Log.pop();
-        person.getTags().add(AIRetrofits_Constants.PersonTypes_Admin);
+        person.getTags().add(AIRetrofits_Constants_3.PersonTypes_Admin);
         setPerson(person);
         AIRetrofit_Log.pop();
         powerLastUsed = TempPower - skillPower;
@@ -228,7 +223,7 @@ public class AIRetrofits_CreatePeople {
         AIRetrofit_Log.push();
         AIRetrofit_Log.pop();
         person.setPersonality(personalities[personality]);
-        person.getTags().add(AIRetrofits_Constants.PersonTypes_Officer);
+        person.getTags().add(AIRetrofits_Constants_3.PersonTypes_Officer);
         setPerson(person);
         List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
         for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
@@ -280,7 +275,7 @@ public class AIRetrofits_CreatePeople {
     public static AIRetorfit_CommandNodeTypesBase getTypeByWeight(float[] weight){
         AIRetrofit_Log.loging("running: "+"getTypeByWeight"+" with: weight:"+weight.toString(),logClass,logs);
         AIRetrofit_Log.push();
-        //String[] types = AIRetrofits_Constants.PersonTypes_List;
+        //String[] types = AIRetrofits_Constants_3.PersonTypes_List;
         AIRetorfit_CommandNodeTypesBase[] types = CommandNodeTypes.toArray(new AIRetorfit_CommandNodeTypesBase[CommandNodeTypes.size()]);
         float totalWeight=0;
         for(float a : weight){
@@ -306,7 +301,7 @@ public class AIRetrofits_CreatePeople {
     public static AIRetorfit_CommandNodeTypesBase getTypeByWeight(){
         AIRetrofit_Log.loging("running: "+"getTypeByWeight"+" with: ",logClass,logs);
         AIRetrofit_Log.push();
-        float[] weight = new float[CommandNodeTypes.size()]; //AIRetrofits_Constants.PersonWeight_List;
+        float[] weight = new float[CommandNodeTypes.size()]; //AIRetrofits_Constants_3.PersonWeight_List;
         for(int a = 0; a < CommandNodeTypes.size(); a++){
             weight[a] = CommandNodeTypes.get(a).weight;
         }
@@ -392,13 +387,13 @@ public class AIRetrofits_CreatePeople {
         type.setTagForPerson(person);
         int cost = 0;
         AIRetrofit_Log.loging("(used power should be <= to power.)got power, used power: "+power+", "+powerLastUsed,logClass,logs);
-        for(int a = AIRetrofits_Constants.SpecalItemID_CommandNodes.length - 1; a >= 0; a--){
-            if(AIRetrofits_Constants.SpecalItem_CommandNodes_thresholds[a] <= powerLastUsed){
+        for(int a = AIRetrofits_Constants_3.SpecalItemID_CommandNodes.length - 1; a >= 0; a--){
+            if(AIRetrofits_Constants_3.SpecalItem_CommandNodes_thresholds[a] <= powerLastUsed){
                 cost = a;
                 break;
             }
         }
-        AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[cost], null, item.person);
+        AIRetrofit_CommandNode_SpecalItemData amb = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants_3.SpecalItemID_CommandNodes[cost], null, item.person);
         //amb.setPersonType(type);
         amb.setPerson(person);
         cargo.addSpecial(amb, 1);

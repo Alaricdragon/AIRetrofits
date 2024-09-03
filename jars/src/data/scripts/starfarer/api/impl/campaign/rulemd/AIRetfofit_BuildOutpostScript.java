@@ -12,23 +12,24 @@ import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.crewReplacer_Job;
 import data.scripts.crewReplacer_Main;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.List;
 import java.util.Map;
 
 public class AIRetfofit_BuildOutpostScript extends BaseCommandPlugin {
-    float reqAICore = AIRetrofits_Constants.FoundAMarket_reqAICore;
-    float reqWorker = AIRetrofits_Constants.FoundAMarket_reqWorker;
-    float reqSupply = AIRetrofits_Constants.FoundAMarket_reqSupply;
-    float reqMachinery = AIRetrofits_Constants.FoundAMarket_reqMachinery;
-    String AICoreJob = AIRetrofits_Constants.FoundAMarket_AICoreJob;
-    String AIWorkerJob = AIRetrofits_Constants.FoundAMarket_AIWorkerJob;
-    String SupplyJob = AIRetrofits_Constants.FoundAMarket_SupplyJob;
-    String MachineryJob = AIRetrofits_Constants.FoundAMarket_MachineryJob;
+    float reqAICore = AIRetrofits_Constants_3.FoundAMarket_reqAICore;
+    float reqWorker = AIRetrofits_Constants_3.FoundAMarket_reqWorker;
+    float reqSupply = AIRetrofits_Constants_3.FoundAMarket_reqSupply;
+    float reqMachinery = AIRetrofits_Constants_3.FoundAMarket_reqMachinery;
+    String AICoreJob = AIRetrofits_Constants_3.FoundAMarket_AICoreJob;
+    String AIWorkerJob = AIRetrofits_Constants_3.FoundAMarket_AIWorkerJob;
+    String SupplyJob = AIRetrofits_Constants_3.FoundAMarket_SupplyJob;
+    String MachineryJob = AIRetrofits_Constants_3.FoundAMarket_MachineryJob;
 
-    private static String execute0 = Global.getSettings().getString("AIRetrofit_MarketFoundedText0");
-    private static String execute1 = Global.getSettings().getString("AIRetrofit_MarketFoundedText1");
+    private static String execute0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_MarketFoundedText0");
+    private static String execute1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_MarketFoundedText1");
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         MarketAPI market = dialog.getInteractionTarget().getMarket();
         PlanetAPI planet = dialog.getInteractionTarget().getMarket().getPlanetEntity();

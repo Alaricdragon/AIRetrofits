@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 public class AIRetrofit_RobotDroneStorage_Cargo extends AIRetrofit_RobotDroneStorage_Base{
     public float reqExtraCargo = 1;
@@ -26,9 +27,9 @@ public class AIRetrofit_RobotDroneStorage_Cargo extends AIRetrofit_RobotDroneSto
         return super.isApplicableToShip(ship) && a > reqExtraCargo;
     }
 
-    static final String incombatbleReason_1_0 = Global.getSettings().getString("AIRetrofits_RobotDroneStorage_cargo_NCDescription_0");//"you require at least";
-    static final String incombatbleReason_1_1 = Global.getSettings().getString("AIRetrofits_RobotDroneStorage_cargo_NCDescription_1");//"cargo . you have";
-    static final String incombatbleReason_1_2 = Global.getSettings().getString("AIRetrofits_RobotDroneStorage_cargo_NCDescription_2");//"cargo space";
+    static final String incombatbleReason_1_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotDroneStorage_cargo_NCDescription_0");//"you require at least";
+    static final String incombatbleReason_1_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotDroneStorage_cargo_NCDescription_1");//"cargo . you have";
+    static final String incombatbleReason_1_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotDroneStorage_cargo_NCDescription_2");//"cargo space";
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
         if(ship == null) return "";

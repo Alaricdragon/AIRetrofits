@@ -2,8 +2,12 @@ package data.scripts.startupData;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
-public class AIRetrofits_Constants {
+public class AIRetrofits_Constants_3 {
+    public static String apply(){
+        return AIRetrofits_Constants_3.ModID;
+    };
     public static final String ModID = "AI-Retrofits";
     //startup settings:
     public static final boolean AlwaysGiveThings = Global.getSettings().getBoolean("AIRetrofit_alwaysGiveSkillsAndHullmods");;
@@ -44,16 +48,16 @@ public class AIRetrofits_Constants {
     public static final String Submarket_AINodeProductionFacility = "AIRetrofit_AINodeProductionFacilitySubmarket";
 
     //Robot Stats And Descriptions
-    public static final String robot_Description = Global.getSettings().getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
-    public static final String robot_SizeDescriptions = Global.getSettings().getString("AIRetrofits_RobotCargoDescription");
-    final public static String robot_baseText = Global.getSettings().getString("AIRetrofits_RobotPowerNoCoreMessage");
+    public static final String robot_Description = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
+    public static final String robot_SizeDescriptions = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotCargoDescription");
+    final public static String robot_baseText = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerNoCoreMessage");
     public static final float robot_baseBonus = Global.getSettings().getFloat("AIRetrofits_BaseMulti");
     public static final float[] robot_AICoreBonus = {
-        Global.getSettings().getFloat("AIRetrofits_OmegaMulti"),
-        Global.getSettings().getFloat("AIRetrofits_AlphaMulti"),
-        Global.getSettings().getFloat("AIRetrofits_BetaMulti"),
-        Global.getSettings().getFloat("AIRetrofits_GammaMulti"),
-        Global.getSettings().getFloat("AIRetrofits_CommandMulti"),
+            Global.getSettings().getFloat("AIRetrofits_OmegaMulti"),
+            Global.getSettings().getFloat("AIRetrofits_AlphaMulti"),
+            Global.getSettings().getFloat("AIRetrofits_BetaMulti"),
+            Global.getSettings().getFloat("AIRetrofits_GammaMulti"),
+            Global.getSettings().getFloat("AIRetrofits_CommandMulti"),
     };
     public static final String[] robot_AICores = {
             "omega_core",
@@ -62,7 +66,7 @@ public class AIRetrofits_Constants {
             "gamma_core",
             "AIretrofit_SubCommandNode",
     };
-//Found A Market
+    //Found A Market
     public static final float FoundAMarket_reqAICore = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqAICore");//10
     public static final float FoundAMarket_reqWorker = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqWorker");//1000;
     public static final float FoundAMarket_reqSupply = Global.getSettings().getFloat("AIRetrofit_MarketCost_reqSupply");//200;
@@ -73,7 +77,7 @@ public class AIRetrofits_Constants {
     public static final String FoundAMarket_MachineryJob = "AIRetrofit_OutpostMachinery";
 
 
-//RobotForge
+    //RobotForge
     //people maker
     public static final int RobotForge_officerCreditCost = Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
     public static final int RobotForge_administratorCreditCost = Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
@@ -90,7 +94,7 @@ public class AIRetrofits_Constants {
     public static final float RobotForge_ForgePowerMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
 
 
-//AIRetrofit Hullmod
+    //AIRetrofit Hullmod
     //AIRetrofit_PermaInstaled.
     //base
     public static final String AIRetrofit_Perma_Base_automationLevel = "automatedShipyard";
@@ -128,7 +132,7 @@ public class AIRetrofits_Constants {
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_C-OP-Capital_ship")
     };
 
-//Automated Ship Instalation Center.
+    //Automated Ship Instalation Center.
     //hullmods and required industry.
     public static final String ASIC_BaseHullmod = "AIretrofit_airetrofit";
     public static final String ASIC_shipYardIndustry = "AIRetrofit_shipYard";
@@ -140,7 +144,7 @@ public class AIRetrofits_Constants {
             "AIRetrofit_ShipyardOmega",
             "AIRetrofit_ShipyardBase"};
     public static final String[] ASIC_Secondary_Hullmods = {
-            AIRetrofits_Constants.Hullmod_PatchworkAIRetrofit,
+            AIRetrofits_Constants_2.Hullmod_PatchworkAIRetrofit,
     };
 
     public final static float ASIC_improveValue = Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
@@ -162,14 +166,14 @@ public class AIRetrofits_Constants {
             Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewCRUISER"),
             Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP"),
     };
-    public final static String ASIC_NotificationCredits = Global.getSettings().getString("AIRetrofitShipyard_Notification_credits");
-    public final static String ASIC_NotificationBonusXP = Global.getSettings().getString("AIRetrofitShipyard_Notification_bonusXP");
-    public final static String ASIC_NotificationMarket = Global.getSettings().getString("AIRetrofitShipyard_Notification_market");
-    public final static String ASIC_NotificationType = Global.getSettings().getString("AIRetrofitShipyard_Notification_type");
+    public final static String ASIC_NotificationCredits = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_credits");
+    public final static String ASIC_NotificationBonusXP = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_bonusXP");
+    public final static String ASIC_NotificationMarket = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_market");
+    public final static String ASIC_NotificationType = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_type");
     public final static float ASIC_bonusXPForRemoveSMod = 0;
 
-    public final static String ASIC_Description_SPM = Global.getSettings().getString("AIRetrofitShipyard_Description_shipPerMomth");
-    public final static String ASIC_Description_CPS = Global.getSettings().getString("AIRetrofitShipyard_Description_creditsPerShip");
+    public final static String ASIC_Description_SPM = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description_shipPerMomth");
+    public final static String ASIC_Description_CPS = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description_creditsPerShip");
     //fleet changing crew and admins:
     public static final boolean fleetChange_ChangeCrew = Global.getSettings().getBoolean("AIRetrofits_SwapAICrew");
     //HERE swap this info out with something in an config please.
@@ -179,7 +183,7 @@ public class AIRetrofits_Constants {
     //HERE add a new item determining the ratio of crew change that i want to have plz.
 
 
-//marketData
+    //marketData
     //conditions and levers
     public static final boolean Market_EnableLogs = Global.getSettings().getBoolean("AIRetrofit_GrowthLogs");
     public static final boolean Market_EnableMarketFetures = Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
@@ -196,14 +200,14 @@ public class AIRetrofits_Constants {
     public static final String Market_GrowthMod_FactionWideRobotFactorys = "FactionWideRobotFactory's";
     public static final String Market_GrowthMod_AIRetrofits_RobotFactoryGrowthMod = "AIRetrofits_RobotFactoryGrowthMod";
     //growth descriptions
-    public static final String Market_GrowthDescription_hazzardPay = Global.getSettings().getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
+    public static final String Market_GrowthDescription_hazzardPay = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
     //public static final String Market_GrowthDescription_population_AIRetrofit_0 = "";//not required
     //public static final String Market_GrowthDescription_population_AIRetrofit_1 = "";
     //public static final String Market_GrowthDescription_population_AIRetrofit_2 = "";
     public static final String Market_GrowthDescription_AIRetrofits_BasicDroneFactory_0 = "";//not required
     //public static final String Market_GrowthDescription_AIRetrofits_AdvancedDroneFactory_0 = "";//unused
-    public static final String Market_GrowthDescription_LocalRobotFactorys = Global.getSettings().getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
-    public static final String Market_GrowthDescription_FactionWideRobotFactorys = Global.getSettings().getString("AIRetrofits_MarketGrowth_T2GrowthDescription");;
+    public static final String Market_GrowthDescription_LocalRobotFactorys = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
+    public static final String Market_GrowthDescription_FactionWideRobotFactorys = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_T2GrowthDescription");;
     public static final String Market_GrowthDescription_AIRetrofits_RobotFactoryGrowthMod = "";//not required
 
 
@@ -282,9 +286,9 @@ public class AIRetrofits_Constants {
             "AIRetrofit_CommandNode_7",
             "AIRetrofit_CommandNode_8",
             "AIRetrofit_CommandNode_9",
-};
+    };
     public static final float[] SpecalItem_CommandNodes_thresholds = {
-        Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_0"),
+            Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_0"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_1"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_2"),
             Global.getSettings().getFloat("AIRetrofit_CommandNode_PowerCostThreshold_3"),

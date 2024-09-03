@@ -4,14 +4,12 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
-import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -33,10 +31,9 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
 
     private final static float BetaGrowthMod = Global.getSettings().getFloat("AIRetrofit_robotManufactury_salvage_Mod");//1.1f;
 
-    //private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_salvage_exstaText");//"from combat robot factory";
-    private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_salvage_betaText");//"use produced combat robots to boost ground defences by %s";
+    private final static String BetaText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_salvage_betaText");//"use produced combat robots to boost ground defences by %s";
 
-    static String m1 = AIRetrofits_Constants.Market_GrowthMod_AIRetrofits_BasicDroneFactory_0;//"AIRetrofits_RobotFactoryGrowthMod";
+    static String m1 = AIRetrofits_Constants_3.Market_GrowthMod_AIRetrofits_BasicDroneFactory_0;//"AIRetrofits_RobotFactoryGrowthMod";
     @Override
     protected String[] getItems(){
         return new String[] {C1,C2,C3,S1,S2,S3};

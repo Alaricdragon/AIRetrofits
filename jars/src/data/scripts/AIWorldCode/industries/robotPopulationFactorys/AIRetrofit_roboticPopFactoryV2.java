@@ -7,8 +7,8 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost;
-import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -22,14 +22,14 @@ public class AIRetrofit_roboticPopFactoryV2 extends AIRetrofit_roboticPopFactory
     private final static int C3Mod = 2;
     private final static int S1Mod = 4;
 
-    private final static String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT2_alphaDescription");
-    private final static float alphaValue = AIRetrofits_Constants.Market_Growth_T2AplhaBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
+    private final static String alphaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT2_alphaDescription");
+    private final static float alphaValue = AIRetrofits_Constants_3.Market_Growth_T2AplhaBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
 
-    private final static float improveValue = AIRetrofits_Constants.Market_Growth_T2ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");
-    private final static String improveDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_improveDescription");
-    private final static String improvedDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_improvedDescription");
+    private final static float improveValue = AIRetrofits_Constants_3.Market_Growth_T2ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");
+    private final static String improveDescription =AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT2_improveDescription");
+    private final static String improvedDescription =AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT2_improvedDescription");
 
-    private final static String extraDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT2_extraDescription");
+    private final static String extraDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT2_extraDescription");
 
     @Override
     public void apply() {
