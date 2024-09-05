@@ -9,6 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
@@ -111,14 +112,7 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
             info.addPara(improvedDescription, 0f, highlight, aStr);
         }
 
-        info.addSpacer(opad);
-        //super.addImproveDesc(info, mode);
-        float initPad = 0f;
-        if (mode != ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
-            info.addPara("Each improvement made at a colony doubles the number of " +
-                            "" + Misc.STORY + " points required to make an additional improvement.", initPad,
-                    Misc.getStoryOptionColor(), Misc.STORY + " points");
-        }
+        applyStoryText(info, mode);
     }
 
     @Override
@@ -136,22 +130,19 @@ public class AIRetrofit_roboticPopFactoryV0 extends AIRetrofit_IndustryBase impl
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
+        String pre = getAlphaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
             Color highlight = Misc.getHighlightColor();
             String aStr = "" + (int)(100*(alphaValue)) + "%";
-            text.addPara(pre + alphaDescription, 0f, highlight, aStr);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription), 0f, highlight, aStr);
             tooltip.addImageWithText(pad);
             return;
         }
         Color highlight = Misc.getHighlightColor();
         String aStr = "" + (int)(100*(alphaValue)) + "%";
-        tooltip.addPara(pre + alphaDescription, 0f, highlight, aStr);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription), 0f, highlight, aStr);
     }
 
 }

@@ -17,7 +17,7 @@ public class AIRetrofits_StringHelper {
     public static String getString(String className, String function, int lineID,String... splits){
         return getSplitString(getString(className, function, lineID),splits);
     }
-    protected static String getSplitString(String primary,String[] secondary){
+    public static String getSplitString(String primary,String... secondary){
         StringBuilder output = new StringBuilder();
         String[] a = primary.split("%s");
         try {

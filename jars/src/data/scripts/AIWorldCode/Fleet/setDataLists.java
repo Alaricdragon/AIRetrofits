@@ -4,6 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
@@ -33,9 +34,9 @@ public class setDataLists {
         CaptionFirstNames = SetArrayString(CapFirstName);
         CaptionLastNames = SetArrayString(CapLastName);
         CaptionPortraits = SetArrayString(CapPort);
-        AINodeProductionFacility_numCores = SetArrayString(numCoresName);
+        AINodeProductionFacility_numCores = SetArrayString2(numCoresName);
         AINodeProductionFacility_numCoreThresholds = SetArrayFloat(numThresholdsName);
-        AINodeProductionFacility_powerCores = SetArrayString(powerCoresName);
+        AINodeProductionFacility_powerCores = SetArrayString2(powerCoresName);
         AINodeProductionFacility_powerCoreThresholds = SetArrayFloat(powerCoreThresholdsName);
     }
     public static String getRandom(int type){
@@ -79,6 +80,21 @@ public class setDataLists {
         while(true){
             try{
                 out.add(Global.getSettings().getFloat(name + a));
+                a++;
+            }catch (Exception e){
+                break;
+            }
+        }
+        return out;
+    }
+    private static ArrayList<String> SetArrayString2(String name){
+        ArrayList<String> out = new ArrayList<String>();
+        int a = 0;
+        while(true){
+            try{
+                String temp = AIRetrofits_StringGetterProtection.getString(name + a);
+                if (temp == null) return out;
+                out.add(temp);
                 a++;
             }catch (Exception e){
                 break;

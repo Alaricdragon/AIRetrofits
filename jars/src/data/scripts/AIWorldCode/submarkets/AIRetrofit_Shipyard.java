@@ -23,6 +23,9 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     static float shipyard_IValue = AIRetrofits_Constants_3.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
     static float shipyardDValue = AIRetrofits_Constants_3.ASIC_defaultValue;//Global.getSettings().getFloat("AIRetrofitShipyard_defaultPoints");
     static String industry = "AIRetrofit_shipYard";
+
+    private static final String AIRetrofit_Shipyard_getBuyVerb_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_Shipyard_getBuyVerb_0");
+    private static final String AIRetrofit_Shipyard_getSellVerb_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_Shipyard_getSellVerb_0");
     @Override
     public void createTooltip(CoreUIAPI ui, TooltipMakerAPI tooltip, boolean expanded){
         super.createTooltip(ui,tooltip,expanded);
@@ -55,12 +58,12 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     }
     @Override
     public String getBuyVerb() {
-        return "take";
+        return AIRetrofit_Shipyard_getBuyVerb_0;
     }
 
     @Override
     public String getSellVerb() {
-        return "leave";
+        return AIRetrofit_Shipyard_getSellVerb_0;
     }
     @Override
     public boolean showInCargoScreen() {

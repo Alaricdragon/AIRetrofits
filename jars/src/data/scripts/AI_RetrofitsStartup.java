@@ -88,7 +88,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
     private void load1(){
         AIRetrofit_Log.loging("attempting to preform secondary startup protocols",this,true);
         AIRetrofits_Startup_RobotForge.apply();
-        //setDataLists.init();
+        setDataLists.init();
         AIRetrofits_Startup_CreatePeople.apply();
         AIRetrofits_Startup_MarketRetrofits.apply();
         AIRetrofits_Startup_RobotTypesCalculater.apply();

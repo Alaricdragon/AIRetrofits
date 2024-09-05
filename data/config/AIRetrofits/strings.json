@@ -47,6 +47,10 @@
   #"AIRetrofits_Sc_3N":"volatiles",
 
 
+  #market condtions
+  #AI-Pop
+  "AIRetrofitsAIPop_apply_0": "robots don't rebel... right?",
+  "AIRetrofitsAIPop_createTooltipAfterDescription_0": "%s stability",
 
   #ExstraDescriptionOfItems
   #all robot types power description
@@ -96,6 +100,34 @@
   "AIRetrofits_PopulationDescription": "The basic infrastructure required to support a given robotic population, such as clusters of command nodes and command relays, cities were numbers of robots perform various tasks, and mush more.",
   #Population Replacement Center. feel free to try it out, its not dont yet, but it is OK for now.
   "AIRetrofits_PopulationReplacementCenter_exstraDescription": "Takes a single day to build if built within %s days of founding the colony",
+
+  #base industry settings
+  "AIRetrofit_IndustryBase_addAlphaCoreDescription_String_0": "Alpha-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addAlphaCoreDescription_String_1": "Alpha-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_addBetaCoreDescription_String_0": "Beta-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addBetaCoreDescription_String_1": "Beta-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_addGammaCoreDescription_String_0": "Gamma-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addGammaCoreDescription_String_1": "Gamma-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_getUnavailableReason_String_1": "requires AI market.",
+
+  "AIRetrofit_IndustryBase_addImproveDesc_String_0": "Each improvement made at a colony doubles the number of %s required to make an additional improvement.",
+  "AIRetrofit_IndustryBase_addImproveDesc_String_1": "%s points",
+  #Population settings
+  "AIRetrofit_Population_getDescriptionOverrideNew_0": "there are %s of robotic workers active on this world",
+
+  "AIRetrofit_Population_getDescriptionOverrideNew_1": "an handful",
+  "AIRetrofit_Population_getDescriptionOverrideNew_2": "tens",
+  "AIRetrofit_Population_getDescriptionOverrideNew_3": "hundreds",
+  "AIRetrofit_Population_getDescriptionOverrideNew_4": "thousands",
+  "AIRetrofit_Population_getDescriptionOverrideNew_5": "tens of thousands",
+  "AIRetrofit_Population_getDescriptionOverrideNew_6": "hundreds of thousands",
+  "AIRetrofit_Population_getDescriptionOverrideNew_7": "millions",
+  "AIRetrofit_Population_getDescriptionOverrideNew_8": "tens of millions",
+  "AIRetrofit_Population_getDescriptionOverrideNew_9": "hundreds of millions",
+  "AIRetrofit_Population_getDescriptionOverrideNew_10": "billions",
 
   #Shipyard settings,
   #"AIRetrofitShipyard_Description": "Able to modify %s points-worth of ships per month. Ships cost %s/%s/%s/%s points depending on hull size.",
@@ -195,7 +227,12 @@
   "AIRetrofit_AINodeProductionFacility_Omega_D1_1": "maddeningly increase",#--
   "AIRetrofit_AINodeProductionFacility_Omega_D2_1": "greatly increase",#--
   #submarkets
+  #AIRetrofit_Shipyard
+  "AIRetrofit_Shipyard_getBuyVerb_0": "take",
+  "AIRetrofit_Shipyard_getSellVerb_0": "leave",
   #AIRetrofit_AINodeProducetionFacility
+  "AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0": "create",
+  "AIRetrofit_AINodeProduction_Submarket_getSellVerb_0": "leave",
   #Improvement
   "AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription": "Improved produced Command Node quality by %s",
   "AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription": "Command Node quality improved By %s",

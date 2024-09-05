@@ -15,7 +15,7 @@ public class AIRetrofits_StringGetterProtection {
             AIRetrofit_Log.loging("failed to get da string. error of type: "+e.getMessage(),new AIRetrofit_Log(),true);
             e.printStackTrace();
         }
-        return "ERROR: FAILED TO GET STRING";
+        return null;
 
     }
 }

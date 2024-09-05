@@ -2,16 +2,26 @@ THE GRAND DE-JANKIFICATION
 this is the process of making my mod make some fucking sense. it will be divided into a few parts.
 1) strings
     -move all strings (both from the settings.json file, and hardcoded strings) into there own json file. this file will allow easyer editing of strings.
+        stats:
+            (done. testing needed)AIWorldCode
+                (done, partly tested)AIWorldCode.industries
+                (NA)AIWorldCode.Fleet
+                (NA)AIWorldCode.FoundAMarket
+                (NA)AIWorldCode.growth
+                (done. untested) AIWorldCode.market_conditions
+                (NA)AIWorldCode.market_listiner
+                (NA)AIWorldCode.Robot_Percentage_Calculator
+                (done. untested)AIWorldCode.submarkets
+                (NA)AIWorldCode.supplyDemandClasses
+                (NA)AIWorldCode.SupportCode
+            (NA) combatabilityPatches
+            AIRetrofit_AIretrofit
+            AIRetrofit_AutomatedCrewReplacementDrones
+            AIRetrofit_PatchworkAIRetrofit
+
     -make sure to edit all the strings. go into every possable folder and fix the shit that does not work.
         -note: a lot of strings use like, 3+ strings instead of the %s system. this needs to be fixed. i should use this oprotunity to go into each string and chance it drying the editing phase.
-    -ISSUE:
-        constants file is failing to gather json data. or maybe it is working?
-        it crashes when loaded. but only when a bunch of other classes are importing it, and when it has json objects in it.
-        sollution?:
-            1) doplecate the class
-            2) remove all json objects form the first class.
-            3) slowly, bit by bit, replace each files constants class with the new class.
-            4) when it starts to crash, i will have found the issue
+    -change the way the names work to have there own set of names as a CSV file. (for ease of use)
 
 2) for robots crewReplacer_jobs:
     1) make it so robots are withen the 'crewSet' system. for real, how da fuck did i forget this!!?!!
@@ -39,6 +49,9 @@ this is the process of making my mod make some fucking sense. it will be divided
             4) make it so high hazard worlds receive a growth negative (to represent robots being destroyed by damage)
     -descriptions:
         1) make it so the most advanced AI-Cores have descriptions in the relevant industry's
+    -population and industry:
+        there is a way for people to add there own 'modifyers' of the main population building without overriding it.
+        I have no clue how this works. i need to find out and do it.
 4) update items????
     most items do nothing. i want to change that. i had this idea for a while, but now its finaly time.
     (this feels wried)
@@ -49,9 +62,13 @@ this is the process of making my mod make some fucking sense. it will be divided
     3) maybe edit the way the 'robotic interface thingy mabob' works. so its no longer like, a flush golem, but instead more like a... like a robot you talk to?? i dont know...
 5) edit the robot forge
     -this reuqires acsess to the one, the only, forge production. but i want to move my robot forge over to that, for all sorts of reasons. this will also help with some issues in the display, as well as haveing 1 > x > 0 items. becuase it forges by days.
-6) reactavate and rebuild the 'what is defending' libary
+6) reactivate and rebuild the 'what is defending' libary
     -this is something that has been on my nerves for a while now. and i dont fucking like it. i love this system, and i wanna use it dam you!
-    so, im going to make a libary, then ask the nexerlin person if they want it.
+    so, im going to make a library, then ask the nexerlin person if they want it.
+    -FOR NOW, i could just set a 'mark' of when each world was last updated for its defence modifier. when its attacked or visited, i could update that world again, or after a set amount of time?
+7) misc bugs:
+    1) AI-Retrofits can reduce max crew by more then it reduces min crew? unknown how it does that.
+    2) AI-Retrofits mod causes signifacantly increased load times when adding / removing flux caps/vents. need to investagate
 
 Ground battle unit defs are now moddable, can add new ones or modify existing ones in data/config/exerelin/groundBattleDefs.json
 Player can create units with modded unit types if the unit def allows it

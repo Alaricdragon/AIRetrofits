@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
@@ -90,6 +91,6 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
         String[] exstra = {"" + (int)(BetaDefenceMulti*bonus)};
-        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText),pad,highlight,exstra);
     }
 }

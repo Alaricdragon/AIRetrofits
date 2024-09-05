@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
@@ -87,7 +88,7 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         Color highlight = Misc.getHighlightColor();
         float bonus = getCombatMulti();
         String[] exstra = {"" + ((bonus - 1) * 100) + "%"};
-        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText),pad,highlight,exstra);
     }
 
 

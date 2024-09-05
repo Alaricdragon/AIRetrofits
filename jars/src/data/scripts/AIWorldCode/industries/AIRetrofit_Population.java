@@ -12,6 +12,7 @@ import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.loading.IndustrySpecAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
@@ -46,6 +47,19 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
     private final static String C6 = "AIretrofit_SubCommandNode";//replaces ORGANICS
     private final static String C7 = "AIretrofit_WorkerDrone";
 
+    private static final String AIRetrofit_Population_getDescriptionOverrideNew_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_0");
+    private static final String[] peoples = {
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_1"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_2"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_3"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_4"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_5"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_6"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_7"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_8"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_9"),
+            AIRetrofits_StringGetterProtection.getString("AIRetrofit_Population_getDescriptionOverrideNew_10"),
+    };
     @Override
     public void apply() {
         //market.getPlanetEntity().getSpec().getCoronaSize()
@@ -75,18 +89,6 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
         }
     }
     protected String getDescriptionOverrideNew() {
-        String[] peoples = {
-                "an handful",
-                "tens",
-                "hundreds",
-                "thousands",
-                "tens of thousands",
-                "hundreds of thousands",
-                "millions",
-                "tens of millions",
-                "hundreds of millions",
-                "billions"
-        };
         int size = market.getSize();
         String cid = null;
         if (size >= 1 && size <= 9) {
@@ -97,7 +99,7 @@ public class AIRetrofit_Population extends PopulationAndInfrastructure {//BaseIn
             //String[] exstra = {"" + peoples[size]};
             //marketAIDescription
             if (mcs != null) {
-                return marketAIDescription + "\n\n" + "there are " + peoples[size] + " of robotic workers active on this world";//mcs.getDesc();
+                return marketAIDescription + "\n\n" + AIRetrofits_StringHelper.getSplitString(AIRetrofit_Population_getDescriptionOverrideNew_0,peoples[size]);
             }
         }
         return super.getDescriptionOverride();

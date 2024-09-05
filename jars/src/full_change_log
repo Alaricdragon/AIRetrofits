@@ -1,7 +1,8 @@
 changelog for all my changes as i make them so i don't forget again.
 V0.9.4.2(private):
 save compatible with 0.7.20.1+
-
+    moved all string data over to strings.json.
+    started to move hardcorded string data to strings.json (form top to bottom, i got to hullmods.)
 V0.9.4.1(private):
 save compatible with 0.7.20.1+
     new: created and tested a json file reader thing, to read my files.

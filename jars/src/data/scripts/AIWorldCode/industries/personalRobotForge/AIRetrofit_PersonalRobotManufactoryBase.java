@@ -10,6 +10,7 @@ import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
@@ -157,10 +158,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     @Override
     protected void	addGammaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Gamma-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Gamma-level AI core. ";
-        }
+        String pre = getGammaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
@@ -170,22 +168,19 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
                     str);*/
             Color highlight = Misc.getHighlightColor();
             String[] exstra = {"" + ((gammaMulti - 1) * 100) + "%"};
-            text.addPara(pre + gammaDescription,pad,highlight,exstra);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,gammaDescription),pad,highlight,exstra);
 
             tooltip.addImageWithText(pad);
             return;
         }
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {"" + ((gammaMulti - 1) * 100) + "%"};
-        tooltip.addPara(pre + gammaDescription,pad,highlight,exstra);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,gammaDescription),pad,highlight,exstra);
     }
     @Override
     protected void	addBetaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Beta-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Beta-level AI core. ";
-        }
+        String pre = getBetaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
@@ -222,10 +217,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         float a = ALPHA_CORE_BONUS;
         //String str = "" + (int)Math.round(a * 100f) + "%";
         String str = Strings.X + (1f + a);*/
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
+        String pre = getAlphaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
@@ -235,14 +227,14 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
                     str);*/
             Color highlight = Misc.getHighlightColor();
             String[] exstra = {alphaDescriptionHighlighted};
-            text.addPara(pre + alphaDescription,pad,highlight,exstra);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
 
             tooltip.addImageWithText(pad);
             return;
         }
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {alphaDescriptionHighlighted};
-        tooltip.addPara(pre + alphaDescription,pad,highlight,exstra);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
     }
     @Override
     public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {
@@ -250,6 +242,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {"" + ((improvedMulti - 1) * 100) + "%"};
         info.addPara(improvedDescription,pad,highlight,exstra);
+        applyStoryText(info, mode);
     }
     @Override
     public void applyGammaCoreModifiers(){

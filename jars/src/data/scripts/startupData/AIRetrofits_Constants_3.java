@@ -49,8 +49,8 @@ public class AIRetrofits_Constants_3 {
 
     //Robot Stats And Descriptions
     public static final String robot_Description = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerDescription");//"this robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot";
-    public static final String robot_SizeDescriptions = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotCargoDescription");
-    final public static String robot_baseText = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerNoCoreMessage");
+    public static final String robot_SizeDescriptions = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotCargoDescription");
+    final public static String robot_baseText = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotPowerNoCoreMessage");
     public static final float robot_baseBonus = Global.getSettings().getFloat("AIRetrofits_BaseMulti");
     public static final float[] robot_AICoreBonus = {
             Global.getSettings().getFloat("AIRetrofits_OmegaMulti"),
@@ -166,14 +166,14 @@ public class AIRetrofits_Constants_3 {
             Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewCRUISER"),
             Global.getSettings().getFloat("AIRetrofitShipyard_Credits_perCrewCAPITAL_SHIP"),
     };
-    public final static String ASIC_NotificationCredits = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_credits");
-    public final static String ASIC_NotificationBonusXP = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_bonusXP");
-    public final static String ASIC_NotificationMarket = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_market");
-    public final static String ASIC_NotificationType = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_type");
+    public final static String ASIC_NotificationCredits = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_credits");
+    public final static String ASIC_NotificationBonusXP = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_bonusXP");
+    public final static String ASIC_NotificationMarket = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_market");
+    public final static String ASIC_NotificationType = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Notification_type");
     public final static float ASIC_bonusXPForRemoveSMod = 0;
 
-    public final static String ASIC_Description_SPM = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description_shipPerMomth");
-    public final static String ASIC_Description_CPS = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description_creditsPerShip");
+    public final static String ASIC_Description_SPM = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description_shipPerMomth");
+    public final static String ASIC_Description_CPS = AIRetrofits_StringGetterProtection.getString("AIRetrofitShipyard_Description_creditsPerShip");
     //fleet changing crew and admins:
     public static final boolean fleetChange_ChangeCrew = Global.getSettings().getBoolean("AIRetrofits_SwapAICrew");
     //HERE swap this info out with something in an config please.
@@ -200,14 +200,14 @@ public class AIRetrofits_Constants_3 {
     public static final String Market_GrowthMod_FactionWideRobotFactorys = "FactionWideRobotFactory's";
     public static final String Market_GrowthMod_AIRetrofits_RobotFactoryGrowthMod = "AIRetrofits_RobotFactoryGrowthMod";
     //growth descriptions
-    public static final String Market_GrowthDescription_hazzardPay = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
+    public static final String Market_GrowthDescription_hazzardPay = AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_hazzardPayDescription");//"Building robots with hazard pay";
     //public static final String Market_GrowthDescription_population_AIRetrofit_0 = "";//not required
     //public static final String Market_GrowthDescription_population_AIRetrofit_1 = "";
     //public static final String Market_GrowthDescription_population_AIRetrofit_2 = "";
     public static final String Market_GrowthDescription_AIRetrofits_BasicDroneFactory_0 = "";//not required
     //public static final String Market_GrowthDescription_AIRetrofits_AdvancedDroneFactory_0 = "";//unused
-    public static final String Market_GrowthDescription_LocalRobotFactorys = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
-    public static final String Market_GrowthDescription_FactionWideRobotFactorys = "";//AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_T2GrowthDescription");;
+    public static final String Market_GrowthDescription_LocalRobotFactorys = AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_T1GrowthDescription");//"Robots are being produced in this system, providing system wide market growth";
+    public static final String Market_GrowthDescription_FactionWideRobotFactorys = AIRetrofits_StringGetterProtection.getString("AIRetrofits_MarketGrowth_T2GrowthDescription");;
     public static final String Market_GrowthDescription_AIRetrofits_RobotFactoryGrowthMod = "";//not required
 
 

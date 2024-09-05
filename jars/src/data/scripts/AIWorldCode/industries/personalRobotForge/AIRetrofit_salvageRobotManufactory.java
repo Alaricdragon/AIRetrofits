@@ -8,6 +8,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
@@ -76,7 +77,7 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
         String[] exstra = {"" + (BetaGrowthMod*bonus)};
-        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText),pad,highlight,exstra);
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {

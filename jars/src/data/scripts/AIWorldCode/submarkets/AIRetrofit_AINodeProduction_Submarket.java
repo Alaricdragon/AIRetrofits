@@ -66,6 +66,8 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float MaPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega");
     public static final float PI_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega");
 
+    private static final String AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0");
+    private static final String AIRetrofit_AINodeProduction_Submarket_getSellVerb_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProduction_Submarket_getSellVerb_0");
     @Override
     public void reportPlayerMarketTransaction(PlayerMarketTransaction transaction) {
         super.reportPlayerMarketTransaction(transaction);
@@ -239,11 +241,11 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     }
     @Override
     public String getBuyVerb() {
-        return "create";
+        return AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0;
     }
     @Override
     public String getSellVerb() {
-        return "leave";
+        return AIRetrofit_AINodeProduction_Submarket_getSellVerb_0;
     }
     @Override
     public boolean 	showInFleetScreen(){

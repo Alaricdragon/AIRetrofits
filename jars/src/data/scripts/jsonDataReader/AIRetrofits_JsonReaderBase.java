@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AIRetrofits_JsonReaderBase {
+    private static boolean started = false;
     private static AIRetrofits_JsonReaderBase[] readers;
     public static final String STRING_FILE_NAME = "data/config/AIRetrofits/strings.json";
     public String file,mod;
@@ -15,6 +16,7 @@ public class AIRetrofits_JsonReaderBase {
     protected String[] ObjectName;
     protected JSONObject[] Array;
     public static void startup() throws JSONException {
+        started = true;
         readers = new AIRetrofits_JsonReaderBase[]{
             new AIRetrofits_JsonReaderBase(STRING_FILE_NAME, AIRetrofits_Constants_2.ModID)
         };
@@ -44,7 +46,15 @@ public class AIRetrofits_JsonReaderBase {
             AIRetrofit_Log.loging("ERROR: failed to get json data. mod, data file, parameters"+this.mod+", "+this.file+", "+name.toString(),this,true);
         }
     }
+    public static void ifnullstartup() {
+        try {
+            if (!started) startup();
+        }catch (Exception e){
+            AIRetrofit_Log.loging("ERROR: "+e,new AIRetrofit_Log(),true);
+        }
+    }
     public static AIRetrofits_JsonReaderBase getReader(String name){
+        ifnullstartup();
         for (int a = 0; a < readers.length; a++){
             //AIRetrofit_Log.loging("getting name, check as: "+readers[a].file+", "+name,readers[a],true);
             if (readers[a].file.equals(name)) {

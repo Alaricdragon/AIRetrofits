@@ -6,6 +6,7 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
@@ -58,51 +59,42 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
+        String pre = getAlphaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
-            text.addPara(pre + alphaDescription,pad);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad);
             tooltip.addImageWithText(pad);
             return;
         }
-        tooltip.addPara(pre + alphaDescription,pad);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad);
     }
     @Override
     protected void	addBetaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Beta-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Beta-level AI core. ";
-        }
+        String pre = getBetaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
-            text.addPara(pre + betaDescription,pad);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,betaDescription),pad);
             tooltip.addImageWithText(pad);
             return;
         }
-        tooltip.addPara(pre + betaDescription,pad);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,betaDescription),pad);
 
     }
     @Override
     protected void	addGammaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Gamma-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Gamma-level AI core. ";
-        }
+        String pre = getGammaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
-            text.addPara(pre + gammaDescription,pad);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,gammaDescription),pad);
             tooltip.addImageWithText(pad);
             return;
         }
-        tooltip.addPara(gammaDescription,pad);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,gammaDescription),pad);
 
     }
 
@@ -130,15 +122,7 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
         } else {
             info.addPara(improvedDescription, 0f, highlight, aStr);
         }
-
-        info.addSpacer(opad);
-        //super.addImproveDesc(info, mode);
-        float initPad = 0f;
-        if (mode != ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
-            info.addPara("Each improvement made at a colony doubles the number of " +
-                            "" + Misc.STORY + " points required to make an additional improvement.", initPad,
-                    Misc.getStoryOptionColor(), Misc.STORY + " points");
-        }
+        applyStoryText(info, mode);
     }
     @Override
     protected void	addPostDescriptionSection(TooltipMakerAPI tooltip, Industry.IndustryTooltipMode mode){

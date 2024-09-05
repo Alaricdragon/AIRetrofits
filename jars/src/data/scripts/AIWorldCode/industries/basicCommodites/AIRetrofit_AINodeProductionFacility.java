@@ -7,6 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.AIWorldCode.submarkets.AIRetrofit_AINodeProduction_Submarket;
@@ -104,57 +105,48 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
+        String pre = getAlphaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
-            applyCoreTooltip(text,pre+BaseAICoreDescription_1,AICore_descriptions_A_0_1,AICore_descriptions_A_1_1,AICore_descriptions_A_2_1);
+            applyCoreTooltip(text, AIRetrofits_StringHelper.getSplitString(pre,BaseAICoreDescription_1),AICore_descriptions_A_0_1,AICore_descriptions_A_1_1,AICore_descriptions_A_2_1);
             //text.addPara(pre + alphaDescription,pad);
             tooltip.addImageWithText(pad);
             return;
         }
-        applyCoreTooltip(tooltip,pre+BaseAICoreDescription_1,AICore_descriptions_A_0_1,AICore_descriptions_A_1_1,AICore_descriptions_A_2_1);
+        applyCoreTooltip(tooltip,AIRetrofits_StringHelper.getSplitString(pre,BaseAICoreDescription_1),AICore_descriptions_A_0_1,AICore_descriptions_A_1_1,AICore_descriptions_A_2_1);
         //tooltip.addPara(pre + alphaDescription,pad);
     }
     @Override
     protected void	addBetaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Beta-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Beta-level AI core. ";
-        }
+        String pre = getBetaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
-            applyCoreTooltip(text,pre+BaseAICoreDescription_1,AICore_descriptions_Be_0_1,AICore_descriptions_Be_1_1,AICore_descriptions_Be_2_1);
+            applyCoreTooltip(text,AIRetrofits_StringHelper.getSplitString(pre,BaseAICoreDescription_1),AICore_descriptions_Be_0_1,AICore_descriptions_Be_1_1,AICore_descriptions_Be_2_1);
             //text.addPara(pre + betaDescription,pad);
             tooltip.addImageWithText(pad);
             return;
         }
-        applyCoreTooltip(tooltip,pre+BaseAICoreDescription_1,AICore_descriptions_Be_0_1,AICore_descriptions_Be_1_1,AICore_descriptions_Be_2_1);
+        applyCoreTooltip(tooltip,AIRetrofits_StringHelper.getSplitString(pre,BaseAICoreDescription_1),AICore_descriptions_Be_0_1,AICore_descriptions_Be_1_1,AICore_descriptions_Be_2_1);
         //tooltip.addPara(pre + betaDescription,pad);
 
     }
     @Override
     protected void	addGammaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Gamma-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Gamma-level AI core. ";
-        }
+        String pre = getGammaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
             //text.addPara(pre + gammaDescription,pad);
-            applyCoreTooltip(text,BaseAICoreDescription_1,AICore_descriptions_G_0_1,AICore_descriptions_G_1_1,AICore_descriptions_G_2_1);
+            applyCoreTooltip(text,AIRetrofits_StringHelper.getSplitString(pre,BaseAICoreDescription_1),AICore_descriptions_G_0_1,AICore_descriptions_G_1_1,AICore_descriptions_G_2_1);
 
             tooltip.addImageWithText(pad);
             return;
         }
-        applyCoreTooltip(tooltip,BaseAICoreDescription_1,AICore_descriptions_G_0_1,AICore_descriptions_G_1_1,AICore_descriptions_G_2_1);
+        applyCoreTooltip(tooltip,AIRetrofits_StringHelper.getSplitString(pre,BaseAICoreDescription_1),AICore_descriptions_G_0_1,AICore_descriptions_G_1_1,AICore_descriptions_G_2_1);
         //tooltip.addPara(gammaDescription,pad);
 
     }
@@ -165,7 +157,6 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
     }
     @Override
     public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {
-        float opad = 10f;
         Color highlight = Misc.getHighlightColor();
 
         String aStr = "" + ((100 * AIRetrofit_AINodeProduction_Submarket.PM_I)-100) + "%";
@@ -175,14 +166,7 @@ public class AIRetrofit_AINodeProductionFacility extends AIRetrofit_IndustryBase
         } else {
             info.addPara(improvedDescription, 0f, highlight, aStr);
         }
-
-        info.addSpacer(opad);
-        float initPad = 0f;
-        if (mode != ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
-            info.addPara("Each improvement made at a colony doubles the number of " +
-                            "" + Misc.STORY + " points required to make an additional improvement.", initPad,
-                    Misc.getStoryOptionColor(), Misc.STORY + " points");
-        }
+        applyStoryText(info, mode);
     }
     @Override
     protected void	addPostDescriptionSection(TooltipMakerAPI tooltip, Industry.IndustryTooltipMode mode){
