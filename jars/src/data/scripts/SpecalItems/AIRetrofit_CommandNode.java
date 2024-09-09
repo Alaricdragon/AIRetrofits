@@ -77,15 +77,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         //}
         AIRetrofit_Log.pop();
     }
-    /*
-    @Override
-    public void render(float x, float y, float w, float h, float alphaMult,
-                       float glowMult, SpecialItemRendererAPI renderer) {
-    }*/
-
     @Override
     public String getId(){
-        //fixStack();
         return super.getId();
     }
 
@@ -104,7 +97,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     protected int timesTriedToAddPerson = 0;
     @Override
     public void performRightClickAction(){
-        //super.performRightClickAction();
         if(timesTriedToAddPerson > 1) return;
         AIRetorfit_CommandNodeTypesBase temp = findPersonType();
         if(temp != null){
@@ -134,53 +126,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         super.addCostLabel(tooltip, pad, transferHandler, stackSource);
     }
 
-    /*public void toolTipOfficer(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
-            float pad = 3f;
-            float opad = 10f;
-            Color highlight = Misc.getHighlightColor();
-            String type = officerText;
-            TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
-            text.addPara(officerText2,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel(),person.getPersonalityAPI().getDisplayName());
-            tooltip.addImageWithText(opad);
-            if(expanded){
-                tooltip.addSkillPanel(person,pad);
-            }
-        }
-        public void toolTipAdmin(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
-            float pad = 3f;
-            float opad = 10f;
-            Color highlight = Misc.getHighlightColor();
-            List<MutableCharacterStatsAPI.SkillLevelAPI> skills = person.getStats().getSkillsCopy();
-            int level = 0;
-            for(int a = 0; a < skills.size(); a++){
-                if(skills.get(a).getSkill().isAdminSkill()){
-                    level++;
-                }
-            }
-            String type = adminText;
-            TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
-            text.addPara(adminText2,pad,highlight,person.getNameString(),type,""+level);
-            tooltip.addImageWithText(opad);
-            if(expanded){
-                //TextPanelAPI.addSkillPanel(person, true);
-                //text.;
-                //tooltip.addIconGroup(5);
-                //ArrayList<String> skillsTemp = new ArrayList<>();
-                List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
-                for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
-                    MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-                    if (a.getSkill().isAdminSkill()) {
-                        //skillsTemp.add(a.getSkill().getSpriteName());
-                        //tooltip.addImage();
-                        //tooltip.addPara(a.getSkill().getName(),5);
-                        //TooltipMakerAPI text3 = tooltip.beginImageWithText(a.getSkill().getSpriteName(),30);
-                        text.addImage(a.getSkill().getSpriteName(),30);
-                        text.addPara(a.getSkill().getName(), opad);
-                        //tooltip.addImageWithText(opad);
-                    }
-                }
-            }
-        }*/
     public void toolTipNull(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
         float pad = 3f;
         float opad = 10f;
@@ -194,7 +139,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
 
     @Override
     public int getPrice(MarketAPI market, SubmarketAPI submarket) {
-        //this.doctrine = market.getFaction().getDoctrine();
         return super.getPrice(market, submarket);
     }
     @Override
@@ -207,7 +151,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         for(AIRetorfit_CommandNodeTypesBase a : AIRetrofits_CreatePeople.CommandNodeTypes){
             if(a.isMyTypeOfCommandNode(person)){
                 return a;
-                //a.commandNodeTooltip(tooltip,expanded,transferHandler,stackSource,this);
             }
         }
         return null;

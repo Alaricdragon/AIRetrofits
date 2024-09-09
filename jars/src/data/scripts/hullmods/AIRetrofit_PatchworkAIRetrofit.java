@@ -10,6 +10,7 @@ import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
@@ -42,9 +43,8 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
     //private static final float MALFUNCTION_CHANCE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE");
     //private static final float MALFUNCTION_CHANCE2 = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_MALFUNCTION_CHANCE2");
 
-    private static final String CanChangeHullMod1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText1");
-    private static final String CanChangeHullMod2 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText2");
     private static final String CantChangeHullMod = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CantSwapText");
+    private static final String CanChangeHullMod1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText1");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id/*, MutableCharacterStatsAPI c*/) {
         //a.0)
@@ -117,7 +117,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
                     AIRetrofit_Log.loging("failed to get a parm. error: " + e,this,true);
                     return "" + CantChangeHullMod;
                 }
-                return "" + CanChangeHullMod1  + Global.getSettings().getHullModSpec(AIRetrofits_Constants_3.Hullmod_AIRetrofit).getDisplayName() + CanChangeHullMod2;
+                return AIRetrofits_StringHelper.getSplitString(CanChangeHullMod1,Global.getSettings().getHullModSpec(AIRetrofits_Constants_3.Hullmod_AIRetrofit).getDisplayName());
         }
         return null;
     }
@@ -224,7 +224,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         try {
             String hullmods = incompatibleHullMods(ship);
             if (hullmods != null) {
-                return IncombatableReasons[0] + hullmods;//"not compatible with: " + hullmods;
+                return AIRetrofits_StringHelper.getSplitString(IncombatableReasons[0],hullmods);//"not compatible with: " + hullmods;
             }
             if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")) {
                 return IncombatableReasons[1];//"cannot be installed on a drone ship, or a ship that otherwise has no crew requirements";
@@ -236,7 +236,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
             int cost = GetExstraOpCost(MinCrew, hullsize);
             int Base_cost = this.spec.getCostFor(hullsize);
             if (!(cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod(this.spec.getId()))) {
-                return IncombatableReasons[2] + (cost + Base_cost);//"op cost: " + (cost + Base_cost);
+                return AIRetrofits_StringHelper.getSplitString(IncombatableReasons[2],""+(cost + Base_cost));//"op cost: " + (cost + Base_cost);
             }
         }catch (Exception E){
             AIRetrofit_Log.loging("Error: failed to run getUnapplicableReason. wonder why?",this,true);

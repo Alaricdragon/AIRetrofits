@@ -1,11 +1,12 @@
-package data.scripts;
+package data.scripts.startupData;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoStackAPI;
 import com.fs.starfarer.api.campaign.listeners.CommodityTooltipModifier;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants_3;
+import data.scripts.AIRetrofit_Robots;
+import data.scripts.crewReplacer_Main;
 
 import java.awt.*;
 

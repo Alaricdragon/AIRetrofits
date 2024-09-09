@@ -12,7 +12,6 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
     }
     public AIRetrofit_CommandNode_SpecalItemData(String id, String data) {
         super(id, data);
-        //AIRetrofits_CreatePeople.createPerson();
     }
     public PersonAPI getPerson(){
         return person;
@@ -71,6 +70,4 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
         } else return person.equals(other.person);
 
     }
-    //String personType = "";
-
 }

@@ -174,6 +174,7 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
     private static final String admenConfirmPage_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0");
     private static final String admenConfirmPage_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1");
     private static final String admenConfirmPage_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2");
+    private static final String admenConfirmPage_3 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_3");
     private static final String exitAdmen_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0");
     private static final String exitAdmen_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1");
     private static final int administratorCreditCost = AIRetrofits_Constants_3.RobotForge_administratorCreditCost;//Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
@@ -208,7 +209,7 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
         dialog.getTextPanel().addPara(admenConfirmPage_1,highlight,new String[]{"" + administratorCreditsPerMomth});//"the officer you create will cost " + administratorCreditsPerMomth + "per month. at an reduced cost if they are not doing anything.");
         dialog.getTextPanel().addPara(admenConfirmPage_2,highlight, "" + administratorSubCommandNodeCost,"" + administratorCreditCost);//"you require " + administratorSubCommandNodeCost + " sub command node and " + administratorCreditCost + " credits to create an administrator");
         if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= administratorSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= administratorCreditCost){
-            options.addOption("continue","createAdmen");
+            options.addOption(admenConfirmPage_3,"createAdmen");
         }
         SetStoryOption.set(dialog,1,"createAdmen","promoteCrewMember","ui_char_spent_story_point","");
         AIRetrofits_Dialog_PeopleMaker.addBack(options);

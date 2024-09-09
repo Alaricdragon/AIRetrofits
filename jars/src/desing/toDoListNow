@@ -1,7 +1,7 @@
 THE GRAND DE-JANKIFICATION
 this is the process of making my mod make some fucking sense. it will be divided into a few parts.
 1) strings
-    -move all strings (both from the settings.json file, and hardcoded strings) into there own json file. this file will allow easyer editing of strings.
+    -(DONE. testing required)move all strings (both from the settings.json file, and hardcoded strings) into there own json file. this file will allow easyer editing of strings.
         stats:
             (done. testing needed)AIWorldCode
                 (done, partly tested)AIWorldCode.industries
@@ -15,12 +15,23 @@ this is the process of making my mod make some fucking sense. it will be divided
                 (NA)AIWorldCode.supplyDemandClasses
                 (NA)AIWorldCode.SupportCode
             (NA) combatabilityPatches
-            AIRetrofit_AIretrofit
-            AIRetrofit_AutomatedCrewReplacementDrones
-            AIRetrofit_PatchworkAIRetrofit
-
+            (done. testing needed)hullmods
+            (NA) json data reader
+            (NA) listeners
+            (NA) memory
+            (done. testing needed) notifications.AIRetrofit_ShipyardNotification
+            (done. requires testing)robot_forge
+            (NA) SpecalItems
+            (NA) startupData
     -make sure to edit all the strings. go into every possable folder and fix the shit that does not work.
-        -note: a lot of strings use like, 3+ strings instead of the %s system. this needs to be fixed. i should use this oprotunity to go into each string and chance it drying the editing phase.
+        -NOTE: the base starsector capitalization style: is capitals on the first word / after sentences. this is something that someone asked me to fix, so i will do so.
+        now, the steps in this process:
+        1)(done) fix all spelling / grammer errors i can find.
+        2) open the game and go over every single thing, one at a time. this lets be view whats broken, and whats not.
+            -note: lots of things that i should limit the numbers of decimos on, or simply round to hull numbers. i will need to remember to do that.
+            -Misc.getRoundedValueMaxOneAfterDecimal
+
+        3) repeat 1,2. but for things in CSV files. all of them.
     -change the way the names work to have there own set of names as a CSV file. (for ease of use)
 
 2) for robots crewReplacer_jobs:

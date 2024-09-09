@@ -234,6 +234,13 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
     private static final String officerConfirmPage_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0");
     private static final String officerConfirmPage_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1");
     private static final String officerConfirmPage_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2");
+    private static final String officerConfirmPage_3 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_3");
+    private static final String officerConfirmPage_4 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_4");
+    private static final String officerConfirmPage_5 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_5");
+    private static final String officerConfirmPage_6 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_6");
+    private static final String officerConfirmPage_7 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_7");
+    private static final String officerConfirmPage_8 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_8");
+    private static final String officerConfirmPage_9 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_9");
     private static final String exitOfficer_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0");
     private static final String exitOfficer_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1");
     private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
@@ -284,7 +291,7 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         exstras = new String[]{"" + officerSubCommandNodeCost, "" + officerCreditCost};
         dialog.getTextPanel().addPara(officerConfirmPage_2,highlight,exstras);//"you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
         if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost){
-            options.addOption("continue","createOfficer");
+            options.addOption(officerConfirmPage_3,"createOfficer");
         }
         SetStoryOption.set(dialog,1,"createOfficer","promoteCrewMember","ui_char_spent_story_point","");
         AIRetrofits_Dialog_PeopleMaker.addBack(options);
@@ -293,15 +300,15 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
     public void startPage(OptionPanelAPI options, InteractionDialogAPI dialog, String optionText, Object optionData){
         dialog.getTextPanel().addPara(officerPage_0);
         options.clearOptions();
-        options.addOption("Timid","officerConfirmPage_0");
-        options.addOption("Cautious","officerConfirmPage_1");
-        options.addOption("Steady","officerConfirmPage_2");
-        options.addOption("Aggressive","officerConfirmPage_3");
-        options.addOption("Reckless","officerConfirmPage_4");
+        options.addOption(officerConfirmPage_4,"officerConfirmPage_0");
+        options.addOption(officerConfirmPage_5,"officerConfirmPage_1");
+        options.addOption(officerConfirmPage_6,"officerConfirmPage_2");
+        options.addOption(officerConfirmPage_7,"officerConfirmPage_3");
+        options.addOption(officerConfirmPage_8,"officerConfirmPage_4");
         //fearless dose not work. no idea why.
         //this.options.addOption("fearless","officerConfirmPage_5");
 
-        options.addOption("back","menu");
+        options.addOption(officerConfirmPage_9,"menu");
     }
     @Override
     public void confermPage(OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){

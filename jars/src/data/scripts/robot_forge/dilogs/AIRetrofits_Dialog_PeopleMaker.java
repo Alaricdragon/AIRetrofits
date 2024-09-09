@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
+    protected static final String String_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMenu_0");
+    protected static final String String_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMenu_1");
+    protected static final String String_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMenu_2");
     public static ArrayList<AIRetorfit_CommandNodeTypesBase> peopleTypes = new ArrayList<>();
     TextPanelAPI text;
     InteractionDialogAPI dialog;
@@ -39,7 +42,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         /*this.options.addOption("create admen","admen","requires a sub command node");
         this.options.addOption("create officer","officer","requires a sub command node");*/
         }
-        this.options.addOption("back","back");
+        this.options.addOption(String_0,"back");
     }
 
 
@@ -65,10 +68,10 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         dialog.dismiss();
     }
     public static void addExit(OptionPanelAPI options){
-        options.addOption("exit","exit");
+        options.addOption(String_1,"exit");
     }
     public static void addBack(OptionPanelAPI options){
-        options.addOption("back","menu");
+        options.addOption(String_2,"menu");
     }
     @Override
     public void optionSelected(String optionText, Object optionData) {
@@ -105,52 +108,6 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
                 stat++;
                 return;
         }
-        /*switch(option){
-            case "back":
-                back();
-                break;
-            case "exit":
-                exit();
-                break;
-            case "menu":
-                mainPage();
-                break;
-            case "officer":
-                officerPage();
-                break;
-            case "admen":
-                admenConfirmPage();
-                break;
-            case "officerConfirmPage_0":
-                officerConfirmPage(0);
-                break;
-            case "officerConfirmPage_1":
-                officerConfirmPage(1);
-                break;
-            case "officerConfirmPage_2":
-                officerConfirmPage(2);
-                break;
-            case "officerConfirmPage_3":
-                officerConfirmPage(3);
-                break;
-            case "officerConfirmPage_4":
-                officerConfirmPage(4);
-                break;
-            case "officerConfirmPage_5":
-                officerConfirmPage(5);
-                break;
-            //case "admenConfirmPage":
-                //admenConfirmPage();
-                //break;
-            case "createOfficer":
-                createOfficer(temp);
-                exitOfficer();
-                break;
-            case "createAdmen":
-                createAdmen();
-                exitAdmen();
-                break;
-        }*/
     }
 
     @Override

@@ -12,6 +12,8 @@ import com.fs.starfarer.api.impl.campaign.ids.Items;
 import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofits_StringHelper;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.util.List;
 
@@ -19,37 +21,26 @@ import static data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary.*;
 
 public class AIRetrofits_RobotForge extends BaseToggleAbility {
     public static final Color CONTRAIL_COLOR = new Color(255, 97, 27, 80);
+    protected static final String String_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_0");
+    protected static final String String_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_1");
+    protected static final String String_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_2");
+    protected static final String String_3 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_3");
+    protected static final String String_4 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_4");
+    protected static final String String_5 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_5");
+    protected static final String String_6 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_6");
+    protected static final String String_7 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_7");
+    protected static final String String_8 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_8");
+    protected static final String String_9 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_9");
+    protected static final String String_10 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_10");
+    protected static final String String_11 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_11");
+    protected static final String String_12 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_12");
+    protected static final String String_13 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_13");
+    protected static final String String_14 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForge_Ability_14");
 
-    //public float getSupplyPerMetal() {
-        //int a = 0;
-        //(Global.getSettings().getFloat("Automated_Retrofits_MetalConversionRate")
-        //        * (Global.getSector().getEconomy().getCommoditySpec(Commodities.HEAVY_MACHINERY).getBasePrice() +
-        //        5*Global.getSector().getEconomy().getCommoditySpec(Commodities.METALS).getBasePrice())
-        //        / Global.getSector().getEconomy().getCommoditySpec(Commodities.SUPPLIES).getBasePrice())
-    //    return (Global.getSettings().getFloat("Automated_Retrofits_MetalConversionRate")
-    //            * (Global.getSector().getEconomy().getCommoditySpec(Commodities.HEAVY_MACHINERY).getBasePrice() + 5*Global.getSector().getEconomy().getCommoditySpec(Commodities.METALS).getBasePrice())
-    //            / Global.getSector().getEconomy().getCommoditySpec(Commodities.SUPPLIES).getBasePrice())
-    //            ;
-    //}
-    //public int MoreCoom() {
-    //    return Global.getSettings().getInt("UseExtraCommodities");
-    //}
-    //float MetalCost = Global.getSettings().getFloat("Automated_Retrofits_MetalCost");
-    //float HeavyMachineryCost = Global.getSettings().getFloat("Automated_Retrofits_HeavyMachineryCost");
+
+
     static int a = -1;
     boolean startups = true;
-    /*static float CorruptedMetalMultiplier = Global.getSettings().getFloat("AIRetrofits_CorruptedMetal");
-    static float PristineMetalMultiplier = Global.getSettings().getFloat("AIRetrofits_PristineMetal");
-    static float SalvageModifier = Global.getSettings().getFloat("AIRetrofits_SalvageGantry");
-    static float ForgePowerMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgeMulti");*/
-    //boolean affectInput = Global.getSettings().getBoolean("Automated_Retrofits_Input");
-    //boolean affectOutput = Global.getSettings().getBoolean("Automated_Retrofits_Output");
-
-
-    //static String[][] produce;
-    //static String[][] requirements;
-    //static float[][] produceNumbers;
-    //static float[][] requirementsNumbers;
     @Override
     protected String getActivationText() {
         /*        if (Commodities.HEAVY_MACHINERY != null
@@ -74,7 +65,7 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         if(iCalculateBonus(getFleet()) == 0){
             CampaignFleetAPI fleet = getFleet();
             deactivate();
-            fleet.addFloatingText("No Automated Drone Factory's installed on ships in fleet. cannot produce anything", Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
+            fleet.addFloatingText(String_0, Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
         }else if (this.entity.isPlayerFleet()) {
             CampaignFleetAPI fleet = this.getFleet();
             Global.getSector().getCampaignUI().showInteractionDialog(new AIRetrofits_RobotForgeDiologPlugin2(), fleet);
@@ -90,9 +81,9 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         //Color gray = Misc.getGrayColor();
         Color highlight = Misc.getHighlightColor();
 
-        String status = " (off)";
+        String status = String_1;
         if (turnedOn) {
-            status = " (on)";
+            status = String_2;
         }else{
             a = -1;
         }
@@ -119,95 +110,35 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
             startups = false;
             return;
         }
-        //oldHERE (DONE!). most work will need to go here
         CampaignFleetAPI fleet = getFleet();
         if (fleet == null) return;
 
         if(!isActive()) return;
 
-        //fleet.getStats().getDetectedRangeMod().modifyPercent(getModId(), data.scripts.AIRetrofits_RobotForgeSecondary.SENSOR_PROFILE_INCREASE_PERCENT, "Supply Forging");
-
         float days = Global.getSector().getClock().convertToDays(amount);
         float cost = days;
         float supply;// = fleet.getCargo().getCommodityQuantity(Commodities.SUPPLIES);
         boolean continueing = true;
-        //oldHERE however is relevent to my build. gets when im out of res or space to build things. might remove out of space though.
         if(iCalculateBonus(getFleet()) == 0){
             continueing = false;
-            fleet.addFloatingText("No Automated Drone Factory's installed on ships in fleet. cannot produce anything", Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
+            fleet.addFloatingText(String_3, Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
             deactivate();
         }
         if(!AIRetrofits_ForgeList.items.get(a).canForge(fleet)) {
             continueing = false;
             AIRetrofits_ForgeList.items.get(a).getCantBuildPopup(fleet, entity);
-            //getFleet().addFloatingText("" + a, Misc.setAlpha(entity.getIndicatorColor(), 255), 1f);
             deactivate();
         }
-        /*for(int b = 0; b < requirements[a].length; b++){
-            if(fleet.getCargo().getCommodityQuantity(requirements[a][b]) <= 0){
-                continueing = false;
-                fleet.addFloatingText("Out of " + requirements[a][b], Misc.setAlpha(entity.getIndicatorColor(), 255), 0.5f);
-                deactivate();
-                break;
-            }
-        }*///DONEHERE
         if(fleet.getCargo().getSpaceLeft() <= 0){
             continueing = false;
-            fleet.addFloatingText("RobotForge deactivated. out of cargo space", Misc.setAlpha(entity.getIndicatorColor(), 255), 1f);
+            fleet.addFloatingText(String_4, Misc.setAlpha(entity.getIndicatorColor(), 255), 1f);
             deactivate();
         }
-        /*for (int b = 0; b < produce[a].length; b++) {
-            supply = fleet.getCargo().getCommodityQuantity(produce[a][b]);
-            if(supply >= fleet.getCargo().getMaxCapacity()){
-                continueing = false;
-                fleet.addFloatingText("Full of " + produce[a][b], Misc.setAlpha(entity.getIndicatorColor(), 255), 0.5f);
-                deactivate();
-                break;
-            }
-        }*///DONEHERE
-        //}
         if(continueing) {
             float basedmodifier = iCalculateBonus(getFleet());
             AIRetrofits_ForgeList.items.get(a).runForge(fleet,cost * basedmodifier);
-            /*for (int b = 0; b < requirements[a].length; b++) {
-                fleet.getCargo().removeCommodity(requirements[a][b], cost * requirementsNumbers[a][b] * basedmodifier);
-            }
-
-
-            for (int b = 0; b < produce[a].length; b++) {
-                fleet.getCargo().addCommodity(produce[a][b], cost*produceNumbers[a][b]*basedmodifier);
-            }*/
-            //for (FleetMemberViewAPI view : getFleet().getViews()) {//oldHERE think this changes what color my fleet is as it makes things
-            //    view.getContrailColor().shift("timidhavenoidea", CONTRAIL_COLOR, getActivationDays(), 2, 1f);
-            //    view.getContrailWidthMult().shift("timidhavenoidea", 6, getActivationDays(), 2, 1f);
-            //}
         }//DONEHERE
-        /*if(continueing){
 
-            //oldHERE affect Input/Output is not needed. it just says werether or not to add/remove items. that math will need to be changed though
-            if (affectInput) {fleet.getCargo().removeCommodity(Commodities.METALS, cost*MetalCost*basedmodifier);fleet.getCargo().removeCommodity(Commodities.HEAVY_MACHINERY, cost*HeavyMachineryCost*basedmodifier);} else {fleet.getCargo().removeCommodity(Commodities.METALS, cost*MetalCost);fleet.getCargo().removeCommodity(Commodities.HEAVY_MACHINERY, cost*HeavyMachineryCost);}
-            if (affectOutput) {fleet.getCargo().addCommodity(Commodities.SUPPLIES, cost*getSupplyPerMetal()*basedmodifier);} else {fleet.getCargo().addCommodity(Commodities.SUPPLIES, cost*getSupplyPerMetal());}
-            for (FleetMemberViewAPI view : getFleet().getViews()) {
-                view.getContrailColor().shift("timidhavenoidea", CONTRAIL_COLOR, getActivationDays(), 2, 1f);
-                view.getContrailWidthMult().shift("timidhavenoidea", 6, getActivationDays(), 2, 1f);
-            }
-        }*/
-        /*if(fleet.getCargo().getCommodityQuantity(Commodities.METALS) <= 0 || fleet.getCargo().getCommodityQuantity(Commodities.HEAVY_MACHINERY) <= 0) {
-            //fleet.addFloatingText("Out of Metals or Heavy Machinery", Misc.setAlpha(entity.getIndicatorColor(), 255), 0.5f);
-            //deactivate();
-        } else if(false) {
-            //fleet.addFloatingText("Full of Supplies", Misc.setAlpha(entity.getIndicatorColor(), 255), 0.5f);
-            //deactivate();
-        } else {
-            float basedmodifier = iCalculateBonus();
-            //oldHERE affect Input/Output is not needed. it just says werether or not to add/remove items. that math will need to be changed though
-            if (affectInput) {fleet.getCargo().removeCommodity(Commodities.METALS, cost*MetalCost*basedmodifier);fleet.getCargo().removeCommodity(Commodities.HEAVY_MACHINERY, cost*HeavyMachineryCost*basedmodifier);} else {fleet.getCargo().removeCommodity(Commodities.METALS, cost*MetalCost);fleet.getCargo().removeCommodity(Commodities.HEAVY_MACHINERY, cost*HeavyMachineryCost);}
-            if (affectOutput) {fleet.getCargo().addCommodity(Commodities.SUPPLIES, cost*getSupplyPerMetal()*basedmodifier);} else {fleet.getCargo().addCommodity(Commodities.SUPPLIES, cost*getSupplyPerMetal());}
-            for (FleetMemberViewAPI view : getFleet().getViews()) {
-                view.getContrailColor().shift("timidhavenoidea", CONTRAIL_COLOR, getActivationDays(), 2, 1f);
-                view.getContrailWidthMult().shift("timidhavenoidea", 6, getActivationDays(), 2, 1f);
-            }
-        }*/
     }
 
     @Override
@@ -217,26 +148,6 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
     }
 
     static double[] hullsizemulti = {0.25,0.5,0.75,1,1.25};
-    /*public float iCalculateBonus() {
-        //oldHERE. mush to do
-        float iCorrupted = getFleet().getCargo().getQuantity(CargoItemType.SPECIAL, new SpecialItemData(Items.CORRUPTED_NANOFORGE, null));
-        float iPristine = getFleet().getCargo().getQuantity(CargoItemType.SPECIAL, new SpecialItemData(Items.PRISTINE_NANOFORGE, null));
-        float iSalvageCoomer = 0f;
-        List<FleetMemberAPI> playerFleetList = Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy();
-        int iShipSize = playerFleetList.size();
-        iSalvageCoomer = getFleetsForgeModules();
-        //float iMaxBonus = PristineMetalMultiplier*iShipSize+SalvageModifier*iSalvageCoomer;
-        float iMaxBonus = PristineMetalMultiplier*iSalvageCoomer+SalvageModifier*iSalvageCoomer;
-        if (iCorrupted > iSalvageCoomer) {
-            iCorrupted = iSalvageCoomer;
-        };
-        //float iBonus = CorruptedMetalMultiplier*iCorrupted+PristineMetalMultiplier*iPristine+SalvageModifier*iSalvageCoomer;
-        float iBonus = CorruptedMetalMultiplier*iCorrupted+PristineMetalMultiplier*iPristine+SalvageModifier*iSalvageCoomer;
-        if (iBonus > iMaxBonus) {
-            iBonus = iMaxBonus;
-        };
-        return iBonus
-    }*/
     @Override
     protected void deactivateImpl() {
         a = -1;
@@ -258,17 +169,10 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         title.highlightLast(status);
         title.setHighlightColor(highlight);
         float pad = 10f;
-        tooltip.addPara("convert items into drones and other contraptions.", pad);
-        //String Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal());
+        tooltip.addPara(String_5, pad);
         float iCoom = iCalculateBonus(getFleet());
-        //if (iCoom > 1) {Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal()*iCoom);}
-        String canOrIs = isActive() ? "are building" : "can build";
-        //String Based = iCoom > 1 ? "Nanoforges in your inventory and ships with Automated Drone Factory's installed are improving the process of building robotic workers by": "You do not possess a nanoforge or a ship with an Automated Drone Factory that can hasten the process.";
-        //String Based2 = iCoom > 1 ? Misc.getRoundedValue((iCoom-1)*100) + "%." : "";
-        //String building = "";
-        //String consuming = "";
-        //String temp;
-        tooltip.addPara("Your fleet's autoforges " + canOrIs + " producing " + AIRetrofits_ForgeList.items.get(a).getoutputAsString(iCoom) + " on a daily basis.",pad,Misc.getTextColor());
+        String canOrIs = isActive() ? String_6 : String_7;
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(String_8,canOrIs,AIRetrofits_ForgeList.items.get(a).getoutputAsString(iCoom)),pad,Misc.getTextColor());
         tooltip.addPara("%s", pad, highlight, getPara(0));
         tooltip.addPara("%s", pad, highlight, getPara(1));
         tooltip.addPara("%s", pad, highlight, getPara(2));
@@ -281,14 +185,15 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         switch(a){
             case 0:
                 double iCoom = iCalculateBonus(getFleet());
-                return iCoom > 0 ? "your fleet can produce items from robot forges with an forge speed of: " + iCoom: "you do not posses have ship with an robot forge.";
+                return iCoom > 0 ? AIRetrofits_StringHelper.getSplitString(String_9,""+iCoom) : String_10;
             case 1:
                 b = getFleetsForgeModules(getFleet());
-                return "your robot factorys are contributing " + b + " forge speed";
+                return AIRetrofits_StringHelper.getSplitString(String_11,""+b);
             case 2:
                 b = getFleetsForgeModules(getFleet());
                 c = getFleetsNanoforgePower(getFleet());
-                return "your nanoforges are contributing " + Math.min(b,c) + " forge speed";
+
+                return AIRetrofits_StringHelper.getSplitString(String_12,""+ Math.min(b,c));
             case 3:
                 return "";
         }
@@ -299,20 +204,8 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         title.highlightLast(status);
         title.setHighlightColor(highlight);
         float pad = 10f;
-        tooltip.addPara("Smelt items into drones and other contraptions.", pad);
-        //String Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal());
-        //float iCoom = iCalculateBonus(getFleet());
-        //if (iCoom > 1) {Supply = Misc.getRoundedValueMaxOneAfterDecimal(getSupplyPerMetal()*iCoom);}
-        //String canOrIs = isActive() ? "are smelting" : "can smelt";
-        //String Based = iCoom > 0 ? "Nanoforges in your inventory and ships with Automated Drone Factory's installed are improving the process of forging supplies by": "You do not possess a nanoforge or a ship with an Automated Drone Factory that can hasten the process.";
-        //String Based2 = iCoom > 0 ? Misc.getRoundedValue((iCoom-1)*100) + "%." : "";
-        //String building = "";
-        //String consuming = "";
-        //String temp;
-        //int thing = AIRetrofits_ForgeList.items.size();
-        //tooltip.addPara("total size of array: " + produce.length,pad,Misc.getTextColor());
-        //tooltip.addPara("total size of array: " + thing,pad,Misc.getTextColor());
-        tooltip.addPara("your fleet's robot factory's are currently offline, but can be activated at any time.",pad,Misc.getTextColor());
+        tooltip.addPara(String_13, pad);
+        tooltip.addPara(String_14,pad,Misc.getTextColor());
         tooltip.addPara("%s", pad, highlight, getPara(0));
         tooltip.addPara("%s", pad, highlight, getPara(1));
         tooltip.addPara("%s", pad, highlight, getPara(2));
@@ -323,67 +216,5 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         a = ItemNumberToForge;
     }
     public static void setInitData(){//HERE
-        /*produce = new String[][]{
-                {
-                        "AIretrofit_WorkerDrone"
-                },
-                {
-                        "AIretrofit_SurveyDrone"
-                },
-                {
-                        "supplies"
-                }
-        };
-        requirements = new String[][]{
-                {
-                        "heavy_machinery"
-                },
-                {
-                        "supplies"
-                },
-                {
-
-                }
-        };
-        produceNumbers = new float[][]{
-                {
-                        10
-                },
-                {
-                        40
-                },
-                {
-                        100
-                }
-        };
-        requirementsNumbers = new float[][]{
-                {
-                        1
-                },
-                {
-                        1
-                },
-                {
-                        1
-                }
-        };*/
     }
-    /*
-    protected float getFleetsForgeModules(){
-        float iSalvageCoomer = 0f;
-        List<FleetMemberAPI> playerFleetList = Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy();
-        for (FleetMemberAPI member : playerFleetList) {
-            if (member.isMothballed()) continue;
-            if (member.getVariant().hasHullMod("AIretrofit_AutomatedCrewReplacementDrones")) {//oldHERE gets the ID of the hullmode that lets one make things
-
-                float MinCrew = member.getVariant().getHullSpec().getMinCrew();
-                float MaxCrew = member.getVariant().getHullSpec().getMaxCrew();
-                iSalvageCoomer += (MaxCrew - MinCrew) * 0.01;//ForgePowerMulti;
-                //stats.getDynamic().getMod(Stats.getSurveyCostReductionId(Commodities.CREW)).modifyFlat(id,(MaxCrew - MinCrew) / DronePerCrew);
-                //ReplacedCrew = (MaxCrew - MinCrew) * 0.01;
-                //iSalvageCoomer += hullsizemulti[bounus];
-            }
-        }
-        return iSalvageCoomer * ForgePowerMulti;
-    }*/
 }

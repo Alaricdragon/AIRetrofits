@@ -9,6 +9,7 @@ import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.combat.EngagementResultAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.AIRetrofits_ForgeList;
 import data.scripts.robot_forge.AIRetrofits_RobotForge;
 import data.scripts.robot_forge.AIRetrofits_RobotForgeSecondary;
@@ -18,6 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogBase {
+    protected static final String String_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_MainMenu_0");
+    protected static final String String_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_MainMenu_1");
+    protected static final String String_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_MainMenu_2");
+    protected static final String String_3 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_MainMenu_3");
+    protected static final String String_4 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_MainMenu_4");
     protected InteractionDialogAPI dialog;
     protected TextPanelAPI text;
     protected OptionPanelAPI options;
@@ -58,12 +64,12 @@ public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogB
             }
 
             if (this.currentPage > 1) {
-                this.options.addOption("Previous","PREVIOUS");// AIRetrofits_RobotForgeDiologPlugin.Menu.PREVIOUS);
+                this.options.addOption(String_0,"PREVIOUS");// AIRetrofits_RobotForgeDiologPlugin.Menu.PREVIOUS);
                 this.options.setShortcut("PREVIOUS", 203, false, false, false, true);//AIRetrofits_RobotForgeDiologPlugin.Menu.PREVIOUS, 203, false, false, false, true);
             }
 
             if (this.currentPage < numPages) {
-                this.options.addOption("Next","NEXT");// AIRetrofits_RobotForgeDiologPlugin.Menu.NEXT);
+                this.options.addOption(String_1,"NEXT");// AIRetrofits_RobotForgeDiologPlugin.Menu.NEXT);
                 this.options.setShortcut("NEXT", 205, false, false, false, true);//AIRetrofits_RobotForgeDiologPlugin.Menu.NEXT, 205, false, false, false, true);
             }
 
@@ -72,7 +78,7 @@ public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogB
     }
 
     protected void addBackOption() {
-        this.options.addOption("Back","BACK");// AIRetrofits_RobotForgeDiologPlugin.Menu.BACK);
+        this.options.addOption(String_2,"BACK");// AIRetrofits_RobotForgeDiologPlugin.Menu.BACK);
         this.options.setShortcut("BACK", 1, false, false, false, true);//AIRetrofits_RobotForgeDiologPlugin.Menu.BACK, 1, false, false, false, true);
     }
 
@@ -132,7 +138,7 @@ public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogB
     }
     protected void populateConfirmCancel() {
         this.options.clearOptions();
-        this.options.addOption("Confirm", "CONFIRM");//Menu.CONFIRM);
+        this.options.addOption(String_3, "CONFIRM");//Menu.CONFIRM);
         this.addBackOption();
     }
     /*
@@ -184,7 +190,7 @@ public class AIRetrofit_Dialog_ForgeItemAndSelection extends AIRetrofits_DialogB
         }*/
 
         //this.text.addParagraph("You currently have " + (int) this.fleet.getCargo().getCommodityQuantity("capturedcrew") + " captive crew and " + this.captiveOfficers.size() + " captive officers.");
-        this.text.addParagraph("You cafullys consider what you can produce with the knowlage you have...");
+        this.text.addParagraph(String_4);
         //this.lastSelectedMenu = null;
         //this.lastSelectedItems = null;
         this.populateOptions();

@@ -144,7 +144,7 @@ public class AIRetrofits_Constants_3 {
             "AIRetrofit_ShipyardOmega",
             "AIRetrofit_ShipyardBase"};
     public static final String[] ASIC_Secondary_Hullmods = {
-            AIRetrofits_Constants_2.Hullmod_PatchworkAIRetrofit,
+            AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit,
     };
 
     public final static float ASIC_improveValue = Global.getSettings().getFloat("AIRetrofitShipyard_IValue");

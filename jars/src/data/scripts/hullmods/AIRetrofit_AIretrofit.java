@@ -11,6 +11,7 @@ import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
@@ -297,7 +298,7 @@ i want to:
 		try {
 			String hullmods = incompatibleHullMods(ship);
 			if (hullmods != null) {
-				return IncombatableReasons[0] + hullmods;//"not compatible with: " + hullmods;
+				return AIRetrofits_StringHelper.getSplitString(IncombatableReasons[0],hullmods);//"not compatible with: " + hullmods;
 			}
 			if (ship.getFleetMember().getStats().getMinCrewMod().computeEffective(ship.getVariant().getHullSpec().getMinCrew()) <= 0 && !ship.getVariant().hasHullMod("AIretrofit_airetrofit")) {
 				return IncombatableReasons[1];//"cannot be installed on a drone ship, or a ship that otherwise has no crew requirements";
@@ -309,7 +310,7 @@ i want to:
 			int cost = GetExstraOpCost(MinCrew, hullsize);
 			int Base_cost = this.spec.getCostFor(hullsize);
 			if (!(cost + Base_cost <= unusedOP || ship.getVariant().hasHullMod("AIretrofit_airetrofit"))) {
-				return IncombatableReasons[2] + (cost + Base_cost);//"op cost: " + (cost + Base_cost);
+				return AIRetrofits_StringHelper.getSplitString(IncombatableReasons[2],""+(cost + Base_cost));//"op cost: " + (cost + Base_cost);
 			}
 		}catch (Exception E){
 			AIRetrofit_Log.loging("Error: failed to run getUnapplicableReason. wonder why?",this,true);

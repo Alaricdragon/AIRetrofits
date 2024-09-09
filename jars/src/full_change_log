@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.3(private):
+save compatible with 0.7.20.1+
+    removed some old, no longer useing files.
+    cleaned up a bunch of removed functions that i keept just in case
+    finished moving strings into the strings.json file.
+    looked at the grammer and spelling of all strings in the json file
 V0.9.4.2(private):
 save compatible with 0.7.20.1+
     moved all string data over to strings.json.

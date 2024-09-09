@@ -7,6 +7,8 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofits_StringHelper;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
@@ -30,6 +32,7 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
     int MinReplacedCrew = 1;
     float ReplacedCrew;
     static float RobotForgePerCrewMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
+    public static final String NAString = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForgeHullmod_NA_crew");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         try {
@@ -71,7 +74,7 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         float MaxCrew = ship.getVariant().getHullSpec().getMaxCrew();
         ReplacedCrew = (MaxCrew - MinCrew);
         if(!(ReplacedCrew >= MinReplacedCrew)){
-            return "Need at least " + MinReplacedCrew + " spare crew on ship to replace crew. you have " + ReplacedCrew;
+            return AIRetrofits_StringHelper.getSplitString(NAString, ""+MinReplacedCrew,""+ReplacedCrew);
         }
         return super.getUnapplicableReason(ship);
     }

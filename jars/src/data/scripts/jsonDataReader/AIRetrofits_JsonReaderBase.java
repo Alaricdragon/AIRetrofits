@@ -2,7 +2,7 @@ package data.scripts.jsonDataReader;
 
 import com.fs.starfarer.api.Global;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.startupData.AIRetrofits_Constants_2;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +18,7 @@ public class AIRetrofits_JsonReaderBase {
     public static void startup() throws JSONException {
         started = true;
         readers = new AIRetrofits_JsonReaderBase[]{
-            new AIRetrofits_JsonReaderBase(STRING_FILE_NAME, AIRetrofits_Constants_2.ModID)
+            new AIRetrofits_JsonReaderBase(STRING_FILE_NAME, AIRetrofits_Constants_3.ModID)
         };
         //command for swaping all getStrings with this command hopefully.
         //s/getSettings().getString(/AIRetrofits_JsonReaderBase.getReader(AIRetrofits_JsonReaderBase.STRING_FILE_NAME).getString("Strings",/g

@@ -44,7 +44,6 @@ public class AIRetrofits_AbilityAndHullmodAdding {
         for(int b2 = 0; b2 < ships.size(); b2++){//FleetMemberAPI b : ships){
             FleetMemberAPI b = ships.get(b2);
             ShipVariantAPI ship = b.getVariant().clone();
-            //b.getStats().getMaxCombatReadiness();
             ship.setSource(VariantSource.REFIT);
             if(ship.hasHullMod(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit)) {
                 ship.removeMod(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit);
