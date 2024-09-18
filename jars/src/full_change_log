@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.4(private):
+save compatible with 0.7.20.1+
+    looked at the grammar and spelling of all strings in the csv files.
+    changed all 'drones' to be called 'robots'. i thought it just made more sense?
+    changed the name of 'Automated Robotic Drone Factory' to 'Automated Robot Factory'
+    made names capitalized in descriptions
 V0.9.4.3(private):
 save compatible with 0.7.20.1+
     removed some old, no longer useing files.

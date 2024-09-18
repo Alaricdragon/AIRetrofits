@@ -1,3 +1,14 @@
+V0.9.5: The Grand De-jank-enfication (or something) (part 1)
+save compatible with 0.7.20.1+
+    changes:
+        moved all string data over to strings.json.
+        cleaned up a bunch of no longer used code.
+        changed all 'drones' to be called 'robots'. i thought it just made more sense?
+        changed the name of 'Automated Robotic Drone Factory' to 'Automated Robot Factory'
+    fixes:
+        fixed many spelling and grammar issues.
+            -i had no idea it was so bad until i went in and started looking. i need to read my own mod more often i think.
+
 V0.9.4:
 save compatible with 0.7.20.1+
     fixes:

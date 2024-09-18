@@ -2,37 +2,67 @@ THE GRAND DE-JANKIFICATION
 this is the process of making my mod make some fucking sense. it will be divided into a few parts.
 1) strings
     -(DONE. testing required)move all strings (both from the settings.json file, and hardcoded strings) into there own json file. this file will allow easyer editing of strings.
-        stats:
-            (done. testing needed)AIWorldCode
-                (done, partly tested)AIWorldCode.industries
-                (NA)AIWorldCode.Fleet
-                (NA)AIWorldCode.FoundAMarket
-                (NA)AIWorldCode.growth
-                (done. untested) AIWorldCode.market_conditions
-                (NA)AIWorldCode.market_listiner
-                (NA)AIWorldCode.Robot_Percentage_Calculator
-                (done. untested)AIWorldCode.submarkets
-                (NA)AIWorldCode.supplyDemandClasses
-                (NA)AIWorldCode.SupportCode
-            (NA) combatabilityPatches
-            (done. testing needed)hullmods
-            (NA) json data reader
-            (NA) listeners
-            (NA) memory
-            (done. testing needed) notifications.AIRetrofit_ShipyardNotification
-            (done. requires testing)robot_forge
-            (NA) SpecalItems
-            (NA) startupData
-    -make sure to edit all the strings. go into every possable folder and fix the shit that does not work.
-        -NOTE: the base starsector capitalization style: is capitals on the first word / after sentences. this is something that someone asked me to fix, so i will do so.
-        now, the steps in this process:
-        1)(done) fix all spelling / grammer errors i can find.
-        2) open the game and go over every single thing, one at a time. this lets be view whats broken, and whats not.
-            -note: lots of things that i should limit the numbers of decimos on, or simply round to hull numbers. i will need to remember to do that.
-            -Misc.getRoundedValueMaxOneAfterDecimal
-
-        3) repeat 1,2. but for things in CSV files. all of them.
+    -(done)make sure to edit all the strings. go into every possable folder and fix the shit that does not work.
     -change the way the names work to have there own set of names as a CSV file. (for ease of use)
+    -(done)run through a list of chances:
+    -open every possible text field in the game, make sure all the text makes sense and is not sloppy.
+        hullmods:
+            -robot forge
+                -calls robots 'robotic drones'
+                -calls robot forge power 'crew power' (only once)
+            -AIRetrofits (base)
+                -the 'additional opp oer x crew' text shows a number that is not one.
+                    -this looks like a translation issue. i should change the 2 varubles that show 'how mush exstrea opp it costs' and 'how mush total opp it costs' to '1' and 'extra opp cost'
+                -were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
+                -make sure the max possible amount of max crew that can be removed is equal to the max crew of the ship. just in case.
+            -AIRetrofits (patchwork)
+                -same as (base)
+                -find a solution to the fact that changing an AI-Retrofits hullmod removed all combat readyness. for the love of god.
+            -AIRetrofits (perma) (base)
+                -'can be replaced by a simpler modification' -> 'can be replaced by a similar modification'
+                -need to remove decimal ponit from stat changes.
+                -were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
+                -were it says what my modifcations were made from, is um, i dont even know. but i need to change it.
+                    -eather to be the hullmods name, or to be the name of the building / submarket that creates the changes
+            -AIRetrofits (perma) (Gamma)
+                -same as (perma) (base)
+            -AIRetrofits (perma) (Alpha)
+                -same as (perma) (base)
+                -for every x crew exstra crew quarters is budged.
+                -the max opp added is bugged (i think?)
+                -the amount of opp shown is bugged.
+                -at no point does it say it reduced the amount of required crew to zero.
+            -AIRetrofits (perma) (Omega)
+                -same as (perma) (Alpha)
+                -shows the wrong item that cuased modifcation (needs to be changed anyways so, no matter.)
+        skills:
+            -robot forge
+                -in selection:
+                    -names of options don't have capitals (I think i failed to add them to the settings.json)
+                    -were it shows how many things i can forge a day, it has 2 many decemo points. (for all displayed commodity's)
+                    -in 'imporve a sub command node':
+                        -it says i carefully consider what i can produce AGAIN for some reason?
+                        -options are not capitalized. should capitalize officer, admin, and operative.
+                        -on create officer, continue is not capitalized.
+                        -on create officer, i need to have a warning or presentation stopping me from creating officers past the players maximum.
+                            -i would prefer a warning.
+                        -on create admin, i need to have a warning or presentation stopping me from creating officers past the players maximum.
+                            -i would prefer i warning.
+                in hotbar
+                    -the description were it shows how mush power is available is not caped to one demo point.
+                        -i think there is something for this in Misc.
+                    -when active:
+                        -were it shows what im forging, the spacing is way wayyy off.
+                        -were it shows what im forging, there are random ',' just after the first work (should not be there)
+                        -were it shows what im forging, there is no ',' between forged requirements.
+
+        industry:
+        sub-markets:
+        market conditions:
+        market founder:
+        commoditys and commoidty descriptions:
+
+
 
 2) for robots crewReplacer_jobs:
     1) make it so robots are withen the 'crewSet' system. for real, how da fuck did i forget this!!?!!

@@ -1,5 +1,5 @@
 name,id,planetary,decivRemove,script,desc,icon,order
-Robotic Population,AIRetrofit_AIPop,,TRUE,data.scripts.AIWorldCode.market_conditions.AIRetrofitsAIPop,"This colony is populated entirely by automated drones.",graphics/icons/markets/AIRetrofit_AIPopulation.png,999
+Robotic Population,AIRetrofit_AIPop,,TRUE,data.scripts.AIWorldCode.market_conditions.AIRetrofitsAIPop,"This colony is populated by automated robotic workers.",graphics/icons/markets/AIRetrofit_AIPopulation.png,999
 #AI-Ludic War,AIRetrofits_AILudicWar,,FALSE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_AILudicWar,,graphics/icons/markets/AIRetrofits_AILudicWar.png,10
 #Broken AI Constructs,AIRetrofits_BrokenAIWorkers,,FALSE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_BrokenAIWorkers,,graphics/icons/markets/AIRetrofits_BrokenAIWorkers.png,10
 #Ludic Path Watchers,AIRetrofits_LudicPathWatchers,,TRUE,data.scripts.AIWorldCode.market_conditions.AIRetrofits_LudicPathWatchers,,graphics/icons/markets/AIRetrofits_LudicPathWatchers.png,10
