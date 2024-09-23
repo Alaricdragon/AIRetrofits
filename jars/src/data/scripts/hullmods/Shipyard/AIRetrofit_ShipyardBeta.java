@@ -41,8 +41,8 @@ public class AIRetrofit_ShipyardBeta  extends AIRetrofit_ShipyardBase {
         }
         float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
         parm[0] = automationLevel;
-        parm[1] = ((SUPPLY_USE_MULT) * 100) + "%";
-        parm[2] = "" + (REPAIR_LOSE * 100) + "%";
+        parm[1] = (int)((SUPPLY_USE_MULT) * 100) + "%";
+        parm[2] = "" + (int)(REPAIR_LOSE * 100) + "%";
         parm[3] = "" + (int)MinCrew;
         parm[4] = "" + (int)(MinCrew * CREW_USE_MULT);
     }

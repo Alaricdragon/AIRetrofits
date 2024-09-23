@@ -1,4 +1,15 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.5(private):
+save compatible with 0.7.20.1+
+    changed hullmods text:
+        AI-Retrofits
+        robot forge
+    started changes for:
+        AI-Retrofits(perma)(base)
+    fixed:
+        AI-Retrofits sometimes removing more then the max crew.
+        Patchwork AI-Retrofits sometimes removing more then the max crew.
+        fixed both Patchwork AI-Retrofits and the AI Shipyard removing reducing combat readiness when they 'swap' a hullmod (hopefully)
 V0.9.4.4(private):
 save compatible with 0.7.20.1+
     looked at the grammar and spelling of all strings in the csv files.

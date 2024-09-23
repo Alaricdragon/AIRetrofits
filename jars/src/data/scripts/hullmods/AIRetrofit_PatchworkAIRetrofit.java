@@ -6,6 +6,7 @@ import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.ShipHullSpecAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -54,7 +55,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         stats.getSuppliesPerMonth().modifyFlat(id,SupplyIncrease);
         //stats.getSuppliesPerMonth().modifyMult(id, SUPPLY_USE_MULT);
         stats.getMinCrewMod().modifyMult(id,CREW_USE_MULT);
-        stats.getMaxCrewMod().modifyFlat(id,MinCrew * -1);
+        stats.getMaxCrewMod().modifyFlat(id,getCrewSpaceRemoved(stats.getVariant().getHullSpec()) * -1);
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
 
@@ -291,8 +292,12 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         parm[1] = (cost + Base_cost);
         parm[2] = (int)(100 * SUPPLY_USE_MULT);
         parm[3] = (int) (REPAIR_LOSE * 100);
-        parm[4] = (int) MinCrew;
+        parm[4] = (int) getCrewSpaceRemoved(ship.getHullSpec());//MinCrew;
         parm[5] = (int) (CR_DOWNGRADE*-100);
         parm[6] = (int) (MinCrew * CREW_USE_MULT);
+    }
+
+    private int getCrewSpaceRemoved(ShipHullSpecAPI spec){
+        return (int)Math.min(spec.getMinCrew(),spec.getMaxCrew());
     }
 }

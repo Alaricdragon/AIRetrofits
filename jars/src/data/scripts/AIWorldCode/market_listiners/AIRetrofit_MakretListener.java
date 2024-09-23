@@ -197,7 +197,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     ship.addMod(addHullMod);
                 }
             }
-            ship2.setVariant(ship,true,true);
+            ship2.setVariant(ship,false,true);
             if(points <= 0){
                 //CrewReplacer_Log.loging("           out of points. ending loop",this,logging);
                 break;

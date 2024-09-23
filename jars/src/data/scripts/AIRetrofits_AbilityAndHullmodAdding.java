@@ -48,7 +48,7 @@ public class AIRetrofits_AbilityAndHullmodAdding {
             if(ship.hasHullMod(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit)) {
                 ship.removeMod(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit);
                 ship.addMod(AIRetrofits_Constants_3.Hullmod_AIRetrofit);
-                b.setVariant(ship, true, true);
+                b.setVariant(ship, false, true);
             }
         }
     }

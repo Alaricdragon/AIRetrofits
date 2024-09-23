@@ -90,8 +90,8 @@ public class AIRetrofit_ShipyardAlpha  extends AIRetrofit_ShipyardBase {
         ShipAPI.HullSize hullsize = ship.getVariant().getHullSize();
         int cost = GetExstraOpCost(MaxCrew - MinCrew,hullsize);
         parm[0] = automationLevel;
-        parm[1] = "" + SUPPLY_USE_MULT * 100 + "%";
-        parm[2] = "" + (REPAIR_LOSE * 100) + "%";
+        parm[1] = "" + (int)(SUPPLY_USE_MULT * 100) + "%";
+        parm[2] = "" + (int)(REPAIR_LOSE * 100) + "%";
         parm[3] = "" + CREW_USE_MULT;
 
         parm[4] = "" + reqCrew(CrewPerCostPerSize[1]);

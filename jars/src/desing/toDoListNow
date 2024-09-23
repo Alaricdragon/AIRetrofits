@@ -7,23 +7,24 @@ this is the process of making my mod make some fucking sense. it will be divided
     -(done)run through a list of chances:
     -open every possible text field in the game, make sure all the text makes sense and is not sloppy.
         hullmods:
-            -robot forge
+            -(done)robot forge
                 -calls robots 'robotic drones'
                 -calls robot forge power 'crew power' (only once)
-            -AIRetrofits (base)
+            -(done)AIRetrofits (base)
                 -the 'additional opp oer x crew' text shows a number that is not one.
                     -this looks like a translation issue. i should change the 2 varubles that show 'how mush exstrea opp it costs' and 'how mush total opp it costs' to '1' and 'extra opp cost'
                 -were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
                 -make sure the max possible amount of max crew that can be removed is equal to the max crew of the ship. just in case.
-            -AIRetrofits (patchwork)
+            -(done)AIRetrofits (patchwork)
                 -same as (base)
-                -find a solution to the fact that changing an AI-Retrofits hullmod removed all combat readyness. for the love of god.
+                -(done. fucking finaly)find a solution to the fact that changing an AI-Retrofits hullmod removed all combat readiness. for the love of god.
             -AIRetrofits (perma) (base)
                 -'can be replaced by a simpler modification' -> 'can be replaced by a similar modification'
                 -need to remove decimal ponit from stat changes.
                 -were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
                 -were it says what my modifcations were made from, is um, i dont even know. but i need to change it.
                     -eather to be the hullmods name, or to be the name of the building / submarket that creates the changes
+                -make sure the max possible amount of max crew that can be removed is equal to the max crew of the ship. just in case.
             -AIRetrofits (perma) (Gamma)
                 -same as (perma) (base)
             -AIRetrofits (perma) (Alpha)
@@ -62,6 +63,10 @@ this is the process of making my mod make some fucking sense. it will be divided
         market founder:
         commoditys and commoidty descriptions:
 
+
+questions:
+    1) i am currently adding hullmods in a hullmods __ function useing __. is there a way to make this process not consume op?
+    2) i am currently getting a hullmod to remove itself in its __ function useing __. is there a way to make this process not consume op?
 
 
 2) for robots crewReplacer_jobs:
@@ -110,6 +115,9 @@ this is the process of making my mod make some fucking sense. it will be divided
 7) misc bugs:
     1) AI-Retrofits can reduce max crew by more then it reduces min crew? unknown how it does that.
     2) AI-Retrofits mod causes signifacantly increased load times when adding / removing flux caps/vents. need to investagate
+    3) add a option to make it so the player starts with the 'patchwork ai retrofits' hullmod.
+    4) add a system to add hullmods on game load, instead of interacting with things.
+8) luna-lib support. for in game settings.
 
 Ground battle unit defs are now moddable, can add new ones or modify existing ones in data/config/exerelin/groundBattleDefs.json
 Player can create units with modded unit types if the unit def allows it
