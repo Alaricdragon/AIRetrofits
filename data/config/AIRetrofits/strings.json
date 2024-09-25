@@ -12,6 +12,18 @@
     "AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
     "AIRetrofits_Patchwork_AIRetrofit_NA_OppCost": "op cost: %s ",
 
+    #settings for perament AIRetrofits Hullmod
+    "AIRetrofits_Perma_permanent": "permanent",
+    #base
+    #gamma
+    #beta
+    #alpha
+    "AIRetrofits_Perma_Alpha_CrewCostDivider": "%s/%s/%s/%s ",
+    "AIRetrofits_Perma_Alpha_MaxOpDivider": "%s/%s/%s/%s ",
+    "AIRetrofits_Perma_Alpha_SupplyUsePercent": "%s%",
+    "AIRetrofits_Perma_Alpha_RepairChangePercent": "%s%",
+    #omega
+
     #settings for robot forge hullmod
     "AIRetrofits_RobotForgeHullmod_NA_crew": "Need at least %s spare crew on ship to replace crew. You have %s ",
 

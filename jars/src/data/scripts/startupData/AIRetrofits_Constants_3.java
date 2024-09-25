@@ -97,23 +97,24 @@ public class AIRetrofits_Constants_3 {
     //AIRetrofit Hullmod
     //AIRetrofit_PermaInstaled.
     //base
-    public static final String AIRetrofit_Perma_Base_automationLevel = "automatedShipyard";
+    public static final String AIRetrofit_Perma_Base_permament = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_permanent");
+    //public static final String AIRetrofit_Perma_Base_automationLevel = "automatedShipyard";
     public static final String AIRetrofit_Perma_Base_cantRemoveReason = "cannot be added or removed outside of a robotic shipyard";
     public static final float AIRetrofit_Perma_Base_SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardBase" + "_SUPPLY_USE_MULT");//1f;
     public static final float AIRetrofit_Perma_Base_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardBase" + "_CREW_USE_MULT");//0f;
     public static final float AIRetrofit_Perma_Base_REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardBase" + "_REPAIR_LOSE");//0.5f;
     //gamma
-    public static final String AIRetrofit_Perma_Gamma_automationLevel = "Gamma-Core";
+    //public static final String AIRetrofit_Perma_Gamma_automationLevel = "Gamma-Core";
     public static final float AIRetrofit_Perma_Gamma_SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardGamma" + "_SUPPLY_USE_MULT");//1f;
     public static final float AIRetrofit_Perma_Gamma_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardGamma" + "_CREW_USE_MULT");//0f;
     public static final float AIRetrofit_Perma_Gamma_REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardGamma" + "_REPAIR_LOSE");//0.5f;
     //beta
-    public static final String AIRetrofit_Perma_Beta_automationLevel = "Beta-Core";
+    //public static final String AIRetrofit_Perma_Beta_automationLevel = "Beta-Core";
     public static final float AIRetrofit_Perma_Beta_SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardBeta" + "_SUPPLY_USE_MULT");//1f;
     public static final float AIRetrofit_Perma_Beta_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardBeta" + "_CREW_USE_MULT");//0f;
     public static final float AIRetrofit_Perma_Beta_REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardBeta" + "_REPAIR_LOSE");//0.5f;
     //alpha
-    public static final String AIRetrofit_Perma_Alpha_automationLevel = "Alpha-Core";
+    //public static final String AIRetrofit_Perma_Alpha_automationLevel = "Alpha-Core";
     public static final float AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_SUPPLY_USE_MULT");//1f;
     public static final float AIRetrofit_Perma_Alpha_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_CREW_USE_MULT");//0f;
     public static final float AIRetrofit_Perma_Alpha_REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_REPAIR_LOSE");//0.5f;

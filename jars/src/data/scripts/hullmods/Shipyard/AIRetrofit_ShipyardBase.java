@@ -7,6 +7,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.ShipHullSpecAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.startupData.AIRetrofits_Constants_3;
@@ -14,7 +15,7 @@ import data.scripts.startupData.AIRetrofits_Constants_3;
 import java.awt.*;
 
 public class AIRetrofit_ShipyardBase extends BaseHullMod {
-    final static String automationLevel = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_automationLevel;//"automatedShipyard";
+    final static String permanentWord = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_permament;
     final static String cantRemoveReason = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_cantRemoveReason;//"cannot be added or removed outside of a robotic shipyard";
     final static String industry = "AIRetrofit_shipYard";
     //final static String name = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_;//"AIRetrofit_ShipyardBase";
@@ -27,8 +28,8 @@ public class AIRetrofit_ShipyardBase extends BaseHullMod {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
         float SupplyIncrease = stats.getSuppliesPerMonth().getBaseValue() * SUPPLY_USE_MULT;
         stats.getSuppliesPerMonth().modifyFlat(id,SupplyIncrease);
-        stats.getMinCrewMod().modifyMult(id,CREW_USE_MULT);
-        stats.getMaxCrewMod().modifyFlat(id,MinCrew * -1);
+        stats.getMinCrewMod().modifyMult(id,0);
+        stats.getMaxCrewMod().modifyFlat(id,(getCrewSpaceRemoved(stats.getVariant().getHullSpec(),CREW_USE_MULT)) * -1);
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
     }
@@ -63,12 +64,11 @@ public class AIRetrofit_ShipyardBase extends BaseHullMod {
         if(ship == null){
             return;
         }
-        float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
-        parm[0] = automationLevel;
+        parm[0] = permanentWord;//this.spec.getDisplayName();;
         parm[1] = (int)((SUPPLY_USE_MULT) * 100) + "%";
         parm[2] = "" + (int)(REPAIR_LOSE * 100) + "%";
-        parm[3] = "" + (int)MinCrew;
-        parm[4] = "" + (int)(MinCrew * CREW_USE_MULT);
+        parm[3] = "" + (int)getCrewSpaceRemoved(ship.getHullSpec(),CREW_USE_MULT);
+        parm[4] = "" + (int)(0);
     }
     @Override
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
@@ -84,4 +84,7 @@ public class AIRetrofit_ShipyardBase extends BaseHullMod {
         );
     }
 
+    public int getCrewSpaceRemoved(ShipHullSpecAPI spec,float CREW_USE_MULT){
+        return (int)Math.min(spec.getMinCrew()*CREW_USE_MULT,spec.getMaxCrew());
+    }
 }

@@ -24,7 +24,7 @@
 	"AIRetrofits_allowChangingOfImportantNPC": false,
 	#settings for AIRetrofits hullmod
 	"AIRetrofits_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
-	"AIRetrofits_AIretrofit_CREW_USE_MULT":0,#this is an real multi though. 0 = no crew use, 1 = no change -1 = negitive crew use?
+	"AIRetrofits_AIretrofit_CREW_USE_MULT":1,#this is an real multi though. 0 = no max crew use, 1 = no change -1 = negitive max crew use?
 	"AIRetrofits_AIretrofit_REPAIR_LOSE":0.5,#,and by multi, i mean increase multi. 0 = no repair lose. 1 = mush slower repairs. -1 = faster repairs.
 	#(AIRetrofits hullmod) exstra opp cost per crew per shipsize.
 	"AIRetrofits_AIretrofit_C-OP-Other":1,
@@ -36,7 +36,7 @@
 
 	#settings for patchwork AIRetrofits hullmod
 	"AIRetrofits_Patchwork_AIretrofit_SUPPLY_USE_MULT":1.0,#and by multi, i mean increase multi. zero whould be no supply change. -1 would be no supply cost.
-	"AIRetrofits_Patchwork_AIretrofit_CREW_USE_MULT":0,#this is an real multi though. 0 = no crew use, 1 = no change -1 = negitive crew use?
+	"AIRetrofits_Patchwork_AIretrofit_CREW_USE_MULT":1,#this is an real multi though. 0 = no crew use, 1 = no change -1 = negitive crew use?
 	"AIRetrofits_Patchwork_AIretrofit_REPAIR_LOSE":0.75,#,and by multi, i mean increase multi. 0 = no repair lose. 1 = mush slower repairs. -1 = faster repairs.
 	"AIRetrofits_Patchwork_AIretrofit_CR_LOSE": -0.2,
 	"AIRetrofits_Patchwork_CanSwapHullMpd": true,#wether or not this hyllmod swaps for the normal AIRetorfit, provided you have it.
@@ -286,26 +286,26 @@
 	#settings for AIRetrofit Shipyard hullmod Power
 	#Basic
 	"AIRetrofits_AIRetrofit_ShipyardBase_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardBase_REPAIR_LOSE":0.5,
 	#Gamma
 	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":0.1,
 	#Beta
 	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.75,
-	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
 	#Alpha
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":0,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.5,
-	#opp gain for Aplha per exstra crew
+	#how mush exstra crew is required per op gain
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Other":1,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Frigate":0.2,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Destroyer":0.1,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Cruiser":0.05,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Capital_ship":0.025,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Frigate":5,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Destroyer":10,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Cruiser":20,
+	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Capital_ship":40,
 	#max opp gain for Aplha
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpOther": 5,
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpFrigate": 10,

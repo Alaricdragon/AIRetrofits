@@ -8,9 +8,9 @@ save compatible with 0.7.20.1+
     fixes:
         fixed many spelling and grammar issues.
             -i had no idea it was so bad until i went in and started looking. i need to read my own mod more often i think.
-        AI-Retrofits sometimes removing more then the max crew.
-        Patchwork AI-Retrofits sometimes removing more then the max crew.
+        AI-Retrofit type hullmods sometimes removing more then the max crew.
         fixed both Patchwork AI-Retrofits and the AI Shipyard removing reducing combat readiness when they 'swap' a hullmod (hopefully)
+        fixed the setting for 'crew use multi' related to AI-Retrofits not effecting max crew, but min crew instead (sorry)
 
 V0.9.4:
 save compatible with 0.7.20.1+

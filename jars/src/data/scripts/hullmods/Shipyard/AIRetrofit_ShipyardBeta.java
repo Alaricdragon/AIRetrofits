@@ -7,7 +7,6 @@ import com.fs.starfarer.api.combat.ShipAPI;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 public class AIRetrofit_ShipyardBeta  extends AIRetrofit_ShipyardBase {
-    final static String automationLevel = AIRetrofits_Constants_3.AIRetrofit_Perma_Beta_automationLevel;//"Beta-Core";
     private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Beta_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
     private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Beta_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
     private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Beta_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
@@ -17,8 +16,8 @@ public class AIRetrofit_ShipyardBeta  extends AIRetrofit_ShipyardBase {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
         float SupplyIncrease = stats.getSuppliesPerMonth().getBaseValue() * SUPPLY_USE_MULT;
         stats.getSuppliesPerMonth().modifyFlat(id,SupplyIncrease);
-        stats.getMinCrewMod().modifyMult(id,CREW_USE_MULT);
-        stats.getMaxCrewMod().modifyFlat(id,MinCrew * -1);
+        stats.getMinCrewMod().modifyMult(id,0);
+        stats.getMaxCrewMod().modifyFlat(id,getCrewSpaceRemoved(stats.getVariant().getHullSpec(),CREW_USE_MULT) * -1);
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
     }
@@ -39,11 +38,10 @@ public class AIRetrofit_ShipyardBeta  extends AIRetrofit_ShipyardBase {
         if(ship == null){
             return;
         }
-        float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
-        parm[0] = automationLevel;
+        parm[0] = permanentWord;
         parm[1] = (int)((SUPPLY_USE_MULT) * 100) + "%";
         parm[2] = "" + (int)(REPAIR_LOSE * 100) + "%";
-        parm[3] = "" + (int)MinCrew;
-        parm[4] = "" + (int)(MinCrew * CREW_USE_MULT);
+        parm[3] = "" + (int)getCrewSpaceRemoved(ship.getHullSpec(),CREW_USE_MULT);
+        parm[4] = "" + (int)0;
     }
 }

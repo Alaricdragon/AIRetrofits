@@ -18,17 +18,23 @@ this is the process of making my mod make some fucking sense. it will be divided
             -(done)AIRetrofits (patchwork)
                 -same as (base)
                 -(done. fucking finaly)find a solution to the fact that changing an AI-Retrofits hullmod removed all combat readiness. for the love of god.
-            -AIRetrofits (perma) (base)
-                -'can be replaced by a simpler modification' -> 'can be replaced by a similar modification'
-                -need to remove decimal ponit from stat changes.
-                -were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
+            -(done)AIRetrofits (perma) (base)
+                -(done)'can be replaced by a simpler modification' -> 'can be replaced by a similar modification'
+                -(done)need to remove decimal ponit from stat changes.
+                -(done)were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
                 -were it says what my modifcations were made from, is um, i dont even know. but i need to change it.
                     -eather to be the hullmods name, or to be the name of the building / submarket that creates the changes
                 -make sure the max possible amount of max crew that can be removed is equal to the max crew of the ship. just in case.
-            -AIRetrofits (perma) (Gamma)
+            -(done)AIRetrofits (perma) (Gamma)
+                -same as (perma) (base)
+            -(done)AIRetrofits (perma) (beta)
                 -same as (perma) (base)
             -AIRetrofits (perma) (Alpha)
                 -same as (perma) (base)
+                -everything about this is bugged. the second part needs to be compleatly redone.
+                but first i say let us make the first part of this description equal to the normal description
+
+
                 -for every x crew exstra crew quarters is budged.
                 -the max opp added is bugged (i think?)
                 -the amount of opp shown is bugged.
@@ -36,6 +42,11 @@ this is the process of making my mod make some fucking sense. it will be divided
             -AIRetrofits (perma) (Omega)
                 -same as (perma) (Alpha)
                 -shows the wrong item that cuased modifcation (needs to be changed anyways so, no matter.)
+            NOTE: for all AIRetrofits:
+                a lot of AI-Retrofits have something i like to call '%' or a/b/c/d. all such things need to be replaced with strings from the strings.json file.
+                why? because it BUGS ME A LOT. that they are not replaced by that.
+                completed:
+                    perma (alpha)
         skills:
             -robot forge
                 -in selection:

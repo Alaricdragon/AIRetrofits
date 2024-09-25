@@ -54,7 +54,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         //stats.getSuppliesPerMonth().getBaseValue()
         stats.getSuppliesPerMonth().modifyFlat(id,SupplyIncrease);
         //stats.getSuppliesPerMonth().modifyMult(id, SUPPLY_USE_MULT);
-        stats.getMinCrewMod().modifyMult(id,CREW_USE_MULT);
+        stats.getMinCrewMod().modifyMult(id,0);
         stats.getMaxCrewMod().modifyFlat(id,getCrewSpaceRemoved(stats.getVariant().getHullSpec()) * -1);
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
@@ -294,10 +294,10 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         parm[3] = (int) (REPAIR_LOSE * 100);
         parm[4] = (int) getCrewSpaceRemoved(ship.getHullSpec());//MinCrew;
         parm[5] = (int) (CR_DOWNGRADE*-100);
-        parm[6] = (int) (MinCrew * CREW_USE_MULT);
+        parm[6] = (int) (0);
     }
 
     private int getCrewSpaceRemoved(ShipHullSpecAPI spec){
-        return (int)Math.min(spec.getMinCrew(),spec.getMaxCrew());
+        return (int)Math.min(spec.getMinCrew()*CREW_USE_MULT,spec.getMaxCrew());
     }
 }

@@ -1,4 +1,14 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.6(private):
+save compatible with 0.7.20.1+
+    fixes:
+        fixed the setting for 'crew use multi' related to AI-Retrofits not effecting max crew, but min crew instead (sorry)
+    compleated text changes for:
+        AI-Retrofits (perma)(base)
+        AI-Retrofits (perma)(gamma)
+        AI-Retrofits (perma)(beta)
+    started text changes for:
+        AI-Retrofits (perma)(alpha)
 V0.9.4.5(private):
 save compatible with 0.7.20.1+
     changed hullmods text:
