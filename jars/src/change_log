@@ -1,5 +1,7 @@
 V0.9.5: The Grand De-jank-enfication (or something) (part 1)
 save compatible with 0.7.20.1+
+    new:
+        made the highest level of AI-Retrofits very slightly more interesting.
     changes:
         moved all string data over to strings.json.
         cleaned up a bunch of no longer used code.
@@ -11,6 +13,7 @@ save compatible with 0.7.20.1+
         AI-Retrofit type hullmods sometimes removing more then the max crew.
         fixed both Patchwork AI-Retrofits and the AI Shipyard removing reducing combat readiness when they 'swap' a hullmod (hopefully)
         fixed the setting for 'crew use multi' related to AI-Retrofits not effecting max crew, but min crew instead (sorry)
+        fixed a very rare issue were a AI-Retrofit hullmod could give / remove the wrong amount of op.
 
 V0.9.4:
 save compatible with 0.7.20.1+

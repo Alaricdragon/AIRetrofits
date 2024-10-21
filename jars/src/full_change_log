@@ -1,9 +1,22 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.7(private):
+save compatible with 0.7.20.1+
+    new:
+        made the highest level of AI-Retrofits more interesting.
+        added the following functions to AIRetorfit_CommandNodeTypesBase for restricting / warning if you are about to create to many people.
+            -canBuildPastMaxNumber
+            -isAtMaxAmount
+            -canAddPerson
+    fixes:
+        fixed a very rare issue were a AI-Retrofit hullmod could give / remove the wrong amount of op.
+    completed text changes for:
+        AI-Retrofits (perma)(alpha)
+        AI-Retrofits (perma)(omega)
 V0.9.4.6(private):
 save compatible with 0.7.20.1+
     fixes:
         fixed the setting for 'crew use multi' related to AI-Retrofits not effecting max crew, but min crew instead (sorry)
-    compleated text changes for:
+    completed text changes for:
         AI-Retrofits (perma)(base)
         AI-Retrofits (perma)(gamma)
         AI-Retrofits (perma)(beta)

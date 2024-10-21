@@ -6,12 +6,13 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.combat.ShipHullSpecAPI;
 import data.scripts.AIRetrofits_StringHelper;
+import data.scripts.hullmods.AIRetrofit_AIretrofit;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 public class AIRetrofit_ShipyardAlpha  extends AIRetrofit_ShipyardBase {
     private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
-    private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
+    //private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
     private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
 
     private String[] parm = {"0","1","2","3","4","5","6","7","8","9","10"};
@@ -30,10 +31,12 @@ public class AIRetrofit_ShipyardAlpha  extends AIRetrofit_ShipyardBase {
         float SupplyIncrease = stats.getSuppliesPerMonth().getBaseValue() * SUPPLY_USE_MULT;
         stats.getSuppliesPerMonth().modifyFlat(id,SupplyIncrease);
         stats.getMinCrewMod().modifyMult(id,0);
-        stats.getMaxCrewMod().modifyMult(id,getCrewSpaceRemoved(stats.getVariant().getHullSpec(),CREW_USE_MULT));
+        stats.getMaxCrewMod().modifyMult(id,0);//getCrewSpaceRemoved(stats.getVariant().getHullSpec(),CREW_USE_MULT));
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         int exstra_cost = GetExstraOpCost(MaxCrew - MinCrew,hullSize);
+
+        AIRetrofit_AIretrofit.clearExstraOpCost(stats);
         addExstraOpCost(exstra_cost,stats);
 
     }
@@ -97,23 +100,13 @@ public class AIRetrofit_ShipyardAlpha  extends AIRetrofit_ShipyardBase {
         parm[0] = permanentWord;
         parm[1] = "" + AIRetrofits_StringHelper.getSplitString(SupplyPercent,""+(int)(SUPPLY_USE_MULT * 100));
         parm[2] = "" + AIRetrofits_StringHelper.getSplitString(RepairPercent,""+(int)(REPAIR_LOSE * 100));
-        parm[3] = "" + (int)getCrewSpaceRemoved(ship.getHullSpec(),CREW_USE_MULT);
+        parm[3] = ""+0;
         parm[4] = ""+0;
 
-        parm[5] = AIRetrofits_StringHelper.getSplitString(CrewCostDivider,""+(int)reqCrew(CostPerCrewPerSize[1]),""+(int)reqCrew(CostPerCrewPerSize[2]),""+(int)reqCrew(CostPerCrewPerSize[3]),""+(int)reqCrew(CostPerCrewPerSize[4]));
-        parm[6] = AIRetrofits_StringHelper.getSplitString(MaxOpDivider,""+(int)maxOp[1],""+(int)maxOp[2],""+(int)maxOp[3],""+(int)maxOp[4]);
+        parm[5] = AIRetrofits_StringHelper.getSplitString(CrewCostDivider,""+(int)(CostPerCrewPerSize[1]),""+(int)(CostPerCrewPerSize[2]),""+(int)(CostPerCrewPerSize[3]),""+(int)(CostPerCrewPerSize[4]));
+        parm[6] = ""+1;
+        parm[7] = AIRetrofits_StringHelper.getSplitString(MaxOpDivider,""+(int)maxOp[1],""+(int)maxOp[2],""+(int)maxOp[3],""+(int)maxOp[4]);
 
-        parm[7] = "" + (int)cost;
-    }
-    private int reqCrew(float in){
-        if(in == 0){
-            return 0;
-        }
-        return (int)(1 / in);
-    }
-
-    @Override
-    public int getCrewSpaceRemoved(ShipHullSpecAPI spec, float CREW_USE_MULT) {
-        return (int) (spec.getMaxCrew()*CREW_USE_MULT);
+        parm[8] = "" + (int)cost;
     }
 }

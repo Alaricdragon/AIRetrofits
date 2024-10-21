@@ -11,7 +11,7 @@
     "AIRetrofits_Patchwork_AIRetrofit_NA_combatable": "Not compatible with: %s ",
     "AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
     "AIRetrofits_Patchwork_AIRetrofit_NA_OppCost": "op cost: %s ",
-
+    "AIRetrofits_Patchwork_AIRetrofit_CrewCostDivider": "%s/%s/%s/%s ",
     #settings for perament AIRetrofits Hullmod
     "AIRetrofits_Perma_permanent": "permanent",
     #base
@@ -23,8 +23,11 @@
     "AIRetrofits_Perma_Alpha_SupplyUsePercent": "%s%",
     "AIRetrofits_Perma_Alpha_RepairChangePercent": "%s%",
     #omega
+    "AIRetrofits_Perma_Omega_CrewCostDivider": "%s/%s/%s/%s ",
+    "AIRetrofits_Perma_Omega_SupplyUsePercent": "%s%",
+    "AIRetrofits_Perma_Omega_RepairChangePercent": "%s%",
 
-    #settings for robot forge hullmod
+  #settings for robot forge hullmod
     "AIRetrofits_RobotForgeHullmod_NA_crew": "Need at least %s spare crew on ship to replace crew. You have %s ",
 
     #settings for robot drone storge. #not yet in use. hopefully someday i will get this working. its kinda missing right now
@@ -36,19 +39,6 @@
     "AIRetrofits_RobotDroneStorage_cargo_NCDescription_1": " cargo . you have ",
     "AIRetrofits_RobotDroneStorage_cargo_NCDescription_2": " cargo space",
 
-
-    "AIRetrofits_Sa_D":"Produce Salvage Robots. They are about a ton in size, and somewhat ramshackle. Constructed with many independent arms, they are designed to hold any tools that they might need for whatever mission they might encounter, as well as anchor themselves to whatever surface they might require in order to salvage. Controlled from the command ship, they tend to operate very well, but accidents can still occur due to their lack of creativity when in the field. This is barely enough to offset the disadvantages of using salvaging robots in tasks, making them about as effective as normal crew.",
-
-  #survey robots
-  "AIRetrofits_Su_D":"Produce Survey Robots. Due to all the features that need to be put into the robot to make it function at this level, it is very large, about 1.5 tons per robot. Survey robots are built with the ability to collect samples of anything they find. They're also outfitted with sensors to detect geological activity, as well as complex sensors that are capable of analyzing the land around them for anything from signs of life, to mineral deposits, and anything between. Coupled with a somewhat complex custom AI, this makes them very good at their job. While this is not always enough to overcome the downsides of not using human crew, they are overall mush more effective than standard crews at their job.",
-
-  #combat robots
-  "AIRetrofits_Co_D":"Produce Combat Robots. Larger than an average Marine in full combat armor and somewhat rugged in design, they are nonetheless capable of being outfitted with many varying weapon platforms prior to entering combat. They are controlled remotely from the command room of your flagship when performing combat operations. Despite the in-theory advantages that the Combat Robots offer, they tend to severely under perform in combat. The robots are slow to react in battle, due to the fact that the command ship must first process most of their movements. They often take seconds to realize they are under attack before returning fire as a result, causing increased losses. The alternative - which is to give them all a primitive AI - is worse, as it results in the robots walking into kill-zones and fortifications knowingly, as well as a lack of coordination causing many to fall to the same hostile before the error can be corrected. The only upside is that they are quite small, being 'only' half a ton in size. Combat Robots are capable of fighting in almost any environment. They're best used in large numbers.",
-
-  #sub command node
-  "AIRetrofits_Sc_D":"Produce sub command nodes. Not very useful on their own, but having one can boost the capabilities of other robots. They can also be turned into much more useful Command Nodes.",
-
-
   #market condtions
   #AI-Pop
   "AIRetrofitsAIPop_apply_0": "Robots don't rebel... Right?",
@@ -59,6 +49,26 @@
   "AIRetrofits_RobotPowerDescription":"This robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot",
   "AIRetrofits_RobotPowerNoCoreMessage": "No AI-Core or Sub Command Node",
   "AIRetrofits_RobotCargoDescription": "Every robot of this type is taking up %s cargo space",
+
+  #setting for robot forge skill
+  #salvage robots,
+  "AIRetrofits_Sa_Na": "Salvage robots",
+  "AIRetrofits_Sa_D":"Produce Salvage Robots. They are about a ton in size, and somewhat ramshackle. Constructed with many independent arms, they are designed to hold any tools that they might need for whatever mission they might encounter, as well as anchor themselves to whatever surface they might require in order to salvage. Controlled from the command ship, they tend to operate very well, but accidents can still occur due to their lack of creativity when in the field. This is barely enough to offset the disadvantages of using salvaging robots in tasks, making them about as effective as normal crew.",
+
+  #survey robots
+  "AIRetrofits_Su_Na": "Survey robots",
+  "AIRetrofits_Su_D":"Produce Survey Robots. Due to all the features that need to be put into the robot to make it function at this level, it is very large, about 1.5 tons per robot. Survey robots are built with the ability to collect samples of anything they find. They're also outfitted with sensors to detect geological activity, as well as complex sensors that are capable of analyzing the land around them for anything from signs of life, to mineral deposits, and anything between. Coupled with a somewhat complex custom AI, this makes them very good at their job. While this is not always enough to overcome the downsides of not using human crew, they are overall mush more effective than standard crews at their job.",
+
+  #combat robots
+  "AIRetrofits_Co_Na": "Combat robots",
+  "AIRetrofits_Co_D":"Produce Combat Robots. Larger than an average Marine in full combat armor and somewhat rugged in design, they are nonetheless capable of being outfitted with many varying weapon platforms prior to entering combat. They are controlled remotely from the command room of your flagship when performing combat operations. Despite the in-theory advantages that the Combat Robots offer, they tend to severely under perform in combat. The robots are slow to react in battle, due to the fact that the command ship must first process most of their movements. They often take seconds to realize they are under attack before returning fire as a result, causing increased losses. The alternative - which is to give them all a primitive AI - is worse, as it results in the robots walking into kill-zones and fortifications knowingly, as well as a lack of coordination causing many to fall to the same hostile before the error can be corrected. The only upside is that they are quite small, being 'only' half a ton in size. Combat Robots are capable of fighting in almost any environment. They're best used in large numbers.",
+
+  #sub command node
+  "AIRetrofits_Sc_Na": "Sub command nodes",
+  "AIRetrofits_Sc_D":"Produce sub command nodes. Not very useful on their own, but having one can boost the capabilities of other robots. They can also be turned into much more useful Command Nodes.",
+
+  #person creater
+  "AIRetrofits_Pc_Na": "Improve a sub command node",
 
   #descriptions for the robot forge people maker":
   "AIRetrofit_RobotForge_PeopleMaker_mainPage_0": "Using a Sub Command Node as well as a carefully selected set of data from your stockpile of intelligence, you may 'train' a Sub Command Node to mimic the actions of a living person. This allows the newly trained Command Node to perform command-level tasks usually reserved for a human being, or an alpha core. Unfortunately the process renders the newly created Command Node useless for anything but its trained task and requires a steady stream of input data to prevent the Command Node from oversimplifying its instructions.",#"information about improving an sub command node, into a command node goes here",
@@ -85,7 +95,7 @@
   "AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "Got a new Command Node.",
   "AIRetrofit_RobotForge_PeopleMaker_AdminOption": "Create admin",
   "AIRetrofit_RobotForge_PeopleMaker_AdminHoverOver": "Requires a Sub Command Node",
-  "AIRetrofit_RobotForge_PeopleMaker_init_0":"You carefully consider what you can produce with the knowledge you have..." ,
+  #"AIRetrofit_RobotForge_PeopleMaker_init_0":"You carefully consider what you can produce with the knowledge you have..." ,
   #requires nexerlin
   "AIRetrofit_RobotForge_PeopleMaker_OperativePage_0": "You may carefully select data and tune the Command Node to be able to hack, organize mechanical spies, and deploy complicated tactics such as blackmail to manipulate groups and peoples on a given market or faction. Due to the extremely complicated nature of such tasks, with little room for error, this Command Node will require a large amount of data to be shifted through to even be able to preform the most basics of its trained tasks. However, do to the completed nature of its task, it will likely be able to improve overtime. a large amount of data is fed into the Command Node, to prevent simplification fo data",#"You may carefully pick and choose data among the vast array available to you to allow a Sub Command Node to mimic a human personality, with all the ups and downs that come with it. Due to the situational nature of piloting a ship, the Command Node will still need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level Operative.",#"information about how you can chose an Operatives personality go here",
   "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0" : "You consider the possibility of creating a %s Operative from the data you have.",#"information about the cost of creating an Operative here. as well as the type of Operative you are creating." ,

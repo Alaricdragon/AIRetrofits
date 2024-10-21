@@ -27,7 +27,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     private static final String SubCommandNode = AIRetrofits_Constants_3.RobotForge_SubCommandNode;//"AIretrofit_SubCommandNode";
 
     private static final String mainPage_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_mainPage_0");//"information about improving an sub command node, into a command node goes here";
-    private static final String init_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_init_0");
+    //private static final String init_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_init_0");
     private static final Color highlight = Misc.getHighlightColor();
 
     public static int stat = 0;
@@ -52,7 +52,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options = dialog.getOptionPanel();
         this.text = dialog.getTextPanel();
         dialog.getVisualPanel().setVisualFade(0.25F, 0.25F);
-        this.text.addParagraph(init_0);//"You cafullys consider what you can produce with the knowlage you have...");
+        //this.text.addParagraph(init_0);//"You cafullys consider what you can produce with the knowlage you have...");
         //this.populateOptions();
         mainPage();
         dialog.setPromptText(Misc.ucFirst("Options"));

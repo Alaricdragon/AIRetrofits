@@ -6,7 +6,7 @@ this is the process of making my mod make some fucking sense. it will be divided
     -change the way the names work to have there own set of names as a CSV file. (for ease of use)
     -(done)run through a list of chances:
     -open every possible text field in the game, make sure all the text makes sense and is not sloppy.
-        hullmods:
+        (DONE)hullmods:
             -(done)robot forge
                 -calls robots 'robotic drones'
                 -calls robot forge power 'crew power' (only once)
@@ -29,7 +29,7 @@ this is the process of making my mod make some fucking sense. it will be divided
                 -same as (perma) (base)
             -(done)AIRetrofits (perma) (beta)
                 -same as (perma) (base)
-            -AIRetrofits (perma) (Alpha)
+            -(done)AIRetrofits (perma) (Alpha)
                 -same as (perma) (base)
                 -everything about this is bugged. the second part needs to be compleatly redone.
                 but first i say let us make the first part of this description equal to the normal description
@@ -39,21 +39,22 @@ this is the process of making my mod make some fucking sense. it will be divided
                 -the max opp added is bugged (i think?)
                 -the amount of opp shown is bugged.
                 -at no point does it say it reduced the amount of required crew to zero.
-            -AIRetrofits (perma) (Omega)
+            -(done)AIRetrofits (perma) (Omega)
                 -same as (perma) (Alpha)
                 -shows the wrong item that cuased modifcation (needs to be changed anyways so, no matter.)
-            NOTE: for all AIRetrofits:
+            (DONE)NOTE: for all AIRetrofits:
                 a lot of AI-Retrofits have something i like to call '%' or a/b/c/d. all such things need to be replaced with strings from the strings.json file.
                 why? because it BUGS ME A LOT. that they are not replaced by that.
                 completed:
                     perma (alpha)
+                    patchwork
         skills:
             -robot forge
-                -in selection:
-                    -names of options don't have capitals (I think i failed to add them to the settings.json)
-                    -were it shows how many things i can forge a day, it has 2 many decemo points. (for all displayed commodity's)
+                -in selection: (Misc.getRoundedValueOneAfterDecimalIfNotWhole)
+                    -(done)names of options don't have capitals (I think i failed to add them to the settings.json)
+                    -(done)were it shows how many things i can forge a day, it has 2 many decemo points. (for all displayed commodity's)
                     -in 'imporve a sub command node':
-                        -it says i carefully consider what i can produce AGAIN for some reason?
+                        -(done)it says i carefully consider what i can produce AGAIN for some reason?
                         -options are not capitalized. should capitalize officer, admin, and operative.
                         -on create officer, continue is not capitalized.
                         -on create officer, i need to have a warning or presentation stopping me from creating officers past the players maximum.
@@ -69,6 +70,16 @@ this is the process of making my mod make some fucking sense. it will be divided
                         -were it shows what im forging, there is no ',' between forged requirements.
 
         industry:
+            -NOTE: omega cores need a description. industrys that use omega cores as:
+                personal combat forge
+                personal survey forge
+                personal salvage forge
+                combat forge
+                survey forge
+                salvage forge
+                AI-Shipyard
+                Command Node Production
+
         sub-markets:
         market conditions:
         market founder:

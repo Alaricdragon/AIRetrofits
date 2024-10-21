@@ -46,6 +46,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
 
     private static final String CantChangeHullMod = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CantSwapText");
     private static final String CanChangeHullMod1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText1");
+    private final String CrewCostDivider = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_AIRetrofit_CrewCostDivider");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id/*, MutableCharacterStatsAPI c*/) {
         //a.0)
@@ -70,6 +71,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         int exstra_cost = GetExstraOpCost(MinCrew,hullSize);
         //a.2)
         boolean temp = stats.getVariant().getSMods().contains(AIRetrofits_Constants_3.Hullmod_PatchworkAIRetrofit);
+        AIRetrofit_AIretrofit.clearExstraOpCost(stats);
         if(!temp) {
             addExstraOpCost(exstra_cost,stats);
             //stats.getVariant().addMod("mymod_temp0");
@@ -94,7 +96,7 @@ public class AIRetrofit_PatchworkAIRetrofit extends BaseLogisticsHullMod {
         //return "cats";
         switch(index) {
             case 0:
-                return "" + reqCrew(CrewPerCostPerSize[1]) + "/" + reqCrew(CrewPerCostPerSize[2]) + "/" + reqCrew(CrewPerCostPerSize[3]) + "/" + reqCrew(CrewPerCostPerSize[4]);
+                return "" + AIRetrofits_StringHelper.getSplitString(CrewCostDivider,""+reqCrew(CrewPerCostPerSize[1]),""+reqCrew(CrewPerCostPerSize[2]),""+reqCrew(CrewPerCostPerSize[3]),""+reqCrew(CrewPerCostPerSize[4]));
             case 1:
                 return "" + parm[0];
             case 2:

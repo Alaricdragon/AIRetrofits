@@ -298,7 +298,7 @@
 	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
 	#Alpha
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":1,
+	#"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":1,#sets the min AND max required crew to 'zero' in this case
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.5,
 	#how mush exstra crew is required per op gain
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_C-OP-Other":1,
@@ -314,9 +314,15 @@
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_MaxOpCapitalShip": 40,
 
 	#Redacted
-	#"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":1.0,
 	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":0,
-	#"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
+	"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":0.5,
+	#how mush exstra crew is required per op gain
+	"AIRetrofits_AIRetrofit_ShipyardOmega_C-OP-Other":1,
+	"AIRetrofits_AIRetrofit_ShipyardOmega_C-OP-Frigate":5,
+	"AIRetrofits_AIRetrofit_ShipyardOmega_C-OP-Destroyer":10,
+	"AIRetrofits_AIRetrofit_ShipyardOmega_C-OP-Cruiser":20,
+	"AIRetrofits_AIRetrofit_ShipyardOmega_C-OP-Capital_ship":40,
 
 
 	#robotic pop factory T0,

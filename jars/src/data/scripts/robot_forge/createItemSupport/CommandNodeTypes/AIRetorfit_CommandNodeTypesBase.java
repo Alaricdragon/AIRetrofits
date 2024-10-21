@@ -58,7 +58,16 @@ public class AIRetorfit_CommandNodeTypesBase {
     public void addCostLabel(AIRetrofit_CommandNode specalItem,TooltipMakerAPI tooltip, float pad, CargoTransferHandlerAPI transferHandler, Object stackSource) {
         specalItem.addCostLabel(tooltip, pad, transferHandler, stackSource);
     }
-
+    public boolean canBuildPastMaxNumber(){
+        return false;
+    }
+    public boolean isAtMaxAmount(){
+        return false;
+    }
+    public boolean canAddPerson(){
+        if(isAtMaxAmount() && !canBuildPastMaxNumber()) return false;
+        return true;
+    }
     /*code for create people*/
     public void createOptionForCore(OptionPanelAPI options){
         options.addOption("ERROR failed to get possibility for class of "+this.getClass().getCanonicalName(),"","requires a sub command node");

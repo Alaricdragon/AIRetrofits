@@ -11,6 +11,7 @@ public class AIRetrofits_Startup_RobotForge {
     public static void apply(){
         robot_forge_set();
     }
+    private static final String SaNa = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Sa_Na");
     private static final float SaS = Global.getSettings().getFloat("AIRetrofits_Sa_S");
     private static final float SaB = Global.getSettings().getFloat("AIRetrofits_Sa_B");
     private static final String Sa1N = Global.getSettings().getString("AIRetrofits_Sa_1N");
@@ -20,6 +21,7 @@ public class AIRetrofits_Startup_RobotForge {
     private static final String Sa3N = Global.getSettings().getString("AIRetrofits_Sa_3N");
     private static final float Sa3C = Global.getSettings().getFloat("AIRetrofits_Sa_3C");
 
+    private static final String SuNa = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Su_Na");
     private static final float SuS = Global.getSettings().getFloat("AIRetrofits_Su_S");
     private static final float SuB = Global.getSettings().getFloat("AIRetrofits_Su_B");
     private static final String Su1N = Global.getSettings().getString("AIRetrofits_Su_1N");
@@ -29,6 +31,7 @@ public class AIRetrofits_Startup_RobotForge {
     private static final String Su3N = Global.getSettings().getString("AIRetrofits_Su_3N");
     private static final float Su3C = Global.getSettings().getFloat("AIRetrofits_Su_3C");
 
+    private static final String CoNa = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Co_Na");
     private static final float CoS = Global.getSettings().getFloat("AIRetrofits_Co_S");
     private static final float CoB = Global.getSettings().getFloat("AIRetrofits_Co_B");
     private static final String Co1N = Global.getSettings().getString("AIRetrofits_Co_1N");
@@ -38,6 +41,7 @@ public class AIRetrofits_Startup_RobotForge {
     private static final String Co3N = Global.getSettings().getString("AIRetrofits_Co_3N");
     private static final float Co3C = Global.getSettings().getFloat("AIRetrofits_Co_3C");
 
+    private static final String ScNa = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Sc_Na");
     private static final float ScS = Global.getSettings().getFloat("AIRetrofits_Sc_S");
     private static final float ScB = Global.getSettings().getFloat("AIRetrofits_Sc_B");
     private static final String Sc1N = Global.getSettings().getString("AIRetrofits_Sc_1N");
@@ -52,22 +56,23 @@ public class AIRetrofits_Startup_RobotForge {
     private static final String CoD = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Co_D");
     private static final String ScD = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Sc_D");
 
+    private static final String PcNa = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Pc_Na");
     private static void robot_forge_set(){
-        AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem("salvage Drones",SaD,SaS);
+        AIRetrofits_ForgeItem item = new AIRetrofits_ForgeItem(SaNa,SaD,SaS);
         robotAddReq(Sa1C,Sa1N,item);
         robotAddReq(Sa2C,Sa2N,item);
         robotAddReq(Sa3C,Sa3N,item);
         item.addOutputItem("AIretrofit_WorkerDrone",SaB);//50
         AIRetrofits_ForgeList.addItem(item);
 
-        item = new AIRetrofits_ForgeItem("survey drones",SuD,SuS);
+        item = new AIRetrofits_ForgeItem(SuNa,SuD,SuS);
         robotAddReq(Su1C,Su1N,item);
         robotAddReq(Su2C,Su2N,item);
         robotAddReq(Su3C,Su3N,item);
         item.addOutputItem("AIretrofit_SurveyDrone",SuB);//50
         AIRetrofits_ForgeList.addItem(item);
 
-        item = new AIRetrofits_ForgeItem("raiding drones",CoD,CoS);
+        item = new AIRetrofits_ForgeItem(CoNa,CoD,CoS);
         //item.addRequiredItem("supplies", (float) 0.1);
         robotAddReq(Co1C,Co1N,item);
         robotAddReq(Co2C,Co2N,item);
@@ -75,14 +80,14 @@ public class AIRetrofits_Startup_RobotForge {
         item.addOutputItem("AIretrofit_CombatDrone",CoB);//200
         AIRetrofits_ForgeList.addItem(item);
 
-        item = new AIRetrofits_ForgeItem("sub command node",ScD,ScS);
+        item = new AIRetrofits_ForgeItem(ScNa,ScD,ScS);
         robotAddReq(Sc1C,Sc1N,item);
         robotAddReq(Sc2C,Sc2N,item);
         robotAddReq(Sc3C,Sc3N,item);
         item.addOutputItem("AIretrofit_SubCommandNode",ScB);
         AIRetrofits_ForgeList.addItem(item);
 
-        AIRetrofits_RobotForge_People dilog = new AIRetrofits_RobotForge_People("improve an sub command node","words words words. you shold never see this",0);
+        AIRetrofits_RobotForge_People dilog = new AIRetrofits_RobotForge_People(PcNa,"words words words. you shold never see this",0);
         AIRetrofits_ForgeList.addItem(dilog);
 
         AIRetrofits_RobotForge.setInitData();

@@ -25,7 +25,6 @@ public class AIRetrofit_AIretrofit extends BaseLogisticsHullMod {
 		AIRetrofits_StringGetterProtection.getString("AIRetrofits_AIRetrofit_NA_OppCost"),
 	};
 
-	private static final int[] Base_OP_COST = {5,10,15,25};
 	private static final float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_AIretrofit_SUPPLY_USE_MULT");//1f;
 	private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_AIretrofit_CREW_USE_MULT");//0f;
 	private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_AIretrofit_REPAIR_LOSE");//0.5f;
@@ -39,6 +38,17 @@ public class AIRetrofit_AIretrofit extends BaseLogisticsHullMod {
 	//private int[] CrewPerCostPerSize = {1,5,10,20,40};
 	//private float[] CrewPerCostPerSize = {1f,0.2f,0.01f,0.05f,0.025f};
 	private int[] parm = new int[6];
+	public static void clearExstraOpCost(MutableShipStatsAPI stats){
+		String temp;
+		for(int a = 4096; a >= 1; a = a / 2){
+			temp = "AIretrofit_AIretrofitAplha_opRemove" + a;
+			stats.getVariant().removeMod(temp);
+		}
+		for(int a = 4096; a >= 1; a = a / 2){
+			temp = "AIretrofit_AIretrofit_opadd" + a;
+			stats.getVariant().removeMod(temp);
+		}
+	}
 	@Override
 	public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id/*, MutableCharacterStatsAPI c*/) {
 		//a.0)
@@ -57,6 +67,7 @@ public class AIRetrofit_AIretrofit extends BaseLogisticsHullMod {
 
 		int exstra_cost = GetExstraOpCost(MinCrew,hullSize);
 		//a.2)
+		AIRetrofit_AIretrofit.clearExstraOpCost(stats);
 		boolean temp = stats.getVariant().getSMods().contains("AIretrofit_airetrofit");
 		if(!temp) {
 			addExstraOpCost(exstra_cost,stats);
