@@ -9,6 +9,7 @@ import com.fs.starfarer.api.characters.MutableCharacterStatsAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.events.OfficerManagerEvent;
 import com.fs.starfarer.api.impl.campaign.rulecmd.SetStoryOption;
+import com.fs.starfarer.api.impl.campaign.rulecmd.ShowResCost;
 import com.fs.starfarer.api.plugins.OfficerLevelupPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -44,8 +45,8 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
             {0,2},
             {1,3}
     };
-    public AIRetrofit_CommandNodeType_Officer(String name, float weight,boolean addToCommandNodes,boolean addToRobotForge) {
-        super(name, weight,addToCommandNodes,addToRobotForge);
+    public AIRetrofit_CommandNodeType_Officer(String name, float weight,boolean addToCommandNodes,boolean addToRobotForge,boolean canAddPastMax) {
+        super(name, weight,addToCommandNodes,addToRobotForge,canAddPastMax);
     }
     private final static String officerText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_officerText");//"officer";
     private final static String officerText2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_officerText2");//"a command node with the designation of %s. they are a %s of level %s with a personality of %s";
@@ -224,8 +225,12 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         return person;
     }
 
-
-
+    @Override
+    public boolean isAtMaxAmount() {
+        int available = Global.getSector().getPlayerFleet().getFleetData().getOfficersCopy().size();
+        int max = (int)Global.getSector().getPlayerStats().getOfficerNumber().getModifiedValue();
+        return max <= available;
+    }
 
     private static final int officerCreditCost = AIRetrofits_Constants_3.RobotForge_officerCreditCost;//Global.getSettings().getInt("AIRetrofits_Officer_credits");//1000;
     private static final int officerSubCommandNodeCost = AIRetrofits_Constants_3.RobotForge_officerSubCommandNodeCost;//Global.getSettings().getInt("AIRetrofits_Officer_SCN");
@@ -240,7 +245,10 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
     private static final String officerConfirmPage_6 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_6");
     private static final String officerConfirmPage_7 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_7");
     private static final String officerConfirmPage_8 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_8");
-    private static final String officerConfirmPage_9 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_9");
+    //private static final String officerConfirmPage_9 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_9");
+    private static final String officerConfirmPage_10 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_10");
+    private static final String officerConfirmPage_11 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_11");
+    //private static final String officerConfirmPage_12 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_12");
     private static final String exitOfficer_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0");
     private static final String exitOfficer_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1");
     private static final String[] personalities = {"timid","cautious","steady","aggressive","reckless","fearless"};
@@ -290,8 +298,17 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         dialog.getTextPanel().addPara(officerConfirmPage_1,highlight,exstras);//"the officer you create will cost " + officerCreditsPerMomth + "per month. and more as they level up.");
         exstras = new String[]{"" + officerSubCommandNodeCost, "" + officerCreditCost};
         dialog.getTextPanel().addPara(officerConfirmPage_2,highlight,exstras);//"you require " + officerSubCommandNodeCost + " sub command node and " + officerCreditCost + " credits to create an officer");
-        if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost){
-            options.addOption(officerConfirmPage_3,"createOfficer");
+        boolean resources = Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= officerSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= officerCreditCost;
+        if (isAtMaxAmount()){
+            dialog.getTextPanel().addPara(officerConfirmPage_10,Misc.getNegativeHighlightColor());
+        }
+        if (!resources){
+            dialog.getTextPanel().addPara(officerConfirmPage_11,Misc.getNegativeHighlightColor());
+        }
+        options.addOption(officerConfirmPage_3,"createOfficer");
+        if(!resources){
+            options.setEnabled("createOfficer",false);
+            //options.setTooltip("createOfficer",officerConfirmPage_12);
         }
         SetStoryOption.set(dialog,1,"createOfficer","promoteCrewMember","ui_char_spent_story_point","");
         AIRetrofits_Dialog_PeopleMaker.addBack(options);
@@ -308,7 +325,7 @@ public class AIRetrofit_CommandNodeType_Officer extends AIRetorfit_CommandNodeTy
         //fearless dose not work. no idea why.
         //this.options.addOption("fearless","officerConfirmPage_5");
 
-        options.addOption(officerConfirmPage_9,"menu");
+        AIRetrofits_Dialog_PeopleMaker.addBack(options);
     }
     @Override
     public void confermPage(OptionPanelAPI options, InteractionDialogAPI dialog,String optionText, Object optionData){

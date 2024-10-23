@@ -1,4 +1,11 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.8(private):
+save compatible with 0.7.20.1+
+    completed text changes for:
+        robot forge officer conform page.
+        robot forge admin conform page.
+        robot forge operative conform page.
+        NOTE: im waiting for a thing i have been working on before completely revamping this.
 V0.9.4.7(private):
 save compatible with 0.7.20.1+
     new:

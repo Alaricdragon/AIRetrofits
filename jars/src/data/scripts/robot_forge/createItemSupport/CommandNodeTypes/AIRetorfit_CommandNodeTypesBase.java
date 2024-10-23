@@ -14,10 +14,12 @@ import data.scripts.robot_forge.dilogs.AIRetrofits_Dialog_PeopleMaker;
 public class AIRetorfit_CommandNodeTypesBase {
     public String name;
     public float weight;
+    public boolean canBuildPastMaxNumber;
 
-    public AIRetorfit_CommandNodeTypesBase(String name,float weight,boolean addToCommandNodes,boolean addToRobotForge){
+    public AIRetorfit_CommandNodeTypesBase(String name,float weight,boolean addToCommandNodes,boolean addToRobotForge,boolean canBuildPastMaxNumber){
         this.name = name;
         this.weight = weight;
+        this.canBuildPastMaxNumber = canBuildPastMaxNumber;
         if(addToCommandNodes) {
             AIRetrofits_CreatePeople.CommandNodeTypes.add(this);
         }
@@ -52,6 +54,10 @@ public class AIRetorfit_CommandNodeTypesBase {
     public boolean shouldRemoveOnRightClickAction(){
         return true;
     }
+    public void performRightClickActionInternal(PersonAPI person){
+        if (!canAddPerson()) return;
+        performRightClickAction(person);
+    }
     public void performRightClickAction(PersonAPI person){
 
     }
@@ -59,7 +65,7 @@ public class AIRetorfit_CommandNodeTypesBase {
         specalItem.addCostLabel(tooltip, pad, transferHandler, stackSource);
     }
     public boolean canBuildPastMaxNumber(){
-        return false;
+        return canBuildPastMaxNumber;
     }
     public boolean isAtMaxAmount(){
         return false;

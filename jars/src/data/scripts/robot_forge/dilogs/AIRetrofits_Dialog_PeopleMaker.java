@@ -43,6 +43,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
         this.options.addOption("create officer","officer","requires a sub command node");*/
         }
         this.options.addOption(String_0,"back");
+        options.setShortcut("back", 1, false, false, false, true);
     }
 
 
@@ -72,6 +73,7 @@ public class AIRetrofits_Dialog_PeopleMaker extends AIRetrofits_DialogBase {
     }
     public static void addBack(OptionPanelAPI options){
         options.addOption(String_2,"menu");
+        options.setShortcut("menu", 1, false, false, false, true);
     }
     @Override
     public void optionSelected(String optionText, Object optionData) {

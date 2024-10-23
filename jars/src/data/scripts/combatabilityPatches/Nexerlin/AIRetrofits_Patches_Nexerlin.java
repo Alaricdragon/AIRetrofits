@@ -12,7 +12,7 @@ public class AIRetrofits_Patches_Nexerlin extends AIRetrofits_PatchBase {
     public static final float PersonWeight_Nex_Operative = Global.getSettings().getFloat("AIRetrofit_CommandNode_PersonalityWeight_Nexerlin_Operative");
     @Override
     public void apply() {
-        new AIRetrofit_CommandNodeType_NexerlinOperative("NexerlinOperative",PersonWeight_Nex_Operative,true,true);
+        new AIRetrofit_CommandNodeType_NexerlinOperative("NexerlinOperative",PersonWeight_Nex_Operative,true,true,false);
         //new AIRetrofit_groundTroopSwaper_Base("CombatRobots",new String[]{AIRetrofit_groundTroopSwaper_Base.unitType_marine});
         //new AIRetrofits_ItemInCargoMemory("$AIRetrofits_T0_Combat_Available",AIRetrofits_Constants_3.Commodity_T0_CombatDrone);
         //new AIRetrofits_ItemInCargoMemory("$AIRetrofits_T1_Combat_Available",AIRetrofits_Constants_3.Commodity_T1_CombatDrone);

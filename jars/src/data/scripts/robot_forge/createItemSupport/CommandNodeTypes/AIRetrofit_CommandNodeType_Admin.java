@@ -28,8 +28,8 @@ import java.util.Random;
 public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeTypesBase{
     public AIRetrofit_CommandNodeType_Admin logClass = this;
     public boolean logs = false;
-    public AIRetrofit_CommandNodeType_Admin(String name, float weight,boolean addToCommandNodes,boolean addToRobotForge) {
-        super(name, weight,addToCommandNodes,addToRobotForge);
+    public AIRetrofit_CommandNodeType_Admin(String name, float weight,boolean addToCommandNodes,boolean addToRobotForge,boolean canAddPastMax) {
+        super(name, weight,addToCommandNodes,addToRobotForge,canAddPastMax);
     }
 
     public static final float[] Admin_Costs = {
@@ -164,17 +164,20 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
         return a;
     }
 
-
-
-
-
-
-
+    @Override
+    public boolean isAtMaxAmount() {
+        int available = Global.getSector().getCharacterData().getAdmins().size();
+        int max = (int)Global.getSector().getPlayerStats().getAdminNumber().getModifiedValue();
+        AIRetrofit_Log.loging("number of admins: current / max: "+available+", "+max,this,true);
+        return max <= available;
+    }
 
     private static final String admenConfirmPage_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0");
     private static final String admenConfirmPage_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1");
     private static final String admenConfirmPage_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2");
     private static final String admenConfirmPage_3 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_3");
+    private static final String admenConfirmPage_4 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_4");
+    private static final String admenConfirmPage_5 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_5");
     private static final String exitAdmen_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0");
     private static final String exitAdmen_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1");
     private static final int administratorCreditCost = AIRetrofits_Constants_3.RobotForge_administratorCreditCost;//Global.getSettings().getInt("AIRetrofits_Admin_credits");///1000;
@@ -208,8 +211,16 @@ public class AIRetrofit_CommandNodeType_Admin extends AIRetorfit_CommandNodeType
         options.clearOptions();
         dialog.getTextPanel().addPara(admenConfirmPage_1,highlight,new String[]{"" + administratorCreditsPerMomth});//"the officer you create will cost " + administratorCreditsPerMomth + "per month. at an reduced cost if they are not doing anything.");
         dialog.getTextPanel().addPara(admenConfirmPage_2,highlight, "" + administratorSubCommandNodeCost,"" + administratorCreditCost);//"you require " + administratorSubCommandNodeCost + " sub command node and " + administratorCreditCost + " credits to create an administrator");
-        if(Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= administratorSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= administratorCreditCost){
-            options.addOption(admenConfirmPage_3,"createAdmen");
+        boolean resources = Global.getSector().getPlayerFleet().getCargo().getCommodityQuantity(AIRetrofits_Constants_3.Commodity_SubCommandNode) >= administratorSubCommandNodeCost && Global.getSector().getPlayerFleet().getCargo().getCredits().get() >= administratorCreditCost;
+        if (isAtMaxAmount()){
+            dialog.getTextPanel().addPara(admenConfirmPage_4,Misc.getNegativeHighlightColor());
+        }
+        if (!resources){
+            dialog.getTextPanel().addPara(admenConfirmPage_5,Misc.getNegativeHighlightColor());
+        }
+        options.addOption(admenConfirmPage_3,"createAdmen");
+        if(!resources){
+            options.setEnabled("createAdmen",false);
         }
         SetStoryOption.set(dialog,1,"createAdmen","promoteCrewMember","ui_char_spent_story_point","");
         AIRetrofits_Dialog_PeopleMaker.addBack(options);

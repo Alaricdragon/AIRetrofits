@@ -7,60 +7,21 @@ this is the process of making my mod make some fucking sense. it will be divided
     -(done)run through a list of chances:
     -open every possible text field in the game, make sure all the text makes sense and is not sloppy.
         (DONE)hullmods:
-            -(done)robot forge
-                -calls robots 'robotic drones'
-                -calls robot forge power 'crew power' (only once)
-            -(done)AIRetrofits (base)
-                -the 'additional opp oer x crew' text shows a number that is not one.
-                    -this looks like a translation issue. i should change the 2 varubles that show 'how mush exstrea opp it costs' and 'how mush total opp it costs' to '1' and 'extra opp cost'
-                -were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
-                -make sure the max possible amount of max crew that can be removed is equal to the max crew of the ship. just in case.
-            -(done)AIRetrofits (patchwork)
-                -same as (base)
-                -(done. fucking finaly)find a solution to the fact that changing an AI-Retrofits hullmod removed all combat readiness. for the love of god.
-            -(done)AIRetrofits (perma) (base)
-                -(done)'can be replaced by a simpler modification' -> 'can be replaced by a similar modification'
-                -(done)need to remove decimal ponit from stat changes.
-                -(done)were it says how mush max crew is removed from the ship, it needs to be more clear that it removes max crew equal to the min crew of the ship.
-                -were it says what my modifcations were made from, is um, i dont even know. but i need to change it.
-                    -eather to be the hullmods name, or to be the name of the building / submarket that creates the changes
-                -make sure the max possible amount of max crew that can be removed is equal to the max crew of the ship. just in case.
-            -(done)AIRetrofits (perma) (Gamma)
-                -same as (perma) (base)
-            -(done)AIRetrofits (perma) (beta)
-                -same as (perma) (base)
-            -(done)AIRetrofits (perma) (Alpha)
-                -same as (perma) (base)
-                -everything about this is bugged. the second part needs to be compleatly redone.
-                but first i say let us make the first part of this description equal to the normal description
-
-
-                -for every x crew exstra crew quarters is budged.
-                -the max opp added is bugged (i think?)
-                -the amount of opp shown is bugged.
-                -at no point does it say it reduced the amount of required crew to zero.
-            -(done)AIRetrofits (perma) (Omega)
-                -same as (perma) (Alpha)
-                -shows the wrong item that cuased modifcation (needs to be changed anyways so, no matter.)
-            (DONE)NOTE: for all AIRetrofits:
-                a lot of AI-Retrofits have something i like to call '%' or a/b/c/d. all such things need to be replaced with strings from the strings.json file.
-                why? because it BUGS ME A LOT. that they are not replaced by that.
-                completed:
-                    perma (alpha)
-                    patchwork
         skills:
             -robot forge
                 -in selection: (Misc.getRoundedValueOneAfterDecimalIfNotWhole)
                     -(done)names of options don't have capitals (I think i failed to add them to the settings.json)
                     -(done)were it shows how many things i can forge a day, it has 2 many decemo points. (for all displayed commodity's)
-                    -in 'imporve a sub command node':
+                    -(done)instead of hiding the 'continue' option when you cant affort to continue, instead grey it out, and have a 'cannot afford operation' type text when you hover over it.
+                    -(done)in 'imporve a sub command node':
                         -(done)it says i carefully consider what i can produce AGAIN for some reason?
-                        -options are not capitalized. should capitalize officer, admin, and operative.
-                        -on create officer, continue is not capitalized.
-                        -on create officer, i need to have a warning or presentation stopping me from creating officers past the players maximum.
+                        -(done)options are not capitalized. should capitalize officer, admin, and operative.
+                        -(done)on create officer, continue is not capitalized.
+                        -(done)on create officer, i need to have a warning or presentation stopping me from creating officers past the players maximum.
                             -i would prefer a warning.
-                        -on create admin, i need to have a warning or presentation stopping me from creating officers past the players maximum.
+                        -(done)on create admin, i need to have a warning or presentation stopping me from creating officers past the players maximum.
                             -i would prefer i warning.
+                (done)in all menus except the first, the esc key does not run the 'back' button like it should.
                 in hotbar
                     -the description were it shows how mush power is available is not caped to one demo point.
                         -i think there is something for this in Misc.
@@ -68,6 +29,7 @@ this is the process of making my mod make some fucking sense. it will be divided
                         -were it shows what im forging, the spacing is way wayyy off.
                         -were it shows what im forging, there are random ',' just after the first work (should not be there)
                         -were it shows what im forging, there is no ',' between forged requirements.
+                    -(testing needed)need to make sure the floating text is good when it activates.
 
         industry:
             -NOTE: omega cores need a description. industrys that use omega cores as:

@@ -100,7 +100,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         if(timesTriedToAddPerson > 1) return;
         AIRetorfit_CommandNodeTypesBase temp = findPersonType();
         if(temp != null){
-            findPersonType().performRightClickAction(person);
+            findPersonType().performRightClickActionInternal(person);
             return;
         }
         person = AIRetrofits_CreatePeople.createPerson();
