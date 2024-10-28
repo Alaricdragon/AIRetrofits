@@ -7,32 +7,10 @@ this is the process of making my mod make some fucking sense. it will be divided
     -(done)run through a list of chances:
     -open every possible text field in the game, make sure all the text makes sense and is not sloppy.
         (DONE)hullmods:
-        skills:
-            -robot forge
-                -in selection: (Misc.getRoundedValueOneAfterDecimalIfNotWhole)
-                    -(done)names of options don't have capitals (I think i failed to add them to the settings.json)
-                    -(done)were it shows how many things i can forge a day, it has 2 many decemo points. (for all displayed commodity's)
-                    -(done)instead of hiding the 'continue' option when you cant affort to continue, instead grey it out, and have a 'cannot afford operation' type text when you hover over it.
-                    -(done)in 'imporve a sub command node':
-                        -(done)it says i carefully consider what i can produce AGAIN for some reason?
-                        -(done)options are not capitalized. should capitalize officer, admin, and operative.
-                        -(done)on create officer, continue is not capitalized.
-                        -(done)on create officer, i need to have a warning or presentation stopping me from creating officers past the players maximum.
-                            -i would prefer a warning.
-                        -(done)on create admin, i need to have a warning or presentation stopping me from creating officers past the players maximum.
-                            -i would prefer i warning.
-                (done)in all menus except the first, the esc key does not run the 'back' button like it should.
-                in hotbar
-                    -the description were it shows how mush power is available is not caped to one demo point.
-                        -i think there is something for this in Misc.
-                    -when active:
-                        -were it shows what im forging, the spacing is way wayyy off.
-                        -were it shows what im forging, there are random ',' just after the first work (should not be there)
-                        -were it shows what im forging, there is no ',' between forged requirements.
-                    -(testing needed)need to make sure the floating text is good when it activates.
-
+        (done)skills:
+            (NOTE: for complete rebuild, complete the forge production library)robot forge
         industry:
-            -NOTE: omega cores need a description. industrys that use omega cores as:
+            -(-very basic- framework done)NOTE: omega cores need a description. industrys that use omega cores as:
                 personal combat forge
                 personal survey forge
                 personal salvage forge

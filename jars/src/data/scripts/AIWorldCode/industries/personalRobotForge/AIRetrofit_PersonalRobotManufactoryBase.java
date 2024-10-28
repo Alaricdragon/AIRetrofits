@@ -237,6 +237,28 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
     }
     @Override
+    protected void	addOmegaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+        float pad = 5;
+        String pre = getOmegaCoreString(mode);
+        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
+            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
+            /*text.addPara("Reduces upkeep cost by %s. Reduces demand by %s unit. " +
+                            "Increases fleet size by %s.", 0f, highlight,
+                    "" + (int)((1f - UPKEEP_MULT) * 100f) + "%", "" + DEMAND_REDUCTION,
+                    str);*/
+            Color highlight = Misc.getHighlightColor();
+            String[] exstra = {alphaDescriptionHighlighted};
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
+
+            tooltip.addImageWithText(pad);
+            return;
+        }
+        Color highlight = Misc.getHighlightColor();
+        String[] exstra = {alphaDescriptionHighlighted};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
+    }
+    @Override
     public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
@@ -256,8 +278,12 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     public void applyAlphaCoreModifiers(){
         removeBetaMods();
     }
+    @Override
+    protected void applyOmegaCoreModifiers() {
+        removeBetaMods();
+    }
 
-    protected int getRandomBetween(float min,float max){
+    protected int getRandomBetween(float min, float max){
         return (int)(min + Math.random()*(max - min));
     }
 

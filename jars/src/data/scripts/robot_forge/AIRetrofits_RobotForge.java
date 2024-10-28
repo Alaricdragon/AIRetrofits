@@ -131,7 +131,7 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         }
         if(fleet.getCargo().getSpaceLeft() <= 0){
             continueing = false;
-            fleet.addFloatingText(String_4, Misc.setAlpha(entity.getIndicatorColor(), 255), 1f);
+            fleet.addFloatingText(String_4, Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
             deactivate();
         }
         if(continueing) {
@@ -180,20 +180,20 @@ public class AIRetrofits_RobotForge extends BaseToggleAbility {
         return tooltip;
     }
     private String getPara(int a){
-        double b;
-        double c;
+        float b;
+        float c;
         switch(a){
             case 0:
-                double iCoom = iCalculateBonus(getFleet());
-                return iCoom > 0 ? AIRetrofits_StringHelper.getSplitString(String_9,""+iCoom) : String_10;
+                float iCoom = iCalculateBonus(getFleet());
+                return iCoom > 0 ? AIRetrofits_StringHelper.getSplitString(String_9,""+Misc.getRoundedValueOneAfterDecimalIfNotWhole(iCoom)) : String_10;
             case 1:
                 b = getFleetsForgeModules(getFleet());
-                return AIRetrofits_StringHelper.getSplitString(String_11,""+b);
+                return AIRetrofits_StringHelper.getSplitString(String_11,""+Misc.getRoundedValueOneAfterDecimalIfNotWhole(b));
             case 2:
                 b = getFleetsForgeModules(getFleet());
                 c = getFleetsNanoforgePower(getFleet());
 
-                return AIRetrofits_StringHelper.getSplitString(String_12,""+ Math.min(b,c));
+                return AIRetrofits_StringHelper.getSplitString(String_12,""+Misc.getRoundedValueOneAfterDecimalIfNotWhole(Math.min(b,c)));
             case 3:
                 return "";
         }

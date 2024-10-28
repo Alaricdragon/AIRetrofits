@@ -134,6 +134,9 @@
   "AIRetrofit_RobotForge_Item_4": ", ",#spaces between inputs (provided there are more then one)
   "AIRetrofit_RobotForge_Item_5": "Cant forge %s. out of %s ",
   "AIRetrofit_RobotForge_Item_6": ", ",#spaces between 'missing resorses' (provided there are more then one)
+  "AIRetrofit_RobotForge_Item_7": ", and ",
+  "AIRetrofit_RobotForge_Item_8": ", and ",
+  "AIRetrofit_RobotForge_Item_9": ", and ",
 
   #abilitys
   #robot forge
@@ -168,6 +171,9 @@
   "AIRetrofits_PopulationReplacementCenter_exstraDescription": "Takes a single day to build if built within %s days of founding the colony",
 
   #base industry settings
+  "AIRetrofit_IndustryBase_addOmegaCoreDescription_String_0": "Omega-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addOmegaCoreDescription_String_1": "Omega-level AI core. %s ",
+
   "AIRetrofit_IndustryBase_addAlphaCoreDescription_String_0": "Alpha-level AI core currently assigned. %s ",
   "AIRetrofit_IndustryBase_addAlphaCoreDescription_String_1": "Alpha-level AI core. %s ",
 

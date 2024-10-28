@@ -35,6 +35,9 @@ public class AIRetrofits_ForgeItem {
     protected static final String String_4 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_4");
     protected static final String String_5 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_5");
     protected static final String String_6 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_6");
+    protected static final String String_7 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_7");
+    protected static final String String_8 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_8");
+    protected static final String String_9 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_9");
 
     public AIRetrofits_ForgeItem(String nameTemp, String descriptionTemp, float speedTemp){
         name = nameTemp;
@@ -97,22 +100,27 @@ public class AIRetrofits_ForgeItem {
         //out += description;
         float ForgeSpeed = getForgeSpeed(power);
         String out = "";
-        boolean last = false;
+        //boolean last = false;
         for(int a = 0; a < outputItems.size(); a++){
-            if(!last){
+            if(a != 0 && a != outputItems.size() - 1){
                 out += String_2;
             }
-            last = true;
+            if (a != 0 && a == outputItems.size() - 1){
+                out += String_7;
+            }
             float numbers = outputNumbers.get(a) * ForgeSpeed;
             out += Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(outputItems.get(a)).getName();
         }
         out += String_3;
-        last = false;
+        //last = false;
         for(int a = 0; a < inputItems.size(); a++){
-            if(!last){
+            if(a != 0 && a != inputItems.size() - 1){
                 out += String_4;
             }
-            last = true;
+            if (a != 0 && a == inputItems.size() - 1){
+                out += String_8;
+            }
+            //last = true;
             float numbers = inputNumbers.get(a) * ForgeSpeed;
             out += Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName();
         }
@@ -122,17 +130,22 @@ public class AIRetrofits_ForgeItem {
     public void getCantBuildPopup(CampaignFleetAPI fleet,SectorEntityToken entity){
         //String text_main = "cant forge " + name + ". out of ";
         String text = "";
-        boolean last = false;
+        ArrayList<String> temp = new ArrayList<>();
         for(int a = 0; a < inputItems.size(); a++){
             if(fleet.getCargo().getCommodityQuantity(inputItems.get(a)) <= 0){
-                if(last){
-                    text += String_6;
-                }
-                text += Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName();
-                last = true;
+                temp.add(Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName());
             }
         }
-        fleet.addFloatingText(AIRetrofits_StringHelper.getSplitString(String_5,name,text), Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
+        for (int a = 0; a < temp.size(); a++){
+            if (a != 0 && a != temp.size() - 1){
+                text += String_6;
+            }
+            if (a != 0 && a == temp.size() - 1){
+                text += String_9;
+            }
+            text += temp.get(a);
+        }
+        fleet.addFloatingText(AIRetrofits_StringHelper.getSplitString(String_5,name,text), Misc.setAlpha(entity.getIndicatorColor(), 255), 3f + temp.size());
     }
     private void displayItem(TextPanelAPI text, String numberOfItems,String itemName){
         CommoditySpecAPI spec = Global.getSector().getEconomy().getCommoditySpec(itemName);
