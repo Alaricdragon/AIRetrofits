@@ -1,7 +1,8 @@
 changelog for all my changes as i make them so i don't forget again.
 V0.9.4.9(private):
 save compatible with 0.7.20.1+
-
+    completed the 'setup' stage for omega core modifiers.
+    started working on the robot forges.
 V0.9.4.8(private):
 save compatible with 0.7.20.1+
     completed text changes for:

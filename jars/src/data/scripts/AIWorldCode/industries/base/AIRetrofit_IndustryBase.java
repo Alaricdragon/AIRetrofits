@@ -5,6 +5,7 @@ import com.fs.starfarer.api.impl.campaign.econ.impl.BaseIndustry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
@@ -91,17 +92,30 @@ public class AIRetrofit_IndustryBase extends BaseIndustry {
         }
         super.applyAICoreModifiers();
     }
+    @Override
     public void addAICoreSection(TooltipMakerAPI tooltip, String coreId, AICoreDescriptionMode mode) {
-        if (aiCoreId != null && aiCoreId.equals(Commodities.OMEGA_CORE)) {
+        AIRetrofit_Log.loging("RUNNING addAICoreSelection with a coreID of: "+coreId,this,true);
+        if (hasOmegaDescription() && coreId != null && coreId.equals(Commodities.OMEGA_CORE)) {
+            AIRetrofit_Log.loging("attempting to run omega core data",this,true);
+            /*if (mode == AICoreDescriptionMode.MANAGE_CORE_TOOLTIP) {
+                if (coreId == null) {
+                    tooltip.addPara("No AI core currently assigned. Click to assign an AI core from your cargo.", 5);
+                    return;
+                }
+            }*/
             addOmegaCoreDescription(tooltip, mode);
             return;
         }
         super.addAICoreSection(tooltip, coreId, mode);
     }
+    protected boolean hasOmegaDescription(){
+        return false;
+    }
     protected void applyOmegaCoreModifiers() {
 
     }
     protected void	addOmegaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+        AIRetrofit_Log.loging("attempting to run omega core data description",this,true);
 
     }
 }

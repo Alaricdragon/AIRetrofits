@@ -56,17 +56,22 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         if (!isFunctional()) {
             return;
         }
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id,getCombatMulti(),groundDefenceText);
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, getBetaMulti(),groundDefenceText);
     }
-    public float getCombatMulti(){
-        float bonus = BetaDefenceMulti;
-        if (this.isImproved()){
-            //bonus *= 2;
-        }
+    public float getBetaMulti(){
+        float bonus = 0;
         String[] itemsTemp = this.getItems();
         if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
+        return getBetaMulti(bonus);
+    }
+    public float getBetaMulti(float commodityOutput){
+        float bonus = BetaDefenceMulti;
+        if (this.isImproved()){
+            bonus *= improvedBetaMulti;
+        }
+        bonus *= commodityOutput;
         bonus+=1;
         return bonus;
     }
@@ -83,12 +88,12 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode,String after,String... afterHighlights){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        float bonus = getCombatMulti();
-        String[] exstra = {"" + ((bonus - 1) * 100) + "%"};
-        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText),pad,highlight,exstra);
+        float bonus = getBetaMulti();
+        String[] exstra = {"" + Math.round((bonus - 1) * 100) + "%",afterHighlights[0]};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText)+after,pad,highlight,exstra);
     }
 
 

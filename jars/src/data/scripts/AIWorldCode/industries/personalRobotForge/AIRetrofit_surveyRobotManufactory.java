@@ -82,7 +82,7 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode,String after,String... afterHighlights){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
         String[] itemsTemp = this.getItems();
@@ -90,7 +90,7 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
         if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
-        String[] exstra = {"" + (int)(BetaDefenceMulti*bonus)};
-        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText),pad,highlight,exstra);
+        String[] exstra = {"" + (int)(BetaDefenceMulti*bonus),afterHighlights[0]};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText)+after,pad,highlight,exstra);
     }
 }

@@ -10,15 +10,63 @@ this is the process of making my mod make some fucking sense. it will be divided
         (done)skills:
             (NOTE: for complete rebuild, complete the forge production library)robot forge
         industry:
-            -(-very basic- framework done)NOTE: omega cores need a description. industrys that use omega cores as:
-                personal combat forge
-                personal survey forge
-                personal salvage forge
-                combat forge
-                survey forge
-                salvage forge
-                AI-Shipyard
-                Command Node Production
+            note:
+                for every single industry i need to look at the following:
+                    1) all 4 AI-Core descriptions.
+                    2) the improvement description
+                    3) the other descriptions
+                    4) the size of the names (so they dont spill out of the name box anymore)
+                    5) how the industry looks when its not yet build
+            robot forges
+                NOTE: this industry is kinda messy.
+                It might be wise to improve some things. here are some issues found:
+                    1) improvements don't improve beta core modifiers. they improve the number of personal robot output.
+                        -change this so it improves both. if the beta modifier is active, has part of the description say that the output is improved.
+                            -ideal output is 30% output and 30% improved beta core bonus.
+                    2) aplha / omega cores reudce output. this feels... I dont like it. its suppose to be a upgrade.
+                        -let omega / alpha core output still reduce robot output, but make the total power produced increase?
+                            OR
+                        -no longer reduce robot output. let me have lots of robots instead.
+                            or
+                        -(this one makes more sense. no need to say 'this reduces output', you know.)no longer say i reduce output, but have the output still be reduced, to the ponit were i get a little more power instead?
+                            will need to adjust industry configs to match output.
+                        ...
+                gamma core mod:
+                    (done)has a floating ponit number in description. i want a hole number.
+                    -increased output unclear. change to something like 'increased personal robot output?'
+                beta core mod:
+                    is 2 long. it goes into the alpha core description
+                        -possible solution: make the core selection string smaller then the core 'industry display'
+                    (ignore)all modifiers don't show how mush power is being applied per output.
+                        -ignore this issue to avoid over complicating the description
+                    shows a 0 bonus to stats before built, do to no output
+                alpha core mod:
+                    one of the things is not highlighted. it needs to be.
+                omega core mod:
+                    1) i want a spooky message before it talks about anything.
+                    2) i need to give it its own description.
+                imporvemnts:
+                    (done)has a floating point number in description. i want a hole number
+                    improving this industry increases output by one. this should not happen.
+                    -increased output unclear. change to something like 'increased personal robot output?'
+                when upgrading:
+                    (done)when upgrading the industry, it does not show the industry producing the upgraded robots.
+                combat T0
+                salvage T0
+                survey T0
+                combat T1
+                salvage T1
+                survey T1
+            population and infrastructure
+            robot growth
+                T0
+                T1
+                T2
+            shipyard
+            AINodeProduction
+            robotic maintenance
+            synthetic production
+            robotic replacement center
 
         sub-markets:
         market conditions:

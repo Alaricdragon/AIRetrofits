@@ -242,6 +242,8 @@
   "AIRetrofit_robotManufactury_betaDescription": "Reduce robot output by %s",
   "AIRetrofit_robotManufactury_alphaDescription": "Improve the quality of produced robots, but reduce factory output by %s",
   "AIRetrofit_robotManufactury_alphaDescriptionHighlighted": "reduce",
+  "AIRetrofit_robotManufactury_omegaDescription": "Improve the quality of produced robots, but reduce factory output by %s",
+  "AIRetrofit_robotManufactury_omegaDescriptionHighlighted": "reduce",
   "AIRetrofit_robotManufactury_improvedDescription": "Improve robot output by %s",
   #combat robots
   "AIRetrofit_robotManufactury_combat_betaText": "Use produced Combat Robots to boost ground defences by %s. Defence scales with robot production",

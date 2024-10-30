@@ -332,6 +332,7 @@
 	#base settings
 	"AIRetrofit_robotManufactury_gammaMulti": 1.3,
 	"AIRetrofit_robotManufactury_improvedMulti": 1.3,
+	"AIRetrofit_robotManufactury_improvedBetaMulti": 1.3,
 	"AIRetrofit_robotManufactury_betaMulti": 0.5,
 	#combat robots
 	"AIRetrofit_robotManufactury_combat_OS1Min": 25,#base

@@ -68,7 +68,7 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(String pre,TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode,String after,String... afterHighlights){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
         String[] itemsTemp = this.getItems();
@@ -76,8 +76,8 @@ public class AIRetrofit_salvageRobotManufactory  extends AIRetrofit_PersonalRobo
         if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
-        String[] exstra = {"" + (BetaGrowthMod*bonus)};
-        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText),pad,highlight,exstra);
+        String[] exstra = {"" + (BetaGrowthMod*bonus),afterHighlights[0]};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText)+after,pad,highlight,exstra);
     }
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
