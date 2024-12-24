@@ -62,7 +62,18 @@ public class AIRetrofits_ChangePeople {
                     swapFleetCrew(fleet);
                 }
             }
-        }
+        }/*else{
+            if (fleet.getFaction().isPlayerFaction() && setDataLists.CommanderTagCheck(fleet.getCommander())){
+                for(int a = 0; a < fleet.getFleetData().getMembersInPriorityOrder().size(); a++){
+                    PersonAPI person = fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain();
+                    if (canChangePersonFleet(person)){
+                        for(int b = 0; b < 10 && person.getPortraitSprite().equals("graphics/portraits/AIRetrofits_AICaption1.png"); b++){
+                            person.setPortraitSprite(Global.getSector().getPlayerFaction().getPortraits(person.getGender()).pick());
+                        }
+                    }
+                }
+            }
+        }*/
     }
     static private String[] itemIn = AIRetrofits_Constants_3.fleetChange_itemIn;
     static private String[] itemOut = AIRetrofits_Constants_3.fleetChange_itemOut;

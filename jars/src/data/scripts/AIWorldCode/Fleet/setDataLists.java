@@ -3,6 +3,7 @@ package data.scripts.AIWorldCode.Fleet;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
@@ -28,7 +29,15 @@ public class setDataLists {
     static String Condition = AIRetrofits_Constants_3.Market_Condition;
     public static boolean fleetMod(CampaignFleetAPI fleet){
         MarketAPI market = Global.getSector().getEconomy().getMarket(fleet.getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
-        return (market != null && market.hasCondition(Condition) && market.getFaction().getId().equals(fleet.getFaction().getId()) && can);
+        boolean commanderEligible = CommanderTagCheck(fleet.getCommander());
+        return (market != null && market.hasCondition(Condition) && market.getFaction().getId().equals(fleet.getFaction().getId()) && can && commanderEligible);
+    }
+    static private String[] CommandTagsBlacklist = {"starlords_lord"};
+    public static boolean CommanderTagCheck(PersonAPI person){
+        for (String a : CommandTagsBlacklist){
+            if (person.hasTag(a)) return false;
+        }
+        return true;
     }
     public static void init(){
         CaptionFirstNames = SetArrayString(CapFirstName);

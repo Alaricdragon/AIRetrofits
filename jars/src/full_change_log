@@ -1,4 +1,10 @@
 changelog for all my changes as i make them so i don't forget again.
+V0.9.4.10(private):
+save compatible with 0.7.20.1+
+    new:
+        added the 'Command Node' portrait into the list of portraits the player can pick
+    fixes:
+        fixed a possible incompatibility with starlords were a AI-Retrofit marker could overwrite the name and portrate of a starlord and all there officers
 V0.9.4.9(private):
 save compatible with 0.7.20.1+
     completed the 'setup' stage for omega core modifiers.

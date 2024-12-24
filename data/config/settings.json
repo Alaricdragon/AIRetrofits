@@ -796,7 +796,6 @@
 	"adminSalaryTier9":90000,#--
 	"adminSalaryTier10":100000,#--
 
-	#temp graphics settings for things im testing
 	"graphics":{
 		"industry":{
 			"AIRetorfit_AIpop_low":"graphics/icons/industry/AIRetrofit_populationLow.jpg",
@@ -804,13 +803,9 @@
 			"AIRetorfit_AIpop_veryHigh":"graphics/icons/industry/AIRetrofit_populationVeryHigh.jpg"
 		},
 		"characters":{
-		#	"AIRetofit_AIOfficer":"graphics/hal9000butblue.jpg",
 			"AIRetofit_AIOfficerPortrait0":"graphics/portraits/AIRetrofits_AICaption1.png"
-		},
-		#"nex_groundbattle":{#not very usefull, just changes unit background card. disabled for now.
-		#	"unit_basicCombatRobot":"graphics/icons/grounBattles/AIRetrofit_Advanced_Combat Robot.png"
-		#}
-},
+		}
+	},
 	#data for AIofficers names and portrates. you can add a new name/portrate by puting it here.
 	#the code will try to read data from every item put here with the right name, by starting at 0 and counting up, if that makes sence.
 "AIRetofit_AIOfficerFirstName0":"A-A-AI",
