@@ -16,6 +16,8 @@ save compatible with 0.7.20.1+
         fixed the setting for 'crew use multi' related to AI-Retrofits not effecting max crew, but min crew instead (sorry)
         fixed a very rare issue were a AI-Retrofit hullmod could give / remove the wrong amount of op.
         fixed a possible incompatibility with starlords were a AI-Retrofit marker could overwrite the name and portrate of a starlord and all there officers
+    compatibility:
+        (starlords) made it so if a starlord is generated on a AI-Pop world, it will be a AI. spooky.
 V0.9.4:
 save compatible with 0.7.20.1+
     fixes:

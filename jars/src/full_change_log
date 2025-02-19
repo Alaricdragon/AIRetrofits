@@ -1,6 +1,10 @@
 changelog for all my changes as i make them so i don't forget again.
 V0.9.4.10(private):
 save compatible with 0.7.20.1+
+    added in a system of tags that modders can use to force a fleet to have the AI hullmods, or AI people.
+    (starlords) made it so if a starlord is generated on a AI-Pop world, it will be a AI. spooky.
+V0.9.4.10(private):
+save compatible with 0.7.20.1+
     new:
         added the 'Command Node' portrait into the list of portraits the player can pick
     fixes:

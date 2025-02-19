@@ -8,6 +8,16 @@ public class AIRetrofits_Constants_3 {
     public static String apply(){
         return AIRetrofits_Constants_3.ModID;
     };
+    public static final String TAG_FORCE_AI_COMMANDER = "AI-RETROFITS_FORCE_AI_COMMANDER";
+    public static final String TAG_FORCE_AI_OFFICERS = "AI-RETROFITS_FORCE_AI_OFFICERS";
+    public static final String TAG_FORCE_AI_RETROFITS = "AI-RETROFITS_FORCE_AI_RETROFITS";
+    public static final String TAG_FORCE_AI_RETROFITS_PATCHWORK = "AI-RETROFITS_FORCE_AI_RETROFITS_PATCHWORKS";
+    public static final String TAG_FORCE_AI_RETROFITS_P_BASE = "AI-RETROFITS_FORCE_AI_RETROFITS_P_BASE";
+    public static final String TAG_FORCE_AI_RETROFITS_P_GAMMA = "AI-RETROFITS_FORCE_AI_RETROFITS_P_GAMMA";
+    public static final String TAG_FORCE_AI_RETROFITS_P_BETA = "AI-RETROFITS_FORCE_AI_RETROFITS_P_BETA";
+    public static final String TAG_FORCE_AI_RETROFITS_P_ALPHA = "AI-RETROFITS_FORCE_AI_RETROFITS_P_ALPHA";
+    public static final String TAG_FORCE_AI_RETROFITS_P_OMEGA = "AI-RETROFITS_FORCE_AI_RETROFITS_P_OMEGA";
+
     public static final String ModID = "AI-Retrofits";
     //startup settings:
     public static final boolean AlwaysGiveThings = Global.getSettings().getBoolean("AIRetrofit_alwaysGiveSkillsAndHullmods");;

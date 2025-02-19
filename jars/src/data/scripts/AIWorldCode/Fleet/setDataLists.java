@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
+import data.scripts.AIWorldCode.Fleet.fleetnflater.AIRetrofit_fleetInflater;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
@@ -27,6 +28,27 @@ public class setDataLists {
     static private String powerCoresName = "AIRetrofit_AINodeProductionFacility_powerCores_";
     static private String powerCoreThresholdsName = "AIRetrofit_AINodeProductionFacility_powerCoreThresholds_";
     static String Condition = AIRetrofits_Constants_3.Market_Condition;
+    public static String forcedFleetMod(CampaignFleetAPI fleet){
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS)){
+            return AIRetrofits_Constants_3.ASIC_BaseHullmod;
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_BASE)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[4];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_GAMMA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[0];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_BETA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[1];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_ALPHA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[2];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_OMEGA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[3];
+        }
+        return null;
+    }
     public static boolean fleetMod(CampaignFleetAPI fleet){
         MarketAPI market = Global.getSector().getEconomy().getMarket(fleet.getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
         boolean commanderEligible = CommanderTagCheck(fleet.getCommander());

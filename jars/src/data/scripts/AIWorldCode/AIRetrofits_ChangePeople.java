@@ -57,12 +57,23 @@ public class AIRetrofits_ChangePeople {
         if(setDataLists.fleetMod(fleet)){
             for(int a = 0; a < fleet.getFleetData().getMembersInPriorityOrder().size(); a++){
                 if(canChangePersonFleet(fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain())) {
-                    fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain().setPortraitSprite(setDataLists.getRandom(2));
-                    fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain().setName(new FullName(setDataLists.getRandom(0), setDataLists.getRandom(1), FullName.Gender.ANY));
+                    changePerson(fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain());
                     swapFleetCrew(fleet);
                 }
             }
-        }/*else{
+        }
+        if ((fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_COMMANDER) || (fleet.getCommander() != null && fleet.getCommander().hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_COMMANDER))) && canChangePersonFleet(fleet.getCommander())){
+            changePerson(fleet.getCommander());
+        }
+        if ((fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_OFFICERS) || (fleet.getCommander() != null && fleet.getCommander().hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_OFFICERS)))){
+            for(int a = 0; a < fleet.getFleetData().getMembersInPriorityOrder().size(); a++){
+                if(canChangePersonFleet(fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain())) {
+                    changePerson(fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain());
+                    swapFleetCrew(fleet);
+                }
+            }
+        }
+        /*else{
             if (fleet.getFaction().isPlayerFaction() && setDataLists.CommanderTagCheck(fleet.getCommander())){
                 for(int a = 0; a < fleet.getFleetData().getMembersInPriorityOrder().size(); a++){
                     PersonAPI person = fleet.getFleetData().getMembersInPriorityOrder().get(a).getCaptain();
@@ -74,6 +85,10 @@ public class AIRetrofits_ChangePeople {
                 }
             }
         }*/
+    }
+    public static void changePerson(PersonAPI person){
+        person.setPortraitSprite(setDataLists.getRandom(2));
+        person.setName(new FullName(setDataLists.getRandom(0), setDataLists.getRandom(1), FullName.Gender.ANY));
     }
     static private String[] itemIn = AIRetrofits_Constants_3.fleetChange_itemIn;
     static private String[] itemOut = AIRetrofits_Constants_3.fleetChange_itemOut;

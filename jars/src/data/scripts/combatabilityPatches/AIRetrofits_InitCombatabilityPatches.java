@@ -3,13 +3,16 @@ package data.scripts.combatabilityPatches;
 import com.fs.starfarer.api.Global;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.combatabilityPatches.Nexerlin.AIRetrofits_Patches_Nexerlin;
+import data.scripts.combatabilityPatches.starlords.AIRetrofits_Pathches_Starlords;
 
 public class AIRetrofits_InitCombatabilityPatches {
     public static String[] modNames = {
-            "nexerelin"
+            "nexerelin",
+            "starlords"
     };
     public static AIRetrofits_PatchBase[] patches = {
             new AIRetrofits_Patches_Nexerlin(),
+            new AIRetrofits_Pathches_Starlords()
     };
     public static void onApplicationLoad() {
         for(int a = 0; a < modNames.length; a++) {

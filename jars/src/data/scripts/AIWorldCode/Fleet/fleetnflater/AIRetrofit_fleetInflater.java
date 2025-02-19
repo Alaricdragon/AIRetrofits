@@ -10,14 +10,21 @@ import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 public class AIRetrofit_fleetInflater extends DefaultFleetInflater {
-    static String Hullmod = AIRetrofits_Constants_3.ASIC_BaseHullmod;
+    public static String Hullmod = AIRetrofits_Constants_3.ASIC_BaseHullmod;
     static String shipYardIndustry = AIRetrofits_Constants_3.ASIC_shipYardIndustry;//"AIRetrofit_shipYard";
-    static String[] hullmods = AIRetrofits_Constants_3.ASIC_hullmods;
+    public static String[] hullmods = AIRetrofits_Constants_3.ASIC_hullmods;
     public AIRetrofit_fleetInflater(DefaultFleetInflaterParams p) {
         super(p);
     }
     public void inflate(CampaignFleetAPI fleet){
         super.inflate(fleet);
+        String tempHullmod = setDataLists.forcedFleetMod(fleet);
+        if (tempHullmod != null){
+            for (int a = 0; a < fleet.getFleetData().getMembersInPriorityOrder().size(); a++) {
+                fleet.getFleetData().getMembersInPriorityOrder().get(a).getStats().getVariant().addMod(tempHullmod);
+            }
+            return;
+        }
         if (setDataLists.fleetMod(fleet)) {
             String addHullMod;
             MarketAPI market = Global.getSector().getEconomy().getMarket(fleet.getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
