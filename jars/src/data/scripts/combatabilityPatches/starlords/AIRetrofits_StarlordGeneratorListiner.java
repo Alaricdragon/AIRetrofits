@@ -10,7 +10,7 @@ public class AIRetrofits_StarlordGeneratorListiner extends LordGeneratorListener
     @Override
     public void editLordPerson(PersonAPI lord, MarketAPI market) {
         super.editLordPerson(lord, market);
-        if (!market.hasCondition(AIRetrofits_Constants_3.Market_Condition)) return;
+        if (market == null || !market.hasCondition(AIRetrofits_Constants_3.Market_Condition)) return;
         AIRetrofits_ChangePeople.changePerson(lord);
         lord.addTag(AIRetrofits_Constants_3.TAG_FORCE_AI_OFFICERS);
         lord.addTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_BASE);
