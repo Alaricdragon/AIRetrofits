@@ -17,16 +17,24 @@ public class AIRetrofits_InitCombatabilityPatches {
     public static void onApplicationLoad() {
         for(int a = 0; a < modNames.length; a++) {
             if (Global.getSettings().getModManager().isModEnabled(modNames[a])) {
-                AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ... part 1", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
-                patches[a].apply();
+                try {
+                    AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ... part 1", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
+                    patches[a].apply();
+                }catch (Exception e){
+                    AIRetrofit_Log.loging("Failed to get compatibility patch. error of "+e,true);
+                }
             }
         }
     }
     public static void onGameLoad(boolean newGame) {
         for(int a = 0; a < modNames.length; a++) {
             if (Global.getSettings().getModManager().isModEnabled(modNames[a])) {
-                AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ... part 2", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
-                patches[a].onGameLoad(newGame);
+                try {
+                    AIRetrofit_Log.loging("AIRetrofits is attempting to add a compatibility patch for the mod '" + modNames[a] + "' ... part 2", data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches.class, true);
+                    patches[a].onGameLoad(newGame);
+                }catch (Exception e){
+                    AIRetrofit_Log.loging("Failed to get compatibility patch. error of "+e,true);
+                }
             }
         }
     }

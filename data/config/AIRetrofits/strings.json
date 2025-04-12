@@ -1,17 +1,17 @@
 {
     "AIRetrofits_AIRetrofit_NA_combatable": "Not compatible with: %s ",
     "AIRetrofits_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
-    "AIRetrofits_AIRetrofit_NA_OppCost": "op cost: %s ",
+    #"AIRetrofits_AIRetrofit_NA_OppCost": "op cost: %s ",
 
     #settings for patchwork AIRetrofits hullmod
     "AIRetrofits_Patchwork_CantSwapText": "There has to be a better way to to do this...",
     "AIRetrofits_Patchwork_CanSwapText1": "Will automatically be replaced with the %s hullmod after docking with a friendly or neutral market.",
 
     #(patchwork AIRetrofit hullmod) reasons you cant instal
-    "AIRetrofits_Patchwork_AIRetrofit_NA_combatable": "Not compatible with: %s ",
-    "AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
-    "AIRetrofits_Patchwork_AIRetrofit_NA_OppCost": "op cost: %s ",
-    "AIRetrofits_Patchwork_AIRetrofit_CrewCostDivider": "%s/%s/%s/%s ",
+    #"AIRetrofits_Patchwork_AIRetrofit_NA_combatable": "Not compatible with: %s ",
+    #"AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
+    #"AIRetrofits_Patchwork_AIRetrofit_NA_OppCost": "op cost: %s ",
+    #"AIRetrofits_Patchwork_AIRetrofit_CrewCostDivider": "%s/%s/%s/%s ",
     #settings for perament AIRetrofits Hullmod
     "AIRetrofits_Perma_permanent": "permanent",
     #base

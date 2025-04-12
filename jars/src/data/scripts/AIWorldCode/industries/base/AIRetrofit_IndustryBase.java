@@ -97,12 +97,6 @@ public class AIRetrofit_IndustryBase extends BaseIndustry {
         AIRetrofit_Log.loging("RUNNING addAICoreSelection with a coreID of: "+coreId,this,true);
         if (hasOmegaDescription() && coreId != null && coreId.equals(Commodities.OMEGA_CORE)) {
             AIRetrofit_Log.loging("attempting to run omega core data",this,true);
-            /*if (mode == AICoreDescriptionMode.MANAGE_CORE_TOOLTIP) {
-                if (coreId == null) {
-                    tooltip.addPara("No AI core currently assigned. Click to assign an AI core from your cargo.", 5);
-                    return;
-                }
-            }*/
             addOmegaCoreDescription(tooltip, mode);
             return;
         }

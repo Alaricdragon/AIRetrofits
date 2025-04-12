@@ -15,6 +15,25 @@ import data.scripts.startupData.AIRetrofits_Constants_3;
 import java.awt.*;
 
 public class AIRetrofit_ShipyardBase extends BaseHullMod {
+
+/*
+    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
+    private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
+    private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
+    @Override
+	public float getSupplyCostMulti() {
+		return SUPPLY_USE_MULT;
+	}
+	@Override
+	public float getCrewReductionMulti() {
+		return CREW_USE_MULT;
+	}
+	@Override
+	public float getRepairTimeMulti() {
+		return REPAIR_LOSE;
+	}
+ */
+
     final static String permanentWord = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_permament;
     final static String cantRemoveReason = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_cantRemoveReason;//"cannot be added or removed outside of a robotic shipyard";
     final static String industry = "AIRetrofit_shipYard";
