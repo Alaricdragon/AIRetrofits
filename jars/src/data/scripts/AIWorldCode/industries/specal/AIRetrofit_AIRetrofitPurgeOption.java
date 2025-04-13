@@ -8,13 +8,14 @@ import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
 public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase {
     //static private int minSize = 3;
-    static final private String condition = AIRetrofits_Constants.Market_Condition;//"AIRetrofit_AIPop";
+    static final private String condition = AIRetrofits_Constants_3.Market_Condition;//"AIRetrofit_AIPop";
     static float buildSet = 9999;
     private float prugeTime = 0;
     private final float purgeProgress = 0;
@@ -30,7 +31,7 @@ public class AIRetrofit_AIRetrofitPurgeOption extends AIRetrofit_IndustryBase {
     //eq = baseTime *= math.power(bastTimeExpencal,marlet.getSize + exstraSize).
     //if time market has exsisted is less them timesForFree, it takes a single day.
     static private final float timesForFree = Global.getSettings().getFloat("AIRetrofits_PopulationReplacementCenter_timesForFree");//90;
-    static private final String exstraDescription = Global.getSettings().getString("AIRetrofits_PopulationReplacementCenter_exstraDescription");//"takes a single day to build if built within %s days of founding the market";
+    static private final String exstraDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofits_PopulationReplacementCenter_exstraDescription");//"takes a single day to build if built within %s days of founding the market";
 
     @Override
     public void apply(){

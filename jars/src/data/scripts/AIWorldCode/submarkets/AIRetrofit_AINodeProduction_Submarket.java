@@ -4,20 +4,14 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.campaign.fleet.CargoData;
-import com.fs.starfarer.rpg.Person;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.AIWorldCode.industries.specal.AIRetrofit_shipYard;
-import data.scripts.SpecalItems.AIRetrofit_CommandNode;
-import data.scripts.SpecalItems.AIRetrofit_CommandNode_SpecalItemData;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.List;
@@ -28,7 +22,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
      */
     protected CargoAPI cargoBackup = null;
     public static final boolean logs = Global.getSettings().getBoolean("AIRetrofit_SubMarket_AINodeProductionLogs");
-    private static final String illegalTest = Global.getSettings().getString("AIRetrofit_AINodeProducetionFacility_Submarket_IllegalText");
+    private static final String illegalTest = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProducetionFacility_Submarket_IllegalText");
 
     public static final float PM_I = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_ImprovePowerMulti");
 
@@ -72,6 +66,8 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     public static final float MaPW_O=Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_maxWeight_omega");
     public static final float PI_O = Global.getSettings().getFloat("AIRetrofit_AINodeProducetionFacility_Submarket_IncreasePower_omega");
 
+    private static final String AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0");
+    private static final String AIRetrofit_AINodeProduction_Submarket_getSellVerb_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_AINodeProduction_Submarket_getSellVerb_0");
     @Override
     public void reportPlayerMarketTransaction(PlayerMarketTransaction transaction) {
         super.reportPlayerMarketTransaction(transaction);
@@ -86,7 +82,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             int cores = 0;
             float minPowerWeight = 0;//the diffrence between the two numbers here is how mush range the cores power will have.
             float maxPowerWeight = 0;//--
-            float produce = industry.getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue();
+            float produce = industry.getSupply(AIRetrofits_Constants_3.RobotForge_SubCommandNode).getQuantity().getModifiedValue();
             if (industry.getAICoreId() != null) {
                 switch (industry.getAICoreId()) {
                     case Commodities.ALPHA_CORE:
@@ -132,7 +128,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
                 minPowerWeight = MiPW_B;//the diffrence between the two numbers here is how mush range the cores power will have.
                 maxPowerWeight = MaPW_B;//--
             }
-            if (market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isImproved()) {
+            if (market.getIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility).isImproved()) {
                 //run whatever improving this industry will do. extra core and power per level maybe? just more power per level? mmmm
                 totalPower *= PM_I;
             }
@@ -144,7 +140,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
                 AIRetrofit_Log.loging("getting all relevent data. please hold. if this crashes your game, report it to me please please.",new AIRetrofit_Log(),true);
                 AIRetrofit_Log.loging("getting industry: "+industry.getId(),new AIRetrofit_Log(),true);
                 AIRetrofit_Log.loging("getting market: "+industry.getMarket().getName(),new AIRetrofit_Log(),true);
-                AIRetrofit_Log.loging("getting attempting to get supply: "+industry.getSupply(AIRetrofits_Constants.RobotForge_SubCommandNode).getQuantity().getModifiedValue(),new AIRetrofit_Log(),true);
+                AIRetrofit_Log.loging("getting attempting to get supply: "+industry.getSupply(AIRetrofits_Constants_3.RobotForge_SubCommandNode).getQuantity().getModifiedValue(),new AIRetrofit_Log(),true);
                 AIRetrofit_Log.pop();
             }catch (Exception e2){
                 AIRetrofit_Log.loging("cant display full info. caused a crash: "+e2,new AIRetrofit_Log(),true);
@@ -156,10 +152,10 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,logs);
         //float[] power = getPower();
         emptyCargo(cargo);
-        if(market == null || market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) == null){
+        if(market == null || market.getIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility) == null){
             return;
         }
-        float[] temp = getStats(market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility));
+        float[] temp = getStats(market.getIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility));
         float totalPower=temp[0];
         int cores=(int)temp[1];
         float minPowerWeight=temp[2];//the diffrence between the two numbers here is how mush range the cores power will have.
@@ -202,7 +198,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             }
         }
         AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,logs);
-        if(market.hasIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants.Industry_AINodeProductionFacility).isFunctional()) {
+        if(market.hasIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility).isFunctional()) {
             AIRetrofit_Log.loging("attempting to empty cargo becuase of noone functional industry",this,logs);
             emptyCargo(cargo);
         }else if(this.okToUpdateShipsAndWeapons()){//||true){
@@ -245,11 +241,11 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     }
     @Override
     public String getBuyVerb() {
-        return "create";
+        return AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0;
     }
     @Override
     public String getSellVerb() {
-        return "leave";
+        return AIRetrofit_AINodeProduction_Submarket_getSellVerb_0;
     }
     @Override
     public boolean 	showInFleetScreen(){
@@ -291,7 +287,7 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             if(member.getVariant().hasHullMod(OtherHullmod)){
                 return false;
             }
-            for(String a : AIRetrofits_Constants.ASIC_Secondary_Hullmods) {
+            for(String a : AIRetrofits_Constants_3.ASIC_Secondary_Hullmods) {
                 if (member.getVariant().hasHullMod(a)) {
                     return false;
                 }

@@ -11,14 +11,16 @@ import com.fs.starfarer.api.ui.CustomPanelAPI;
 import com.fs.starfarer.api.ui.SectorMapAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.notifications.ShipyardUpgradeData.AIRetrofit_Shipyard_UpgradeList;
 import data.scripts.notifications.support.shipyard.AIRetrofit_ShipYard_UpgradeList;
 
 import java.util.Set;
 
 public class AIRetrofit_ShipyardNotification extends FleetLogIntel {
-    protected static String name = "Automated Ship Installation Center Production Report";
+    protected static String name = AIRetrofits_StringGetterProtection.getString("AIRetrofit_ShipyardNotification_title");
     public AIRetrofit_Shipyard_UpgradeList list = null;
     public AIRetrofit_ShipyardNotification(AIRetrofit_Shipyard_UpgradeList list){
         this.list = list;

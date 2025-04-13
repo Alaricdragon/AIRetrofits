@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="starlord">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../Starlords_Temp/jars" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../Starlords_Temp/jars" recursive="false" />
+  </library>
+</component>

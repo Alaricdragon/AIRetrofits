@@ -2,13 +2,14 @@ package data.scripts.hullmods;
 
 import com.fs.starfarer.api.GameState;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.impl.hullmods.BaseLogisticsHullMod;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.AIRetrofits_StringHelper;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -31,12 +32,24 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
     int MinReplacedCrew = 1;
     float ReplacedCrew;
     static float RobotForgePerCrewMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
+    public static final String NAString = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForgeHullmod_NA_crew");
+    public int getRemovedCrew(MutableShipStatsAPI stats){
+        int currentMod=0;
+        if (stats.getMinCrewMod().getMultBonus(spec.getId())!=null){
+            stats.getMinCrewMod().unmodifyMult(spec.getId());
+            currentMod = (int) stats.getMinCrewMod().computeEffective(stats.getVariant().getHullSpec().getMinCrew());
+            stats.getMinCrewMod().modifyMult(spec.getId(),0);
+        }else{
+            currentMod = (int) stats.getMinCrewMod().computeEffective(stats.getVariant().getHullSpec().getMinCrew());
+        }
+        return currentMod;
+    }
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         try {
             if (stats.getFleetMember() != null && stats.getFleetMember().getFleetData().getFleet().isPlayerFleet()) {
                 //AIRetrofit_Log.loging("adding robot forge ability from player owned robot forge ship...",this);
-                Global.getSector().getCharacterData().addAbility(AIRetrofits_Constants.ability_RobotForge);
+                Global.getSector().getCharacterData().addAbility(AIRetrofits_Constants_3.ability_RobotForge);
             }
         }catch (Exception E){
 
@@ -46,18 +59,6 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         float MaxCrew = stats.getVariant().getHullSpec().getMaxCrew();
         ReplacedCrew = (MaxCrew - MinCrew);
         stats.getMaxCrewMod().modifyFlat(id,ReplacedCrew * -1);
-    }
-    @Override
-    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        switch(index) {
-            case 0:
-                return "" + (int) ReplacedCrew;
-            case 1:
-                return "" + Misc.getRoundedValueMaxOneAfterDecimal(ReplacedCrew * RobotForgePerCrewMulti);
-            case 2:
-                return "" + Misc.getRoundedValueMaxOneAfterDecimal(iCalculateBonus(Global.getSector().getPlayerFleet()));
-        }
-        return null;
     }
     @Override
     public boolean isApplicableToShip(ShipAPI ship/*, MutableCharacterStatsAPI wat*/){
@@ -72,7 +73,7 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         float MaxCrew = ship.getVariant().getHullSpec().getMaxCrew();
         ReplacedCrew = (MaxCrew - MinCrew);
         if(!(ReplacedCrew >= MinReplacedCrew)){
-            return "Need at least " + MinReplacedCrew + " spare crew on ship to replace crew. you have " + ReplacedCrew;
+            return AIRetrofits_StringHelper.getSplitString(NAString, ""+MinReplacedCrew,""+ReplacedCrew);
         }
         return super.getUnapplicableReason(ship);
     }
@@ -87,4 +88,28 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         );
     }
 
+
+    @Override
+    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
+        if (ship == null) return getDescriptionParam(index,hullSize);
+        return getDescriptionParam(index, hullSize, ship.getMutableStats());
+    }
+    protected String getDescriptionParam(int index, ShipAPI.HullSize hullSize, MutableShipStatsAPI ship){
+        int ReplacedCrew = getRemovedCrew(ship);
+        switch(index) {
+            case 0:
+                return "" + (int) ReplacedCrew;
+            case 1:
+                return "" + Misc.getRoundedValueMaxOneAfterDecimal(ReplacedCrew * RobotForgePerCrewMulti);
+            case 2:
+                return "" + Misc.getRoundedValueMaxOneAfterDecimal(iCalculateBonus(Global.getSector().getPlayerFleet()));
+        }
+        return null;
+    }
+    @Override
+    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
+        MutableShipStatsAPI ship = AIRetrofit_hullmodUtilitys.getIndexShip();
+        if (ship == null) return "";
+        return getDescriptionParam(index, hullSize,ship);
+    }
 }

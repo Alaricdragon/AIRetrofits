@@ -7,7 +7,9 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.industries.personalRobotForge.AIRetrofit_PersonalRobotManufactoryBase;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
 import java.util.Random;
@@ -31,8 +33,8 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
 
     private final static float BetaDefenceMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_survey_Mod");//1.1f;
 
-    private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_survey_exstaText");//"from combat robot factory";
-    private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_survey_betaText");//"use produced combat robots to boost ground defences by %s";
+    private final static String groundDefenceText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_survey_exstaText");//"from combat robot factory";
+    private final static String BetaText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_survey_betaText");//"use produced combat robots to boost ground defences by %s";
 
     @Override
     protected String[] getItems(){
@@ -80,7 +82,7 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode,String after,String... afterHighlights){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
         String[] itemsTemp = this.getItems();
@@ -88,7 +90,7 @@ public class AIRetrofit_surveyRobotManufactory extends AIRetrofit_PersonalRobotM
         if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
-        String[] exstra = {"" + (int)(BetaDefenceMulti*bonus)};
-        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
+        String[] exstra = {"" + (int)(BetaDefenceMulti*bonus),afterHighlights[0]};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText)+after,pad,highlight,exstra);
     }
 }

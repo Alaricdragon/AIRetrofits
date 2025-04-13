@@ -12,5 +12,6 @@
     <orderEntry type="library" name="starsector-core" level="project" />
     <orderEntry type="library" name="ExerelinCore" level="project" />
     <orderEntry type="library" name="crew_replacer" level="project" />
+    <orderEntry type="library" name="starlord" level="project" />
   </component>
 </module>

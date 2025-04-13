@@ -8,13 +8,12 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.Robot_Percentage_Calculater.AIRetrofits_Robot_Types_calculater_2;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
-import data.scripts.startupData.AIRetrofits_Constants;
-import data.scripts.supplyDemandLibary.crewReplacer_SupplyDemandLists;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 
 public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateListener {
-    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
+    private static boolean can = AIRetrofits_Constants_3.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     private static final String className = "AIRetrofit_econUpdateListiner";
     static private boolean Override = true;//when true, act as normal.
     public static final boolean canAddDefences = Global.getSettings().getBoolean("AIRetrofits_AllowDefenceBounusFromAdvancedBots");
@@ -39,7 +38,7 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
     private final static String defenceDescription_O = "%s% of robots at this colony are omega combat robots";
     private final static float defenceMulti_OD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT2Bots");//1f;
     private final static float defenceMulti_AD = Global.getSettings().getFloat("AIRetrofit_MaxGroundDefenceBonusFromT1Bots");//0.5f;
-    public String[] defenciveType = {AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence};
+    public String[] defenciveType = {AIRetrofits_Constants_3.RobotTypeCalculatorID_CombatT1_Defence, AIRetrofits_Constants_3.RobotTypeCalculatorID_CombatT2_Defence};
     public ArrayList<String> defencive_factionIDs = new ArrayList<>();
     public ArrayList<Float> defencive_factionPower = new ArrayList<>();
     public ArrayList<String> defencive_factionID2s = new ArrayList<>();
@@ -106,8 +105,8 @@ public class AIRetrofit_econUpdateListiner implements EconomyAPI.EconomyUpdateLi
         defencive_factionPower = new ArrayList<>();
         defencive_factionID2s = new ArrayList<>();
         defencive_factionPowe2r = new ArrayList<>();
-        float OD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));
-        float AD = getPowerTemp(market,AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants.RobotTypeCalculatorID_CombatT1_Defence).getOddsOfRobot(market));
+        float OD = getPowerTemp(market, AIRetrofits_Constants_3.RobotTypeCalculatorID_CombatT2_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants_3.RobotTypeCalculatorID_CombatT2_Defence).getOddsOfRobot(market));
+        float AD = getPowerTemp(market, AIRetrofits_Constants_3.RobotTypeCalculatorID_CombatT1_Defence);//AIRetrofits_Robot_Types_calculater_2.getType(AIRetrofits_Constants_3.RobotTypeCalculatorID_CombatT1_Defence).getOddsOfRobot(market));
         //AIRetrofit_Log.loging("AD before min is: "+AD+" for market: "+market.getName(),this,robot_type_logs);
         //AIRetrofit_Log.loging("OD before min is: "+OD+" for market: "+market.getName(),this,robot_type_logs);
         AD = Math.min(1-OD,AD);

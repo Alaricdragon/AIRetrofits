@@ -1,6 +1,5 @@
 package data.scripts.AIWorldCode.market_conditions;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.econ.BaseMarketConditionPlugin;
@@ -11,7 +10,8 @@ import data.scripts.AIRetrofit_Log;
 import data.scripts.AIWorldCode.AIRetrofit_AIRelations;
 import data.scripts.AIWorldCode.growth.AIRetrofit_MarketGrowthMods;
 import data.scripts.AIWorldCode.growth.AIRetrofits_RemoveUnwantedGrowth;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 
@@ -21,15 +21,17 @@ applys things like market condition changes, and supply demand changes.
 public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements MarketImmigrationModifier {
     public static float STABILITY_BONUS = 2;
     String ID;
-    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
+    private static boolean can = AIRetrofits_Constants_3.Market_EnableMarketFetures;//Global.getSettings().getBoolean("AIRetrofits_EnableColonyFeatures");
     //private boolean setUpStart = false;
     //private boolean setUpDone = false;
+    private final static String AIRetrofitsAIPop_apply_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofitsAIPop_apply_0");
+    private final static String AIRetrofitsAIPop_createTooltipAfterDescription_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofitsAIPop_createTooltipAfterDescription_0");
     public void apply(String id) {
         super.apply(id);
         ID = id;
         //AIRetrofit_Log.loging("is it this? is this causeing this? why why whyw whyqhghADGHVCWDHVCWJHVCSDVC SMHDCS",this,true);
         if(can) {
-            market.getStability().modifyFlat(id, STABILITY_BONUS, "robots don't rebel... right?");
+            market.getStability().modifyFlat(id, STABILITY_BONUS, AIRetrofitsAIPop_apply_0);
             market.addTransientImmigrationModifier(this);
             //ChangeMarketConditions(market);
         }else{
@@ -50,7 +52,7 @@ public class AIRetrofitsAIPop extends BaseMarketConditionPlugin implements Marke
     }
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
-        tooltip.addPara("%s stability",
+        tooltip.addPara(AIRetrofitsAIPop_createTooltipAfterDescription_0,
                 10f, Misc.getHighlightColor(),
                 "+" + (int) STABILITY_BONUS);
     }

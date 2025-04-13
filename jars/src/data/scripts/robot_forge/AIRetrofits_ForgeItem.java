@@ -9,6 +9,8 @@ import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofits_StringHelper;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.util.ArrayList;
 /*
@@ -25,6 +27,18 @@ public class AIRetrofits_ForgeItem {
 
     ArrayList<Float> outputNumbers = new ArrayList<>();//number of outputted items per output time
     ArrayList<Float> inputNumbers = new ArrayList<>();//number of required items per output time
+
+    protected static final String String_0 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_0");
+    protected static final String String_1 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_1");
+    protected static final String String_2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_2");
+    protected static final String String_3 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_3");
+    protected static final String String_4 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_4");
+    protected static final String String_5 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_5");
+    protected static final String String_6 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_6");
+    protected static final String String_7 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_7");
+    protected static final String String_8 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_8");
+    protected static final String String_9 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_RobotForge_Item_9");
+
     public AIRetrofits_ForgeItem(String nameTemp, String descriptionTemp, float speedTemp){
         name = nameTemp;
         description = descriptionTemp;
@@ -66,15 +80,15 @@ public class AIRetrofits_ForgeItem {
         float ForgeSpeed = getForgeSpeed(power);
         text.addPara(description);
         text.addPara("");
-        text.addPara("every day you can forge :");
+        text.addPara(String_0);
         for(int a = 0; a < outputItems.size(); a++){
-            float numbers = outputNumbers.get(a) * ForgeSpeed;
+            String numbers = Misc.getRoundedValueOneAfterDecimalIfNotWhole(outputNumbers.get(a) * ForgeSpeed);
             displayItem(text,numbers,outputItems.get(a));
             //text.addPara(Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(outputItems.get(a)).getName());
         }
-        text.addPara("at the cost of: ");
+        text.addPara(String_1);
         for(int a = 0; a < inputItems.size(); a++){
-            float numbers = inputNumbers.get(a) * ForgeSpeed;
+            String numbers = Misc.getRoundedValueOneAfterDecimalIfNotWhole(inputNumbers.get(a) * ForgeSpeed);
             displayItem(text,numbers,inputItems.get(a));
 
             //text.addPara(Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName());
@@ -86,22 +100,27 @@ public class AIRetrofits_ForgeItem {
         //out += description;
         float ForgeSpeed = getForgeSpeed(power);
         String out = "";
-        boolean last = false;
+        //boolean last = false;
         for(int a = 0; a < outputItems.size(); a++){
-            if(last){
-                out += ", ";
+            if(a != 0 && a != outputItems.size() - 1){
+                out += String_2;
             }
-            last = true;
+            if (a != 0 && a == outputItems.size() - 1){
+                out += String_7;
+            }
             float numbers = outputNumbers.get(a) * ForgeSpeed;
             out += Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(outputItems.get(a)).getName();
         }
-        out += "at the cost of: ";
-        last = false;
+        out += String_3;
+        //last = false;
         for(int a = 0; a < inputItems.size(); a++){
-            if(last){
-                out += ", ";
+            if(a != 0 && a != inputItems.size() - 1){
+                out += String_4;
             }
-            last = true;
+            if (a != 0 && a == inputItems.size() - 1){
+                out += String_8;
+            }
+            //last = true;
             float numbers = inputNumbers.get(a) * ForgeSpeed;
             out += Misc.getRoundedValueMaxOneAfterDecimal(numbers) + " " + Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName();
         }
@@ -109,26 +128,32 @@ public class AIRetrofits_ForgeItem {
         return out;
     }
     public void getCantBuildPopup(CampaignFleetAPI fleet,SectorEntityToken entity){
-        String text = "cant forge " + name + ". out of ";
-        boolean last = false;
+        //String text_main = "cant forge " + name + ". out of ";
+        String text = "";
+        ArrayList<String> temp = new ArrayList<>();
         for(int a = 0; a < inputItems.size(); a++){
             if(fleet.getCargo().getCommodityQuantity(inputItems.get(a)) <= 0){
-                if(last){
-                    text += ", ";
-                }
-                text += Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName();
-                last = true;
+                temp.add(Global.getSector().getEconomy().getCommoditySpec(inputItems.get(a)).getName());
             }
         }
-        fleet.addFloatingText(text, Misc.setAlpha(entity.getIndicatorColor(), 255), 3.5f);
+        for (int a = 0; a < temp.size(); a++){
+            if (a != 0 && a != temp.size() - 1){
+                text += String_6;
+            }
+            if (a != 0 && a == temp.size() - 1){
+                text += String_9;
+            }
+            text += temp.get(a);
+        }
+        fleet.addFloatingText(AIRetrofits_StringHelper.getSplitString(String_5,name,text), Misc.setAlpha(entity.getIndicatorColor(), 255), 3f + temp.size());
     }
-    private void displayItem(TextPanelAPI text, float numberOfItems,String itemName){
+    private void displayItem(TextPanelAPI text, String numberOfItems,String itemName){
         CommoditySpecAPI spec = Global.getSector().getEconomy().getCommoditySpec(itemName);
         String displayName = spec.getName();
 
         TooltipMakerAPI tt = text.beginTooltip();
         TooltipMakerAPI iwt = tt.beginImageWithText(spec.getIconName(), 24);
-        String numberStr = numberOfItems + "";
+        String numberStr = numberOfItems;
         LabelAPI label = iwt.addPara(numberStr + " " + displayName, 0, Misc.getHighlightColor(), numberStr);
         tt.addImageWithText(0);
         text.addTooltip();

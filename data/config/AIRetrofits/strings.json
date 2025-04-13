@@ -1,0 +1,338 @@
+{
+    "AIRetrofits_AIRetrofit_NA_combatable": "Not compatible with: %s ",
+    "AIRetrofits_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
+    #"AIRetrofits_AIRetrofit_NA_OppCost": "op cost: %s ",
+
+    #settings for patchwork AIRetrofits hullmod
+    "AIRetrofits_Patchwork_CantSwapText": "There has to be a better way to to do this...",
+    "AIRetrofits_Patchwork_CanSwapText1": "Will automatically be replaced with the %s hullmod after docking with a friendly or neutral market.",
+
+    #(patchwork AIRetrofit hullmod) reasons you cant instal
+    #"AIRetrofits_Patchwork_AIRetrofit_NA_combatable": "Not compatible with: %s ",
+    #"AIRetrofits_Patchwork_AIRetrofit_NA_MinCrew": "Cannot be installed on a drone ship, or a ship that otherwise has no crew requirements",
+    #"AIRetrofits_Patchwork_AIRetrofit_NA_OppCost": "op cost: %s ",
+    #"AIRetrofits_Patchwork_AIRetrofit_CrewCostDivider": "%s/%s/%s/%s ",
+    #settings for perament AIRetrofits Hullmod
+    "AIRetrofits_Perma_permanent": "permanent",
+    #base
+    #gamma
+    #beta
+    #alpha
+    "AIRetrofits_Perma_Alpha_CrewCostDivider": "%s/%s/%s/%s ",
+    "AIRetrofits_Perma_Alpha_MaxOpDivider": "%s/%s/%s/%s ",
+    "AIRetrofits_Perma_Alpha_SupplyUsePercent": "%s%",
+    "AIRetrofits_Perma_Alpha_RepairChangePercent": "%s%",
+    #omega
+    "AIRetrofits_Perma_Omega_CrewCostDivider": "%s/%s/%s/%s ",
+    "AIRetrofits_Perma_Omega_SupplyUsePercent": "%s%",
+    "AIRetrofits_Perma_Omega_RepairChangePercent": "%s%",
+
+  #settings for robot forge hullmod
+    "AIRetrofits_RobotForgeHullmod_NA_crew": "Need at least %s spare crew on ship to replace crew. You have %s ",
+
+    #settings for robot drone storge. #not yet in use. hopefully someday i will get this working. its kinda missing right now
+    "AIRetrofits_RobotDroneStorage_crew_NCDescription_0": "you require at least ",
+    "AIRetrofits_RobotDroneStorage_crew_NCDescription_1": " extra crew space. you have ",
+    "AIRetrofits_RobotDroneStorage_crew_NCDescription_2": " extra crew space space",
+
+    "AIRetrofits_RobotDroneStorage_cargo_NCDescription_0": "you require at least ",
+    "AIRetrofits_RobotDroneStorage_cargo_NCDescription_1": " cargo . you have ",
+    "AIRetrofits_RobotDroneStorage_cargo_NCDescription_2": " cargo space",
+
+  #market condtions
+  #AI-Pop
+  "AIRetrofitsAIPop_apply_0": "Robots don't rebel... Right?",
+  "AIRetrofitsAIPop_createTooltipAfterDescription_0": "%s stability",
+
+  #ExstraDescriptionOfItems
+  #all robot types power description
+  "AIRetrofits_RobotPowerDescription":"This robot effectiveness is being multiplied by %s for having a %s in cargo, for a total power of %s per robot",
+  "AIRetrofits_RobotPowerNoCoreMessage": "No AI-Core or Sub Command Node",
+  "AIRetrofits_RobotCargoDescription": "Every robot of this type is taking up %s cargo space",
+
+  #setting for robot forge skill
+  #salvage robots,
+  "AIRetrofits_Sa_Na": "Salvage robots",
+  "AIRetrofits_Sa_D":"Produce Salvage Robots. They are about a ton in size, and somewhat ramshackle. Constructed with many independent arms, they are designed to hold any tools that they might need for whatever mission they might encounter, as well as anchor themselves to whatever surface they might require in order to salvage. Controlled from the command ship, they tend to operate very well, but accidents can still occur due to their lack of creativity when in the field. This is barely enough to offset the disadvantages of using salvaging robots in tasks, making them about as effective as normal crew.",
+
+  #survey robots
+  "AIRetrofits_Su_Na": "Survey robots",
+  "AIRetrofits_Su_D":"Produce Survey Robots. Due to all the features that need to be put into the robot to make it function at this level, it is very large, about 1.5 tons per robot. Survey robots are built with the ability to collect samples of anything they find. They're also outfitted with sensors to detect geological activity, as well as complex sensors that are capable of analyzing the land around them for anything from signs of life, to mineral deposits, and anything between. Coupled with a somewhat complex custom AI, this makes them very good at their job. While this is not always enough to overcome the downsides of not using human crew, they are overall mush more effective than standard crews at their job.",
+
+  #combat robots
+  "AIRetrofits_Co_Na": "Combat robots",
+  "AIRetrofits_Co_D":"Produce Combat Robots. Larger than an average Marine in full combat armor and somewhat rugged in design, they are nonetheless capable of being outfitted with many varying weapon platforms prior to entering combat. They are controlled remotely from the command room of your flagship when performing combat operations. Despite the in-theory advantages that the Combat Robots offer, they tend to severely under perform in combat. The robots are slow to react in battle, due to the fact that the command ship must first process most of their movements. They often take seconds to realize they are under attack before returning fire as a result, causing increased losses. The alternative - which is to give them all a primitive AI - is worse, as it results in the robots walking into kill-zones and fortifications knowingly, as well as a lack of coordination causing many to fall to the same hostile before the error can be corrected. The only upside is that they are quite small, being 'only' half a ton in size. Combat Robots are capable of fighting in almost any environment. They're best used in large numbers.",
+
+  #sub command node
+  "AIRetrofits_Sc_Na": "Sub command nodes",
+  "AIRetrofits_Sc_D":"Produce sub command nodes. Not very useful on their own, but having one can boost the capabilities of other robots. They can also be turned into much more useful Command Nodes.",
+
+  #person creater
+  "AIRetrofits_Pc_Na": "Improve a sub command node",
+
+  #descriptions for the robot forge people maker":
+  "AIRetrofit_RobotForge_PeopleMaker_mainPage_0": "Using a Sub Command Node as well as a carefully selected set of data from your stockpile of intelligence, you may 'train' a Sub Command Node to mimic the actions of a living person. This allows the newly trained Command Node to perform command-level tasks usually reserved for a human being, or an alpha core. Unfortunately the process renders the newly created Command Node useless for anything but its trained task and requires a steady stream of input data to prevent the Command Node from oversimplifying its instructions.",#"information about improving an sub command node, into a command node goes here",
+  "AIRetrofit_RobotForge_PeopleMaker_officerPage_0": "You may carefully pick and choose data among the vast array available to you to allow a Sub Command Node to mimic a human personality, with all the ups and downs that come with it. Due to the situational nature of piloting a ship, the Command Node will still need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level officer.",#"information about how you can chose an officers personality go here",
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_0" : "You consider the possibility of creating a %s officer from the data you have.",#"information about the cost of creating an officer here. as well as the type of officer you are creating." ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_1": "The officer you create will cost %s per month, increasing as they level up." ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_2": "You require %s Sub Command Node and %s credits to create an officer." ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_3": "Continue" ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_4": "Timid" ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_5": "Cautious" ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_6": "Steady" ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_7": "Aggressive" ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_8": "Reckless" ,
+  #"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_9": "Back" ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_10": "You cannot manage more officers then your currently have. Although this fact does nothing to prevent you from creating a officer in the form of a Command Node, if you so chose." ,
+  "AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_11": "You don't have enough resources to produce this Command Node." ,
+  #"AIRetrofit_RobotForge_PeopleMaker_officerConfirmPage_12": "You don't have enough resources to produce this Command Node." ,
+  "AIRetrofit_RobotForge_PeopleMaker_OfficerOption": "Create officer",
+  "AIRetrofit_RobotForge_PeopleMaker_OfficerHoverOver": "Requires a Sub Command Node",
+  "AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_0": "You consider the possibility of creating an administrator from the data you can collect. This will require quite a bit more training data than what is provided by governing a market to maintain its effectiveness." ,
+  "AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_1": "The administrator you create will cost %s per month, at a reduced cost while they are idle." ,
+  "AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_2":"You require %s Sub Command Node and %s credits to create an administrator." ,
+  "AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_3":"Continue" ,
+  "AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_4":"You cannot manage more admins then your currently have. Although this fact does nothing to prevent you from creating a officer in the form of a Command Node, if you so chose." ,
+  "AIRetrofit_RobotForge_PeopleMaker_admenConfirmPage_5":"You don't have enough resources to produce this Command Node." ,
+  "AIRetrofit_RobotForge_PeopleMaker_exitOfficer_0": "Removed %s credits and %s Sub Command Node.",
+  "AIRetrofit_RobotForge_PeopleMaker_exitOfficer_1": "Got a new Command Node.",
+  "AIRetrofit_RobotForge_PeopleMaker_exitAdmen_0": "Removed %s credits and %s Sub Command Node.",
+  "AIRetrofit_RobotForge_PeopleMaker_exitAdmen_1": "Got a new Command Node.",
+  "AIRetrofit_RobotForge_PeopleMaker_AdminOption": "Create admin",
+  "AIRetrofit_RobotForge_PeopleMaker_AdminHoverOver": "Requires a Sub Command Node",
+  #"AIRetrofit_RobotForge_PeopleMaker_init_0":"You carefully consider what you can produce with the knowledge you have..." ,
+  #requires nexerlin
+  "AIRetrofit_RobotForge_PeopleMaker_OperativePage_0": "You may carefully select data and tune the Command Node to be able to hack, organize mechanical spies, and deploy complicated tactics such as blackmail to manipulate groups and peoples on a given market or faction. Due to the extremely complicated nature of such tasks, with little room for error, this Command Node will require a large amount of data to be shifted through to even be able to preform the most basics of its trained tasks. However, do to the completed nature of its task, it will likely be able to improve overtime. a large amount of data is fed into the Command Node, to prevent simplification fo data",#"You may carefully pick and choose data among the vast array available to you to allow a Sub Command Node to mimic a human personality, with all the ups and downs that come with it. Due to the situational nature of piloting a ship, the Command Node will still need to gather data in combat situations to improve its performance, and will likely begin as the equivalent of a low level Operative.",#"information about how you can chose an Operatives personality go here",
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0" : "You consider the possibility of creating a %s Operative from the data you have.",#"information about the cost of creating an Operative here. as well as the type of Operative you are creating." ,
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_0_1" : "this Operative will be able to do the following jobs: %s.",#"information about the cost of creating an Operative here. as well as the type of Operative you are creating." ,
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_1": "The Operative you create will cost %s per month, increasing as they level up." ,
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_2": "You require %s Sub Command Node and %s credits to create an Operative." ,
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_3": ", " ,#used as an 'inbetween' when displaying an operatives 'actions'
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_4": "Continue" ,
+  #"AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_5": "Back" ,
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeConfirmPage_6": "You don't have enough resources to produce this Command Node." ,
+  "AIRetrofit_RobotForge_PeopleMaker_exitOperative_0": "Removed %s credits and %s Sub Command Node.",
+  "AIRetrofit_RobotForge_PeopleMaker_exitOperative_1": "Got a new Command Node.",
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeOption": "Create operative",
+  "AIRetrofit_RobotForge_PeopleMaker_OperativeHoverOver": "Requires a Sub Command Node",
+
+  #robot forges main menu
+  "AIRetrofit_RobotForge_MainMenu_0": "Previous",
+  "AIRetrofit_RobotForge_MainMenu_1": "Next",
+  "AIRetrofit_RobotForge_MainMenu_2": "Back",
+  "AIRetrofit_RobotForge_MainMenu_3": "Confirm",
+  "AIRetrofit_RobotForge_MainMenu_4": "You carefully consider what you can produce with the knowledge you have...",
+  #robot forges people menu
+  "AIRetrofit_RobotForge_PeopleMenu_0": "Back",
+  "AIRetrofit_RobotForge_PeopleMenu_1": "Exit",
+  "AIRetrofit_RobotForge_PeopleMenu_2": "Back",
+  #forge item page
+  "AIRetrofit_RobotForge_Item_0": "Every day you can forge :",
+  "AIRetrofit_RobotForge_Item_1": "at the cost of: ",
+  "AIRetrofit_RobotForge_Item_2": ", ",#spaces between outputs (provided there are more then one)
+  "AIRetrofit_RobotForge_Item_3": "at the cost of: ",
+  "AIRetrofit_RobotForge_Item_4": ", ",#spaces between inputs (provided there are more then one)
+  "AIRetrofit_RobotForge_Item_5": "Cant forge %s. out of %s ",
+  "AIRetrofit_RobotForge_Item_6": ", ",#spaces between 'missing resorses' (provided there are more then one)
+  "AIRetrofit_RobotForge_Item_7": ", and ",
+  "AIRetrofit_RobotForge_Item_8": ", and ",
+  "AIRetrofit_RobotForge_Item_9": ", and ",
+
+  #abilitys
+  #robot forge
+  "AIRetrofits_RobotForge_Ability_0": "No Automated Robot Factory's installed on ships in fleet. We cannot produce anything",
+  "AIRetrofits_RobotForge_Ability_1": " (off)",
+  "AIRetrofits_RobotForge_Ability_2": " (on)",
+  "AIRetrofits_RobotForge_Ability_3": "No Automated Robot Factory's installed on ships in fleet. We cannot produce anything",
+  "AIRetrofits_RobotForge_Ability_4": "Robot forge deactivated because we are out of cargo space",
+  "AIRetrofits_RobotForge_Ability_5": "Convert items into drones and other contraptions.",
+  "AIRetrofits_RobotForge_Ability_6": "are building",
+  "AIRetrofits_RobotForge_Ability_7": "can build",
+  "AIRetrofits_RobotForge_Ability_8": "Your fleet's Automated Robot Factory %s %s on a daily basis.",
+  "AIRetrofits_RobotForge_Ability_9": "Your fleet can produce items from your Automated Robot Factory with an forge speed of %s ",
+  "AIRetrofits_RobotForge_Ability_10": "You do not posses have ship with an Automated Robot Factory.",
+  "AIRetrofits_RobotForge_Ability_11": "Your Automated Robot Factory's are contributing %s forge speed",
+  "AIRetrofits_RobotForge_Ability_12": "Your nanoforges are contributing %s forge speed",
+  "AIRetrofits_RobotForge_Ability_13": "Smelt items into robot and other contraptions.",
+  "AIRetrofits_RobotForge_Ability_14": "Your fleet's Automated Robot Factory's are currently offline, but can be activated at any time.",
+
+  #setting for founding a market
+  "AIRetrofit_MarketFounder_Name": "Build an automated robotic colony",
+  "AIRetrofit_MarketFounder_Description": "You consider the possibility of building an robotic colony. It would require very different infrastructure than a normal colony, and will suffer a slowly increasing stability penalty as it grows until such infrastructure is present in the sector. The colony will not be able to rely on normal immigration to grow, but will instead have to rely on robot-operated factories. Once properly supplied, the programmed nature of machines will provide a boost to stability. robot factory output should eventually be upgradable enough to supply other automated colonies, resulting in faster colony growth for all automated colonies under your control.",
+  #settings for market growth,
+  "AIRetrofits_MarketGrowth_T1GrowthDescription": "Robots are being produced in this system, providing a system-wide boost to robotic colony growth.",
+  "AIRetrofits_MarketGrowth_T2GrowthDescription": "Robots are being produced in this faction, providing a sector-wide boost to robotic colony growth.",
+  "AIRetrofits_MarketGrowth_hazzardPayDescription": "Building robots with hazard pay",
+
+
+  #Industry things
+  "AIRetrofits_PopulationDescription": "The basic infrastructure required to support a given robotic population, such as clusters of command nodes and command relays, cities were numbers of robots perform various tasks, and mush more.",
+  #Population Replacement Center. feel free to try it out, its not dont yet, but it is OK for now.
+  "AIRetrofits_PopulationReplacementCenter_exstraDescription": "Takes a single day to build if built within %s days of founding the colony",
+
+  #base industry settings
+  "AIRetrofit_IndustryBase_addOmegaCoreDescription_String_0": "Omega-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addOmegaCoreDescription_String_1": "Omega-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_addAlphaCoreDescription_String_0": "Alpha-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addAlphaCoreDescription_String_1": "Alpha-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_addBetaCoreDescription_String_0": "Beta-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addBetaCoreDescription_String_1": "Beta-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_addGammaCoreDescription_String_0": "Gamma-level AI core currently assigned. %s ",
+  "AIRetrofit_IndustryBase_addGammaCoreDescription_String_1": "Gamma-level AI core. %s ",
+
+  "AIRetrofit_IndustryBase_getUnavailableReason_String_1": "Requires A robotic market.",
+
+  "AIRetrofit_IndustryBase_addImproveDesc_String_0": "Each improvement made at a colony doubles the number of %s required to make an additional improvement.",
+  "AIRetrofit_IndustryBase_addImproveDesc_String_1": "%s points",
+  #Population settings
+  "AIRetrofit_Population_getDescriptionOverrideNew_0": "There are %s of robotic workers active on this world",
+
+  "AIRetrofit_Population_getDescriptionOverrideNew_1": "an handful",
+  "AIRetrofit_Population_getDescriptionOverrideNew_2": "tens",
+  "AIRetrofit_Population_getDescriptionOverrideNew_3": "hundreds",
+  "AIRetrofit_Population_getDescriptionOverrideNew_4": "thousands",
+  "AIRetrofit_Population_getDescriptionOverrideNew_5": "tens of thousands",
+  "AIRetrofit_Population_getDescriptionOverrideNew_6": "hundreds of thousands",
+  "AIRetrofit_Population_getDescriptionOverrideNew_7": "millions",
+  "AIRetrofit_Population_getDescriptionOverrideNew_8": "tens of millions",
+  "AIRetrofit_Population_getDescriptionOverrideNew_9": "hundreds of millions",
+  "AIRetrofit_Population_getDescriptionOverrideNew_10": "billions",
+
+  #Shipyard settings,
+  #"AIRetrofitShipyard_Description": "Able to modify %s points-worth of ships per month. Ships cost %s/%s/%s/%s points depending on hull size.",
+  "AIRetrofitShipyard_ADescription": "Use an Alpha Core to install a an upgraded automated system that increases OP.",#description when you inset a alpha core
+  "AIRetrofitShipyard_BDescription": "Use a Beta Core to install an upgraded automated system that has a reduced supply cost.",#description when you inset a beta core
+  "AIRetrofitShipyard_GDescription": "Use a Gamma Core to install an upgraded automated system that has a reduced in combat repair time.",#description when you inset a gamma core
+  "AIRetrofitShipyard_IDescription": "Increases the rate that at which ships are upgraded by %s.",
+  "AIRetrofitShipyard_IedDescription": "Further improves ship upgrade speed by %s",
+  "AIRetrofitShipyard_IllegalText": "Unable to perform modifications to ships that require no crew.",
+  "AIRetrofitShipyard_Notification_bonusXP": "Gained %s bonus XP from removed AI-Retrofit S-Mods.",
+  "AIRetrofitShipyard_Notification_credits": "For a total cost of %s credits.",
+  "AIRetrofitShipyard_Notification_market": "at colony %s",
+  "AIRetrofitShipyard_Notification_type": "upgraded with %s",
+
+  "AIRetrofitShipyard_Description_shipPerMomth": "Able to upgrade up to %s/%s/%s/%s ships per month, depending on hull size.",
+  "AIRetrofitShipyard_Description_creditsPerShip": "Costs %s/%s/%s/%s credits per ship, depending on hull size.",
+
+  "AIRetrofitSubMarket_CantUpgradeDescription": "Unable to upgrade ships while the shipyard is offline.",
+
+  #robotic pop factory T0,
+  "AIRetrofit_PopFactoryT0_alphaDescription": "The Alpha Core applies a growth increase of %s to the factory.",
+  "AIRetrofit_PopFactoryT0_improveDescription": "Improving this factory would apply a growth increase of %s.",
+  "AIRetrofit_PopFactoryT0_improvedDescription": "This factory has been improved, providing a further growth increase of %s.",
+  "AIRetrofit_PopFactoryT0_extraDescription": "Adds %s growth to an robotic colony.",
+  #robotic pop factory T1
+  "AIRetrofit_PopFactoryT1_alphaDescription": "The Alpha Core applies a growth increase of %s to the factory.",
+  "AIRetrofit_PopFactoryT1_improveDescription": "Improving this factory would apply a growth increase of %s.",
+  "AIRetrofit_PopFactoryT1_improvedDescription": "This factory has been improved, providing a further growth increase of %s.",
+  "AIRetrofit_PopFactoryT1_extraDescription": "This factory is producing %s growth, divided between all robotic colonies in the system.",
+
+  #robotic pop factory T2
+  "AIRetrofit_PopFactoryT2_alphaDescription": "The Alpha Core applies a growth increase of %s to the factory.",
+  "AIRetrofit_PopFactoryT2_improveDescription": "Improving this factory would apply a growth increase of %s.",
+  "AIRetrofit_PopFactoryT2_improvedDescription": "This factory has been improved, providing a further growth increase of %s.",
+  "AIRetrofit_PopFactoryT2_extraDescription": "This factory is producing %s growth, divided between all robotic colonies in the sector.",
+
+  #personal robot manufactorys,
+  #base settings
+  "AIRetrofit_robotManufactury_gammaDescription": "Improve robot output by %s",
+  "AIRetrofit_robotManufactury_betaDescription": "Reduce robot output by %s",
+  "AIRetrofit_robotManufactury_alphaDescription": "Improve the quality of produced robots, but reduce factory output by %s",
+  "AIRetrofit_robotManufactury_alphaDescriptionHighlighted": "reduce",
+  "AIRetrofit_robotManufactury_omegaDescription": "Improve the quality of produced robots, but reduce factory output by %s",
+  "AIRetrofit_robotManufactury_omegaDescriptionHighlighted": "reduce",
+  "AIRetrofit_robotManufactury_improvedDescription": "Improve robot output by %s",
+  #combat robots
+  "AIRetrofit_robotManufactury_combat_betaText": "Use produced Combat Robots to boost ground defences by %s. Defence scales with robot production",
+  "AIRetrofit_robotManufactury_combat_exstaText": "From Combat Robot factory",
+  #Salvage Robots
+  "AIRetrofit_robotManufactury_salvage_betaText": "Use produced Salvage Robots to boost population growth by %s. Growth scales with robot production",
+  #Survey Robots
+  "AIRetrofit_robotManufactury_survey_betaText": "Use produced Survey Robots to provide reconnaissance around this market, increasing stability by %s. Stability bonus scales with robot production",
+  "AIRetrofit_robotManufactury_survey_exstaText": "from Survey Robot manufactory",
+  #AIRetrofit_AINodeProductionFacility
+  "AIRetrofit_AINodeProductionFacility_Base_Description": "Produces %s cores, with %s quality. has %s variation in quality.",
+  "AIRetrofit_AINodeProductionFacility_numCores_0": "zero",
+  "AIRetrofit_AINodeProductionFacility_numCores_1": "a single",
+  "AIRetrofit_AINodeProductionFacility_numCores_2": "a couple",
+  "AIRetrofit_AINodeProductionFacility_numCores_3": "a few",
+  "AIRetrofit_AINodeProductionFacility_numCores_4": "an handful of",
+  "AIRetrofit_AINodeProductionFacility_numCores_5": "an large handful of",
+  "AIRetrofit_AINodeProductionFacility_numCores_6": "a few handfuls of",
+  "AIRetrofit_AINodeProductionFacility_numCores_7": "a good amount of",
+  "AIRetrofit_AINodeProductionFacility_numCores_8": "an excess of",
+  "AIRetrofit_AINodeProductionFacility_numCores_9": "an massive amount of",
+  "AIRetrofit_AINodeProductionFacility_numCores_10": "a ridicules amount of",
+
+  "AIRetrofit_AINodeProductionFacility_powerCores_0": "extremely low",
+  "AIRetrofit_AINodeProductionFacility_powerCores_1": "very low",
+  "AIRetrofit_AINodeProductionFacility_powerCores_2": "low",
+  "AIRetrofit_AINodeProductionFacility_powerCores_3": "amateur",
+  "AIRetrofit_AINodeProductionFacility_powerCores_4": "alright",
+  "AIRetrofit_AINodeProductionFacility_powerCores_5": "good",
+  "AIRetrofit_AINodeProductionFacility_powerCores_6": "high",
+  "AIRetrofit_AINodeProductionFacility_powerCores_7": "very high",
+  "AIRetrofit_AINodeProductionFacility_powerCores_8": "incredible",
+  "AIRetrofit_AINodeProductionFacility_powerCores_9": "awe inspiring",
+  "AIRetrofit_AINodeProductionFacility_powerCores_10": "Incomprehensible",
+
+
+  "AIRetrofit_AINodeProductionFacility_Base_D2": "some",#--
+  "AIRetrofit_AINodeProductionFacility_Alpha_D2": "little",#--
+  "AIRetrofit_AINodeProductionFacility_Beta_D2": "almost no",#--
+  "AIRetrofit_AINodeProductionFacility_Gamma_D2": "extreme",#--
+  "AIRetrofit_AINodeProductionFacility_Omega_D2": "a lot",#--,
+
+
+  "AIRetrofit_AINodeProductionFacility_Base_Description_1": "This core would %s the amount of Command Cores produced, make the quality of said cores %s with %s variation in quality",
+  "AIRetrofit_AINodeProductionFacility_Alpha_D0_1": "greatly reduce",#--
+  "AIRetrofit_AINodeProductionFacility_Alpha_D1_1": "significantly increase",#--
+  "AIRetrofit_AINodeProductionFacility_Alpha_D2_1": "reduced",#--
+  "AIRetrofit_AINodeProductionFacility_Beta_D0_1": "reduce",#--
+  "AIRetrofit_AINodeProductionFacility_Beta_D1_1": "increase",#--
+  "AIRetrofit_AINodeProductionFacility_Beta_D2_1": "greatly reduce",#--
+  "AIRetrofit_AINodeProductionFacility_Gamma_D0_1": "increase",#--
+  "AIRetrofit_AINodeProductionFacility_Gamma_D1_1": "reduce",#--
+  "AIRetrofit_AINodeProductionFacility_Gamma_D2_1": "extreme increase",#--
+  "AIRetrofit_AINodeProductionFacility_Omega_D0_1": "reduce by an extreme amount",#--
+  "AIRetrofit_AINodeProductionFacility_Omega_D1_1": "maddeningly increase",#--
+  "AIRetrofit_AINodeProductionFacility_Omega_D2_1": "greatly increase",#--
+  #submarkets
+  #AIRetrofit_Shipyard
+  "AIRetrofit_Shipyard_getBuyVerb_0": "Take",
+  "AIRetrofit_Shipyard_getSellVerb_0": "Leave",
+  #AIRetrofit_AINodeProducetionFacility
+  "AIRetrofit_AINodeProduction_Submarket_getBuyVerb_0": "Create",
+  "AIRetrofit_AINodeProduction_Submarket_getSellVerb_0": "Leave",
+  #Improvement
+  "AIRetrofit_AINodeProducetionFacility_Submarket_ImprovedDescription": "Improved produced Command Node quality by %s",
+  "AIRetrofit_AINodeProducetionFacility_Submarket_ImproveDescription": "Command Node quality improved By %s",
+  "AIRetrofit_AINodeProducetionFacility_Submarket_IllegalText": "Cannot sell anything here",
+  #market modifyers
+  #defense modifyer
+  "AIRetrofitString_AIRetrofit_econUpdateListiner_applyDefenceBonuses_0": "%s% defending ground forces are Omega Combat Robots",#% of robots that are T2 at this market.
+  "AIRetrofitString_AIRetrofit_econUpdateListiner_applyDefenceBonuses_1": "%s% defending ground forces are Advanced Combat Robots",#% of robots that are T1 at this market.
+
+  #specalitems,
+  #Command Node,
+  #descriptions
+  "AIRetrofit_CommandNode_officerText": "Officer",
+  "AIRetrofit_CommandNode_officerText2": "A Command Node with the designation of %s. They are a %s of level %s with a personality of %s",
+  "AIRetrofit_CommandNode_adminText": "Admin",
+  "AIRetrofit_CommandNode_adminText2": "A Command Node with the designation of %s. They are a %s with %s related skills",
+  "AIRetrofit_CommandNode_Nexerlin_Operative_Text": "Operative",
+  "AIRetrofit_CommandNode_Nexerlin_Operative_Text2": "A Command Node with the designation of %s. They are a level %s %s with a specialty in %s",
+  "AIRetrofit_CommandNode_Nexerlin_Operative_Text3": ", ",#used as an inbetween on diffrent 'actions' an operative has
+  "AIRetrofit_CommandNode_Nexerlin_Operative_Text_maxOpp": "You cannot manage any more agents",
+  "AIRetrofit_CommandNode_Nexerlin_Operative_Text_possableJobStart": "This Command Node is capable of doing the following jobs: ",
+  "AIRetrofit_CommandNode_defaultTExt": "error",
+  "AIRetrofit_CommandNode_defaultText2": "A Command Node with the designation of %s. They are a %s",
+
+  #notifications
+  #AI-Shipyard notification
+  "AIRetrofit_ShipyardNotification_title": "Automated Ship Installation Center Production Report"
+
+}

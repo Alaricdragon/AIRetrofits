@@ -6,9 +6,10 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.growth.AIRetorift_GetMarketBoost;
-import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -22,14 +23,14 @@ public class AIRetrofit_roboticPopFactoryV1 extends AIRetrofit_roboticPopFactory
     private final static int C3Mod = 0;
     private final static int S1Mod = 2;
 
-    private final static String alphaDescription = Global.getSettings().getString("AIRetrofit_PopFactoryT1_alphaDescription");
-    private final static float alphaValue = AIRetrofits_Constants.Market_Growth_T1AplhaBonus;
+    private final static String alphaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT1_alphaDescription");
+    private final static float alphaValue = AIRetrofits_Constants_3.Market_Growth_T1AplhaBonus;
 
-    private final static float improveValue = AIRetrofits_Constants.Market_Growth_T1ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");
-    private final static String improveDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_improveDescription");
-    private final static String improvedDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_improvedDescription");
+    private final static float improveValue = AIRetrofits_Constants_3.Market_Growth_T1ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");
+    private final static String improveDescription =AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT1_improveDescription");
+    private final static String improvedDescription =AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT1_improvedDescription");
 
-    private final static String extraDescription =Global.getSettings().getString("AIRetrofit_PopFactoryT1_extraDescription");
+    private final static String extraDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_PopFactoryT1_extraDescription");
 
     @Override
     public void apply() {
@@ -79,22 +80,19 @@ public class AIRetrofit_roboticPopFactoryV1 extends AIRetrofit_roboticPopFactory
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
+        String pre = getAlphaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
             Color highlight = Misc.getHighlightColor();
             String aStr = "" + (int)(100*(alphaValue)) + "%";
-            text.addPara(pre + alphaDescription, 0f, highlight, aStr);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription), 0f, highlight, aStr);
             tooltip.addImageWithText(pad);
             return;
         }
         Color highlight = Misc.getHighlightColor();
         String aStr = "" + (int)(100*(alphaValue)) + "%";
-        tooltip.addPara(pre + alphaDescription, 0f, highlight, aStr);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription), 0f, highlight, aStr);
     }
     @Override
     public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {
@@ -109,14 +107,7 @@ public class AIRetrofit_roboticPopFactoryV1 extends AIRetrofit_roboticPopFactory
             info.addPara(improvedDescription, 0f, highlight, aStr);
         }
 
-        info.addSpacer(opad);
-        //super.addImproveDesc(info, mode);
-        float initPad = 0f;
-        if (mode != ImprovementDescriptionMode.INDUSTRY_TOOLTIP) {
-            info.addPara("Each improvement made at a colony doubles the number of " +
-                            "" + Misc.STORY + " points required to make an additional improvement.", initPad,
-                    Misc.getStoryOptionColor(), Misc.STORY + " points");
-        }
+        applyStoryText(info, mode);
     }
 
     @Override

@@ -1,21 +1,20 @@
 package data.scripts.robot_forge;
 
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.SpecialItemData;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Items;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.List;
 
 public class AIRetrofits_RobotForgeSecondary {
-    static float CorruptedMetalMultiplier = AIRetrofits_Constants.RobotForge_CorruptedMetalMultiplier;//Global.getSettings().getFloat("AIRetrofits_CorruptedMetal");
-    static float PristineMetalMultiplier = AIRetrofits_Constants.RobotForge_PristineMetalMultiplier;//Global.getSettings().getFloat("AIRetrofits_PristineMetal");
-    static float ForgePowerMulti = AIRetrofits_Constants.RobotForge_ForgePowerMulti;//Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
+    static float CorruptedMetalMultiplier = AIRetrofits_Constants_3.RobotForge_CorruptedMetalMultiplier;//Global.getSettings().getFloat("AIRetrofits_CorruptedMetal");
+    static float PristineMetalMultiplier = AIRetrofits_Constants_3.RobotForge_PristineMetalMultiplier;//Global.getSettings().getFloat("AIRetrofits_PristineMetal");
+    static float ForgePowerMulti = AIRetrofits_Constants_3.RobotForge_ForgePowerMulti;//Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
 
     public static float iCalculateBonus(CampaignFleetAPI fleet) {
         try {

@@ -1,6 +1,5 @@
 package data.scripts.SpecalItems;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.SubmarketAPI;
@@ -9,9 +8,10 @@ import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
 import data.scripts.robot_forge.createItemSupport.CommandNodeTypes.AIRetorfit_CommandNodeTypesBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
@@ -19,8 +19,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     //addSpecial AIRetrofit_CommandNode
     public PersonAPI person = null;
     public String personType = "";
-    private final static String errorText = Global.getSettings().getString("AIRetrofit_CommandNode_defaultTExt");//"error";
-    private final static String errorText2 = Global.getSettings().getString("AIRetrofit_CommandNode_defaultText2");//"a command node with the designation of %s. they are a %s";
+    private final static String errorText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_defaultTExt");//"error";
+    private final static String errorText2 = AIRetrofits_StringGetterProtection.getString("AIRetrofit_CommandNode_defaultText2");//"a command node with the designation of %s. they are a %s";
     @Override
     public void init(CargoStackAPI stack) {
         super.init(stack);
@@ -60,7 +60,7 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         try {
             //AIRetrofit_Log.loging("created person", this, true);
             //AIRetrofit_Log.loging("creating specal data", this, true);
-            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants.SpecalItemID_CommandNodes[0], null);
+            AIRetrofit_CommandNode_SpecalItemData a = new AIRetrofit_CommandNode_SpecalItemData(AIRetrofits_Constants_3.SpecalItemID_CommandNodes[0], null);
             //AIRetrofit_Log.loging("do we have a cargo bay?", this, true);
             //AIRetrofit_Log.loging("adding new specal item to cargo bay", this, true);
             cargo.addSpecial(a, 1);
@@ -77,15 +77,8 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         //}
         AIRetrofit_Log.pop();
     }
-    /*
-    @Override
-    public void render(float x, float y, float w, float h, float alphaMult,
-                       float glowMult, SpecialItemRendererAPI renderer) {
-    }*/
-
     @Override
     public String getId(){
-        //fixStack();
         return super.getId();
     }
 
@@ -104,11 +97,10 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
     protected int timesTriedToAddPerson = 0;
     @Override
     public void performRightClickAction(){
-        //super.performRightClickAction();
         if(timesTriedToAddPerson > 1) return;
         AIRetorfit_CommandNodeTypesBase temp = findPersonType();
         if(temp != null){
-            findPersonType().performRightClickAction(person);
+            findPersonType().performRightClickActionInternal(person);
             return;
         }
         person = AIRetrofits_CreatePeople.createPerson();
@@ -134,53 +126,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         super.addCostLabel(tooltip, pad, transferHandler, stackSource);
     }
 
-    /*public void toolTipOfficer(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
-            float pad = 3f;
-            float opad = 10f;
-            Color highlight = Misc.getHighlightColor();
-            String type = officerText;
-            TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
-            text.addPara(officerText2,pad,highlight,person.getNameString(),type,""+person.getStats().getLevel(),person.getPersonalityAPI().getDisplayName());
-            tooltip.addImageWithText(opad);
-            if(expanded){
-                tooltip.addSkillPanel(person,pad);
-            }
-        }
-        public void toolTipAdmin(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
-            float pad = 3f;
-            float opad = 10f;
-            Color highlight = Misc.getHighlightColor();
-            List<MutableCharacterStatsAPI.SkillLevelAPI> skills = person.getStats().getSkillsCopy();
-            int level = 0;
-            for(int a = 0; a < skills.size(); a++){
-                if(skills.get(a).getSkill().isAdminSkill()){
-                    level++;
-                }
-            }
-            String type = adminText;
-            TooltipMakerAPI text = tooltip.beginImageWithText(person.getPortraitSprite(), 48);
-            text.addPara(adminText2,pad,highlight,person.getNameString(),type,""+level);
-            tooltip.addImageWithText(opad);
-            if(expanded){
-                //TextPanelAPI.addSkillPanel(person, true);
-                //text.;
-                //tooltip.addIconGroup(5);
-                //ArrayList<String> skillsTemp = new ArrayList<>();
-                List<MutableCharacterStatsAPI.SkillLevelAPI> skillsCopy = person.getStats().getSkillsCopy();
-                for(int a2 = 0; a2 < skillsCopy.size(); a2++) {
-                    MutableCharacterStatsAPI.SkillLevelAPI a = skillsCopy.get(a2);
-                    if (a.getSkill().isAdminSkill()) {
-                        //skillsTemp.add(a.getSkill().getSpriteName());
-                        //tooltip.addImage();
-                        //tooltip.addPara(a.getSkill().getName(),5);
-                        //TooltipMakerAPI text3 = tooltip.beginImageWithText(a.getSkill().getSpriteName(),30);
-                        text.addImage(a.getSkill().getSpriteName(),30);
-                        text.addPara(a.getSkill().getName(), opad);
-                        //tooltip.addImageWithText(opad);
-                    }
-                }
-            }
-        }*/
     public void toolTipNull(TooltipMakerAPI tooltip, boolean expanded, CargoTransferHandlerAPI transferHandler, Object stackSource){
         float pad = 3f;
         float opad = 10f;
@@ -194,7 +139,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
 
     @Override
     public int getPrice(MarketAPI market, SubmarketAPI submarket) {
-        //this.doctrine = market.getFaction().getDoctrine();
         return super.getPrice(market, submarket);
     }
     @Override
@@ -207,7 +151,6 @@ public class AIRetrofit_CommandNode extends BaseSpecialItemPlugin {
         for(AIRetorfit_CommandNodeTypesBase a : AIRetrofits_CreatePeople.CommandNodeTypes){
             if(a.isMyTypeOfCommandNode(person)){
                 return a;
-                //a.commandNodeTooltip(tooltip,expanded,transferHandler,stackSource,this);
             }
         }
         return null;

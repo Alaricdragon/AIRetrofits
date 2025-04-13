@@ -5,16 +5,16 @@ import com.fs.starfarer.api.campaign.CargoAPI;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
-import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.impl.campaign.procgen.SalvageEntityGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.SalvageEntity;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIRetrofit_Log;
+import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.SupportCode.AIretrofit_canBuild;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -34,7 +34,9 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         demand(itemsTemp[1],amountTemp[1]);
         demand(itemsTemp[2],amountTemp[2]);
 
-        if(getAICoreId() != null && getAICoreId().equals(alphaCore)){
+        supply.clear();
+        supply(getOutputTypeString(),getOutputTypeInt());
+        /*if(getAICoreId() != null && getAICoreId().equals(alphaCore)){
             supply.clear();
             supply(itemsTemp[4],amountTemp[4]);
         }else if(getAICoreId() != null && getAICoreId().equals(omegaCore)){
@@ -43,7 +45,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         }else {
             supply.clear();
             supply(itemsTemp[3], amountTemp[3]);
-        }
+        }*/
         Pair<String, Integer> deficit = getMaxDeficit(itemsTemp[0],itemsTemp[1],itemsTemp[2]);
         applyDeficitToProduction(1, deficit,itemsTemp[3]);
         applyDeficitToProduction(1, deficit,itemsTemp[4]);
@@ -51,6 +53,28 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         if (!isFunctional()) {
             supply.clear();
         }
+    }
+    protected String getOutputTypeString(){
+        String downgrade = this.getSpec().getDowngrade();
+        String[] itemsTemp = this.getItems();
+        if((downgrade != null && /*!market.hasIndustry(this.getSpec().getId()) &&*/ market.hasIndustry(downgrade) && market.getIndustry(downgrade).getAICoreId() != null && market.getIndustry(downgrade).getAICoreId().equals(alphaCore)) || (getAICoreId() != null && getAICoreId().equals(alphaCore))){
+            return itemsTemp[4];
+        }
+        if((downgrade != null && /*!market.hasIndustry(this.getSpec().getId()) &&*/ market.hasIndustry(downgrade) && market.getIndustry(downgrade).getAICoreId() != null && market.getIndustry(downgrade).getAICoreId().equals(omegaCore)) || (getAICoreId() != null && getAICoreId().equals(omegaCore))){
+            return itemsTemp[5];
+        }
+        return itemsTemp[3];
+    }
+    protected int getOutputTypeInt(){
+        String downgrade = this.getSpec().getDowngrade();
+        int[] amountTemp = this.getNumbers();
+        if((downgrade != null && /*!market.hasIndustry(this.getSpec().getId()) &&*/ market.hasIndustry(downgrade) && market.getIndustry(downgrade).getAICoreId() != null && market.getIndustry(downgrade).getAICoreId().equals(alphaCore)) || (getAICoreId() != null && getAICoreId().equals(alphaCore))){
+            return amountTemp[4];
+        }
+        if((downgrade != null && /*!market.hasIndustry(this.getSpec().getId()) &&*/ market.hasIndustry(downgrade) && market.getIndustry(downgrade).getAICoreId() != null && market.getIndustry(downgrade).getAICoreId().equals(omegaCore)) || (getAICoreId() != null && getAICoreId().equals(omegaCore))){
+            return amountTemp[5];
+        }
+        return amountTemp[3];
     }
     @Override
     public void unapply(){
@@ -77,15 +101,20 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
 
     static private final float gammaMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_gammaMulti");//1.3f;
     static private final float improvedMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_improvedMulti");//1.3f;
+    static protected final float improvedBetaMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_improvedBetaMulti");//1.3f;
     static private final float betaMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_betaMulti");//0.5f;
     //alpha multi is not necessary.
     //static private final float alphaMulti = 0.75f;
 
-    static private final String gammaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_gammaDescription");//"improve robot output by %s";
-    static private final String betaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_betaDescription");//"reduce robot output by %s";
-    static private final String alphaDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_alphaDescription");//"improve the quality of produced robots, but %s output factory output";
-    static private final String alphaDescriptionHighlighted = Global.getSettings().getString("AIRetrofit_robotManufactury_alphaDescriptionHighlighted");//"reduces";
-    static final String improvedDescription = Global.getSettings().getString("AIRetrofit_robotManufactury_improvedDescription");//"improve robot output by %s";
+    static private final String gammaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_gammaDescription");//"improve robot output by %s";
+    static private final String betaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_betaDescription");//"reduce robot output by %s";
+    static private final String alphaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_alphaDescription");//"improve the quality of produced robots, but %s output factory output";
+    static private final String alphaDescriptionHighlighted = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_alphaDescriptionHighlighted");//"reduces";
+    static private final String omegaDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_omegaDescription");//"improve the quality of produced robots, but %s output factory output";
+    static private final String omegaDescriptionHighlighted = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_omegaDescriptionHighlighted");//"reduces";
+
+
+    static final String improvedDescription = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_improvedDescription");//"improve robot output by %s";
     @Override
     public CargoAPI generateCargoForGatheringPoint(Random random) {
         if(!isFunctional()){
@@ -159,10 +188,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     @Override
     protected void	addGammaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Gamma-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Gamma-level AI core. ";
-        }
+        String pre = getGammaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
@@ -171,23 +197,20 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
                     "" + (int)((1f - UPKEEP_MULT) * 100f) + "%", "" + DEMAND_REDUCTION,
                     str);*/
             Color highlight = Misc.getHighlightColor();
-            String[] exstra = {"" + ((gammaMulti - 1) * 100) + "%"};
-            text.addPara(pre + gammaDescription,pad,highlight,exstra);
+            String[] exstra = {"" + Math.round((gammaMulti - 1) * 100) + "%"};
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,gammaDescription),pad,highlight,exstra);
 
             tooltip.addImageWithText(pad);
             return;
         }
         Color highlight = Misc.getHighlightColor();
-        String[] exstra = {"" + ((gammaMulti - 1) * 100) + "%"};
-        tooltip.addPara(pre + gammaDescription,pad,highlight,exstra);
+        String[] exstra = {"" + Math.round((gammaMulti - 1) * 100) + "%"};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,gammaDescription),pad,highlight,exstra);
     }
     @Override
     protected void	addBetaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
         float pad = 5;
-        String pre = "Beta-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Beta-level AI core. ";
-        }
+        String pre = getBetaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
@@ -195,20 +218,17 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
                             "Increases fleet size by %s.", 0f, highlight,
                     "" + (int)((1f - UPKEEP_MULT) * 100f) + "%", "" + DEMAND_REDUCTION,
                     str);*/
-            Color highlight = Misc.getHighlightColor();
-            String[] exstra = {"" + ((1 - betaMulti) * 100) + "%"};
-            exstraBetaDescription(pre,text,mode);
-            text.addPara(betaDescription,pad,highlight,exstra);
+            String[] exstra = {"" + Math.round((1 - betaMulti) * 100) + "%"};
+            exstraBetaDescription(pre,text,mode,betaDescription,exstra);
+            //text.addPara(betaDescription,pad,highlight,exstra);
             tooltip.addImageWithText(pad);
             return;
         }
-        Color highlight = Misc.getHighlightColor();
-        String[] exstra = {"" + ((1 - betaMulti) * 100) + "%"};
-        exstraBetaDescription(pre,tooltip,mode);
-        tooltip.addPara(betaDescription,pad,highlight,exstra);
+        String[] exstra = {"" + Math.round((1 - betaMulti) * 100) + "%"};
+        exstraBetaDescription(pre,tooltip,mode,betaDescription,exstra);
+        //tooltip.addPara(betaDescription,pad,highlight,exstra);
     }
-    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
-
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode,String after,String... afterHighlights){
     }
     @Override
     protected void	addAlphaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
@@ -224,10 +244,7 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
         float a = ALPHA_CORE_BONUS;
         //String str = "" + (int)Math.round(a * 100f) + "%";
         String str = Strings.X + (1f + a);*/
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
+        String pre = getAlphaCoreString(mode);
         if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
             CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
             TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
@@ -237,21 +254,50 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
                     str);*/
             Color highlight = Misc.getHighlightColor();
             String[] exstra = {alphaDescriptionHighlighted};
-            text.addPara(pre + alphaDescription,pad,highlight,exstra);
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
 
             tooltip.addImageWithText(pad);
             return;
         }
         Color highlight = Misc.getHighlightColor();
         String[] exstra = {alphaDescriptionHighlighted};
-        tooltip.addPara(pre + alphaDescription,pad,highlight,exstra);
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
+    }
+    @Override
+    protected void	addOmegaCoreDescription(TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+        float pad = 5;
+        String pre = getOmegaCoreString(mode);
+        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
+            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
+            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
+            /*text.addPara("Reduces upkeep cost by %s. Reduces demand by %s unit. " +
+                            "Increases fleet size by %s.", 0f, highlight,
+                    "" + (int)((1f - UPKEEP_MULT) * 100f) + "%", "" + DEMAND_REDUCTION,
+                    str);*/
+
+            exstraOmegaDescription("",tooltip,mode);
+            Color highlight = Misc.getHighlightColor();
+            String[] exstra = {alphaDescriptionHighlighted};
+            text.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
+
+            tooltip.addImageWithText(pad);
+            return;
+        }
+        exstraOmegaDescription("",tooltip,mode);
+        Color highlight = Misc.getHighlightColor();
+        String[] exstra = {alphaDescriptionHighlighted};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,alphaDescription),pad,highlight,exstra);
+    }
+    protected void exstraOmegaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+
     }
     @Override
     public void addImproveDesc(TooltipMakerAPI info, ImprovementDescriptionMode mode) {
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        String[] exstra = {"" + ((improvedMulti - 1) * 100) + "%"};
+        String[] exstra = {"" + Math.round((improvedMulti - 1) * 100) + "%"};
         info.addPara(improvedDescription,pad,highlight,exstra);
+        applyStoryText(info, mode);
     }
     @Override
     public void applyGammaCoreModifiers(){
@@ -265,42 +311,25 @@ public class AIRetrofit_PersonalRobotManufactoryBase extends AIRetrofit_Industry
     public void applyAlphaCoreModifiers(){
         removeBetaMods();
     }
+    @Override
+    protected void applyOmegaCoreModifiers() {
+        removeBetaMods();
+    }
 
-    protected int getRandomBetween(float min,float max){
+    protected int getRandomBetween(float min, float max){
         return (int)(min + Math.random()*(max - min));
     }
 
     protected void removeBetaMods(){
 
     }
-    /*
-    protected void addAlphaCoreDescription(TooltipMakerAPI tooltip, AICoreDescriptionMode mode) {
-        float opad = 10f;
-        Color highlight = Misc.getHighlightColor();
 
-        String pre = "Alpha-level AI core currently assigned. ";
-        if (mode == AICoreDescriptionMode.MANAGE_CORE_DIALOG_LIST || mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            pre = "Alpha-level AI core. ";
-        }
-        float a = ALPHA_CORE_BONUS;
-        //String str = "" + (int)Math.round(a * 100f) + "%";
-        String str = Strings.X + (1f + a);
+    @Override
+    protected void applyImproveModifiers() {
+    }
 
-        if (mode == AICoreDescriptionMode.INDUSTRY_TOOLTIP) {
-            CommoditySpecAPI coreSpec = Global.getSettings().getCommoditySpec(aiCoreId);
-            TooltipMakerAPI text = tooltip.beginImageWithText(coreSpec.getIconName(), 48);
-            text.addPara(pre + "Reduces upkeep cost by %s. Reduces demand by %s unit. " +
-                            "Increases fleet size by %s.", 0f, highlight,
-                    "" + (int)((1f - UPKEEP_MULT) * 100f) + "%", "" + DEMAND_REDUCTION,
-                    str);
-            tooltip.addImageWithText(opad);
-            return;
-        }
-
-        tooltip.addPara(pre + "Reduces upkeep cost by %s. Reduces demand by %s unit. " +
-                        "Increases fleet size by %s.", opad, highlight,
-                "" + (int)((1f - UPKEEP_MULT) * 100f) + "%", "" + DEMAND_REDUCTION,
-                str);
-
-    }*/
+    @Override
+    protected boolean hasOmegaDescription() {
+        return true;
+    }
 }

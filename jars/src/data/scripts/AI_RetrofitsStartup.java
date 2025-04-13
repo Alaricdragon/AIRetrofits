@@ -1,43 +1,34 @@
 package data.scripts;
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.comm.IntelInfoPlugin;
-import com.fs.starfarer.api.campaign.comm.IntelManagerAPI;
-import com.fs.starfarer.api.ui.CustomPanelAPI;
+import com.thoughtworks.xstream.XStream;
 import data.scripts.AIWorldCode.FoundAMarket.AIRetrofit_MarketRetrofit_CustomMarketFounder;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_MakretListener;
 import data.scripts.AIWorldCode.market_listiners.AIRetrofit_econUpdateListiner;
-import data.scripts.AIWorldCode.supplyDemandClasses.*;
 import data.scripts.AIWorldCode.Fleet.BaseCampainPlugin.AIRetrofit_FleetPlugin;
 import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
+import data.scripts.jsonDataReader.AIRetrofits_JsonReaderBase;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
-import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
-import data.scripts.notifications.AIRetrofit_ShipyardNotification;
 import data.scripts.startupData.*;
-import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapDemand;
-import data.scripts.supplyDemandLibary.changes.MarketRetrofit_CCSwapSupply;
+import org.json.JSONException;
 
-import java.util.List;
+import java.io.IOException;
 
 public class AI_RetrofitsStartup extends BaseModPlugin {
     public void onNewGame(){
     }
+
     @Override
-    public void onApplicationLoad() {
-        /*
-        XStream x = new XStream();
-        x.alias("PLStatMarines", PLStatMarines.class);*/
-        //Global.getSector().getEconomy().getCommoditySpec().
-        //crew_replacer.addCrewType("AIretrofit_WorkerDrone");
-        AIRetrofits_Startup_RobotForge.apply();
-        setDataLists.init();
-        AIRetrofits_Startup_CreatePeople.apply();
-        AIRetrofits_Startup_MarketRetrofits.apply();
-        AIRetrofits_Startup_RobotTypesCalculater.apply();
-        AIRetrofits_Startup_CrewReplacer.apply();
-        AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
+    public void configureXStream(XStream x) {
+        super.configureXStream(x);
+    }
+
+    @Override
+    public void onApplicationLoad() throws JSONException, IOException {
+        load0();
+        load1();
     }
     @Override
     public void onGameLoad(boolean newGame) {
@@ -80,5 +71,31 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         //intell.get(0).getMapLocation();
         CustomPanelAPI panel= null;
         intell.get(0).createLargeDescription(panel,0,0);*/
+    }
+    private void load0() throws IOException {
+        AIRetrofit_Log.loging("attempting to preform base startup protocols",this,true);
+        try {
+            AIRetrofits_JsonReaderBase.startup();
+            AIRetrofits_Constants_3.apply();
+        } catch (JSONException e) {
+            AIRetrofit_Log.loging("got an error of: "+e.toString(),this,true);
+            e.printStackTrace();
+        } catch (Exception e){
+            AIRetrofit_Log.loging("got an error of: "+e.toString(),this,true);
+            e.printStackTrace();
+        }
+    }
+    private void load1(){
+        AIRetrofit_Log.loging("attempting to preform secondary startup protocols",this,true);
+        AIRetrofits_Startup_RobotForge.apply();
+        setDataLists.init();
+        AIRetrofits_Startup_CreatePeople.apply();
+        AIRetrofits_Startup_MarketRetrofits.apply();
+        AIRetrofits_Startup_RobotTypesCalculater.apply();
+        AIRetrofits_Startup_CrewReplacer.apply();
+        AIRetrofits_InitCombatabilityPatches.onApplicationLoad();
+    }
+    private void load2(){
+
     }
 }

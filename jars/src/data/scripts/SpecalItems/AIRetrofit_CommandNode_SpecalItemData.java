@@ -1,12 +1,7 @@
 package data.scripts.SpecalItems;
 
-import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.FactionDoctrineAPI;
 import com.fs.starfarer.api.campaign.SpecialItemData;
 import com.fs.starfarer.api.characters.PersonAPI;
-import data.scripts.AIRetrofit_Log;
-import data.scripts.robot_forge.createItemSupport.AIRetrofits_CreatePeople;
-import data.scripts.startupData.AIRetrofits_Constants;
 
 public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
     PersonAPI person = null;
@@ -17,7 +12,6 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
     }
     public AIRetrofit_CommandNode_SpecalItemData(String id, String data) {
         super(id, data);
-        //AIRetrofits_CreatePeople.createPerson();
     }
     public PersonAPI getPerson(){
         return person;
@@ -76,6 +70,4 @@ public class AIRetrofit_CommandNode_SpecalItemData extends SpecialItemData {
         } else return person.equals(other.person);
 
     }
-    //String personType = "";
-
 }

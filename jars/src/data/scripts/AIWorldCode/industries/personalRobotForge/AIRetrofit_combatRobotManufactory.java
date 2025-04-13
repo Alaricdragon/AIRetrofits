@@ -5,6 +5,8 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofits_StringHelper;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 
 import java.awt.*;
 
@@ -27,8 +29,8 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
 
     protected final static float BetaDefenceMulti = Global.getSettings().getFloat("AIRetrofit_robotManufactury_combat_Mod");//1.1f;
 
-    private final static String groundDefenceText = Global.getSettings().getString("AIRetrofit_robotManufactury_combat_exstaText");//"from combat robot factory";
-    private final static String BetaText = Global.getSettings().getString("AIRetrofit_robotManufactury_combat_betaText");//"use produced combat robots to boost ground defences by %s";
+    private final static String groundDefenceText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_combat_exstaText");//"from combat robot factory";
+    private final static String BetaText = AIRetrofits_StringGetterProtection.getString("AIRetrofit_robotManufactury_combat_betaText");//"use produced combat robots to boost ground defences by %s";
     @Override
     protected String[] getItems(){
         return new String[] {C1,C2,C3,S1,S2,S3};
@@ -54,17 +56,22 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         if (!isFunctional()) {
             return;
         }
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id,getCombatMulti(),groundDefenceText);
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, getBetaMulti(),groundDefenceText);
     }
-    public float getCombatMulti(){
-        float bonus = BetaDefenceMulti;
-        if (this.isImproved()){
-            //bonus *= 2;
-        }
+    public float getBetaMulti(){
+        float bonus = 0;
         String[] itemsTemp = this.getItems();
         if (market != null && market.getIndustry(this.getSpec().getId()) != null) {
             bonus *= (int)market.getIndustry(this.getSpec().getId()).getSupply(itemsTemp[3]).getQuantity().getModifiedValue();
         }
+        return getBetaMulti(bonus);
+    }
+    public float getBetaMulti(float commodityOutput){
+        float bonus = BetaDefenceMulti;
+        if (this.isImproved()){
+            bonus *= improvedBetaMulti;
+        }
+        bonus *= commodityOutput;
         bonus+=1;
         return bonus;
     }
@@ -81,12 +88,12 @@ public class AIRetrofit_combatRobotManufactory extends AIRetrofit_PersonalRobotM
         super.unapply();
     }
     @Override
-    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode){
+    protected void exstraBetaDescription(String pre, TooltipMakerAPI tooltip, Industry.AICoreDescriptionMode mode,String after,String... afterHighlights){
         float pad = 5;
         Color highlight = Misc.getHighlightColor();
-        float bonus = getCombatMulti();
-        String[] exstra = {"" + ((bonus - 1) * 100) + "%"};
-        tooltip.addPara(pre + BetaText,pad,highlight,exstra);
+        float bonus = getBetaMulti();
+        String[] exstra = {"" + Math.round((bonus - 1) * 100) + "%",afterHighlights[0]};
+        tooltip.addPara(AIRetrofits_StringHelper.getSplitString(pre,BetaText)+after,pad,highlight,exstra);
     }
 
 

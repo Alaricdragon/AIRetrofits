@@ -5,12 +5,12 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
+import static data.scripts.startupData.AIRetrofits_Constants_3.ASIC_hullmods;
 
 public class AIRetrofit_UpgradedShips {
     public int type;
@@ -35,7 +35,7 @@ public class AIRetrofit_UpgradedShips {
         //FleetDataAPI fleet = new FleetData("production","production2");
         ArrayList<FleetMemberAPI> fleet = new ArrayList<>();
         String[] exstra = {"" + Global.getSettings().getHullModSpec(ASIC_hullmods[type]).getDisplayName()};
-        String text = AIRetrofits_Constants.ASIC_NotificationType;
+        String text = AIRetrofits_Constants_3.ASIC_NotificationType;
         info.addPara(text,pad,highlight,exstra);
         float cost = 0;
         float bonusXP = 0;

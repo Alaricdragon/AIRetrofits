@@ -3,13 +3,16 @@ package data.scripts.AIWorldCode.Fleet;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignFleetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.AIWorldCode.Fleet.fleetnflater.AIRetrofit_fleetInflater;
+import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 
 public class setDataLists {
-    private static boolean can = AIRetrofits_Constants.Market_EnableMarketFetures;
+    private static boolean can = AIRetrofits_Constants_3.Market_EnableMarketFetures;
     static public ArrayList<String> CaptionFirstNames;
     static public ArrayList<String> CaptionLastNames;
     static public ArrayList<String> CaptionPortraits;
@@ -24,18 +27,47 @@ public class setDataLists {
     static private String numThresholdsName = "AIRetrofit_AINodeProductionFacility_numCoreThresholds_";
     static private String powerCoresName = "AIRetrofit_AINodeProductionFacility_powerCores_";
     static private String powerCoreThresholdsName = "AIRetrofit_AINodeProductionFacility_powerCoreThresholds_";
-    static String Condition = AIRetrofits_Constants.Market_Condition;
+    static String Condition = AIRetrofits_Constants_3.Market_Condition;
+    public static String forcedFleetMod(CampaignFleetAPI fleet){
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS)){
+            return AIRetrofits_Constants_3.ASIC_BaseHullmod;
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_BASE)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[4];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_GAMMA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[0];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_BETA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[1];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_ALPHA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[2];
+        }
+        if (fleet.hasTag(AIRetrofits_Constants_3.TAG_FORCE_AI_RETROFITS_P_OMEGA)){
+            return AIRetrofits_Constants_3.ASIC_hullmods[3];
+        }
+        return null;
+    }
     public static boolean fleetMod(CampaignFleetAPI fleet){
         MarketAPI market = Global.getSector().getEconomy().getMarket(fleet.getMemory().getString(MemFlags.MEMORY_KEY_SOURCE_MARKET));
-        return (market != null && market.hasCondition(Condition) && market.getFaction().getId().equals(fleet.getFaction().getId()) && can);
+        boolean commanderEligible = CommanderTagCheck(fleet.getCommander());
+        return (market != null && market.hasCondition(Condition) && market.getFaction().getId().equals(fleet.getFaction().getId()) && can && commanderEligible);
+    }
+    static private String[] CommandTagsBlacklist = {"starlords_lord"};
+    public static boolean CommanderTagCheck(PersonAPI person){
+        for (String a : CommandTagsBlacklist){
+            if (person.hasTag(a)) return false;
+        }
+        return true;
     }
     public static void init(){
         CaptionFirstNames = SetArrayString(CapFirstName);
         CaptionLastNames = SetArrayString(CapLastName);
         CaptionPortraits = SetArrayString(CapPort);
-        AINodeProductionFacility_numCores = SetArrayString(numCoresName);
+        AINodeProductionFacility_numCores = SetArrayString2(numCoresName);
         AINodeProductionFacility_numCoreThresholds = SetArrayFloat(numThresholdsName);
-        AINodeProductionFacility_powerCores = SetArrayString(powerCoresName);
+        AINodeProductionFacility_powerCores = SetArrayString2(powerCoresName);
         AINodeProductionFacility_powerCoreThresholds = SetArrayFloat(powerCoreThresholdsName);
     }
     public static String getRandom(int type){
@@ -79,6 +111,21 @@ public class setDataLists {
         while(true){
             try{
                 out.add(Global.getSettings().getFloat(name + a));
+                a++;
+            }catch (Exception e){
+                break;
+            }
+        }
+        return out;
+    }
+    private static ArrayList<String> SetArrayString2(String name){
+        ArrayList<String> out = new ArrayList<String>();
+        int a = 0;
+        while(true){
+            try{
+                String temp = AIRetrofits_StringGetterProtection.getString(name + a);
+                if (temp == null) return out;
+                out.add(temp);
                 a++;
             }catch (Exception e){
                 break;

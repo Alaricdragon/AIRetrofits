@@ -1,50 +1,40 @@
 package data.scripts.hullmods.Shipyard;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.AIRetrofit_Log;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
-public class AIRetrofit_ShipyardGamma extends AIRetrofit_ShipyardBase {
-    final static String automationLevel = AIRetrofits_Constants.AIRetrofit_Perma_Gamma_automationLevel;//"Gamma-Core";
-    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants.AIRetrofit_Perma_Gamma_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
-    private static final float CREW_USE_MULT = AIRetrofits_Constants.AIRetrofit_Perma_Gamma_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
-    private static final float REPAIR_LOSE = AIRetrofits_Constants.AIRetrofit_Perma_Gamma_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
-    private String[] parm = {"","","","",""};
+public class AIRetrofit_ShipyardGamma extends AIRetrofit_BaseShipyard {
+    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Gamma_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
+    private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Gamma_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
+    private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Gamma_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
     @Override
-    public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
-        float SupplyIncrease = stats.getSuppliesPerMonth().getBaseValue() * SUPPLY_USE_MULT;
-        stats.getSuppliesPerMonth().modifyFlat(id,SupplyIncrease);
-        stats.getMinCrewMod().modifyMult(id,CREW_USE_MULT);
-        stats.getMaxCrewMod().modifyFlat(id,MinCrew * -1);
-        stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
-        stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
+    public float getSupplyCostMulti() {
+        return SUPPLY_USE_MULT;
     }
     @Override
-    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        if(index < parm.length) {
-            return parm[index];
-        }
-        return null;
+    public float getCrewReductionMulti() {
+        return CREW_USE_MULT;
     }
-    //prevents the hullmod from being removed by the player
     @Override
-    public boolean canBeAddedOrRemovedNow(ShipAPI ship, MarketAPI marketOrNull, CampaignUIAPI.CoreUITradeMode mode){
-        setDisplayValues(ship);
-        return super.canBeAddedOrRemovedNow(ship,marketOrNull,mode);
+    public float getRepairTimeMulti() {
+        return REPAIR_LOSE;
     }
-    private void setDisplayValues(ShipAPI ship){
-        if(ship == null){
-            return;
-        }
-        float MinCrew = ship.getVariant().getHullSpec().getMinCrew();
-        parm[0] = automationLevel;
-        parm[1] = ((SUPPLY_USE_MULT) * 100) + "%";
-        parm[2] = "" + (REPAIR_LOSE * 100) + "%";
-        parm[3] = "" + (int)MinCrew;
-        parm[4] = "" + (int)(MinCrew * CREW_USE_MULT);
+
+    @Override
+    public void applyRepairTimeChange(MutableShipStatsAPI stats) {
+        float a = stats.getBaseCRRecoveryRatePercentPerDay().getBaseValue();
+        float b = (getRepairTimeMulti()-1) * 100;
+        float c = (a*b)/100;
+        stats.getBaseCRRecoveryRatePercentPerDay().modifyFlat(spec.getId(),c);
+    }
+    @Override
+    public String getRepairTimeChangeDescription(MutableShipStatsAPI stats) {
+        int change = (int) (100 - (getRepairTimeMulti()*100));
+        change*=-1;
+        return change + "%";
     }
 }

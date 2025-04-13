@@ -1,15 +1,13 @@
 package data.scripts.AIWorldCode.growth;
 
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.combat.MutableStat;
-import com.fs.starfarer.api.impl.campaign.econ.FreeMarket;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.ArrayList;
 //import data.scripts.CrewReplacer_Log;
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 public class AIRetrofits_RemoveUnwantedGrowth {
     static final private AIRetrofits_RemoveUnwantedGrowth logClass = new AIRetrofits_RemoveUnwantedGrowth();
     static final private String info = "report bug to AIRetrofits";
-    static final private String[] activeGrowth = AIRetrofits_Constants.Market_WhiteListedGrowthMods;
+    static final private String[] activeGrowth = AIRetrofits_Constants_3.Market_WhiteListedGrowthMods;
     public static void removeKnownImmigration(MarketAPI market, PopulationComposition incoming){
         removeKnownImmigration(market,incoming,new ArrayList<String>());
     }
@@ -30,9 +28,9 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                     if(a.getSpec() instanceof MarketImmigrationModifier) {
                         MarketImmigrationModifier b = (MarketImmigrationModifier) market.getIndustry(a.getSpec().getId());
                         b.modifyIncoming(market, negitiveIn);
-                        AIRetrofit_Log.loging("got industry of id:" + a.getSpec().getId() + " and am removing it relitive growth.",logClass,AIRetrofits_Constants.Market_EnableLogs);
+                        AIRetrofit_Log.loging("got industry of id:" + a.getSpec().getId() + " and am removing it relitive growth.",logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                     }else{
-                        AIRetrofit_Log.loging("got industry of id: " + a.getSpec().getId() + "and have nothing to remove here",logClass,AIRetrofits_Constants.Market_EnableLogs);
+                        AIRetrofit_Log.loging("got industry of id: " + a.getSpec().getId() + "and have nothing to remove here",logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                     }
                 }catch (Exception e){
                     AIRetrofit_Log.loging("ERROR: failed to ad to remove mod named: " + a.getSpec().getId(),logClass,true);
@@ -41,14 +39,14 @@ public class AIRetrofits_RemoveUnwantedGrowth {
         }
         for(int a2 = 0; a2 < market.getConditions().size(); a2++){
             MarketConditionAPI a = market.getConditions().get(a2);
-            if (market.hasCondition(a.getSpec().getId()) && !a.getSpec().getId().equals(AIRetrofits_Constants.Market_Condition)){
+            if (market.hasCondition(a.getSpec().getId()) && !a.getSpec().getId().equals(AIRetrofits_Constants_3.Market_Condition)){
                 try{
                     if(a.getPlugin() instanceof MarketImmigrationModifier){
                         MarketImmigrationModifier b = (MarketImmigrationModifier) a.getPlugin();
                         b.modifyIncoming(market, negitiveIn);
-                        AIRetrofit_Log.loging("got conditions of id:" + a.getSpec().getId() + " and am removing it relitive growth.",logClass,AIRetrofits_Constants.Market_EnableLogs);
+                        AIRetrofit_Log.loging("got conditions of id:" + a.getSpec().getId() + " and am removing it relitive growth.",logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                     }else{
-                        AIRetrofit_Log.loging("got conditions of id: " + a.getSpec().getId() + "and have nothing to remove here",logClass,AIRetrofits_Constants.Market_EnableLogs);
+                        AIRetrofit_Log.loging("got conditions of id: " + a.getSpec().getId() + "and have nothing to remove here",logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                     }
                 }catch (Exception e){
                     AIRetrofit_Log.loging("ERROR: failed to ad to remove mod named: " + a.getSpec().getId(),logClass,true);
@@ -69,17 +67,17 @@ public class AIRetrofits_RemoveUnwantedGrowth {
             for(int b2 = 0; b2< gone.size(); b2++){
                 String b = gone.get(b2);
                 if(b.equals(mods[a].toString())){
-                    AIRetrofit_Log.loging("avoiding removing " + b + " because it was removed elsewere.",logClass,AIRetrofits_Constants.Market_EnableLogs);
+                    AIRetrofit_Log.loging("avoiding removing " + b + " because it was removed elsewere.",logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                     noOut = true;
                     break;
                 }
             }
             if(!noOut) {
-                AIRetrofit_Log.loging("adding negative growth for industry/conditional growth named: " + mods[a].toString(),logClass,AIRetrofits_Constants.Market_EnableLogs);
+                AIRetrofit_Log.loging("adding negative growth for industry/conditional growth named: " + mods[a].toString(),logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                 MutableStat.StatMod temp2 = negitiveIn.getWeight().getFlatMods().get(mods[a].toString());
-                AIRetrofit_Log.loging("adding negative mod: " + temp2, logClass,AIRetrofits_Constants.Market_EnableLogs);
+                AIRetrofit_Log.loging("adding negative mod: " + temp2, logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                 String a0 = "AIRetrofit_Remove_" + temp2.getSource();
-                AIRetrofit_Log.loging("negative growth named:" + a0,logClass,AIRetrofits_Constants.Market_EnableLogs);
+                AIRetrofit_Log.loging("negative growth named:" + a0,logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                 float b = -temp2.getValue();
                 incoming.getWeight().modifyFlat(a0, b, info);
             }
@@ -87,7 +85,7 @@ public class AIRetrofits_RemoveUnwantedGrowth {
 
     }
     public static ArrayList<String> removeGrowthOther(MarketAPI market, PopulationComposition incoming){
-        AIRetrofit_Log.loging("removeing growth from market named: " + market.getName(),logClass,AIRetrofits_Constants.Market_EnableLogs);
+        AIRetrofit_Log.loging("removeing growth from market named: " + market.getName(),logClass, AIRetrofits_Constants_3.Market_EnableLogs);
         ArrayList<String> removedTemp = new ArrayList<>();
         int a = 0;
         while(incoming.getWeight().getFlatMods().keySet().size() != 0 && a < incoming.getWeight().getFlatMods().keySet().size()){
@@ -102,7 +100,7 @@ public class AIRetrofits_RemoveUnwantedGrowth {
                 }
             }
             if(out) {
-                AIRetrofit_Log.loging("Removed growth named: " + incoming.getWeight().getFlatMods().keySet().toArray()[a].toString(),logClass,AIRetrofits_Constants.Market_EnableLogs);
+                AIRetrofit_Log.loging("Removed growth named: " + incoming.getWeight().getFlatMods().keySet().toArray()[a].toString(),logClass, AIRetrofits_Constants_3.Market_EnableLogs);
                 removedTemp.add(incoming.getWeight().getFlatMods().keySet().toArray()[a].toString());
                 incoming.getWeight().unmodify(incoming.getWeight().getFlatMods().keySet().toArray()[a].toString());
             }

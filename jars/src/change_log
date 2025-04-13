@@ -1,3 +1,52 @@
+V0.10.0: The Grand De-jank-enfication (or something) (part 1)
+NOT save compatible with any older version.
+    new:
+        added the 'Command Node' portrait into the list of portraits the player can pick
+        made the highest level of AI-Retrofits very slightly more interesting.
+    changes:
+        moved all string data over to strings.json.
+        cleaned up a bunch of no longer used code.
+        changed all 'drones' to be called 'robots'. i thought it just made more sense?
+        changed the name of 'Automated Robotic Drone Factory' to 'Automated Robot Factory'
+        AI-Retrofit hullmod rebalanced:
+            the objective here is to change the AI-Retrofit hullmod from something that debuffs your combat ability, to something that only changes your logistics.
+            changed all AI-Retrofit hullmods to no longer do the following:
+                1) increase opp cost depending on crew used (base 1 supply per month per 10 crew)
+                2) modify in combat repair
+                3) duble supply use
+            instead, the following will happen:
+                1) increase supply cost based on crew used.
+                2) modify CR recover rate
+        new AIRetrofit stats are as follows:
+            AI-Retrofit:
+                supply use multi: 1.2
+                repair speed multi: 0.8
+            patchwork:
+                supply use multi: 1.3
+                repair speed multi: 0.4
+            perma_base:
+                supply use multi: 1.2
+                repair speed multi: 0.8
+            perma_gamma:
+                supply use multi: 1.4
+                repair speed multi: 1.1
+            perma_beta:
+                supply use multi: 0.9
+                repair speed multi: 0.7
+            perma_alpha:
+                to be upgraded later. I have plans for this, but I cant do them right now.
+    fixes:
+        fixed many spelling and grammar issues.
+            -i had no idea it was so bad until i went in and started looking. i need to read my own mod more often i think.
+        AI-Retrofit type hullmods sometimes removing more then the max crew. (hopefully)
+        fixed both Patchwork AI-Retrofits and the AI Shipyard removing reducing combat readiness when they 'swap' a hullmod (hopefully)
+        fixed the setting for 'crew use multi' related to AI-Retrofits not effecting max crew, but min crew instead (sorry)
+        fixed a very rare issue were a AI-Retrofit hullmod could give / remove the wrong amount of op.
+        fixed a possible incompatibility with starlords were a AI-Retrofit marker could overwrite the name and portrate of a starlord and all there officers
+        fixed issue were being in the refit screen and adding / removing vents was slow (sometimes really really slow) (it was me sorry)
+        fixed AI-Retrofit 'permit' mods pretending you can remove them.
+    compatibility:
+        (starlords) made it so if a starlord is generated on a AI-Pop world, it will be a AI. spooky.
 V0.9.4:
 save compatible with 0.7.20.1+
     fixes:

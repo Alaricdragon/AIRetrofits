@@ -4,7 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CargoAPI;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.crewReplacer_Main;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 import exerelin.campaign.intel.groundbattle.GroundBattleIntel;
 import exerelin.campaign.intel.groundbattle.GroundUnit;
 import exerelin.campaign.intel.groundbattle.GroundUnitDef;
@@ -30,7 +30,7 @@ public class AIRetrofit_PlayerGroundUnitSwaper {
     public final static boolean logs = Global.getSettings().getBoolean("AIRetrofits_Logs_Nexerlin_GroundCombat_playerUnitCreation");
     private final static String[] basicDefinitions = {"marine", "heavy"};
     private static final String[][] definitions = {{"AIRetrofit_CombatRobots_T0_marine","AIRetrofit_CombatRobots_T1_marine","AIRetrofit_CombatRobots_T2_marine"},{"AIRetrofit_CombatRobots_T0_Heavy","AIRetrofit_CombatRobots_T1_Heavy","AIRetrofit_CombatRobots_T2_Heavy"}};
-    private static final String[] personell = {AIRetrofits_Constants.Commodity_T0_CombatDrone,AIRetrofits_Constants.Commodity_T1_CombatDrone,AIRetrofits_Constants.Commodity_T2_CombatDrone};
+    private static final String[] personell = {AIRetrofits_Constants_3.Commodity_T0_CombatDrone, AIRetrofits_Constants_3.Commodity_T1_CombatDrone, AIRetrofits_Constants_3.Commodity_T2_CombatDrone};
     public static void attemptToSwap(GroundUnit b, GroundBattleIntel intel){
         if (b.getPersonnelMap().size() != 0){
             swap_WithMap(b,intel);

@@ -5,19 +5,16 @@ import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.ResourceCostPanelAPI;
 import com.fs.starfarer.api.campaign.TextPanelAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.fleet.FleetMemberAPI;
 import com.fs.starfarer.api.ui.LabelAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Highlights;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.ArrayList;
-
-import static data.scripts.startupData.AIRetrofits_Constants.ASIC_hullmods;
 
 public class AIRetrofit_Shipyard_UpgradeList {
     public ArrayList<AIRetrofits_Shipyard_UpgradeTypes> Types = new ArrayList<>();
@@ -41,7 +38,7 @@ public class AIRetrofit_Shipyard_UpgradeList {
         float bonusXP = 0;
         for(int a2 = 0; a2 < Types.size(); a2++){
             AIRetrofits_Shipyard_UpgradeTypes a = Types.get(a2);
-            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
+            //info.addPara("upgraded with " + AIRetrofits_Constants_3.ASIC_hullmods[a.type],10);
             float[] temp = a.getCost();
             cost += temp[0];
             bonusXP += temp[1];
@@ -67,7 +64,7 @@ public class AIRetrofit_Shipyard_UpgradeList {
         Color highlight = Misc.getHighlightColor();
         for(int a2 = 0; a2 < Types.size(); a2++){
             AIRetrofits_Shipyard_UpgradeTypes a = Types.get(a2);
-            //info.addPara("upgraded with " + AIRetrofits_Constants.ASIC_hullmods[a.type],10);
+            //info.addPara("upgraded with " + AIRetrofits_Constants_3.ASIC_hullmods[a.type],10);
             float[] temp = a.display(info);
             cost += temp[0];
             bonusXP += temp[1];
@@ -75,7 +72,7 @@ public class AIRetrofit_Shipyard_UpgradeList {
 
         if(cost != 0){
             String[] exstra = new String[]{"" + cost};
-            String text = AIRetrofits_Constants.ASIC_NotificationCredits;
+            String text = AIRetrofits_Constants_3.ASIC_NotificationCredits;
             info.addPara(text,pad,highlight,exstra);
             //Global.getSector().getPlayerFleet().getCargo().getCredits().subtract(cost);
         }
@@ -85,7 +82,7 @@ public class AIRetrofit_Shipyard_UpgradeList {
             highlight = Misc.getStoryOptionColor();
             AIRetrofit_Log.loging( bonusXP + " bonusXP from AIRetrofitShipyard",this,true);
             String[] exstra = new String[]{"" + (int)bonusXP};
-            String text = AIRetrofits_Constants.ASIC_NotificationBonusXP;
+            String text = AIRetrofits_Constants_3.ASIC_NotificationBonusXP;
             info.addPara(text,pad,highlight,exstra);
             //TextPanelAPI a = new TempText();//info.addTextField(0,0);
             //Global.getSector().getPlayerStats().addBonusXP((long)bonusXP,false,a,true);

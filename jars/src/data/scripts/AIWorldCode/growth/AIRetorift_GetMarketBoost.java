@@ -6,37 +6,36 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MutableCommodityQuantity;
 import com.fs.starfarer.api.util.Pair;
 import data.scripts.AIRetrofit_Log;
-import data.scripts.startupData.AIRetrofits_Constants;
-import org.apache.log4j.Logger;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.util.List;
 
 public class AIRetorift_GetMarketBoost {
-    private static final String IT1 = AIRetrofits_Constants.Market_Growth_IT1;
-    private static final float T1ImprovedBonus = AIRetrofits_Constants.Market_Growth_T1ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");//1.3f;
-    private static final float T1PowerPerSize = AIRetrofits_Constants.Market_Growth_T1PowerPerSize;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1PowerPerSize");//5;
-    private static final float T1HazzardBonus = AIRetrofits_Constants.Market_Growth_T1HazzardBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1HazzardBonus");//1.3f;
-    private static final float T1AplhaBonus = AIRetrofits_Constants.Market_Growth_T1AplhaBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
+    private static final String IT1 = AIRetrofits_Constants_3.Market_Growth_IT1;
+    private static final float T1ImprovedBonus = AIRetrofits_Constants_3.Market_Growth_T1ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1ImprovedBonus");//1.3f;
+    private static final float T1PowerPerSize = AIRetrofits_Constants_3.Market_Growth_T1PowerPerSize;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1PowerPerSize");//5;
+    private static final float T1HazzardBonus = AIRetrofits_Constants_3.Market_Growth_T1HazzardBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1HazzardBonus");//1.3f;
+    private static final float T1AplhaBonus = AIRetrofits_Constants_3.Market_Growth_T1AplhaBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
 
-    private static final String IT2 = AIRetrofits_Constants.Market_Growth_IT2;//"AIRetrofit_roboticPopFactoryV2";
-    private static final float T2ImprovedBonus = AIRetrofits_Constants.Market_Growth_T2ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2ImprovedBonus");//1.3f;
-    private static final float T2PowerPerSize = AIRetrofits_Constants.Market_Growth_T2PowerPerSize;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2PowerPerSize");//10;
-    private static final float T2HazzardBonus = AIRetrofits_Constants.Market_Growth_T2HazzardBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2HazzardBonus");//1.3f;
-    private static final float T2AplhaBonus = AIRetrofits_Constants.Market_Growth_T2AplhaBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
+    private static final String IT2 = AIRetrofits_Constants_3.Market_Growth_IT2;//"AIRetrofit_roboticPopFactoryV2";
+    private static final float T2ImprovedBonus = AIRetrofits_Constants_3.Market_Growth_T2ImprovedBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2ImprovedBonus");//1.3f;
+    private static final float T2PowerPerSize = AIRetrofits_Constants_3.Market_Growth_T2PowerPerSize;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2PowerPerSize");//10;
+    private static final float T2HazzardBonus = AIRetrofits_Constants_3.Market_Growth_T2HazzardBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T2HazzardBonus");//1.3f;
+    private static final float T2AplhaBonus = AIRetrofits_Constants_3.Market_Growth_T2AplhaBonus;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_T1AlphaCoreBonus");
 
 
-    private static final float logisticTheshhold = AIRetrofits_Constants.Market_Growth_logisticTheshhold;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticTheshhold");//20;
-    private static final String requredCondition = AIRetrofits_Constants.Market_Growth_requredCondition;//"AIRetrofit_AIPop";//AIRetrofits market condition ID
-    private static final String AlphaCore = AIRetrofits_Constants.AlphaCore;//"alpha_core";
+    private static final float logisticTheshhold = AIRetrofits_Constants_3.Market_Growth_logisticTheshhold;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticTheshhold");//20;
+    private static final String requredCondition = AIRetrofits_Constants_3.Market_Growth_requredCondition;//"AIRetrofit_AIPop";//AIRetrofits market condition ID
+    private static final String AlphaCore = AIRetrofits_Constants_3.AlphaCore;//"alpha_core";
 
-    private static final int maxSize = AIRetrofits_Constants.Market_Growth_maxSize;//Global.getSettings().getInt("maxColonySize");//size of an market before it stops growing.
+    private static final int maxSize = AIRetrofits_Constants_3.Market_Growth_maxSize;//Global.getSettings().getInt("maxColonySize");//size of an market before it stops growing.
     //(float)Math.max(1.5 * (Math.log(0.2 * power + 1) / Math.log(1.1)) + 0,0);
     //f(x) = 1.5 * log(1.1,0.2 * x + 1) + 0
-    private static final float logFunctionA = AIRetrofits_Constants.Market_Growth_logFunctionA;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticA");//1.5f;
-    private static final float logFunctionB = AIRetrofits_Constants.Market_Growth_logFunctionB;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticB");//1.1f;
-    private static final float logFunctionC = AIRetrofits_Constants.Market_Growth_logFunctionC;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticC");//0.2f;
-    private static final float logFunctionD = AIRetrofits_Constants.Market_Growth_logFunctionD;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticD");//1;
-    private static final float logFunctionE = AIRetrofits_Constants.Market_Growth_logFunctionE;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticE");//0;
+    private static final float logFunctionA = AIRetrofits_Constants_3.Market_Growth_logFunctionA;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticA");//1.5f;
+    private static final float logFunctionB = AIRetrofits_Constants_3.Market_Growth_logFunctionB;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticB");//1.1f;
+    private static final float logFunctionC = AIRetrofits_Constants_3.Market_Growth_logFunctionC;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticC");//0.2f;
+    private static final float logFunctionD = AIRetrofits_Constants_3.Market_Growth_logFunctionD;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticD");//1;
+    private static final float logFunctionE = AIRetrofits_Constants_3.Market_Growth_logFunctionE;//Global.getSettings().getFloat("AIRetrofits_MarketGrowth_logisticE");//0;
     //(float)Math.max(A * (Math.log(C * power + D) / Math.log(B)) + E,0);
     //(float)Math.max(logFunctionA * (Math.log(logFunctionC * power + logFunctionD) / Math.log(logFunctionB)) + logFunctionE,0);
 
@@ -237,6 +236,6 @@ public class AIRetorift_GetMarketBoost {
         return 0;
     }
     public static void loging(String output){
-        AIRetrofit_Log.loging(output,new AIRetorift_GetMarketBoost(),AIRetrofits_Constants.Market_EnableLogs);
+        AIRetrofit_Log.loging(output,new AIRetorift_GetMarketBoost(), AIRetrofits_Constants_3.Market_EnableLogs);
     }
 }

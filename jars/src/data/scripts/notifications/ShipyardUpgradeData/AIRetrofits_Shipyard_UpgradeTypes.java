@@ -3,7 +3,7 @@ package data.scripts.notifications.ShipyardUpgradeData;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.scripts.startupData.AIRetrofits_Constants;
+import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class AIRetrofits_Shipyard_UpgradeTypes {
         for(int a = 0; a < upgrades.size(); a++){
             boolean b = Global.getSector().getEconomy().getMarket(markets.get(a)).isPlayerOwned();
             String[] exstra = {Global.getSector().getEconomy().getMarket(markets.get(a)).getName()};
-            String text = AIRetrofits_Constants.ASIC_NotificationMarket;
+            String text = AIRetrofits_Constants_3.ASIC_NotificationMarket;
             info.addPara(text,pad,highlight,exstra);
             float[] temp = upgrades.get(a).display(info,type,b);
             cost += temp[0];

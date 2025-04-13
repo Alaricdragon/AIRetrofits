@@ -27,7 +27,7 @@ public class AIRetrofits_Robot_Types_checker_Supply_1 extends AIRetrofits_Robot_
             if (marketCore == null) marketCore = "";
             if (marketCore.equals(aICore)){//market.getIndustry(industry).getAICoreId().equals(aICore)) {
                 AIRetrofit_combatRobotManufactory a = (AIRetrofit_combatRobotManufactory) market.getIndustry(industry);
-                float power = a.getCombatMulti();
+                float power = a.getBetaMulti();
                 power = (power - 1) / power;//(DM-1)/DM
                 return power * powerMulti;
             }
