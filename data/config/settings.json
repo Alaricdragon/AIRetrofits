@@ -282,13 +282,13 @@
 	"AIRetrofits_AIRetrofit_ShipyardBase_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardBase_REPAIR_LOSE":0.8,
 	#Gamma
-	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.0,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_SUPPLY_USE_MULT":1.4,
 	"AIRetrofits_AIRetrofit_ShipyardGamma_CREW_USE_MULT":1,
-	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":0.1,
+	"AIRetrofits_AIRetrofit_ShipyardGamma_REPAIR_LOSE":1.1,
 	#Beta
-	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.75,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_SUPPLY_USE_MULT":0.9,
 	"AIRetrofits_AIRetrofit_ShipyardBeta_CREW_USE_MULT":1,
-	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.5,
+	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.7,
 	#Alpha
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1.0,
 	#"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":1,#sets the min AND max required crew to 'zero' in this case

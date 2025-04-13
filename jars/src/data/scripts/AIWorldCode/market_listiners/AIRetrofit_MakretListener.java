@@ -28,6 +28,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     @Override
     public void reportPlayerOpenedMarket(MarketAPI market){
+        runAIRetrofit_Shipyard();
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
         AIRetrofits_ItemInCargoMemory.runall();
@@ -145,7 +146,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             //ship2.getVariant().get
             boolean exit = false;
             for(String a : stopHullMods) {
-                if(ship.hasHullMod(a)) {
+                if (ship.getPermaMods().contains(a)) {
+                //if(ship.hasHullMod(a)) {
                     //CrewReplacer_Log.loging("           abort: bad hull mod.",this,logging);
                     exit = true;
                     break;
@@ -194,7 +196,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                         ship.removePermaMod(a);
                         //AIRetrofit_Log.loging("trying to remove hullmod: " + a,this,true);
                     }
-                    ship.addMod(addHullMod);
+                    ship.addPermaMod(addHullMod);
+                    //ship.addMod(addHullMod);
                 }
             }
             ship2.setVariant(ship,false,true);

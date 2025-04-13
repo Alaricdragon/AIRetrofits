@@ -1,8 +1,9 @@
 changelog for all my changes as i make them so i don't forget again.
 V0.9.4.13(private):
 NOT save compatible. probably.
-    fixed issue were being in the refit screen and adding / removing vents was slow (it was me sorry)
-    AI-Retrofit hullmod rebalance:
+    fixed issue were being in the refit screen and adding / removing vents was slow (sometimes really really slow) (it was me sorry)
+    fixed AI-Retrofit 'permit' mods pretending you can remove them.
+    AI-Retrofit hullmod rebalanced:
         the objective here is to change the AI-Retrofit hullmod from something that debuffs your combat ability, to something that only changes your logistics.
         changed all AI-Retrofit hullmods to no longer do the following:
             1) increase opp cost depending on crew used (base 1 supply per month per 10 crew)
@@ -22,15 +23,13 @@ NOT save compatible. probably.
             supply use multi: 1.2
             repair speed multi: 0.8
         perma_gamma:
-            supply use multi:
-            repair speed multi:
+            supply use multi: 1.4
+            repair speed multi: 1.1
         perma_beta:
-            supply use multi:
-            repair speed multi:
+            supply use multi: 0.9
+            repair speed multi: 0.7
         perma_alpha:
-            supply use multi:
-            repair speed multi:
-
+            to be upgraded later. I have plans for this, but I cant do them right now.
 V0.9.4.12(private):
 save compatible with 0.7.20.1+
     added crash defenses to my compatibility patches.

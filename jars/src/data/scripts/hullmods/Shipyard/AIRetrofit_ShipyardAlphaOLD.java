@@ -9,18 +9,20 @@ import data.scripts.hullmods.AIRetrofit_AIretrofit;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
-public class AIRetrofit_ShipyardOmega extends AIRetrofit_ShipyardAlphaOLD {
-    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Omega_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
-    //private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Omega_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
-    private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Omega_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
+public class AIRetrofit_ShipyardAlphaOLD extends AIRetrofit_ShipyardBase_OLD{
+    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
+    //private static final float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
+    private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
 
     private String[] parm = {"0","1","2","3","4","5","6","7","8","9","10"};
 
-    private static final float[] CostPerCrewPerSize = AIRetrofits_Constants_3.AIRetrofit_Perma_Omega_CrewPerCostPerSize;
+    private static final float[] maxOp = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_maxOp;
+    private static final float[] CostPerCrewPerSize = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CrewPerCostPerSize;
 
-    private final String CrewCostDivider = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Omega_CrewCostDivider");
-    private final String SupplyPercent = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Omega_SupplyUsePercent");
-    private final String RepairPercent = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Omega_RepairChangePercent");
+    private final String CrewCostDivider = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_CrewCostDivider");
+    private final String MaxOpDivider = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_MaxOpDivider");
+    private final String SupplyPercent = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_SupplyUsePercent");
+    private final String RepairPercent = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_RepairChangePercent");
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         float MinCrew = stats.getVariant().getHullSpec().getMinCrew();
@@ -32,6 +34,7 @@ public class AIRetrofit_ShipyardOmega extends AIRetrofit_ShipyardAlphaOLD {
         stats.getCombatEngineRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         stats.getCombatWeaponRepairTimeMult().modifyMult(id,1 + REPAIR_LOSE);
         int exstra_cost = GetExstraOpCost(MaxCrew - MinCrew,hullSize);
+
         AIRetrofit_AIretrofit.clearExstraOpCost(stats);
         addExstraOpCost(exstra_cost,stats);
 
@@ -70,16 +73,16 @@ public class AIRetrofit_ShipyardOmega extends AIRetrofit_ShipyardAlphaOLD {
     private int GetExstraOpCost(float crew, ShipAPI.HullSize hullSize){
         switch (hullSize){
             case FRIGATE:
-                return (int)(crew / CostPerCrewPerSize[1]);
+                return (int)Math.min(crew / CostPerCrewPerSize[1],maxOp[1]);
             case DESTROYER:
-                return (int)(crew / CostPerCrewPerSize[2]);
+                return (int)Math.min(crew / CostPerCrewPerSize[2],maxOp[2]);
             case CRUISER:
-                return (int)(crew / CostPerCrewPerSize[3]);
+                return (int)Math.min(crew / CostPerCrewPerSize[3],maxOp[3]);
             case CAPITAL_SHIP:
-                return (int)(crew / CostPerCrewPerSize[4]);
+                return (int)Math.min(crew / CostPerCrewPerSize[4],maxOp[4]);
             case FIGHTER:
             default:
-                return (int)(crew / CostPerCrewPerSize[0]);
+                return (int)Math.min(crew / CostPerCrewPerSize[0],maxOp[0]);
         }
     }
 
@@ -101,8 +104,8 @@ public class AIRetrofit_ShipyardOmega extends AIRetrofit_ShipyardAlphaOLD {
 
         parm[5] = AIRetrofits_StringHelper.getSplitString(CrewCostDivider,""+(int)(CostPerCrewPerSize[1]),""+(int)(CostPerCrewPerSize[2]),""+(int)(CostPerCrewPerSize[3]),""+(int)(CostPerCrewPerSize[4]));
         parm[6] = ""+1;
-        //parm[7] = AIRetrofits_StringHelper.getSplitString(MaxOpDivider,""+(int)maxOp[1],""+(int)maxOp[2],""+(int)maxOp[3],""+(int)maxOp[4]);
+        parm[7] = AIRetrofits_StringHelper.getSplitString(MaxOpDivider,""+(int)maxOp[1],""+(int)maxOp[2],""+(int)maxOp[3],""+(int)maxOp[4]);
 
-        parm[7] = "" + (int)cost;
+        parm[8] = "" + (int)cost;
     }
 }

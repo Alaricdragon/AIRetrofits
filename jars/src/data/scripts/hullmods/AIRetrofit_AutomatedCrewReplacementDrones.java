@@ -33,6 +33,17 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
     float ReplacedCrew;
     static float RobotForgePerCrewMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
     public static final String NAString = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForgeHullmod_NA_crew");
+    public int getRemovedCrew(MutableShipStatsAPI stats){
+        int currentMod=0;
+        if (stats.getMinCrewMod().getMultBonus(spec.getId())!=null){
+            stats.getMinCrewMod().unmodifyMult(spec.getId());
+            currentMod = (int) stats.getMinCrewMod().computeEffective(stats.getVariant().getHullSpec().getMinCrew());
+            stats.getMinCrewMod().modifyMult(spec.getId(),0);
+        }else{
+            currentMod = (int) stats.getMinCrewMod().computeEffective(stats.getVariant().getHullSpec().getMinCrew());
+        }
+        return currentMod;
+    }
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         try {
@@ -48,18 +59,6 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         float MaxCrew = stats.getVariant().getHullSpec().getMaxCrew();
         ReplacedCrew = (MaxCrew - MinCrew);
         stats.getMaxCrewMod().modifyFlat(id,ReplacedCrew * -1);
-    }
-    @Override
-    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        switch(index) {
-            case 0:
-                return "" + (int) ReplacedCrew;
-            case 1:
-                return "" + Misc.getRoundedValueMaxOneAfterDecimal(ReplacedCrew * RobotForgePerCrewMulti);
-            case 2:
-                return "" + Misc.getRoundedValueMaxOneAfterDecimal(iCalculateBonus(Global.getSector().getPlayerFleet()));
-        }
-        return null;
     }
     @Override
     public boolean isApplicableToShip(ShipAPI ship/*, MutableCharacterStatsAPI wat*/){
@@ -89,4 +88,28 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
         );
     }
 
+
+    @Override
+    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
+        if (ship == null) return getDescriptionParam(index,hullSize);
+        return getDescriptionParam(index, hullSize, ship.getMutableStats());
+    }
+    protected String getDescriptionParam(int index, ShipAPI.HullSize hullSize, MutableShipStatsAPI ship){
+        int ReplacedCrew = getRemovedCrew(ship);
+        switch(index) {
+            case 0:
+                return "" + (int) ReplacedCrew;
+            case 1:
+                return "" + Misc.getRoundedValueMaxOneAfterDecimal(ReplacedCrew * RobotForgePerCrewMulti);
+            case 2:
+                return "" + Misc.getRoundedValueMaxOneAfterDecimal(iCalculateBonus(Global.getSector().getPlayerFleet()));
+        }
+        return null;
+    }
+    @Override
+    public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
+        MutableShipStatsAPI ship = AIRetrofit_hullmodUtilitys.getIndexShip();
+        if (ship == null) return "";
+        return getDescriptionParam(index, hullSize,ship);
+    }
 }

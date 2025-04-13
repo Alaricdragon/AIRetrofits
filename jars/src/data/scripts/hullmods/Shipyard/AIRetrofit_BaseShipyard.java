@@ -58,6 +58,9 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
     public float getSupplyIncrease(MutableShipStatsAPI stats){
         return getMinCrew(stats) * getSupplysPerCrew();
     }
+    public String getSupplyIncreaseDescription(MutableShipStatsAPI stats){
+        return get2DOfStuff(getSupplyIncrease(stats))+"";
+    }
     /*public float getRepairTimeIncrease(MutableShipStatsAPI stats){
         return stats.getBaseCRRecoveryRatePercentPerDay().getBaseValue() * getRepairTimeMulti();
     }*/
@@ -77,15 +80,17 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
         //AIRetrofit_Log.loging("(getCrewReduction) value = "+a,this,true);
         return a;
     }
+
+    public void applySupplyChange(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id){
+        float SupplyIncrease = getSupplyIncrease(stats);
+        stats.getSuppliesPerMonth().modifyFlat(spec.getId(),SupplyIncrease);
+    }
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        float SupplyIncrease = getSupplyIncrease(stats);
-
-        stats.getSuppliesPerMonth().modifyFlat(spec.getId(),SupplyIncrease);
+        applySupplyChange(hullSize, stats, id);
         stats.getMinCrewMod().modifyMult(spec.getId(),0);
 
         stats.getMaxCrewMod().modifyFlat(spec.getId(),-1*getCrewReduction(stats));
-
         applyRepairTimeChange(stats);
     }
 
@@ -103,7 +108,7 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
             case 2:
                 return ""+get2DOfStuff(getSupplysPerCrew());
             case 3:
-                return ""+ get2DOfStuff(getSupplyIncrease(ship));
+                return getSupplyIncreaseDescription(ship);
             case 4:
                 return ""+getCrewReduction(ship);
             case 5:

@@ -1,12 +1,9 @@
-now: AIRetorifts
-    - attempting to redesign AI-Retrofits and its code, to be both modifiable, and fast.
-    issues:
-        at present, the order of hull mods can matter to bounus. the calculated 'min crew' can be effected in this way, causing AI-Retorfits to be unable to get the currect min crew of the ship.
-            -example: AI-Retrofits -> expanded deck crew. this has no negitive to AI-Retorfits. BUT exspanded deck crew -> AI-Retrofits does work.
-            -I must find a solution.
+update time!
 
-A series of extensive modifications to a ship's on-board systems and interface devices, allowing operated without human intervention. Reduces minimum required crew to %s. The modifications to the ship and overclocked delta AI core installed in the command center are logistically expensive, increasing monthly supply cost %s supplies per min crew removed, for a total monthly supply increase of %s. The automated systems take up a considerable amount of space, reducing the maximum crew by %s, equal to the amount of minimum crew removed. The automated systems installed in the ship are difficult to repair, reducing CR recovery speed by %s.
-
+    later:
+        update alpha perma AI-Retrofits.
+        make it so omega bots are not shown.
+        make it so 'hiddin' hullmods are not shown.
 
 
 THE GRAND DE-JANKIFICATION
