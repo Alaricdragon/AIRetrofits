@@ -37,7 +37,7 @@ public class AIRetrofit_IndustryBase extends BaseIndustry {
     }
     @Override
     public boolean showWhenUnavailable() {
-        return false;
+        return AIretrofit_canBuild.isAI(market);
     }
     @Override
     public boolean isAvailableToBuild(){
