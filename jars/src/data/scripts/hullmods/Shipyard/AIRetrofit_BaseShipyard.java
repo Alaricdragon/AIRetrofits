@@ -16,9 +16,10 @@ import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
 
+/// This handles the basic data. This is NOT the none AICore shipyard.
 public class AIRetrofit_BaseShipyard extends BaseHullMod {
-    final static String permanentWord = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_permament;
-    final static String cantRemoveReason = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_cantRemoveReason;//"cannot be added or removed outside of a robotic shipyard";
+    private final static String permanentWord = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_permament;
+    private final static String cantRemoveReason = AIRetrofits_Constants_3.AIRetrofit_Perma_Base_cantRemoveReason;//"cannot be added or removed outside of a robotic shipyard";
     public String getHullmodID(){
         return spec.getId();
     }

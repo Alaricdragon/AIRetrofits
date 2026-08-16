@@ -1,0 +1,47 @@
+fieldID,fieldName,fieldType,defaultValue,secondaryValue,fieldDescription,minValue,maxValue,tab
+HULLMODS_AI0_1,,Header,AI-Retofit,,,,,Hullmods
+HULLMODS_AI0_2,Supply use multi,Double,1,,,0,5,Hullmods
+HULLMODS_AI0_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI0_4,Repair speed multi,Double,0.8,,,0.01,5,Hullmods
+HULLMODS_AI1_1,,Header,Pathwork AI-Retofit,,,,,Hullmods
+HULLMODS_AI1_2,Supply use multi,Double,1.1,,,0,5,Hullmods
+HULLMODS_AI1_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI1_4,Repair speed multi,Double,0.5,,,0.01,5,Hullmods
+HULLMODS_AI2_1,,Header,Shipyard AI-Retrofit (No AI Core),,,,,Hullmods
+HULLMODS_AI2_2,Supply use multi,Double,1.15,,,0,5,Hullmods
+HULLMODS_AI2_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI2_4,Repair speed multi,Double,1.1,,,0.01,5,Hullmods
+HULLMODS_AI3_1,,Header,Shipyard AI-Retrofit (Gamma),,,,,Hullmods
+HULLMODS_AI3_2,Supply use multi,Double,1.1,,,0,5,Hullmods
+HULLMODS_AI3_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI3_4,Repair speed multi,Double,1.1,,,0.01,5,Hullmods
+HULLMODS_AI4_1,,Header,Shipyard AI-Retrofit (Beta),,,,,Hullmods
+HULLMODS_AI4_2,Supply use multi,Double,0.9,,,0,5,Hullmods
+HULLMODS_AI4_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI4_4,Repair speed multi,Double,0.7,,,0.01,5,Hullmods
+HULLMODS_AI5_1,,Header,Shipyard AI-Retrofit (Alpha),,,,,Hullmods
+HULLMODS_AI5_2,Supply use multi,Double,1,,,0,5,Hullmods
+HULLMODS_AI5_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI5_4,Repair speed multi,Double,0.8,,,0.01,5,Hullmods
+HULLMODS_AI5_5,Costs automated ship ponits,Boolean,true,,,,,Hullmods
+HULLMODS_AI6_1,,Header,Shipyard AI-Retrofit (Spoiler),,,,,Hullmods
+HULLMODS_AI6_2,Supply use multi,Double,0.8,,,0,5,Hullmods
+HULLMODS_AI6_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+HULLMODS_AI6_4,Repair speed multi,Double,1.2,,,0.01,5,Hullmods
+HULLMODS_AI6_5,Costs automated ship ponits,Boolean,false,,,,,Hullmods
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,

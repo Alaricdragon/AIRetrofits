@@ -126,9 +126,10 @@ public class AIRetrofits_Constants_3 {
     //alpha
     //public static final String AIRetrofit_Perma_Alpha_automationLevel = "Alpha-Core";
     public static final float AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_SUPPLY_USE_MULT");//1f;
-    //public static final float AIRetrofit_Perma_Alpha_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_CREW_USE_MULT");//0f;
+    public static final float AIRetrofit_Perma_Alpha_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_CREW_USE_MULT");//0f;
     public static final float AIRetrofit_Perma_Alpha_REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_REPAIR_LOSE");//0.5f;
-    public static final float[] AIRetrofit_Perma_Alpha_maxOp = {
+    public static final boolean AIRetrofit_Perma_Alpha_IS_FREE = Global.getSettings().getBoolean("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_COSTS_AUTOPOINTS");//0.5f;
+    /*public static final float[] AIRetrofit_Perma_Alpha_maxOp = {
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_MaxOpOther"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_MaxOpFrigate"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_MaxOpDestroyer"),
@@ -141,18 +142,19 @@ public class AIRetrofits_Constants_3 {
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_C-OP-Destroyer"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_C-OP-Cruiser"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardAlpha" + "_C-OP-Capital_ship")
-    };
+    };*/
 
     public static final float AIRetrofit_Perma_Omega_SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_SUPPLY_USE_MULT");//1f;
-    //public static final float AIRetrofit_Perma_Omega_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_CREW_USE_MULT");//0f;
+    public static final float AIRetrofit_Perma_Omega_CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_CREW_USE_MULT");//0f;
     public static final float AIRetrofit_Perma_Omega_REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_REPAIR_LOSE");//0.5f;
-    public static final float[] AIRetrofit_Perma_Omega_CrewPerCostPerSize = {
+    public static final boolean AIRetrofit_Perma_Omega_IS_FREE = Global.getSettings().getBoolean("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_COSTS_AUTOPOINTS");//0.5f;
+    /*public static final float[] AIRetrofit_Perma_Omega_CrewPerCostPerSize = {
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_C-OP-Other"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_C-OP-Frigate"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_C-OP-Destroyer"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_C-OP-Cruiser"),
             Global.getSettings().getFloat("AIRetrofits_" + "AIRetrofit_ShipyardOmega" + "_C-OP-Capital_ship")
-    };
+    };*/
     //Automated Ship Instalation Center.
     //hullmods and required industry.
     public static final String ASIC_BaseHullmod = "AIretrofit_airetrofit";

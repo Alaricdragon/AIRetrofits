@@ -1,11 +1,58 @@
 update time!
+    update alpha perma AI-Retrofits:
+        1: make it so when added, it adds the 'automated ship' mod.
+        2: make it so when removed, it removed the 'automated ships' mod.
+        3: add a setting to make it ether 'no automated ship points' or 'cost automated ship points'
+        issues:
+            settings changeing the max crew removed are not working.
+        EDIT DESCRIPTIONS SO THIS MAKES SENSE.
 
-    later:
-        update alpha perma AI-Retrofits.
-        make it so omega bots are not shown.
-        make it so 'hiddin' hullmods are not shown.
+    update omega perma AI-Retrofits:
+        1: add in alpha systems.
+        2: make it so the ship does not cost auto points by default.
+        3: make it so this hullmod has the upgrades of all different ships
+    make it so omega bots are not shown. (codex unlock)
+    make it so 'hiddin' hullmods are not shown. (codex)
+    fixes:
+        need to fix AI-Retrofits descriptions being broken.
+        need to fix sub command node factory code being terrible.
+    descriptions:
+        add in a f1 description showing what the hullmod does, as well as the relevant costs, to the automated shipyard tab.
+    balance:
+        some things are very off balance
+        industry's:
+            many industry's are dirt cheep. Increase cost.
+            many industry's that do things someone might want on a none auto-mated market are locked to automated. see:
+                automated shipyard
+                ai node production
 
-
+    integration:
+        right now the mod is not integrated into the core starsector please integrate father. so lets fix that
+        1: add things to the loot table
+            basic robots should be more common.
+            advanced robots rare.
+            omega robots really really rare. (like 1 in a million)
+            random level strange officer core. (rarer then advanced robots. Maybe a limited number per game?)
+        2: industry's added:
+            1: industry's need to be added to normal gameplay to some worlds
+            2: industry's need to be added to nexerlins random sector.
+            so, some industry's have utility. The following industry's must be added:
+                Sub Command Node Factory: 1 per game, placed on at least a size 5 world.
+                automated shipyard: 2 per game at most. 1 with a gamma core, 1 with no core. or both with no core?
+                robot factory's:
+                    1 alpha of each type.   (not a industry)
+                    1 industry level salvage somewhere.
+                    2 or 3 of each other type, spread throughout the base game factions.
+        3: start of game industry adder:
+            nexerlin has a system that lets people have starting conditions on game start. Add some for automated ships.
+        4: hullmods:
+            3 hullmods are added to this mod. They should be acquirable at markets.
+            AI-Retrofits:               tri-tech
+            Patchwork AI-Retrofits:     tri-tech, independents, pirates
+            Robot Forge:                tri-tech, independents, person league.
+    luna settings:
+        add in settings for 'on start' hullmods please.
+            -also make on start hullmods just give the moment you load into the game.
 THE GRAND DE-JANKIFICATION
 this is the process of making my mod make some fucking sense. it will be divided into a few parts.
 1) strings

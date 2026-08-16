@@ -9,6 +9,8 @@ import com.fs.starfarer.api.loading.VariantSource;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import data.scripts.AIRetrofits_AbilityAndHullmodAdding;
 import data.scripts.AIWorldCode.AIRetrofits_ChangePeople;
+import data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardAlpha;
+import data.scripts.hullmods.Shipyard.AIRetrofit_ShipyardOmega;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
 import data.scripts.memory.AIRetrofits_ItemInCargoMemory;
 import data.scripts.notifications.AIRetrofit_ShipyardNotification;
@@ -80,7 +82,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             a[1] = a[2];//crash the game. as an console log lol.
         }*/
         //CrewReplacer_Log.loging("running  runSingleAIRetrofit_Shipyard for market: " + market.getName(),this,logging);
-        final String[] stopHullMods = {"automated"};
+        final String[] stopHullMods = {};//"automated"};
+        final String[] removeAutomatedStatus = {"AIRetrofit_ShipyardOmega","AIRetrofit_ShipyardAlpha"};
         final String[] addHullMods = {
                 "AIRetrofit_ShipyardGamma",
                 "AIRetrofit_ShipyardBeta",
@@ -102,6 +105,8 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
             points *= bounus;
         }
         int type;
+        boolean shouldAutomate = false;
+        boolean autoFree = false;
         try {
             //CrewReplacer_Log.loging("   trying to get AI core...",this,logging);
             switch (market.getIndustry(shipYardIndustry).getAICoreId()) {
@@ -119,11 +124,15 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     //CrewReplacer_Log.loging("       got AICore named 'alpha core'",this,logging);
                     addHullMod = addHullMods[2];
                     type = 2;
+                    shouldAutomate = true;
+                    autoFree = AIRetrofit_ShipyardAlpha.IS_FREE;
                     break;
                 case "omega_core"://are omega cores even obtainable?
                     //CrewReplacer_Log.loging("       got AICore named 'omega core'",this,logging);
                     addHullMod = addHullMods[3];
                     type = 3;
+                    shouldAutomate = true;
+                    autoFree = AIRetrofit_ShipyardOmega.IS_FREE;
                     break;
                 default:
                     //CrewReplacer_Log.loging("       didn't get AI core'",this,logging);
@@ -192,11 +201,19 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                         upgraded.addShip(ship2,size);
                     }
                     for(String a : addHullMods){
+                        if (ship.getPermaMods().contains(a)) for (String b : removeAutomatedStatus) if (b.equals(a)){
+                            ship.removePermaMod("automated");
+                            ship.removeTag("no_auto_penalty");
+                        }
                         ship.removeMod(a);
                         ship.removePermaMod(a);
                         //AIRetrofit_Log.loging("trying to remove hullmod: " + a,this,true);
                     }
                     ship.addPermaMod(addHullMod);
+                    if (shouldAutomate){
+                        ship.addPermaMod("automated");
+                        if (!autoFree) ship.addTag("no_auto_penalty");
+                    }
                     //ship.addMod(addHullMod);
                 }
             }

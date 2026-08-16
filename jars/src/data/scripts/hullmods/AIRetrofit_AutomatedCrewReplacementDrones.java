@@ -31,7 +31,7 @@ public class AIRetrofit_AutomatedCrewReplacementDrones extends BaseLogisticsHull
     int DronePerCrew = 10;
     int MinReplacedCrew = 1;
     float ReplacedCrew;
-    static float RobotForgePerCrewMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
+    public static float RobotForgePerCrewMulti = Global.getSettings().getFloat("AIRetrofits_RobotForgePerCrewMulti");
     public static final String NAString = AIRetrofits_StringGetterProtection.getString("AIRetrofits_RobotForgeHullmod_NA_crew");
     public int getRemovedCrew(MutableShipStatsAPI stats){
         int currentMod=0;

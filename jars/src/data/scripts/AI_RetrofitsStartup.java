@@ -10,6 +10,7 @@ import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
 import data.scripts.jsonDataReader.AIRetrofits_JsonReaderBase;
+import data.scripts.lunaLib.StoredSettings;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
 import data.scripts.startupData.*;
 import org.json.JSONException;
@@ -40,6 +41,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
         AIRetrofits_InitCombatabilityPatches.onGameLoad(newGame);
         AIRetrofit_ItemFoundMemory.onGameLoad();
+        StoredSettings.attemptEnableLunalib();
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?

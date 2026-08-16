@@ -10,25 +10,40 @@ import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 public class AIRetrofit_ShipyardAlpha extends AIRetrofit_BaseShipyard {
-    private static final float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
-    private static final float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
-
-    private static final float[] maxOp = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_maxOp;
-    private static final float[] CostPerCrewPerSize = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CrewPerCostPerSize;
-
-    private final String CrewCostDivider = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_CrewCostDivider");
-    private final String MaxOpDivider = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_MaxOpDivider");
-    private final String SupplyPercent = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_SupplyUsePercent");
-    private final String RepairPercent = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Perma_Alpha_RepairChangePercent");
-
-
-
+    public static float SUPPLY_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_SUPPLY_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_SUPPLY_USE_MULT");//1f;
+    public static float CREW_USE_MULT = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_CREW_USE_MULT;//Global.getSettings().getFloat("AIRetrofits_" + name + "_CREW_USE_MULT");//0f;
+    public static float REPAIR_LOSE = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_REPAIR_LOSE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
+    public static boolean IS_FREE = AIRetrofits_Constants_3.AIRetrofit_Perma_Alpha_IS_FREE;//Global.getSettings().getFloat("AIRetrofits_" + name + "_REPAIR_LOSE");//0.5f;
     @Override
-    public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
-        super.applyEffectsBeforeShipCreation(hullSize, stats, id);
-        stats.getFluxCapacity();
-        stats.getFluxDissipation();
-        //stats.getDP
+    public float getSupplyCostMulti() {
+        return SUPPLY_USE_MULT;
+    }
+    @Override
+    public float getCrewReductionMulti() {
+        return CREW_USE_MULT;
+    }
+    @Override
+    public float getRepairTimeMulti() {
+        return REPAIR_LOSE;
+    }
+    /*public int getCrewReduction(MutableShipStatsAPI stats){
+        int minCrew = (int) (getMinCrew(stats) * getCrewReductionMulti());
+        int maxCrew = (int) stats.getMaxCrewMod().computeEffective(stats.getVariant().getHullSpec().getMaxCrew());
+        int a = Math.min(minCrew,maxCrew);
+        return a;
+    }*/
+    /// This is modified here. The reason behind that is to 'trick' my math into changing the crew removed to the max crew with min changes.
+    public int getMinCrew(MutableShipStatsAPI stats){
+        int currentMod=0;
+        if (stats.getMaxCrewMod().getMultBonus(spec.getId())!=null){
+            stats.getMaxCrewMod().unmodifyMult(spec.getId());
+            currentMod = (int) stats.getMaxCrewMod().computeEffective(stats.getVariant().getHullSpec().getMaxCrew());
+            //stats.getMinCrewMod().modifyMult(spec.getId(),0);
+        }else{
+            currentMod = (int) stats.getMaxCrewMod().computeEffective(stats.getVariant().getHullSpec().getMaxCrew());
+        }
+        //AIRetrofit_Log.loging("(getMinCrew) base = "+currentMod,this,true);
+        return currentMod;
     }
 }
 

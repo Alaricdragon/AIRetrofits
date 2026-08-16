@@ -12,11 +12,11 @@ import data.scripts.startupData.AIRetrofits_Constants_3;
 import java.util.Set;
 
 public class AIRetrofit_PatchworkAIRetrofit extends AIRetrofit_BaseLugistic {
-    private static final String CantChangeHullMod = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CantSwapText");
-    private static final String CanChangeHullMod1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText1");
-    private static final float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_SUPPLY_USE_MULT");//1f;
-    private static final float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_CREW_USE_MULT");//0f;
-    private static final float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_REPAIR_LOSE");//0.5f;
+    private final static String CantChangeHullMod = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CantSwapText");
+    private final static String CanChangeHullMod1 = AIRetrofits_StringGetterProtection.getString("AIRetrofits_Patchwork_CanSwapText1");
+    public static float SUPPLY_USE_MULT = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_SUPPLY_USE_MULT");//1f;
+    public static float CREW_USE_MULT = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_CREW_USE_MULT");//0f;
+    public static float REPAIR_LOSE = Global.getSettings().getFloat("AIRetrofits_Patchwork_AIretrofit_REPAIR_LOSE");//0.5f;
 
     @Override
     public float getSupplyCostMulti() {
