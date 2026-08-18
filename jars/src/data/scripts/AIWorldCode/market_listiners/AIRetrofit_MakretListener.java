@@ -30,7 +30,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
     }
     @Override
     public void reportPlayerOpenedMarket(MarketAPI market){
-        runAIRetrofit_Shipyard();
+        //runAIRetrofit_Shipyard();
         changePeople(market);
         AIRetrofits_AbilityAndHullmodAdding.addAIRetrofits();
         AIRetrofits_ItemInCargoMemory.runall();
@@ -125,14 +125,14 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     addHullMod = addHullMods[2];
                     type = 2;
                     shouldAutomate = true;
-                    autoFree = AIRetrofit_ShipyardAlpha.IS_FREE;
+                    autoFree = AIRetrofit_ShipyardAlpha.COSTS_AUTOPOINTS;
                     break;
                 case "omega_core"://are omega cores even obtainable?
                     //CrewReplacer_Log.loging("       got AICore named 'omega core'",this,logging);
                     addHullMod = addHullMods[3];
                     type = 3;
                     shouldAutomate = true;
-                    autoFree = AIRetrofit_ShipyardOmega.IS_FREE;
+                    autoFree = AIRetrofit_ShipyardOmega.COSTS_AUTOPOINTS;
                     break;
                 default:
                     //CrewReplacer_Log.loging("       didn't get AI core'",this,logging);
@@ -212,7 +212,7 @@ public class AIRetrofit_MakretListener  extends BaseCampaignEventListener {
                     ship.addPermaMod(addHullMod);
                     if (shouldAutomate){
                         ship.addPermaMod("automated");
-                        if (!autoFree) ship.addTag("no_auto_penalty");
+                        //if (!autoFree) ship.addTag("no_auto_penalty");
                     }
                     //ship.addMod(addHullMod);
                 }

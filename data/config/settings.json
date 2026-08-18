@@ -283,13 +283,13 @@
 	"AIRetrofits_AIRetrofit_ShipyardBeta_REPAIR_LOSE":0.7,
 	#Alpha
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_SUPPLY_USE_MULT":1,
-	"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":1,
+	#"AIRetrofits_AIRetrofit_ShipyardAlpha_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_REPAIR_LOSE":0.8,
 	"AIRetrofits_AIRetrofit_ShipyardAlpha_COSTS_AUTOPOINTS":true,
 
 	#Redacted
 	"AIRetrofits_AIRetrofit_ShipyardOmega_SUPPLY_USE_MULT":0.8,
-	"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":1,
+	#"AIRetrofits_AIRetrofit_ShipyardOmega_CREW_USE_MULT":1,
 	"AIRetrofits_AIRetrofit_ShipyardOmega_REPAIR_LOSE":1.2,
 	"AIRetrofits_AIRetrofit_ShipyardOmega_COSTS_AUTOPOINTS":false,
 

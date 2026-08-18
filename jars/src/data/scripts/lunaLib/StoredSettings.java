@@ -46,14 +46,14 @@ public class StoredSettings {
         AIRetrofit_ShipyardBeta.REPAIR_LOSE = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI4_4");
 
         AIRetrofit_ShipyardAlpha.SUPPLY_USE_MULT = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_2");
-        AIRetrofit_ShipyardAlpha.CREW_USE_MULT = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_3");
+        //AIRetrofit_ShipyardAlpha.CREW_USE_MULT = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_3");
         AIRetrofit_ShipyardAlpha.REPAIR_LOSE = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_4");
-        AIRetrofit_ShipyardAlpha.IS_FREE = LunaSettings.getBoolean("AI-Retrofits","HULLMODS_AI5_5");
+        AIRetrofit_ShipyardAlpha.COSTS_AUTOPOINTS = LunaSettings.getBoolean("AI-Retrofits","HULLMODS_AI5_5");
 
         AIRetrofit_ShipyardOmega.SUPPLY_USE_MULT = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_2");
-        AIRetrofit_ShipyardOmega.CREW_USE_MULT = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_3");
+        //AIRetrofit_ShipyardOmega.CREW_USE_MULT = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_3");
         AIRetrofit_ShipyardOmega.REPAIR_LOSE = LunaSettings.getFloat("AI-Retrofits","HULLMODS_AI5_4");
-        AIRetrofit_ShipyardOmega.IS_FREE = LunaSettings.getBoolean("AI-Retrofits","HULLMODS_AI6_5");
+        AIRetrofit_ShipyardOmega.COSTS_AUTOPOINTS = LunaSettings.getBoolean("AI-Retrofits","HULLMODS_AI6_5");
     }
     private static void getConfigSettings(){
 

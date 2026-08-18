@@ -18,12 +18,14 @@ V0.11:  The Grand De-jank-enfication (or something) (part 2)
             removed opp gain.
             cost per crew: 1
             repair speed: 0.8
+            now automates the ship, making it take automated ship points and allowing AI cores to operate the ship.
         Shipyard AI-Retrofits (spoiler):
             removed opp gain
             cost per crew: 0.8
             repair speed: 1.2
+            now automates the ship, making it take automated ship points and allowing AI cores to operate the ship.
     fixes:
-        some hullmods are now hidden in the codex until found.
+        some hullmods and items are now hidden in the codex until found.
         fixed AI-Shipyard running every time the player opened the market.
 V0.10.1:
     fixed industry's not showing up in the industry tab if you were out of industry slots.

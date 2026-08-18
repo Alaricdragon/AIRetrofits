@@ -9,6 +9,7 @@ import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.hullmods.AIRetrofit_hullmodUtilitys;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
@@ -54,6 +55,7 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
 
     public float getSupplysPerCrew(){
         //10 credits per month per crew
+        //todo: change this eq to actually work.
         return 0.1f * getSupplyCostMulti();
     }
     public float getSupplyIncrease(MutableShipStatsAPI stats){
@@ -91,7 +93,13 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
         applySupplyChange(hullSize, stats, id);
         stats.getMinCrewMod().modifyMult(spec.getId(),0);
 
-        stats.getMaxCrewMod().modifyFlat(spec.getId(),-1*getCrewReduction(stats));
+        int reduction = getCrewReduction(stats);
+        stats.getMaxCrewMod().modifyFlat(spec.getId(),-1*reduction);
+        int temp = (int) stats.getMaxCrewMod().computeEffective(stats.getVariant().getHullSpec().getMaxCrew());
+        //NOTICE FOR ME: the issue with alpha / omega crew reduction is caused by automated ships. opps.
+        //AIRetrofit_Log.loging("Crew reduced by: "+reduction,this,true);
+        //AIRetrofit_Log.loging("New Min Crew is by: "+temp,this,true);
+
         applyRepairTimeChange(stats);
     }
 
@@ -212,5 +220,15 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
             temp = "AIretrofit_AIretrofit_opadd" + a;
             stats.getVariant().removeMod(temp);
         }
+    }
+
+    public void applyToTooltipStandalone(){
+        /*
+            todo:
+                1: get a ship to use as the base ship. by default, this will be the players flagship. kite otherwise.
+                2: get the code and run a standerd display. that should just work I think?
+         */
+
+
     }
 }

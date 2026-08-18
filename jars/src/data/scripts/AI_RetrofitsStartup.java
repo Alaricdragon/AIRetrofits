@@ -42,6 +42,7 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         AIRetrofits_InitCombatabilityPatches.onGameLoad(newGame);
         AIRetrofit_ItemFoundMemory.onGameLoad();
         StoredSettings.attemptEnableLunalib();
+        StoredSettings.getSettings();
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?

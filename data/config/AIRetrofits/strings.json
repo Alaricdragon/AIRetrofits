@@ -18,14 +18,8 @@
     #gamma
     #beta
     #alpha
-    "AIRetrofits_Perma_Alpha_CrewCostDivider": "%s/%s/%s/%s ",
-    "AIRetrofits_Perma_Alpha_MaxOpDivider": "%s/%s/%s/%s ",
-    "AIRetrofits_Perma_Alpha_SupplyUsePercent": "%s%",
-    "AIRetrofits_Perma_Alpha_RepairChangePercent": "%s%",
+    "Shipyard_FullAuto_FreeText": "Ships automated this way do not cost automated ship points.",
     #omega
-    "AIRetrofits_Perma_Omega_CrewCostDivider": "%s/%s/%s/%s ",
-    "AIRetrofits_Perma_Omega_SupplyUsePercent": "%s%",
-    "AIRetrofits_Perma_Omega_RepairChangePercent": "%s%",
 
   #settings for robot forge hullmod
     "AIRetrofits_RobotForgeHullmod_NA_crew": "Need at least %s spare crew on ship to replace crew. You have %s ",

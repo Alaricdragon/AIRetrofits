@@ -1,20 +1,10 @@
-update time!
-    update alpha perma AI-Retrofits:
-        1: make it so when added, it adds the 'automated ship' mod.
-        2: make it so when removed, it removed the 'automated ships' mod.
-        3: add a setting to make it ether 'no automated ship points' or 'cost automated ship points'
-        issues:
-            settings changeing the max crew removed are not working.
-        EDIT DESCRIPTIONS SO THIS MAKES SENSE.
+A series of extensive modifications to a ship's on-board systems and interface devices, allowing for full and complete automation of the ship. The modifications are %s and cannot be removed. Although they can be replaced by a similar modification in a AI-Shipyard. Reduces minimum and maximum required crew to %s. The modifications to the ship and overclocked delta AI core installed in the command center are logistically expensive, increasing monthly supply cost %s supplies per min crew removed, for a total monthly supply increase of %s. The automated systems installed in the ship are difficult to repair, reducing CR recovery speed by %s. Disallows human officers to pilot the craft, instead relying on AI cores. %s
+A series of extensive modifications to a ship's on-board systems and interface devices, allowing operated without human intervention. The modifications are %s and cannot be removed. Although they can be replaced by a similar modification in a AI-Shipyard. Reduces minimum required crew to %s. The modifications to the ship and overclocked delta AI core installed in the command center are logistically expensive, increasing monthly supply cost %s supplies per min crew removed, for a total monthly supply increase of %s. The automated systems take up a considerable amount of space, reducing the maximum crew by %s, equal to the amount of minimum crew removed. The automated systems installed in the ship are difficult to repair, reducing CR recovery speed by %s
 
-    update omega perma AI-Retrofits:
-        1: add in alpha systems.
-        2: make it so the ship does not cost auto points by default.
-        3: make it so this hullmod has the upgrades of all different ships
-    make it so omega bots are not shown. (codex unlock)
-    make it so 'hiddin' hullmods are not shown. (codex)
+
+update time!
     fixes:
-        need to fix AI-Retrofits descriptions being broken.
+        need to fix AI-Retrofits descriptions being broken. (very rare. might have already fixed? so long as I am not useing stored varubles its fine.)
         need to fix sub command node factory code being terrible.
     descriptions:
         add in a f1 description showing what the hullmod does, as well as the relevant costs, to the automated shipyard tab.
@@ -53,6 +43,9 @@ update time!
     luna settings:
         add in settings for 'on start' hullmods please.
             -also make on start hullmods just give the moment you load into the game.
+
+    stretch goals:
+        1: add in a CSV file that handles AI core interactions with robotic crew.
 THE GRAND DE-JANKIFICATION
 this is the process of making my mod make some fucking sense. it will be divided into a few parts.
 1) strings

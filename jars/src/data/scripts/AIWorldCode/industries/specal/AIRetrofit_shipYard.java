@@ -4,8 +4,10 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
@@ -187,6 +189,23 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
                     "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[5],
             };
             tooltip.addPara(AIRetrofits_Constants_3.ASIC_Description_CPS,pad,highlight,ex);
+        }
+    }
+    public static void shipyard_expandedDescription(TooltipMakerAPI tooltip, MarketAPI market){
+        if(!market.hasIndustry(industry)) return;
+        switch (market.getIndustry(industry).getAICoreId()){
+            case "gamma_core":
+                break;
+            case "beta_core":
+                break;
+            case "alpha_core":
+                AIRetrofit_Log.loging("got display string as: "+Global.getSettings().getHullModSpec("AIRetrofit_ShipyardAlpha").getDescriptionFormat(),AIRetrofit_Log.class,true);
+                tooltip.addPara(Global.getSettings().getHullModSpec("AIRetrofit_ShipyardAlpha").getDescriptionFormat(),5,Misc.getTextColor());
+                break;
+            case "omega_core":
+                break;
+            default:
+                break;
         }
     }
 }

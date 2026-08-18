@@ -36,6 +36,9 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
             return;
         }
         AIRetrofit_shipYard.AIRetrofit_ShipyardDescription(tooltip,market);
+        AIRetrofit_shipYard.shipyard_expandedDescription(tooltip,market);
+        if (expanded){
+        }
     }
     @Override
     public void advance(float amount){

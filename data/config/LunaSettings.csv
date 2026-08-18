@@ -21,12 +21,12 @@ HULLMODS_AI4_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
 HULLMODS_AI4_4,Repair speed multi,Double,0.7,,,0.01,5,Hullmods
 HULLMODS_AI5_1,,Header,Shipyard AI-Retrofit (Alpha),,,,,Hullmods
 HULLMODS_AI5_2,Supply use multi,Double,1,,,0,5,Hullmods
-HULLMODS_AI5_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+#HULLMODS_AI5_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
 HULLMODS_AI5_4,Repair speed multi,Double,0.8,,,0.01,5,Hullmods
 HULLMODS_AI5_5,Costs automated ship ponits,Boolean,true,,,,,Hullmods
 HULLMODS_AI6_1,,Header,Shipyard AI-Retrofit (Spoiler),,,,,Hullmods
 HULLMODS_AI6_2,Supply use multi,Double,0.8,,,0,5,Hullmods
-HULLMODS_AI6_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
+#HULLMODS_AI6_3,Crew Removed Multi,Double,1,,,0,1,Hullmods
 HULLMODS_AI6_4,Repair speed multi,Double,1.2,,,0.01,5,Hullmods
 HULLMODS_AI6_5,Costs automated ship ponits,Boolean,false,,,,,Hullmods
 ,,,,,,,,
