@@ -36,6 +36,7 @@ public class AIRetrofit_BaseShipyard extends BaseHullMod {
     }
     public int getMinCrew(MutableShipStatsAPI stats){
         int currentMod=0;
+        if (spec == null) return (int) stats.getMinCrewMod().computeEffective(stats.getVariant().getHullSpec().getMinCrew());//for descriptions only
         if (stats.getMinCrewMod().getMultBonus(spec.getId())!=null){
             stats.getMinCrewMod().unmodifyMult(spec.getId());
             currentMod = (int) stats.getMinCrewMod().computeEffective(stats.getVariant().getHullSpec().getMinCrew());

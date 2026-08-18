@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -152,6 +153,8 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         AIRetrofit_Log.loging("resetting Command Node submarket cargo",this,logs);
         //float[] power = getPower();
         emptyCargo(cargo);
+        if (market == null) return;
+        market = Global.getSector().getEconomy().getMarket(market.getId());
         if(market == null || market.getIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility) == null){
             return;
         }
@@ -198,6 +201,9 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
             }
         }
         AIRetrofit_Log.loging("last update when?"+this.sinceSWUpdate,this,logs);
+        if (market == null) return cargo;
+        market = Global.getSector().getEconomy().getMarket(market.getId());
+        if (market == null) return cargo;
         if(market.hasIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility) && !market.getIndustry(AIRetrofits_Constants_3.Industry_AINodeProductionFacility).isFunctional()) {
             AIRetrofit_Log.loging("attempting to empty cargo becuase of noone functional industry",this,logs);
             emptyCargo(cargo);
@@ -229,6 +235,9 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     }
     @Override
     public float getTariff() {
+        if (market == null) return 0f;
+        market = Global.getSector().getEconomy().getMarket(market.getId());
+        if (market == null) return 0f;
         if (market.getFaction().isPlayerFaction()) {
             return 0f;
         }
@@ -301,6 +310,21 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
     @Override
     public String getIllegalTransferText(CargoStackAPI stack, SubmarketPlugin.TransferAction action){
         return illegalTest;//"cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.";
+    }
+
+    private RepLevel minStanding = RepLevel.FAVORABLE;
+    @Override
+    public boolean isEnabled(CoreUIAPI ui) {
+        //if (mode == CoreUITradeMode.OPEN) return false;
+        if (market == null) return true;
+        market = Global.getSector().getEconomy().getMarket(market.getId());
+        if(market == null) return true;
+        if (market.isPlayerOwned()) return true;
+
+        if (ui.getTradeMode() == CampaignUIAPI.CoreUITradeMode.SNEAK) return false;
+        RepLevel level = market.getFaction().getRelationshipLevel(Global.getSector().getFaction(Factions.PLAYER));
+        //if (level == null) return true;//disabled for testing.
+        return level.isAtWorst(minStanding);
     }
     /*@Override
     public 	boolean isMilitaryMarket(){

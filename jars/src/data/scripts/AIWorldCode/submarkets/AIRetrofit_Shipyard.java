@@ -1,8 +1,12 @@
 package data.scripts.AIWorldCode.submarkets;
 
+import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.CampaignUIAPI;
 import com.fs.starfarer.api.campaign.CoreUIAPI;
+import com.fs.starfarer.api.campaign.RepLevel;
 import com.fs.starfarer.api.campaign.SubmarketPlugin;
 import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.submarkets.BaseSubmarketPlugin;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -36,8 +40,8 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
             return;
         }
         AIRetrofit_shipYard.AIRetrofit_ShipyardDescription(tooltip,market);
-        AIRetrofit_shipYard.shipyard_expandedDescription(tooltip,market);
         if (expanded){
+            AIRetrofit_shipYard.shipyard_expandedDescription(tooltip,market);
         }
     }
     @Override
@@ -103,6 +107,24 @@ public class AIRetrofit_Shipyard extends BaseSubmarketPlugin {
     }
     @Override
     public 	boolean isMilitaryMarket(){
+        return true;
+    }
+
+    private RepLevel minStanding = RepLevel.FAVORABLE;
+    @Override
+    public boolean isEnabled(CoreUIAPI ui) {
+        //if (mode == CoreUITradeMode.OPEN) return false;
+        if (market == null) return true;
+        market = Global.getSector().getEconomy().getMarket(market.getId());
+        if(market == null) return true;
+        if (market.isPlayerOwned()) return true;
+
+        if (ui.getTradeMode() == CampaignUIAPI.CoreUITradeMode.SNEAK) return false;
+        RepLevel level = submarket.getFaction().getRelationshipLevel(Global.getSector().getFaction(Factions.PLAYER));
+        return level.isAtWorst(minStanding);
+    }
+    @Override
+    public boolean isTooltipExpandable() {
         return true;
     }
 }

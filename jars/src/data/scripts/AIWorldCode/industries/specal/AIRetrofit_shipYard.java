@@ -5,15 +5,18 @@ import com.fs.starfarer.api.campaign.econ.CommoditySpecAPI;
 import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.loading.HullModSpecAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 import data.scripts.AIRetrofit_Log;
 import data.scripts.AIRetrofits_StringHelper;
 import data.scripts.AIWorldCode.industries.base.AIRetrofit_IndustryBase;
+import data.scripts.hullmods.Shipyard.*;
 import data.scripts.jsonDataReader.AIRetrofits_StringGetterProtection;
 import data.scripts.startupData.AIRetrofits_Constants_3;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
     private final static String C1 = "AIretrofit_SubCommandNode";
@@ -155,7 +158,7 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
                 "" + (int)costPerShip[5]};
         tooltip.addPara(extraDescription, 0f, highlight, exstra);*/
 
-        AIRetrofit_ShipyardDescription(tooltip,market,true);
+        AIRetrofit_ShipyardDescription(tooltip,market,false);
     }
 
     static float shipyard_IValue = AIRetrofits_Constants_3.ASIC_improveValue;//Global.getSettings().getFloat("AIRetrofitShipyard_IValue");
@@ -180,8 +183,12 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
                 "" + (int)(startingPonits / AIRetrofits_Constants_3.ASIC_costPerShip[5]),
         };
         tooltip.addPara(AIRetrofits_Constants_3.ASIC_Description_SPM,pad,highlight,ex);
-        if(!market.isPlayerOwned() && !forceAvoidCostModifier){
 
+        market = Global.getSector().getEconomy().getMarket(market.getId());
+        if (market == null) return;
+        //AIRetrofit_Log.loging("attempting to run cost mods (player owned, player faction, force avoid): "+market.isPlayerOwned()+", "+market.getFactionId().equals(Global.getSector().getPlayerFaction().getId())+", "+forceAvoidCostModifier,AIRetrofit_Log.class,true);
+        //if(!market.getFactionId().equals(Global.getSector().getPlayerFaction().getId()) && !forceAvoidCostModifier){
+        if(!market.isPlayerOwned() && !forceAvoidCostModifier){
             ex = new String[]{
                     "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[2],
                     "" + (int) AIRetrofits_Constants_3.ASIC_creditsPerShip[3],
@@ -193,19 +200,41 @@ public class AIRetrofit_shipYard extends AIRetrofit_IndustryBase {
     }
     public static void shipyard_expandedDescription(TooltipMakerAPI tooltip, MarketAPI market){
         if(!market.hasIndustry(industry)) return;
+        tooltip.addPara("Hullmod added:",1,Misc.getHighlightColor());
         switch (market.getIndustry(industry).getAICoreId()){
             case "gamma_core":
+                shipyard_getHullmodDescriptionPrams(tooltip,market,"AIRetrofit_ShipyardGamma", new AIRetrofit_ShipyardGamma());
                 break;
             case "beta_core":
+                shipyard_getHullmodDescriptionPrams(tooltip,market,"AIRetrofit_ShipyardBeta", new AIRetrofit_ShipyardBeta());
                 break;
             case "alpha_core":
-                AIRetrofit_Log.loging("got display string as: "+Global.getSettings().getHullModSpec("AIRetrofit_ShipyardAlpha").getDescriptionFormat(),AIRetrofit_Log.class,true);
-                tooltip.addPara(Global.getSettings().getHullModSpec("AIRetrofit_ShipyardAlpha").getDescriptionFormat(),5,Misc.getTextColor());
+                shipyard_getHullmodDescriptionPrams(tooltip,market,"AIRetrofit_ShipyardAlpha", new AIRetrofit_ShipyardAlpha());
                 break;
             case "omega_core":
+                shipyard_getHullmodDescriptionPrams(tooltip,market,"AIRetrofit_ShipyardOmega", new AIRetrofit_ShipyardOmega());
                 break;
             default:
+                shipyard_getHullmodDescriptionPrams(tooltip,market,"AIRetrofit_ShipyardBase", new AIRetrofit_ShipyardBase());
                 break;
         }
+    }
+    private static void shipyard_getHullmodDescriptionPrams(TooltipMakerAPI tooltip, MarketAPI market,String id,AIRetrofit_BaseShipyard mod2){
+        HullModSpecAPI mod = Global.getSettings().getHullModSpec(id);
+        String decription = mod.getDescriptionFormat();
+        ArrayList<String> parms = new ArrayList<>();
+        for (int a = 0; a < 10; a++){
+            String b = mod2.getDescriptionParam(a, ShipAPI.HullSize.FRIGATE);
+            if (b != null) parms.add(b);
+        }
+        String[] parms2 = new String[parms.size()];
+        for (int a = 0; a < parms2.length; a++) parms2[a] = parms.get(a);
+
+        //AIRetrofit_Log.loging("got display string as: "+Global.getSettings().getHullModSpec(id).getDescriptionFormat(),AIRetrofit_Log.class,true);
+
+        mod.getDescription(ShipAPI.HullSize.FRIGATE);
+        tooltip.addPara(mod.getDisplayName(),5,Misc.getHighlightColor());
+        tooltip.addPara(decription,1,Misc.getTextColor(),Misc.getHighlightColor(),parms2);
+
     }
 }

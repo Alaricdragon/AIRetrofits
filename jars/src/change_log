@@ -24,9 +24,11 @@ V0.11:  The Grand De-jank-enfication (or something) (part 2)
             cost per crew: 0.8
             repair speed: 1.2
             now automates the ship, making it take automated ship points and allowing AI cores to operate the ship.
+        AI-Shipyard and AI Node Production now require favourable relations to acsess.
     fixes:
         some hullmods and items are now hidden in the codex until found.
         fixed AI-Shipyard running every time the player opened the market.
+        fixed AI-Shipyard ad AI Node Production being unable to determine who owns the market if said market transferred factions
 V0.10.1:
     fixed industry's not showing up in the industry tab if you were out of industry slots.
 V0.10.0: The Grand De-jank-enfication (or something) (part 1)

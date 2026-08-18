@@ -6,6 +6,7 @@ update time!
     fixes:
         need to fix AI-Retrofits descriptions being broken. (very rare. might have already fixed? so long as I am not useing stored varubles its fine.)
         need to fix sub command node factory code being terrible.
+        need to fix AI-Shipyard keeping ships in its own storge forever. Instead, move them to normal storge.
     descriptions:
         add in a f1 description showing what the hullmod does, as well as the relevant costs, to the automated shipyard tab.
     balance:
