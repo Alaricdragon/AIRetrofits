@@ -3,10 +3,22 @@ A series of extensive modifications to a ship's on-board systems and interface d
 
 
 update time!
+    -- EMERGANCY DO THINGS --
+        I wanna play now. so lets get some things out of the way:
+        1: add in industrys (sub command node factory, AI-shipyard, 3 high tech basic robot factorys, every other faction other then luddic factions gets the 3 basic robot forges)
+    combatability:
+        nexerlin:
+            in my IndustryPlacer, I require something that disactavates it when nexerlin random sector is inabled.
+            I need to add my industrys that I want other factions to build into nexerlins building stuff.
+        faction mods:
+            in my IndustryPlacer, I require something that places random robot factorys about.
+            if nexerlin is inabled, use its own things to determin if a faction likes AI or not.
     fixes:
         need to fix AI-Retrofits descriptions being broken. (very rare. might have already fixed? so long as I am not useing stored varubles its fine.)
         need to fix sub command node factory code being terrible.
         need to fix AI-Shipyard keeping ships in its own storge forever. Instead, move them to normal storge.
+            -please not: in order for this to work, ships with the hullmod that is being added need to be banned from entering the shipyard.
+        industrys with sub markets that require reputation need text that says how mush reputation they require.
     descriptions:
         add in a f1 description showing what the hullmod does, as well as the relevant costs, to the automated shipyard tab.
     balance:
@@ -36,6 +48,20 @@ update time!
                     2 or 3 of each other type, spread throughout the base game factions.
         3: start of game industry adder:
             nexerlin has a system that lets people have starting conditions on game start. Add some for automated ships.
+            -note: this is done the same way that adding in industrys that can be built is done. so:
+                make it so all factions that dont hate AI can build the followwing:
+                    robot factorys.
+                        (1 factory of a random type per 5 worlds.)
+                        (1 upgraded factroy per 15 worlds)
+                        combat : multiplyed based on militrized.
+                        survey : multiplied based on technological
+                        salvage: everyone wants salvage.
+                    AI-Shipyard:
+                        require 'likes AI'
+                        (1 per 10 worlds + 1)
+                    AI-Node Production:
+                        require 'likes AI'
+                        (1 per 8 worlds + 1)
         4: hullmods:
             3 hullmods are added to this mod. They should be acquirable at markets.
             AI-Retrofits:               tri-tech

@@ -312,19 +312,17 @@ public class AIRetrofit_AINodeProduction_Submarket extends BaseSubmarketPlugin {
         return illegalTest;//"cannot preform modifications to ships that require no crew for reasons other then having a AI-Retrofit hullmod installed.";
     }
 
-    private RepLevel minStanding = RepLevel.FAVORABLE;
     @Override
     public boolean isEnabled(CoreUIAPI ui) {
-        //if (mode == CoreUITradeMode.OPEN) return false;
         if (market == null) return true;
         market = Global.getSector().getEconomy().getMarket(market.getId());
         if(market == null) return true;
         if (market.isPlayerOwned()) return true;
 
+        RepLevel minStanding = RepLevel.FAVORABLE;
         if (ui.getTradeMode() == CampaignUIAPI.CoreUITradeMode.SNEAK) return false;
-        RepLevel level = market.getFaction().getRelationshipLevel(Global.getSector().getFaction(Factions.PLAYER));
-        //if (level == null) return true;//disabled for testing.
-        return level.isAtWorst(minStanding);
+        float rep = market.getFaction().getRelationship(Global.getSector().getFaction(Factions.PLAYER).getId());
+        return RepLevel.getLevelFor(rep).isAtWorst(minStanding);
     }
     /*@Override
     public 	boolean isMilitaryMarket(){

@@ -10,6 +10,7 @@ import data.scripts.AIWorldCode.Fleet.listiner.AIRetrofit_FleetListener;
 import data.scripts.AIWorldCode.Fleet.setDataLists;
 import data.scripts.combatabilityPatches.AIRetrofits_InitCombatabilityPatches;
 import data.scripts.jsonDataReader.AIRetrofits_JsonReaderBase;
+import data.scripts.listeners.ShowLootListiner;
 import data.scripts.lunaLib.StoredSettings;
 import data.scripts.memory.AIRetrofit_ItemFoundMemory;
 import data.scripts.startupData.*;
@@ -43,6 +44,9 @@ public class AI_RetrofitsStartup extends BaseModPlugin {
         AIRetrofit_ItemFoundMemory.onGameLoad();
         StoredSettings.attemptEnableLunalib();
         StoredSettings.getSettings();
+        new ShowLootListiner();
+        if (!newGame) return;
+        new IndustryPlacer().apply();
     }
     private void AIMarketModSet(){
         //new AIRetrofit_FleetListener(false);//like this?
