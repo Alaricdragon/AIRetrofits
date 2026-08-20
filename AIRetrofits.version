@@ -1,5 +1,5 @@
 {
-    "masterVersionFile":"https://raw.githubusercontent.com/Alaricdragon/AIRetrofits/master/AIRetrofits.version",
+    "masterVersionFile":"https://raw.githubusercontent.com/Alaricdragon/AIRetrofits/AlphaRelease/AIRetrofits.version",
     "modName":"AI-Retrofits",
     "modThreadId":22261,
     "modVersion":
@@ -9,6 +9,6 @@
         "patch":"2"
     },
 	"starsectorVersion":"0.96a-RC10",
-	"directDownloadURL":"https://github.com/Alaricdragon/AIRetrofits/archive/refs/heads/master.zip",
-	"changelogURL":"https://raw.githubusercontent.com/Alaricdragon/AIRetrofits/master/jars/src/change_log"
+	"directDownloadURL":"https://github.com/Alaricdragon/AIRetrofits/archive/refs/heads/AlphaRelease.zip",
+	"changelogURL":"https://raw.githubusercontent.com/Alaricdragon/AIRetrofits/AlphaRelease/jars/src/change_log"
 }
