@@ -1,7 +1,9 @@
 V0.10.2:  The Grand De-jank-enfication (or something) (part 2)
-    NOTE SAVE COMBATABLE
+    NOTE SAVE COMBATABLE with V0.10.1 or lower
     new:
         started work on luna settings.
+        robot factory's, a AI-Shipyard and a AI Node Production now spawn on new game start on multiple worlds. (tri-tech makes advanced bots)
+        basic, advanced, and esoteric robots can now be acquired from normal loot. And mining stations. bots have a 20/10/1 rarity ratio from each-other, depending on tier.
     balance:
         AI-Retrofits:
             cost per crew:   1.2 -> 1
@@ -29,6 +31,9 @@ V0.10.2:  The Grand De-jank-enfication (or something) (part 2)
         some hullmods and items are now hidden in the codex until found.
         fixed AI-Shipyard running every time the player opened the market.
         fixed AI-Shipyard ad AI Node Production being unable to determine who owns the market if said market transferred factions
+        fixed some strange tagging on some robots
+    changes:
+        renamed the super secret robots to 'Esoteric'. They are now acquirable
 V0.10.1:
     fixed industry's not showing up in the industry tab if you were out of industry slots.
 V0.10.0: The Grand De-jank-enfication (or something) (part 1)

@@ -6,6 +6,10 @@ update time!
     -- EMERGANCY DO THINGS --
         I wanna play now. so lets get some things out of the way:
         1: add in industrys (sub command node factory, AI-shipyard, 3 high tech basic robot factorys, every other faction other then luddic factions gets the 3 basic robot forges)
+            -basic done. need nexerlin combatability.
+        2: add in the drops:
+            not done. I have done robots.
+            need to do everything else.
     combatability:
         nexerlin:
             in my IndustryPlacer, I require something that disactavates it when nexerlin random sector is inabled.

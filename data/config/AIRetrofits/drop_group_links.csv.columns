@@ -1,0 +1,10 @@
+﻿<columns units="px">
+  <column name="id" type="Text" />
+  <column name="Type" type="Text" />
+  <column name="Drop" type="Text" />
+  <column name="Linked" type="Text" />
+  <column name="LinkedEntity" type="Text" />
+  <column name="multiplyerValue" type="Text" />
+  <column name="BaseValue" type="Text" />
+  <column name="loadPriority" type="Text" format="M/d/yyyy" alignment="Right" />
+</columns>

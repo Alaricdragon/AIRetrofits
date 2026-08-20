@@ -1,0 +1,9 @@
+id,Type,Drop,Linked,LinkedEntity,multiplyerValue,BaseValue,loadPriority
+#ids cannot be the same between items,"Type should be:
+Effects both 'drop' and 'linked'
+Value:		for a value of said items
+Random		for a random of said items.",What drop value this creates.,what drop random / drop value triggers this.,"What linked entity trigers this
+this is required in addition to a linked random or linked value. leave blank for anything",multiplys the drop value / drop random values.,"The base drop random / drop value.
+If total value is less then 0, this will not trigger.","The load priority of this item 
+set to higher values to override things from other mods, provided they have this setting for some reason...?"
+,,,,,,,
