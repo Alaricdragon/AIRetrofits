@@ -1,9 +1,21 @@
+V0.10.3
+    balance:
+        salvaged basic,advanced,esoteric robot ratio 200/100/1 -> 500/100/1
+        costs:
+            advanced (sa,co,su) bots cost 375/750/375 -> 125/250/125
+            esoteric (sa,co,su) bots cost 2275/3750/2275 -> 760/1250/760
+        in stores:
+            advanced (sa,co,su) econ unit 60/40/50 -> 120/80/100
+            esoteric (sa,co,su) econ unit 12/8/10 -> 24/16/20
+    fixes:
+        fixed robots not dropping ever. (I both disabled the file and made some wrong assumptions).
+
 V0.10.2:  The Grand De-jank-enfication (or something) (part 2)
     NOTE SAVE COMBATABLE with V0.10.1 or lower
     new:
         started work on luna settings.
         robot factory's, a AI-Shipyard and a AI Node Production now spawn on new game start on multiple worlds. (tri-tech makes advanced bots)
-        basic, advanced, and esoteric robots can now be acquired from normal loot. And mining stations. bots have a 20/10/1 rarity ratio from each-other, depending on tier.
+        basic, advanced, and esoteric robots can now be acquired from normal loot. And mining stations. bots have a 200/100/1 rarity ratio from each-other, depending on tier.
     balance:
         AI-Retrofits:
             cost per crew:   1.2 -> 1
