@@ -3,7 +3,7 @@ commodity,group,freq
 "item_:{tags:[AIRetrofit_CommandNode_Mid, !no_drop, !restricted]}",airetrofit_subcommandnode,100
 "item_:{tags:[AIRetrofit_CommandNode_High, !no_drop, !restricted]}",airetrofit_subcommandnode,80
 "item_:{tags:[AIRetrofit_CommandNode_VeryHigh, !no_drop, !restricted]}",airetrofit_subcommandnode,1
-nothing,airetrofit_subcommandnode,90%
+nothing,airetrofit_subcommandnode,1%
 ,,
 AIretrofit_WorkerDrone,airetorift_robots_random,500
 AIretrofit_CombatDrone,airetorift_robots_random,500

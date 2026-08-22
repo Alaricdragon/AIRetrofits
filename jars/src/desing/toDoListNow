@@ -7,13 +7,22 @@ update time!
         I wanna play now. so lets get some things out of the way:
         1: add in industrys (sub command node factory, AI-shipyard, 3 high tech basic robot factorys, every other faction other then luddic factions gets the 3 basic robot forges)
             -basic done. need nexerlin combatability.
+            I require the following (for random sector:)
+                1: combatability preventing my own custom robot forge adder from being active when nexerlin random sector is.
+                2: industryClassDef done for all buildings (this will determine when they are built).
+                3: industry_bonus.csv done for all things I want to have AI cores (it handles things like alpha cores and soil nanites.) (dont know if it handles on new game bonuses though.)
+            I require (for compleat readyness):
+                1: a way to add robots and automated ships in cases were nexerlin is not active. just randomly here and there...?
+                (might ignore this. It should be fine... right?)
         2: add in the drops:
-            not done. I have done robots.
-            need to do everything else.
+            robots done.
+            sub commands nodes has hit a roadbump. I am -hopeing- for a way to add new drop groups to already built items without damage.
+            barring that, I will look at industreal evolutions solution.
     combatability:
         nexerlin:
             in my IndustryPlacer, I require something that disactavates it when nexerlin random sector is inabled.
             I need to add my industrys that I want other factions to build into nexerlins building stuff.
+            on new game start: allow for AI-Retrofit market for player. see data/config/exserlin/factionSetupDefs.json
         faction mods:
             in my IndustryPlacer, I require something that places random robot factorys about.
             if nexerlin is inabled, use its own things to determin if a faction likes AI or not.

@@ -9,7 +9,6 @@ V0.10.3
             esoteric (sa,co,su) econ unit 12/8/10 -> 24/16/20
     fixes:
         fixed robots not dropping ever. (I both disabled the file and made some wrong assumptions).
-
 V0.10.2:  The Grand De-jank-enfication (or something) (part 2)
     NOTE SAVE COMBATABLE with V0.10.1 or lower
     new:

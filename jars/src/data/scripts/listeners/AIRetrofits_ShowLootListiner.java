@@ -101,8 +101,9 @@ public class AIRetrofits_ShowLootListiner implements ShowLootListener {
         ok, so for industrial evolution arsenal stations, they have a drop group just for that.
         so let us ask the all important question:
 questions:
-    1: in the salvage entity.csv, can I add drop_random or drop_value to a giving entity from my own mod? (for example, overriding 'derelict_probe' to drop_value more dropgroups from the drop_groups.csv) or would that mess up things like mod combatability?
-    2:
+1: in the salvage entity.csv, can I add drop_random or drop_value to a giving entity from my own mod? (for example, overriding 'derelict_probe' to drop_value more dropgroups from the drop_groups.csv) or would I effectively need to override it in its entirety??
+2: when adding salvage to a item with code used a ShowLootListener.reportAboutToShowLootToPlayer, is it possable to effect the salvage field that will be created?
+3: is there a better way to add DropData to an object using code? So far, I can only create my own salvage directly in the ShowLootListener.
      */
     public void reportAboutToShowLootToPlayer(CargoAPI loot, InteractionDialogAPI dialog) {
         /*todo:
@@ -124,6 +125,24 @@ questions:
         SectorEntityToken entity = dialog.getInteractionTarget();
         AIRetrofit_Log.loging("entity type as: "+entity.getCustomEntityType(),this,true);
         List<SalvageEntityGenDataSpec.DropData> dropData = getDropDataFromEntity(entity);
+        if (entity.getCustomEntityType() != null && entity.getCustomEntityType().equals("derelict_probe")){
+            AIRetrofit_Log.loging("runing specal code for the thing!!!",this,true);
+            SalvageEntityGenDataSpec.DropData dropValue = new SalvageEntityGenDataSpec.DropData();
+            dropValue.group = "airetrofit_subcommandnode";
+            dropValue.chances = 5;
+            dropValue.maxChances = -1;
+            dropValue.valueMult = 1;
+            dropValue.value = -1;
+            entity.getDropRandom().add(dropValue);
+
+            List<SalvageEntityGenDataSpec.DropData> dropRandomFinal = new ArrayList<>();
+            dropRandomFinal.add(dropValue);
+            long randomSeed = Global.getSector().getMemoryWithoutUpdate().getLong(MemFlags.SALVAGE_SEED);
+            Random random = Misc.getRandom(randomSeed, 100);
+            CargoAPI salvage = SalvageEntity.generateSalvage(random,
+                    1f, 1f, 1f, 1f, null, dropRandomFinal);
+            loot.addAll(salvage);
+        }
     }
     private List<SalvageEntityGenDataSpec.DropData> getDropDataFromEntity(SectorEntityToken entity) {
         List<SalvageEntityGenDataSpec.DropData> dropData = new ArrayList<>();
